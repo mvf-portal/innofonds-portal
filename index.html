@@ -1661,10 +1661,11 @@ function knotenZeigen(k, wohin) {
     <p class="hinweis"><b>Stufe und Kapitel nicht verwechseln:</b> Die
       <b>Stufe</b> sagt, woraus eine Synthese gemacht ist – es gibt genau
       zwei. Die <b>Kapitel</b> sind ihre Gliederung; jede Synthese hat neun
-      bis zehn davon. Frei einsehbar sind in beiden Stufen die Kapitel 1
-      und 2 – Kohorte und Evidenztabelle, also der nachprüfbare Bestand.
-      Ab Kapitel 3 beginnt der kostenpflichtige Teil: was trägt, was nicht,
-      die Hindernisse und das Fazit.</p>`;
+      bis zehn davon. Frei einsehbar ist in beiden Stufen Kapitel 1 – der
+      Zuschnitt der Kohorte – und aus Kapitel 2, der Evidenztabelle, ein
+      Auszug von acht Projekten. Ab Kapitel 3 beginnt der kostenpflichtige
+      Teil: was trägt, was nicht, die Hindernisse und das Fazit; die
+      vollständige Evidenztabelle gehört dazu.</p>`;
   feld.querySelectorAll('a[data-knoten]').forEach(a => a.onclick = ev => {
     ev.preventDefault();
     const z = nachId.get(+a.dataset.knoten);
@@ -2208,10 +2209,11 @@ partnerZeichnen();
     <p class="hinweis"><b>Stufe und Kapitel nicht verwechseln:</b> Die
       <b>Stufe</b> sagt, woraus eine Synthese gemacht ist – es gibt genau
       zwei. Die <b>Kapitel</b> sind ihre Gliederung; jede Synthese hat neun
-      bis zehn davon. Frei einsehbar sind in beiden Stufen die Kapitel 1
-      und 2 – Kohorte und Evidenztabelle, also der nachprüfbare Bestand.
-      Ab Kapitel 3 beginnt der kostenpflichtige Teil: was trägt, was nicht,
-      die Hindernisse und das Fazit.</p>`;
+      bis zehn davon. Frei einsehbar ist in beiden Stufen Kapitel 1 – der
+      Zuschnitt der Kohorte – und aus Kapitel 2, der Evidenztabelle, ein
+      Auszug von acht Projekten. Ab Kapitel 3 beginnt der kostenpflichtige
+      Teil: was trägt, was nicht, die Hindernisse und das Fazit; die
+      vollständige Evidenztabelle gehört dazu.</p>`;
 
   const bald = `<div class="fehlt"><b>Die Evidenzsynthesen sind in Arbeit.</b>
     Sechs Kohorten sind ausgewertet – Lotsen und Case Management, Pflege,
@@ -2262,7 +2264,11 @@ partnerZeichnen();
     let h = `<h3 class="syn-titel">${esc(s.titel)}</h3>
       <div class="syn-angaben">
         ${kopfblock('Art', zu.length
-            ? 'frei bis Kapitel ' + s.frei_bis
+            ? 'Kapitel 1 frei'
+              + (s.zeilen_gesamt > s.zeilen_gezeigt
+                 ? ', Kapitel 2 als Auszug (' + s.zeilen_gezeigt + ' von '
+                   + s.zeilen_gesamt + ' Zeilen)'
+                 : ', Kapitel 2 frei')
               + ', <b class="gold">kostenpflichtig</b> ab Kapitel '
               + (s.frei_bis + 1)
             : 'frei einsehbar')}
@@ -2295,9 +2301,11 @@ partnerZeichnen();
       h += `<div class="schloss">
         <h4>Ab hier kostenpflichtig – ${zu.length} von
           ${s.gliederung.length} Kapiteln</h4>
-        <p>Frei einsehbar ist der nachprüfbare Bestand: welche Projekte zur
-          Kohorte gehören, mit welchem Design, welcher Fallzahl und welchem
-          Ergebnis. Was daraus folgt, steht im kostenpflichtigen Teil:</p>
+        <p>Frei einsehbar ist der Zuschnitt der Kohorte und ein Auszug des
+          nachprüfbaren Bestands: welche Projekte dazugehören, mit welchem
+          Design, welcher Fallzahl und welchem Ergebnis. Die vollständige
+          Evidenztabelle und alles, was daraus folgt, steht im
+          kostenpflichtigen Teil:</p>
         <ol class="syn-toc" start="${s.frei_bis + 1}">${zu.map(g =>
           `<li>${esc(g.replace(/^\d+\.\s*/, ''))}</li>`).join('')}</ol>
         <p class="syn-anriss">„${esc(s.anriss)}“</p>
@@ -2305,7 +2313,10 @@ partnerZeichnen();
         ${preistafel(s.stufe)}
         <p>Der vollständige Text ist in dieser Datei <b>nicht enthalten</b> –
           eine Sperre, die im Browser geprüft wird, wäre keine. Nach der
-          Bestellung erhalten Sie Rechnung und PDF per E-Mail.</p>
+          Bestellung erhalten Sie die Synthese <b>als PDF und als
+          Word-Datei</b>, die Evidenztabelle zusätzlich <b>als Excel- und
+          als CSV-Datei</b> – sortier- und filterbar, für eigene
+          Auswertungen.</p>
         <div class="bestellknoepfe">
           <button class="tat" data-best="einzeln">Diese Kohorte bestellen</button>
           <button class="tat leise" data-best="jahr">Jahreszugang bestellen</button>
@@ -2352,7 +2363,8 @@ partnerZeichnen();
         Stufe ${s.stufe}</h4>
       <p class="was">${umfang === 'jahr'
         ? 'Alle Kohorten, zwölf Monate'
-        : esc(s.titel)} · Rechnung, zahlbar 14 Tage netto</p>
+        : esc(s.titel)} · Rechnung, zahlbar 14 Tage netto ·
+        Lieferung als PDF, Word, Excel und CSV</p>
       <div class="stufenwahl">${[1,2].map(st => {
         const da = vorhanden.includes(st);
         const pv = PREIS[st][umfang === 'jahr' ? 'jahr' : 'einzeln'];
