@@ -2290,13 +2290,14 @@ partnerZeichnen();
     let h = `<h3 class="syn-titel">${esc(s.titel)}</h3>
       <div class="syn-angaben">
         ${kopfblock('Art', zu.length
-            ? 'Kapitel 1 frei'
-              + (s.zeilen_gesamt > s.zeilen_gezeigt
-                 ? ', Kapitel 2 als Auszug (' + s.zeilen_gezeigt + ' von '
-                   + s.zeilen_gesamt + ' Tabellenzeilen)'
-                 : ', Kapitel 2 frei')
-              + ', <b class="gold">kostenpflichtig</b> ab Kapitel '
-              + (s.frei_bis + 1)
+            ? (s.zeilen_gesamt > s.zeilen_gezeigt
+                 ? 'Kapitel 1 frei, Kapitel 2 als Auszug ('
+                   + s.zeilen_gezeigt + ' von ' + s.zeilen_gesamt
+                   + ' Tabellenzeilen) frei. Rest der Tabelle und ab '
+                   + 'Kapitel ' + (s.frei_bis + 1) + ' '
+                 : 'Kapitel 1 und 2 frei. Ab Kapitel '
+                   + (s.frei_bis + 1) + ' ')
+              + '<b class="gold">kostenpflichtig</b>'
             : 'frei einsehbar')}
         ${kopfblock('Grundlage', esc(quelle))}
         ${kopfblock('Stand', stand ? esc(stand) : '–')}
