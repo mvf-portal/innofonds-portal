@@ -321,6 +321,7 @@ button.chip.waehl:hover{border-color:var(--akzent);color:var(--akzent)}
 button.chip.waehl b{color:var(--gedaempft);margin-left:4px}
 .bfpreis{margin:4px 0 0;font-size:16px;color:var(--text)}
 .bfpreis s{color:var(--gedaempft);font-size:14px;margin-right:5px}
+.nachlasshinweis a{color:inherit}
 .nachlasshinweis{display:block;margin-top:4px;font-size:12.5px;
   color:var(--gold);font-weight:600}
 .bfpreis .was{font-size:12.5px}
@@ -2148,9 +2149,13 @@ partnerZeichnen();
         + 'Evaluationsberichte: Fallzahlen, Effektmaße, Konfidenzintervalle']
   };
   const PREIS = { 1: {einzeln: 490, jahr: 1900}, 2: {einzeln: 1900, jahr: 4900} };
+  /* "Beiräte" allein sagt niemandem, wer gemeint ist - die Mitglieder des
+     MVF-Beirats stehen namentlich auf der Verlagsseite. */
+  const BEIRAT_URL = 'https://www.monitor-versorgungsforschung.de/internals/verlag-medium/beirat/';
   const NACHLASS = [
     ['MVF-Abonnenten', -25],
-    ['Beiräte', -50],
+    ['<a href="' + BEIRAT_URL + '" target="_blank" rel="noopener">'
+     + 'Mitglieder des MVF-Beirats</a>', -50],
   ];
   const eu = n => new Intl.NumberFormat('de-DE',
     {style:'currency', currency:'EUR', maximumFractionDigits:0}).format(n);
@@ -2373,11 +2378,13 @@ partnerZeichnen();
         ${zeile('telefon', 'Telefon')}
         ${zeile('ustid', 'USt-IdNr.')}
         ${zeile('bestellnummer', 'Ihre Bestellnummer')}
-        <label class="bf"><span>Nachlass · wird geprüft</span>
+        <label class="bf"><span>Nachlass · wird geprüft ·
+          <a href="https://www.monitor-versorgungsforschung.de/internals/verlag-medium/beirat/" target="_blank" rel="noopener">wer im Beirat
+          ist</a></span>
           <select name="nachlass">
             <option value="keiner">kein Nachlass</option>
             <option value="abo">MVF-Abonnent – 25 %</option>
-            <option value="beirat">Beirat – 50 %</option>
+            <option value="beirat">Mitglied des MVF-Beirats – 50 %</option>
           </select></label>
         <label class="bf weit"><span>Bemerkung</span>
           <textarea name="bemerkung" rows="2"></textarea></label>
@@ -2416,8 +2423,9 @@ partnerZeichnen();
       // Ohne Hinweis waehlt niemand einen Nachlass, den er nicht kennt -
       // und aergert sich hinterher ueber die Rechnung.
       const nachlasshinweis = `<span class="nachlasshinweis">
-        MVF-Abonnenten −25 %, Beiräte −50 % · unten bei „Nachlass“
-        auswählen</span>`;
+        MVF-Abonnenten −25 %,
+        <a href="https://www.monitor-versorgungsforschung.de/internals/verlag-medium/beirat/" target="_blank" rel="noopener">MVF-Beirat</a>
+        −50 % · unten bei „Nachlass“ auswählen</span>`;
       preisZeile.innerHTML = p
         ? `<s>${eu(grundpreis)}</s> <b>${eu(netto)}</b> zzgl. USt.
            <span class="was">(−${p} % · ${eu(netto + ust)} brutto ·
