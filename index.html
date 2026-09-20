@@ -486,6 +486,12 @@ const UMRISS = JSON.parse(document.getElementById('umriss').textContent);
 const P = D.projekte, NETZ = D.netz, KZ = D.kennzahlen;
 const eur = n => n == null ? '–' : new Intl.NumberFormat('de-DE',
   {style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+/* 2026-09-19 ist Maschinenschreibweise. Auf der Seite steht der Tag so,
+   wie man ihn hier schreibt. */
+const dtag = t => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(t || '');
+  return m ? `${m[3]}.${m[2]}.${m[1]}` : (t || '');
+};
 const esc = s => (s??'').toString().replace(/[&<>"]/g,
   c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const BASIS = 'https://innovationsfonds.g-ba.de';
@@ -493,7 +499,8 @@ const BESTELLUNG = 'https://monitor-versorgungsforschung.de/bestellung/bestellun
 
 document.getElementById('kopfzeile').textContent =
   `${P.length} Förderprojekte · ${NETZ.knoten.length} Einrichtungen · ` +
-  `${D.mit_auswertung} Beschlüsse inhaltlich ausgewertet · Datenstand ${D.stand} · ` +
+  `${D.mit_auswertung} Beschlüsse inhaltlich ausgewertet · Datenstand ${dtag(D.stand)}, ` +
+  `wird täglich nachgeführt · ` +
   `Quelle: innovationsfonds.g-ba.de`;
 
 /* ---------- Reiter ---------- */
@@ -1733,7 +1740,7 @@ async function bildSichern(welche, name, skala) {
   ctx.font = '11px "Segoe UI",system-ui,sans-serif';
   ctx.fillStyle = st.getPropertyValue('--gedaempft');
   ctx.textAlign = 'right';
-  ctx.fillText('Innofonds-Wissen · Datenstand ' + D.stand
+  ctx.fillText('Innofonds-Wissen · Datenstand ' + dtag(D.stand)
     + ' · Quelle: innovationsfonds.g-ba.de', b.width - 10, b.height - 8);
   ctx.textAlign = 'left';
 
