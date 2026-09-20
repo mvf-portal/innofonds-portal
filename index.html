@@ -1661,11 +1661,15 @@ function knotenZeigen(k, wohin) {
     <p class="hinweis"><b>Stufe und Kapitel nicht verwechseln:</b> Die
       <b>Stufe</b> sagt, woraus eine Synthese gemacht ist – es gibt genau
       zwei. Die <b>Kapitel</b> sind ihre Gliederung; jede Synthese hat neun
-      bis zehn davon. Frei einsehbar ist in beiden Stufen Kapitel 1 – der
-      Zuschnitt der Kohorte – und aus Kapitel 2, der Evidenztabelle, ein
-      Auszug von acht Projekten. Ab Kapitel 3 beginnt der kostenpflichtige
-      Teil: was trägt, was nicht, die Hindernisse und das Fazit; die
-      vollständige Evidenztabelle gehört dazu.</p>`;
+      bis zehn davon, und sie heißen in den beiden Stufen verschieden.
+      Frei einsehbar sind in beiden Stufen die ersten zwei Kapitel: der
+      Zuschnitt der Kohorte und der Anfang der großen Tabelle – acht
+      Projekte von oft mehr als hundert. Alles Weitere ist
+      kostenpflichtig: die vollständige Tabelle und ab Kapitel 3 die
+      Auswertung – in Stufe 1, was die Evidenz trägt und was nicht, die
+      wiederkehrenden Hindernisse und das Fazit; in Stufe 2 die primären
+      Endpunkte, die Gesundheitsökonomie, der Abgleich zwischen
+      Studienergebnis und Ausschussentscheidung und das Fazit.</p>`;
   feld.querySelectorAll('a[data-knoten]').forEach(a => a.onclick = ev => {
     ev.preventDefault();
     const z = nachId.get(+a.dataset.knoten);
@@ -2209,11 +2213,15 @@ partnerZeichnen();
     <p class="hinweis"><b>Stufe und Kapitel nicht verwechseln:</b> Die
       <b>Stufe</b> sagt, woraus eine Synthese gemacht ist – es gibt genau
       zwei. Die <b>Kapitel</b> sind ihre Gliederung; jede Synthese hat neun
-      bis zehn davon. Frei einsehbar ist in beiden Stufen Kapitel 1 – der
-      Zuschnitt der Kohorte – und aus Kapitel 2, der Evidenztabelle, ein
-      Auszug von acht Projekten. Ab Kapitel 3 beginnt der kostenpflichtige
-      Teil: was trägt, was nicht, die Hindernisse und das Fazit; die
-      vollständige Evidenztabelle gehört dazu.</p>`;
+      bis zehn davon, und sie heißen in den beiden Stufen verschieden.
+      Frei einsehbar sind in beiden Stufen die ersten zwei Kapitel: der
+      Zuschnitt der Kohorte und der Anfang der großen Tabelle – acht
+      Projekte von oft mehr als hundert. Alles Weitere ist
+      kostenpflichtig: die vollständige Tabelle und ab Kapitel 3 die
+      Auswertung – in Stufe 1, was die Evidenz trägt und was nicht, die
+      wiederkehrenden Hindernisse und das Fazit; in Stufe 2 die primären
+      Endpunkte, die Gesundheitsökonomie, der Abgleich zwischen
+      Studienergebnis und Ausschussentscheidung und das Fazit.</p>`;
 
   const bald = `<div class="fehlt"><b>Die Evidenzsynthesen sind in Arbeit.</b>
     Sechs Kohorten sind ausgewertet – Lotsen und Case Management, Pflege,
@@ -2267,7 +2275,7 @@ partnerZeichnen();
             ? 'Kapitel 1 frei'
               + (s.zeilen_gesamt > s.zeilen_gezeigt
                  ? ', Kapitel 2 als Auszug (' + s.zeilen_gezeigt + ' von '
-                   + s.zeilen_gesamt + ' Zeilen)'
+                   + s.zeilen_gesamt + ' Tabellenzeilen)'
                  : ', Kapitel 2 frei')
               + ', <b class="gold">kostenpflichtig</b> ab Kapitel '
               + (s.frei_bis + 1)
@@ -2289,8 +2297,8 @@ partnerZeichnen();
         <p class="sperrtext"><b>${s.zeilen_gesamt - s.zeilen_gezeigt} weitere
           Zeilen der Evidenztabelle sind ausgeblendet.</b>
           Sie sehen ${s.zeilen_gezeigt} von ${s.zeilen_gesamt} Projekten der
-          Kohorte – jedes mit Setting, Design, Fallzahl, primärem Endpunkt,
-          Ergebnis und Beschluss, jede Angabe mit Seitenzahl.
+          Kohorte – jedes mit seinen Merkmalen, seinem Ergebnis und dem
+          Beschluss, jede Angabe mit Seitenzahl.
           <b>Hier beginnt das kostenpflichtige Angebot:</b> Für die
           vollständige Tabelle und die Kapitel 3 bis
           ${s.gliederung.length} brauchen Sie einen einmaligen
@@ -2304,8 +2312,8 @@ partnerZeichnen();
         <p>Frei einsehbar ist der Zuschnitt der Kohorte und ein Auszug des
           nachprüfbaren Bestands: welche Projekte dazugehören, mit welchem
           Design, welcher Fallzahl und welchem Ergebnis. Die vollständige
-          Evidenztabelle und alles, was daraus folgt, steht im
-          kostenpflichtigen Teil:</p>
+          Tabelle und alles, was daraus folgt, steht im kostenpflichtigen
+          Teil:</p>
         <ol class="syn-toc" start="${s.frei_bis + 1}">${zu.map(g =>
           `<li>${esc(g.replace(/^\d+\.\s*/, ''))}</li>`).join('')}</ol>
         <p class="syn-anriss">„${esc(s.anriss)}“</p>
