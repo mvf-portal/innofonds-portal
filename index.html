@@ -817,13 +817,10 @@ function eintragZeigen() {
   if (!m) return;
   const p = P.find(x => String(x.id) === m[1]);
   if (!p) return;
-  reiterNach('t-projekte');
-  const feld = document.getElementById('p-q');
-  if (feld) {
-    feld.value = p.akr;
-    feld.dispatchEvent(new Event('input', {bubbles: true}));
-  }
-  projekteZeichnen();
+  reiterNach('t-recherche');
+  const feld = document.getElementById('q');
+  if (feld) feld.value = p.akr;
+  rechercheZeichnen();
   setTimeout(() => {
     const k = document.getElementById('p' + p.id);
     if (!k) return;
