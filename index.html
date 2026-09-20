@@ -328,6 +328,10 @@ button.chip.waehl b{color:var(--gedaempft);margin-left:4px}
 .amzug p:last-child{margin-bottom:0}
 .begriffe p{margin:0 0 6px}
 .begriffe p:last-child{margin-bottom:0}
+.karte.hervor{outline:3px solid var(--gold,#b8912f);outline-offset:4px}
+.karte.hervor::before{content:'Ihr Eintrag – bitte prüfen';display:block;
+  margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gold,#b8912f)}
 .nachlasshinweis a{color:inherit}
 .nachlasshinweis{display:block;margin-top:4px;font-size:12.5px;
   color:var(--gold);font-weight:600}
@@ -529,13 +533,20 @@ document.getElementById('kopfzeile').textContent =
   `Quelle: innovationsfonds.g-ba.de`;
 
 /* ---------- Reiter ---------- */
-document.querySelectorAll('nav button[role=tab]').forEach(b => b.onclick = () => {
+function reiterZeigen(b) {
   document.querySelectorAll('nav button[role=tab]').forEach(x =>
     x.setAttribute('aria-selected', x === b));
   document.querySelectorAll('main section').forEach(s => s.hidden = s.id !== b.dataset.ziel);
   if (b.dataset.ziel === 't-karte') setTimeout(() => karte.invalidateSize(), 60);
   if (b.dataset.ziel === 't-netz') netzZeichnen();
-});
+}
+document.querySelectorAll('nav button[role=tab]').forEach(b =>
+  b.onclick = () => reiterZeigen(b));
+function reiterNach(ziel) {
+  const b = document.querySelector(`nav button[data-ziel="${ziel}"]`);
+  if (b) reiterZeigen(b);
+  return b;
+}
 
 /* ---------- Ampel ---------- */
 const AMPEL = {
@@ -730,6 +741,29 @@ function rechercheZeichnen() {
   ziel.innerHTML = treffer.slice(0, 25).map(({p}) => karteHtml(p)).join('');
 }
 
+/* Wer seinen eigenen Eintrag prueft, soll einen Fehler in einem Schritt
+   melden koennen. Die Mail traegt Akronym und Kennzeichen schon im
+   Betreff, sonst kommt eine Meldung an, die sich keinem Projekt
+   zuordnen laesst. */
+const MELDEADRESSE = 'redaktion@m-vf.de';
+function meldeLink(p) {
+  const betreff = `Korrektur Innofonds-Wissen: ${p.akr}`;
+  const text = [
+    `Projekt: ${p.akr} – ${p.tit}`,
+    p.id ? `Eintrag: https://innofonds.m-vf.de/#p=${p.id}` : '',
+    '',
+    'Was nicht stimmt:',
+    '',
+    '',
+    'Richtig wäre:',
+    '',
+    '',
+    'Mit freundlichen Grüßen',
+    ''].join('\n');
+  return `mailto:${MELDEADRESSE}?subject=${encodeURIComponent(betreff)}`
+       + `&body=${encodeURIComponent(text)}`;
+}
+
 function karteHtml(p) {
   const x = p.x;
   const dok = (p.dok||[]).map(([art,url]) =>
@@ -755,7 +789,7 @@ function karteHtml(p) {
         ).join('')}</ul></div>`;
   }
   const themen = x && x.themen ? x.themen : [];
-  return `<article class="karte">
+  return `<article class="karte" id="p${p.id}">
     <h3>${esc(p.akr)} – ${esc(p.tit)}</h3>
     <div class="meta">${marke(p)} &nbsp; ${esc(p.ber)} · ${esc(p.st)} ·
       ${esc(p.von||'')} bis ${esc(p.bis||'')} · ${eur(p.sum)} · ${esc(p.bl||'')}
@@ -768,9 +802,36 @@ function karteHtml(p) {
     ${(p.pa||[]).length ? `<details><summary>Konsortium (${p.pa.length})</summary>
       <div class="hinweis">${p.pa.map(esc).join(' · ')}</div></details>` : ''}
     <div class="links"><a href="${BASIS}${p.url}" target="_blank" rel="noopener">Projektseite
-      beim G-BA</a>${dok ? ' · ' + dok : ''}</div>
+      beim G-BA</a>${dok ? ' · ' + dok : ''}
+      · <a href="${meldeLink(p)}">Angabe korrigieren</a></div>
   </article>`;
 }
+
+/* ---------- Direktlink auf einen Eintrag ----------
+   Aufgerufen wird innofonds.m-vf.de/#p=123. Das Portal springt dann in
+   den Reiter Projekte, zeigt genau diesen Eintrag und hebt ihn hervor.
+   Ohne das landet jeder, den wir um Pruefung bitten, auf einer Liste
+   mit 861 Eintraegen und sucht seinen selbst. */
+function eintragZeigen() {
+  const m = /[#&]p=(\d+)/.exec(location.hash || '');
+  if (!m) return;
+  const p = P.find(x => String(x.id) === m[1]);
+  if (!p) return;
+  reiterNach('t-projekte');
+  const feld = document.getElementById('p-q');
+  if (feld) {
+    feld.value = p.akr;
+    feld.dispatchEvent(new Event('input', {bubbles: true}));
+  }
+  projekteZeichnen();
+  setTimeout(() => {
+    const k = document.getElementById('p' + p.id);
+    if (!k) return;
+    k.classList.add('hervor');
+    k.scrollIntoView({block: 'start', behavior: 'smooth'});
+  }, 120);
+}
+window.addEventListener('hashchange', eintragZeigen);
 document.getElementById('q').addEventListener('input', rechercheZeichnen);
 filterBauen('q-filter', qFilter, rechercheZeichnen);
 document.getElementById('hinweis-auswertung').innerHTML = D.mit_auswertung >= P.length * 0.3
@@ -779,6 +840,7 @@ document.getElementById('hinweis-auswertung').innerHTML = D.mit_auswertung >= P.
       übrigen vorliegen, zeigen die Karten die Projektbeschreibung statt der
       Begründung des Ausschusses. Die Beschlusstexte sind aber überall verlinkt.</div>`;
 rechercheZeichnen();
+eintragZeigen();
 
 /* ---------- Projekte ---------- */
 for (const [id, feld] of [['p-bl','bl'],['p-vb','vb']]) {
