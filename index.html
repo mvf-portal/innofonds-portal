@@ -2718,9 +2718,13 @@ partnerZeichnen();
           bestellt, sollte aber wissen, wie viel er doppelt bekommt.
           <b>${s.nur_hier} Projekte dieser Kohorte stehen in keiner
           anderen Synthese.</b></p>
-        ${t(['auch enthalten in', 'gemeinsame Projekte', 'Anteil'],
-          s.ueberschneidung.map(u => [esc(u.titel), u.n,
-            Math.round(u.n / s.kohorte * 100) + ' %']))}
+        <table class="liste"><thead><tr><th>auch enthalten in</th>
+          <th class="zahl">gemeinsame Projekte</th>
+          <th class="zahl">Anteil</th></tr></thead><tbody>
+          ${s.ueberschneidung.map(u => `<tr><td>${esc(u.titel)}</td>
+            <td class="zahl">${u.n}</td>
+            <td class="zahl">${Math.round(u.n / s.kohorte * 100)} %</td>
+            </tr>`).join('')}</tbody></table>
         <p class="hinweis">Deshalb kosten die zweite und die dritte
           Kohorte die Hälfte. Der Jahreszugang enthält alle und kennt
           dieses Problem nicht.</p>
