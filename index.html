@@ -1799,6 +1799,8 @@ function projektbild(k, ausgabe) {
   // Beschriftung: jedes Projekt, nach aussen gesetzt
   ctx.font = '600 11.5px "Segoe UI",system-ui,sans-serif'; ctx.lineJoin = 'round';
   const gesetzt = [];
+  // Trefferflaechen der Beschriftungen sammeln, bevor sie entstehen.
+  if (!ausgabe) projektFelder = [];
   meine.forEach(p => {
     const rechts = Math.cos(p._w) >= 0;
     ctx.textAlign = rechts ? 'left' : 'right';
@@ -1824,9 +1826,6 @@ function projektbild(k, ausgabe) {
                                      p}));
     projektMitte = {x: cx, y: cy, k};
   }
-  // Die Beschriftungen kommen weiter unten dazu, sie werden erst dort
-  // gesetzt. projektFelder sammelt sie als Rechtecke.
-  if (!ausgabe) projektFelder = [];
 
   const zahl = {};
   meine.forEach(p => { const f = ergFarbe(p.te) ? p.te : 'läuft noch';
