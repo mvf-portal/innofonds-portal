@@ -326,6 +326,10 @@ button.chip.waehl b{color:var(--gedaempft);margin-left:4px}
 .amzug h4{margin:0 0 6px;font-size:15px}
 .amzug p{margin:0 0 8px;font-size:13.5px;line-height:1.5}
 .amzug p:last-child{margin-bottom:0}
+.projektwahl{border:1px solid var(--rand);border-radius:8px;
+  padding:12px 14px;margin:10px 0 0;background:var(--flaeche2,#fafafa)}
+.projektwahl h4{margin:0 0 4px;font-size:15px}
+.projektwahl table{margin-top:8px}
 .begriffe p{margin:0 0 6px}
 .begriffe p:last-child{margin-bottom:0}
 .karte.hervor{outline:3px solid var(--gold,#b8912f);outline-offset:4px}
@@ -486,6 +490,7 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
     <h4 class="kgruppe">Die Projekte dieser Einrichtung</h4>
     <canvas id="netz2"></canvas>
     <p class="hinweis" id="netz2-info"></p>
+  <div id="netz2-projekt" hidden></div>
     <p class="bildzeile"><select id="n2-aufl" class="klein"><option value="1">Bildschirmauflösung</option><option value="3" selected>Druck (300 dpi)</option></select><button class="alsLink" id="n2-bild">Bild herunterladen (PNG)</button><button class="alsLink" id="n2-csv">Projekte als Tabelle (CSV)</button></p>
   </div>
   <p class="hinweis" id="n-info"></p>
@@ -1596,6 +1601,46 @@ const ergFarbe = te => ERGEBNISFARBE[te]
   || ERGEBNISFARBE[Object.keys(ERGEBNISFARBE).find(
        k => k.toLowerCase() === String(te||'').toLowerCase())];
 let letzteEinrichtung = null;
+let projektPunkte = [], projektMitte = null;
+
+/* Welche Partner gehoeren zu diesem einen Projekt? Die Antwort steht in
+   der Projektkarte, aber wer im Bild auf RubiN zeigt, will sie dort. */
+function projektPartner(p, k) {
+  const feld = document.getElementById('netz2-projekt');
+  if (!feld) return;
+  const namen = (p.pa || []).filter(n => n !== k.name);
+  const nachName = new Map(K.map(n => [n.name, n]));
+  const zeilen = namen.map(nm => {
+    const kn = nachName.get(nm);
+    return `<tr><td>${kn ? `<a href="#" data-partner="${esc(nm)}">`
+      + `${esc(nm)}</a>` : esc(nm)}</td>
+      <td>${kn ? esc(kn.typ || '') : ''}</td>
+      <td>${kn ? esc(kn.ort || '') : ''}</td>
+      <td class="zahl">${kn ? kn.projekte : ''}</td></tr>`;
+  }).join('');
+  feld.hidden = false;
+  feld.innerHTML = `<div class="projektwahl">
+      <h4>${esc(p.akr)} · ${namen.length} Partner neben ${esc(nurKurz(k))}</h4>
+      <p class="hinweis">${esc(p.tit)}<br>${marke(p)} · ${esc(p.von||'')} bis
+        ${esc(p.bis||'')} · ${eur(p.sum)} ·
+        <a href="#p=${p.id}">Eintrag mit Konsortium und Beschluss</a> ·
+        <button class="alsLink" id="pw-zu">schließen</button></p>
+      <table class="liste"><thead><tr><th>Einrichtung</th><th>Art</th>
+        <th>Ort</th><th class="zahl">Projekte gesamt</th></tr></thead>
+        <tbody>${zeilen}</tbody></table>
+    </div>`;
+  const zu = document.getElementById('pw-zu');
+  if (zu) zu.onclick = () => { feld.hidden = true; feld.innerHTML = ''; };
+  feld.querySelectorAll('a[data-partner]').forEach(a => a.onclick = ev => {
+    ev.preventDefault();
+    const q = document.getElementById('n-q');
+    q.value = a.dataset.partner;
+    q.dispatchEvent(new Event('input', {bubbles: true}));
+    feld.hidden = true; feld.innerHTML = '';
+  });
+  feld.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+}
+
 function projektbild(k, ausgabe) {
   const rahmen = document.getElementById('netz2-rahmen');
   const meine = P.filter(p => (p.pa||[]).includes(k.name))
@@ -1704,18 +1749,51 @@ function projektbild(k, ausgabe) {
   });
   ctx.textAlign = 'left';
 
+  // Fuer den Klick: wo liegt welches Projekt? Auf einer Zeichenflaeche
+  // gibt es keine Elemente, die von selbst auf Klicks hoeren.
+  if (!ausgabe) {
+    projektPunkte = meine.map(p => ({x: p._x, y: p._y, r: Math.max(p._r, 9),
+                                     p}));
+    projektMitte = {x: cx, y: cy, k};
+  }
+
   const zahl = {};
   meine.forEach(p => { const f = ergFarbe(p.te) ? p.te : 'läuft noch';
                        zahl[f] = (zahl[f]||0)+1; });
   const summe = meine.reduce((a,p) => a + (+p.sum||0), 0);
   if (ausgabe) return;
   document.getElementById('netz2-info').innerHTML =
-    `${meine.length} Projekte · ${liste.size || liste.length} beteiligte `
+    `<b>Auf ein Projekt klicken zeigt seine Partner.</b> `
+    + `${meine.length} Projekte · ${liste.size || liste.length} beteiligte `
     + `Partnereinrichtungen · ${eur(summe)} Fördervolumen · Punktgröße = `
     + `Fördersumme · Farbe = Beschluss: `
     + Object.entries(zahl).sort((a,z) => z[1]-a[1]).map(([t,n]) =>
         `<span><i class="punkt" style="background:${ergFarbe(t) || 'var(--neutral)'}"></i>${esc(KURZ[t]||t)}: ${n}</span>`).join(' ');
 }
+
+/* Treffer auf der Zeichenflaeche suchen: der naechste Projektpunkt
+   innerhalb seines Radius, sonst nichts. */
+(function () {
+  const lw = document.getElementById('netz2');
+  if (!lw) return;
+  lw.style.cursor = 'pointer';
+  lw.addEventListener('click', ev => {
+    const b = lw.getBoundingClientRect();
+    const x = ev.clientX - b.left, y = ev.clientY - b.top;
+    let treffer = null, nah = 1e9;
+    projektPunkte.forEach(pt => {
+      const d = Math.hypot(pt.x - x, pt.y - y);
+      if (d <= pt.r + 6 && d < nah) { nah = d; treffer = pt.p; }
+    });
+    if (treffer && projektMitte) projektPartner(treffer, projektMitte.k);
+  });
+  lw.addEventListener('mousemove', ev => {
+    const b = lw.getBoundingClientRect();
+    const x = ev.clientX - b.left, y = ev.clientY - b.top;
+    lw.style.cursor = projektPunkte.some(pt =>
+      Math.hypot(pt.x - x, pt.y - y) <= pt.r + 6) ? 'pointer' : 'default';
+  });
+})();
 
 function knotenZeigen(k, wohin) {
   const nachbarn = KANTEN
