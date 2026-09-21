@@ -326,6 +326,8 @@ button.chip.waehl b{color:var(--gedaempft);margin-left:4px}
 .amzug h4{margin:0 0 6px;font-size:15px}
 .amzug p{margin:0 0 8px;font-size:13.5px;line-height:1.5}
 .amzug p:last-child{margin-bottom:0}
+.keintreffer.mehrere{border-left-color:var(--gold,#b8912f);
+  background:#fbf7ec}
 .keintreffer{border-left:3px solid #c0392b;background:#fdf1ef;
   padding:10px 14px;margin:0 0 10px;border-radius:0 6px 6px 0;font-size:14px}
 .keintreffer .chips{margin-top:8px}
@@ -1332,6 +1334,8 @@ function netzZeichnen() {
   }
   const umfeld = gesucht.length > 0;
   document.getElementById('n-min').hidden = umfeld;
+  // Das Hinweisfeld gehoert zu dieser Eingabe, nicht zur vorigen.
+  meldungLeeren();
   umfeldAktiv = umfeld;
   let umfeldName = '';
   // kern wird weiter unten noch einmal gebraucht - als const im Block waere
@@ -1399,15 +1403,9 @@ function netzZeichnen() {
       // Die Karte darunter gehoerte zur vorigen Suche - sie muss weg,
       // sonst steht dort eine Einrichtung, die gar nicht gemeint ist.
       document.getElementById('netz2-rahmen').hidden = true;
-      document.getElementById('n-knoten').innerHTML =
-        `<div class="karte" style="margin-top:14px"><h3>Welche meinen Sie?</h3>
-          <div class="chips">${gesucht.slice(0,24)
-            .sort((a,b) => b.projekte - a.projekte).map(k =>
-            `<button class="chip waehl" data-knoten="${k.id}">${esc(mitKurz(k))}
-              <b>${k.projekte}</b></button>`).join('')}</div>
-          ${gesucht.length > 24 ? `<p class="hinweis">… und
-            ${gesucht.length-24} weitere.</p>` : ''}</div>`;
-      document.querySelectorAll('#n-knoten button[data-knoten]').forEach(bt =>
+      document.getElementById('n-knoten').innerHTML = '';
+      mehrereZeigen(document.getElementById('n-q').value.trim(), gesucht);
+      document.querySelectorAll('#n-fehl button[data-knoten]').forEach(bt =>
         bt.onclick = () => {
           const z = nachId.get(+bt.dataset.knoten);
           if (!z) return;
@@ -1452,10 +1450,34 @@ function aehnlich(eingabe, hoechstens) {
   return [];
 }
 
+function meldungLeeren() {
+  const feld = document.getElementById('n-fehl');
+  if (feld) { feld.hidden = true; feld.innerHTML = ''; }
+}
+
+/* Mehrere Treffer sind kein Fehler, brauchen aber dieselbe
+   Aufmerksamkeit: Ohne Entscheidung zeigt die Seite das ganze Netz,
+   und der Suchende denkt, seine Eingabe sei verpufft. */
+function mehrereZeigen(eingabe, gesucht) {
+  const feld = document.getElementById('n-fehl');
+  if (!feld) return;
+  feld.hidden = false;
+  feld.innerHTML = `<div class="keintreffer mehrere">
+      <b>${gesucht.length} Einrichtungen enthalten „${esc(eingabe)}“.</b>
+      Welche meinen Sie? Die Zahl dahinter sind ihre Projekte.
+      <div class="chips">${gesucht.slice(0, 24)
+        .sort((a, b) => b.projekte - a.projekte).map(k =>
+        `<button class="chip waehl" data-knoten="${k.id}">${esc(mitKurz(k))}
+          <b>${k.projekte}</b></button>`).join('')}</div>
+      ${gesucht.length > 24 ? `<p class="hinweis">… und
+        ${gesucht.length - 24} weitere.</p>` : ''}
+    </div>`;
+}
+
 function keinTrefferZeigen(eingabe) {
   const feld = document.getElementById('n-fehl');
   if (!feld) return;
-  if (!eingabe) { feld.hidden = true; feld.innerHTML = ''; return; }
+  if (!eingabe) { meldungLeeren(); return; }
   const vor = aehnlich(eingabe, 6);
   feld.hidden = false;
   feld.innerHTML = `<div class="keintreffer">
