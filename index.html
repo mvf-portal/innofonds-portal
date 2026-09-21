@@ -333,6 +333,11 @@ button.chip.waehl b{color:var(--gedaempft);margin-left:4px}
 .keintreffer .chips{margin-top:8px}
 .hinweis.stark{border-left:3px solid var(--gold,#b8912f);
   padding-left:10px;margin:8px 0 14px}
+.stufenliste{margin:14px 0 6px;font-size:13.5px}
+.stufenliste summary{cursor:pointer;color:var(--ink-soft,#555)}
+.stufenliste table{margin:8px 0}
+.stufenliste .ja{color:var(--gut,#2e7d32)}
+.stufenliste .auftrag{color:var(--gold,#b8912f)}
 .ueberschnitt{margin:10px 0 14px;font-size:13.5px}
 .ueberschnitt summary{cursor:pointer;color:var(--ink-soft,#555)}
 .ueberschnitt table{margin-top:6px}
@@ -2691,7 +2696,45 @@ partnerZeichnen();
     `<button class="syn-reiter" data-i="${i}" aria-selected="${i===0}">
       ${esc(reiterName(s))}</button>`).join('');
 
-  ziel.innerHTML = kopf + bald +
+  /* Eine Zeile je Kohorte: was fertig ist, was auf Bestellung entsteht.
+     Ohne diese Uebersicht muss man alle Reiter durchklicken, um zu
+     sehen, dass es Stufe 2 nur dreimal gibt. */
+  function stufenuebersicht() {
+    const nach = new Map();
+    SYN.forEach(s => {
+      const e = nach.get(s.titel) || {titel: s.titel, kohorte: s.kohorte};
+      e['s' + s.stufe] = true;
+      nach.set(s.titel, e);
+    });
+    const zeilen = [...nach.values()]
+      .sort((a, b) => b.kohorte - a.kohorte)
+      .map(e => `<tr><td>${esc(e.titel)}</td>
+        <td class="zahl">${e.kohorte}</td>
+        <td>${e.s1 ? '<b class="ja">liegt vor</b>' : '–'}</td>
+        <td>${e.s2 ? '<b class="ja">liegt vor</b>'
+                   : '<span class="auftrag">auf Bestellung</span>'}</td>
+        </tr>`).join('');
+    return `<details class="stufenliste"><summary>Welche Kohorte liegt in
+        welcher Stufe vor?</summary>
+      <table class="liste"><thead><tr><th>Kohorte</th>
+        <th class="zahl">Projekte</th><th>Stufe 1</th><th>Stufe 2</th>
+        </tr></thead><tbody>${zeilen}</tbody></table>
+      <p class="hinweis"><b>Warum nicht jede Kohorte in Stufe 2 vorliegt.</b>
+        Stufe 1 entsteht aus den Beschlusstexten, die ohnehin ausgewertet
+        sind. Für Stufe 2 müssen die Ergebnis- und Evaluationsberichte
+        jedes einzelnen Vorhabens beschafft und ausgewertet werden,
+        mehrere hundert Seiten je Projekt. Für die Kohorte
+        Sektorenübergreifende Versorgung waren das 225 Dateien und 136
+        Auswertungen. Diesen Aufwand treiben wir nicht auf Vorrat.</p>
+      <p class="hinweis"><b>Sie können Stufe 2 beauftragen.</b> Wählen Sie
+        die Kohorte, bestellen Sie Stufe 2, und wir erstellen die Synthese
+        zeitnah für Sie. Vorlauf etwa eine Woche, der Preis ist derselbe
+        wie bei einer vorliegenden Stufe 2. Sie erhalten sie, sobald sie
+        fertig ist, und sie steht danach auch anderen zur Verfügung.</p>
+      </details>`;
+  }
+
+  ziel.innerHTML = kopf + bald + stufenuebersicht() +
     `<div class="syn-reiterleiste" role="tablist">${reiter}</div>
      <div id="syn-tafel"></div>`;
 
@@ -2864,7 +2907,8 @@ partnerZeichnen();
             <span class="spreis">${eu(pv)}</span></span>
           <span class="snutzen">${NUTZEN[st]}</span>
           ${da ? '' : `<span class="sfehlt">Für diese Kohorte noch nicht
-            ausgewertet. Auf Anfrage, Vorlauf etwa eine Woche.</span>`}
+            erstellt. <b>Sie können sie hier beauftragen</b>, wir bauen
+            sie dann zeitnah, Vorlauf etwa eine Woche.</span>`}
         </label>`; }).join('')}</div>
       <p class="bfpreis" id="bfpreis"></p>
       <div class="bfgitter">
