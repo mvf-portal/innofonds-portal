@@ -1324,7 +1324,10 @@ function netzZeichnen() {
     info.innerHTML = `<b>Umfeld von ${esc(umfeldName)}</b> · `
       + `${zumKern} Partnereinrichtungen aus ${projekte} Projekten · `
       + `${sichtK.length - zumKern} weitere Verbindungen zwischen diesen `
-      + `Partnern · die Schwellen oben sind dabei außer Kraft · `
+      + `Partnern`
+      + (weggefiltert ? ` · ${weggefiltert} Partner unter der Schwelle
+          ausgeblendet` : '')
+      + ` · `
       + `<button class="alsLink" id="n-alles">ganzes Netzwerk zeigen</button>`;
     const knopf = document.getElementById('n-alles');
     if (knopf) knopf.onclick = () => {
