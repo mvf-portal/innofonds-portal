@@ -931,8 +931,21 @@ const FARBEN = {'Universität / Hochschule':'#1f6feb','Universitätsklinikum':'#
 const farbe = t => FARBEN[t] || FARBEN['Sonstige'];
 /* Suchtext einer Einrichtung: Name, Ort UND alle erfassten Schreibweisen -
    sonst findet "TK" die Techniker Krankenkasse nicht. */
-const ktext = k => k._t || (k._t = norm([k.name, k.ort, k.bundesland, k.akr,
-  ...(k.alias||[])].join(' ')));
+/* Durchsuchbarer Text je Einrichtung. Er enthaelt den Namen zweimal:
+   einmal mit aufgeloesten Umlauten (koln) und einmal in der
+   Ersatzschreibung (koeln). Sonst findet "koeln" das Klinikum Köln
+   nicht, und niemand tippt das Umlautzeichen, wenn es schnell gehen
+   soll. */
+const ersatzschreibung = s => (s ?? '')
+  .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')
+  .replace(/Ä/g, 'ae').replace(/Ö/g, 'oe').replace(/Ü/g, 'ue')
+  .replace(/ß/g, 'ss').toLowerCase();
+const ktext = k => k._t || (k._t = (() => {
+  const roh = [k.name, k.ort, k.bundesland, k.akr, ...(k.alias||[])].join(' ');
+  const zwei = ersatzschreibung(roh);
+  const eins = norm(roh);
+  return zwei === eins ? eins : eins + ' ' + zwei;
+})());
 /* Kürzel gehören sichtbar dazu - niemand sagt "Deutsche Angestellten-
    Krankenkasse". Im Fließtext hinter den Namen, in der Netzbeschriftung
    statt des Namens, weil dort jeder Buchstabe zählt. */
