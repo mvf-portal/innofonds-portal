@@ -1297,9 +1297,11 @@ function netzZeichnen() {
                        && (kern.has(k.id) || k.projekte >= min))
       .map(k => ({...k, kern: kern.has(k.id)}));
     const bleibt = new Set(sicht.map(k => k.id));
+    /* Die Kantenschwelle gilt auch fuer die Verbindungen zur gesuchten
+       Einrichtung. Erst dann beantwortet sie die interessante Frage:
+       Mit wem hat inav mehr als einmal zusammengearbeitet? */
     sichtK = KANTEN.filter(e => bleibt.has(e.a) && bleibt.has(e.b)
-                             && (kern.has(e.a) || kern.has(e.b)
-                                 || e.gewicht >= minK))
+                             && e.gewicht >= minK)
       .map(e => ({source:e.a, target:e.b, gewicht:e.gewicht}));
     weggefiltert = ganz - sicht.length;
     umfeldName = gesucht.length === 1 ? nurKurz(gesucht[0])
