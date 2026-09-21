@@ -665,8 +665,11 @@ const passtZuFilter = (p, zustand) =>
   GRUPPEN.every(g => !zustand[g.feld] || p[g.feld] === zustand[g.feld]);
 
 /* ---------- Suche ---------- */
+/* Vergleichsform fuer jede Suche. Umlaute und Akzente fallen weg,
+   sonst findet "charite" die Charité nicht und "koeln" nicht Köln. */
 const norm = s => (s??'').toLowerCase()
-  .replace(/ä/g,'a').replace(/ö/g,'o').replace(/ü/g,'u').replace(/ß/g,'ss');
+  .replace(/ä/g,'a').replace(/ö/g,'o').replace(/ü/g,'u').replace(/ß/g,'ss')
+  .normalize('NFD').replace(/[̀-ͯ]/g,'');
 
 /* Füllwörter müssen raus. Ohne sie liefert die Frage "Welcher Konsortialpartner
    war an den meisten Projekten beteiligt" alle 861 Projekte, weil "welcher",
