@@ -71,6 +71,10 @@ main{max-width:1240px;margin:0 auto;padding:0 16px 40px}
 .tafel{background:var(--flaeche);border:1px solid var(--linie);border-radius:0 12px 12px 12px;
   padding:16px}
 .werkzeuge{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.knopf{background:var(--weich);color:var(--text);border:1px solid var(--linie);
+  border-radius:8px;padding:7px 13px;font-size:13.5px;cursor:pointer;
+  font-family:inherit}
+.knopf:hover{border-color:var(--akzent);color:var(--akzent)}
 #ep-tab tbody tr, tr.ep-instrument{cursor:pointer}
 tr.ep-instrument:hover{background:var(--weich)}
 #ep-tab tbody tr:hover{background:var(--weich)}
@@ -614,6 +618,7 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
       <option value="s">nur signifikante</option>
       <option value="n">nur ohne nachgewiesenen Unterschied</option>
     </select>
+    <button type="button" id="ep-csv" class="knopf">Tabelle als CSV</button>
   </div>
   <div class="huelle" style="max-height:none"><table id="ep-tab"><thead><tr>
     <th>Endpunktfamilie</th>
@@ -969,6 +974,46 @@ function epInstrumente(liste) {
     </tbody></table></div>`;
 }
 
+/* ---------- Tabellen mitnehmen ----------
+   Excel liest eine UTF-8-Datei nur dann richtig, wenn ein BOM davor
+   steht, und es trennt in deutscher Einstellung am Semikolon. Beides
+   ist unschoen und beides ist noetig, sonst landet die halbe Redaktion
+   bei "alles in Spalte A". */
+function csvFeld(w) {
+  const t = (w ?? '').toString().replace(/\r?\n/g, ' ').trim();
+  return /[";]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t;
+}
+function csvLaden(name, kopf, zeilen) {
+  const text = '\ufeff' + [kopf, ...zeilen]
+    .map(z => z.map(csvFeld).join(';')).join('\r\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([text], {type: 'text/csv;charset=utf-8'}));
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+}
+const heute = () => new Date().toISOString().slice(0, 10);
+
+function epCsv() {
+  const liste = epGefiltert();
+  const kopf = ['Akronym', 'Projekt', 'Förderbereich', 'Art', 'Endpunktfamilie',
+                'Endpunkt', 'Messinstrument', 'Herkunft', 'Effektmaß',
+                'Effektgröße', 'Konfidenzintervall', 'p-Wert', 'Bewertung',
+                'signifikant', 'klinische Relevanz', 'Schwelle', 'Seite',
+                'Bericht', 'Eintrag im Portal'];
+  const zeilen = liste.map(e => {
+    const p = PID[e.p] || {}, m = MCID[`${e.p}-${e.n}`];
+    return [p.akr, p.tit, p.ber, e.a === 'p' ? 'primär' : 'sekundär', e.f,
+            e.b, e.i, e.q, e.m, e.e, e.k, e.w, e.v,
+            e.g == null ? 'ohne Angabe' : (e.g ? 'ja' : 'nein'),
+            m ? m.art : '', m ? m.mcid : '', e.s,
+            epBericht(p) || '',
+            'https://innofonds.m-vf.de/#p=' + p.id];
+  });
+  csvLaden(`innofonds-endpunkte-${heute()}.csv`, kopf, zeilen);
+}
+
 function endpunkteZeichnen() {
   const liste = epGefiltert(), fam = epFamilien(liste);
   const bew = liste.filter(e => e.g != null).length;
@@ -1030,6 +1075,8 @@ function endpunkteAnstossen() {
     const el = document.getElementById(id);
     if (el) el.addEventListener('input', () => endpunkteZeichnen());
   });
+  const knopf = document.getElementById('ep-csv');
+  if (knopf) knopf.onclick = epCsv;
   document.getElementById('ep-kopf').innerHTML =
     `<p>Ein Ergebnisbericht nennt seine Endpunkte in eigenen Worten. Deshalb
      sieht man den Berichten nicht an, wie viele Projekte dasselbe messen.
