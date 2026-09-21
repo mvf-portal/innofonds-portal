@@ -1664,7 +1664,7 @@ const ergFarbe = te => ERGEBNISFARBE[te]
   || ERGEBNISFARBE[Object.keys(ERGEBNISFARBE).find(
        k => k.toLowerCase() === String(te||'').toLowerCase())];
 let letzteEinrichtung = null;
-let projektPunkte = [], projektMitte = null;
+let projektPunkte = [], projektFelder = [], projektMitte = null;
 
 /* Welche Partner gehoeren zu diesem einen Projekt? Die Antwort steht in
    der Projektkarte, aber wer im Bild auf RubiN zeigt, will sie dort. */
@@ -1809,6 +1809,11 @@ function projektbild(k, ausgabe) {
     ctx.strokeStyle = st.getPropertyValue('--flaeche'); ctx.lineWidth = 3.5;
     ctx.strokeText(t,x,y);
     ctx.fillStyle = st.getPropertyValue('--text'); ctx.fillText(t,x,y);
+    if (!ausgabe) {
+      const br = ctx.measureText(t).width;
+      projektFelder.push({x1: rechts ? x : x - br, x2: rechts ? x + br : x,
+                          y1: y - 12, y2: y + 5, p});
+    }
   });
   ctx.textAlign = 'left';
 
@@ -1819,6 +1824,9 @@ function projektbild(k, ausgabe) {
                                      p}));
     projektMitte = {x: cx, y: cy, k};
   }
+  // Die Beschriftungen kommen weiter unten dazu, sie werden erst dort
+  // gesetzt. projektFelder sammelt sie als Rechtecke.
+  if (!ausgabe) projektFelder = [];
 
   const zahl = {};
   meine.forEach(p => { const f = ergFarbe(p.te) ? p.te : 'läuft noch';
@@ -1836,6 +1844,21 @@ function projektbild(k, ausgabe) {
 
 /* Treffer auf der Zeichenflaeche suchen: der naechste Projektpunkt
    innerhalb seines Radius, sonst nichts. */
+/* Getroffen ist, wer nah genug am Punkt liegt oder auf seiner
+   Beschriftung. Ohne die Beschriftung ist ein Projekt mit kleiner
+   Foerdersumme kaum zu treffen: sein Punkt misst fuenf Pixel. */
+function treffersuche(x, y) {
+  let treffer = null, nah = 1e9;
+  projektPunkte.forEach(pt => {
+    const d = Math.hypot(pt.x - x, pt.y - y);
+    if (d <= pt.r + 7 && d < nah) { nah = d; treffer = pt.p; }
+  });
+  if (treffer) return treffer;
+  const feld = projektFelder.find(f => x >= f.x1 - 3 && x <= f.x2 + 3
+                                    && y >= f.y1 && y <= f.y2);
+  return feld ? feld.p : null;
+}
+
 (function () {
   const lw = document.getElementById('netz2');
   if (!lw) return;
@@ -1843,18 +1866,13 @@ function projektbild(k, ausgabe) {
   lw.addEventListener('click', ev => {
     const b = lw.getBoundingClientRect();
     const x = ev.clientX - b.left, y = ev.clientY - b.top;
-    let treffer = null, nah = 1e9;
-    projektPunkte.forEach(pt => {
-      const d = Math.hypot(pt.x - x, pt.y - y);
-      if (d <= pt.r + 6 && d < nah) { nah = d; treffer = pt.p; }
-    });
-    if (treffer && projektMitte) projektPartner(treffer, projektMitte.k);
+    const gefunden = treffersuche(x, y);
+    if (gefunden && projektMitte) projektPartner(gefunden, projektMitte.k);
   });
   lw.addEventListener('mousemove', ev => {
     const b = lw.getBoundingClientRect();
     const x = ev.clientX - b.left, y = ev.clientY - b.top;
-    lw.style.cursor = projektPunkte.some(pt =>
-      Math.hypot(pt.x - x, pt.y - y) <= pt.r + 6) ? 'pointer' : 'default';
+    lw.style.cursor = treffersuche(x, y) ? 'pointer' : 'default';
   });
 })();
 
