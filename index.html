@@ -455,11 +455,13 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
   <div class="werkzeuge">
     <input type="search" id="n-q"
            placeholder="Einrichtung eingeben, zeigt ihr Umfeld …">
-    <select id="n-min">
+    <select id="n-min" title="Zählt die Innovationsfonds-Projekte, an denen
+      eine Einrichtung beteiligt ist. Wer weniger hat, wird ausgeblendet.">
       <option value="1" selected>alle Einrichtungen</option>
       <option value="2">ab 2 Projekten</option>
-      <option value="3">ab 3</option><option value="5">ab 5</option>
-      <option value="10">ab 10</option></select>
+      <option value="3">ab 3 Projekten</option>
+      <option value="5">ab 5 Projekten</option>
+      <option value="10">ab 10 Projekten</option></select>
     <select id="n-kante"><option value="1" selected>jede Verbindung</option>
       <option value="2">ab 2 gemeinsamen Projekten</option>
       <option value="3">ab 3</option></select>
@@ -1256,15 +1258,17 @@ function knotenfarbe(k) {
   return farbe(k.typ);
 }
 
+let weggefiltert = 0;
 function netzZeichnen() {
   const min = +document.getElementById('n-min').value;
   const minK = +document.getElementById('n-kante').value;
   farbmodus = document.getElementById('n-farbe').value;
 
   /* Wer einen Namen eintippt, will nicht den ganzen Verband gedimmt sehen,
-     sondern diese Einrichtung und ihre Partner. Die Schwellen der Auswahl
-     gelten dann nicht: ein Partner mit zwei Projekten gehoert zum Umfeld,
-     auch wenn "ab 5" eingestellt ist. */
+     sondern diese Einrichtung und ihre Partner. Die Schwellen gelten
+     dabei trotzdem, sonst steht das Auswahlfeld da und tut nichts.
+     Ausgenommen ist allein die gesuchte Einrichtung: Sie bleibt
+     stehen, auch wenn sie selbst unter der Schwelle liegt. */
   const roh = document.getElementById('n-q').value.trim().toLowerCase();
   let gesucht = hervor ? K.filter(k => ktext(k).includes(hervor)) : [];
   if (gesucht.length > 1) {
@@ -1274,6 +1278,7 @@ function netzZeichnen() {
     if (genau.length) gesucht = genau;
   }
   const umfeld = gesucht.length > 0;
+  weggefiltert = 0;
   umfeldAktiv = umfeld;
   let umfeldName = '';
   // kern wird weiter unten noch einmal gebraucht - als const im Block waere
@@ -1287,9 +1292,16 @@ function netzZeichnen() {
       if (kern.has(e.a)) dabei.add(e.b);
       if (kern.has(e.b)) dabei.add(e.a);
     });
-    sicht = K.filter(k => dabei.has(k.id)).map(k => ({...k, kern: kern.has(k.id)}));
-    sichtK = KANTEN.filter(e => dabei.has(e.a) && dabei.has(e.b))
+    const ganz = K.filter(k => dabei.has(k.id)).length;
+    sicht = K.filter(k => dabei.has(k.id)
+                       && (kern.has(k.id) || k.projekte >= min))
+      .map(k => ({...k, kern: kern.has(k.id)}));
+    const bleibt = new Set(sicht.map(k => k.id));
+    sichtK = KANTEN.filter(e => bleibt.has(e.a) && bleibt.has(e.b)
+                             && (kern.has(e.a) || kern.has(e.b)
+                                 || e.gewicht >= minK))
       .map(e => ({source:e.a, target:e.b, gewicht:e.gewicht}));
+    weggefiltert = ganz - sicht.length;
     umfeldName = gesucht.length === 1 ? nurKurz(gesucht[0])
                                       : gesucht.length + ' Einrichtungen';
   } else {
@@ -1353,6 +1365,8 @@ function netzZeichnen() {
     (leer ? `Keine Einrichtung enthält „${document.getElementById('n-q').value.trim()}“. `
           + `Das ganze Netzwerk: ` : '') +
     `${sicht.length} Einrichtungen, ${sichtK.length} Kooperationen` +
+    (weggefiltert ? ` · ${weggefiltert} Partner unter der Schwelle `
+       + `ausgeblendet` : '') +
     (allein ? ` · ${allein} ohne Verbindung in dieser Auswahl ausgeblendet` : '') +
     ` · Punkt anklicken zum Benennen` +
     (sicht.length > 600 ? ' · bei voller Ansicht braucht die Anordnung einige Sekunden'
