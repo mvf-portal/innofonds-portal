@@ -326,6 +326,9 @@ button.chip.waehl b{color:var(--gedaempft);margin-left:4px}
 .amzug h4{margin:0 0 6px;font-size:15px}
 .amzug p{margin:0 0 8px;font-size:13.5px;line-height:1.5}
 .amzug p:last-child{margin-bottom:0}
+.keintreffer{border-left:3px solid #c0392b;background:#fdf1ef;
+  padding:10px 14px;margin:0 0 10px;border-radius:0 6px 6px 0;font-size:14px}
+.keintreffer .chips{margin-top:8px}
 .projektwahl{border:1px solid var(--rand);border-radius:8px;
   padding:12px 14px;margin:10px 0 0;background:var(--flaeche2,#fafafa)}
 .projektwahl h4{margin:0 0 4px;font-size:15px}
@@ -495,7 +498,8 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
     </select>
     <button class="tat" id="n-neu">neu anordnen</button>
   </div>
-  <canvas id="netz"></canvas>
+  <div id="n-fehl" hidden></div>
+    <canvas id="netz"></canvas>
   <p class="bildzeile"><select id="n-aufl" class="klein"><option value="1">Bildschirmauflösung</option><option value="3" selected>Druck (300 dpi)</option></select><button class="alsLink" id="n-bild">Bild herunterladen (PNG)</button><button class="alsLink" id="n-csv">Partner als Tabelle (CSV)</button></p>
   <div id="netz2-rahmen" hidden>
     <h4 class="kgruppe">Die Projekte dieser Einrichtung</h4>
@@ -1399,12 +1403,13 @@ function netzZeichnen() {
     return;
   }
 
-  // Eine Suche ohne Treffer darf nicht wie ein Fehler der Seite aussehen.
+  // Eine Suche ohne Treffer darf nicht wie ein Fehler der Seite aussehen,
+  // aber auch nicht so, als sei die Eingabe angekommen.
   const leer = hervor && !gesucht.length;
   document.getElementById('netz2-rahmen').hidden = true;
+  keinTrefferZeigen(leer ? document.getElementById('n-q').value.trim() : '');
   document.getElementById('n-info').textContent =
-    (leer ? `Keine Einrichtung enthält „${document.getElementById('n-q').value.trim()}“. `
-          + `Das ganze Netzwerk: ` : '') +
+    (leer ? `Das ganze Netzwerk: ` : '') +
     `${sicht.length} Einrichtungen, ${sichtK.length} Kooperationen` +
     (allein ? ` · ${allein} ohne Verbindung in dieser Auswahl ausgeblendet` : '') +
     ` · Punkt anklicken zum Benennen` +
@@ -1412,6 +1417,46 @@ function netzZeichnen() {
                         : '');
 
   legendeUndZeichnen();
+}
+
+/* Wer sich vertippt, soll den Weg zurueckfinden: Was war falsch, und
+   was koennte gemeint gewesen sein? Die Vorschlaege entstehen aus dem
+   laengsten Stueck der Eingabe, das noch irgendwo vorkommt. */
+function aehnlich(eingabe, hoechstens) {
+  const q = norm(eingabe);
+  for (let laenge = q.length - 1; laenge >= 3; laenge--) {
+    const stuecke = new Set();
+    for (let i = 0; i + laenge <= q.length; i++) stuecke.add(q.slice(i, i + laenge));
+    const treffer = K.filter(k => [...stuecke].some(st => ktext(k).includes(st)));
+    if (treffer.length) {
+      return treffer.sort((a, b) => b.projekte - a.projekte)
+                    .slice(0, hoechstens || 6);
+    }
+  }
+  return [];
+}
+
+function keinTrefferZeigen(eingabe) {
+  const feld = document.getElementById('n-fehl');
+  if (!feld) return;
+  if (!eingabe) { feld.hidden = true; feld.innerHTML = ''; return; }
+  const vor = aehnlich(eingabe, 6);
+  feld.hidden = false;
+  feld.innerHTML = `<div class="keintreffer">
+      <b>Keine Einrichtung enthält „${esc(eingabe)}“.</b>
+      Gesucht wird im Namen, im Kürzel und in den Schreibvarianten.
+      Unten steht deshalb weiter das ganze Netzwerk.
+      ${vor.length ? `<div class="chips">Meinten Sie: ${vor.map(k =>
+        `<button class="chip waehl" data-vor="${k.id}">${esc(mitKurz(k))}
+          <b>${k.projekte}</b></button>`).join('')}</div>` : ''}
+    </div>`;
+  feld.querySelectorAll('button[data-vor]').forEach(bt => bt.onclick = () => {
+    const z = nachId.get(+bt.dataset.vor);
+    if (!z) return;
+    document.getElementById('n-q').value = z.name;
+    hervor = ktext(z);
+    netzZeichnen();
+  });
 }
 
 function legendeUndZeichnen() {
