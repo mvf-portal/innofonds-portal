@@ -331,6 +331,8 @@ button.chip.waehl b{color:var(--gedaempft);margin-left:4px}
 .keintreffer{border-left:3px solid #c0392b;background:#fdf1ef;
   padding:10px 14px;margin:0 0 10px;border-radius:0 6px 6px 0;font-size:14px}
 .keintreffer .chips{margin-top:8px}
+.hinweis.stark{border-left:3px solid var(--gold,#b8912f);
+  padding-left:10px;margin:8px 0 14px}
 .ueberschnitt{margin:10px 0 14px;font-size:13.5px}
 .ueberschnitt summary{cursor:pointer;color:var(--ink-soft,#555)}
 .ueberschnitt table{margin-top:6px}
@@ -2569,16 +2571,24 @@ partnerZeichnen();
     {style:'currency', currency:'EUR', maximumFractionDigits:0}).format(n);
   function preistafel(stufe) {
     const pr = PREIS[stufe] || PREIS[1];
+    const halb = pr.einzeln / 2;
     return `<table class="preistafel"><tbody>
       <tr><td>diese Kohorte, einmalig</td>
           <td class="zahl"><b>${eu(pr.einzeln)}</b></td></tr>
-      <tr><td>Jahreszugang, alle Kohorten dieser Stufe</td>
+      <tr><td>zweite und dritte Kohorte, je</td>
+          <td class="zahl"><b>${eu(halb)}</b></td></tr>
+      <tr><td>Jahreszugang, alle Kohorten dieser Stufe,
+              auch die künftigen</td>
           <td class="zahl"><b>${eu(pr.jahr)}</b></td></tr>
       ${NACHLASS.map(([wer, p]) => `<tr class="nach"><td>${wer}</td>
         <td class="zahl">${p} % · ${eu(pr.einzeln * (100 + p) / 100)}
         bzw. ${eu(pr.jahr * (100 + p) / 100)}</td></tr>`).join('')}
       </tbody></table>
-      <p class="was">Alle Preise zzgl. USt.</p>`;
+      <p class="was">Alle Preise zzgl. USt. <b>Warum die zweite Kohorte die
+      Hälfte kostet:</b> Die Kohorten überschneiden sich, weil ein Projekt
+      mehrere Versorgungsthemen trägt. Wer zwei bestellt, bekommt einen
+      Teil doppelt. Ab der vierten Kohorte lohnt der Jahreszugang, er
+      enthält auch alles, was später dazukommt.</p>`;
   }
 
   const kopf = `<p class="hinweis"><b>Was hier steht, steht sonst nirgends.</b>
@@ -2711,9 +2721,17 @@ partnerZeichnen();
         ${t(['auch enthalten in', 'gemeinsame Projekte', 'Anteil'],
           s.ueberschneidung.map(u => [esc(u.titel), u.n,
             Math.round(u.n / s.kohorte * 100) + ' %']))}
-        <p class="hinweis">Der Jahreszugang enthält alle Kohorten und
-          kennt dieses Problem nicht.</p>
+        <p class="hinweis">Deshalb kosten die zweite und die dritte
+          Kohorte die Hälfte. Der Jahreszugang enthält alle und kennt
+          dieses Problem nicht.</p>
       </details>` : ''}
+      ${s.ueberschneidung && s.ueberschneidung.length
+        && s.ueberschneidung[0].n / s.kohorte >= 0.5 ? `
+      <p class="hinweis stark"><b>Wenn Sie die Synthese
+        ${esc(s.ueberschneidung[0].titel)} bereits haben:</b> Diese
+        Kohorte bringt Ihnen dann nur ${s.kohorte
+          - s.ueberschneidung[0].n} zusätzliche Projekte. Als zweite
+        Kohorte kostet sie die Hälfte.</p>` : ''}
       <div class="synthese">${s.html}</div>
       ${(s.zeilen_gesamt > s.zeilen_gezeigt) ? `
       <div class="tabellensperre">
@@ -2801,6 +2819,16 @@ partnerZeichnen();
         ? 'Alle Kohorten, zwölf Monate'
         : esc(s.titel)} · Rechnung, zahlbar 14 Tage netto ·
         Lieferung als PDF, Word, Excel und CSV</p>
+      ${umfang === 'jahr' ? '' : `<label class="bf weit"><span>Weitere
+        Kohorten mitbestellen</span>
+        <select name="weitere">
+          <option value="0" selected>nein, nur diese</option>
+          <option value="1">eine weitere, zum halben Preis</option>
+          <option value="2">zwei weitere, je zum halben Preis</option>
+        </select></label>
+      <p class="was" id="bf-weitere">Welche, schreiben Sie bitte unten
+        in die Anmerkungen. Ab vier Kohorten ist der Jahreszugang
+        günstiger.</p>`}
       <div class="stufenwahl">${[1,2].map(st => {
         const da = vorhanden.includes(st);
         const pv = PREIS[st][umfang === 'jahr' ? 'jahr' : 'einzeln'];
@@ -2864,8 +2892,13 @@ partnerZeichnen();
       +(form.querySelector('input[name=stufe]:checked') || {value: s.stufe}).value;
     function preisZeigen() {
       const p = RABATT[form.nachlass.value] || 0;
-      const grundpreis = PREIS[gewaehlteStufe()][
+      const einzeln = PREIS[gewaehlteStufe()][
         umfang === 'jahr' ? 'jahr' : 'einzeln'];
+      // Zweite und dritte Kohorte zum halben Preis. Beim Jahreszugang
+      // gibt es nichts zu staffeln, er enthaelt ohnehin alle.
+      const weitere = umfang === 'jahr' ? 0
+        : +((form.weitere || {}).value || 0);
+      const grundpreis = einzeln + weitere * einzeln / 2;
       const netto = grundpreis * (100 - p) / 100;
       const ust = netto * 0.19;
       // Ohne Hinweis waehlt niemand einen Nachlass, den er nicht kennt -
@@ -2874,15 +2907,21 @@ partnerZeichnen();
         MVF-Abonnenten −25 %,
         <a href="https://www.monitor-versorgungsforschung.de/internals/verlag-medium/beirat/" target="_blank" rel="noopener">MVF-Beirat</a>
         −50 % · unten bei „Nachlass“ auswählen</span>`;
-      preisZeile.innerHTML = p
+      const staffel = weitere
+        ? `<span class="was">${eu(einzeln)} für die erste Kohorte, `
+          + `${weitere}× ${eu(einzeln / 2)} für die weitere${
+            weitere > 1 ? 'n' : ''}</span>`
+        : '';
+      preisZeile.innerHTML = staffel + (p
         ? `<s>${eu(grundpreis)}</s> <b>${eu(netto)}</b> zzgl. USt.
            <span class="was">(−${p} % · ${eu(netto + ust)} brutto ·
            wird vor der Rechnung geprüft)</span>`
         : `<b>${eu(grundpreis)}</b> zzgl. USt.
            <span class="was">(${eu(netto + ust)} brutto)</span>`
-           + nachlasshinweis;
+           + nachlasshinweis);
     }
     form.nachlass.addEventListener('change', preisZeigen);
+    if (form.weitere) form.weitere.addEventListener('change', preisZeigen);
     form.querySelectorAll('input[name=stufe]').forEach(r =>
       r.addEventListener('change', preisZeigen));
     preisZeigen();
@@ -2892,6 +2931,8 @@ partnerZeichnen();
       const d = Object.fromEntries(new FormData(form).entries());
       d.einverstanden = form.einverstanden.checked;
       d.stufe = gewaehlteStufe(); d.umfang = umfang; d.kohorte = s.titel;
+      d.weitere = umfang === 'jahr' ? 0
+        : +((form.weitere || {}).value || 0);
       const fehlt = ['institution','name','strasse','plz','ort','email']
         .filter(f => !String(d[f] || '').trim());
       if (fehlt.length || !d.einverstanden) {
