@@ -1271,7 +1271,6 @@ function knotenfarbe(k) {
   return farbe(k.typ);
 }
 
-let weggefiltert = 0;
 function netzZeichnen() {
   const min = +document.getElementById('n-min').value;
   const minK = +document.getElementById('n-kante').value;
@@ -1294,7 +1293,6 @@ function netzZeichnen() {
     if (genau.length) gesucht = genau;
   }
   const umfeld = gesucht.length > 0;
-  weggefiltert = 0;
   document.getElementById('n-min').hidden = umfeld;
   umfeldAktiv = umfeld;
   let umfeldName = '';
@@ -1325,7 +1323,6 @@ function netzZeichnen() {
     // Partner, zu denen keine Verbindung mehr passt, verschwinden mit.
     const uebrig = new Set(sichtK.flatMap(e => [e.source, e.target]));
     sicht = sicht.filter(k => kern.has(k.id) || uebrig.has(k.id));
-    weggefiltert = ganz - sicht.length;
     umfeldName = gesucht.length === 1 ? nurKurz(gesucht[0])
                                       : gesucht.length + ' Einrichtungen';
   } else {
@@ -1389,8 +1386,6 @@ function netzZeichnen() {
     (leer ? `Keine Einrichtung enthält „${document.getElementById('n-q').value.trim()}“. `
           + `Das ganze Netzwerk: ` : '') +
     `${sicht.length} Einrichtungen, ${sichtK.length} Kooperationen` +
-    (weggefiltert ? ` · ${weggefiltert} Partner unter der Schwelle `
-       + `ausgeblendet` : '') +
     (allein ? ` · ${allein} ohne Verbindung in dieser Auswahl ausgeblendet` : '') +
     ` · Punkt anklicken zum Benennen` +
     (sicht.length > 600 ? ' · bei voller Ansicht braucht die Anordnung einige Sekunden'
