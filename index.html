@@ -355,13 +355,16 @@ button.chip.waehl b{color:var(--gedaempft);margin-left:4px}
   justify-content:space-between;flex-wrap:wrap}
 .marke{flex:0 0 auto;line-height:0;display:block}
 .marke img{width:186px;max-width:40vw;height:auto;display:block}
-.marke-dunkel{display:none}
+/* Die Regel darueber setzt display:block fuer jedes Bild in der Marke
+   und ist spezifischer als eine blosse Klasse. Ohne das img davor
+   gewinnt sie, und beide Fassungen des Logos stehen untereinander. */
+.marke img.marke-dunkel{display:none}
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .marke-hell{display:none}
-  :root:not([data-theme="light"]) .marke-dunkel{display:block}
+  :root:not([data-theme="light"]) .marke img.marke-hell{display:none}
+  :root:not([data-theme="light"]) .marke img.marke-dunkel{display:block}
 }
-:root[data-theme="dark"] .marke-hell{display:none}
-:root[data-theme="dark"] .marke-dunkel{display:block}
+:root[data-theme="dark"] .marke img.marke-hell{display:none}
+:root[data-theme="dark"] .marke img.marke-dunkel{display:block}
 @media (max-width:640px){ .marke img{width:150px} }
 .fuss{margin:34px 0 18px;padding-top:16px;border-top:1px solid var(--linie);
   font-size:13px;color:var(--gedaempft)}
