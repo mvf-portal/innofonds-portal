@@ -1189,20 +1189,87 @@ function epCsv() {
   csvLaden(`innofonds-endpunkte-${heute()}.csv`, kopf, zeilen);
 }
 
+/* Der primaere Endpunkt traegt die Fallzahlrechnung. Diese Tabelle
+   sagt, worauf die Vorhaben ihre Studie ausgelegt haben und wie oft
+   das aufgegangen ist. Bewertet wird nur, wo der Bericht ein Ergebnis
+   nennt. */
+function epPrimaerBlock(liste) {
+  const m = new Map();
+  liste.filter(e => e.a === 'p').forEach(e => {
+    let z = m.get(e.f);
+    if (!z) m.set(e.f, z = {n: 0, bew: 0, zug: 0, geg: 0, proj: new Set()});
+    z.n++; z.proj.add(e.p);
+    if (e.g != null) {
+      z.bew++;
+      if (e.g === 1 && e.r === 1) z.zug++;
+      if (e.g === 1 && e.r === -1) z.geg++;
+    }
+  });
+  const zeilen = [...m.entries()].filter(([, z]) => z.n >= 5)
+    .sort((a, b) => b[1].n - a[1].n).slice(0, 12);
+  if (zeilen.length < 3) return '';
+  const quote = z => z.bew ? Math.round(z.zug / z.bew * 100) : null;
+  /* Verglichen wird nur, was wirklich oft zum Hauptziel gemacht wird:
+     Eine Familie mit fuenfzehn Bewertungen kippt an einem Projekt. */
+  const mit = zeilen.filter(([, z]) => z.n >= 30 && z.bew >= 20
+                                       && quote(z) != null);
+  const oben = mit.slice().sort((a, b) => quote(b[1]) - quote(a[1]))[0];
+  const unten = mit.slice().sort((a, b) => quote(a[1]) - quote(b[1]))[0];
+  return `<h4 style="margin:22px 0 4px">Worauf die Studien ausgelegt sind</h4>
+    <p class="hinweis" style="margin:0 0 6px">Der primäre Endpunkt ist der,
+    für den die Fallzahl gerechnet wurde. Hier steht, welche Familie dafür
+    am häufigsten gewählt wurde und wie oft sie aufging.${oben && unten
+      && oben !== unten ? ` Auffällig: <b>${esc(unten[0])}</b> wird oft zum
+      Hauptziel gemacht und geht in ${quote(unten[1])} Prozent der Fälle
+      zugunsten aus, <b>${esc(oben[0])}</b> in ${quote(oben[1])} Prozent.`
+      : ''}</p>
+    <div class="huelle" style="max-height:none"><table><thead><tr>
+      <th>Endpunktfamilie</th><th class="zahl">als primärer Endpunkt</th>
+      <th class="zahl">Projekte</th><th class="zahl">mit Ergebnis</th>
+      <th class="zahl">zugunsten</th><th class="zahl">zuungunsten</th>
+    </tr></thead><tbody>${zeilen.map(([f, z]) => `<tr>
+      <td>${esc(f)}</td><td class="zahl">${z.n}</td>
+      <td class="zahl">${z.proj.size}</td><td class="zahl">${z.bew}</td>
+      <td class="zahl">${z.bew ? z.zug + ' (' + quote(z) + ' %)' : ''}</td>
+      <td class="zahl">${z.geg ? `<span class="ep-gegen">${z.geg}</span>` : ''}</td>
+    </tr>`).join('')}</tbody></table></div>
+    <p class="hinweis">Nur Familien mit mindestens fünf primären Endpunkten.
+    Der Satz oben vergleicht nur Familien mit mindestens fünfzehn
+    bewerteten primären Endpunkten und mindestens dreißig primären
+    Nennungen, darunter entscheiden einzelne Projekte die Quote.</p>`;
+}
+
 function endpunkteZeichnen() {
   const liste = epGefiltert(), fam = epFamilien(liste);
   const bew = liste.filter(e => e.g != null).length;
   const zug = liste.filter(e => e.g === 1 && e.r === 1).length;
   const geg = liste.filter(e => e.g === 1 && e.r === -1).length;
+  const ohne = liste.filter(e => e.g === 1 && e.r === 0).length;
+  const keinU = liste.filter(e => e.g === 0).length;
   const proj = new Set(liste.map(e => e.p)).size;
+
+  /* Auf Projektebene: Wie viele Vorhaben haben ihr Hauptziel
+     erreicht? Gezaehlt wird nur, wo der Bericht zum primaeren
+     Endpunkt etwas sagt; alles andere waere eine Quote aus
+     Schweigen. */
+  const nachP = new Map();
+  liste.forEach(e => {
+    if (e.a !== 'p' || e.g == null) return;
+    let z = nachP.get(e.p);
+    if (!z) nachP.set(e.p, z = {zug: 0, geg: 0});
+    if (e.g === 1 && e.r === 1) z.zug++;
+    if (e.g === 1 && e.r === -1) z.geg++;
+  });
+  const mitP = nachP.size;
+  const erreicht = [...nachP.values()].filter(z => z.zug).length;
+
   document.getElementById('ep-zahlen').innerHTML = [
     [liste.length, 'Endpunkte'],
     [liste.filter(e => e.a === 'p').length, 'davon primär'],
     [proj, 'Projekte'],
-    [bew ? Math.round(zug / bew * 100) + ' %' : 'ohne Angabe',
-     `signifikant zugunsten (${zug} von ${bew})`],
-    [bew ? Math.round(geg / bew * 100) + ' %' : 'ohne Angabe',
-     `signifikant zuungunsten (${geg})`],
+    [fam.length, 'Endpunktfamilien'],
+    [mitP ? Math.round(erreicht / mitP * 100) + ' %' : 'ohne Angabe',
+     `Projekte mit erreichtem Hauptziel (${erreicht} von ${mitP})`],
   ].map(([z, w]) => `<div class="kachel"><div class="gross">${z}</div>
       <div class="was">${w}</div></div>`).join('');
 
@@ -1235,12 +1302,24 @@ function endpunkteZeichnen() {
     + 'deshalb nur die Endpunkte zugunsten; die Gegenrichtung daneben. '
     + 'Wo die Signifikanz allein aus dem p-Wert stammt, benennt der '
     + 'Bericht keine Richtung, und der Endpunkt zählt in keiner der '
-    + 'beiden Spalten.';
+    + 'beiden Spalten.'
+    + (bew ? `<br><br><b>So teilt sich diese Auswahl auf:</b> von ${bew}
+       Endpunkten mit berichtetem Ergebnis gingen <b>${zug}</b> signifikant
+       zugunsten der Intervention aus (${Math.round(zug / bew * 100)} %),
+       <b>${geg}</b> signifikant zuungunsten
+       (${Math.round(geg / bew * 100)} %), und ${keinU} zeigten keinen
+       Unterschied (${Math.round(keinU / bew * 100)} %)`
+       + (ohne ? `; bei ${ohne} weiteren liegt der p-Wert unter 0,05, ohne
+       dass der Bericht eine Richtung nennt` : '')
+       + `. <b>Die Kachel oben zählt anders:</b> Sie fragt nicht nach
+       Endpunkten, sondern nach Vorhaben, und nur nach dem primären
+       Endpunkt. Ein Projekt mit dreißig sekundären Endpunkten wiegt dort
+       so viel wie eines mit zweien.` : '');
 
   const werkzeug = document.getElementById('ep-werkzeug');
   werkzeug.innerHTML = epFam ? ''
-    : epHerkunft(liste) + epInstrumente(liste) + epRelevanzBlock(liste)
-      + epFallzahlBlock();
+    : epPrimaerBlock(liste) + epHerkunft(liste) + epInstrumente(liste)
+      + epRelevanzBlock(liste) + epFallzahlBlock();
   werkzeug.querySelectorAll('tr.ep-instrument').forEach(tr => tr.onclick = () => {
     document.getElementById('ep-q').value = tr.dataset.i;
     endpunkteZeichnen();
