@@ -1302,6 +1302,17 @@ function fzZeilen() {
 const FZ_WORT = {'nicht zutreffend, Ziel erreicht': 'Ziel erreicht'};
 const fzGrundWort = g => g ? (FZ_WORT[g] || g) : '';
 
+/* Die geplante Zahl und die Auswertungspopulation zaehlen nicht immer
+   dasselbe. Wo die Quote in die eine und der genannte Grund in die
+   andere Richtung zeigt, ist keine der beiden Angaben falsch, aber der
+   Leser soll es sehen und in den Bericht schauen. */
+const FZ_ERREICHT = 'nicht zutreffend, Ziel erreicht';
+function fzUneins(f) {
+  if (f.q == null || !f.gr) return false;
+  if (f.q >= 1) return f.gr !== FZ_ERREICHT && f.gr !== 'kein Grund genannt';
+  return f.gr === FZ_ERREICHT;
+}
+
 function fzBalken(z) {
   if (z.f.q == null) return '<span class="ep-nein">nicht vergleichbar</span>';
   const p = Math.round(z.f.q * 100);
@@ -1351,7 +1362,10 @@ function fzZeichnen() {
         ? `<br><span class="ep-nein">${esc(z.f.ge)}</span>` : ''}</td>
       <td class="zahl">${nz(z.f.a)}</td>
       <td class="zahl">${fzBalken(z)}</td>
-      <td>${z.f.gr ? esc(fzGrundWort(z.f.gr)) : ''}${z.f.grz
+      <td>${z.f.gr ? esc(fzGrundWort(z.f.gr)) : ''}${fzUneins(z.f)
+        ? ' <span class="pandemie" title="Die geplante Zahl und die '
+          + 'ausgewertete zählen hier Verschiedenes. Beide Angaben stehen so '
+          + 'im Bericht.">Zahl und Grund gehen auseinander</span>' : ''}${z.f.grz
         ? `<br><span class="ep-nein">${esc(z.f.grz.slice(0, 150))}</span>` : ''}</td>
       <td class="zahl">${seite ? (u && nr
         ? `<a href="${esc(u)}#page=${nr[1]}" target="_blank" rel="noopener">S. ${esc(seite)}</a>`
@@ -1362,9 +1376,15 @@ function fzZeichnen() {
     location.hash = '#p=' + tr.dataset.id;
   });
 
+  const uneins = liste.filter(z => fzUneins(z.f)).length;
   document.getElementById('fz-zahl').innerHTML =
     `${liste.length} Projekte in der Auswahl. Ein Klick auf eine Zeile führt zum `
-    + `Projekt, die Seitenzahl in den Bericht. Spaltenköpfe sortieren.`;
+    + `Projekt, die Seitenzahl in den Bericht. Spaltenköpfe sortieren.`
+    + (uneins ? ` Bei ${uneins} Projekten sind Zahl und Grund als `
+       + `<b>auseinandergehend</b> markiert: Die geplante Fallzahl und die `
+       + `Auswertungspopulation zählen dort Verschiedenes, etwa wenn mehr `
+       + `Personen in die Analyse eingehen, als geplant war, bei einem Teil `
+       + `von ihnen aber Werte fehlen. Beide Angaben stehen so im Bericht.` : '');
 }
 
 function fallzahlAnstossen() {
@@ -1440,13 +1460,14 @@ function fallzahlAnstossen() {
                   'Grund der Abweichung', 'Zitat', 'Seite',
                   'Fallzahlplanung dokumentiert', 'Zielpower', 'Signifikanzniveau',
                   'angenommener Effekt', 'Auswertungspopulation',
-                  'Laufzeit in der Pandemie', 'Bericht', 'Eintrag im Portal'];
+                  'Laufzeit in der Pandemie', 'Zahl und Grund stimmig',
+                  'Bericht', 'Eintrag im Portal'];
     const zeilen = fzZeilen().map(z => [
       z.p.akr, z.p.tit, z.p.ber, z.p.st, z.f.g, z.f.ge, z.f.gb,
       z.f.a, z.f.ae, z.f.q == null ? '' : Math.round(z.f.q * 100),
       fzGrundWort(z.f.gr), z.f.grz, z.f.grs || z.f.gs,
       z.f.pl ? 'ja' : 'nein', z.f.po, z.f.al, z.f.ef, z.f.pop,
-      inPandemie(z.p) ? 'ja' : 'nein',
+      inPandemie(z.p) ? 'ja' : 'nein', fzUneins(z.f) ? 'nein' : 'ja',
       epBericht(z.p) || '', 'https://innofonds.m-vf.de/#p=' + z.p.id]);
     csvLaden(`innofonds-fallzahlen-${heute()}.csv`, kopf, zeilen);
   };
