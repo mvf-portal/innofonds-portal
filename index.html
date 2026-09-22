@@ -151,6 +151,9 @@ table.vgl tr.trenn td{border-top:2px solid var(--linie);
   margin-left:12px;white-space:nowrap}
 .id-quote .balken{height:8px;min-width:0;vertical-align:1px}
 .id-quote .balken i{background:var(--akzent)}
+.id-traegt{color:var(--akzent)}
+.id-duenn{color:var(--gedaempft);font-weight:600}
+.id-kern b{color:var(--akzent)}
 .pandemie{font-size:11px;padding:1px 6px;border-radius:9px;
   background:var(--weich);color:var(--gedaempft);white-space:nowrap}
 tr.mcid td{font-size:12.5px;line-height:1.5;padding-top:0;
@@ -767,10 +770,15 @@ Gemessen werden soll die Zahl der Wiederaufnahmen im ersten Jahr."></textarea>
   <div id="id-was" class="fehlt"></div>
   <div id="id-ergebnis"></div>
   <div id="id-senden" hidden>
-    <h4 style="margin:24px 0 4px">Sollen wir uns Ihre Idee ansehen?</h4>
-    <p>Wenn Sie wollen, schauen wir uns Ihr Vorhaben genauer an und melden uns
-    bei Ihnen. Dafür brauchen wir Ihre Beschreibung und eine Adresse, und
-    dafür müssen beide zu uns kommen. Das passiert nur, wenn Sie es hier
+    <h4 style="margin:24px 0 4px">Eine zweite Meinung von der Redaktion</h4>
+    <p>Die Rechnung oben vergleicht Wörter. Wir sehen uns Ihr Vorhaben von
+    Hand an und melden uns mit dem, was die Datenbank dazu hergibt: welche
+    Projekte wirklich vergleichbar sind, woran sie gehakt haben, wer sie
+    geleitet hat und ob Ihr Zuschnitt sich davon abhebt. Kostenfrei und ohne
+    Gegenleistung. Wird daraus ein Thema für „Monitor Versorgungsforschung“,
+    fragen wir Sie vorher.</p>
+    <p class="hinweis">Dafür brauchen wir Ihre Beschreibung und eine Adresse,
+    und dafür müssen beide zu uns kommen. Das passiert nur, wenn Sie es hier
     ausdrücklich veranlassen.</p>
     <label class="schalter" style="align-items:flex-start;margin-bottom:10px">
       <input type="checkbox" id="id-ok" style="margin-top:3px">
@@ -1769,6 +1777,10 @@ const STOPP = new Set(('und oder der die das den dem des ein eine einer eines '
    Die Grenze ergibt sich aus dem Bestand und braucht keine gepflegte
    Liste. */
 const ID_HAEUFIG = 0.12;
+/* Selten heisst: hoechstens in fuenf Prozent der Beschreibungen. Bei
+   861 Projekten sind das rund 43. Solche Woerter tragen die Auskunft,
+   "Versorgung" oder "Patienten" tragen keine. */
+const ID_SELTEN = 0.05;
 
 const idTok = t => epNorm(t).split(/[^a-z0-9]+/)
   .filter(w => w.length > 3 && !STOPP.has(w));
@@ -1800,7 +1812,7 @@ function idIndex() {
     });
     d.norm = Math.sqrt(q) || 1;
   });
-  IDX = {docs, idf, n};
+  IDX = {docs, idf, n, df};
   return IDX;
 }
 
@@ -1819,6 +1831,17 @@ function idAehnlich(text, ber) {
   });
   if (!frage.size) return [];
   const fnorm = Math.sqrt(q) || 1;
+  /* Die Kernbegriffe der Eingabe: selten im Bestand und deshalb
+     aussagekraeftig. Sie sind der Massstab fuer jeden Treffer. */
+  const dfv = w => IDX.df.get(w) || 0;
+  const kern = [...frage.keys()]
+    .filter(w => w.length >= 5 && dfv(w) >= 1
+                 && dfv(w) <= Math.max(2, IDX.n * ID_SELTEN))
+    .sort((a, b) => frage.get(b) - frage.get(a));
+  /* Woerter, die im ganzen Bestand nicht ein einziges Mal stehen. Sie
+     koennen keinen Treffer erzeugen, deshalb zaehlen sie nicht mit. */
+  const fremd = [...frage.keys()].filter(w => w.length >= 5 && !dfv(w));
+  const kernsatz = new Set(kern);
   const raus = [];
   docs.forEach(d => {
     const p = PID[d.id];
@@ -1831,10 +1854,15 @@ function idAehnlich(text, ber) {
     });
     if (!punkte) return;
     gemein.sort((a, b) => b[1] - a[1]);
+    const worte = gemein.map(x => x[0]);
     raus.push({p, wert: punkte / (fnorm * d.norm),
-               worte: gemein.slice(0, 6).map(x => x[0])});
+               treffend: worte.filter(w => kernsatz.has(w)),
+               weit: worte.filter(w => !kernsatz.has(w)).slice(0, 5)});
   });
-  return raus.sort((a, b) => b.wert - a.wert);
+  raus.sort((a, b) => b.wert - a.wert);
+  raus.kern = kern;
+  raus.fremd = fremd;
+  return raus;
 }
 
 /* Der Median ist hier ehrlicher als das Mittel: Ein Vorhaben mit 30
@@ -1859,12 +1887,17 @@ function idAusgang(p) {
                                  : `<span class="marke">${esc(p.st || '')}</span>`);
 }
 
-/* Kein Urteilswort. "Sehr aehnlich" stand bei vier Treffern in Folge
-   und war damit keine Auskunft. Der Balken misst den Abstand zum
-   besten Treffer, die Nummer den Rang. */
-function idNaehe(anteil, rang) {
-  return `${rang}. <span class="balken" style="width:64px"><i style="width:${
-    Math.round(anteil * 100)}%"></i></span>`;
+/* Weder Urteilswort noch Balken. "Sehr aehnlich" stand bei vier
+   Treffern in Folge und war damit keine Auskunft; zehn fast gleich
+   lange Balken sind es genauso wenig, weil sich aufeinanderfolgende
+   Treffer um Bruchteile unterscheiden. Was ein Leser gebrauchen kann,
+   ist die Zahl der eigenen Fachbegriffe, die dieses Projekt wirklich
+   traegt. */
+function idNaehe(t, rang, kern) {
+  const g = t.treffend.length;
+  const wort = g ? `trifft ${g} von ${kern.length}`
+                 : `trifft keines von ${kern.length}`;
+  return `${rang}. <b class="${g ? 'id-traegt' : 'id-duenn'}">${wort}</b>`;
 }
 
 function ideePruefen() {
@@ -1888,7 +1921,8 @@ function ideePruefen() {
   /* Gemessen wird am besten Treffer dieser Suche. Absolut liegen die
      Werte tief, weil ein Absatz und eine Projektbeschreibung wenig
      Wortmasse teilen. Der Rohwert bleibt sichtbar. */
-  const spitze = treffer[0].wert || 1;
+  const kern = treffer.kern || [];
+  const fremd = treffer.fremd || [];
   const zehn = treffer.slice(0, 10);
   const nah = treffer.slice(0, 30);   // Grundlage der Statistik darunter
 
@@ -1967,21 +2001,35 @@ function ideePruefen() {
 
   ziel.innerHTML = `
     <h4 style="margin:20px 0 4px">Die zehn nächsten Vorhaben</h4>
-    <p class="hinweis" style="margin:0 0 6px">Der Balken misst den Abstand zum
-    besten Treffer dieser Suche, nicht eine absolute Ähnlichkeit. Zwei kurze
-    Absätze teilen sich immer wenig Wortmasse. Was zählt, sind die gemeinsamen
-    Begriffe unter jedem Treffer: Stehen dort die Fachbegriffe Ihres Vorhabens,
-    ist der Treffer einschlägig, stehen dort Allerweltswörter, nicht.</p>
+    ${kern.length ? `<p class="hinweis id-kern" style="margin:0 0 6px">Nicht der
+      Rang entscheidet, sondern die Überschneidung bei den seltenen Wörtern.
+      Diese ${kern.length} Wörter Ihrer Beschreibung kommen im Bestand selten
+      vor und unterscheiden deshalb etwas: <b>${kern.slice(0, 12).map(
+        w => esc(w)).join(', ')}</b>${kern.length > 12 ? ' und weitere' : ''}.
+      Vor jedem Treffer steht, wie viele davon er enthält. <b>Trifft keines</b>
+      heißt: Das Vorhaben steht nur wegen Allerweltswörtern in der Liste, Sie
+      können es überspringen.${kern.length >= 5
+        ? ' Ab drei lohnt der Ergebnisbericht.' : ''}</p>
+      ${fremd.length ? `<p class="hinweis" style="margin:-2px 0 6px">Im Bestand
+        kommen diese Wörter Ihrer Beschreibung kein einziges Mal vor:
+        ${fremd.slice(0, 10).map(w => esc(w)).join(', ')}. Entweder ist das
+        wirklich neu, oder die geförderten Anträge nennen dieselbe Sache
+        anders. Es lohnt, beides zu prüfen.</p>` : ''}`
+     : `<p class="hinweis" style="margin:0 0 6px">Ihre Beschreibung enthält
+      keinen Begriff, der im Bestand selten genug wäre, um zu unterscheiden.
+      Die Reihenfolge unten beruht dann auf allgemeinen Wörtern und sagt wenig.
+      Schreiben Sie Indikation, Intervention und Setting mit den Fachbegriffen
+      des Versorgungsfelds, dann wird die Liste belastbar.</p>`}
     ${zehn.map((t, i) => `<div class="id-treffer">
-      <span class="id-quote" title="Rohwert der Wortähnlichkeit: ${
-        (t.wert * 100).toFixed(1)} Prozent gemeinsame gewichtete Wortmasse">${
-        idNaehe(t.wert / spitze, i + 1)}</span>
+      <span class="id-quote">${idNaehe(t, i + 1, kern)}</span>
       <h4><a href="#p=${t.p.id}">${esc(t.p.akr || '')}</a>
         ${esc((t.p.tit || '').slice(0, 110))}</h4>
       <p class="meta">${esc(t.p.ber || '')} · ${eur(t.p.sum)} ·
         ${esc(t.p.von || '')} bis ${esc(t.p.bis || '')} · ${idAusgang(t.p)}</p>
-      <p class="hinweis" style="margin:4px 0 0">Gemeinsame Begriffe:
-        ${t.worte.map(w => esc(w)).join(', ')}</p>
+      <p class="hinweis" style="margin:4px 0 0">${t.treffend.length
+        ? `Davon getroffen: <b>${t.treffend.map(w => esc(w)).join(', ')}</b>. `
+        : ''}${t.weit.length ? 'Sonst gemeinsam: '
+        + t.weit.map(w => esc(w)).join(', ') : ''}</p>
     </div>`).join('')}
 
     <h4 style="margin:20px 0 4px">Wie diese dreißig Projekte ausgegangen sind</h4>
@@ -2183,8 +2231,9 @@ function ideeAnstossen() {
      Hinaus geht nach jeder Prüfung nur eine anonyme Strichliste mit dem
      Themenfeld und den drei häufigsten Bausteinen, damit wir sehen, welche
      Themen nachgefragt werden. <b>Nach einem ersten Ideentest</b> gibt es
-     als weiterführendes Angebot einen eigenen Kasten mit eigenem Häkchen:
-     Dort können Sie uns Ihre Idee zeigen, wenn Sie wollen.`;
+     als weiterführendes Angebot eine zweite Meinung von der Redaktion: Wir
+     sehen Ihr Vorhaben von Hand an und melden uns mit den wirklich
+     vergleichbaren Projekten, ihren Stolpersteinen und möglichen Partnern.`;
   document.getElementById('id-los').onclick = ideePruefen;
   document.getElementById('id-ab').onclick = ideeSenden;
 
