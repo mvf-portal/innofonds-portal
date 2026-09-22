@@ -2031,7 +2031,7 @@ function ideePruefen() {
       <div class="was">${w}</div></div>`;
 
   ziel.innerHTML = `
-    <h4 style="margin:20px 0 4px">Die zehn nächsten Vorhaben</h4>
+    <h4 style="margin:20px 0 4px">Die ${nah.length} nächsten Vorhaben</h4>
     ${kern.length ? `<p class="hinweis id-kern" style="margin:0 0 6px">Nicht der
       Rang entscheidet, sondern die Überschneidung bei den seltenen Wörtern.
       Diese ${kern.length} Wörter Ihrer Beschreibung kommen im Bestand selten
@@ -2051,7 +2051,7 @@ function ideePruefen() {
       Die Reihenfolge unten beruht dann auf allgemeinen Wörtern und sagt wenig.
       Schreiben Sie Indikation, Intervention und Setting mit den Fachbegriffen
       des Versorgungsfelds, dann wird die Liste belastbar.</p>`}
-    ${zehn.map((t, i) => `<div class="id-treffer">
+    ${nah.map((t, i) => `<div class="id-treffer"${i >= 10 ? ' hidden' : ''}>
       <span class="id-quote">${idNaehe(t, i + 1, kern)}</span>
       <h4><a href="#p=${t.p.id}">${esc(t.p.akr || '')}</a>
         ${esc((t.p.tit || '').slice(0, 110))}</h4>
@@ -2062,8 +2062,12 @@ function ideePruefen() {
         : ''}${t.weit.length ? 'Sonst gemeinsam: '
         + t.weit.map(w => esc(w)).join(', ') : ''}</p>
     </div>`).join('')}
+    ${nah.length > 10 ? `<button type="button" class="knopf" id="id-mehr"
+      >Die übrigen ${nah.length - 10} anzeigen</button>
+      <p class="hinweis" style="margin:6px 0 0">Alle ${nah.length} sind die
+      Grundlage der Auswertung darunter.</p>` : ''}
 
-    <h4 style="margin:20px 0 4px">Wie diese dreißig Projekte ausgegangen sind</h4>
+    <h4 style="margin:20px 0 4px">Wie diese ${nah.length} Projekte ausgegangen sind</h4>
     <div class="kacheln">
       ${kachel(beendet.length, 'davon beendet')}
       ${kachel(mitEmpf.length, 'mit Transferempfehlung')}
@@ -2104,7 +2108,7 @@ function ideePruefen() {
       ganzen Bestand bewertet</h4>
     <p class="hinweis" style="margin:0 0 6px">Der Innovationsausschuss
     verschlagwortet jedes Projekt mit Versorgungselementen. Links steht, wie
-    oft ein Baustein unter den dreißig nächsten Projekten vorkommt, rechts,
+    oft ein Baustein unter den ${nah.length} nächsten Projekten vorkommt, rechts,
     was aus ihm über alle 861 Projekte hinweg geworden ist. Die Quote zählt
     nur beendete Vorhaben.</p>
     <div class="huelle" style="max-height:none"><table><thead><tr>
@@ -2123,7 +2127,7 @@ function ideePruefen() {
     <h4 style="margin:20px 0 4px">Woran es in vergleichbaren Projekten
       gehakt hat</h4>
     <p class="hinweis" style="margin:0 0 6px">Aus den Ergebnisberichten der
-    dreißig nächsten Projekte, so wie die Berichte es selbst schreiben. Das
+    ${nah.length} nächsten Projekte, so wie die Berichte es selbst schreiben. Das
     ist die Liste, die ein Antrag vorwegnehmen sollte.</p>
     <div class="huelle" style="max-height:none"><table><thead><tr>
       <th>Art des Hindernisses</th><th class="zahl">Nennungen</th>
@@ -2177,6 +2181,13 @@ function ideePruefen() {
           body: JSON.stringify({art: 'zaehlung', themenfeld: feld,
             bausteine: bau3, bereich: ber})}).catch(() => {});
   } catch (e) { /* zaehlen ist Beiwerk, nicht Dienst */ }
+
+  const mehr = document.getElementById('id-mehr');
+  if (mehr) mehr.onclick = () => {
+    ziel.querySelectorAll('.id-treffer[hidden]')
+        .forEach(d => d.hidden = false);
+    mehr.remove();
+  };
 
   const kasten = document.getElementById('id-senden');
   document.getElementById('id-vorschau').hidden = true;
