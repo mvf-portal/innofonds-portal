@@ -151,6 +151,11 @@ table.vgl tr.trenn td{border-top:2px solid var(--linie);
   margin-left:12px;white-space:nowrap}
 .id-quote .balken{height:8px;min-width:0;vertical-align:1px}
 .id-quote .balken i{background:var(--akzent)}
+/* Vor dem Test blass, aber lesbar: Der Leser soll sehen, was ihn
+   erwartet, und nicht darauf klicken koennen. */
+.id-blass{opacity:.62}
+.id-nutzen{margin:6px 0 8px;padding-left:20px}
+.id-nutzen li{margin:2px 0}
 .id-traegt{color:var(--akzent)}
 .id-duenn{color:var(--gedaempft);font-weight:600}
 .id-kern b{color:var(--akzent)}
@@ -769,14 +774,40 @@ Gemessen werden soll die Zahl der Wiederaufnahmen im ersten Jahr."></textarea>
   </div>
   <div id="id-was" class="fehlt"></div>
   <div id="id-ergebnis"></div>
+  <div id="id-vorschau" class="id-blass">
+    <h4 style="margin:24px 0 4px">Eine zweite Meinung von der Redaktion</h4>
+    <p><b>Wird nach dem ersten Ideentest freigeschaltet.</b> Danach können Sie
+    uns die Beschreibung schicken, die oben im Feld steht. Wir sehen sie von
+    Hand an und antworten Ihnen per E-Mail:</p>
+    <ul class="id-nutzen">
+      <li>welche der Treffer oben wirklich einschlägig sind und welche nur
+        Wörter mit Ihnen teilen,</li>
+      <li>woran die vergleichbaren Vorhaben gehakt haben, mit der Fundstelle
+        im Ergebnisbericht,</li>
+      <li>welche Fördersumme und welche Laufzeit in diesem Feld üblich waren
+        und was die Berichte zur Fallzahl sagen,</li>
+      <li>wer diese Projekte geleitet hat, also mit wem ein Gespräch lohnt.</li>
+    </ul>
+    <p class="hinweis">Kostenfrei und ohne Gegenleistung. Solange Sie nichts
+    abschicken, verlässt Ihre Beschreibung diesen Rechner nicht.</p>
+  </div>
   <div id="id-senden" hidden>
     <h4 style="margin:24px 0 4px">Eine zweite Meinung von der Redaktion</h4>
-    <p>Die Rechnung oben vergleicht Wörter. Wir sehen uns Ihr Vorhaben von
-    Hand an und melden uns mit dem, was die Datenbank dazu hergibt: welche
-    Projekte wirklich vergleichbar sind, woran sie gehakt haben, wer sie
-    geleitet hat und ob Ihr Zuschnitt sich davon abhebt. Kostenfrei und ohne
-    Gegenleistung. Wird daraus ein Thema für „Monitor Versorgungsforschung“,
-    fragen wir Sie vorher.</p>
+    <p>Die Rechnung oben vergleicht Wörter, mehr nicht. Schicken Sie uns die
+    Beschreibung, dann sehen wir sie von Hand an und antworten Ihnen per
+    E-Mail:</p>
+    <ul class="id-nutzen">
+      <li>welche der Treffer oben wirklich einschlägig sind und welche nur
+        Wörter mit Ihnen teilen,</li>
+      <li>woran die vergleichbaren Vorhaben gehakt haben, mit der Fundstelle
+        im Ergebnisbericht,</li>
+      <li>welche Fördersumme und welche Laufzeit in diesem Feld üblich waren
+        und was die Berichte zur Fallzahl sagen,</li>
+      <li>wer diese Projekte geleitet hat, also mit wem ein Gespräch lohnt.</li>
+    </ul>
+    <p>Kostenfrei und ohne Gegenleistung. Ihre Idee bleibt dabei bei uns: Wir
+    veröffentlichen nichts darüber, solange Sie es nicht ausdrücklich
+    freigeben.</p>
     <p class="hinweis">Dafür brauchen wir Ihre Beschreibung und eine Adresse,
     und dafür müssen beide zu uns kommen. Das passiert nur, wenn Sie es hier
     ausdrücklich veranlassen.</p>
@@ -2148,6 +2179,7 @@ function ideePruefen() {
   } catch (e) { /* zaehlen ist Beiwerk, nicht Dienst */ }
 
   const kasten = document.getElementById('id-senden');
+  document.getElementById('id-vorschau').hidden = true;
   kasten.hidden = false;
   kasten.dataset.treffer = zehn.slice(0, 5)
     .map(t => `${t.p.akr || ''} (${t.p.id})`).join(', ');
@@ -2230,10 +2262,13 @@ function ideeAnstossen() {
      Browser, weder Ihr Text noch eine hineingezogene Datei wird übertragen.
      Hinaus geht nach jeder Prüfung nur eine anonyme Strichliste mit dem
      Themenfeld und den drei häufigsten Bausteinen, damit wir sehen, welche
-     Themen nachgefragt werden. <b>Nach einem ersten Ideentest</b> gibt es
-     als weiterführendes Angebot eine zweite Meinung von der Redaktion: Wir
-     sehen Ihr Vorhaben von Hand an und melden uns mit den wirklich
-     vergleichbaren Projekten, ihren Stolpersteinen und möglichen Partnern.`;
+     Themen nachgefragt werden. <b>Nach dem ersten Ideentest wird unten ein
+     weiteres Angebot freigeschaltet:</b> eine zweite Meinung von der
+     Redaktion. Sie bekommen dann per E-Mail, welche der Treffer wirklich
+     einschlägig sind, woran die vergleichbaren Vorhaben gehakt haben, was in
+     diesem Feld an Fördersumme und Laufzeit üblich war und wer die Projekte
+     geleitet hat. Was dafür im Kasten steht, gilt: Ohne Ihr Häkchen geht
+     nichts hinaus.`;
   document.getElementById('id-los').onclick = ideePruefen;
   document.getElementById('id-ab').onclick = ideeSenden;
 
@@ -2268,6 +2303,7 @@ function ideeAnstossen() {
     document.getElementById('id-text').value = '';
     document.getElementById('id-ergebnis').innerHTML = '';
     document.getElementById('id-senden').hidden = true;
+    document.getElementById('id-vorschau').hidden = false;
     document.getElementById('id-stand').innerHTML = '';
   };
   document.getElementById('id-text').addEventListener('keydown', ev => {
