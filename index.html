@@ -1259,7 +1259,12 @@ function fzZeilen() {
     const f = FZ[id], p = PID[id];
     if (!p) return;
     if (ber && p.ber !== ber) return;
-    if (grund && f.gr !== grund) return;
+    /* Ein vorangestelltes Ausrufezeichen kehrt den Grundfilter um:
+       nicht "nur dieser Grund", sondern "alle ausser diesem". */
+    if (grund) {
+      if (grund.startsWith('!')) { if (f.gr === grund.slice(1)) return; }
+      else if (f.gr !== grund) return;
+    }
     if (pand && !inPandemie(p)) return;
     const wo = f.q == null ? 'ohne'
       : (f.q >= 1 ? 'ok' : (f.q >= .8 ? 'knapp' : 'kurz'));
@@ -1399,7 +1404,26 @@ function fallzahlAnstossen() {
     });
   };
   fuellen('fz-ber', ber);
-  fuellen('fz-grund', gruende);
+
+  /* Zwei Gruppen: einen Grund herausgreifen oder ihn weglassen. Die
+     zweite beantwortet die Frage, die oefter gestellt wird, naemlich
+     wie das Bild ohne die Pandemieprojekte aussieht. */
+  const gsort = [...gruende].sort(
+    (a, b) => fzGrundWort(a).localeCompare(fzGrundWort(b), 'de'));
+  const gruppe = (el, titel, praefix) => {
+    const g = document.createElement('optgroup');
+    g.label = titel;
+    gsort.forEach(w => {
+      const o = document.createElement('option');
+      o.value = praefix + w;
+      o.textContent = fzGrundWort(w);
+      g.appendChild(o);
+    });
+    el.appendChild(g);
+  };
+  const gel = document.getElementById('fz-grund');
+  gruppe(gel, 'nur dieser Grund', '');
+  gruppe(gel, 'alle außer', '!');
 
   ['fz-q', 'fz-ber', 'fz-lage', 'fz-grund'].forEach(id =>
     document.getElementById(id).addEventListener('input', fzZeichnen));
