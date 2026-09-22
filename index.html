@@ -111,6 +111,10 @@ tr.ep-instrument:hover{background:var(--weich)}
   background:var(--akzent);opacity:.75}
 .vt-marken{display:flex;gap:4px;font-size:11px;color:var(--gedaempft)}
 .vt-marken span{flex:1;text-align:center}
+#id-senden input[type=email], #id-senden input[type=text]{font:inherit;
+  font-size:14px;padding:7px 11px;border:1px solid var(--linie);
+  border-radius:8px;background:var(--bg);color:var(--text)}
+#id-senden input:focus{outline:none;border-color:var(--akzent)}
 .siegel{background:var(--weich);border-left:3px solid var(--gut);
   border-radius:0 8px 8px 0;padding:9px 13px;margin:0 0 12px;font-size:13.5px;
   line-height:1.55}
@@ -501,13 +505,13 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
     <button role="tab" aria-selected="false" data-ziel="t-partner">Partner</button>
     <button role="tab" aria-selected="false" data-ziel="t-endpunkte">Endpunkte</button>
     <button role="tab" aria-selected="false" data-ziel="t-fallzahl">Fallzahlen</button>
-    <button role="tab" aria-selected="false" data-ziel="t-idee">Ideencheck</button>
     <button role="tab" aria-selected="false" data-ziel="t-zahlen">Kennzahlen</button>
   </div>
   <div class="reihe wert">
     <button role="tab" aria-selected="false" data-ziel="t-recherche">Schlagwort-Recherche</button>
     <button role="tab" class="gold" aria-selected="false"
             data-ziel="t-evidenz">Evidenzsynthese</button>
+    <button role="tab" aria-selected="false" data-ziel="t-idee">Ideencheck</button>
   </div>
 </nav>
 <main>
@@ -735,6 +739,28 @@ Gemessen werden soll die Zahl der Wiederaufnahmen im ersten Jahr."></textarea>
   </div>
   <div id="id-was" class="fehlt"></div>
   <div id="id-ergebnis"></div>
+  <div id="id-senden" hidden>
+    <h4 style="margin:24px 0 4px">Sollen wir uns Ihre Idee ansehen?</h4>
+    <p>Wenn Sie wollen, schauen wir uns Ihr Vorhaben genauer an und melden uns
+    bei Ihnen. Dafür brauchen wir Ihre Beschreibung und eine Adresse, und
+    dafür müssen beide zu uns kommen. Das passiert nur, wenn Sie es hier
+    ausdrücklich veranlassen.</p>
+    <label class="schalter" style="align-items:flex-start;margin-bottom:10px">
+      <input type="checkbox" id="id-ok" style="margin-top:3px">
+      <span>Ich bin einverstanden, dass „Monitor Versorgungsforschung“ meine
+      Beschreibung und meine Kontaktdaten speichert und mich dazu anspricht.
+      Weitergegeben wird nichts. Eine Zeile an redaktion@m-vf.de genügt, und
+      alles wird gelöscht.</span>
+    </label>
+    <div class="werkzeuge">
+      <input type="email" id="id-mail" placeholder="E-Mail-Adresse"
+             style="min-width:250px">
+      <input type="text" id="id-name" placeholder="Name (freiwillig)">
+      <input type="text" id="id-haus" placeholder="Einrichtung (freiwillig)">
+      <button type="button" id="id-ab" class="knopf">Idee zusenden</button>
+    </div>
+    <p class="hinweis" id="id-stand"></p>
+  </div>
 </section>
 
 <section class="tafel kz" id="t-zahlen" hidden><div id="zahlen"></div></section>
@@ -1778,6 +1804,66 @@ function ideePruefen() {
     Für eine Partnersuche ist das der erste Anlaufpunkt, für eine Abgrenzung der
     Hinweis, wer dasselbe Feld bereits besetzt.</p>` : ''}`;
   ziel.scrollIntoView({behavior: 'smooth', block: 'start'});
+  /* Erst jetzt, nach dem Ergebnis: Wer noch nicht gesehen hat, was der
+     Check leistet, hat keinen Grund, uns seine Idee zu schicken. */
+  const kasten = document.getElementById('id-senden');
+  kasten.hidden = false;
+  kasten.dataset.treffer = zehn.slice(0, 5)
+    .map(t => `${t.p.akr || ''} (${t.p.id})`).join(', ');
+}
+
+const IDEEN_ENDPUNKT =
+  'https://www.monitor-versorgungsforschung.de/ideen/ideen.php';
+
+async function ideeSenden() {
+  const stand = document.getElementById('id-stand');
+  const ok = document.getElementById('id-ok').checked;
+  const mail = document.getElementById('id-mail').value.trim();
+  const text = document.getElementById('id-text').value.trim();
+  const sage = (t, schlecht) => {
+    stand.innerHTML = t;
+    stand.style.color = schlecht ? '#b4483c' : 'var(--gut)';
+  };
+  if (!ok) return sage('Bitte setzen Sie das Häkchen. Ohne Ihr '
+    + 'Einverständnis senden wir nichts.', true);
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail))
+    return sage('Bitte eine E-Mail-Adresse, an die wir antworten können.', true);
+  if (text.length < 100) return sage('Die Beschreibung ist zu kurz.', true);
+  sage('wird gesendet …');
+  try {
+    const a = await fetch(IDEEN_ENDPUNKT, {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        einverstanden: true, beschreibung: text, email: mail,
+        name: document.getElementById('id-name').value.trim(),
+        einrichtung: document.getElementById('id-haus').value.trim(),
+        treffer: document.getElementById('id-senden').dataset.treffer || '',
+      }),
+    });
+    const d = await a.json().catch(() => ({}));
+    if (d.ok) {
+      sage('<b>Angekommen.</b> Sie bekommen gleich eine Bestätigung per '
+        + 'Mail, und wir melden uns.');
+      document.getElementById('id-ab').disabled = true;
+    } else {
+      /* Der Grund kommt vom Server und wird hier uebersetzt: "zu-oft"
+         ist kein Fehler des Nutzers, sondern die Taktbremse. */
+      const worte = {
+        'zu-oft': 'Heute sind von diesem Rechner schon mehrere Zusendungen '
+          + 'gekommen. Bitte morgen noch einmal oder direkt an redaktion@m-vf.de.',
+        'keine-einwilligung': 'Ohne Häkchen wird nichts gesendet.',
+        'adresse': 'Die Adresse sieht nicht nach einer E-Mail-Adresse aus.',
+        'zu-kurz': 'Die Beschreibung ist zu kurz.',
+        'nicht-eingerichtet': 'Die Annahmestelle ist noch nicht eingerichtet. '
+          + 'Bitte schicken Sie Ihre Idee an redaktion@m-vf.de.',
+      };
+      sage(worte[d.grund] || ('Das hat nicht geklappt. Bitte schicken Sie '
+        + 'Ihre Idee an redaktion@m-vf.de.'), true);
+    }
+  } catch (e) {
+    sage('Die Verbindung kam nicht zustande. Bitte schicken Sie Ihre Idee '
+      + 'an redaktion@m-vf.de.', true);
+  }
 }
 
 function ideeAnstossen() {
@@ -1803,6 +1889,7 @@ function ideeAnstossen() {
      Browser, nichts wird gesendet oder gespeichert, auch keine Datei, die Sie
      hier hineinziehen.`;
   document.getElementById('id-los').onclick = ideePruefen;
+  document.getElementById('id-ab').onclick = ideeSenden;
 
   /* Datei annehmen, per Auswahl oder per Ziehen. Gelesen wird im
      Browser; hochgeladen wird nichts. */
@@ -1834,6 +1921,8 @@ function ideeAnstossen() {
   document.getElementById('id-leer').onclick = () => {
     document.getElementById('id-text').value = '';
     document.getElementById('id-ergebnis').innerHTML = '';
+    document.getElementById('id-senden').hidden = true;
+    document.getElementById('id-stand').innerHTML = '';
   };
   document.getElementById('id-text').addEventListener('keydown', ev => {
     if (ev.key === 'Enter' && (ev.ctrlKey || ev.metaKey)) ideePruefen();
