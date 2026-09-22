@@ -105,10 +105,11 @@ tr.ep-instrument:hover{background:var(--weich)}
 .balken.kurz i{background:#b4483c}
 .fz-ok{color:#1a7a3c;font-weight:600;font-size:12.5px;white-space:nowrap}
 .fz-fehlt{color:#b4483c;font-weight:600;font-size:12.5px;white-space:nowrap}
-.balken.spur{display:inline-block;width:64px;height:8px;margin-left:7px;
+.fz-mal{color:var(--gedaempft);font-weight:400;margin-left:5px}
+.balken.spur{display:inline-block;width:46px;height:8px;margin-left:7px;
   vertical-align:1px;border-radius:99px}
 #fz-tab td:nth-child(5), #fz-tab th:nth-child(5){white-space:nowrap;
-  min-width:172px}
+  min-width:150px}
 .balken b{position:absolute;right:5px;top:-1px;font-size:11px;font-weight:600;
   line-height:18px;color:var(--text)}
 .vt{display:flex;align-items:flex-end;gap:4px;height:92px;margin:6px 0 2px}
@@ -1338,8 +1339,12 @@ function fzBalken(z) {
     const dazu = q >= 1.5
       ? `${q.toLocaleString('de-DE', {maximumFractionDigits: 1})}-fach`
       : `${p} %`;
-    return `<span class="fz-ok">Ziel erreicht</span>
-      <span class="ep-nein">${dazu}</span>`;
+    /* Dieselbe Bauweise wie bei der Luecke: Wort, dann Spur. Die Spur
+       ist hier voll, damit die Spalte auf einen Blick zerfaellt in
+       "durchgezogen gruen" und "angebrochen rot". */
+    return `<span class="fz-ok">erreicht<span class="fz-mal">${
+      dazu}</span></span><span class="balken spur ok"><i
+      style="width:100%"></i></span>`;
   }
   const fehlt = Math.round((1 - q) * 100);
   /* Die Zahl steht neben dem Balken, nicht darin: In einem kurzen roten
