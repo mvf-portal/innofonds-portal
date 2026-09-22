@@ -774,56 +774,6 @@ Gemessen werden soll die Zahl der Wiederaufnahmen im ersten Jahr."></textarea>
   </div>
   <div id="id-was" class="fehlt"></div>
   <div id="id-ergebnis"></div>
-  <div id="id-vorschau" class="id-blass" hidden>
-    <h4 style="margin:24px 0 4px">Eine zweite Meinung von der Redaktion</h4>
-    <p><b>Wird nach dem ersten Ideentest freigeschaltet.</b> Danach können Sie
-    uns die Beschreibung schicken, die oben im Feld steht. Wir sehen sie von
-    Hand an und antworten Ihnen per E-Mail:</p>
-    <ul class="id-nutzen">
-      <li>welche der Treffer oben wirklich einschlägig sind und welche nur
-        Wörter mit Ihnen teilen,</li>
-      <li>woran die vergleichbaren Vorhaben gehakt haben, mit der Fundstelle
-        im Ergebnisbericht,</li>
-      <li>welche Fördersumme und welche Laufzeit in diesem Feld üblich waren
-        und was die Berichte zur Fallzahl sagen,</li>
-      <li>wer diese Projekte geleitet hat, also mit wem ein Gespräch lohnt.</li>
-    </ul>
-    <p class="hinweis">Kostenfrei und ohne Gegenleistung. Solange Sie nichts
-    abschicken, verlässt Ihre Beschreibung diesen Rechner nicht.</p>
-  </div>
-  <div id="id-senden" hidden>
-    <h4 style="margin:24px 0 4px">Eine zweite Meinung von der Redaktion</h4>
-    <p>Die Rechnung oben vergleicht Wörter, mehr nicht. Schicken Sie uns die
-    Beschreibung, dann sehen wir sie von Hand an und antworten Ihnen per
-    E-Mail:</p>
-    <ul class="id-nutzen">
-      <li>welche der Treffer oben wirklich einschlägig sind und welche nur
-        Wörter mit Ihnen teilen,</li>
-      <li>woran die vergleichbaren Vorhaben gehakt haben, mit der Fundstelle
-        im Ergebnisbericht,</li>
-      <li>welche Fördersumme und welche Laufzeit in diesem Feld üblich waren
-        und was die Berichte zur Fallzahl sagen,</li>
-      <li>wer diese Projekte geleitet hat, also mit wem ein Gespräch lohnt.</li>
-    </ul>
-    <p class="hinweis">Dafür brauchen wir Ihre Beschreibung und eine Adresse,
-    und dafür müssen beide zu uns kommen. Das passiert nur, wenn Sie es hier
-    ausdrücklich veranlassen.</p>
-    <label class="schalter" style="align-items:flex-start;margin-bottom:10px">
-      <input type="checkbox" id="id-ok" style="margin-top:3px">
-      <span>Ich bin einverstanden, dass „Monitor Versorgungsforschung“ meine
-      Beschreibung und meine Kontaktdaten speichert und mich dazu anspricht.
-      Weitergegeben wird nichts. Eine Zeile an redaktion@m-vf.de genügt, und
-      alles wird gelöscht.</span>
-    </label>
-    <div class="werkzeuge">
-      <input type="email" id="id-mail" placeholder="E-Mail-Adresse"
-             style="min-width:250px">
-      <input type="text" id="id-name" placeholder="Name (freiwillig)">
-      <input type="text" id="id-haus" placeholder="Einrichtung (freiwillig)">
-      <button type="button" id="id-ab" class="knopf">Idee zusenden</button>
-    </div>
-    <p class="hinweis" id="id-stand"></p>
-  </div>
 </section>
 
 <section class="tafel kz" id="t-zahlen" hidden><div id="zahlen"></div></section>
@@ -2208,11 +2158,15 @@ function ideePruefen() {
 
   /* Solange EINSENDEN aus ist, bleibt beides zu. Zum Zurueckholen
      genuegt es, die Konstante auf true zu setzen. */
+  /* Den Einsendekasten gibt es nur, wenn EINSENDEN an ist; sonst
+     steht er nicht einmal im Quelltext. */
   const kasten = document.getElementById('id-senden');
-  document.getElementById('id-vorschau').hidden = true;
-  kasten.hidden = !EINSENDEN;
-  kasten.dataset.treffer = zehn.slice(0, 5)
-    .map(t => `${t.p.akr || ''} (${t.p.id})`).join(', ');
+  if (kasten) {
+    document.getElementById('id-vorschau').hidden = true;
+    kasten.hidden = false;
+    kasten.dataset.treffer = zehn.slice(0, 5)
+      .map(t => `${t.p.akr || ''} (${t.p.id})`).join(', ');
+  }
 }
 
 /* Aus, bis entschieden ist, ob die Einschaetzung von der Redaktion
@@ -2297,11 +2251,10 @@ function ideeAnstossen() {
      Browser, weder Ihr Text noch eine hineingezogene Datei wird übertragen.
      Hinaus geht nach jeder Prüfung nur eine anonyme Strichliste mit dem
      Themenfeld und den drei häufigsten Bausteinen, damit wir sehen, welche
-     Themen nachgefragt werden.` + (EINSENDEN ? ` <b>Nach dem ersten Ideentest
-     wird unten ein weiteres Angebot freigeschaltet:</b> eine zweite Meinung
-     von der Redaktion. Ohne Ihr Häkchen geht nichts hinaus.` : '');
+     Themen nachgefragt werden.`;
   document.getElementById('id-los').onclick = ideePruefen;
   if (EINSENDEN) document.getElementById('id-ab').onclick = ideeSenden;
+  const weg = id => { const e = document.getElementById(id); if (e) e.hidden = true; };
 
   /* Datei annehmen, per Auswahl oder per Ziehen. Gelesen wird im
      Browser; hochgeladen wird nichts. */
@@ -2333,9 +2286,9 @@ function ideeAnstossen() {
   document.getElementById('id-leer').onclick = () => {
     document.getElementById('id-text').value = '';
     document.getElementById('id-ergebnis').innerHTML = '';
-    document.getElementById('id-senden').hidden = true;
-    document.getElementById('id-vorschau').hidden = !EINSENDEN;
-    document.getElementById('id-stand').innerHTML = '';
+    weg('id-senden'); weg('id-vorschau');
+    const stand = document.getElementById('id-stand');
+    if (stand) stand.innerHTML = '';
   };
   document.getElementById('id-text').addEventListener('keydown', ev => {
     if (ev.key === 'Enter' && (ev.ctrlKey || ev.metaKey)) ideePruefen();
