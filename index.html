@@ -104,6 +104,11 @@ tr.ep-instrument:hover{background:var(--weich)}
 .balken.knapp i{background:#c79100}
 .balken.kurz i{background:#b4483c}
 .fz-ok{color:#1a7a3c;font-weight:600;font-size:12.5px;white-space:nowrap}
+.fz-fehlt{color:#b4483c;font-weight:600;font-size:12.5px;white-space:nowrap}
+.balken.spur{display:inline-block;width:64px;height:8px;margin-left:7px;
+  vertical-align:1px;border-radius:99px}
+#fz-tab td:nth-child(5), #fz-tab th:nth-child(5){white-space:nowrap;
+  min-width:172px}
 .balken b{position:absolute;right:5px;top:-1px;font-size:11px;font-weight:600;
   line-height:18px;color:var(--text)}
 .vt{display:flex;align-items:flex-end;gap:4px;height:92px;margin:6px 0 2px}
@@ -1337,9 +1342,11 @@ function fzBalken(z) {
       <span class="ep-nein">${dazu}</span>`;
   }
   const fehlt = Math.round((1 - q) * 100);
-  return `<span class="balken ${z.wo}" title="Erreicht sind ${p} Prozent der
-    geplanten Zahl."><i style="width:${fehlt}%"></i>
-    <b>${fehlt} % fehlen</b></span>`;
+  /* Die Zahl steht neben dem Balken, nicht darin: In einem kurzen roten
+     Balken war sie nicht zu lesen. */
+  return `<span class="fz-fehlt" title="Erreicht sind ${p} Prozent der
+    geplanten Zahl.">${fehlt} % fehlen</span><span class="balken spur ${
+    z.wo}"><i style="width:${fehlt}%"></i></span>`;
 }
 
 function fzVerteilung(liste) {
