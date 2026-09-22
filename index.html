@@ -712,9 +712,13 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
        eintippen soll, entscheidet vor dem ersten Buchstaben, ob er das
        tut. -->
   <p class="siegel"><b>Vertraulich.</b> Ihre Beschreibung verlässt Ihren
-  Rechner nicht. Die Auswertung rechnet im Browser, es gibt keine Übertragung,
-  keine Speicherung und kein Konto. Das gilt auch für eine Datei, die Sie
-  hineinziehen.</p>
+  Rechner nicht. Die Auswertung rechnet im Browser, es gibt kein Hochladen
+  und kein Konto, auch nicht für eine Datei, die Sie hineinziehen.
+  Anonym gezählt wird nur, <b>zu welchem Themenfeld</b> eine Anfrage gehörte
+  und <b>welche drei Bausteine</b> sie berührt hat, damit wir wissen, welche
+  Themen nachgefragt werden. Ohne Ihren Text, ohne Adresse, ohne Kennung,
+  und als Tagessumme, aus der sich keine einzelne Anfrage herauslösen
+  lässt.</p>
   <p>Beschreiben Sie Ihr geplantes Vorhaben in ein paar Sätzen: Wer wird
   versorgt, was soll anders werden, mit welchen Mitteln, und woran wollen Sie
   den Erfolg messen? Je konkreter, desto brauchbarer die Antwort.</p>
@@ -1806,6 +1810,28 @@ function ideePruefen() {
   ziel.scrollIntoView({behavior: 'smooth', block: 'start'});
   /* Erst jetzt, nach dem Ergebnis: Wer noch nicht gesehen hat, was der
      Check leistet, hat keinen Grund, uns seine Idee zu schicken. */
+  /* Die Strichliste. Sie bekommt das Ergebnis der Rechnung, nie die
+     Eingabe: ein Themenfeld, drei Bausteine, der Foerderbereich. Der
+     Aufruf ist bewusst folgenlos - schlaegt er fehl, merkt der Nutzer
+     nichts, weil er ihn nichts angeht. */
+  try {
+    const bau3 = bauliste.slice(0, 3).map(([e]) => e);
+    /* "themenoffen" tragen 244 Projekte, das sagt nichts. Gemeldet wird
+       das erste benannte Feld, und nur wenn keines dabei ist, bleibt es
+       bei themenoffen. */
+    const feld = (feldliste.find(([f]) => f && f !== 'themenoffen')
+                  || feldliste[0] || [''])[0];
+    navigator.sendBeacon
+      ? navigator.sendBeacon(IDEEN_ENDPUNKT, new Blob([JSON.stringify({
+          art: 'zaehlung', themenfeld: feld,
+          bausteine: bau3, bereich: ber,
+        })], {type: 'application/json'}))
+      : fetch(IDEEN_ENDPUNKT, {method: 'POST', keepalive: true,
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({art: 'zaehlung', themenfeld: feld,
+            bausteine: bau3, bereich: ber})}).catch(() => {});
+  } catch (e) { /* zaehlen ist Beiwerk, nicht Dienst */ }
+
   const kasten = document.getElementById('id-senden');
   kasten.hidden = false;
   kasten.dataset.treffer = zehn.slice(0, 5)
@@ -1886,8 +1912,11 @@ function ideeAnstossen() {
      sind und wie viele eine Transferempfehlung bekommen haben, und die
      Ergebnisberichte sagen im Wortlaut, woran es gehakt hat.
      <b>Ihre Eingabe bleibt auf Ihrem Rechner.</b> Die Rechnung läuft im
-     Browser, nichts wird gesendet oder gespeichert, auch keine Datei, die Sie
-     hier hineinziehen.`;
+     Browser, weder Ihr Text noch eine hineingezogene Datei wird übertragen.
+     Hinaus geht nach jeder Prüfung nur eine anonyme Strichliste mit dem
+     Themenfeld und den drei häufigsten Bausteinen, damit wir sehen, welche
+     Themen nachgefragt werden. Wenn Sie uns Ihre Idee zeigen wollen, gibt es
+     dafür unten einen eigenen Kasten mit eigenem Häkchen.`;
   document.getElementById('id-los').onclick = ideePruefen;
   document.getElementById('id-ab').onclick = ideeSenden;
 
