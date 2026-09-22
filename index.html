@@ -103,6 +103,7 @@ tr.ep-instrument:hover{background:var(--weich)}
 .balken.ok i{background:#1a7a3c}
 .balken.knapp i{background:#c79100}
 .balken.kurz i{background:#b4483c}
+.fz-ok{color:#1a7a3c;font-weight:600;font-size:12.5px;white-space:nowrap}
 .balken b{position:absolute;right:5px;top:-1px;font-size:11px;font-weight:600;
   line-height:18px;color:var(--text)}
 .vt{display:flex;align-items:flex-end;gap:4px;height:92px;margin:6px 0 2px}
@@ -727,7 +728,7 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
     <th data-f="tit">Projekt</th>
     <th data-f="geplant" class="zahl">geplant</th>
     <th data-f="aus" class="zahl">ausgewertet</th>
-    <th data-f="quote" class="zahl">Zielerreichung</th>
+    <th data-f="quote" class="zahl">Ziel erreicht?</th>
     <th data-f="grund">Grund der Abweichung</th>
     <th class="zahl">Seite</th>
   </tr></thead><tbody></tbody></table></div>
@@ -1325,9 +1326,20 @@ function fzUneins(f) {
 
 function fzBalken(z) {
   if (z.f.q == null) return '<span class="ep-nein">nicht vergleichbar</span>';
-  const p = Math.round(z.f.q * 100);
-  return `<span class="balken ${z.wo}"><i style="width:${Math.min(p, 100)}%"></i>
-    <b>${p} %</b></span>`;
+  const q = z.f.q, p = Math.round(q * 100);
+  if (q >= 1) {
+    /* Ab dem Anderthalbfachen der Faktor statt der Prozentzahl: "753 %"
+       liest niemand als "siebeneinhalbmal so viel". */
+    const dazu = q >= 1.5
+      ? `${q.toLocaleString('de-DE', {maximumFractionDigits: 1})}-fach`
+      : `${p} %`;
+    return `<span class="fz-ok">Ziel erreicht</span>
+      <span class="ep-nein">${dazu}</span>`;
+  }
+  const fehlt = Math.round((1 - q) * 100);
+  return `<span class="balken ${z.wo}" title="Erreicht sind ${p} Prozent der
+    geplanten Zahl."><i style="width:${fehlt}%"></i>
+    <b>${fehlt} % fehlen</b></span>`;
 }
 
 function fzVerteilung(liste) {
@@ -1389,7 +1401,13 @@ function fzZeichnen() {
   const uneins = liste.filter(z => fzUneins(z.f)).length;
   document.getElementById('fz-zahl').innerHTML =
     `${liste.length} Projekte in der Auswahl. Ein Klick auf eine Zeile führt zum `
-    + `Projekt, die Seitenzahl in den Bericht. Spaltenköpfe sortieren.`
+    + `Projekt, die Seitenzahl in den Bericht. Spaltenköpfe sortieren. `
+    + `<b>Der Balken zeigt, was zur geplanten Zahl fehlt</b>, je länger desto `
+    + `mehr; wo das Ziel erreicht ist, steht kein Balken. Ein Vielfaches der `
+    + `geplanten Zahl ist dabei kein Verdienst: Die Planung ist in diesen `
+    + `Berichten meist die Untergrenze aus der Fallzahlrechnung, und wenn der `
+    + `primäre Endpunkt eine Rate je Behandlung ist, zählt der Nenner alles, `
+    + `was anfällt.`
     + (uneins ? ` Bei ${uneins} Projekten sind Zahl und Grund als `
        + `<b>auseinandergehend</b> markiert: Die geplante Fallzahl und die `
        + `Auswertungspopulation zählen dort Verschiedenes, etwa wenn mehr `
