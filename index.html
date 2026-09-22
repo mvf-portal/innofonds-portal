@@ -1292,6 +1292,11 @@ function fzZeilen() {
   return raus;
 }
 
+/* Der gespeicherte Wert bleibt der Schluessel, angezeigt wird die
+   lesbare Fassung. Bisher nur ein Fall, aber genau der haeufigste. */
+const FZ_WORT = {'nicht zutreffend, Ziel erreicht': 'Ziel erreicht'};
+const fzGrundWort = g => g ? (FZ_WORT[g] || g) : '';
+
 function fzBalken(z) {
   if (z.f.q == null) return '<span class="ep-nein">nicht vergleichbar</span>';
   const p = Math.round(z.f.q * 100);
@@ -1341,7 +1346,7 @@ function fzZeichnen() {
         ? `<br><span class="ep-nein">${esc(z.f.ge)}</span>` : ''}</td>
       <td class="zahl">${nz(z.f.a)}</td>
       <td class="zahl">${fzBalken(z)}</td>
-      <td>${z.f.gr ? esc(z.f.gr) : ''}${z.f.grz
+      <td>${z.f.gr ? esc(fzGrundWort(z.f.gr)) : ''}${z.f.grz
         ? `<br><span class="ep-nein">${esc(z.f.grz.slice(0, 150))}</span>` : ''}</td>
       <td class="zahl">${seite ? (u && nr
         ? `<a href="${esc(u)}#page=${nr[1]}" target="_blank" rel="noopener">S. ${esc(seite)}</a>`
@@ -1384,9 +1389,13 @@ function fallzahlAnstossen() {
   });
   const fuellen = (id, werte) => {
     const el = document.getElementById(id);
-    [...werte].sort((a, b) => a.localeCompare(b, 'de')).forEach(w => {
+    /* Sortiert wird nach dem, was dasteht, nicht nach dem
+       gespeicherten Wert: Sonst steht "Ziel erreicht" zwischen
+       "kein Grund" und "Pandemie". */
+    [...werte].sort((a, b) => (id === 'fz-grund' ? fzGrundWort(a) : a)
+      .localeCompare(id === 'fz-grund' ? fzGrundWort(b) : b, 'de')).forEach(w => {
       const o = document.createElement('option');
-      o.value = w; o.textContent = w; el.appendChild(o);
+      o.value = w; o.textContent = fzGrundWort(w); el.appendChild(o);
     });
   };
   fuellen('fz-ber', ber);
@@ -1411,7 +1420,7 @@ function fallzahlAnstossen() {
     const zeilen = fzZeilen().map(z => [
       z.p.akr, z.p.tit, z.p.ber, z.p.st, z.f.g, z.f.ge, z.f.gb,
       z.f.a, z.f.ae, z.f.q == null ? '' : Math.round(z.f.q * 100),
-      z.f.gr, z.f.grz, z.f.grs || z.f.gs,
+      fzGrundWort(z.f.gr), z.f.grz, z.f.grs || z.f.gs,
       z.f.pl ? 'ja' : 'nein', z.f.po, z.f.al, z.f.ef, z.f.pop,
       inPandemie(z.p) ? 'ja' : 'nein',
       epBericht(z.p) || '', 'https://innofonds.m-vf.de/#p=' + z.p.id]);
