@@ -2005,21 +2005,41 @@ function ideePruefen() {
   /* Woran es in vergleichbaren Projekten gelegen hat. Die Kategorien
      stammen aus der Auswertung der Ergebnisberichte, die Zitate aus
      den Berichten selbst. */
-  const hkat = new Map(), hbsp = [], pbsp = [];
+  const hkat = new Map();
+  /* Je Projekt eine eigene Schlange. Ausgegeben wird dann reihum, ein
+     Eintrag je Projekt und Runde. */
+  const hroh = [], proh = [];
   nah.forEach(t => {
     const x = t.p.x;
     if (!x) return;
+    const hm = [], pm = [];
     (x.minus || []).forEach(h => {
       const k = h.kategorie || 'ohne Kategorie';
       hkat.set(k, (hkat.get(k) || 0) + 1);
-      if (h.hindernis && hbsp.length < 6)
-        hbsp.push({t, text: h.hindernis, seite: h.seite});
+      if (h.hindernis) hm.push({t, text: h.hindernis, seite: h.seite});
     });
     (x.plus || []).forEach(f => {
-      if (f.faktor && pbsp.length < 6)
-        pbsp.push({t, text: f.faktor, seite: f.seite});
+      if (f.faktor) pm.push({t, text: f.faktor, seite: f.seite});
     });
+    if (hm.length) hroh.push(hm);
+    if (pm.length) proh.push(pm);
   });
+  /* Reihum aus den Schlangen ziehen, bis sechs beisammen sind. */
+  function reihum(schlangen, wieviel) {
+    const raus = [];
+    for (let runde = 0; raus.length < wieviel; runde++) {
+      let etwas = false;
+      for (const q of schlangen) {
+        if (runde >= q.length) continue;
+        raus.push(q[runde]); etwas = true;
+        if (raus.length >= wieviel) break;
+      }
+      if (!etwas) break;
+    }
+    return raus;
+  }
+  const hbsp = reihum(hroh, 6), pbsp = reihum(proh, 6);
+
   const hliste = [...hkat.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
 
   const leiter = new Map();
