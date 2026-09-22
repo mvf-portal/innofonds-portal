@@ -774,7 +774,7 @@ Gemessen werden soll die Zahl der Wiederaufnahmen im ersten Jahr."></textarea>
   </div>
   <div id="id-was" class="fehlt"></div>
   <div id="id-ergebnis"></div>
-  <div id="id-vorschau" class="id-blass">
+  <div id="id-vorschau" class="id-blass" hidden>
     <h4 style="margin:24px 0 4px">Eine zweite Meinung von der Redaktion</h4>
     <p><b>Wird nach dem ersten Ideentest freigeschaltet.</b> Danach können Sie
     uns die Beschreibung schicken, die oben im Feld steht. Wir sehen sie von
@@ -2206,12 +2206,19 @@ function ideePruefen() {
     mehr.remove();
   };
 
+  /* Solange EINSENDEN aus ist, bleibt beides zu. Zum Zurueckholen
+     genuegt es, die Konstante auf true zu setzen. */
   const kasten = document.getElementById('id-senden');
   document.getElementById('id-vorschau').hidden = true;
-  kasten.hidden = false;
+  kasten.hidden = !EINSENDEN;
   kasten.dataset.treffer = zehn.slice(0, 5)
     .map(t => `${t.p.akr || ''} (${t.p.id})`).join(', ');
 }
+
+/* Aus, bis entschieden ist, ob die Einschaetzung von der Redaktion
+   kommt oder von spezialisierten Haeusern. Die anonyme Zaehlung
+   laeuft davon unabhaengig weiter. */
+const EINSENDEN = false;
 
 const IDEEN_ENDPUNKT =
   'https://www.monitor-versorgungsforschung.de/ideen/ideen.php';
@@ -2290,15 +2297,11 @@ function ideeAnstossen() {
      Browser, weder Ihr Text noch eine hineingezogene Datei wird übertragen.
      Hinaus geht nach jeder Prüfung nur eine anonyme Strichliste mit dem
      Themenfeld und den drei häufigsten Bausteinen, damit wir sehen, welche
-     Themen nachgefragt werden. <b>Nach dem ersten Ideentest wird unten ein
-     weiteres Angebot freigeschaltet:</b> eine zweite Meinung von der
-     Redaktion. Sie bekommen dann per E-Mail, welche der Treffer wirklich
-     einschlägig sind, woran die vergleichbaren Vorhaben gehakt haben, was in
-     diesem Feld an Fördersumme und Laufzeit üblich war und wer die Projekte
-     geleitet hat. Was dafür im Kasten steht, gilt: Ohne Ihr Häkchen geht
-     nichts hinaus.`;
+     Themen nachgefragt werden.` + (EINSENDEN ? ` <b>Nach dem ersten Ideentest
+     wird unten ein weiteres Angebot freigeschaltet:</b> eine zweite Meinung
+     von der Redaktion. Ohne Ihr Häkchen geht nichts hinaus.` : '');
   document.getElementById('id-los').onclick = ideePruefen;
-  document.getElementById('id-ab').onclick = ideeSenden;
+  if (EINSENDEN) document.getElementById('id-ab').onclick = ideeSenden;
 
   /* Datei annehmen, per Auswahl oder per Ziehen. Gelesen wird im
      Browser; hochgeladen wird nichts. */
@@ -2331,7 +2334,7 @@ function ideeAnstossen() {
     document.getElementById('id-text').value = '';
     document.getElementById('id-ergebnis').innerHTML = '';
     document.getElementById('id-senden').hidden = true;
-    document.getElementById('id-vorschau').hidden = false;
+    document.getElementById('id-vorschau').hidden = !EINSENDEN;
     document.getElementById('id-stand').innerHTML = '';
   };
   document.getElementById('id-text').addEventListener('keydown', ev => {
