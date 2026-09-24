@@ -2627,22 +2627,33 @@ P.forEach(p => {
                       (p.x.minus||[]).map(h=>h.hindernis+' '+h.kategorie).join(' '),
                       (p.x.plus||[]).map(f=>f.faktor).join(' ')].join(' ') : ''
               ].join(' '));
+  /* Zweite Fassung ohne Bindestriche: Sonst findet
+     "Patientenempowerment" das Element "Patienten-Empowerment" nicht. */
+  p._sf = p._s.replace(/-/g, '');
 });
 
+const ohneStrich = t => (t ?? '').replace(/-/g, '');
 function suche(frage, zustand) {
   const w = woerter(frage);
   let liste = P.filter(p => passtZuFilter(p, zustand));
   if (!w.length) return [];
-  return liste.map(p => {
-    let punkte = 0;
+  const bewertet = liste.map(p => {
+    let punkte = 0, hat = 0;
     for (const t of w) {
-      if (norm(p.akr).includes(t)) punkte += 6;
-      if (norm(p.tit).includes(t)) punkte += 4;
-      const n = (p._s.match(new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g'))||[]).length;
+      const tf = ohneStrich(t);
+      if (ohneStrich(norm(p.akr)).includes(tf)) punkte += 6;
+      if (ohneStrich(norm(p.tit)).includes(tf)) punkte += 4;
+      const n = (p._sf.match(new RegExp(
+        tf.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
       punkte += Math.min(n, 5);
+      if (n) hat++;
     }
-    return {p, punkte};
-  }).filter(x => x.punkte > 0).sort((a,b) => b.punkte - a.punkte);
+    return {p, punkte, hat};
+  }).filter(x => x.punkte > 0);
+  /* Mehrere Woerter sollen enger suchen, nicht weiter. */
+  const alle = bewertet.filter(x => x.hat === w.length);
+  const nehmen = (w.length > 1 && alle.length) ? alle : bewertet;
+  return nehmen.sort((a, b) => b.punkte - a.punkte);
 }
 
 const VORSCHLAEGE = ['Lotsen Schlaganfall','sektorenübergreifende Versorgung Pflege',
