@@ -4615,8 +4615,19 @@ partnerZeichnen();
             ${UM.antworten ? UM.antworten.reduce((a, r) => a + r.n, 0) : 0}
             Aufträge. Wie eine Stelle darauf reagiert, hängt davon ab,
             welche Art von Stelle sie ist.</p>
-          ${t(['Antwort', 'Adressaten'],
-              (UM.antworten || []).map(r => [esc(r.s || '–'), r.n]))}
+          <table id="an-tab"><thead><tr><th>Antwort</th>
+            <th class="zahl">Adressaten</th></tr></thead><tbody>${
+            (UM.antworten || []).map(r => `<tr><td>${esc(r.s || '–')}</td>
+            <td class="zahl ad-auf" data-stand="${esc(r.s || '')}">${r.n}</td>
+            </tr>`).join('')}</tbody>
+            <tfoot><tr class="summe"><td><b>Summe</b></td>
+              <td class="zahl"><b>${(UM.antworten || []).reduce(
+                (a, r) => a + r.n, 0)}</b></td></tr></tfoot></table>
+          <p class="hinweis">Auch hier führt jede Zahl weiter. Wer hat zur
+            Kenntnis genommen und nichts getan, wer hat geprüft und
+            abgelehnt, und mit welcher Begründung: Das steht in den
+            einzelnen Antworten, nicht in der Summe.</p>
+          <div id="an-detail"></div>
           ${(UM.adressat_art || []).length ? `
           <p><b>Wer reagiert wie.</b> Nicht jede Nennung im Beschluss ist
             ein Auftrag. Bei ${UM.adressat_art.reduce((a, r) => a + r.info, 0)}
@@ -4899,6 +4910,73 @@ partnerZeichnen();
       .forEach(x => x.classList.remove('hell'));
   });
 
+  /* Eine Darstellung fuer beide Wege: ueber die Art der Stelle und ueber
+     die Antwort. Wer wissen will, wer zur Kenntnis genommen und nichts
+     getan hat, klickt die Antwort an und bekommt dieselben Belege. */
+  function nennungenZeigen(el, titel, liste, nach) {
+    if (!nach) {
+      nach = new Map();
+      liste.forEach(r => {
+        const k = r.akr + '§' + r.id;
+        if (!nach.has(k)) nach.set(k, []);
+        nach.get(k).push(r);
+      });
+    }
+    el.innerHTML = `<div class="dossier" style="margin-top:10px">
+      <button class="zu">Liste schließen</button>
+      <h4 style="margin:0 0 4px">${titel}</h4>
+      <p class="hinweis" style="margin:0 0 10px">${liste.length} Nennung${
+        liste.length === 1 ? '' : 'en'} in ${nach.size} Vorhaben.</p>
+      ${[...nach.entries()].map(([k, rs]) => {
+        const [akr, id] = k.split('§');
+        return `<div class="abschnitt">
+        <h4><a href="#p=${id}">${esc(akr)}</a></h4>
+        ${rs.map(r => `<div style="margin:0 0 10px">
+          <div><b>${esc(r.name)}</b> · ${esc(r.st)}${
+            r.sp === 'info' ? ' · <i>nur zur Information weitergeleitet</i>'
+                            : ''}</div>
+          ${r.auf ? `<div class="hinweis">Auftrag laut Beschluss:
+            ${esc(r.auf)}</div>` : ''}
+          ${r.ant ? `<div>${esc(r.ant)}</div>` : ''}
+          ${r.zit ? `<blockquote>„${esc(r.zit)}“<span class="seite">${
+            r.st === 'nicht erkennbar'
+              ? 'Fundstelle der Nennung, keine Äußerung dieser Stelle'
+              : ''}${r.s ? (r.st === 'nicht erkennbar' ? ' · ' : '')
+                      + 'S. ' + esc(r.s) : ''}</span></blockquote>`
+            : '<div class="fz-fehlt">ohne wörtlichen Beleg im Dokument</div>'}
+        </div>`).join('')}</div>`;
+      }).join('')}</div>`;
+    el.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+  }
+
+  /* Die Antworttabelle: ein Klick auf eine Zahl zeigt alle Nennungen mit
+     dieser Antwort, quer ueber alle Stellen. */
+  const anTab = document.getElementById('an-tab');
+  const anZiel = document.getElementById('an-detail');
+  if (anTab && anZiel) {
+    anTab.addEventListener('click', ev => {
+      const z = ev.target.closest('.ad-auf');
+      if (!z) return;
+      const st = z.dataset.stand;
+      if (anZiel.dataset.stand === st) {
+        anZiel.innerHTML = ''; anZiel.dataset.stand = '';
+        anTab.querySelectorAll('.hell').forEach(x => x.classList.remove('hell'));
+        return;
+      }
+      anZiel.dataset.stand = st;
+      anTab.querySelectorAll('.hell').forEach(x => x.classList.remove('hell'));
+      z.classList.add('hell');
+      const liste = (UM.adressat_liste || [])
+        .filter(r => (r.st || '') === st);
+      nennungenZeigen(anZiel, 'Antwort: ' + esc(st || 'ohne Angabe'), liste);
+    });
+    anZiel.addEventListener('click', ev => {
+      if (!ev.target.closest('button.zu')) return;
+      anZiel.innerHTML = ''; anZiel.dataset.stand = '';
+      anTab.querySelectorAll('.hell').forEach(x => x.classList.remove('hell'));
+    });
+  }
+
   const tab = document.getElementById('ad-tab');
   const ziel = document.getElementById('ad-detail');
   if (ziel) ziel.addEventListener('click', ev => {
@@ -4935,29 +5013,8 @@ partnerZeichnen();
       if (!nach.has(k)) nach.set(k, []);
       nach.get(k).push(r);
     });
-    ziel.innerHTML = `<div class="dossier" style="margin-top:10px">
-      <button class="zu">Liste schließen</button>
-      <h4 style="margin:0 0 4px">${esc(art)} – ${esc(SPALTE[sp] || sp)}</h4>
-      <p class="hinweis" style="margin:0 0 10px">${liste.length} Nennung${
-        liste.length === 1 ? '' : 'en'} in ${nach.size} Vorhaben.</p>
-      ${[...nach.entries()].map(([k, rs]) => {
-        const [akr, id] = k.split('§');
-        return `<div class="abschnitt">
-        <h4><a href="#p=${id}">${esc(akr)}</a></h4>
-        ${rs.map(r => `<div style="margin:0 0 10px">
-          <div><b>${esc(r.name)}</b> · ${esc(r.st)}</div>
-          ${r.auf ? `<div class="hinweis">Auftrag laut Beschluss:
-            ${esc(r.auf)}</div>` : ''}
-          ${r.ant ? `<div>${esc(r.ant)}</div>` : ''}
-          ${r.zit ? `<blockquote>„${esc(r.zit)}“<span class="seite">${
-            r.st === 'nicht erkennbar'
-              ? 'Fundstelle der Nennung, keine Äußerung dieser Stelle'
-              : ''}${r.s ? (r.st === 'nicht erkennbar' ? ' · ' : '')
-                      + 'S. ' + esc(r.s) : ''}</span></blockquote>`
-            : '<div class="fz-fehlt">ohne wörtlichen Beleg im Dokument</div>'}
-        </div>`).join('')}</div>`;
-      }).join('')}</div>`;
-    ziel.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+    nennungenZeigen(ziel, esc(art) + ' – ' + esc(SPALTE[sp] || sp), liste,
+                    nach);
   });
 })();
 
