@@ -234,6 +234,14 @@ button.tat{background:var(--akzent);color:#fff;border:0;border-radius:8px;paddin
 .m-neu{background:var(--weich);color:var(--gedaempft)}
 /* Die Tabellenzeile als Einstieg: Sie muss aussehen, als liesse sich
    etwas mit ihr anfangen, sonst probiert es niemand. */
+/* Ein geoeffnetes Feld braucht einen sichtbaren Ausgang. Nochmals auf
+   dieselbe Zahl zu klicken funktioniert zwar, aber das muss man erst
+   wissen, und bei einer langen Liste ist die Zahl weit weg. */
+button.zu{float:right;margin:-2px 0 6px 10px;padding:3px 11px;font:inherit;
+  font-size:13px;line-height:1.5;color:var(--gedaempft);cursor:pointer;
+  background:var(--flaeche);border:1px solid var(--linie);border-radius:7px}
+button.zu:hover{background:var(--weich);color:var(--text);
+  border-color:var(--akzent)}
 tr.p-zeile{cursor:pointer}
 /* Eine Zahl, die sich oeffnen laesst, muss aussehen wie eine, die sich
    oeffnen laesst. */
@@ -2846,6 +2854,7 @@ function dossierHtml(p) {
     .join(' · ');
   const inhalt = teile.filter(Boolean).join('');
   return `<div class="dossier">
+    <button class="zu" data-zu="${p.id}">Eintrag schließen</button>
     ${inhalt || `<p class="hinweis">Zu diesem Vorhaben liegt noch kein
       ausgewerteter Beschluss vor. ${esc((p.bes || '').slice(0, 400))}</p>`}
     ${(p.pa || []).length ? `<details><summary>Konsortium (${p.pa.length})
@@ -2966,6 +2975,8 @@ document.querySelectorAll('#p-tab th').forEach(th => th.onclick = () => {
    bleibt ein Link zum G-BA: Wer dorthin will, soll nicht erst etwas
    wegklicken muessen. */
 document.querySelector('#p-tab tbody').addEventListener('click', ev => {
+  const zu = ev.target.closest('button.zu');
+  if (zu) { pOffen.delete(Number(zu.dataset.zu)); projekteZeichnen(); return; }
   if (ev.target.closest('a') || ev.target.closest('.p-dossier')) return;
   const tr = ev.target.closest('tr.p-zeile');
   if (!tr) return;
@@ -3043,6 +3054,8 @@ document.querySelectorAll('#ll-tab th').forEach(th => th.onclick = () => {
   leitlinienZeichnen();
 });
 document.querySelector('#ll-tab tbody').addEventListener('click', ev => {
+  const zu = ev.target.closest('button.zu');
+  if (zu) { llOffen.delete(Number(zu.dataset.zu)); leitlinienZeichnen(); return; }
   if (ev.target.closest('a') || ev.target.closest('.p-dossier')) return;
   const tr = ev.target.closest('tr.p-zeile');
   if (!tr) return;
@@ -4835,10 +4848,10 @@ partnerZeichnen();
   function projekteZeigen(titel, liste) {
     if (!umZiel) return;
     umZiel.innerHTML = `<div class="dossier" style="margin-top:10px">
+      <button class="zu">Liste schließen</button>
       <h4 style="margin:0 0 4px">${esc(titel)}</h4>
       <p class="hinweis" style="margin:0 0 10px">${liste.length} Vorhaben,
-        alphabetisch. Ein Klick auf das Akronym öffnet den Eintrag.
-        Nochmals auf die Zahl klicken schließt die Liste.</p>
+        alphabetisch. Ein Klick auf das Akronym öffnet den Eintrag.</p>
       <div class="huelle" style="max-height:420px"><table><tbody>${
         liste.map(p => `<tr><td style="white-space:nowrap"><b><a
           href="#p=${p.id}">${esc(p.akr)}</a></b></td>
@@ -4879,9 +4892,21 @@ partnerZeichnen();
     const el = document.getElementById(id);
     if (el) el.addEventListener('click', umKlick);
   });
+  if (umZiel) umZiel.addEventListener('click', ev => {
+    if (!ev.target.closest('button.zu')) return;
+    umZiel.innerHTML = ''; umZiel.dataset.schl = '';
+    document.querySelectorAll('.um-auf.hell')
+      .forEach(x => x.classList.remove('hell'));
+  });
 
   const tab = document.getElementById('ad-tab');
   const ziel = document.getElementById('ad-detail');
+  if (ziel) ziel.addEventListener('click', ev => {
+    if (!ev.target.closest('button.zu')) return;
+    ziel.innerHTML = ''; ziel.dataset.art = ''; ziel.dataset.sp = '';
+    if (tab) tab.querySelectorAll('.hell')
+      .forEach(x => x.classList.remove('hell'));
+  });
   if (tab && ziel) tab.addEventListener('click', ev => {
     const z = ev.target.closest('.ad-auf');
     if (!z) return;
@@ -4911,10 +4936,10 @@ partnerZeichnen();
       nach.get(k).push(r);
     });
     ziel.innerHTML = `<div class="dossier" style="margin-top:10px">
+      <button class="zu">Liste schließen</button>
       <h4 style="margin:0 0 4px">${esc(art)} – ${esc(SPALTE[sp] || sp)}</h4>
       <p class="hinweis" style="margin:0 0 10px">${liste.length} Nennung${
-        liste.length === 1 ? '' : 'en'} in ${nach.size} Vorhaben.
-        Nochmals klicken schließt die Liste.</p>
+        liste.length === 1 ? '' : 'en'} in ${nach.size} Vorhaben.</p>
       ${[...nach.entries()].map(([k, rs]) => {
         const [akr, id] = k.split('§');
         return `<div class="abschnitt">
