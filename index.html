@@ -1961,7 +1961,9 @@ const STOPP = new Set(('und oder der die das den dem des ein eine einer eines '
   /* Durch dieselbe Normalisierung wie die Texte. Sonst steht hier
      "zwölf" und im Text "zwolf", und die Liste greift bei keinem
      einzigen Wort mit Umlaut. */
-  .split(' ').map(epNorm));
+  .split(' ').map(w => epNorm(w)
+    .replace(/ae/g, 'a').replace(/oe/g, 'o').replace(/ue/g, 'u')
+    .replace(/ss/g, 's')));
 
 /* Wer in jedem achten Projekt vorkommt, unterscheidet nichts mehr.
    Die Grenze ergibt sich aus dem Bestand und braucht keine gepflegte
@@ -1972,7 +1974,17 @@ const ID_HAEUFIG = 0.12;
    "Versorgung" oder "Patienten" tragen keine. */
 const ID_SELTEN = 0.05;
 
-const idTok = t => epNorm(t).split(/[^a-z0-9]+/)
+/* epNorm macht aus "laendlich" nicht "landlich": Es entfernt
+   Akzente, kennt aber die Ersatzschreibung nicht. Wer aus einem System
+   ohne Umlaute kopiert, suchte deshalb in einem anderen Bestand als
+   wer sie tippt. Derselbe Text lieferte mit Umlauten 129 Treffer und
+   ohne 62, und fuenf gaengige Woerter wurden als "kommt im Bestand
+   nicht vor" ausgewiesen. Beide Seiten laufen jetzt durch dieselbe
+   Aufloesung. */
+const idNorm = t => epNorm(t)
+  .replace(/ae/g, 'a').replace(/oe/g, 'o').replace(/ue/g, 'u')
+  .replace(/ss/g, 's');
+const idTok = t => idNorm(t).split(/[^a-z0-9]+/)
   .filter(w => w.length > 3 && !STOPP.has(w));
 
 let IDX = null;   // {df, docs:[{id, tf:Map, norm}], n}
@@ -1980,7 +1992,12 @@ let IDX = null;   // {df, docs:[{id, tf:Map, norm}], n}
 function idIndex() {
   if (IDX) return IDX;
   const df = new Map(), docs = [];
-  P.forEach(p => {
+  /* Leitlinienvorhaben bleiben draussen. Der Ideencheck zeigt
+     Empfehlungsquoten, Endpunkte und Hindernisse; ein Leitlinienvorhaben
+     hat keinen Endpunkt, keine Fallzahl, und jedes abgeschlossene hat
+     eine Pruefbitte. Im Vergleichsbestand hoben sie jede Quote, ohne
+     dass eine Versorgung besser geworden waere. */
+  P.filter(p => p.vf !== 'Medizinische Leitlinien').forEach(p => {
     const worte = idTok([p.tit, p.bes, p.tf, p.vb, p.zg, p.ts,
                          ...(p.el || [])].join(' '));
     if (!worte.length) return;
