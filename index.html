@@ -2707,8 +2707,14 @@ function rechercheZeichnen() {
     return;
   }
 
-  const eng = treffer.slice(0, 40).map(t => t.p);
-  const fertig = eng.filter(p => p.te);
+  /* Frueher rechneten die dritte und vierte Kachel nur ueber die 40
+     thematisch naechsten Treffer, die erste aber ueber alle. Vier
+     Kacheln nebeneinander, von denen zwei etwas anderes meinen, sind
+     eine Falle: Bei "Patienten-Empowerment" standen 35 Prozent
+     Empfehlungsquote neben 272 Treffern, obwohl die Quote ueber alle
+     Treffer 22 Prozent betraegt. Jetzt beziehen sich alle vier auf
+     dieselbe Menge. */
+  const fertig = treffer.map(t => t.p).filter(p => p.te);
   const z = {};
   fertig.forEach(p => z[p.te] = (z[p.te]||0)+1);
   const summe = fertig.reduce((s,p) => s + (p.sum||0), 0);
@@ -2725,14 +2731,19 @@ function rechercheZeichnen() {
         Math.round(pos/fertig.length*100) : 0} %</div>
         <div class="was">mit Transfer&shy;empfehlung</div></div>
       <div class="kachel"><div class="zahl">${eur(summe)}</div>
-        <div class="was">bereits investiert (engste 40)</div></div>
+        <div class="was">Fördervolumen dieser ${fertig.length}
+          abgeschlossenen Vorhaben</div></div>
     </div>
     ${fertig.length ? `<div class="balken">
       <i style="width:${anteil('Prüfbitte/Überführung')+anteil('Erprobung als neue Versorgungsform')}%;background:var(--gut)"></i>
       <i style="width:${anteil('Weitergabe der wissenschaftlichen Erkenntnisse')}%;background:var(--mittel)"></i>
       <i style="width:${anteil('keine Empfehlung')}%;background:var(--schlecht)"></i>
-    </div><p class="hinweis">Bilanz über die 40 thematisch nächsten abgeschlossenen
-      Projekte, nicht über alle Treffer.</p>` : ''}`;
+    </div><p class="hinweis">Alle vier Kacheln und der Balken beziehen
+      sich auf dieselbe Menge: die ${treffer.length} Treffer dieser
+      Suche, für Quote und Volumen eingeschränkt auf die
+      ${fertig.length} davon, zu denen ein Beschluss vorliegt. Laufende
+      Vorhaben können keine Empfehlung haben und sind dort nicht
+      mitgezählt.</p>` : ''}`;
 
   ziel.innerHTML = treffer.slice(0, 25).map(({p}) => karteHtml(p)).join('');
 }
