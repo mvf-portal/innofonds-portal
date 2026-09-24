@@ -4655,9 +4655,16 @@ partnerZeichnen();
             zusammen auf ${UM.antworten
               ? UM.antworten.reduce((a, r) => a + r.n, 0) : 0} Nennungen.</p>
           <p class="hinweis">Jede Zahl in dieser Tabelle lässt sich
-            anklicken. Darunter erscheinen die einzelnen Nennungen mit dem
-            Wortlaut des Auftrags, der Einstufung und dem Zitat, auf dem
-            sie beruht.</p>
+            anklicken, in jeder Zeile und jeder Spalte. Darunter
+            erscheinen die einzelnen Nennungen mit dem Wortlaut des
+            Auftrags, der Einstufung und dem Beleg. ${
+            (UM.adressat_liste || []).filter(r => r.zit).length} der
+            ${(UM.adressat_liste || []).length} Nennungen tragen ein
+            wörtliches Zitat, die übrigen sind als <i>ohne wörtlichen
+            Beleg</i> ausgewiesen. Wo <i>nicht erkennbar</i> steht, belegt
+            das Zitat nur, dass die Stelle im Beschluss genannt ist, nicht
+            dass sie sich geäußert hätte: Es sagt, wo wir gesucht haben,
+            nicht was wir gefunden hätten.</p>
           <div id="ad-detail"></div>
           <p class="was"><b>Was „geprüft und begründet verworfen" heißt.</b>
             Die Stelle hat sich mit der Empfehlung befasst und sie mit
@@ -4918,7 +4925,11 @@ partnerZeichnen();
             ${esc(r.auf)}</div>` : ''}
           ${r.ant ? `<div>${esc(r.ant)}</div>` : ''}
           ${r.zit ? `<blockquote>„${esc(r.zit)}“<span class="seite">${
-            r.s ? 'S. ' + esc(r.s) : ''}</span></blockquote>` : ''}
+            r.st === 'nicht erkennbar'
+              ? 'Fundstelle der Nennung, keine Äußerung dieser Stelle'
+              : ''}${r.s ? (r.st === 'nicht erkennbar' ? ' · ' : '')
+                      + 'S. ' + esc(r.s) : ''}</span></blockquote>`
+            : '<div class="fz-fehlt">ohne wörtlichen Beleg im Dokument</div>'}
         </div>`).join('')}</div>`;
       }).join('')}</div>`;
     ziel.scrollIntoView({block: 'nearest', behavior: 'smooth'});
