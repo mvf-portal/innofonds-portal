@@ -2655,8 +2655,21 @@ document.querySelectorAll('#vorschlaege button').forEach(b => b.onclick = () => 
 });
 
 const qFilter = {};
+/* Ein einzelner Eintrag, ueber #p=123 aufgerufen. Solange er gesetzt
+   ist, gibt es keine Themenbilanz: Eine Bilanz ueber ein Projekt ist
+   keine Bilanz. */
+let nurEintrag = null;
 function rechercheZeichnen() {
   const frage = document.getElementById('q').value.trim();
+  if (nurEintrag && !frage) {
+    document.getElementById('bilanz').innerHTML =
+      `<p class="hinweis">Sie sehen einen einzelnen Eintrag, aufgerufen
+       über seinen Direktlink. Für eine Themenrecherche bitte oben ein
+       Stichwort eingeben.</p>`;
+    document.getElementById('treffer').innerHTML = karteHtml(nurEintrag);
+    return;
+  }
+  nurEintrag = null;
   // Grundmenge fuer die Zaehler: alle Treffer der Sucheingabe ohne Filter
   const alleTreffer = frage ? suche(frage, {}).map(t => t.p) : P;
   filterZeigen('q-filter', qFilter, alleTreffer);
@@ -2876,8 +2889,15 @@ function eintragZeigen() {
   const p = P.find(x => String(x.id) === m[1]);
   if (!p) return;
   reiterNach('t-recherche');
+  /* Frueher schrieb diese Stelle das Akronym ins Suchfeld. Das war
+     falsch: Die Suche zerlegt "@ktiv_rollout" in "ktiv" und "rollout",
+     und "ktiv" steckt in aktiv, Aktivierung, Aktivitaet. Ergebnis waren
+     288 angebliche Projekte zum Thema und eine Investitionssumme von 56
+     Millionen Euro, die mit dem Vorhaben nichts zu tun hatte. Ein Link
+     auf einen Eintrag zeigt jetzt diesen Eintrag, nicht eine Suche. */
   const feld = document.getElementById('q');
-  if (feld) feld.value = p.akr;
+  if (feld) feld.value = '';
+  nurEintrag = p;
   rechercheZeichnen();
   setTimeout(() => {
     const k = document.getElementById('p' + p.id);
@@ -4890,9 +4910,15 @@ partnerZeichnen();
     z.classList.add('hell');
     const alle = UM.projekte || [];
     if (z.dataset.st !== undefined && z.dataset.te === undefined) {
+      /* Die Liste der Vorhaben allein beantwortet nicht, wer etwas zur
+         Kenntnis genommen hat. Deshalb steht unter jedem Vorhaben, welche
+         Stelle wie geantwortet hat. */
       const st = z.dataset.st;
-      projekteZeigen('Stand: ' + (st || 'ohne Angabe'),
-        alle.filter(p => (p.st || '') === st));
+      const ids = new Set(alle.filter(p => (p.st || '') === st)
+                              .map(p => p.id));
+      const nenn = (UM.adressat_liste || []).filter(r => ids.has(r.id));
+      nennungenZeigen(umZiel, 'Stand: ' + esc(st || 'ohne Angabe')
+        + ' – ' + ids.size + ' Vorhaben', nenn);
     } else {
       const te = z.dataset.te, nur = z.dataset.nur === 'rm';
       projekteZeigen(te + (nur ? ' – mit Rückmeldung' : ''),
@@ -4913,6 +4939,8 @@ partnerZeichnen();
   /* Eine Darstellung fuer beide Wege: ueber die Art der Stelle und ueber
      die Antwort. Wer wissen will, wer zur Kenntnis genommen und nichts
      getan hat, klickt die Antwort an und bekommt dieselben Belege. */
+  const TITEL = {};
+  (UM.projekte || []).forEach(p => TITEL[p.id] = p.tit);
   function nennungenZeigen(el, titel, liste, nach) {
     if (!nach) {
       nach = new Map();
@@ -4929,8 +4957,11 @@ partnerZeichnen();
         liste.length === 1 ? '' : 'en'} in ${nach.size} Vorhaben.</p>
       ${[...nach.entries()].map(([k, rs]) => {
         const [akr, id] = k.split('§');
+        const tit = (TITEL[id] || '');
         return `<div class="abschnitt">
-        <h4><a href="#p=${id}">${esc(akr)}</a></h4>
+        <h4><a href="#p=${id}">${esc(akr)}</a>${tit
+          ? ` <span class="hinweis" style="font-weight:400">${esc(tit)}</span>`
+          : ''}</h4>
         ${rs.map(r => `<div style="margin:0 0 10px">
           <div><b>${esc(r.name)}</b> · ${esc(r.st)}${
             r.sp === 'info' ? ' · <i>nur zur Information weitergeleitet</i>'
