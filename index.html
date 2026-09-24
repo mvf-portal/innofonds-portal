@@ -2047,6 +2047,69 @@ function dossierBelege(d, kategorie, wieviel) {
   return raus;
 }
 
+/* Alle Vorhaben einer Gruppe, bei denen diese Kategorie belegt ist,
+   mit ihrem Zitat. Nicht reihum und nicht gekuerzt: Wer eine Zeile
+   aufklappt, will die Grundlage sehen und nicht eine Auswahl daraus. */
+function dossierGrundListe(gruppe, kategorie) {
+  const raus = [];
+  gruppe.forEach(p => {
+    if (!(p.hk || []).includes(kategorie)) return;
+    const treffer = ((p.x && p.x.minus) || [])
+      .filter(h => h.kategorie === kategorie);
+    raus.push({p, h: treffer[0] || null, weitere: treffer.length - 1});
+  });
+  return raus;
+}
+
+function dossierGrundZeigen(d, kategorie) {
+  const ziel = document.getElementById('do-grund');
+  if (!ziel) return;
+  if (ziel.dataset.k === kategorie) {
+    ziel.innerHTML = ''; ziel.dataset.k = '';
+    document.querySelectorAll('#do-gtab tr.auf')
+      .forEach(x => x.classList.remove('auf'));
+    return;
+  }
+  ziel.dataset.k = kategorie;
+  document.querySelectorAll('#do-gtab tr.auf')
+    .forEach(x => x.classList.remove('auf'));
+  const zeile = document.querySelector(
+    `#do-gtab tr[data-k="${kategorie.replace(/"/g, '&quot;')}"]`);
+  if (zeile) zeile.classList.add('auf');
+  const g = d.gruende.find(x => x.k === kategorie);
+  const block = (titel, liste, farbe) => `<h4 style="margin:14px 0 4px">
+    ${titel} <span class="hinweis" style="font-weight:400">${liste.length}
+    Vorhaben</span></h4>${liste.length ? liste.map(({p, h, weitere}) => `
+    <div style="margin:0 0 10px">
+      <div><b><a href="#p=${p.id}">${esc(p.akr)}</a></b>
+        <span class="hinweis">${esc(p.tit)}</span></div>
+      ${h && h.hindernis ? `<div>${esc(h.hindernis)}</div>` : ''}
+      ${h && h.zitat ? `<blockquote>„${esc(h.zitat)}“<span class="seite">
+        Beschlusstext${h.seite ? ', S. ' + esc(h.seite) : ''}</span>
+        </blockquote>`
+        : '<div class="fz-fehlt">ohne wörtliches Zitat</div>'}
+      ${weitere > 0 ? `<div class="hinweis">und ${weitere} weitere
+        Zuordnung${weitere === 1 ? '' : 'en'} derselben Kategorie in
+        diesem Vorhaben</div>` : ''}
+    </div>`).join('')
+    : `<p class="hinweis">Kein Vorhaben dieser Gruppe.</p>`}`;
+  ziel.innerHTML = `<div class="dossier" style="margin-top:10px">
+    <button class="zu">Beleg schließen</button>
+    <h4 style="margin:0 0 4px">${esc(kategorie)}</h4>
+    <p class="hinweis" style="margin:0 0 6px">${g
+      ? `${g.a} von ${d.mit.length} Vorhaben mit Empfehlung, ${g.c} von
+         ${d.ohne.length} ohne, ${pWort(g.p)}.` : ''}
+      Gezeigt sind alle Vorhaben beider Gruppen, bei denen diese
+      Kategorie im Beschlusstext belegt ist.</p>
+    ${block('Ohne Empfehlung',
+            dossierGrundListe(d.ohne, kategorie))}
+    ${block('Mit Empfehlung',
+            dossierGrundListe(d.mit, kategorie))}</div>`;
+  ziel.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+}
+
+let doStand = null;
+
 function dossierZeichnen() {
   const frage = document.getElementById('do-q').value.trim();
   const ziel = document.getElementById('do-ergebnis');
@@ -2115,10 +2178,11 @@ function dossierZeichnen() {
 
   const tab = d.gruende.filter(g => g.n >= 3).slice(0, 10);
   const grundTab = tab.length ? `<div class="huelle"
-    style="max-height:none"><table><thead><tr>
+    style="max-height:none"><table id="do-gtab"><thead><tr>
     <th>belegtes Hindernis</th><th class="zahl">mit Empfehlung</th>
     <th class="zahl">ohne</th><th class="zahl">Unterschied</th>
-    <th class="zahl">p</th></tr></thead><tbody>${tab.map(g => `<tr>
+    <th class="zahl">p</th></tr></thead><tbody>${tab.map(g => `<tr
+    class="p-zeile" data-k="${esc(g.k)}">
     <td>${esc(g.k)}</td>
     <td class="zahl">${g.a} von ${d.mit.length}${g.mitQ != null
       ? ' · ' + pz(g.mitQ) : ''}</td>
@@ -2130,6 +2194,7 @@ function dossierZeichnen() {
     <td class="zahl${g.p < 0.05 ? ' id-traegt' : ''}">${
       pWort(g.p).replace('p = ', '').replace('p < ', '&lt; ')}</td>
     </tr>`).join('')}</tbody></table></div>
+    <div id="do-grund"></div>
     <p class="hinweis">Gezählt sind nur Hindernisse, deren Zuordnung im
     Beschlusstext belegt ist: Jede Zuordnung wurde einzeln gegen ihr
     Zitat geprüft, 12,6 Prozent hielten der Prüfung nicht stand und sind
@@ -2180,6 +2245,19 @@ function dossierZeichnen() {
     Prüfbitte erhalten. Verglichen wird mit dem exakten Test nach Fisher,
     zweiseitig. Gerechnet wird in Ihrem Browser; die Eingabe verlässt
     Ihren Rechner nicht.</p></div>`;
+  doStand = d;
+  const gtab = document.getElementById('do-gtab');
+  if (gtab) gtab.addEventListener('click', ev => {
+    const tr = ev.target.closest('tr[data-k]');
+    if (tr) dossierGrundZeigen(doStand, tr.dataset.k);
+  });
+  const gz = document.getElementById('do-grund');
+  if (gz) gz.addEventListener('click', ev => {
+    if (!ev.target.closest('button.zu')) return;
+    gz.innerHTML = ''; gz.dataset.k = '';
+    document.querySelectorAll('#do-gtab tr.auf')
+      .forEach(x => x.classList.remove('auf'));
+  });
 }
 
 const DO_VORSCHLAEGE = ['Lotsen', 'Telemedizin', 'Demenz', 'Entlassmanagement',
