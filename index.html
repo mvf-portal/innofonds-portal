@@ -248,6 +248,16 @@ button.zu:hover{background:var(--weich);color:var(--text);
   padding:14px 18px;border-radius:0 11px 11px 0;margin:0 0 14px}
 .aufschlag h2{margin:0 0 8px;font-size:19px;line-height:1.35;font-weight:650}
 .aufschlag p{margin:0}
+/* Das Fragefeld ist der Einstieg und darf so aussehen. */
+.do-frage{align-items:stretch}
+.do-frage input{flex:1 1 560px;min-width:280px;font-size:15px;
+  padding:10px 14px}
+.do-frage button{white-space:nowrap}
+/* Die zweite Suche ist abgesetzt, damit niemand sie fuer dieselbe
+   haelt. */
+.zweiteSuche{margin-top:30px;padding-top:20px;
+  border-top:2px solid var(--linie)}
+.zweiteSuche h3{margin:0 0 4px}
 #do-vorschlaege .chip{cursor:pointer;border:1px solid var(--linie);
   background:var(--flaeche);border-radius:999px;padding:5px 13px;
   font:inherit;font-size:13px;color:var(--text);margin:0 6px 6px 0}
@@ -588,25 +598,12 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
     <button role="tab" aria-selected="false" data-ziel="t-zahlen">Kennzahlen</button>
   </div>
   <div class="reihe wert">
-    <button role="tab" aria-selected="false" data-ziel="t-recherche">Schlagwort-Recherche</button>
     <button role="tab" class="gold" aria-selected="false"
             data-ziel="t-evidenz">Evidenzsynthese</button>
     <button role="tab" aria-selected="false" data-ziel="t-idee">Ideencheck</button>
   </div>
 </nav>
 <main>
-
-<section class="tafel" id="t-recherche" hidden>
-  <div id="hinweis-auswertung"></div>
-  <div class="werkzeuge">
-    <input type="search" id="q" placeholder="Suchbegriffe, z. B. Lotsen Schlaganfall · Entlassmanagement …"
-           autocomplete="off">
-  </div>
-  <div class="filterblock" id="q-filter"></div>
-  <div class="vorschlag" id="vorschlaege"></div>
-  <div id="bilanz"></div>
-  <div id="treffer"></div>
-</section>
 
 <section class="tafel" id="t-evidenz" hidden>
   <div id="evidenz-inhalt"></div>
@@ -842,16 +839,36 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
     bei uns in der Redaktion, weil jede Abfrage Rechenkosten auslöst.
     Was Sie hier sehen, bleibt kostenlos und ohne Anmeldung.</p>
   </details>
-  <div class="werkzeuge">
-    <input type="search" id="do-q"
-           placeholder="Thema eingeben, zum Beispiel Lotsen …">
+  <div class="werkzeuge do-frage">
+    <input type="search" id="do-q" autocomplete="off"
+           placeholder="Ihre Frage oder ein Stichwort, zum Beispiel: In welchen Projekten wurden Apps eingesetzt und wie werden sie bewertet?">
     <button id="do-los" class="gold">Antwort zeigen</button>
   </div>
-  <p class="hinweis" style="margin:2px 0 6px">Oder eine dieser Fragen
-    anklicken. Jede davon ließe sich sonst nur beantworten, indem man
-    hunderte Beschlüsse und Berichte nebeneinanderlegt.</p>
+  <p class="hinweis" style="margin:2px 0 6px">Sie können eine ganze Frage
+    eingeben. Das Portal sucht darin das Thema und sagt Ihnen, welches es
+    verstanden hat. Oder Sie klicken eine dieser Fragen an, die sich
+    sonst nur beantworten ließen, indem man hunderte Beschlüsse und
+    Berichte nebeneinanderlegt.</p>
   <div id="do-vorschlaege" class="chips"></div>
   <div id="do-ergebnis"></div>
+
+  <div class="zweiteSuche">
+    <h3>Einzelne Vorhaben finden</h3>
+    <p class="hinweis">Die Frage oben rechnet über ein ganzes Thema. Hier
+      suchen Sie nach einzelnen Vorhaben und bekommen sie als Karte:
+      Begründung des Ausschusses, Hindernisse, Erfolgsfaktoren,
+      Konsortium, verlinkte Dokumente. Dazu Filter nach Förderbereich,
+      Status und Ergebnis.</p>
+    <div id="hinweis-auswertung"></div>
+    <div class="werkzeuge">
+      <input type="search" id="q" autocomplete="off"
+             placeholder="Suchbegriffe, z. B. Lotsen Schlaganfall · Entlassmanagement …">
+    </div>
+    <div class="filterblock" id="q-filter"></div>
+    <div class="vorschlag" id="vorschlaege"></div>
+    <div id="bilanz"></div>
+    <div id="treffer"></div>
+  </div>
 </section>
 
 <section class="tafel" id="t-idee" hidden>
@@ -2126,10 +2143,89 @@ function dossierGrundZeigen(d, kategorie) {
 
 let doStand = null;
 
+/* Aus einer Frage das Thema holen. Kein Modell, kein Server: Die Frage
+   wird von Frage- und Fuellwoertern befreit, und was uebrig bleibt,
+   wird gegen die geernteten Ringe gehalten. Gewinnt der Ring, dessen
+   Begriff am seltensten im Bestand steht: "App" traegt eine Frage,
+   "Versorgung" traegt sie nicht. */
+let doThema = null;          // {thema, erkannt, rest}
+let doRoh = false;           // beim naechsten Lauf nicht deuten
+
+/* Woerter, die in einer Frage stehen, aber kein Thema benennen. */
+const FRAGEWORT = new Set(('projekt projekte projekten projektes vorhaben '
+  + 'studie studien eingesetzt einsatz bewertet bewertung erfolg '
+  + 'erfolgreich ergebnis ergebnisse thema themen bereich gefordert '
+  + 'forderung gescheitert scheitern lauft laufen geben gab viele '
+  + 'wurden wurde welchen welche gibt zeigt sagen sagt heisst bringt '
+  + 'funktioniert lohnt halten versprechen steht geht').split(' '));
+
+/* Eine Frage zerlegen. Anders als woerter() trennt das auch an
+   Bindestrichen: "Telemedizin-Vorhaben" ist sonst ein Wort, das im
+   ganzen Bestand nicht ein einziges Mal steht. */
+function fragewoerter(frage) {
+  return [...new Set(norm(frage).split(/[^a-z0-9äöü]+/))]
+    .filter(t => t.length > 2 && !FUELLWORT.has(t) && !FRAGEWORT.has(t));
+}
+
+/* Wie viele Vorhaben fuehren dieses Wort? Die Zahl entscheidet, ob es
+   die Frage traegt. */
+function wieHaeufig(w) {
+  const wf = ohneStrich(w);
+  let n = 0;
+  for (const p of P) if (p._sf.includes(wf)) n++;
+  return n;
+}
+
+function themaAusFrage(frage) {
+  const kern = fragewoerter(frage);
+  if (!kern.length) return null;
+  /* Ein Wort, das mehr als dieser Anteil der Vorhaben fuehrt, benennt
+     kein Thema mehr. */
+  const grenze = Math.round(P.length * 0.35);
+  const beurteilt = kern.map(w => ({
+    w, n: wieHaeufig(w), ring: ringFuerFrage(w).length > 0}));
+  let nehmen = beurteilt.filter(x => (x.n > 0 && x.n <= grenze) || x.ring);
+  if (!nehmen.length) nehmen = beurteilt.filter(x => x.n > 0);
+  if (!nehmen.length) return null;
+  /* Die seltensten zuerst. Ein Wort, das nirgends steht, aber einen
+     Ring ausloest, ist das beste von allen: Es benennt die Sache,
+     ohne im Bestand vorzukommen. */
+  /* Zuerst die Woerter, die einen Ring ausloesen: Sie benennen eine
+     Sache, die dieses Portal kennt. Erst danach entscheidet die
+     Seltenheit, und auch die nur unter Woertern, die mehr als eine
+     Handvoll Vorhaben fuehren. Sonst gewinnt eine Beugungsform wie
+     "pflegenden" gegen "Demenz", nur weil sie seltener dasteht. */
+  const rang = x => (x.ring ? 0 : 1) * 1e6
+    + (x.n === 0 ? 0 : x.n < 5 ? 5e5 + x.n : x.n);
+  nehmen.sort((a, b) => rang(a) - rang(b));
+  /* Genommen wird ein einziges Wort, nicht drei. Drei Woerter mit UND
+     verknuepft ergeben zwei Treffer statt einer Bilanz: "Demenz und
+     pflegende Angehoerige" fand so zwei Vorhaben, obwohl es zu Demenz
+     vierunddreissig gibt. Das seltenste Wort benennt das Thema, die
+     uebrigen werden genannt und nicht benutzt. */
+  const gewaehlt = nehmen[0];
+  return {
+    thema: gewaehlt.w,
+    erkannt: true,
+    rest: kern.filter(w => w !== gewaehlt.w),
+  };
+}
+
 function dossierZeichnen() {
-  const frage = document.getElementById('do-q').value.trim();
+  const roh = document.getElementById('do-q').value.trim();
   const ziel = document.getElementById('do-ergebnis');
-  if (!frage) { ziel.innerHTML = ''; return; }
+  if (!roh) { ziel.innerHTML = ''; doThema = null; return; }
+  /* Eine Frage ist erst ab vier Woertern eine Frage. Darunter ist es
+     ein Stichwort, und das wird genommen, wie es dasteht. */
+  /* Auch ein einzelnes Wort wird gedeutet, wenn es im Bestand nicht
+     vorkommt: "Lotsenprojekten" steht nirgends, benennt aber die
+     Lotsenvorhaben. */
+  doThema = doRoh ? null : themaAusFrage(roh);
+  if (doThema && doThema.erkannt && fragewoerter(roh).length === 1
+      && ohneStrich(norm(doThema.thema)) === ohneStrich(norm(roh)))
+    doThema = null;
+  doRoh = false;
+  const frage = (doThema && doThema.erkannt) ? doThema.thema : roh;
   const d = dossierRechnen(frage);
   if (!d) {
     ziel.innerHTML = `<div class="fehlt">Kein Vorhaben zu
@@ -2250,8 +2346,15 @@ function dossierZeichnen() {
     </tbody></table></div>${d.treffer.length > 200
       ? `<p class="hinweis">Die ersten 200 von ${d.treffer.length}.</p>` : ''}`;
 
+  const gelesen = (doThema && doThema.erkannt) ? `
+    <p class="hinweis" style="margin:0 0 10px">Aus Ihrer Frage gelesen:
+      <b>${esc(d.frage)}</b>${doThema.rest.length
+        ? `. Nicht berücksichtigt: ${doThema.rest.map(esc).join(', ')}`
+        : ''}. <button class="zu" id="do-roh" style="float:none;margin:0
+        0 0 6px">stattdessen wörtlich suchen</button></p>` : '';
   ziel.innerHTML = `<div class="amzug">
     <h3 style="margin-top:0">Themen-Dossier: ${esc(d.frage)}</h3>
+    ${gelesen}
     ${kopf}${kern}${grundHtml}${grundTab}${belegHtml}${messHtml}${liste}
     <p class="hinweis"><b>Wie diese Zahlen entstehen.</b> Die Kohorte
     sind alle Vorhaben, die das Stichwort in Titel, Beschreibung,
@@ -2262,6 +2365,8 @@ function dossierZeichnen() {
     zweiseitig. Gerechnet wird in Ihrem Browser; die Eingabe verlässt
     Ihren Rechner nicht.</p></div>`;
   doStand = d;
+  const roher = document.getElementById('do-roh');
+  if (roher) roher.onclick = () => { doRoh = true; dossierZeichnen(); };
   const gtab = document.getElementById('do-gtab');
   if (gtab) gtab.addEventListener('click', ev => {
     const tr = ev.target.closest('tr[data-k]');
@@ -3088,7 +3193,9 @@ const FUELLWORT = new Set(('welche welcher welches welchem welchen was wer wie w
  + 'nicht kein keine nur noch schon mehr sehr bei mit von aus fur auf uber unter '
  + 'zum zur zwischen durch gegen ohne an in im am vor nach seit bis als wenn dass '
  + 'sich man es sie er wir ihr alle allen beteiligt beteiligte gibt jeweils etwa '
- + 'bitte zeige zeig nenne nennen liste erstelle').split(' '));
+ + 'bitte zeige zeig nenne nennen liste erstelle vielen wieviele eigentlich uberhaupt '
+ + 'bereits schon denn also dabei jemals halten versprechen bringt '
+ + 'lohnt funktioniert').split(' '));
 const woerter = frage => norm(frage).split(/[^a-z0-9äöü-]+/)
   .filter(t => t.length > 2 && !FUELLWORT.has(t));
 P.forEach(p => {
@@ -3129,8 +3236,12 @@ function wortPasst(a, b) {
   if (a === b) return true;
   const kurz = a.length < b.length ? a : b;
   const lang = a.length < b.length ? b : a;
-  return kurz.length >= 5 && lang.length - kurz.length <= 3
-         && lang.startsWith(kurz);
+  if (!lang.startsWith(kurz)) return false;
+  const d = lang.length - kurz.length;
+  /* Lange Woerter vertragen eine laengere Endung, kurze nur eine
+     kurze: Sonst findet "Arzt" die "Arzte", aber "App" findet "Apps"
+     nicht. */
+  return (kurz.length >= 5 && d <= 3) || (kurz.length >= 3 && d <= 1);
 }
 /* Der Ring wird an der ganzen Frage aufgerufen. Ein einzelnes Wort
    loest nur einen Ring aus, dessen Anlass ebenfalls aus einem Wort
@@ -3466,7 +3577,7 @@ function eintragZeigen() {
   if (!m) return;
   const p = P.find(x => String(x.id) === m[1]);
   if (!p) return;
-  reiterNach('t-recherche');
+  reiterNach('t-dossier');
   /* Frueher schrieb diese Stelle das Akronym ins Suchfeld. Das war
      falsch: Die Suche zerlegt "@ktiv_rollout" in "ktiv" und "rollout",
      und "ktiv" steckt in aktiv, Aktivierung, Aktivitaet. Ergebnis waren
