@@ -432,6 +432,12 @@ table.attrappe i{display:block;height:9px;border-radius:5px;
 .sperrtext b{color:var(--text)}
 .schloss h4{color:var(--gold)}
 .bestellknoepfe{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.bestellkopf{display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+  justify-content:space-between;margin:10px 0 4px;padding:10px 13px;
+  border:1px solid var(--goldlinie);border-radius:11px;
+  background:var(--goldweich)}
+.bestellkopf span{font-size:14px;line-height:1.45;flex:1 1 320px}
+.bestellkopf button{flex:0 0 auto}
 button.tat.leise{background:transparent;color:var(--gedaempft);
   border:1px solid var(--linie)}
 .bestellform{border:1px solid var(--goldlinie);border-radius:11px;
@@ -6559,6 +6565,12 @@ partnerZeichnen();
             + ' Tsd. Zeichen · ' + s.gliederung.length + ' Kapitel')}
       </div>
       <p class="was">Nach dem Maßstab von <b>Stufe ${s.stufe}</b>, siehe oben.</p>
+      ${zu.length ? `<div class="bestellkopf">
+        <span>Der kostenpflichtige Teil dieser Synthese kostet
+          <b>${eu((PREIS[s.stufe] || PREIS[1]).einzeln)}</b> zzgl. USt.
+          Abonnenten und Beiratsmitglieder zahlen weniger.</span>
+        <button class="tat" data-best="einzeln">Bestellen</button>
+      </div>` : ''}
       ${s.ueberschneidung && s.ueberschneidung.length ? `
       <details class="ueberschnitt"><summary>Überschneidung mit anderen
         Synthesen: ${s.kohorte - s.nur_hier} der ${s.kohorte} Projekte
@@ -6670,6 +6682,10 @@ partnerZeichnen();
     const pr = PREIS[s.stufe] || PREIS[1];
     const vorhanden = SYN.filter(x => x.titel === s.titel).map(x => x.stufe);
     const feld = document.getElementById('bestellfeld');
+    /* Der Knopf oben im Kopf ruft dasselbe Formular auf wie der unten.
+       Ohne diesen Sprung oeffnet es sich ausserhalb des Blickfelds. */
+    setTimeout(() => feld.scrollIntoView({behavior: 'smooth',
+                                          block: 'center'}), 30);
     const zeile = (name, beschriftung, art, pflicht, breite) =>
       `<label class="bf${breite || ''}"><span>${beschriftung}${
         pflicht ? ' <i>*</i>' : ''}</span>
