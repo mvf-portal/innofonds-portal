@@ -2790,7 +2790,16 @@ function dossierZeichnen() {
     if (!bisher || x.length > bisher.length) nachKern.set(kern, x);
   });
   const regeln = [...nachKern.values()].sort();
-  const gbaAkr = [...new Set(gbaGetan.map(r => r.akr))].sort();
+  /* Je Vorhaben ein Eintrag, mit seiner Nummer: Die Akronyme sollen
+     anklickbar sein, sonst muss man sie abtippen. */
+  const gbaVorhaben = [];
+  const gesehenAkr = new Set();
+  gbaGetan.forEach(r => {
+    if (gesehenAkr.has(r.akr)) return;
+    gesehenAkr.add(r.akr);
+    gbaVorhaben.push({akr: r.akr, id: r.id});
+  });
+  gbaVorhaben.sort((a, b) => (a.akr || '').localeCompare(b.akr || '', 'de'));
   const el = document.getElementById('aufschlag');
   if (!el) return;
   el.innerHTML = `
@@ -2833,7 +2842,8 @@ function dossierZeichnen() {
         seine eigenen Regeln geändert oder in Teilen angepasst${
         regeln.length ? `, darunter die ${regeln.slice(0, 4).map(esc)
           .join(' und die ')}` : ''}. Betroffen sind die Vorhaben
-        ${gbaAkr.slice(0, 9).map(esc).join(', ')}. Von
+        ${gbaVorhaben.slice(0, 9).map(v =>
+          `<a href="#p=${v.id}">${esc(v.akr)}</a>`).join(', ')}. Von
         ${zahl(gbaAlle.length)} Nennungen des GBA und seiner
         Unterausschüsse blieben nur ${zahl(gbaOhne.length)} ohne Antwort,
         ${Math.round(gbaOhne.length / Math.max(1, gbaAlle.length) * 100)}
