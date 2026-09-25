@@ -996,6 +996,16 @@ function reiterZeigen(b) {
 }
 document.querySelectorAll('nav button[role=tab]').forEach(b =>
   b.onclick = () => reiterZeigen(b));
+/* Links, die in einen anderen Reiter fuehren. Sie stehen in Texten,
+   die selbst erzeugt werden, deshalb wird hier einmal zentral
+   zugehoert. */
+document.addEventListener('click', ev => {
+  const a = ev.target.closest('[data-reiter]');
+  if (!a) return;
+  ev.preventDefault();
+  reiterNach(a.dataset.reiter);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
 function reiterNach(ziel) {
   const b = document.querySelector(`nav button[data-ziel="${ziel}"]`);
   if (b) reiterZeigen(b);
@@ -2646,6 +2656,26 @@ function dossierZeichnen() {
         ? ', Beschlusstext S. ' + esc(h.seite) : ''}</span></blockquote>`
     ).join('')}` : '';
 
+  /* Gibt es zu diesem Thema eine Synthese? Dann gehoert der Verweis
+     hierher: Das Dossier zaehlt, die Synthese liest. */
+  const synPassend = (D.synthesen || []).filter(s => {
+    const t = ohneStrich(norm(s.titel || ''));
+    const f = ohneStrich(norm(d.frage));
+    return f.length >= 4 && (t.includes(f) || f.includes(t.split(' ')[0]));
+  });
+  const synHtml = synPassend.length ? `<div class="fehlt" style="
+    border-left:4px solid var(--gold);background:var(--goldweich)">
+    <b>Zu diesem Thema gibt es eine Evidenzsynthese.</b> Sie zählt nicht,
+    sie liest: <b>${[...new Set(synPassend.map(s => s.titel))]
+      .map(esc).join('</b>, <b>')}</b>${synPassend.some(s => s.stufe === 2)
+      ? ', in zwei Fassungen: aus den Beschlusstexten des Ausschusses und '
+        + 'aus den Ergebnisberichten selbst, mit Fallzahlen, Effektmaßen '
+        + 'und Konfidenzintervallen je Vorhaben.'
+      : ', aus den Beschlusstexten des Ausschusses, mit Evidenztabelle, '
+        + 'Evidenzlücken und einer Empfehlung für ein künftiges Vorhaben.'}
+    <a href="#" data-reiter="t-evidenz">Im Reiter Evidenzsynthese
+    ansehen</a></div>` : '';
+
   const messHtml = `<h4>Was gemessen wurde</h4><p>${d.ep.n
     ? `Die Vorhaben zu diesem Thema haben <b>${d.ep.n} Endpunkte</b>
        bewertet. Bei <b>${d.ep.ohne} davon, ${pz(d.ep.ohne / d.ep.n)},</b>
@@ -2688,11 +2718,16 @@ function dossierZeichnen() {
   ziel.innerHTML = `<div class="amzug">
     <h3 style="margin-top:0">Themen-Dossier: ${esc(d.frage)}</h3>
     ${gelesen}
-    ${kopf}${kern}${grundHtml}${grundTab}${belegHtml}${messHtml}${liste}
+    ${kopf}${kern}${grundHtml}${grundTab}${belegHtml}${synHtml}${messHtml}${liste}
     <p class="hinweis"><b>Wie diese Zahlen entstehen.</b> Die Kohorte
     sind alle Vorhaben, die das Stichwort in Titel, Beschreibung,
     Projektelementen, Konsortium oder der ausgewerteten Begründung
-    führen; dieselbe Suche wie im Reiter Schlagwort-Recherche.
+    führen, dazu die Vorhaben, die es unter einem anderen Wort führen.
+    Gebildet wird sie also <b>wortweise</b>. Die Evidenzsynthesen im
+    gleichnamigen Reiter bilden ihre Kohorten <b>begrifflich</b>: dort
+    entscheidet, ob ein Vorhaben die Sache betreibt, nicht ob es das
+    Wort benutzt. Deshalb nennen beide für dasselbe Thema verschiedene
+    Zahlen, und beide sind richtig.
     Leitlinienvorhaben bleiben draußen, weil sie ausnahmslos eine
     Prüfbitte erhalten. Verglichen wird mit dem exakten Test nach Fisher,
     zweiseitig. Gerechnet wird in Ihrem Browser; die Eingabe verlässt
@@ -6307,13 +6342,23 @@ partnerZeichnen();
   }
 
   const kopf = `<p class="hinweis"><b>Was hier steht, steht sonst nirgends.</b>
-    Eine Evidenzsynthese fasst alles zusammen, was zu einem Versorgungsthema
-    im Innovationsfonds bereits untersucht wurde: Population, Intervention,
+    Die Zahl der Vorhaben zu einem Thema und ihre Bilanz bekommen Sie
+    kostenlos auf der <a href="#" data-reiter="t-dossier">Startseite</a>.
+    Eine Evidenzsynthese leistet etwas anderes: Sie fasst zusammen, was zu
+    einem Versorgungsthema im Innovationsfonds bereits untersucht wurde: Population, Intervention,
     Design, Fallzahl, Endpunkt, Ergebnis, und daneben, was der
     Innovationsausschuss daraus gemacht hat. Jede Aussage ist mit Akronym und
     Seitenzahl belegt. Gepoolt wird nicht: die Projekte unterscheiden sich in
     Population und Endpunkt so stark, dass ein gemeinsamer Effektschätzer
     Scheingenauigkeit wäre.</p>
+    <p class="hinweis"><b>Wie die Kohorte entsteht, und warum ihre Zahl
+    von der Startseite abweicht.</b> Hier wird begrifflich
+    zusammengestellt: Zur Kohorte „Lotsen und Case Management" gehört
+    ein Vorhaben, wenn es eine personengebundene Koordinationsfunktion
+    erprobt, gleich ob es sie Lotse, Scout, Coach oder Navigator nennt.
+    Das Themen-Dossier auf der Startseite sucht dagegen nach Wörtern und
+    findet deshalb mehr. Beide Zahlen sind richtig, sie zählen
+    Verschiedenes.</p>
     <div class="stufen">
       <div class="stufe">
         <p class="skopf"><b>Stufe 1</b>: aus den Beschlüssen</p>
