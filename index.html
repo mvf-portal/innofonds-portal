@@ -1013,6 +1013,11 @@ const FZ = (D.endpunkte && D.endpunkte.fallzahl) || {};
 const MCID = (D.endpunkte && D.endpunkte.mcid) || {};
 const ELEMENTSTAT = D.elementstat || {};
 const PID = {}; P.forEach(x => PID[x.id] = x);
+/* Kleine Zahlen am Satzanfang als Wort. "9 mal hat der GBA" liest
+   sich wie ein Tabelleneintrag, nicht wie ein Satz. */
+const ZAHLWORT = {1: 'Einmal', 2: 'Zweimal', 3: 'Dreimal', 4: 'Viermal',
+  5: 'Fünfmal', 6: 'Sechsmal', 7: 'Siebenmal', 8: 'Achtmal',
+  9: 'Neunmal', 10: 'Zehnmal', 11: 'Elfmal', 12: 'Zwölfmal'};
 const MONATSNAMEN = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
   'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 const MONAT = (() => {
@@ -2753,6 +2758,39 @@ function dossierZeichnen() {
   const alt_ = (UM.projekte || []).filter(p => p.bd && p.bd < GRENZE);
   const altAlle = alt_.length;
   const altOhne = alt_.filter(p => !mitRM.has(p.id)).length;
+
+  /* Was der GBA mit den Empfehlungen gemacht hat, die an ihn selbst
+     gingen. Die Namen der Richtlinien stehen in den Antworten der
+     Unterausschuesse und werden dort gelesen: Fest eingetippte
+     Beispiele waeren nach dem naechsten Beschluss falsch. */
+  const GBA_MUSTER = /gemeinsamer bundesausschuss|unterausschuss|\bg-?ba\b/i;
+  const gbaAlle = (UM.adressat_liste || [])
+    .filter(r => GBA_MUSTER.test(r.name || ''));
+  const gbaGetan = gbaAlle.filter(
+    r => r.st === 'umgesetzt' || r.st === 'teilweise umgesetzt');
+  const gbaOhne = gbaAlle.filter(
+    r => r.st === 'keine Rückmeldung' || r.st === 'nicht erkennbar');
+  const RL_MUSTER = /[A-ZÄÖÜ][\wÄÖÜäöüß]*-?(?:Richtlinie|RL)\b/g;
+  const regelnRoh = new Set();
+  /* Nur die vollstaendig umgesetzten Faelle liefern Namen. In einer
+     Antwort zu einem teilweise umgesetzten Fall steht oft auch die
+     Regel, die gerade NICHT geaendert wurde: Bei DEWI etwa wurde die
+     Zweitmeinungsrichtlinie ergaenzt und die DeQS-RL ausdruecklich
+     nicht. Wer beide nennt, behauptet das Gegenteil des Belegs. */
+  gbaGetan.filter(r => r.st === 'umgesetzt').forEach(r => {
+    const t = `${r.ant || ''} ${r.zit || ''}`;
+    (t.match(RL_MUSTER) || []).forEach(x => regelnRoh.add(x));
+  });
+  /* SAPV-RL und SAPV-Richtlinie sind dieselbe Regel. Behalten wird die
+     ausgeschriebene Form. */
+  const nachKern = new Map();
+  [...regelnRoh].forEach(x => {
+    const kern = x.replace(/-?(Richtlinie|RL)$/i, '').toLowerCase();
+    const bisher = nachKern.get(kern);
+    if (!bisher || x.length > bisher.length) nachKern.set(kern, x);
+  });
+  const regeln = [...nachKern.values()].sort();
+  const gbaAkr = [...new Set(gbaGetan.map(r => r.akr))].sort();
   const el = document.getElementById('aufschlag');
   if (!el) return;
   el.innerHTML = `
@@ -2789,6 +2827,18 @@ function dossierZeichnen() {
         der GBA selbst zuständig, muss er binnen zwölf Monaten die
         Regelungen beschließen. Gegenüber allen anderen Adressaten aber
         endet seine Macht bei der Empfehlung.</p>
+      <p><b>Und wo er sich selbst binden kann, tut er es.</b>
+        ${ZAHLWORT[gbaGetan.length] || zahl(gbaGetan.length) + ' mal'}
+        hat der GBA auf eine Empfehlung hin
+        seine eigenen Regeln geändert oder in Teilen angepasst${
+        regeln.length ? `, darunter die ${regeln.slice(0, 4).map(esc)
+          .join(' und die ')}` : ''}. Betroffen sind die Vorhaben
+        ${gbaAkr.slice(0, 9).map(esc).join(', ')}. Von
+        ${zahl(gbaAlle.length)} Nennungen des GBA und seiner
+        Unterausschüsse blieben nur ${zahl(gbaOhne.length)} ohne Antwort,
+        ${Math.round(gbaOhne.length / Math.max(1, gbaAlle.length) * 100)}
+        Prozent. Bei den Fachgesellschaften, die nichts beschließen
+        können, sind es 67 Prozent.</p>
       <p>Zudem müssen diese Stellen erst seit dem
         Krankenhausversorgungsverbesserungsgesetz binnen zwölf Monaten
         (!) auf eine Empfehlung oder Prüfbitte antworten
