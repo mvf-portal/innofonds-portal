@@ -961,6 +961,52 @@ const esc = s => (s??'').toString().replace(/[&<>"]/g,
   c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const BASIS = 'https://innovationsfonds.g-ba.de';
 const BESTELLUNG = 'https://monitor-versorgungsforschung.de/bestellung/bestellung.php';
+/* Die Preise stehen hier und nirgends sonst. Sie erscheinen im
+   Erklaerkasten, in der Preistafel, im Kohortenkopf und im
+   Bestellformular; stuenden sie mehrfach, wuerde irgendwann eine
+   Stelle vergessen. Gerechnet wird ohnehin auf dem Server. */
+const PREIS = { 1: {einzeln: 490, jahr: 1900}, 2: {einzeln: 1900, jahr: 4900} };
+const eu = n => new Intl.NumberFormat('de-DE',
+  {style:'currency', currency:'EUR', maximumFractionDigits:0}).format(n);
+/* Der Erklaerkasten. Er stand zweimal wortgleich im Code, einmal beim
+   Netzwerkknoten und einmal ueber den Synthesen; hier steht er einmal.
+   Jeder Teil sagt, wozu er gut ist, nicht nur wie er heisst. */
+const BEGRIFFE = `<div class="hinweis begriffe">
+      <p><b>Zwei Wörter, die leicht durcheinandergehen:</b></p>
+      <p><b>Stufe</b> heißt: woraus die Synthese gemacht ist. Stufe 1 aus
+        den Beschlusstexten des Innovationsausschusses, Stufe 2 aus den
+        Ergebnisberichten der Projekte selbst. Mehr Stufen gibt es
+        nicht.</p>
+      <p><b>Kapitel</b> heißt: der wievielte Abschnitt einer Synthese.
+        Jede Synthese ist in neun bis zehn Kapitel gegliedert, und sie
+        heißen in den beiden Stufen verschieden. Welche es sind, steht
+        im Inhaltsverzeichnis der jeweiligen Synthese.</p>
+      <p><b>Frei einsehbar sind in beiden Stufen die Kapitel 1 und 2:
+        der Bestand.</b> Kapitel 1 sagt, welche Vorhaben zur Kohorte
+        gehören und warum gerade diese. Kapitel 2 zeigt den Anfang der
+        großen Tabelle, acht Projekte von 35 bis 136 je nach Kohorte,
+        jedes mit Design, Fallzahl, Ergebnis und Beschluss des
+        Ausschusses. Damit können Sie prüfen, ob die Kohorte Ihre Frage
+        überhaupt trifft, bevor Sie etwas bezahlen.</p>
+      <p><b>Kostenpflichtig ist der Rest der Tabelle und alles ab
+        Kapitel 3: die Auswertung.</b> Nicht mehr, was war, sondern was
+        daraus folgt.</p>
+      <p><b>Stufe 1, ${eu(PREIS[1].einzeln)}:</b> was die Evidenz trägt
+        und was nicht — und unter welcher Bedingung sie trug; die
+        Heterogenität der Interventionen, also was in dieser Kohorte
+        überhaupt dasselbe genannt wird; die Hindernisse, die immer
+        wiederkehren; die Evidenzlücken; und ein Fazit mit der Tabelle
+        <i>was bisher üblich war, woran es gescheitert ist, was
+        stattdessen zu tun ist</i>.</p>
+      <p><b>Stufe 2, ${eu(PREIS[2].einzeln)}:</b> zusätzlich die
+        primären Endpunkte mit Effektmaß, Konfidenzintervall und p-Wert;
+        die Gesundheitsökonomie; die Limitationen, die die Autoren
+        selbst benennen; und der Abgleich, wo Studienergebnis und
+        Entscheidung des Ausschusses auseinandergehen.</p>
+      <p>Jede Aussage ist mit Projektkürzel und Seitenzahl belegt.
+        Abonnenten zahlen 25, Mitglieder des MVF-Beirats 50 Prozent
+        weniger; die vollständige Preistafel steht bei jeder Kohorte.</p>
+    </div>`;
 
 document.getElementById('kopfzeile').textContent =
   `${P.length} Förderprojekte · ${NETZ.knoten.length} Einrichtungen · ` +
@@ -5319,26 +5365,7 @@ function knotenZeigen(k, wohin) {
           `<a href="${BASIS}${p.url}" target="_blank" rel="noopener">${esc(p.akr)}</a>`)
           .join(' · ')}</div></details>
     </div>
-    <div class="hinweis begriffe">
-      <p><b>Zwei Wörter, die leicht durcheinandergehen:</b></p>
-      <p><b>Stufe</b> heißt: woraus die Synthese gemacht ist. Stufe 1 aus
-        den Beschlusstexten des Innovationsausschusses, Stufe 2 aus den
-        Ergebnisberichten der Projekte selbst. Mehr Stufen gibt es
-        nicht.</p>
-      <p><b>Kapitel</b> heißt: der wievielte Abschnitt einer Synthese.
-        Jede Synthese ist in neun bis zehn Kapitel gegliedert, und sie
-        heißen in den beiden Stufen verschieden. Welche es sind, steht
-        im Inhaltsverzeichnis der jeweiligen Synthese.</p>
-      <p><b>Kostenlos</b> sind in beiden Stufen Kapitel 1 und 2: der
-        Zuschnitt der Kohorte und der Anfang der großen Tabelle, acht
-        Projekte von oft mehr als hundert.</p>
-      <p><b>Kostenpflichtig</b> ist der Rest der Tabelle und alles ab
-        Kapitel 3. In Stufe 1 ist das: was die Evidenz trägt und was nicht, die
-        wiederkehrenden Hindernisse und das Fazit, in Stufe 2 die
-        primären Endpunkte, die Gesundheitsökonomie, der Abgleich
-        zwischen Studienergebnis und Ausschussentscheidung und das
-        Fazit.</p>
-    </div>`;
+${BEGRIFFE}`;
   feld.querySelectorAll('a[data-knoten]').forEach(a => a.onclick = ev => {
     ev.preventDefault();
     const z = nachId.get(+a.dataset.knoten);
@@ -6353,7 +6380,6 @@ partnerZeichnen();
     2: ['Stufe 2', 'ausgewertet sind zusätzlich die Ergebnis- und '
         + 'Evaluationsberichte: Fallzahlen, Effektmaße, Konfidenzintervalle']
   };
-  const PREIS = { 1: {einzeln: 490, jahr: 1900}, 2: {einzeln: 1900, jahr: 4900} };
   /* "Beiräte" allein sagt niemandem, wer gemeint ist - die Mitglieder des
      MVF-Beirats stehen namentlich auf der Verlagsseite. */
   const BEIRAT_URL = 'https://www.monitor-versorgungsforschung.de/internals/verlag-medium/beirat/';
@@ -6362,8 +6388,6 @@ partnerZeichnen();
     ['<a href="' + BEIRAT_URL + '" target="_blank" rel="noopener">'
      + 'Mitglieder des MVF-Beirats</a>', -50],
   ];
-  const eu = n => new Intl.NumberFormat('de-DE',
-    {style:'currency', currency:'EUR', maximumFractionDigits:0}).format(n);
   function preistafel(stufe) {
     const pr = PREIS[stufe] || PREIS[1];
     const halb = pr.einzeln / 2;
@@ -6439,26 +6463,7 @@ partnerZeichnen();
         auseinandergehen.</p>
       </div>
     </div>
-    <div class="hinweis begriffe">
-      <p><b>Zwei Wörter, die leicht durcheinandergehen:</b></p>
-      <p><b>Stufe</b> heißt: woraus die Synthese gemacht ist. Stufe 1 aus
-        den Beschlusstexten des Innovationsausschusses, Stufe 2 aus den
-        Ergebnisberichten der Projekte selbst. Mehr Stufen gibt es
-        nicht.</p>
-      <p><b>Kapitel</b> heißt: der wievielte Abschnitt einer Synthese.
-        Jede Synthese ist in neun bis zehn Kapitel gegliedert, und sie
-        heißen in den beiden Stufen verschieden. Welche es sind, steht
-        im Inhaltsverzeichnis der jeweiligen Synthese.</p>
-      <p><b>Kostenlos</b> sind in beiden Stufen Kapitel 1 und 2: der
-        Zuschnitt der Kohorte und der Anfang der großen Tabelle, acht
-        Projekte von oft mehr als hundert.</p>
-      <p><b>Kostenpflichtig</b> ist der Rest der Tabelle und alles ab
-        Kapitel 3. In Stufe 1 ist das: was die Evidenz trägt und was nicht, die
-        wiederkehrenden Hindernisse und das Fazit, in Stufe 2 die
-        primären Endpunkte, die Gesundheitsökonomie, der Abgleich
-        zwischen Studienergebnis und Ausschussentscheidung und das
-        Fazit.</p>
-    </div>`;
+${BEGRIFFE}`;
 
   /* Die Aufzaehlung der fertigen Kohorten stand hier doppelt: Welche es
      gibt, zeigen die Reiter darunter, und die Liste veraltet mit jeder
