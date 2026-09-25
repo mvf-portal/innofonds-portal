@@ -2743,6 +2743,16 @@ function dossierZeichnen() {
   const llB = P.filter(p => p.vf === LL && p.st === 'beendet').length;
   const llE = P.filter(p => p.vf === LL && p.st === 'beendet'
     && UE_TE.includes(p.te)).length;
+  /* Wie es vor der Berichtspflicht aussah. Gezaehlt wird, wozu keine
+     Rueckmeldung veroeffentlicht ist: Das ist eine Aussage ueber die
+     Aktenlage und nicht ueber das Verhalten der Stellen. Mehr geben
+     die Daten nicht her, und mehr soll der Satz nicht behaupten. */
+  const GRENZE = '2024-12-12';
+  const mitRM = new Set((UM.projekte || [])
+    .filter(p => p.rm).map(p => p.id));
+  const alt_ = (UM.projekte || []).filter(p => p.bd && p.bd < GRENZE);
+  const altAlle = alt_.length;
+  const altOhne = alt_.filter(p => !mitRM.has(p.id)).length;
   const el = document.getElementById('aufschlag');
   if (!el) return;
   el.innerHTML = `
@@ -2772,11 +2782,16 @@ function dossierZeichnen() {
         Innovationsfonds bisher nicht zuständig.</b> Diese Arbeit
         beginnt jenseits der geförderten
         Projektzeit, und dort scheitert sie meist oder wird gar nicht
-        erst begonnen. Seit dem Krankenhausversorgungsverbesserungsgesetz
-        müssen die benannten Stellen binnen zwölf Monaten auf eine
-        Empfehlung oder Prüfbitte antworten (§ 92b Abs. 3 SGB V, in
-        Kraft seit dem 12. Dezember 2024). Eine gesetzliche
-        Verpflichtung zur Umsetzung gibt es nicht.</p>
+        erst begonnen. Zudem müssen die benannten Stellen erst seit dem
+        Krankenhausversorgungsverbesserungsgesetz binnen zwölf Monaten
+        (!) auf eine Empfehlung oder Prüfbitte antworten
+        (§ 92b Abs. 3 SGB V, in Kraft seit dem 12. Dezember 2024).
+        Davor mussten sie nicht einmal das: Zu ${zahl(altOhne)} der
+        ${zahl(altAlle)} älteren Beschlüsse, also
+        ${Math.round(altOhne / Math.max(1, altAlle) * 100)} Prozent,
+        ist bis heute keine Rückmeldung veröffentlicht. Eine
+        gesetzliche Verpflichtung zur Umsetzung gibt es bis heute
+        nicht.</p>
     </div>`;
 })();
 
