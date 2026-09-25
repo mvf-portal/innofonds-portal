@@ -2266,6 +2266,7 @@ function themaAusFrage(frage) {
    Empfehlungsquote. Die Daten dafuer liegen im Portal, sie standen nur
    in einem anderen Reiter. */
 const ART_MUSTER = [
+  ['bilanz', /innovationsfonds|innovationfonds|innoavtionsfonds|der fonds|dieser fonds|fonds (sein|sich|uberhaupt)|lohnt sich der|bilanz des|sein geld wert|geld wert|was hat er gebracht|was bringt der|rechtfertig|sinnvoll investiert/],
   ['einrichtungen', /unternehmen|einrichtung|institut|hochschul|universit|klinik|krankenkass|kasse|konsortial|partner|akteur|firma|firmen|traeger|trager|antragsteller|konsorti/],
   ['laender', /bundesland|bundeslaender|bundeslander|land|lander|laender|region|nordrhein|bayern|berlin|wo\s/],
   ['dauer', /wie lang|dauer|dauert|wartezeit|monate|jahre bis|zeit bis/],
@@ -2275,6 +2276,142 @@ function frageArt(frage) {
   const f = ohneStrich(norm(frage));
   for (const [art, muster] of ART_MUSTER) if (muster.test(f)) return art;
   return 'thema';
+}
+
+/* Die Frage nach dem Fonds als Ganzem. Sie wird oft gestellt, sie ist
+   die schwerste, und sie hat eine Antwort, die weder beschoenigt noch
+   schlechtredet. */
+function antwortBilanz() {
+  const pz = (a, b) => b ? Math.round(a / b * 100) + ' %' : '–';
+  const vf = P.filter(p => p.vf !== 'Medizinische Leitlinien');
+  const ll = P.filter(p => p.vf === 'Medizinische Leitlinien');
+  const vfB = vf.filter(p => p.st === 'beendet');
+  const vfE = vfB.filter(p => UE_TE.includes(p.te));
+  const llB = ll.filter(p => p.st === 'beendet');
+  const llE = llB.filter(p => UE_TE.includes(p.te));
+  const summe = P.reduce((s, p) => s + (p.sum || 0), 0);
+  const bew = EP.filter(e => e.g != null);
+  const sig = bew.filter(e => e.g === 1);
+  const gegen = sig.filter(e => e.r === -1);
+  const flach = bew.filter(e => e.g === 0);
+  const E = {};
+  (D.erhebung || []).forEach(g => (g.zeilen || []).forEach(
+    z => E[z.w] = z.n));
+  const zahl = n => (n || 0).toLocaleString('de-DE');
+  const A = {};
+  (UM.antworten || []).forEach(r => A[r.s] = r.n);
+  const getan = (A['umgesetzt'] || 0) + (A['teilweise umgesetzt'] || 0);
+  const kette = (UM.dauer && UM.dauer.ganz) ? UM.dauer.ganz.med : null;
+
+  return `<div class="amzug">
+    <h3 style="margin-top:0">Was der Innovationsfonds gebracht hat</h3>
+    <p class="hinweis" style="margin:0 0 10px">Ihre Frage zielt auf den
+      Fonds als Ganzes, nicht auf ein Thema. Hier steht, was sich aus den
+      Daten dieses Portals dazu sagen lässt. Alle Zahlen sind
+      gerechnet.</p>
+
+    <div class="kacheln">
+      <div class="kachel"><div class="gross">${zahl(P.length)}</div>
+        <div class="was">geförderte Vorhaben seit 2016</div></div>
+      <div class="kachel"><div class="gross">${eur(summe)}</div>
+        <div class="was">Fördervolumen</div></div>
+      <div class="kachel"><div class="gross">${zahl(bew.length)}</div>
+        <div class="was">bewertete Endpunkte aus ${
+          zahl(E['Berichte zu Endpunkten ausgewertet'])} Berichten</div></div>
+      <div class="kachel"><div class="gross">${zahl(sig.length)}</div>
+        <div class="was">davon mit belegtem Unterschied</div></div>
+    </div>
+
+    <h4>Was entschieden wurde</h4>
+    <div class="huelle" style="max-height:none"><table><tbody>
+      <tr><td>Versorgungsvorhaben, abgeschlossen und beschieden</td>
+        <td class="zahl">${vfB.length}</td></tr>
+      <tr><td>davon mit Empfehlung zur Überführung oder Erprobung</td>
+        <td class="zahl"><b>${vfE.length} · ${pz(vfE.length, vfB.length)}</b>
+        </td></tr>
+      <tr><td>Leitlinienvorhaben, abgeschlossen</td>
+        <td class="zahl">${llB.length}</td></tr>
+      <tr><td>davon mit Prüfbitte zur Überführung</td>
+        <td class="zahl"><b>${llE.length} · ${pz(llE.length, llB.length)}</b>
+        </td></tr>
+    </tbody></table></div>
+    <p>Die Leitlinienvorhaben sind der eine Teil, bei dem der Weg in die
+      Versorgung kurz ist: Eine Leitlinie erscheint im Register der AWMF
+      und gilt. ${llE.length} von ${llB.length} abgeschlossenen
+      Leitlinienvorhaben haben eine Prüfbitte erhalten.</p>
+
+    <h4>Warum die Empfehlungsquote nicht das Maß ist</h4>
+    <p>Die Transferempfehlung ist eine Entscheidung des
+      Innovationsausschusses, kein Wirksamkeitsnachweis. Das lässt sich
+      an den Daten zeigen: Das Merkmal <i>Studiendesign und Methodik</i>
+      ist bei Vorhaben mit und ohne Empfehlung praktisch gleich häufig
+      belegt, 83,1 gegen 83,3 Prozent, p = 1,000. Wer die Quote von
+      ${pz(vfE.length, vfB.length)} für die Erfolgsquote der Forschung
+      hält, verwechselt zwei verschiedene Dinge.</p>
+    <p><b>Ein Vorhaben ohne Empfehlung liefert ein Ergebnis.</b> Es
+      zeigt, was nicht trägt, und dieser Nachweis ist billiger als eine
+      flächendeckend eingeführte Versorgungsform, die nicht wirkt. Von
+      ${zahl(bew.length)} bewerteten Endpunkten zeigten
+      <b>${zahl(flach.length)}</b> keinen Unterschied zur
+      Vergleichsgruppe. Das sind ${zahl(flach.length)} beantwortete
+      Fragen, nicht ${zahl(flach.length)} Fehlschläge.</p>
+    <p>Und es sind belastbare Antworten: Bei den Vorhaben, die ihre
+      geplante Fallzahl erreicht haben, liegt der Anteil der Endpunkte
+      ohne Unterschied bei 53 Prozent, bei denen, die sie verfehlt
+      haben, ebenfalls bei 53 Prozent. Die Nullbefunde sind also kein
+      Messfehler kleiner Studien.</p>
+
+    <h4>Was an Wissen entstanden ist</h4>
+    <div class="huelle" style="max-height:none"><table><tbody>
+      <tr><td>Dokumente mit auswertbarem Text</td>
+        <td class="zahl">${zahl(E['Dokumente mit Textschicht'])}</td></tr>
+      <tr><td>Seiten darin</td>
+        <td class="zahl">${zahl(E['Seiten'])}</td></tr>
+      <tr><td>Beschlüsse inhaltlich ausgewertet</td>
+        <td class="zahl">${zahl(E['Beschlüsse inhaltlich ausgewertet'])}</td></tr>
+      <tr><td>Endpunkte mit Befund, p-Wert und Seitenzahl</td>
+        <td class="zahl">${zahl(E['Endpunkte'])}</td></tr>
+      <tr><td>Hinderniszuordnungen, jede gegen ihr Zitat geprüft</td>
+        <td class="zahl">${zahl(E['Hinderniszuordnungen'])}</td></tr>
+    </tbody></table></div>
+    <p>Zusammengezählt hat das bisher niemand. Der Innovationsausschuss
+      veröffentlicht jedes Stück einzeln; an keiner amtlichen Stelle
+      steht, was in der Summe herausgekommen ist. Genau diese Lücke
+      schließt dieses Portal.</p>
+
+    <h4>Was man ihm vorhalten muss</h4>
+    <p>Drei Dinge stehen den guten Zahlen gegenüber, und sie stehen hier,
+      weil eine Bilanz ohne sie keine wäre.</p>
+    <ul class="punkte">
+      <li><b>Es dauert.</b>${kette ? ` Von der Förderbekanntmachung bis
+        zum Beschluss vergehen im Median ${kette} Monate, also
+        ${(kette / 12).toLocaleString('de-DE',
+          {maximumFractionDigits: 1})} Jahre.` : ''} Davon entfällt nur
+        ein Teil auf die Forschung selbst.</li>
+      <li><b>Der Transfer wird nicht verfolgt.</b> Von
+        ${zahl((UM.antworten || []).reduce((a, r) => a + r.n, 0))}
+        Nennungen von Adressaten in den Beschlüssen sind
+        ${zahl(getan)} umgesetzt oder teilweise umgesetzt. Bei
+        ${zahl((A['nicht erkennbar'] || 0) + (A['keine Rückmeldung'] || 0))}
+        bleibt offen, was geschehen ist.</li>
+      <li><b>Die Berichte sind ungleich gut.</b> Bei
+        ${zahl(gegen.length)} Endpunkten fiel der belegte Unterschied
+        gegen die Intervention aus. Das gehört zum Ergebnis und wird
+        selten erzählt.</li>
+    </ul>
+
+    <p class="was"><b>Die Antwort in einem Satz.</b> Wer vom
+      Innovationsfonds erwartet, dass die Mehrheit der Vorhaben in die
+      Regelversorgung übergeht, wird enttäuscht und stellt die falsche
+      Erwartung. Wer erwartet, dass er belastbar klärt, was in der
+      Versorgung trägt und was nicht, bekommt
+      ${zahl(bew.length)} bewertete Endpunkte aus
+      ${zahl(E['Berichte zu Endpunkten ausgewertet'])} Berichten und
+      damit eine Wissensgrundlage, die es in Deutschland sonst nicht
+      gibt.</p>
+    <p class="hinweis">Die Zahlen dieser Seite stehen ausführlich in den
+      Reitern <b>Kennzahlen</b>, <b>Endpunkte</b> und
+      <b>Transfer</b>.</p></div>`;
 }
 
 function antwortEinrichtungen(frage) {
@@ -2374,6 +2511,9 @@ function dossierZeichnen() {
     }
     if (art === 'laender') {
       ziel.innerHTML = antwortLaender(); doThema = null; return;
+    }
+    if (art === 'bilanz') {
+      ziel.innerHTML = antwortBilanz(); doThema = null; return;
     }
     /* Eine Frage nach Geld oder Dauer, die zugleich ein Thema nennt,
        ist eine Themenfrage: Das Dossier weist Fördervolumen und
