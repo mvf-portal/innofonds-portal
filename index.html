@@ -247,7 +247,14 @@ button.zu:hover{background:var(--weich);color:var(--text);
 .aufschlag{border-left:4px solid var(--gold);background:var(--goldweich);
   padding:14px 18px;border-radius:0 11px 11px 0;margin:0 0 14px}
 .aufschlag h2{margin:0 0 8px;font-size:19px;line-height:1.35;font-weight:650}
-.aufschlag p{margin:0}
+.aufschlag p{margin:0 0 8px}
+.aufschlag p:last-child{margin:0}
+/* Die Kernaussage: Sie beantwortet die Frage, mit der jeder kommt, und
+   steht deshalb vor allen Werkzeugen. */
+.kernaussage{margin-top:12px;padding-top:12px;
+  border-top:1px solid var(--goldlinie)}
+.kernaussage p{margin:0 0 7px}
+.kernaussage p:last-child{margin:0}
 /* Das Fragefeld ist der Einstieg und darf so aussehen. */
 .do-frage{align-items:stretch}
 .do-frage input{flex:1 1 560px;min-width:280px;font-size:15px;
@@ -2726,6 +2733,16 @@ function dossierZeichnen() {
   const summe = P.reduce((s, p) => s + (p.sum || 0), 0);
   const mrd = (summe / 1e9).toLocaleString('de-DE',
     {maximumFractionDigits: 1});
+  /* Die Kernaussage rechnet mit denselben Zahlen wie die ausfuehrliche
+     Bilanz weiter unten. Zwei Stellen, die dasselbe behaupten, muessen
+     aus derselben Quelle kommen. */
+  const LL = 'Medizinische Leitlinien';
+  const vfB = P.filter(p => p.vf !== LL && p.st === 'beendet').length;
+  const vfE = P.filter(p => p.vf !== LL && p.st === 'beendet'
+    && UE_TE.includes(p.te)).length;
+  const llB = P.filter(p => p.vf === LL && p.st === 'beendet').length;
+  const llE = P.filter(p => p.vf === LL && p.st === 'beendet'
+    && UE_TE.includes(p.te)).length;
   const el = document.getElementById('aufschlag');
   if (!el) return;
   el.innerHTML = `
@@ -2742,7 +2759,24 @@ function dossierZeichnen() {
       erhielten, <b>was die erfolgreichen von den erfolglosen
       unterscheidet</b>, mit Zitaten aus den Beschlüssen und Seitenzahl.
       Gerechnet wird in Ihrem Browser. Es kostet nichts, es ist nicht
-      begrenzt, und Ihre Eingabe verlässt Ihren Rechner nicht.</p>`;
+      begrenzt, und Ihre Eingabe verlässt Ihren Rechner nicht.</p>
+    <div class="kernaussage">
+      <p><b>Der Innovationsfonds selbst ist erfolgreich.</b>
+        ${zahl(vfB)} Versorgungsvorhaben sind abgeschlossen und
+        beschieden, <b>${zahl(vfE)} davon mit einer Empfehlung
+        (${Math.round(vfE / Math.max(1, vfB) * 100)} Prozent)</b>. Dazu
+        kommen ${zahl(llB)} abgeschlossene Leitlinienvorhaben, alle
+        ${zahl(llE)} mit einer Prüfbitte
+        (${Math.round(llE / Math.max(1, llB) * 100)} Prozent).</p>
+      <p><b>Für den Transfer in die Regelversorgung ist er nicht
+        zuständig.</b> Diese Arbeit beginnt jenseits der geförderten
+        Projektzeit, und dort scheitert sie meist oder wird gar nicht
+        erst begonnen. Seit dem Krankenhausversorgungsverbesserungsgesetz
+        müssen die benannten Stellen binnen zwölf Monaten auf eine
+        Empfehlung oder Prüfbitte antworten (§ 92b Abs. 3 SGB V, in
+        Kraft seit dem 12. Dezember 2024). Eine gesetzliche
+        Verpflichtung zur Umsetzung gibt es nicht.</p>
+    </div>`;
 })();
 
 /* Fragen statt Stichworte. Ein Stichwort verlangt, dass jemand schon
@@ -5654,10 +5688,12 @@ partnerZeichnen();
           billiger als eine flächendeckend eingeführte Versorgungsform,
           die nicht wirkt. Die Frage ist, was mit dem Ergebnis geschieht,
           das mit diesem Geld erkauft wurde.</p>
-        <p>Seit dem Digital-Gesetz müssen die Adressaten einer Empfehlung
-          dem Innovationsausschuss binnen zwölf Monaten über die
-          Umsetzung berichten (§ 92b Abs. 3 SGB V), und diese
-          Rückmeldungen werden veröffentlicht. Stellt der Ausschuss die
+        <p>Seit dem Krankenhausversorgungsverbesserungsgesetz vom
+          5. Dezember 2024, in Kraft seit dem 12. Dezember 2024, müssen
+          die Adressaten einer Empfehlung dem Innovationsausschuss
+          binnen zwölf Monaten über die Umsetzung berichten
+          (§ 92b Abs. 3 SGB V), und diese Rückmeldungen werden
+          veröffentlicht. Stellt der Ausschuss die
           Zuständigkeit des GBA fest, muss dieser binnen zwölf Monaten
           die Regelungen zur Aufnahme beschließen. Der Stand:</p>
         ${UM.nach_empfehlung && UM.nach_empfehlung.length ? `
@@ -5844,8 +5880,9 @@ partnerZeichnen();
           gehen dort Empfehlungen an mehrere Adressaten zugleich, und
           bei der Hälfte bleibt offen, was daraus wurde.</p>` : ''}
         <p><b>Politik am Zug.</b> Die Berichtspflicht gilt erst für
-          Beschlüsse seit 2024, die älteren Empfehlungen sind von ihr
-          nicht erfasst. Veröffentlicht wird das Einzelstück, nicht die
+          Beschlüsse seit Dezember 2024, die älteren Empfehlungen sind
+          von ihr nicht erfasst. Und sie ist eine Pflicht zu antworten,
+          nicht eine Pflicht umzusetzen. Veröffentlicht wird das Einzelstück, nicht die
           Bilanz: An keiner amtlichen Stelle steht, wie viele
           Empfehlungen in der Regelversorgung angekommen sind. Und die
           Pflicht endet beim Bericht, nicht bei der Antwort. Ein
