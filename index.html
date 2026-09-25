@@ -258,6 +258,15 @@ button.zu:hover{background:var(--weich);color:var(--text);
 .zweiteSuche{margin-top:30px;padding-top:20px;
   border-top:2px solid var(--linie)}
 .zweiteSuche h3{margin:0 0 4px}
+/* Die Rueckfrage. Sie steht vor dem Ergebnis, weil sie es in Frage
+   stellt. */
+.rueckfrage{background:var(--weich);border:1px solid var(--linie);
+  border-radius:9px;padding:10px 14px;margin:0 0 12px;font-size:14px}
+.rueckfrage .andere{margin-top:7px}
+.rueckfrage .chip{cursor:pointer;border:1px solid var(--linie);
+  background:var(--flaeche);border-radius:999px;padding:3px 11px;
+  font:inherit;font-size:13px;color:var(--text);margin:0 6px 4px 0}
+.rueckfrage .chip:hover{border-color:var(--akzent);background:var(--flaeche)}
 #do-vorschlaege .chip{cursor:pointer;border:1px solid var(--linie);
   background:var(--flaeche);border-radius:999px;padding:5px 13px;
   font:inherit;font-size:13px;color:var(--text);margin:0 6px 6px 0}
@@ -845,10 +854,10 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
     <button id="do-los" class="gold">Antwort zeigen</button>
   </div>
   <p class="hinweis" style="margin:2px 0 6px">Sie können eine ganze Frage
-    eingeben. Das Portal sucht darin das Thema und sagt Ihnen, welches es
-    verstanden hat. Oder Sie klicken eine dieser Fragen an, die sich
-    sonst nur beantworten ließen, indem man hunderte Beschlüsse und
-    Berichte nebeneinanderlegt.</p>
+    stellen. Das Portal sagt Ihnen, wie es die Frage gelesen hat, und Sie
+    können die Lesart ändern, wenn sie nicht stimmt. Oder Sie klicken
+    eine dieser Fragen an, die sich sonst nur beantworten ließen, indem
+    man hunderte Beschlüsse und Berichte nebeneinanderlegt.</p>
   <div id="do-vorschlaege" class="chips"></div>
   <div id="do-ergebnis"></div>
 
@@ -2148,8 +2157,10 @@ let doStand = null;
    wird gegen die geernteten Ringe gehalten. Gewinnt der Ring, dessen
    Begriff am seltensten im Bestand steht: "App" traegt eine Frage,
    "Versorgung" traegt sie nicht. */
-let doThema = null;          // {thema, erkannt, rest}
+let doThema = null;          // {thema, erkannt, rest, andere}
 let doRoh = false;           // beim naechsten Lauf nicht deuten
+let doWahl = null;           // vom Leser gewaehlte Lesart
+let doLetzte = '';           // Eingabe des letzten Laufs
 
 /* Woerter, die in einer Frage stehen, aber kein Thema benennen. */
 const FRAGEWORT = new Set(('projekt projekte projekten projektes vorhaben '
@@ -2157,7 +2168,9 @@ const FRAGEWORT = new Set(('projekt projekte projekten projektes vorhaben '
   + 'erfolgreich ergebnis ergebnisse thema themen bereich gefordert '
   + 'forderung gescheitert scheitern lauft laufen geben gab viele '
   + 'wurden wurde welchen welche gibt zeigt sagen sagt heisst bringt '
-  + 'funktioniert lohnt halten versprechen steht geht').split(' '));
+  + 'funktioniert lohnt halten versprechen steht geht dauert dauer '
+  + 'lange langer beschluss beschlusse geld euro kostet kosten '
+  + 'aktiv beteiligt meisten').split(' '));
 
 /* Eine Frage zerlegen. Anders als woerter() trennt das auch an
    Bindestrichen: "Telemedizin-Vorhaben" ist sonst ein Wort, das im
@@ -2166,11 +2179,22 @@ function fragewoerter(frage) {
   return [...new Set(norm(frage).split(/[^a-z0-9äöü]+/))]
     .filter(t => t.length > 2 && !FUELLWORT.has(t) && !FRAGEWORT.has(t));
 }
+/* Die Schreibweise, wie sie in der Frage stand. norm() nimmt Umlaute
+   heraus, und "angehorigen" ueber dem Ergebnis sieht aus wie ein
+   Tippfehler des Portals. */
+function wieGeschrieben(frage, wort) {
+  for (const t of (frage.match(/[\wÄÖÜäöüß-]+/g) || []))
+    if (ohneStrich(norm(t)) === ohneStrich(norm(wort))) return t;
+  return wort;
+}
 
 /* Wie viele Vorhaben fuehren dieses Wort? Die Zahl entscheidet, ob es
    die Frage traegt. */
 function wieHaeufig(w) {
-  const wf = ohneStrich(w);
+  /* Normalisieren nicht vergessen: _sf ist klein geschrieben und ohne
+     Umlaute. Ohne norm() fand "Lotse" null Vorhaben, und der Ringname
+     wurde nie als Thema genommen. */
+  const wf = ohneStrich(norm(w));
   let n = 0;
   for (const p of P) if (p._sf.includes(wf)) n++;
   return n;
@@ -2182,8 +2206,14 @@ function themaAusFrage(frage) {
   /* Ein Wort, das mehr als dieser Anteil der Vorhaben fuehrt, benennt
      kein Thema mehr. */
   const grenze = Math.round(P.length * 0.35);
-  const beurteilt = kern.map(w => ({
-    w, n: wieHaeufig(w), ring: ringFuerFrage(w).length > 0}));
+  const beurteilt = kern.map(w => {
+    /* Welcher Ring wird von diesem Wort ausgeloest? Sein Name ist das
+       bessere Thema: "Lotsenprojekten" steht bei dreizehn Vorhaben,
+       "Lotse" bei hundertsechsundzwanzig, und gemeint ist dasselbe. */
+    const r = SYN.find(x => x.anlass.some(
+      k => k.split(/[^a-z0-9]+/).some(t => wortPasst(t, ohneStrich(w)))));
+    return {w, n: wieHaeufig(w), ring: !!r, name: r ? r.name : null};
+  });
   let nehmen = beurteilt.filter(x => (x.n > 0 && x.n <= grenze) || x.ring);
   if (!nehmen.length) nehmen = beurteilt.filter(x => x.n > 0);
   if (!nehmen.length) return null;
@@ -2203,23 +2233,164 @@ function themaAusFrage(frage) {
      pflegende Angehoerige" fand so zwei Vorhaben, obwohl es zu Demenz
      vierunddreissig gibt. Das seltenste Wort benennt das Thema, die
      uebrigen werden genannt und nicht benutzt. */
-  const gewaehlt = nehmen[0];
+  const gewaehlt = doWahl
+    ? (nehmen.find(x => x.w === doWahl) || nehmen[0]) : nehmen[0];
+  /* Der Ringname wird genommen, wenn er mehr findet als das Wort der
+     Frage. Sonst bleibt das Wort stehen: Wer "Videosprechstunde"
+     eingibt, will nicht "Telemedizin" lesen. */
+  const eigen = gewaehlt.n;
+  const ueber = gewaehlt.name ? wieHaeufig(gewaehlt.name) : 0;
+  const thema = (gewaehlt.name && ueber > eigen * 2)
+    ? gewaehlt.name : wieGeschrieben(frage, gewaehlt.w);
   return {
-    thema: gewaehlt.w,
-    erkannt: true,
+    thema, erkannt: true,
+    wort: gewaehlt.w,
     rest: kern.filter(w => w !== gewaehlt.w),
+    /* Die naechstbesten Lesarten, damit die Rueckfrage eine Wahl
+       anbieten kann und nicht nur eine Entschuldigung. */
+    /* Jede angebotene Lesart mit ihrer eigenen Trefferzahl: Der
+       Ringname hat eine andere als das Wort der Frage, und die
+       falsche daneben zu schreiben waere schlimmer als keine. */
+    andere: nehmen.filter(x => x.w !== gewaehlt.w).slice(0, 4)
+      .map(x => {
+        const nutzRing = x.name && wieHaeufig(x.name) > x.n * 2;
+        return {w: x.w,
+                zeig: nutzRing ? x.name : wieGeschrieben(frage, x.w),
+                n: nutzRing ? wieHaeufig(x.name) : x.n};
+      }),
   };
+}
+
+/* ---------- Fragen, die keine Themenfragen sind ----------
+   Wer nach Einrichtungen fragt, will eine Rangliste und keine
+   Empfehlungsquote. Die Daten dafuer liegen im Portal, sie standen nur
+   in einem anderen Reiter. */
+const ART_MUSTER = [
+  ['einrichtungen', /unternehmen|einrichtung|institut|hochschul|universit|klinik|krankenkass|kasse|konsortial|partner|akteur|firma|firmen|traeger|trager|antragsteller|konsorti/],
+  ['laender', /bundesland|bundeslaender|bundeslander|land|lander|laender|region|nordrhein|bayern|berlin|wo\s/],
+  ['dauer', /wie lang|dauer|dauert|wartezeit|monate|jahre bis|zeit bis/],
+  ['geld', /wie ?viel geld|fordersumme|fordervolumen|kostet|euro|million|budget|mittel/],
+];
+function frageArt(frage) {
+  const f = ohneStrich(norm(frage));
+  for (const [art, muster] of ART_MUSTER) if (muster.test(f)) return art;
+  return 'thema';
+}
+
+function antwortEinrichtungen(frage) {
+  const k = [...NETZ.knoten].sort((a, b) => b.projekte - a.projekte);
+  const oben = k.slice(0, 20);
+  const nachTyp = new Map();
+  NETZ.knoten.forEach(x => nachTyp.set(x.typ,
+    (nachTyp.get(x.typ) || 0) + 1));
+  const typen = [...nachTyp.entries()].sort((a, b) => b[1] - a[1]);
+  return `<div class="amzug">
+    <h3 style="margin-top:0">Einrichtungen nach Zahl der Vorhaben</h3>
+    <p class="hinweis" style="margin:0 0 10px">Gefragt war nach
+      Einrichtungen, nicht nach einem Thema. ${NETZ.knoten.length}
+      Einrichtungen sind an den ${P.length} Vorhaben beteiligt, nach
+      Zusammenführung der Schreibweisen. Hier die zwanzig mit den
+      meisten Beteiligungen.</p>
+    <div class="huelle" style="max-height:none"><table><thead><tr>
+      <th></th><th>Einrichtung</th><th>Art</th><th>Ort</th>
+      <th class="zahl">Vorhaben</th><th class="zahl">davon Leitung</th>
+      </tr></thead><tbody>${oben.map((x, i) => `<tr>
+      <td class="zahl">${i + 1}</td><td><b>${esc(x.name)}</b></td>
+      <td>${esc(x.typ || '')}</td><td>${esc(x.ort || '')}</td>
+      <td class="zahl">${x.projekte}</td>
+      <td class="zahl">${x.projekte_leitung || 0}</td></tr>`).join('')}
+      </tbody></table></div>
+    <h4>Nach Art der Einrichtung</h4>
+    <div class="huelle" style="max-height:none"><table><tbody>${
+      typen.map(([t, n]) => `<tr><td>${esc(t)}</td>
+      <td class="zahl">${n}</td></tr>`).join('')}</tbody></table></div>
+    <p class="hinweis">Der Reiter <b>Partner</b> zeigt dieselben Daten
+      mit Suche und Filter, der Reiter <b>Netzwerk</b> zeigt, wer mit
+      wem zusammenarbeitet, und die <b>Landkarte</b> zeigt, wo sie
+      sitzen.</p></div>`;
+}
+
+function antwortLaender() {
+  const z = new Map();
+  P.forEach(p => {
+    if (!p.bl) return;
+    const a = z.get(p.bl) || {n: 0, be: 0, ue: 0, sum: 0};
+    a.n++; a.sum += p.sum || 0;
+    if (p.st === 'beendet') {
+      a.be++;
+      if (UE_TE.includes(p.te)) a.ue++;
+    }
+    z.set(p.bl, a);
+  });
+  const zeilen = [...z.entries()].sort((a, b) => b[1].n - a[1].n);
+  return `<div class="amzug">
+    <h3 style="margin-top:0">Vorhaben nach Bundesland</h3>
+    <p class="hinweis" style="margin:0 0 10px">Gezählt ist das Land der
+      Konsortialführung.</p>
+    <div class="huelle" style="max-height:none"><table><thead><tr>
+      <th>Bundesland</th><th class="zahl">Vorhaben</th>
+      <th class="zahl">Fördervolumen</th><th class="zahl">beschieden</th>
+      <th class="zahl">mit Empfehlung</th></tr></thead><tbody>${
+      zeilen.map(([bl, a]) => `<tr><td>${esc(bl)}</td>
+      <td class="zahl">${a.n}</td><td class="zahl">${eur(a.sum)}</td>
+      <td class="zahl">${a.be}</td>
+      <td class="zahl">${a.ue}${a.be
+        ? ' · ' + Math.round(a.ue / a.be * 100) + ' %' : ''}</td>
+      </tr>`).join('')}</tbody></table></div>
+    <p class="hinweis">Die <b>Landkarte</b> zeigt dasselbe räumlich.</p>
+    </div>`;
+}
+
+function antwortHinweis(art) {
+  const wohin = {
+    dauer: ['Transfer', 'Dort steht die ganze Zeitkette: von der '
+      + 'Förderbekanntmachung über Projektbeginn und Projektende bis '
+      + 'zum Beschluss und zur Antwort der Adressaten, jede Strecke '
+      + 'einzeln.'],
+    geld: ['Kennzahlen', 'Dort stehen Fördersummen nach Förderbereich, '
+      + 'Median und Maximum, und was eine Empfehlung im Mittel '
+      + 'gekostet hat.'],
+  }[art];
+  if (!wohin) return '';
+  return `<div class="amzug"><h3 style="margin-top:0">Das beantwortet ein anderer Reiter</h3><p>Ihre Frage zielt auf ${
+    art === 'dauer' ? 'Zeiträume' : 'Geld'}. Sehen Sie in den Reiter
+    <b>${wohin[0]}</b>. ${wohin[1]}</p>
+    <p class="hinweis">Hier auf der Startseite wird über ein Thema
+    gerechnet. Geben Sie ein Thema ein, und Sie bekommen dessen
+    Bilanz.</p></div>`;
 }
 
 function dossierZeichnen() {
   const roh = document.getElementById('do-q').value.trim();
   const ziel = document.getElementById('do-ergebnis');
   if (!roh) { ziel.innerHTML = ''; doThema = null; return; }
+  /* Erst die Frageform, dann die Antwort. Eine Frage nach
+     Einrichtungen in eine Themenbilanz zu pressen, hiesse die falsche
+     Frage richtig zu beantworten. */
+  if (!doRoh) {
+    const art = frageArt(roh);
+    if (art === 'einrichtungen') {
+      ziel.innerHTML = antwortEinrichtungen(roh); doThema = null; return;
+    }
+    if (art === 'laender') {
+      ziel.innerHTML = antwortLaender(); doThema = null; return;
+    }
+    /* Eine Frage nach Geld oder Dauer, die zugleich ein Thema nennt,
+       ist eine Themenfrage: Das Dossier weist Fördervolumen und
+       Wartezeit ohnehin aus. Verwiesen wird nur, wenn kein Thema
+       darin steckt. */
+    const t = themaAusFrage(roh);
+    if (!t || !t.erkannt) {
+      const h = antwortHinweis(art);
+      if (h) { ziel.innerHTML = h; doThema = null; return; }
+    }
+  }
   /* Eine Frage ist erst ab vier Woertern eine Frage. Darunter ist es
      ein Stichwort, und das wird genommen, wie es dasteht. */
   /* Auch ein einzelnes Wort wird gedeutet, wenn es im Bestand nicht
      vorkommt: "Lotsenprojekten" steht nirgends, benennt aber die
      Lotsenvorhaben. */
+  if (roh !== doLetzte) { doWahl = null; doLetzte = roh; }
   doThema = doRoh ? null : themaAusFrage(roh);
   if (doThema && doThema.erkannt && fragewoerter(roh).length === 1
       && ohneStrich(norm(doThema.thema)) === ohneStrich(norm(roh)))
@@ -2347,11 +2518,21 @@ function dossierZeichnen() {
       ? `<p class="hinweis">Die ersten 200 von ${d.treffer.length}.</p>` : ''}`;
 
   const gelesen = (doThema && doThema.erkannt) ? `
-    <p class="hinweis" style="margin:0 0 10px">Aus Ihrer Frage gelesen:
-      <b>${esc(d.frage)}</b>${doThema.rest.length
-        ? `. Nicht berücksichtigt: ${doThema.rest.map(esc).join(', ')}`
-        : ''}. <button class="zu" id="do-roh" style="float:none;margin:0
-        0 0 6px">stattdessen wörtlich suchen</button></p>` : '';
+    <div class="rueckfrage">
+      <b>Ich habe Ihre Frage so gelesen:</b> Thema
+      <b>${esc(d.frage)}</b>, ${d.treffer.length} Vorhaben. Stimmt das?
+      ${doThema.andere && doThema.andere.length ? `<div class="andere">
+        Nein, ich meinte:
+        ${doThema.andere.map(a => `<button class="chip" data-wahl="${
+          esc(a.w)}">${esc(a.zeig)}${a.n
+            ? ` · ${a.n} Vorhaben` : ''}</button>`).join('')}
+        <button class="chip" data-art="einrichtungen">Einrichtungen</button>
+        <button class="chip" data-art="laender">Bundesländer</button>
+        <button class="chip" id="do-roh">die Frage wörtlich</button>
+      </div>` : `<div class="andere">
+        <button class="chip" id="do-roh">die Frage wörtlich suchen</button>
+      </div>`}
+    </div>` : '';
   ziel.innerHTML = `<div class="amzug">
     <h3 style="margin-top:0">Themen-Dossier: ${esc(d.frage)}</h3>
     ${gelesen}
@@ -2366,7 +2547,20 @@ function dossierZeichnen() {
     Ihren Rechner nicht.</p></div>`;
   doStand = d;
   const roher = document.getElementById('do-roh');
-  if (roher) roher.onclick = () => { doRoh = true; dossierZeichnen(); };
+  if (roher) roher.onclick = () => {
+    doRoh = true; doWahl = null; dossierZeichnen();
+  };
+  document.querySelectorAll('.rueckfrage .chip[data-wahl]')
+    .forEach(b => b.onclick = () => {
+      doWahl = b.dataset.wahl; doRoh = false; dossierZeichnen();
+    });
+  document.querySelectorAll('.rueckfrage .chip[data-art]')
+    .forEach(b => b.onclick = () => {
+      const art = b.dataset.art;
+      ziel.innerHTML = art === 'einrichtungen'
+        ? antwortEinrichtungen(roh) : antwortLaender();
+      doThema = null;
+    });
   const gtab = document.getElementById('do-gtab');
   if (gtab) gtab.addEventListener('click', ev => {
     const tr = ev.target.closest('tr[data-k]');
@@ -3222,6 +3416,7 @@ const ohneStrich = t => (t ?? '').replace(/-/g, '');
    eines GBA-Projektelements und steht bei 103 Vorhaben. Als
    Erweiterung genommen zoege er sie alle herein. */
 const SYN = (D.synonyme || []).map(r => ({
+  name: r.b,
   /* Anlass ist alles, woran man den Ring erkennt, auch Woerter, die im
      Bestand nirgends stehen. Dazugegeben wird nur, was dort wirklich
      etwas findet. */
