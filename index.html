@@ -807,18 +807,7 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
 </section>
 
 <section class="tafel" id="t-dossier">
-  <div class="aufschlag">
-    <h2>Der Innovationsfonds hat seit 2016 mit über zwei Milliarden Euro
-      861 Vorhaben gefördert. Was daraus geworden ist, steht in 1.185 PDF
-      mit 195.825 Seiten.</h2>
-    <p>Hier steht es in zwei Sekunden. Geben Sie ein Thema ein, und Sie
-      bekommen die vollständige Bilanz: wie viele Vorhaben es gab, wie
-      viele eine Empfehlung erhielten, <b>was die erfolgreichen von den
-      erfolglosen unterscheidet</b>, mit Zitaten aus den Beschlüssen und
-      Seitenzahl. Gerechnet wird in Ihrem Browser. Es kostet nichts, es
-      ist nicht begrenzt, und Ihre Eingabe verlässt Ihren Rechner
-      nicht.</p>
-  </div>
+  <div class="aufschlag" id="aufschlag"></div>
   <details class="stufenliste"><summary>Was dieses Werkzeug kann und was
     nicht, am Beispiel einer echten Frage</summary>
     <p>Jemand fragt: <i>„Zeige mir alle Lotsenprojekte und erkläre,
@@ -991,6 +980,12 @@ const FZ = (D.endpunkte && D.endpunkte.fallzahl) || {};
 const MCID = (D.endpunkte && D.endpunkte.mcid) || {};
 const ELEMENTSTAT = D.elementstat || {};
 const PID = {}; P.forEach(x => PID[x.id] = x);
+const MONATSNAMEN = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+  'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+const MONAT = (() => {
+  const m = /^(\d{4})-(\d{2})/.exec(D.stand || '');
+  return m ? `${MONATSNAMEN[+m[2] - 1]} ${m[1]}` : '';
+})();
 let epFam = null, epGezeichnet = false;
 
 const epNorm = s => (s ?? '').toString().toLowerCase()
@@ -2280,6 +2275,36 @@ function dossierZeichnen() {
       .forEach(x => x.classList.remove('auf'));
   });
 }
+
+/* Der Aufschlag. Seine Zahlen stehen nicht im Text, sondern kommen aus
+   der Erhebung: Ein Satz, der von Hand gepflegt werden muss, ist nach
+   zwei Wochen falsch. */
+(function(){
+  const E = {};
+  (D.erhebung || []).forEach(g => (g.zeilen || []).forEach(
+    z => E[z.w] = z.n));
+  const zahl = n => (n || 0).toLocaleString('de-DE');
+  const summe = P.reduce((s, p) => s + (p.sum || 0), 0);
+  const mrd = (summe / 1e9).toLocaleString('de-DE',
+    {maximumFractionDigits: 1});
+  const el = document.getElementById('aufschlag');
+  if (!el) return;
+  el.innerHTML = `
+    <h2>Der Innovationsfonds hat seit 2016 mit über ${mrd} Milliarden
+      Euro ${zahl(E['Förderprojekte'])} Vorhaben gefördert.</h2>
+    <p>Welche Erkenntnisse daraus gewonnen werden konnten, wird bisher in
+      ${zahl(E['Dokumente mit Textschicht'])} PDF mit
+      ${zahl(E['Seiten'])} Seiten (Stand: ${MONAT}) auf den Seiten des
+      Innovationsausschusses des GBA veröffentlicht.
+      <b>Erkenntnis-Synthesen sind damit nicht oder nur sehr schwer
+      möglich.</b> Genau dafür gibt es dieses Portal.</p>
+    <p>Geben Sie ein Thema ein, und Sie bekommen die vollständige
+      Bilanz: wie viele Vorhaben es gab, wie viele eine Empfehlung
+      erhielten, <b>was die erfolgreichen von den erfolglosen
+      unterscheidet</b>, mit Zitaten aus den Beschlüssen und Seitenzahl.
+      Gerechnet wird in Ihrem Browser. Es kostet nichts, es ist nicht
+      begrenzt, und Ihre Eingabe verlässt Ihren Rechner nicht.</p>`;
+})();
 
 /* Fragen statt Stichworte. Ein Stichwort verlangt, dass jemand schon
    weiss, was er sucht; eine Frage zeigt, was hier ueberhaupt zu holen
