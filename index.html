@@ -1063,6 +1063,16 @@ function reiterNach(ziel) {
   if (b) reiterZeigen(b);
   return b;
 }
+/* Ein Reiter je Kurzname: #evidenz, #transfer, #projekte. Der Kurzname
+   ist die Kennung ohne "t-", also gibt es keine zweite Liste, die beim
+   naechsten neuen Reiter vergessen wird. #p=123 bleibt dem einzelnen
+   Eintrag vorbehalten und wird hier uebergangen. */
+function reiterAusAdresse() {
+  const name = (location.hash || '').replace(/^#/, '');
+  if (!name || name.indexOf('=') >= 0) return;
+  reiterNach('t-' + name);
+}
+window.addEventListener('hashchange', reiterAusAdresse);
 
 /* ---------- Endpunkte ----------
    Die Berichte nennen 1834 Endpunkte, jeder in eigenen Worten. Erst die
@@ -4162,6 +4172,9 @@ document.getElementById('hinweis-auswertung').innerHTML = D.mit_auswertung >= P.
       Begründung des Ausschusses. Die Beschlusstexte sind aber überall verlinkt.</div>`;
 rechercheZeichnen();
 eintragZeigen();
+/* Nach eintragZeigen, nicht davor: Ein #p=-Link soll den Eintrag
+   zeigen, und reiterAusAdresse laesst ihn in Ruhe. */
+reiterAusAdresse();
 
 /* ---------- Projekte ----------
    Leitlinienvorhaben stehen in einem eigenen Reiter. Sie sind keine
