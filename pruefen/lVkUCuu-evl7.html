@@ -342,7 +342,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
   </div>
 </section>
 <section class="p" data-stelle="endpunkt.2">
-  <h3>Endpunkt, eingeordnet als „—“</h3>
+  <h3>Endpunkt, eingeordnet als „Versorgungskoordination und Schnittstellen“</h3>
   <p class="unser">Herstellung von Rehabilitationsfähigkeit und Überleitung in stationäre Rehabilitation nach KZP/REKUP (TP2: IG vs. S-KG)</p>
   <blockquote>„statistisch signifikant zugunsten der Intervention" <span class="s"></span></blockquote>
   <div class="wahl">
@@ -360,7 +360,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
   </div>
 </section>
 <section class="p" data-stelle="endpunkt.3">
-  <h3>Endpunkt, eingeordnet als „—“</h3>
+  <h3>Endpunkt, eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Rehospitalisierte Personen während KZP/REKUP (TP1: IG vs. H-KG)</p>
   <blockquote>„kein statistisch signifikanter Unterschied" <span class="s"></span></blockquote>
   <div class="wahl">
@@ -378,7 +378,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
   </div>
 </section>
 <section class="p" data-stelle="endpunkt.4">
-  <h3>Endpunkt, eingeordnet als „—“</h3>
+  <h3>Endpunkt, eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Rehospitalisierte Personen während KZP/REKUP (TP2: IG vs. S-KG)</p>
   <blockquote>„statistisch signifikant zugunsten der Intervention" <span class="s"></span></blockquote>
   <div class="wahl">
@@ -396,7 +396,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
   </div>
 </section>
 <section class="p" data-stelle="endpunkt.5">
-  <h3>Endpunkt, eingeordnet als „—“</h3>
+  <h3>Endpunkt, eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Rehospitalisierte Personen im Gesamtverlauf, Inzidenzratenverhältnis (TP1: IG vs. H-KG)</p>
   <blockquote>„kein statistisch signifikanter Unterschied" <span class="s"></span></blockquote>
   <div class="wahl">
@@ -414,7 +414,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
   </div>
 </section>
 <section class="p" data-stelle="endpunkt.6">
-  <h3>Endpunkt, eingeordnet als „—“</h3>
+  <h3>Endpunkt, eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Rehospitalisierte Personen im Gesamtverlauf, Inzidenzratenverhältnis (TP2: IG vs. S-KG)</p>
   <blockquote>„statistisch signifikant zugunsten der Intervention" <span class="s"></span></blockquote>
   <div class="wahl">
@@ -1144,11 +1144,27 @@ document.getElementById('laden').onclick = async () => {
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
+  const knopf = document.getElementById('senden');
   st.textContent = 'Wird gesendet …';
+  knopf.disabled = true;
   try {
-    const r = await fetch(ENDPUNKT, {method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(d)});
+    /* Der Server laesst je Prüfseite nur alle paar Sekunden eine
+       Einsendung zu und antwortet sonst mit 429. Wer etwas nachträgt
+       und noch einmal freigibt, fiel genau da hinein - und bekam
+       "ging nicht durch" zu lesen, obwohl der Server nur um einen
+       Moment Geduld gebeten hatte. Zwei Projektverantwortliche haben
+       das am 28.09.2026 gemeldet, bevor es auffiel.
+       Also wartet die Seite jetzt selbst und schickt noch einmal. */
+    let r = null;
+    for (let versuch = 0; versuch < 4; versuch++) {
+      r = await fetch(ENDPUNKT, {method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(d)});
+      if (r.status !== 429) break;
+      st.textContent = 'Einen Moment, der Server bittet um eine kurze '
+        + 'Pause … (Versuch ' + (versuch + 2) + ' von 4)';
+      await new Promise(f => setTimeout(f, 4000));
+    }
     if (!r.ok) throw new Error(r.status);
     st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
       + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
@@ -1161,6 +1177,8 @@ document.getElementById('senden').onclick = async () => {
     datei(d);
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
+  } finally {
+    knopf.disabled = false;
   }
 };
 </script>

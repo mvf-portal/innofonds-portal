@@ -414,7 +414,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
   </div>
 </section>
 <section class="p" data-stelle="endpunkt.5">
-  <h3>Endpunkt, eingeordnet als „—“</h3>
+  <h3>Endpunkt, eingeordnet als „Arbeitsfähigkeit und Erwerbsteilhabe“</h3>
   <p class="unser">Arbeitsunfähigkeit unter Phenprocoumon (B01AA04) bei CYP2C9 IM</p>
   <blockquote>„statistisch signifikant zugunsten der Intervention" <span class="s"></span></blockquote>
   <div class="wahl">
@@ -432,7 +432,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
   </div>
 </section>
 <section class="p" data-stelle="endpunkt.6">
-  <h3>Endpunkt, eingeordnet als „—“</h3>
+  <h3>Endpunkt, eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Korrelation metabolischer Profile mit UAW (univariate Analyse, 1.232 Vierfeldertafeln)</p>
   <blockquote>„kein statistisch signifikanter Unterschied" <span class="s"></span></blockquote>
   <div class="wahl">
@@ -450,7 +450,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
   </div>
 </section>
 <section class="p" data-stelle="endpunkt.7">
-  <h3>Endpunkt, eingeordnet als „—“</h3>
+  <h3>Endpunkt, eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Differenz der Gesamtleistungsausgaben im Follow-up bei simulierter Kenntnis von CYP2C19_UM (Künstliches Neuronales Netz, Beispielrechnung, 84 von 1663 Testmustern)</p>
   <blockquote>„kein statistisch signifikanter Unterschied" <span class="s"></span></blockquote>
   <div class="wahl">
@@ -468,7 +468,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
   </div>
 </section>
 <section class="p" data-stelle="endpunkt.8">
-  <h3>Endpunkt, eingeordnet als „—“</h3>
+  <h3>Endpunkt, eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Mögliche Kosteneinsparung pro Person durch präemptive Testung – CYP2C19 Ultraschnell-Metabolisierer (5,0 % Anteil)</p>
   <blockquote>„kein statistisch signifikanter Unterschied" <span class="s"></span></blockquote>
   <div class="wahl">
@@ -486,7 +486,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
   </div>
 </section>
 <section class="p" data-stelle="endpunkt.9">
-  <h3>Endpunkt, eingeordnet als „—“</h3>
+  <h3>Endpunkt, eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Mögliche Kosteneinsparung pro Person durch präemptive Testung – CYP2C9 Langsam-Metabolisierer (3,8 %) und CYP3A5 Normal-Metabolisierer (1,2 %)</p>
   <blockquote>„kein statistisch signifikanter Unterschied" <span class="s"></span></blockquote>
   <div class="wahl">
@@ -694,11 +694,27 @@ document.getElementById('laden').onclick = async () => {
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
+  const knopf = document.getElementById('senden');
   st.textContent = 'Wird gesendet …';
+  knopf.disabled = true;
   try {
-    const r = await fetch(ENDPUNKT, {method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(d)});
+    /* Der Server laesst je Prüfseite nur alle paar Sekunden eine
+       Einsendung zu und antwortet sonst mit 429. Wer etwas nachträgt
+       und noch einmal freigibt, fiel genau da hinein - und bekam
+       "ging nicht durch" zu lesen, obwohl der Server nur um einen
+       Moment Geduld gebeten hatte. Zwei Projektverantwortliche haben
+       das am 28.09.2026 gemeldet, bevor es auffiel.
+       Also wartet die Seite jetzt selbst und schickt noch einmal. */
+    let r = null;
+    for (let versuch = 0; versuch < 4; versuch++) {
+      r = await fetch(ENDPUNKT, {method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(d)});
+      if (r.status !== 429) break;
+      st.textContent = 'Einen Moment, der Server bittet um eine kurze '
+        + 'Pause … (Versuch ' + (versuch + 2) + ' von 4)';
+      await new Promise(f => setTimeout(f, 4000));
+    }
     if (!r.ok) throw new Error(r.status);
     st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
       + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
@@ -711,6 +727,8 @@ document.getElementById('senden').onclick = async () => {
     datei(d);
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
+  } finally {
+    knopf.disabled = false;
   }
 };
 </script>
