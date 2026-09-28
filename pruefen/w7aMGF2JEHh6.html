@@ -382,14 +382,38 @@ document.getElementById('senden').onclick = async () => {
        das am 28.09.2026 gemeldet, bevor es auffiel.
        Also wartet die Seite jetzt selbst und schickt noch einmal. */
     let r = null;
-    for (let versuch = 0; versuch < 4; versuch++) {
+    /* Wartezeiten in Sekunden. Zusammen ueber 70 - die Sperre dauert
+       eine Minute, und viermal vier Sekunden reichten dafuer nicht:
+       Prof. Neuerburg bekam am 28.09.2026 trotzdem "ging nicht durch"
+       zu lesen, obwohl seine Rueckmeldung angekommen war. */
+    const WARTEN = [12, 15, 18, 20, 20];
+    for (let versuch = 0; ; versuch++) {
       r = await fetch(ENDPUNKT, {method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(d)});
-      if (r.status !== 429) break;
-      st.textContent = 'Einen Moment, der Server bittet um eine kurze '
-        + 'Pause … (Versuch ' + (versuch + 2) + ' von 4)';
-      await new Promise(f => setTimeout(f, 4000));
+      if (r.status !== 429 || versuch >= WARTEN.length) break;
+      /* 429 heisst nicht "abgelehnt", sondern "kurz vorher kam schon
+         eine Einsendung fuer dieses Projekt an" - also ist etwas
+         angekommen. Das soll dastehen, damit niemand denkt, seine
+         Arbeit sei verloren. */
+      for (let rest = WARTEN[versuch]; rest > 0; rest--) {
+        st.textContent = 'Ihre vorige Rückmeldung ist angekommen. '
+          + 'Der Server nimmt je Projekt nur eine Einsendung pro Minute '
+          + 'an – diese Fassung wird in ' + rest + ' Sekunden erneut '
+          + 'gesendet. Bitte lassen Sie die Seite offen.';
+        await new Promise(f => setTimeout(f, 1000));
+      }
+    }
+    if (r.status === 429) {
+      /* Auch nach der ganzen Wartezeit gesperrt. Die frühere Fassung
+         ist da, diese hier nicht - das ist ein Unterschied, und er
+         gehoert gesagt. */
+      datei(d);
+      st.textContent = 'Eine frühere Fassung Ihrer Rückmeldung ist bei '
+        + 'uns angekommen. Diese Ergänzung ließ sich nicht mehr senden; '
+        + 'sie wurde als Datei gespeichert – bitte senden Sie sie an '
+        + MAIL + '.';
+      return;
     }
     if (!r.ok) throw new Error(r.status);
     st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
