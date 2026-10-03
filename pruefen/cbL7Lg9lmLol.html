@@ -15,6 +15,11 @@ h3{font-size:15.5px;margin:0 0 6px;font-weight:620}
   padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 26px;font-size:15px}
 .p{border:1px solid var(--linie);border-radius:9px;padding:13px 16px;
   margin:0 0 14px}
+details.weitere{margin:22px 0 14px}
+details.weitere>summary{cursor:pointer;color:var(--gedaempft);
+  font-size:14.5px;padding:10px 14px;border:1px dashed var(--linie);
+  border-radius:9px}
+details.weitere[open]>summary{margin-bottom:14px}
 .unser{margin:0 0 6px}
 /* Das Ergebnis - kein Zitat. Es stand frueher in Anfuehrungszeichen
    wie eine Fundstelle aus dem Bericht und wurde deshalb fuer die
@@ -62,6 +67,17 @@ button{font:inherit;font-weight:600;padding:9px 20px;border-radius:7px;
   cursor:pointer}
 button.zweit{background:#fff;color:var(--gold)}
 #stand{font-size:14px;color:var(--gedaempft);margin:8px 0 0}
+/* Die Bestaetigung war das stillste Element der Seite - 14 Pixel in
+   Grau, unter zwei Knoepfen. 66-mal hat jemand deshalb ein zweites Mal
+   gesendet, im Mittel 22 Sekunden spaeter. Jetzt ist sie ein Kasten. */
+#stand.da{color:var(--text);font-size:15px;font-weight:600;
+  border:1px solid #2F5D3F;background:#E9F2EC;border-radius:8px;
+  padding:12px 15px;margin-top:12px}
+#stand.da span{display:block;font-weight:400;font-size:13.5px;
+  color:var(--gedaempft);margin-top:4px}
+#nachtragen{display:inline-block;margin-top:10px;font-size:13.5px;
+  color:var(--gedaempft);background:none;border:none;padding:0;
+  text-decoration:underline;cursor:pointer;font-weight:400}
 </style>
 <h1>Homern – so stellen wir Ihr Projekt dar</h1>
 <p class="meta">Hospitalisierung und Notaufnahmebesuche von Pflegeheimbewohnern: Häufigkeit, Ursachen und Entwicklung einer Intervention zur Verbesserung der Versorgung<br>
@@ -125,7 +141,7 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="studiendesign">
   <h3>Studiendesign</h3>
-  <p class="unser">nicht angegeben</p>
+  <p class="unser">Unterschiedliche Studiendesigns pro Arbeitspaket. AP1: Retrospektive Kohortenstudie basierend auf Routinedaten der Gesetzlichen Krankenversicherung (AOK Bremen/Bremerhaven). AP2: Prospektive Beobachtungsstudie in 14 Pflegeheimen Bremens und Niedersachsen (ein Fragebogen je Krankenhaustransport für jeden in die Studie eingeschlossenen Bewohnenden). AP3a: postalische Befragung von zufällig ausgewählten HausärztInnen in Niedersachsen und Bremen und Pflegeheimen bundesweit. AP3b: systematische Übersichtsarbeit qualitativer Studien zur Sichtweise von Angehörigen. AP3c: Fokusgruppen mit Rettungskräften.</p>
   
   <div class="wahl">
     <label><input type="radio" name="ustudiendesign" value="ok" checked>
@@ -429,7 +445,7 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
-  <p class="unser">Einschätzung der Vermeidbarkeit von Transporten durch Pflegende (AP2)</p>
+  <p class="unser">Einschätzung der Vermeidbarkeit des Krankenhaustransports durch Pflegende (AP2)</p>
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
     <label><input type="radio" name="uendpunkt.5" value="ok" checked>
@@ -540,10 +556,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <button id="senden">Freigeben und an die Redaktion senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
+  <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 54, "akronym": "Homern", "kennung": "cbL7Lg9lmLol", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das abgeschlossene Projekt Homern keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Eine Überführung in die Regelversorgung wird auf Basis der Ergebnisse nicht empfohlen. Der Ausschuss verweist auf weiteren Forschungsbedarf und auf bereits geförderte Folgeprojekte."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat nach Auffassung des Ausschusses umfassende Erkenntnisse zu Häufigkeit, Ursachen und Vermeidbarkeit ungeplanter Hospitalisierungen und Notaufnahmebesuche von Pflegeheimbewohnenden geliefert und mögliche Einflussfaktoren identifiziert. Die Methoden hält er für eine explorative Studie für angemessen. Er bemängelt jedoch, dass eine kritische Diskussion der Einflussfaktoren ausblieb. Als Limitationen nennt er den fehlenden Einbezug wichtiger Strukturparameter der Heime, geringe Stichprobengrößen und eine eingeschränkte Übertragbarkeit auf andere Regionen. Zudem konnte die Pilotierung der entwickelten Handreichung wegen der Corona-Pandemie nur sehr eingeschränkt stattfinden, sodass keine belastbaren Aussagen zu Machbarkeit und Effekten möglich waren. Es bestehe weiterer Forschungsbedarf."}, {"stelle": "studiendesign", "art": "text", "unser": "nicht angegeben"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss sieht Einschränkungen bei der Übertragbarkeit der Ergebnisse auf andere Regionen, z. B. wegen der unterschiedlichen Organisation des Rettungsdienstes in den Bundesländern. Eine Empfehlung zur Überführung in die Regelversorgung wird nicht ausgesprochen."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Kritische Diskussion der identifizierten Einflussfaktoren blieb aus"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Fehlender Einbezug potenziell bedeutender Einflussfaktoren wie Pflegeschlüssel und Arzt-Quote der Heime"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Geringe Stichprobengrößen"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Eingeschränkte Übertragbarkeit auf andere Regionen wegen unterschiedlicher Organisation des Rettungsdienstes"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Pilotierung der Handreichung wegen der Corona-Pandemie nur sehr eingeschränkt möglich, daher keine belastbaren Aussagen zu Machbarkeit und Effekten"}, {"stelle": "befund.0", "art": "befund", "unser": "Umfassende Erkenntnisse zu Häufigkeiten, Ursachen, Vermeidbarkeit und alternativen Versorgungsmöglichkeiten"}, {"stelle": "befund.1", "art": "befund", "unser": "Hinweis, dass sich viele Krankenhaustransporte durch veränderte Rahmenbedingungen vermutlich vermeiden ließen"}, {"stelle": "befund.2", "art": "befund", "unser": "Identifikation möglicher Einflussfaktoren durch Befragungen der Berufsgruppen"}, {"stelle": "befund.3", "art": "befund", "unser": "Methoden für eine explorative Studie angemessen"}, {"stelle": "befund.4", "art": "befund", "unser": "Limitationen und weiterer Forschungsbedarf umfassend dargestellt"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Inzidenz ungeplanter Krankenhausbesuche (AP1)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Geschlechtsunterschied im Risiko für Akutbehandlungen (AP1)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Krankenhausaufenthalte am Lebensende und Krankenhaus-Sterblichkeit (AP1)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Gründe für ungeplante Krankenhaustransporte (AP2)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Einschätzung der Vermeidbarkeit von Transporten durch Pflegende (AP2)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Ärztliche Kontakte in den 48 Stunden vor dem Transport und Einbezug des Hausarztes in die Transportentscheidung (AP2)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Anteil als nicht erforderlich eingeschätzter Krankenhausaufenthalte und Notaufnahmebesuche (AP3)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Bewertung von Maßnahmen zur Reduktion von Krankenhaustransporten (AP3)"}]};
+const D = {"projekt_id": 54, "akronym": "Homern", "kennung": "cbL7Lg9lmLol", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das abgeschlossene Projekt Homern keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Eine Überführung in die Regelversorgung wird auf Basis der Ergebnisse nicht empfohlen. Der Ausschuss verweist auf weiteren Forschungsbedarf und auf bereits geförderte Folgeprojekte."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat nach Auffassung des Ausschusses umfassende Erkenntnisse zu Häufigkeit, Ursachen und Vermeidbarkeit ungeplanter Hospitalisierungen und Notaufnahmebesuche von Pflegeheimbewohnenden geliefert und mögliche Einflussfaktoren identifiziert. Die Methoden hält er für eine explorative Studie für angemessen. Er bemängelt jedoch, dass eine kritische Diskussion der Einflussfaktoren ausblieb. Als Limitationen nennt er den fehlenden Einbezug wichtiger Strukturparameter der Heime, geringe Stichprobengrößen und eine eingeschränkte Übertragbarkeit auf andere Regionen. Zudem konnte die Pilotierung der entwickelten Handreichung wegen der Corona-Pandemie nur sehr eingeschränkt stattfinden, sodass keine belastbaren Aussagen zu Machbarkeit und Effekten möglich waren. Es bestehe weiterer Forschungsbedarf."}, {"stelle": "studiendesign", "art": "text", "unser": "Unterschiedliche Studiendesigns pro Arbeitspaket. AP1: Retrospektive Kohortenstudie basierend auf Routinedaten der Gesetzlichen Krankenversicherung (AOK Bremen/Bremerhaven). AP2: Prospektive Beobachtungsstudie in 14 Pflegeheimen Bremens und Niedersachsen (ein Fragebogen je Krankenhaustransport für jeden in die Studie eingeschlossenen Bewohnenden). AP3a: postalische Befragung von zufällig ausgewählten HausärztInnen in Niedersachsen und Bremen und Pflegeheimen bundesweit. AP3b: systematische Übersichtsarbeit qualitativer Studien zur Sichtweise von Angehörigen. AP3c: Fokusgruppen mit Rettungskräften."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss sieht Einschränkungen bei der Übertragbarkeit der Ergebnisse auf andere Regionen, z. B. wegen der unterschiedlichen Organisation des Rettungsdienstes in den Bundesländern. Eine Empfehlung zur Überführung in die Regelversorgung wird nicht ausgesprochen."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Kritische Diskussion der identifizierten Einflussfaktoren blieb aus"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Fehlender Einbezug potenziell bedeutender Einflussfaktoren wie Pflegeschlüssel und Arzt-Quote der Heime"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Geringe Stichprobengrößen"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Eingeschränkte Übertragbarkeit auf andere Regionen wegen unterschiedlicher Organisation des Rettungsdienstes"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Pilotierung der Handreichung wegen der Corona-Pandemie nur sehr eingeschränkt möglich, daher keine belastbaren Aussagen zu Machbarkeit und Effekten"}, {"stelle": "befund.0", "art": "befund", "unser": "Umfassende Erkenntnisse zu Häufigkeiten, Ursachen, Vermeidbarkeit und alternativen Versorgungsmöglichkeiten"}, {"stelle": "befund.1", "art": "befund", "unser": "Hinweis, dass sich viele Krankenhaustransporte durch veränderte Rahmenbedingungen vermutlich vermeiden ließen"}, {"stelle": "befund.2", "art": "befund", "unser": "Identifikation möglicher Einflussfaktoren durch Befragungen der Berufsgruppen"}, {"stelle": "befund.3", "art": "befund", "unser": "Methoden für eine explorative Studie angemessen"}, {"stelle": "befund.4", "art": "befund", "unser": "Limitationen und weiterer Forschungsbedarf umfassend dargestellt"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Inzidenz ungeplanter Krankenhausbesuche (AP1)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Geschlechtsunterschied im Risiko für Akutbehandlungen (AP1)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Krankenhausaufenthalte am Lebensende und Krankenhaus-Sterblichkeit (AP1)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Gründe für ungeplante Krankenhaustransporte (AP2)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Einschätzung der Vermeidbarkeit des Krankenhaustransports durch Pflegende (AP2)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Ärztliche Kontakte in den 48 Stunden vor dem Transport und Einbezug des Hausarztes in die Transportentscheidung (AP2)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Anteil als nicht erforderlich eingeschätzter Krankenhausaufenthalte und Notaufnahmebesuche (AP3)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Bewertung von Maßnahmen zur Reduktion von Krankenhaustransporten (AP3)"}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
@@ -693,6 +710,8 @@ document.getElementById('laden').onclick = async () => {
     : '';
 };
 
+let gesendet = false;
+
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
@@ -742,9 +761,17 @@ document.getElementById('senden').onclick = async () => {
       return;
     }
     if (!r.ok) throw new Error(r.status);
-    st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
-      + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
-      + 'speichern Sie sich rechts eine Kopie.';
+    /* Angekommen - und das soll man sehen, ohne danach zu suchen. */
+    const anzahl = d.korrekturen.length;
+    st.className = 'da';
+    st.innerHTML = 'Angekommen. Vielen Dank.<span>'
+      + (anzahl === 1 ? 'Eine Korrektur' : anzahl + ' Korrekturen')
+      + ' sind bei der Redaktion. Sie müssen nichts weiter tun – '
+      + 'ein zweites Senden ist nicht nötig. Wenn Sie möchten, '
+      + 'speichern Sie sich rechts eine Kopie.</span>';
+    knopf.textContent = 'Ist angekommen';
+    gesendet = true;
+    document.getElementById('nachtragen').hidden = false;
     document.getElementById('laden').classList.remove('zweit');
   } catch (x) {
     /* Lieber eine Datei als ein verlorener Beitrag. Bei den
@@ -754,8 +781,25 @@ document.getElementById('senden').onclick = async () => {
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
   } finally {
-    knopf.disabled = false;
+    /* Nach einem geglueckten Versand bleibt der Knopf aus. Ein Knopf,
+       der wieder "Freigeben und senden" anbietet, ist eine
+       Aufforderung - und 41-mal hat jemand sie binnen 30 Sekunden
+       angenommen. */
+    if (!gesendet) knopf.disabled = false;
   }
+};
+
+/* Nachtragen bleibt moeglich, aber als eigener Entschluss. */
+document.getElementById('nachtragen').onclick = () => {
+  const knopf = document.getElementById('senden');
+  const st = document.getElementById('stand');
+  gesendet = false;
+  knopf.disabled = false;
+  knopf.textContent = 'Ergänzung senden';
+  document.getElementById('nachtragen').hidden = true;
+  st.className = '';
+  st.textContent = 'Ihre erste Rückmeldung bleibt gespeichert. '
+    + 'Ergänzen Sie, was fehlt, und senden Sie noch einmal.';
 };
 </script>
 </html>

@@ -15,6 +15,11 @@ h3{font-size:15.5px;margin:0 0 6px;font-weight:620}
   padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 26px;font-size:15px}
 .p{border:1px solid var(--linie);border-radius:9px;padding:13px 16px;
   margin:0 0 14px}
+details.weitere{margin:22px 0 14px}
+details.weitere>summary{cursor:pointer;color:var(--gedaempft);
+  font-size:14.5px;padding:10px 14px;border:1px dashed var(--linie);
+  border-radius:9px}
+details.weitere[open]>summary{margin-bottom:14px}
 .unser{margin:0 0 6px}
 /* Das Ergebnis - kein Zitat. Es stand frueher in Anfuehrungszeichen
    wie eine Fundstelle aus dem Bericht und wurde deshalb fuer die
@@ -62,6 +67,17 @@ button{font:inherit;font-weight:600;padding:9px 20px;border-radius:7px;
   cursor:pointer}
 button.zweit{background:#fff;color:var(--gold)}
 #stand{font-size:14px;color:var(--gedaempft);margin:8px 0 0}
+/* Die Bestaetigung war das stillste Element der Seite - 14 Pixel in
+   Grau, unter zwei Knoepfen. 66-mal hat jemand deshalb ein zweites Mal
+   gesendet, im Mittel 22 Sekunden spaeter. Jetzt ist sie ein Kasten. */
+#stand.da{color:var(--text);font-size:15px;font-weight:600;
+  border:1px solid #2F5D3F;background:#E9F2EC;border-radius:8px;
+  padding:12px 15px;margin-top:12px}
+#stand.da span{display:block;font-weight:400;font-size:13.5px;
+  color:var(--gedaempft);margin-top:4px}
+#nachtragen{display:inline-block;margin-top:10px;font-size:13.5px;
+  color:var(--gedaempft);background:none;border:none;padding:0;
+  text-decoration:underline;cursor:pointer;font-weight:400}
 </style>
 <h1>VESPEERA – so stellen wir Ihr Projekt dar</h1>
 <p class="meta">Versorgungskontinuität sichern – Patientenorientiertes Einweisungs- und Entlassmanagement in Hausarztpraxen und Krankenhäusern<br>
@@ -125,7 +141,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
 </section>
 <section class="p" data-stelle="studiendesign">
   <h3>Studiendesign</h3>
-  <p class="unser">kontrollierte Kohortenstudie</p>
+  <p class="unser">Quasi-experimentelle, prospektive, multizentrische, unverblindete Studie</p>
   
   <div class="wahl">
     <label><input type="radio" name="ustudiendesign" value="ok" checked>
@@ -315,7 +331,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
 </section>
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
-  <p class="unser">Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen nach Krankenhausentlassung (hierarchische Testprozedur: Arme 1+2 vs. Arm 6)</p>
+  <p class="unser">Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen nach Krankenhausentlassung, geplante Krankenhausaufnahme (hierarchische Testprozedur: Arme 1+2 vs. Arm 6, teilnehmendes vs. nicht teilnehmendes Krankenhaus vs. Kontrolle)</p>
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
     <label><input type="radio" name="uendpunkt.1" value="ok" checked>
@@ -334,7 +350,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
 </section>
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
-  <p class="unser">Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen – Arm 3 vs. Arm 6</p>
+  <p class="unser">Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen, ungeplante Krankenhausaufnahme – Arm 3 vs. Arm 6 (teilnehmendes Krankenhaus vs. Kontrolle)</p>
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
     <label><input type="radio" name="uendpunkt.2" value="ok" checked>
@@ -353,7 +369,7 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
 </section>
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
-  <p class="unser">Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen – Arm 4 vs. Arm 6</p>
+  <p class="unser">Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen, ungeplante Krankenhausaufnahme – Arm 4 vs. Arm 6 (nicht teilnehmendes Krankenhaus vs. Kontrolle)</p>
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
     <label><input type="radio" name="uendpunkt.3" value="ok" checked>
@@ -541,6 +557,2172 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
       ></textarea></label>
   </div>
 </section>
+<section class="p" data-stelle="bericht_kurz">
+  <h3>Kurzfassung aus Ihren Berichten</h3>
+  <p class="unser">VESPEERA untersuchte in Baden-Württemberg ein strukturiertes Einweisungs- und Entlassmanagement mit IT-gestütztem Telefonmonitoring. Beteiligt waren Hausarztpraxen der Hausarztzentrierten Versorgung (HZV) und Krankenhäuser; die Studie war quasi-experimentell und unverblindet. Primärer Endpunkt waren Rehospitalisierungen wegen derselben Indikation binnen 90 Tagen. Ausgewertet wurde mit Routinedaten der AOK Baden-Württemberg gegen per Propensity Score gematchte Kontrollen. Teilgenommen haben 72 Hausarztpraxen (59 bis Studienende) und 7 Krankenhäuser; 371 hospitalisierte VESPEERA-Patienten gingen in die Analyse ein. Im primären Endpunkt ergab sich kein signifikanter Effekt: Der erste hierarchische Test endete mit OR 1,000 und p=0,96. Deskriptiv ergab die kombinierte Analyse aller Interventionsarme Odds Ratios von 0,398 bis 0,662, die Interrupted-Time-Series-Modelle dagegen kaum Unterschiede. Deskriptiv günstigere Werte zeigten sich bei hoher Komorbidität, bei Patienten ab 65 Jahren, bei verspäteten Arzneimittelverschreibungen und bei Hospitalisierungen wegen ambulant sensitiver Diagnosen; die Lebensqualität der kleinen Interventionsgruppe zu T1 war schlechter. Die Aussagekraft ist stark begrenzt: Fallzahlen und Rehospitalisierungsraten lagen weit unter den Annahmen, die teilnehmenden Krankenhäuser identifizierten keinen VESPEERA-Patienten, die Umsetzungstreue lag bei 40 %, und Praxen selektierten Patienten vor. Hinzu kommen Selektionsbias, die Überlagerung durch den zeitgleich eingeführten Rahmenvertrag Entlassmanagement und das Fehlen eines Vergleichs mit der Versorgung außerhalb der HZV. Bezogen auf den primären Endpunkt geben die Evaluatoren keine Empfehlung zur Übernahme in die Regelversorgung, sehen aber Trends zugunsten der Intervention bei Hochrisikopatienten.</p>
+  
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_kurz" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.0">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Im ersten Schritt der hierarchischen Testprozedur wurden die geplanten Einweisungen (Arme 1+2) mit Kontrollgruppe 6 verglichen: OR 1,000 [0; Inf], p=0,96013. Eine signifikante Überlegenheit im primären Endpunkt (Rehospitalisierung wegen derselben Indikation binnen 90 Tagen) ist damit nicht festgestellt; die Testprozedur endete an dieser Stelle.</p>
+  <blockquote>„„Die Nullhypothese kann also nicht abgelehnt werden und die hierarchische Testprozedur endet hier. Eine statistisch signifikante Überlegenheit von VESPEERA im primären Endpunkt (Anzahl von Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen nach Krankenhausentlassung) kann somit nicht festgestellt werden.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.0" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.1">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">In der Sensitivitätsanalyse wurden alle VESPEERA-Arme zusammen mit den verschiedenen Kontrollgruppen verglichen. Für die 90-Tage-Rehospitalisierung ergaben sich Odds Ratios von 0,398 bis 0,662 (gegen Kontrollgruppe 6: 0,662); die obere Konfidenzgrenze lag teils nur knapp über 1. Die Auswertung ist rein deskriptiv.</p>
+  <blockquote>„„Werden alle VESPEERA- Arme kombiniert und diese mit den unterschiedlichen Kontrollgruppen verglichen, so ergeben sich Odds Ratios im Bereich von 0,398 bis 0,662, wobei der obere Rand des Konfidenzintervalls teilweise nur knapp über 1 liegt.“ – Bericht, S. 45" <span class="s">S. 45</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.1" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.2">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die Interrupted-Time-Series-Modelle zum primären Endpunkt zeigten kaum Unterschiede zwischen VESPEERA-Patienten und Kontrollen (z. B. Arme 1–4 vs. 5–6: OR 0,987; KI 0,946–1,030). Die Konfidenzintervalle waren enger als in den Difference-in-Difference-Modellen.</p>
+  <blockquote>„„In den Interrupted-time-series Modellen zum primären Endpunkt sind kaum Unterschiede zwischen VESPEERA-Patienten und Kontrollen zu erkennen (siehe Tabelle 12) . Im Vergleich zu den Difference-in-Difference Modellen schätzen die Interrupted -time-series Modelle deutlich engere Konfidenzintervalle für das Odds Ratio.“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.2" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Verglichen wurden alle VESPEERA- mit allen Kontrollpatienten in zwei Subgruppen. Für die 90-Tage-Rehospitalisierung lag das OR bei Patienten ab 65 Jahren bei 0,318 (95%-KI 0,112–0,896) und bei hoher Komorbidität (CCI ≥ 5) bei 0,156 (95%-KI 0,038–0,634). Die Ergebnisse sind deskriptiv.</p>
+  <blockquote>„„Beim Vergleich aller VESPEERA- gegen alle Kontrollpatienten zeigte sich ein Odds Ratio von 0,318 (95% KI [0,112; 0,896]) für die Patienten mit mindestens 65 Jahren und ein Odds Ratio von 0,156 (95% KI [0,038; 0,634]) für die Patienten mit erhöhter Komorbidität.“ – Bericht, S. 141" <span class="s">S. 141</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.3" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.37">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Über alle teilnehmenden Leistungserbringer lag der aus dem Fragebogen gebildete Score der Umsetzungstreue bei 40 %.</p>
+  <blockquote>„„Über alle Teilnehmer hinweg ergab sich somit eine Umsetzungstreue von 40%.“ – Bericht, S. 82" <span class="s">S. 82</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.37" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.0">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Eine formale Fallzahlplanung gab es nicht. Unter den Annahmen hätte man für 80 % Power 1.270 (Arm 1) bis 4.899 Hospitalisierungen (Arm 4) benötigt; tatsächlich erreicht wurden 46 bis 661 Fälle je Arm.</p>
+  <blockquote>„„Ein Chi -Quadrat-Test würde unter diesen Annahmen eine Fallzahl von 1.270 Hospitalisierungen in Studienarm 1, 1.905 Hospitalisierungen in Studienarm 2, 3.266 Hospitalisierungen in Studienarm 3 und 4.899 Hospitalisierungen in Studienarm 4 benötigen, um eine Power von 80% bei einem globalen Signifikanzniveau von 5% zu erreichen.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.1">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Rehospitalisierungsraten lagen bei höchstens 18 % statt der geplanten bis zu 40 %. Möglicherweise überlagerten HZV und Rahmenvertrag Entlassmanagement den Effekt.</p>
+  <blockquote>„„Während in der ursprünglichen Planung von Rehospitalisierungsraten von bis zu 40% ausgegangen wurde, zeigten sich in VESPEERA Raten von maximal 18%.“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.2">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die teilnehmenden Krankenhäuser identifizierten trotz Gegenmaßnahmen keinen VESPEERA-Patienten. Damit fehlte die Interventionskomponente im Krankenhaus, und es wurden keine Krankenhausdaten erhoben.</p>
+  <blockquote>„„Trotz verschiedenster Bemühungen wie beispielsweise erneuter Schulungen in den Krankenhäusern, VESPEERA-Kleber für die Patientenakte, Erweiterung der Interventionsregionen etc. konnten keine Fallzahlen in den teilnehmenden Kliniken generiert werden.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Umsetzungstreue war sehr unterschiedlich und im Durchschnitt niedrig; das könnte das Ausbleiben von Effekten erklären.</p>
+  <blockquote>„„der Umsetzungsgrad der VESPEERA-Intervention in den teilnehmenden Hausarztpraxen und Krankenhäusern sehr unterschiedlich ausfiel und im Durchschnitt niedrig war, was eine Erklärung der Abwesenheit von Effekten sein könnte.“ – Bericht, S. 144" <span class="s">S. 144</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.4">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Studie war quasi-experimentell und unverblindet, ohne Randomisierung.</p>
+  <blockquote>„„Bei VESPEERA handelt es sich um eine quasi -experimentelle, prospektive, multizentrische, unverblindete Studie.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.5">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Der Begriff signifikant ist nur für den primären Endpunkt zulässig. Alle übrigen p-Werte, auch die der Subgruppen und sekundären Endpunkte, sind rein deskriptiv.</p>
+  <blockquote>„„In allen anderen Analysen sind die p-Werte rein deskriptiver Natur und können nicht mit einem Signifikanzniveau verglichen werden [27].“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.6">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Auf Praxis- und Patientenebene ist von Selektionsbias auszugehen; vermutlich nahmen eher bereits interessierte Praxen teil.</p>
+  <blockquote>„„Zudem ist sowohl auf Praxis - als auch auf Patientenebene von einem Selektionsbias auszugehen.“ – Bericht, S. 144" <span class="s">S. 144</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.7">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Ein Vergleich mit der Regelversorgung außerhalb der HZV fand nicht statt; verglichen wurde nur innerhalb der HZV.</p>
+  <blockquote>„„Ein Vergleich gegenüber der Regelversorgung außerhalb der HZV hat nicht stattgefunden“ – Bericht, S. 146" <span class="s">S. 146</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_unstimmig.0">
+  <h3>Hier widersprechen sich Ihre Berichte</h3>
+  <p class="unser">Subgruppe hohe Komorbidität (CCI ≥ 5) gegen Kontrollgruppe 6: Seite 21 nennt OR 0,113 [0,013; 0,997], p=0,04974. Seite 22 nennt für dasselbe OR das Konfidenzintervall [0,125; 0,977], in dem der Punktschätzer gar nicht liegt.</p>
+  
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_unstimmig.1">
+  <h3>Hier widersprechen sich Ihre Berichte</h3>
+  <p class="unser">Fallzahlplanung: Der Evaluationsbericht (S. 22) sagt, es sei keine formale Fallzahlplanung durchgeführt worden. Der Ergebnisbericht (S. 14) beziffert dagegen benötigte Fallzahlen für 80 % Power, und S. 23 berichtet von zwei genehmigten Anpassungen der Fallzahlplanung per Änderungsantrag.</p>
+  
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_unstimmig.2">
+  <h3>Hier widersprechen sich Ihre Berichte</h3>
+  <p class="unser">30-Tage-Rehospitalisierung und Heilmittel: Der Ergebnisbericht (S. 21) sagt, VESPEERA-Patienten hätten hier schlechter abgeschnitten (OR 2,129 bzw. 1,535). Der Evaluationsbericht stellt bei der 30-Tage-Rehospitalisierung keine Unterschiede fest (S. 53) und schreibt, VESPEERA-Patienten hätten in keinem Endpunkt deutlich schlechter abgeschnitten (S. 142).</p>
+  
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_unstimmig.3">
+  <h3>Hier widersprechen sich Ihre Berichte</h3>
+  <p class="unser">Telefonmonitoring: Laut S. 49 sind die Odds Ratios von 0,594 bis 0,695 alle deutlich kleiner als 1; zugleich schließen alle zugehörigen Konfidenzintervalle die 1 ein (z. B. 0,219–1,712).</p>
+  
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_unstimmig.4">
+  <h3>Hier widersprechen sich Ihre Berichte</h3>
+  <p class="unser">Kausale Zuschreibung: S. 18 und S. 36 führen Unterschiede in den Endpunkten dank Matching auf die Intervention zurück. Dem stehen gegenüber: das quasi-experimentelle, unverblindete Design (S. 15), ein Matching nur nach Alter, Geschlecht und CCI (S. 17), der angenommene Selektionsbias und die Vorselektion durch die Praxen (S. 144).</p>
+  
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_unstimmig.4" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_unstimmig.4" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_unstimmig.5">
+  <h3>Hier widersprechen sich Ihre Berichte</h3>
+  <p class="unser">Wirksamkeitsaussage: S. 49 sagt, die Aufnahme in VESPEERA sei mit einer verringerten Rehospitalisierungsrate verbunden, S. 24 und S. 147, das Konzept könne zu geringeren Raten führen. Dem stehen gegenüber: das nicht signifikante primäre Ergebnis, die Interrupted-Time-Series-Modelle ohne deutliche Abweichung von OR=1 (S. 46), die Formulierung von der Abwesenheit von Effekten (S. 23) und die ausdrückliche Nicht-Empfehlung für die Regelversorgung (S. 146).</p>
+  
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_unstimmig.5" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_unstimmig.5" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_unstimmig.6">
+  <h3>Hier widersprechen sich Ihre Berichte</h3>
+  <p class="unser">Lebensqualität: S. 36 ordnet beobachtete Unterschiede in der Patientenbefragung eher Veränderungen in der Hausarztpraxis zu. S. 143 erklärt die schlechtere Lebensqualität der Interventionsgruppe dagegen mit der Vorselektion älterer und kränkerer Patienten.</p>
+  
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_unstimmig.6" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_unstimmig.6" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>93 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+<section class="p" data-stelle="bericht_befund.4">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">In der Subgruppe mit hoher Komorbidität (CCI ≥ 5) lagen die Odds Ratios für die 90-Tage-Rehospitalisierung über die verschiedenen Kontrollvergleiche zwischen 0,113 und 0,181.</p>
+  <blockquote>„„Beim Vergleich aller VESPEERA-Arme mit den jeweiligen Kontrollarmen werden Odds Ratios zwischen 0,113 und 0,181 beobachtet.“ – Bericht, S. 51" <span class="s">S. 51</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.4" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.5">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei niedriger oder mittlerer Komorbidität (CCI ≤ 4) zeigte sich keine Tendenz für oder gegen VESPEERA bei der 90-Tage-Rehospitalisierung.</p>
+  <blockquote>„„Es sind daher bei Patienten mit niedriger oder mittlerer Komorbidität keine Tendenzen für oder gegen VESPEERA in Bezug auf Rehospitalisierungen innerhalb von 90 Tagen zu erkennen.“ – Bericht, S. 51" <span class="s">S. 51</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.5" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.6">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei geringem CCI (≤ 2) schnitten VESPEERA-Patienten schlechter ab als die Kontrollen (OR 3,808). Das Konfidenzintervall [0,730; 19,859] ist jedoch sehr breit, die Aussage daher stark unsicher.</p>
+  <blockquote>„„schnitten VESPEERA-Patienten mit geringem CCI schlechter ab als die Kontrollen (Odds Ratio 3,808). Allerdings hat dieses Odds Ratio ein besonders breites Konfidenzintervall ([0,730; 19, 859]), sodass diese Aussage mit großer Unsicherheit behaftet ist.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.6" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.7">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Patienten ab 65 Jahren wurden in den VESPEERA-Armen deutlich seltener binnen 90 Tagen rehospitalisiert als die Kontrollen derselben Altersgruppe (OR 0,174–0,464 über die Kontrollvergleiche).</p>
+  <blockquote>„„So zeigt der Vergleich aller Interventionsarme mit den jeweiligen Kontrollarmen Odds Ratios zwischen 0,174 und 0,464.“ – Bericht, S. 53" <span class="s">S. 53</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.7" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.8">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei Patienten unter 65 Jahren gab es im primären Endpunkt keine deutlichen Unterschiede (OR 0,661–1,152 für alle Arme; 0,872–1,415 für die Arme 3+4).</p>
+  <blockquote>„„In dem Kollektiv von Patienten, die jünger als 65 Jahre sind, lassen sich keine deutlichen Unterschiede zwischen VESPEERA - und Kontrollpatienten hinsichtlich des primären Endpunkts erkennen“ – Bericht, S. 52" <span class="s">S. 52</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.8" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.9">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei den ungeplanten Einweisungen (Arme 3+4 kombiniert) zeigten sich gegenüber den Kontrollen schwächere Tendenzen, mit Odds Ratios von 0,474 bis 0,784.</p>
+  <blockquote>„„Ähnliche, wenn auch nicht so starke, Tendenzen lassen sich für die Kombination der Arme 3 und 4 (ungeplante Einweisungen) beobachten. Hier liegen die Odds Ratios zwischen 0,474 und 0,784.“ – Bericht, S. 45" <span class="s">S. 45</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.9" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.10">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">In der primären Analyse gegen Kontrollgruppe 6 lagen die Einzelarme bei folgenden Werten: Arm 3 OR 1,383 [0,305; 6,274], p=0,674; Arm 4 OR 0,509 [0,159; 1,629], p=0,255.</p>
+  <blockquote>„„3 vs. 6 1,383 [0,305; 6,274] 0,67437 4 vs. 6 0,509 [0,159; 1,629] 0,25534“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.10" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.11">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">VESPEERA-Patienten ohne Telefonmonitoring wurden seltener binnen 90 Tagen rehospitalisiert als Kontrollen: Für alle Arme kombiniert lag das OR bei 0,325–0,553, z. B. Arme 1–4 vs. 5–6 OR 0,430 (KI 0,196–0,945).</p>
+  <blockquote>„„VESPEERA-Patienten ohne Telefonmonitoring werden seltener innerhalb von 90 Tagen erneut ins Krankenhaus aufgenommen als Patienten der Kontrollgruppe (siehe Tabelle 15).“ – Bericht, S. 48" <span class="s">S. 48</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.11" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.12">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Auch VESPEERA-Patienten mit Telefonmonitoring wurden seltener rehospitalisiert als Kontrollen (OR 0,594–0,695 für alle Arme kombiniert); alle Konfidenzintervalle schlossen jedoch 1 ein.</p>
+  <blockquote>„„Beim Vergleich aller kombinierten VESPEERA -Arme mit den Kontrollarmen ergeben sich Odds Ratios zwischen 0,594 und 0,695, welche alle deutlic h kleiner als 1 sind.“ – Bericht, S. 49" <span class="s">S. 49</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.12" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.13">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Eine Ausnahme bildet Arm 3 (ungeplante Einweisung in ein teilnehmendes Krankenhaus): Dort schien das Rehospitalisierungsrisiko bei Patienten mit Telefonmonitoring gegenüber den Kontrollen erhöht (OR 2,251–3,752).</p>
+  <blockquote>„„Eine Ausnahme bildet der Studienarm 3 (ungeplante Einweisung in teilnehmendes Krankenhaus), in welchem das Rehospitalisierungsrisiko der Patienten mit Telefonmonitoring gegenüber den Kontrollgruppen erhöht zu sein scheint (Odds Ratios zwischen 2,251 und 3,752).“ – Bericht, S. 49" <span class="s">S. 49</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.13" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.14">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Der Vergleich der Kontrollarme 5 (innerhalb) und 6 (außerhalb der Interventionsregion) ergab OR 1,701 (KI 0,472–6,123); Hinweise auf Spillover-Effekte fanden sich nicht.</p>
+  <blockquote>„„Beim Vergleich der beiden Kontrollarme 5 und 6 ergibt sich ein Odds Ratio von 1,701 mit einem Konfidenzintervall von 0,472 bis 6,123. Dies lässt keine möglichen Spillover -Effekte“ – Bericht, S. 45" <span class="s">S. 45</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.14" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.15">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei VESPEERA-Patienten, die binnen 90 Tagen rehospitalisiert wurden, war der HOSPITAL-Score im Mittel höher (5,46 vs. 4,21; OR 1,29, p=0,009). Der Score erwies sich damit auch in Deutschland als Prädiktor; eine Validierung an größerer Stichprobe wird empfohlen.</p>
+  <blockquote>„„Hierbei konnte gezeigt werden, dass der HOSPITAL-Score auch in Deutschland geeignet ist, um ein erhöhtes Risiko für eine Rehospitalisierung vorherzusagen. Da dies im Rahmen einer Subgruppenanalyse geschah, wäre eine Validierung anhand einer größeren Stichprobe empfehlenswert.“ – Bericht, S. 143" <span class="s">S. 143</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.15" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.16">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei verspäteten Arzneimittelverschreibungen (mehr als 7 Tage nach Entlassung) war das Risiko in den VESPEERA-Armen geringer: OR 0,481–0,530 für alle Arme gegen die Kontrollen, deskriptive p-Werte 0,020–0,076.</p>
+  <blockquote>„„Es ist ein verringertes Risiko für eine verspätete Arzneimittelverschreibung in den VESPEERA -Armen zu beobachten. Im Vergleich aller VESPEERA-Arme gegen die Kontrollgruppen werden Odds Ratios zwischen 0,481 und 0,530 beobachtet.“ – Bericht, S. 55" <span class="s">S. 55</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.16" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.17">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei Hospitalisierungen wegen ambulant sensitiver Diagnosen lag das OR für alle VESPEERA-Arme gegen die Kontrollen bei 0,244–0,699 (gegen Kontrollgruppe 6: 0,467 [0,156; 1,399]).</p>
+  <blockquote>„„Werden alle VESPEERA- Arme gemeinsam mit den Kontrollen verglichen, ergeben sich Odds Ratios zwischen 0,244 und 0,699.“ – Bericht, S. 54" <span class="s">S. 54</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.17" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.18">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei Rehospitalisierungen binnen 30 Tagen ließen sich wegen sehr breiter Konfidenzintervalle keine Unterschiede feststellen (gegen Kontrollgruppe 6: OR 2,129 [0,547; 8,285]).</p>
+  <blockquote>„„es zeigen sich über alle Analysen hinweg so breite Konfidenzintervalle, dass keine Unterschiede zwischen den VESPEERA - und Kontrollgruppen festgestellt werden können (siehe Tabelle 22).“ – Bericht, S. 53" <span class="s">S. 53</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.18" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.19">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei verspäteten Heilmittelverschreibungen schnitten die VESPEERA-Arme leicht schlechter ab (OR 1,472–1,535); die breiten Konfidenzintervalle lassen keine endgültige Aussage zu.</p>
+  <blockquote>„„So liegt das Odds Ratios der Vergleiche aller kombinierten VESPEERA-Arme gegen die Kontrollarme zwischen 1,472 und 1,535. Die breiten Konfidenzintervalle lassen allerdings keine endgültigen Aussagen zu.“ – Bericht, S. 57" <span class="s">S. 57</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.19" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.20">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei verspäteten Hilfsmittelverschreibungen gab es keine deutliche Tendenz: OR 0,843–0,851 bei p-Werten von 0,69–0,77; Arm 4 schnitt marginal schlechter ab.</p>
+  <blockquote>„„Die Odds Ratios sind etwas kleiner als 1 (0,843 bis 0,851). Allerdings liegen die zugehörigen p-Werte zwischen 0,69 und 0,77, sodass von keinen deutlichen Tendenzen gesprochen werden kann.“ – Bericht, S. 56" <span class="s">S. 56</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.20" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.21">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei Rettungseinsätzen oder Notfallbehandlungen lagen die Odds Ratios der kombinierten Arme bei 0,696–0,815, die p-Werte bei 0,27–0,54; die Effekte sind damit nicht deutlich. Arm 3 schnitt marginal schlechter ab.</p>
+  <blockquote>„„Odds Ratios zwischen 0,696 und 0,815 beim Vergleich der kombinierten VESPEERA-Arme mit den Kontrollarmen lassen auf ein etwas verringertes Risiko der VESPEERA- Patienten für einen Rettungseinsatz oder eine Notfallbehandlung im Vergleich zu den Kontrollpatienten schließen. Da die zugehörigen p-Werte allerdings zwischen 0,27 und 0,54 liegen, sind diese Effekte nicht deutlich.“ – Bericht, S. 58" <span class="s">S. 58</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.21" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.22">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die Versorgungskosten waren bei geplanten VESPEERA-Einweisungen deutlich geringer als bei den Kontrollen (p&lt;0,0001). Bei ungeplanten Einweisungen lagen sie im Mittel etwas höher (p=0,519); Arm 4 war teurer als die Kontrollen.</p>
+  <blockquote>„„Hinsichtlich der Versorgungskosten wird beobachtet, dass diese bei geplanten VESPEERA -Einweisungen deutlich geringer l agen als bei Kontrollpatienten (p&lt;0,0001). Bei ungeplanten VESPEERA-Einweisungen lagen die Versorgungskosten im Mittel etwas höher als bei den Kontrollen (p=0,519).“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.22" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.23">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Deskriptiv wurden in der Gesamtpopulation Arzneimittel in gut 20 % der Fälle verspätet verschrieben, Hilfsmittel in über 60 % und Heilmittel in mindestens 70 %; die Werte waren in allen Armen ähnlich.</p>
+  <blockquote>„„Während die R ate der verspätet verschriebenen Arzneimittel insgesamt bei gut 20% liegt, werden Hilfsmittel in über 60% der Fälle und Heilmittel sogar in mindestens 70% der Fälle verspätet verschrieben“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.23" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.24">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Auf knapp ein Drittel der Krankenhausaufenthalte folgte eine Notfallbehandlung oder ein Rettungseinsatz.</p>
+  <blockquote>„„In knapp einem Drittel der Krankenhausaufenthalte kam es zu einer anschließenden Notfallbehandlung oder einem Rettungseinsatz“ – Bericht, S. 44" <span class="s">S. 44</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.24" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.25">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Gesundheitsbezogene Lebensqualität (Regression): Die Interventionsgruppe schnitt schlechter ab als die Kontrollgruppe. Beim EQ-5D-Index war der Unterschied deutlich (Schätzer −1,084 [−1,618; −0,551], p&lt;0,001), bei der visuellen Analogskala nicht (−10,657 [−21,954; 0,639], p=0,065).</p>
+  <blockquote>„„EQ-5D VAS -10.657 [-21.954; 0.639] 0.0652473 EQ-5D Index -1.084 [-1.618; -0.551] 0.0000679“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.25" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.26">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Laut Regressionsanalyse hatte die Kontrollgruppe zu T1 eine bessere Lebensqualität als zu T0 und als die Interventionsgruppe.</p>
+  <blockquote>„„Die Regressionsanalyse ergab zudem, dass die Patienten der Kontrollgruppe zum Zeitpunkt T1 eine bessere gesundheitsbezogene Lebensqualität hatten als zum Zeitpunkt T0 und als die Patienten der Interventionsgruppe.“ – Bericht, S. 62" <span class="s">S. 62</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.26" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.27">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">PEACS: Interventionspatienten stimmten deutlich häufiger zu, dass ihr eigener Beitrag zur Genesung und der Ablauf der Entlassung besprochen wurden. Dass ihnen angeboten wurde, Angehörige einzubeziehen, bejahten sie um mehr als 30 % häufiger.</p>
+  <blockquote>„„Auffällig zeigte sich ebenfalls, dass Probanden der Interventionsgruppe mit mehr als 30% häufiger zustimmten, es sei ihnen angeboten worden, ihre Angehörigen mit in Gespräche der Weiterversorgung einzubeziehen.“ – Bericht, S. 62" <span class="s">S. 62</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.27" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.28">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">PEACS: Interventionspatienten gaben zu beiden Zeitpunkten deutlich häufiger an, über die Medikamenteneinnahme aufgeklärt und nach der Entlassung mit Schmerzmitteln versorgt worden zu sein.</p>
+  <blockquote>„„stimmten Probanden der Interventionsgruppe zu beiden Zeitpunkten jeweils zu einem deutlich höheren Anteil zu, über die Medikamenteneinnahme, beispielsweise bezüglich deren Wirkung, aufgeklärt worden zu sein“ – Bericht, S. 63" <span class="s">S. 63</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.28" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.29">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Zu T1 waren 68 % der Interventionsgruppe mit dem Ergebnis der Krankenhausbehandlung voll und ganz zufrieden, gegenüber 51,8 % der Kontrollgruppe; zu T0 war die Zufriedenheit in beiden Gruppen gleich.</p>
+  <blockquote>„„Zum Zeitpunkt T1 lag die Anzahl der Probanden, die angaben, mit dem Ergebnis der Krankenhausbehandlung voll und ganz zufrieden zu sein, in der Interventionsgruppe mit 68% höher als bei Probanden der Kontrollgruppe (51,8%) .“ – Bericht, S. 63" <span class="s">S. 63</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.29" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.30">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei der eingeschätzten Verbesserung des Gesundheitszustands gab es keinen Gruppenunterschied. Komplikationen infolge der Krankenhausbehandlung berichteten Interventionspatienten zu T0 seltener (3,8 % vs. 10,7 %).</p>
+  <blockquote>„„jedoch gaben zum Zeitpunkt T0 Patienten der Interventionsgruppe mit 3,8% seltener an, es seien Komplikationen infolge der Krankenhausbehandlung aufgetreten, als Probanden der Kontrollgruppe (10,7%).“ – Bericht, S. 63" <span class="s">S. 63</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.30" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.31">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei der Vorbereitung auf den Krankenhausaufenthalt und bei den Kontaktdaten für Komplikationen nach der Entlassung gab es keinen relevanten Unterschied zwischen den Gruppen.</p>
+  <blockquote>„„stimmten zwar die Mehrheit der Patienten (&gt;61,9%) zu, hier zeigte sich jedoch kein relevanter Unterschied zwischen Kontroll - und Interventionspatienten.“ – Bericht, S. 62" <span class="s">S. 62</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.31" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.32">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Teilgenommen haben 7 Krankenhäuser und 72 Hausarztpraxen. 13 Praxen widerriefen ihre Teilnahme, 59 Praxen führten die Studie zu Ende, CareCockpit-Daten kamen aus 37 Praxen.</p>
+  <blockquote>„„Insgesamt haben 7 Krankenhäuser und 72 Hausarztpraxen an VESPEERA teilgenommen. Im Laufe der Interventionsphase haben n=13 Praxen ihre Teilnahmeerklärung widerrufen, sodass n=59 Praxen die Studie bis Ende durchgeführt haben. Insgesamt wurden CareCockpit-Daten aus n=37 Hausarztpraxen übermittelt.“ – Bericht, S. 38" <span class="s">S. 38</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.32" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.33">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Insgesamt gab es 409 VESPEERA-Patienten, davon 371 hospitalisiert; per Propensity Score Matching wurden je Kontrollarm 371 Patienten ermittelt. 38 rekrutierte Patienten waren im Interventionszeitraum nicht hospitalisiert.</p>
+  <blockquote>„„Berücksichtigt man diese Dopplungen, so ergab sich eine Gesamtfallzahl von 409 VESPEERA -Patienten, von denen 371 hospitalisiert wurden. Entsprechend wurden durch das Propensity Score Matching 371 Patienten pro Kontrollarm ermittelt.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.33" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.34">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Fälle bzw. Patienten je Arm: Arm 1 (geplant, teilnehmendes Krankenhaus) 46/39, Arm 2 (geplant, nicht teilnehmendes Krankenhaus) 76/69, Arm 3 (ungeplant, teilnehmendes Krankenhaus) 203/110, Arm 4 (ungeplant, nicht teilnehmendes Krankenhaus) 661/259, Kontrolle 5 1019/371, Kontrolle 6 985/371.</p>
+  <blockquote>„„1 Geplante Einweisung in teilnehmendes Krankenhaus 46 39 2 Geplante Einweisung in nicht-teilnehmendes Krankenhaus 76 69 3 Ungeplante Einweisung in teilnehmendes Krankenhaus 203 110 4 Ungeplante Einweisung in nicht-teilnehmendes Krankenhaus 661 259“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.34" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.35">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Das Matching ergab eine relativ homogene Verteilung nach Alter und Geschlecht. Patienten in Arm 4 und in den Kontrollarmen wurden im Mittel häufiger hospitalisiert als in den Armen 1–3.</p>
+  <blockquote>„„Es zeigt sich, dass durch das Matching eine relativ homogene Struktur der Patienten bezüglich Alter und Geschlecht erreicht werden konnte. Die Patienten in Studienarm 4 und den beiden Kontrollarmen 5 und 6 wurden im Mittel etwas häufiger hospitalisiert“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.35" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.36">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Auch CCI und Stadt/Land-Verteilung waren über die Arme gleichmäßig verteilt. In den Armen 1 und 2 überwogen reguläre Aufnahmen, in den Kontrollarmen leicht die Notfallaufnahmen.</p>
+  <blockquote>„„Bei den geplanten Einweisungen (Studienarme 1 und 2) gibt es mehr reguläre Aufnahmen als Notfallaufnahmen (gemäß den in den Routinedaten vom Krankenhaus dokumentierten Angaben). In den Kontrollarmen 5 und 6 gibt es jeweils etwas mehr Notfallaufnahmen als reguläre Aufnahmen“ – Bericht, S. 41" <span class="s">S. 41</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.36" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.38">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Nutzung einzelner Komponenten laut Leistungserbringern: Das telefonische Entlassgespräch wurde von 16,9 % mindestens einmal geführt, die Patienten-Begleitinformation in 8,7 % der Krankenhäuser verwendet. Häufiger genutzt wurden Behandlungsplanung nach Entlassung (77,6 %) und Telefonmonitoring (70,8 %) in den Hausarztpraxen.</p>
+  <blockquote>„„Telefonisches Entlassgespräch wurde mindestens einmal durchgeführt 11 (16,9) 65 Es ist mindestens ein Fall bekannt, in dem die Patienten-Begleitinformation bei Entlassung verwendet wurde (nur KH) 2 (8,7) 23“ – Bericht, S. 83" <span class="s">S. 83</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.38" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.39">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Für 171 VESPEERA-Patienten wurde ein vollständiger Einweisungsbrief erstellt. Bezogen auf 340 geplant eingewiesene VESPEERA-Patienten entspricht der Indikator der Umsetzungstreue 12,6 %.</p>
+  <blockquote>„„Insgesamt wurden von den teilnehmenden Hausärzten n=340 VESPEERA-Patienten g eplant eingewiesen.“ – Bericht, S. 87" <span class="s">S. 87</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.39" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.40">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Der Indikator für den bei Entlassung aus teilnehmenden Krankenhäusern erhobenen und mitgeteilten HOSPITAL-Score lag bei null Prozent.</p>
+  <blockquote>„„Somit wurden auch für keine teilnehmenden Patienten der HOSPITAL -Score erhoben.“ – Bericht, S. 87" <span class="s">S. 87</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.40" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.40" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.41">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Von 110 per Fragebogen befragten Patienten wurden etwa zwei Drittel notfallmäßig aufgenommen; nur 8,5 % wurden in einem teilnehmenden Krankenhaus behandelt.</p>
+  <blockquote>„„Ca . zwei Drittel der Patienten wurden notfallmäßig im Krankenhaus aufgenommen, zu 79% in Einrichtungen der Grund- und Regelversorgung und in nur 8,5% der Fälle in einem an VESPEERA teilnehmenden Krankenhaus .“ – Bericht, S. 77" <span class="s">S. 77</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.41" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.41" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.42">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Für die Prozessevaluation wurden 69 Leistungserbringer und 8 Patienten interviewt (77 Interviews statt geplanter 95) sowie 68 Leistungserbringer und 110 Patienten per Fragebogen befragt.</p>
+  <blockquote>„„mittels Interviews n=69 Leistungserbringer und n=8 Patienten bzw. mittels Fragebögen n=68 Leistungserbringer und n=110 Patienten befragt.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.42" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.42" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.43">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Alle Beteiligten sahen den Einweisungsbrief als geeignetes Instrument, um standardisiert über den Zustand des Patienten vor dem Krankenhausaufenthalt zu informieren; das bestätigten Interviews und Fragebögen.</p>
+  <blockquote>„„Der Einweisungsbrief wird von allen Beteiligten als geeignetes Instrument gesehen, um Informationen über den Zustand des Patienten vor Krankenhausaufenthalt standardisiert zu übermitteln. Dies wurde in den Interviews berichtet und durch die Ergebnisse der Fragebogenbefragung bestätigt.“ – Bericht, S. 144" <span class="s">S. 144</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.43" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.43" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.44">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Mehr als zwei Drittel der Leistungserbringer sahen durch den Einweisungsbrief die Indikation klarer kommuniziert, fast drei Viertel ein besseres Verständnis der sozialen Situation. Einer Beschleunigung der Aufnahme stimmten sie weniger zu (Mittelwert 2,7).</p>
+  <blockquote>„„Die Befragten stimmten tendenziell weniger zu, dass Aufnahmeprozesse in der Klinik durch einen vorhandenen Einweisungsbrief beschleunigt werden.“ – Bericht, S. 96" <span class="s">S. 96</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.44" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.44" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.45">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Interviewte aus Krankenhäusern sahen VESPEERA als sinnvolle Ergänzung zum Rahmenvertrag Entlassmanagement, vor allem wegen des Einweisungsbriefs und des telefonischen Entlassgesprächs.</p>
+  <blockquote>„„Insbesondere Interviewteilnehmer aus Krankenhäusern beschrieben, dass VESPEERA eine sinnvolle Ergänzung zum Rahmenvertrag Entlassmanagement sei und mehr Vorteile als dieser mit sich bring e.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.45" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.45" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.46">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Wirkmechanismen: Drei Viertel hielten das telefonische Entlassgespräch für förderlich für die Zusammenarbeit, ca. 80 % für hilfreich bei komplexen oder vulnerablen Patienten. Behandlungsplanung und Telefonmonitoring erreichten Zustimmungsraten um 80 % und mehr.</p>
+  <blockquote>„„Drei Viertel der Befragten sahen ein telefonisches Entlassgespräch zwischen Hausarztpraxis und Krankenhaus als förderlich für die Zusammenarbeit. Ca. 80% der Befragten empfanden ein solches Telefonat hilfreich für komplexe beziehungsweise vulnerable Patienten.“ – Bericht, S. 96" <span class="s">S. 96</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.46" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.46" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.47">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Wahrgenommene Ergebnisse: Knapp die Hälfte der Leistungserbringer sah den Patientenkontakt intensiviert. Mehr als die Hälfte verneinte einen engeren Kontakt zwischen den Sektoren; besserer Informationsaustausch erhielt Mittelwert 2,4, verbesserte Zusammenarbeit 2,6 (5-stufige Skala).</p>
+  <blockquote>„„Der Aussage, dass engerer Kontakt zu den einweisenden Ärzten beziehungsweise den entlassenden Kliniken aufgebaut werden konnte, stimmte jedoch mehr als die Hälfte der Befragten explizit nicht zu.“ – Bericht, S. 93" <span class="s">S. 93</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.47" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.47" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.48">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Akzeptanz: Über zwei Drittel sahen die Rolle von Hausarzt und VERAH (Versorgungsassistentin in der Hausarztpraxis) gestärkt. Die Hälfte bis drei Viertel hielten die Umsetzung jedoch für sperrig; die Integrierbarkeit in interne Prozesse erhielt Mittelwert 2,5.</p>
+  <blockquote>„„Über zwei Drittel der Befragten stimmen jeweils zu, dass VESPEERA die Rolle des Hausarztes und der VERAH stärkt. Zwar lässt sich die Durchführung teilweise delegieren, jedoch sieht die Hälfte bis drei Viertel der Befragten die Umsetzung als sperrig“ – Bericht, S. 102" <span class="s">S. 102</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.48" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.48" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.49">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Patienten empfanden die regelmäßige telefonische Nachbetreuung als sehr hilfreich; die intensive Betreuung förderte ihre Zufriedenheit.</p>
+  <blockquote>„„Die regelmäßige telefonische Nachbetreuung im Rahmen der VESPEERA - Intervention wurde von den Patienten als sehr hilfreich empfunden.“ – Bericht, S. 91" <span class="s">S. 91</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.49" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.49" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.50">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Patientensicht bei geplanter Einweisung: 90 % erhielten eine Verordnung und 85 % die relevanten Aufnahmedokumente; die Einweisungsbroschüre erhielt nur ein Viertel.</p>
+  <blockquote>„„Der Großteil der Patienten mit geplantem Krankenhausaufenthalt gab an, vom Hausarzt eine Verordnung für den Krankenhausaufenthalt (90%) sowie relevante Dokumente für die Aufnahme im Krankenhaus (85%) erhalten zu haben.“ – Bericht, S. 83" <span class="s">S. 83</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.50" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.50" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.51">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Nach der Entlassung waren etwa zwei Drittel der Patienten binnen eines Werktags in der Hausarztpraxis. Knapp 80 % besprachen die weitere Behandlung ausführlich, weniger als die Hälfte wurde von Medizinischen Fachangestellten telefonisch betreut.</p>
+  <blockquote>„„Ca. zwei Drittel der Patienten waren innerhalb eines Werktags nach Entlassung in der Hausarztpraxis vorstellig.“ – Bericht, S. 84" <span class="s">S. 84</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.51" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.51" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.52">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Einen Entlassplan erhielt etwa ein Drittel der Patienten, einen Medikationsplan bei Entlassung etwas mehr als zwei Drittel.</p>
+  <blockquote>„„Bei Entlassung hat ca. ein Drittel der Patienten einen Entlassplan erhalten.“ – Bericht, S. 85" <span class="s">S. 85</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.52" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.52" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.53">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die Interviewten hielten VESPEERA nur für einen Teil der Patienten geeignet, vor allem für chronisch Kranke; Einweisungsbriefe wünschten sie besonders für Notfälle.</p>
+  <blockquote>„„Die Befragten sahen VESPEERA insgesamt nur für einen Teil der Patienten geeignet, basierend auf ihren Bedürfnissen. Insgesamt wird VESPEERA als für Patienten mit chronischen Erkrankungen geeignet gesehen.“ – Bericht, S. 109" <span class="s">S. 109</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.53" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.53" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.54">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Den Effekt des HOSPITAL-Scores schätzten die Befragten eher gering ein; den Grundgedanken von VESPEERA bewertete die Mehrheit als gut.</p>
+  <blockquote>„„Der Effekt, der durch den Einsatz des HOSPITAL- Scores beschrieben wurde, wurde dabei eher als gering geschätzt.“ – Bericht, S. 125" <span class="s">S. 125</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.54" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.54" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.55">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die Krankenhäuser sahen eine gute Passung, weil sie – anders als beim Rahmenvertrag Entlassmanagement – an der Entwicklung der Intervention beteiligt waren.</p>
+  <blockquote>„„Die Krankenhäuser berichteten zudem von einer guten Passung , da sie in die Interventionsentwicklung in VESPEERA eingebunden waren, anders als beim Rahmenvertrag Entlassmanagement .“ – Bericht, S. 120" <span class="s">S. 120</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.55" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.55" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.56">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">In einigen Hausarztpraxen ließ sich VESPEERA problemlos einbinden, weil das Vorgehen bereits ähnlich war, etwa in Praxen, die mit dem Versorgungsprogramm PraCMan arbeiteten.</p>
+  <blockquote>„„Einige Befragte aus Hausarztpraxen berichtete n, dass die Einbindung von VESPEERA kein Problem war, da es bisher schon ähnlich gehandhabt wurde, neu war lediglich die Umsetzung im CareCockpit.“ – Bericht, S. 120" <span class="s">S. 120</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.56" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.56" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.57">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die Vergütung wurde unterschiedlich bewertet und von einigen nicht als Anreiz gesehen. Die Hälfte bis zwei Drittel der Leistungserbringer gaben an, nicht genug Personal und Arbeitsplätze für VESPEERA zu haben.</p>
+  <blockquote>„„zwischen der Hälfte und zwei Drittel der Befragten gaben an, nicht ausreichend Personal und Arbeitsplätze für die Umsetzung von VESPEERA zur Verfügung zu haben.“ – Bericht, S. 135" <span class="s">S. 135</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.57" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.57" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.58">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Etwa die Hälfte der Leistungserbringer sah externe Vorgaben wie den Rahmenvertrag Entlassmanagement und die DSGVO als erschwerend.</p>
+  <blockquote>„„Ca. die Hälfte der Befragten gaben an, dass externe Vorgaben wie der Rahmenvertrag Entlassmanagement sowie die Datenschutzgrundverordnung der Europäischen Union die Umsetzung der VESPEERA-Maßnahmen erschwerten.“ – Bericht, S. 135" <span class="s">S. 135</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.58" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.58" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.59">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Hausarztpraxen und Krankenhäuser kommunizieren überwiegend per Telefon und Fax; die Zusammenarbeit wird als Informationsaustausch beschrieben, nicht als gemeinsame Behandlungsplanung.</p>
+  <blockquote>„„Dennoch beschrieben die Interviewpartner diese als Informationsaustausch und nicht als Zusammenarbeit im Sinne von einer gemeinsamen Behandlungsplanung.“ – Bericht, S. 110" <span class="s">S. 110</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.59" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.59" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.60">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Krankenhäuser verwenden den bundeseinheitlichen Medikationsplan nur sehr selten; der Rahmenvertrag Entlassmanagement wird sehr variabel umgesetzt.</p>
+  <blockquote>„„grundsätzlich kann jedoch festgestellt werden, dass vor allem Krankenhäuser den bundeseinheitlichen Medikationsplan nur sehr selten verwenden.“ – Bericht, S. 140" <span class="s">S. 140</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.60" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.60" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.61">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">An den regionalen Feedbacktreffen nahmen 2018 26 Hausärzte, 28 VERAHs und 4 Krankenhausvertreter teil, 2019 19 Hausärzte, 20 VERAHs und 7 Krankenhausvertreter; der Austausch wurde als bereichernd empfunden.</p>
+  <blockquote>„„An der ersten Runde der Feedbacktre ffen nahmen insgesamt 26 Hausärzte, 28 VERAHs und 4 Krankenhausvertreter teil. Die Teilnehmer empfanden den Austausch als bereichernd.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.61" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.61" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.62">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die Hausarztpraxen bewerteten die Betreuung durch die Studienzentrale als sehr positiv; eine erneute individuelle Schulung nahmen 17 Praxen an.</p>
+  <blockquote>„„Die Hausarztpraxen bewerteten in den Interviews und Fragebögen der Prozessevaluation (s.u.) die Betreuung durch die Studienzentrale als sehr positiv.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.62" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.62" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.63">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Der Einweisungsbrief wurde bereits in die elektronische Arztvernetzung der AOK Baden-Württemberg übernommen.</p>
+  <blockquote>„„So fand beispielsweise der Einweisungsbrief bereits Eingang in die elektronische Arztvernetzung der AOK Baden-Württemberg.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_befund.63" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_befund.63" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.8">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Abweichend vom Protokoll selektierten die Hausarztpraxen Patienten nach Einschätzung des Personals vor und boten nicht allen alle Komponenten an.</p>
+  <blockquote>„„Darüber hinaus wurde in den Hausarztpraxen bzgl. der einzuschließenden Patienten vom Protokoll abgewichen und vorselektiert gemäß der Einschätzung des Personals, welche Patienten von den Maßnahmen profitieren könnte.“ – Bericht, S. 144" <span class="s">S. 144</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.9">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Der erste Test der primären Analyse beruht nur auf den kleinen Armen 1 und 2; viele Patienten bleiben unberücksichtigt, und das Konfidenzintervall ist enorm groß.</p>
+  <blockquote>„„Da die primäre Analyse zunächst nur auf den Studienarmen 1 und 2 basiert, werden somit viele Patienten für den ersten Test im primären Endpunkt nicht berücksichtigt.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.10">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Geringe Fallzahlen in manchen Subgruppen und Endpunkten führen zu sehr breiten Konfidenzintervallen; die Studienarme wurden teils zusammengelegt.</p>
+  <blockquote>„„Durch die geringe Fallzahl in manchen Subgruppen kommt es in manchen Analysen zu sehr breiten Konfidenzintervallen für das Odds Ratio, welche eine Interpretation erschweren.“ – Bericht, S. 47" <span class="s">S. 47</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.11">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Der Trend zu stärkerem Entlassmanagement durch den Rahmenvertrag ließ sich in der Difference-in-Difference-Analyse wegen des Datenzeitraums ab 01.10.2017 nicht berücksichtigen.</p>
+  <blockquote>„„Dieser Trend konnte in der Difference-in-Difference Analyse durch den gewählten Zeitraum, für den Daten in die Analys e einflossen (ab 01.10.2017) , nicht berücksichtigt werden.“ – Bericht, S. 142" <span class="s">S. 142</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.12">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Kontrollgruppen enthielten definitionsbedingt nur ungeplante Hospitalisierungen. Informationen zur einweisenden Praxis standen fürs Matching nur bei geplanten Hospitalisierungen zur Verfügung.</p>
+  <blockquote>„„Da eine geplante Einweisung in der Ergebnisevaluation durch ein vorangegangenes Einweisungsassessment definiert wurde, enthielten die Kontrollgruppen nur ungeplante Hospitalisierungen entsprechend dieser Definition.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.13">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">In der Kontrollgruppe fand keine Risikostratifizierung statt. Der günstige Vergleich der Subgruppe ohne Telefonmonitoring, die per Definition ein geringes Risiko hat, ist daher wenig aussagekräftig.</p>
+  <blockquote>„„Diese Subgruppe hat per definitionem ein geringes Risiko für eine Rehospitalisierung. Zudem erfolgte in der Kontrollgruppe keine Risikostratifizierung, für diese Gruppe ist also von einem im Mittel höheren Risiko auszugehen.“ – Bericht, S. 141" <span class="s">S. 141</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.14">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Der HOSPITAL-Score lag nur für VESPEERA-Patienten vor und ließ sich nicht für eine klassische Subgruppenanalyse nutzen.</p>
+  <blockquote>„„Da es folglich nicht für die Kontrollgruppen vorliegt, konnte es nicht für eine klassische Subgruppenanalyse verwendet werden.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.15">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Der Einfluss einzelner Interventionskomponenten ließ sich nicht untersuchen. Auf Dose-Response-Analysen zwischen Prozess- und Ergebnisevaluation wurde verzichtet, weil der primäre Endpunkt nicht signifikant war.</p>
+  <blockquote>„„so konnte auch bei VESPEERA der Einfluss der einzelnen Interventionskomponenten (aufgrund der geringen Fallzahl sowie der komplexen Intervention) auf die Endpunkte nicht untersucht werden.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.16">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Beschränkung auf ein Bundesland und auf Routinedaten einer Kasse begrenzt die Übertragbarkeit; die Sekundärdaten sind nur eingeschränkt valide.</p>
+  <blockquote>„„Allerdings ist die Beschränkung auf ein Bundesland auch eine Limitation der Beobachtungen. Die Verwendung von Routinedaten für wissenschaftliche Zwecken ist mit Einschränkungen verbunden und die Übertragbarkeit der Ergebnisse auf Versicherte anderer Krankenkassen nur bedingt möglich.“ – Bericht, S. 143" <span class="s">S. 143</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.17">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Das Datenlinkage lief über Datumsangaben statt über die stationäre Fallnummer; falsch-positive Zuordnungen sind möglich, eine Pilotierung war nicht möglich.</p>
+  <blockquote>„„Somit besteht immer die Möglichkeit einer falsch- positiven Zuordnung.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.18">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Patientenbefragung: Zu T1 nahmen nur 26 Interventionspatienten teil (zu T0 111). Zu T0 und T1 wurden unterschiedliche Patienten befragt, die Interventionsgruppe war zu T1 im Mittel 13 Jahre älter.</p>
+  <blockquote>„„zu T1 waren die Patienten der Interventionsgruppe im Durchschnitt 13 Jahre älter als die der Kontrollgruppe.“ – Bericht, S. 60" <span class="s">S. 60</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.19">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die T1-Befragung fiel in die erste COVID-19-Welle; das erschwert die Interpretation.</p>
+  <blockquote>„„Zudem fiel der Befragungszeitraum zu T1 in die erste Welle der COVID-19-Pandemie, was eine Verschlechterung zum Zeitpunkt T1 erklären kann, jedoch auch eine Interpretation der Ergebnisse erschwert.“ – Bericht, S. 143" <span class="s">S. 143</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.20">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Rücklaufquote der Patientenbefragung ließ sich nicht berechnen; das Instrument PAM zur Patientenaktivierung wurde ersatzlos gestrichen.</p>
+  <blockquote>„„Die Rücklaufquote konnte nicht berechnet werden, da nicht bekannt ist, wie v iele Fragebögen die Hausarztpraxen insgesamt an Patienten ausgegeben haben.“ – Bericht, S. 60" <span class="s">S. 60</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.21">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">In der Prozessevaluation waren die Rücklaufquoten gering, besonders in den Krankenhäusern (5,2 %; Hausärzte 28 %, VERAHs 42 %, Patienten 32,7 %).</p>
+  <blockquote>„„Insbesondere in den Krankenhäusern fiel die Teilnahmequote aufgrund der geringen Umsetzung von VESPEERA gering aus (siehe Tabelle 52).“ – Bericht, S. 77" <span class="s">S. 77</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.22">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Statt der erwarteten 25 Kliniken nahmen nur 7 teil, und davon nur einzelne Fachabteilungen, meist Orthopädie und Kardiologie. Dort wird in der Regel über Fachärzte statt über Hausärzte eingewiesen.</p>
+  <blockquote>„„anstatt des Gesamthauses letztlich nur einzelne Fachabteilungen der Kliniken teilnahmen, primär orthopädische oder kardiologische. Hier erfolgte in der Regel die Einweisung jedoch über Fachärzte und nicht über den Hausarzt.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.22" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.22" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.23">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Der zeitgleich in Kraft getretene Rahmenvertrag Entlassmanagement band Ressourcen in den Krankenhäusern und war auch ein Grund, nicht teilzunehmen.</p>
+  <blockquote>„„Nachfragen bei den ursprünglich interessierten Kliniken bes tätigten, dass der Rahmenvertrag Entlassmanagement auch ein Hinderungsgrund für die tatsächliche Projektteilnahme darstellte.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.23" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.23" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.24">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Annahme, dass ca. 15 % der HZV-Versicherten hospitalisiert werden, traf nicht zu. 2016 fanden 50,5 % der Krankenhausaufenthalte in den Interventionsregionen ohne Einweisung statt.</p>
+  <blockquote>„„Es wurde davon ausgegangen, dass ca. 15 Prozent der HZV-Versicherten hospitalisiert werden. Es zeigte sich im Projektverlauf, dass diese Annahme nicht zutraf und die Hospitalisierungsrate deutlich geringer“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.24" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.24" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.25">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Nicht alle teilnehmenden Hausarztpraxen schlossen Patienten ein: CareCockpit-Daten kamen nur aus 37 Praxen. Die Rekrutierung wurde wegen des hohen Aufwands nicht dokumentiert.</p>
+  <blockquote>„„Diese haben am Projekt teilgenommen und waren keine Drop- Outs, sondern Nicht -Rekrutierer.“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.25" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.25" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.26">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Komponente Entlassbriefe über das CareCockpit entfiel wegen Bedenken der Krankenhäuser, und mit ihr der zugehörige Indikator der Umsetzungstreue.</p>
+  <blockquote>„„Noch vor Projektbeginn äußerten Krankenhäuser Bedenken gegenüber der Implementierung des CareCockpits in ihren Software-Systemen, wegen des damit verbundenen Aufwandes und der Dringlichkeit anderer Themen, womit dieser Teil der Intervention gestrichen werden musste.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.26" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.26" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.27">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Krankenhausindividuelle Schulungen nahm keine teilnehmende Klinik in Anspruch; die Gründe sind unbekannt.</p>
+  <blockquote>„„Allen teilnehmenden Kliniken wurden krankenhausindividuelle Schulungen angeboten, welche jedoch nicht in Anspruch genommen wurden. Die Hintergründe hierfür sind nicht bekannt.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.27" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.27" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.28">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">In den Kliniken waren Zeitmangel und hohe Personalfluktuation die Hauptbarrieren, weil sehr viel Personal zur Identifizierung von VESPEERA-Patienten geschult werden musste.</p>
+  <blockquote>„„Als Hauptbarrieren wurden Zeitmangel und eine erhöhte Fluktuation des Personals beschrieben.“ – Bericht, S. 126" <span class="s">S. 126</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.28" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.28" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.29">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Ob der Einweisungsbrief mitgegeben wurde und im Krankenhaus ankam, ließ sich nicht prüfen. Den Praxen fehlte die Rückmeldung der Kliniken auf Patientenebene.</p>
+  <blockquote>„„Ob der Einweisungsbrief mitgegeben wurde, ist anhand der Daten nicht zu prüfen.“ – Bericht, S. 87" <span class="s">S. 87</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.29" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.29" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.30">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Intervention galt als sehr aufwendig, und das Studiensetting mit Aufklärung und Datenerhebung erschwerte die Umsetzung. Im Studienkontext durften die Komponenten nicht gekürzt werden.</p>
+  <blockquote>„„So wurde die Intervention als sehr aufwendig beschrieben, zusätzlich erschwert das Studiensetting (mit Aufklärung und Datenerhebung) die Umsetzung.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.30" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.30" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.31">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Der hohe Zeitaufwand in den Hausarztpraxen führte zu blockierten Behandlungszimmern und Überstunden; das Verhältnis von Aufwand zu Nutzen wurde nicht überall gesehen.</p>
+  <blockquote>„„Die K onsequenz des hohen Zeitaufwands sind blockierte Behandlungszimmer und Überstunden.“ – Bericht, S. 101" <span class="s">S. 101</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.31" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.31" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.32">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Studienunterlagen (Information, Einwilligung, Fragebögen) waren für Patienten zu komplex; bei alten oder kranken Patienten waren die langen Assessments schwer durchführbar.</p>
+  <blockquote>„„Als für zu komplex und umfangreich für Patienten befanden die Befragten die Unterlagen zu Information und Einwilligung sowie die im Rahmen der Studie eingesetzte Fragebögen.“ – Bericht, S. 101" <span class="s">S. 101</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.32" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.32" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.33">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Einschlusskriterien waren zu eng gefasst; der HOSPITAL-Score galt einigen als zu streng oder ungeeignet für den Einschluss ins Telefonmonitoring.</p>
+  <blockquote>„„Befragte aus Hausarztpraxen äußerten, dass die Einschlusskriterien zu eng definiert waren, sodass die Praxis oft gar nicht genug potenzielle Patienten betreuen würde.“ – Bericht, S. 104" <span class="s">S. 104</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.33" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.33" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.34">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Das Telefonmonitoring wurde uneinheitlich umgesetzt, teils gar nicht.</p>
+  <blockquote>„„Manche Praxen beschrieben, sie haben es bisher nicht geschafft, das Telefonmonitoring zum Zeitpunkt der Befragung durchzuführen, manche Praxen konnten es wie geplant umsetz en.“ – Bericht, S. 81" <span class="s">S. 81</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.34" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.34" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.35">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Technische Probleme: Der Druck der Einweisungsbriefe schlug teils fehl, eine Schnittstelle zur Praxissoftware fehlte (Doppeldokumentation), und das CareCockpit war oft nur auf einem Computer installiert.</p>
+  <blockquote>„„Weiter berichteten VERAHs und Hausärzte von Problemen beim Druck des Einweisungsbriefs. Nicht in allen Internetbrowsern ha tte dies funktioniert“ – Bericht, S. 105" <span class="s">S. 105</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.35" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.35" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.36">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Krankenhäuser hielten VESPEERA für zu groß und komplex. Softwareanpassungen im Krankenhausinformationssystem sind vor allem für kleine Häuser zu teuer.</p>
+  <blockquote>„„Krankenhäuser äußerten, dass VESPEERA zu groß und komplex sei und daher nicht in allen Häusern umgesetzt werden konnte.“ – Bericht, S. 101" <span class="s">S. 101</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.36" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.36" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.37">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Der Kontakt zwischen den Leistungserbringern ließ sich nicht im gewünschten Ausmaß intensivieren.</p>
+  <blockquote>„„Zwar konnte in der Interventionsphase von VESPEERA der Kontakt zwischen den Leistungserbringern nicht im gewünschten Ausmaß intensiviert werden“ – Bericht, S. 145" <span class="s">S. 145</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.37" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.37" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.38">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">In den Interviews der Prozessevaluation war eine geplante Einweisung anders definiert als bei der Bildung der Studienarme. Zudem vermischten Befragte die Intervention mit den Studienmaßnahmen.</p>
+  <blockquote>„„In den Interviews der Prozessevaluation entspricht die Definition einer geplanten Einweisung nicht der, die für die Bildung der Studienarme in der Ergebnisevaluation herangezogen wurde.“ – Bericht, S. 80" <span class="s">S. 80</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.38" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.38" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.39">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Zum Interviewzeitpunkt hatten manche Praxen und vor allem Krankenhausmitarbeiter wenig oder keine Erfahrung mit VESPEERA; Prozesse wurden teils falsch verstanden.</p>
+  <blockquote>„„Manche Praxen und vor allem Krankenhausmitarbeiter beschrieben, dass sie zum Zeitpunkt des Interviews eher wenig oder sogar keine Erfahrung mit der Umsetzung von VESPEERA machen konnten.“ – Bericht, S. 126" <span class="s">S. 126</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.39" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.39" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.40">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die konkreten Kostenwerte werden aus Datenschutzgründen nicht veröffentlicht.</p>
+  <blockquote>„„Aus Datenschutzgründen werden die konkreten Werte der Kosten hier nicht öffentlich gemacht.“ – Bericht, S. 60" <span class="s">S. 60</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.40" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.40" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.41">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Bei dringlichen Einweisungen fehlte oft ein freies Sprechzimmer, sodass die Komponenten an der Anmeldung durchgeführt wurden – ein Problem für Datenschutz und Schweigepflicht.</p>
+  <blockquote>„„Bei Patienten mit dringlicher Krankenhauseinweisung ist nicht immer ein Sprechzimmer frei, sodass die VESPEERA-Interventionskomponenten an der Anmeldung durchgeführt werden“ – Bericht, S. 120" <span class="s">S. 120</span></blockquote>
+  <div class="wahl">
+    <label><input type="radio" name="ubericht_hindernis.41" value="ok" checked>
+      stimmt</label>
+    <label><input type="radio" name="ubericht_hindernis.41" value="nein">
+      stimmt nicht</label>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section></details>
 
 <h2>Und das, was in keinem Bericht steht</h2>
 <div class="p danach">
@@ -575,10 +2757,11 @@ das, was in keiner Datenbank steht: <b>wie es nach dem Projekt weiterging</b>. D
   <button id="senden">Freigeben und an die Redaktion senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
+  <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 104, "akronym": "VESPEERA", "kennung": "EktAJmYnudr2", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt VESPEERA keine Empfehlung aus. Er begründet dies mit den Schwierigkeiten bei der Umsetzung der Neuen Versorgungsform und dem hohen Verzerrungspotenzial der Studie. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Es konnte nicht gezeigt werden, dass die Intervention die Rehospitalisierungsrate (primärer Endpunkt) signifikant senkte. Auch bei den sekundären Endpunkten gab es keine statistisch signifikanten Ergebnisse. Die Implementierung gelang nur in Teilen. Die Umsetzungstreue in Hausarztpraxen und Krankenhäusern war sehr unterschiedlich und im Durchschnitt niedrig. Als Barrieren nannte das Projekt den Aufwand durch den gleichzeitig in Kraft getretenen Rahmenvertrag Entlassmanagement und projektbedingte Mehraufwände. Das Studiendesign war nur eingeschränkt geeignet, eine Wirksamkeit nachzuweisen. Gründe sind das HZV-Setting mit ohnehin geringeren Wiederaufnahmequoten, die geringe Fallzahl, ein Selektionsbias beim Patienteneinschluss und die fehlende Randomisierung."}, {"stelle": "studiendesign", "art": "text", "unser": "kontrollierte Kohortenstudie"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Keine signifikante Reduktion der Rehospitalisierungsrate (primärer Endpunkt)"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Keine statistisch signifikanten Ergebnisse bei den sekundären Endpunkten"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Implementierung nur teilweise gelungen, Umsetzungstreue uneinheitlich und im Durchschnitt niedrig"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Aufwand durch den gleichzeitig in Kraft getretenen Rahmenvertrag Entlassmanagement nach § 39 Abs. 1a SGB V als Implementierungsbarriere"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Durchführung im HZV-Setting mit ohnehin geringeren Wiederaufnahmequoten erschwert die Detektion zusätzlicher Effekte"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Geringe Fallzahl limitiert die Aussagekraft der Analysen stark"}, {"stelle": "hindernis.6", "art": "hindernis", "unser": "Selektionsbias beim Patienteneinschluss durch die Hausärztinnen und Hausärzte"}, {"stelle": "hindernis.7", "art": "hindernis", "unser": "Mögliche Verzerrung wegen fehlender Randomisierung"}, {"stelle": "befund.0", "art": "befund", "unser": "Das Projekt hat die Implementierungsbarrieren umfassend diskutiert und „lessons learned“ dargestellt."}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen nach Krankenhausentlassung (hierarchische Testprozedur: Arme 1+2 vs. Arm 6)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen – Arm 3 vs. Arm 6"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen – Arm 4 vs. Arm 6"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen – alle VESPEERA-Arme (1–4) vs. Kontrollgruppe 6 (Sensitivitätsanalyse)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Rehospitalisierungen wegen derselben Indikation innerhalb von 30 Tagen (alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Hospitalisierungen wegen ambulant sensitiver Diagnosen (alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Verspätete Verschreibung von Arzneimitteln (mehr als 7 Tage nach Entlassung; alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Verspätete Verschreibung von Hilfsmitteln (alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Verspätete Verschreibung von Heilmitteln (alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Notfallbehandlungen oder Rettungseinsätze innerhalb von 90 Tagen (alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität – EQ-5D Index (Gruppenvergleich Patientenbefragung)"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität – EQ-5D VAS (Gruppenvergleich Patientenbefragung)"}]};
+const D = {"projekt_id": 104, "akronym": "VESPEERA", "kennung": "EktAJmYnudr2", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt VESPEERA keine Empfehlung aus. Er begründet dies mit den Schwierigkeiten bei der Umsetzung der Neuen Versorgungsform und dem hohen Verzerrungspotenzial der Studie. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Es konnte nicht gezeigt werden, dass die Intervention die Rehospitalisierungsrate (primärer Endpunkt) signifikant senkte. Auch bei den sekundären Endpunkten gab es keine statistisch signifikanten Ergebnisse. Die Implementierung gelang nur in Teilen. Die Umsetzungstreue in Hausarztpraxen und Krankenhäusern war sehr unterschiedlich und im Durchschnitt niedrig. Als Barrieren nannte das Projekt den Aufwand durch den gleichzeitig in Kraft getretenen Rahmenvertrag Entlassmanagement und projektbedingte Mehraufwände. Das Studiendesign war nur eingeschränkt geeignet, eine Wirksamkeit nachzuweisen. Gründe sind das HZV-Setting mit ohnehin geringeren Wiederaufnahmequoten, die geringe Fallzahl, ein Selektionsbias beim Patienteneinschluss und die fehlende Randomisierung."}, {"stelle": "studiendesign", "art": "text", "unser": "Quasi-experimentelle, prospektive, multizentrische, unverblindete Studie"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Keine signifikante Reduktion der Rehospitalisierungsrate (primärer Endpunkt)"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Keine statistisch signifikanten Ergebnisse bei den sekundären Endpunkten"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Implementierung nur teilweise gelungen, Umsetzungstreue uneinheitlich und im Durchschnitt niedrig"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Aufwand durch den gleichzeitig in Kraft getretenen Rahmenvertrag Entlassmanagement nach § 39 Abs. 1a SGB V als Implementierungsbarriere"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Durchführung im HZV-Setting mit ohnehin geringeren Wiederaufnahmequoten erschwert die Detektion zusätzlicher Effekte"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Geringe Fallzahl limitiert die Aussagekraft der Analysen stark"}, {"stelle": "hindernis.6", "art": "hindernis", "unser": "Selektionsbias beim Patienteneinschluss durch die Hausärztinnen und Hausärzte"}, {"stelle": "hindernis.7", "art": "hindernis", "unser": "Mögliche Verzerrung wegen fehlender Randomisierung"}, {"stelle": "befund.0", "art": "befund", "unser": "Das Projekt hat die Implementierungsbarrieren umfassend diskutiert und „lessons learned“ dargestellt."}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen nach Krankenhausentlassung, geplante Krankenhausaufnahme (hierarchische Testprozedur: Arme 1+2 vs. Arm 6, teilnehmendes vs. nicht teilnehmendes Krankenhaus vs. Kontrolle)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen, ungeplante Krankenhausaufnahme – Arm 3 vs. Arm 6 (teilnehmendes Krankenhaus vs. Kontrolle)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen, ungeplante Krankenhausaufnahme – Arm 4 vs. Arm 6 (nicht teilnehmendes Krankenhaus vs. Kontrolle)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Rehospitalisierungen wegen derselben Indikation innerhalb von 90 Tagen – alle VESPEERA-Arme (1–4) vs. Kontrollgruppe 6 (Sensitivitätsanalyse)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Rehospitalisierungen wegen derselben Indikation innerhalb von 30 Tagen (alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Hospitalisierungen wegen ambulant sensitiver Diagnosen (alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Verspätete Verschreibung von Arzneimitteln (mehr als 7 Tage nach Entlassung; alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Verspätete Verschreibung von Hilfsmitteln (alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Verspätete Verschreibung von Heilmitteln (alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Notfallbehandlungen oder Rettungseinsätze innerhalb von 90 Tagen (alle VESPEERA-Arme vs. Kontrollgruppe 6)"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität – EQ-5D Index (Gruppenvergleich Patientenbefragung)"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität – EQ-5D VAS (Gruppenvergleich Patientenbefragung)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "VESPEERA untersuchte in Baden-Württemberg ein strukturiertes Einweisungs- und Entlassmanagement mit IT-gestütztem Telefonmonitoring. Beteiligt waren Hausarztpraxen der Hausarztzentrierten Versorgung (HZV) und Krankenhäuser; die Studie war quasi-experimentell und unverblindet. Primärer Endpunkt waren Rehospitalisierungen wegen derselben Indikation binnen 90 Tagen. Ausgewertet wurde mit Routinedaten der AOK Baden-Württemberg gegen per Propensity Score gematchte Kontrollen. Teilgenommen haben 72 Hausarztpraxen (59 bis Studienende) und 7 Krankenhäuser; 371 hospitalisierte VESPEERA-Patienten gingen in die Analyse ein. Im primären Endpunkt ergab sich kein signifikanter Effekt: Der erste hierarchische Test endete mit OR 1,000 und p=0,96. Deskriptiv ergab die kombinierte Analyse aller Interventionsarme Odds Ratios von 0,398 bis 0,662, die Interrupted-Time-Series-Modelle dagegen kaum Unterschiede. Deskriptiv günstigere Werte zeigten sich bei hoher Komorbidität, bei Patienten ab 65 Jahren, bei verspäteten Arzneimittelverschreibungen und bei Hospitalisierungen wegen ambulant sensitiver Diagnosen; die Lebensqualität der kleinen Interventionsgruppe zu T1 war schlechter. Die Aussagekraft ist stark begrenzt: Fallzahlen und Rehospitalisierungsraten lagen weit unter den Annahmen, die teilnehmenden Krankenhäuser identifizierten keinen VESPEERA-Patienten, die Umsetzungstreue lag bei 40 %, und Praxen selektierten Patienten vor. Hinzu kommen Selektionsbias, die Überlagerung durch den zeitgleich eingeführten Rahmenvertrag Entlassmanagement und das Fehlen eines Vergleichs mit der Versorgung außerhalb der HZV. Bezogen auf den primären Endpunkt geben die Evaluatoren keine Empfehlung zur Übernahme in die Regelversorgung, sehen aber Trends zugunsten der Intervention bei Hochrisikopatienten."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Im ersten Schritt der hierarchischen Testprozedur wurden die geplanten Einweisungen (Arme 1+2) mit Kontrollgruppe 6 verglichen: OR 1,000 [0; Inf], p=0,96013. Eine signifikante Überlegenheit im primären Endpunkt (Rehospitalisierung wegen derselben Indikation binnen 90 Tagen) ist damit nicht festgestellt; die Testprozedur endete an dieser Stelle."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "In der Sensitivitätsanalyse wurden alle VESPEERA-Arme zusammen mit den verschiedenen Kontrollgruppen verglichen. Für die 90-Tage-Rehospitalisierung ergaben sich Odds Ratios von 0,398 bis 0,662 (gegen Kontrollgruppe 6: 0,662); die obere Konfidenzgrenze lag teils nur knapp über 1. Die Auswertung ist rein deskriptiv."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Die Interrupted-Time-Series-Modelle zum primären Endpunkt zeigten kaum Unterschiede zwischen VESPEERA-Patienten und Kontrollen (z. B. Arme 1–4 vs. 5–6: OR 0,987; KI 0,946–1,030). Die Konfidenzintervalle waren enger als in den Difference-in-Difference-Modellen."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Verglichen wurden alle VESPEERA- mit allen Kontrollpatienten in zwei Subgruppen. Für die 90-Tage-Rehospitalisierung lag das OR bei Patienten ab 65 Jahren bei 0,318 (95%-KI 0,112–0,896) und bei hoher Komorbidität (CCI ≥ 5) bei 0,156 (95%-KI 0,038–0,634). Die Ergebnisse sind deskriptiv."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Über alle teilnehmenden Leistungserbringer lag der aus dem Fragebogen gebildete Score der Umsetzungstreue bei 40 %."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Eine formale Fallzahlplanung gab es nicht. Unter den Annahmen hätte man für 80 % Power 1.270 (Arm 1) bis 4.899 Hospitalisierungen (Arm 4) benötigt; tatsächlich erreicht wurden 46 bis 661 Fälle je Arm."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Rehospitalisierungsraten lagen bei höchstens 18 % statt der geplanten bis zu 40 %. Möglicherweise überlagerten HZV und Rahmenvertrag Entlassmanagement den Effekt."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die teilnehmenden Krankenhäuser identifizierten trotz Gegenmaßnahmen keinen VESPEERA-Patienten. Damit fehlte die Interventionskomponente im Krankenhaus, und es wurden keine Krankenhausdaten erhoben."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Umsetzungstreue war sehr unterschiedlich und im Durchschnitt niedrig; das könnte das Ausbleiben von Effekten erklären."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Studie war quasi-experimentell und unverblindet, ohne Randomisierung."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Der Begriff signifikant ist nur für den primären Endpunkt zulässig. Alle übrigen p-Werte, auch die der Subgruppen und sekundären Endpunkte, sind rein deskriptiv."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Auf Praxis- und Patientenebene ist von Selektionsbias auszugehen; vermutlich nahmen eher bereits interessierte Praxen teil."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Ein Vergleich mit der Regelversorgung außerhalb der HZV fand nicht statt; verglichen wurde nur innerhalb der HZV."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Subgruppe hohe Komorbidität (CCI ≥ 5) gegen Kontrollgruppe 6: Seite 21 nennt OR 0,113 [0,013; 0,997], p=0,04974. Seite 22 nennt für dasselbe OR das Konfidenzintervall [0,125; 0,977], in dem der Punktschätzer gar nicht liegt."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Fallzahlplanung: Der Evaluationsbericht (S. 22) sagt, es sei keine formale Fallzahlplanung durchgeführt worden. Der Ergebnisbericht (S. 14) beziffert dagegen benötigte Fallzahlen für 80 % Power, und S. 23 berichtet von zwei genehmigten Anpassungen der Fallzahlplanung per Änderungsantrag."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "30-Tage-Rehospitalisierung und Heilmittel: Der Ergebnisbericht (S. 21) sagt, VESPEERA-Patienten hätten hier schlechter abgeschnitten (OR 2,129 bzw. 1,535). Der Evaluationsbericht stellt bei der 30-Tage-Rehospitalisierung keine Unterschiede fest (S. 53) und schreibt, VESPEERA-Patienten hätten in keinem Endpunkt deutlich schlechter abgeschnitten (S. 142)."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Telefonmonitoring: Laut S. 49 sind die Odds Ratios von 0,594 bis 0,695 alle deutlich kleiner als 1; zugleich schließen alle zugehörigen Konfidenzintervalle die 1 ein (z. B. 0,219–1,712)."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Kausale Zuschreibung: S. 18 und S. 36 führen Unterschiede in den Endpunkten dank Matching auf die Intervention zurück. Dem stehen gegenüber: das quasi-experimentelle, unverblindete Design (S. 15), ein Matching nur nach Alter, Geschlecht und CCI (S. 17), der angenommene Selektionsbias und die Vorselektion durch die Praxen (S. 144)."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Wirksamkeitsaussage: S. 49 sagt, die Aufnahme in VESPEERA sei mit einer verringerten Rehospitalisierungsrate verbunden, S. 24 und S. 147, das Konzept könne zu geringeren Raten führen. Dem stehen gegenüber: das nicht signifikante primäre Ergebnis, die Interrupted-Time-Series-Modelle ohne deutliche Abweichung von OR=1 (S. 46), die Formulierung von der Abwesenheit von Effekten (S. 23) und die ausdrückliche Nicht-Empfehlung für die Regelversorgung (S. 146)."}, {"stelle": "bericht_unstimmig.6", "art": "aussage", "unser": "Lebensqualität: S. 36 ordnet beobachtete Unterschiede in der Patientenbefragung eher Veränderungen in der Hausarztpraxis zu. S. 143 erklärt die schlechtere Lebensqualität der Interventionsgruppe dagegen mit der Vorselektion älterer und kränkerer Patienten."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "In der Subgruppe mit hoher Komorbidität (CCI ≥ 5) lagen die Odds Ratios für die 90-Tage-Rehospitalisierung über die verschiedenen Kontrollvergleiche zwischen 0,113 und 0,181."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Bei niedriger oder mittlerer Komorbidität (CCI ≤ 4) zeigte sich keine Tendenz für oder gegen VESPEERA bei der 90-Tage-Rehospitalisierung."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Bei geringem CCI (≤ 2) schnitten VESPEERA-Patienten schlechter ab als die Kontrollen (OR 3,808). Das Konfidenzintervall [0,730; 19,859] ist jedoch sehr breit, die Aussage daher stark unsicher."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Patienten ab 65 Jahren wurden in den VESPEERA-Armen deutlich seltener binnen 90 Tagen rehospitalisiert als die Kontrollen derselben Altersgruppe (OR 0,174–0,464 über die Kontrollvergleiche)."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Bei Patienten unter 65 Jahren gab es im primären Endpunkt keine deutlichen Unterschiede (OR 0,661–1,152 für alle Arme; 0,872–1,415 für die Arme 3+4)."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Bei den ungeplanten Einweisungen (Arme 3+4 kombiniert) zeigten sich gegenüber den Kontrollen schwächere Tendenzen, mit Odds Ratios von 0,474 bis 0,784."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "In der primären Analyse gegen Kontrollgruppe 6 lagen die Einzelarme bei folgenden Werten: Arm 3 OR 1,383 [0,305; 6,274], p=0,674; Arm 4 OR 0,509 [0,159; 1,629], p=0,255."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "VESPEERA-Patienten ohne Telefonmonitoring wurden seltener binnen 90 Tagen rehospitalisiert als Kontrollen: Für alle Arme kombiniert lag das OR bei 0,325–0,553, z. B. Arme 1–4 vs. 5–6 OR 0,430 (KI 0,196–0,945)."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Auch VESPEERA-Patienten mit Telefonmonitoring wurden seltener rehospitalisiert als Kontrollen (OR 0,594–0,695 für alle Arme kombiniert); alle Konfidenzintervalle schlossen jedoch 1 ein."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Eine Ausnahme bildet Arm 3 (ungeplante Einweisung in ein teilnehmendes Krankenhaus): Dort schien das Rehospitalisierungsrisiko bei Patienten mit Telefonmonitoring gegenüber den Kontrollen erhöht (OR 2,251–3,752)."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Der Vergleich der Kontrollarme 5 (innerhalb) und 6 (außerhalb der Interventionsregion) ergab OR 1,701 (KI 0,472–6,123); Hinweise auf Spillover-Effekte fanden sich nicht."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Bei VESPEERA-Patienten, die binnen 90 Tagen rehospitalisiert wurden, war der HOSPITAL-Score im Mittel höher (5,46 vs. 4,21; OR 1,29, p=0,009). Der Score erwies sich damit auch in Deutschland als Prädiktor; eine Validierung an größerer Stichprobe wird empfohlen."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Bei verspäteten Arzneimittelverschreibungen (mehr als 7 Tage nach Entlassung) war das Risiko in den VESPEERA-Armen geringer: OR 0,481–0,530 für alle Arme gegen die Kontrollen, deskriptive p-Werte 0,020–0,076."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Bei Hospitalisierungen wegen ambulant sensitiver Diagnosen lag das OR für alle VESPEERA-Arme gegen die Kontrollen bei 0,244–0,699 (gegen Kontrollgruppe 6: 0,467 [0,156; 1,399])."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Bei Rehospitalisierungen binnen 30 Tagen ließen sich wegen sehr breiter Konfidenzintervalle keine Unterschiede feststellen (gegen Kontrollgruppe 6: OR 2,129 [0,547; 8,285])."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Bei verspäteten Heilmittelverschreibungen schnitten die VESPEERA-Arme leicht schlechter ab (OR 1,472–1,535); die breiten Konfidenzintervalle lassen keine endgültige Aussage zu."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Bei verspäteten Hilfsmittelverschreibungen gab es keine deutliche Tendenz: OR 0,843–0,851 bei p-Werten von 0,69–0,77; Arm 4 schnitt marginal schlechter ab."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Bei Rettungseinsätzen oder Notfallbehandlungen lagen die Odds Ratios der kombinierten Arme bei 0,696–0,815, die p-Werte bei 0,27–0,54; die Effekte sind damit nicht deutlich. Arm 3 schnitt marginal schlechter ab."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Die Versorgungskosten waren bei geplanten VESPEERA-Einweisungen deutlich geringer als bei den Kontrollen (p<0,0001). Bei ungeplanten Einweisungen lagen sie im Mittel etwas höher (p=0,519); Arm 4 war teurer als die Kontrollen."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Deskriptiv wurden in der Gesamtpopulation Arzneimittel in gut 20 % der Fälle verspätet verschrieben, Hilfsmittel in über 60 % und Heilmittel in mindestens 70 %; die Werte waren in allen Armen ähnlich."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Auf knapp ein Drittel der Krankenhausaufenthalte folgte eine Notfallbehandlung oder ein Rettungseinsatz."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Gesundheitsbezogene Lebensqualität (Regression): Die Interventionsgruppe schnitt schlechter ab als die Kontrollgruppe. Beim EQ-5D-Index war der Unterschied deutlich (Schätzer −1,084 [−1,618; −0,551], p<0,001), bei der visuellen Analogskala nicht (−10,657 [−21,954; 0,639], p=0,065)."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Laut Regressionsanalyse hatte die Kontrollgruppe zu T1 eine bessere Lebensqualität als zu T0 und als die Interventionsgruppe."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "PEACS: Interventionspatienten stimmten deutlich häufiger zu, dass ihr eigener Beitrag zur Genesung und der Ablauf der Entlassung besprochen wurden. Dass ihnen angeboten wurde, Angehörige einzubeziehen, bejahten sie um mehr als 30 % häufiger."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "PEACS: Interventionspatienten gaben zu beiden Zeitpunkten deutlich häufiger an, über die Medikamenteneinnahme aufgeklärt und nach der Entlassung mit Schmerzmitteln versorgt worden zu sein."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Zu T1 waren 68 % der Interventionsgruppe mit dem Ergebnis der Krankenhausbehandlung voll und ganz zufrieden, gegenüber 51,8 % der Kontrollgruppe; zu T0 war die Zufriedenheit in beiden Gruppen gleich."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Bei der eingeschätzten Verbesserung des Gesundheitszustands gab es keinen Gruppenunterschied. Komplikationen infolge der Krankenhausbehandlung berichteten Interventionspatienten zu T0 seltener (3,8 % vs. 10,7 %)."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Bei der Vorbereitung auf den Krankenhausaufenthalt und bei den Kontaktdaten für Komplikationen nach der Entlassung gab es keinen relevanten Unterschied zwischen den Gruppen."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Teilgenommen haben 7 Krankenhäuser und 72 Hausarztpraxen. 13 Praxen widerriefen ihre Teilnahme, 59 Praxen führten die Studie zu Ende, CareCockpit-Daten kamen aus 37 Praxen."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Insgesamt gab es 409 VESPEERA-Patienten, davon 371 hospitalisiert; per Propensity Score Matching wurden je Kontrollarm 371 Patienten ermittelt. 38 rekrutierte Patienten waren im Interventionszeitraum nicht hospitalisiert."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Fälle bzw. Patienten je Arm: Arm 1 (geplant, teilnehmendes Krankenhaus) 46/39, Arm 2 (geplant, nicht teilnehmendes Krankenhaus) 76/69, Arm 3 (ungeplant, teilnehmendes Krankenhaus) 203/110, Arm 4 (ungeplant, nicht teilnehmendes Krankenhaus) 661/259, Kontrolle 5 1019/371, Kontrolle 6 985/371."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Das Matching ergab eine relativ homogene Verteilung nach Alter und Geschlecht. Patienten in Arm 4 und in den Kontrollarmen wurden im Mittel häufiger hospitalisiert als in den Armen 1–3."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Auch CCI und Stadt/Land-Verteilung waren über die Arme gleichmäßig verteilt. In den Armen 1 und 2 überwogen reguläre Aufnahmen, in den Kontrollarmen leicht die Notfallaufnahmen."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Nutzung einzelner Komponenten laut Leistungserbringern: Das telefonische Entlassgespräch wurde von 16,9 % mindestens einmal geführt, die Patienten-Begleitinformation in 8,7 % der Krankenhäuser verwendet. Häufiger genutzt wurden Behandlungsplanung nach Entlassung (77,6 %) und Telefonmonitoring (70,8 %) in den Hausarztpraxen."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Für 171 VESPEERA-Patienten wurde ein vollständiger Einweisungsbrief erstellt. Bezogen auf 340 geplant eingewiesene VESPEERA-Patienten entspricht der Indikator der Umsetzungstreue 12,6 %."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Der Indikator für den bei Entlassung aus teilnehmenden Krankenhäusern erhobenen und mitgeteilten HOSPITAL-Score lag bei null Prozent."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "Von 110 per Fragebogen befragten Patienten wurden etwa zwei Drittel notfallmäßig aufgenommen; nur 8,5 % wurden in einem teilnehmenden Krankenhaus behandelt."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Für die Prozessevaluation wurden 69 Leistungserbringer und 8 Patienten interviewt (77 Interviews statt geplanter 95) sowie 68 Leistungserbringer und 110 Patienten per Fragebogen befragt."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Alle Beteiligten sahen den Einweisungsbrief als geeignetes Instrument, um standardisiert über den Zustand des Patienten vor dem Krankenhausaufenthalt zu informieren; das bestätigten Interviews und Fragebögen."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "Mehr als zwei Drittel der Leistungserbringer sahen durch den Einweisungsbrief die Indikation klarer kommuniziert, fast drei Viertel ein besseres Verständnis der sozialen Situation. Einer Beschleunigung der Aufnahme stimmten sie weniger zu (Mittelwert 2,7)."}, {"stelle": "bericht_befund.45", "art": "aussage", "unser": "Interviewte aus Krankenhäusern sahen VESPEERA als sinnvolle Ergänzung zum Rahmenvertrag Entlassmanagement, vor allem wegen des Einweisungsbriefs und des telefonischen Entlassgesprächs."}, {"stelle": "bericht_befund.46", "art": "aussage", "unser": "Wirkmechanismen: Drei Viertel hielten das telefonische Entlassgespräch für förderlich für die Zusammenarbeit, ca. 80 % für hilfreich bei komplexen oder vulnerablen Patienten. Behandlungsplanung und Telefonmonitoring erreichten Zustimmungsraten um 80 % und mehr."}, {"stelle": "bericht_befund.47", "art": "aussage", "unser": "Wahrgenommene Ergebnisse: Knapp die Hälfte der Leistungserbringer sah den Patientenkontakt intensiviert. Mehr als die Hälfte verneinte einen engeren Kontakt zwischen den Sektoren; besserer Informationsaustausch erhielt Mittelwert 2,4, verbesserte Zusammenarbeit 2,6 (5-stufige Skala)."}, {"stelle": "bericht_befund.48", "art": "aussage", "unser": "Akzeptanz: Über zwei Drittel sahen die Rolle von Hausarzt und VERAH (Versorgungsassistentin in der Hausarztpraxis) gestärkt. Die Hälfte bis drei Viertel hielten die Umsetzung jedoch für sperrig; die Integrierbarkeit in interne Prozesse erhielt Mittelwert 2,5."}, {"stelle": "bericht_befund.49", "art": "aussage", "unser": "Patienten empfanden die regelmäßige telefonische Nachbetreuung als sehr hilfreich; die intensive Betreuung förderte ihre Zufriedenheit."}, {"stelle": "bericht_befund.50", "art": "aussage", "unser": "Patientensicht bei geplanter Einweisung: 90 % erhielten eine Verordnung und 85 % die relevanten Aufnahmedokumente; die Einweisungsbroschüre erhielt nur ein Viertel."}, {"stelle": "bericht_befund.51", "art": "aussage", "unser": "Nach der Entlassung waren etwa zwei Drittel der Patienten binnen eines Werktags in der Hausarztpraxis. Knapp 80 % besprachen die weitere Behandlung ausführlich, weniger als die Hälfte wurde von Medizinischen Fachangestellten telefonisch betreut."}, {"stelle": "bericht_befund.52", "art": "aussage", "unser": "Einen Entlassplan erhielt etwa ein Drittel der Patienten, einen Medikationsplan bei Entlassung etwas mehr als zwei Drittel."}, {"stelle": "bericht_befund.53", "art": "aussage", "unser": "Die Interviewten hielten VESPEERA nur für einen Teil der Patienten geeignet, vor allem für chronisch Kranke; Einweisungsbriefe wünschten sie besonders für Notfälle."}, {"stelle": "bericht_befund.54", "art": "aussage", "unser": "Den Effekt des HOSPITAL-Scores schätzten die Befragten eher gering ein; den Grundgedanken von VESPEERA bewertete die Mehrheit als gut."}, {"stelle": "bericht_befund.55", "art": "aussage", "unser": "Die Krankenhäuser sahen eine gute Passung, weil sie – anders als beim Rahmenvertrag Entlassmanagement – an der Entwicklung der Intervention beteiligt waren."}, {"stelle": "bericht_befund.56", "art": "aussage", "unser": "In einigen Hausarztpraxen ließ sich VESPEERA problemlos einbinden, weil das Vorgehen bereits ähnlich war, etwa in Praxen, die mit dem Versorgungsprogramm PraCMan arbeiteten."}, {"stelle": "bericht_befund.57", "art": "aussage", "unser": "Die Vergütung wurde unterschiedlich bewertet und von einigen nicht als Anreiz gesehen. Die Hälfte bis zwei Drittel der Leistungserbringer gaben an, nicht genug Personal und Arbeitsplätze für VESPEERA zu haben."}, {"stelle": "bericht_befund.58", "art": "aussage", "unser": "Etwa die Hälfte der Leistungserbringer sah externe Vorgaben wie den Rahmenvertrag Entlassmanagement und die DSGVO als erschwerend."}, {"stelle": "bericht_befund.59", "art": "aussage", "unser": "Hausarztpraxen und Krankenhäuser kommunizieren überwiegend per Telefon und Fax; die Zusammenarbeit wird als Informationsaustausch beschrieben, nicht als gemeinsame Behandlungsplanung."}, {"stelle": "bericht_befund.60", "art": "aussage", "unser": "Krankenhäuser verwenden den bundeseinheitlichen Medikationsplan nur sehr selten; der Rahmenvertrag Entlassmanagement wird sehr variabel umgesetzt."}, {"stelle": "bericht_befund.61", "art": "aussage", "unser": "An den regionalen Feedbacktreffen nahmen 2018 26 Hausärzte, 28 VERAHs und 4 Krankenhausvertreter teil, 2019 19 Hausärzte, 20 VERAHs und 7 Krankenhausvertreter; der Austausch wurde als bereichernd empfunden."}, {"stelle": "bericht_befund.62", "art": "aussage", "unser": "Die Hausarztpraxen bewerteten die Betreuung durch die Studienzentrale als sehr positiv; eine erneute individuelle Schulung nahmen 17 Praxen an."}, {"stelle": "bericht_befund.63", "art": "aussage", "unser": "Der Einweisungsbrief wurde bereits in die elektronische Arztvernetzung der AOK Baden-Württemberg übernommen."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Abweichend vom Protokoll selektierten die Hausarztpraxen Patienten nach Einschätzung des Personals vor und boten nicht allen alle Komponenten an."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Der erste Test der primären Analyse beruht nur auf den kleinen Armen 1 und 2; viele Patienten bleiben unberücksichtigt, und das Konfidenzintervall ist enorm groß."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Geringe Fallzahlen in manchen Subgruppen und Endpunkten führen zu sehr breiten Konfidenzintervallen; die Studienarme wurden teils zusammengelegt."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Der Trend zu stärkerem Entlassmanagement durch den Rahmenvertrag ließ sich in der Difference-in-Difference-Analyse wegen des Datenzeitraums ab 01.10.2017 nicht berücksichtigen."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Kontrollgruppen enthielten definitionsbedingt nur ungeplante Hospitalisierungen. Informationen zur einweisenden Praxis standen fürs Matching nur bei geplanten Hospitalisierungen zur Verfügung."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "In der Kontrollgruppe fand keine Risikostratifizierung statt. Der günstige Vergleich der Subgruppe ohne Telefonmonitoring, die per Definition ein geringes Risiko hat, ist daher wenig aussagekräftig."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Der HOSPITAL-Score lag nur für VESPEERA-Patienten vor und ließ sich nicht für eine klassische Subgruppenanalyse nutzen."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Der Einfluss einzelner Interventionskomponenten ließ sich nicht untersuchen. Auf Dose-Response-Analysen zwischen Prozess- und Ergebnisevaluation wurde verzichtet, weil der primäre Endpunkt nicht signifikant war."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Die Beschränkung auf ein Bundesland und auf Routinedaten einer Kasse begrenzt die Übertragbarkeit; die Sekundärdaten sind nur eingeschränkt valide."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Das Datenlinkage lief über Datumsangaben statt über die stationäre Fallnummer; falsch-positive Zuordnungen sind möglich, eine Pilotierung war nicht möglich."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Patientenbefragung: Zu T1 nahmen nur 26 Interventionspatienten teil (zu T0 111). Zu T0 und T1 wurden unterschiedliche Patienten befragt, die Interventionsgruppe war zu T1 im Mittel 13 Jahre älter."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Die T1-Befragung fiel in die erste COVID-19-Welle; das erschwert die Interpretation."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Die Rücklaufquote der Patientenbefragung ließ sich nicht berechnen; das Instrument PAM zur Patientenaktivierung wurde ersatzlos gestrichen."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "In der Prozessevaluation waren die Rücklaufquoten gering, besonders in den Krankenhäusern (5,2 %; Hausärzte 28 %, VERAHs 42 %, Patienten 32,7 %)."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Statt der erwarteten 25 Kliniken nahmen nur 7 teil, und davon nur einzelne Fachabteilungen, meist Orthopädie und Kardiologie. Dort wird in der Regel über Fachärzte statt über Hausärzte eingewiesen."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Der zeitgleich in Kraft getretene Rahmenvertrag Entlassmanagement band Ressourcen in den Krankenhäusern und war auch ein Grund, nicht teilzunehmen."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Die Annahme, dass ca. 15 % der HZV-Versicherten hospitalisiert werden, traf nicht zu. 2016 fanden 50,5 % der Krankenhausaufenthalte in den Interventionsregionen ohne Einweisung statt."}, {"stelle": "bericht_hindernis.25", "art": "aussage", "unser": "Nicht alle teilnehmenden Hausarztpraxen schlossen Patienten ein: CareCockpit-Daten kamen nur aus 37 Praxen. Die Rekrutierung wurde wegen des hohen Aufwands nicht dokumentiert."}, {"stelle": "bericht_hindernis.26", "art": "aussage", "unser": "Die Komponente Entlassbriefe über das CareCockpit entfiel wegen Bedenken der Krankenhäuser, und mit ihr der zugehörige Indikator der Umsetzungstreue."}, {"stelle": "bericht_hindernis.27", "art": "aussage", "unser": "Krankenhausindividuelle Schulungen nahm keine teilnehmende Klinik in Anspruch; die Gründe sind unbekannt."}, {"stelle": "bericht_hindernis.28", "art": "aussage", "unser": "In den Kliniken waren Zeitmangel und hohe Personalfluktuation die Hauptbarrieren, weil sehr viel Personal zur Identifizierung von VESPEERA-Patienten geschult werden musste."}, {"stelle": "bericht_hindernis.29", "art": "aussage", "unser": "Ob der Einweisungsbrief mitgegeben wurde und im Krankenhaus ankam, ließ sich nicht prüfen. Den Praxen fehlte die Rückmeldung der Kliniken auf Patientenebene."}, {"stelle": "bericht_hindernis.30", "art": "aussage", "unser": "Die Intervention galt als sehr aufwendig, und das Studiensetting mit Aufklärung und Datenerhebung erschwerte die Umsetzung. Im Studienkontext durften die Komponenten nicht gekürzt werden."}, {"stelle": "bericht_hindernis.31", "art": "aussage", "unser": "Der hohe Zeitaufwand in den Hausarztpraxen führte zu blockierten Behandlungszimmern und Überstunden; das Verhältnis von Aufwand zu Nutzen wurde nicht überall gesehen."}, {"stelle": "bericht_hindernis.32", "art": "aussage", "unser": "Die Studienunterlagen (Information, Einwilligung, Fragebögen) waren für Patienten zu komplex; bei alten oder kranken Patienten waren die langen Assessments schwer durchführbar."}, {"stelle": "bericht_hindernis.33", "art": "aussage", "unser": "Die Einschlusskriterien waren zu eng gefasst; der HOSPITAL-Score galt einigen als zu streng oder ungeeignet für den Einschluss ins Telefonmonitoring."}, {"stelle": "bericht_hindernis.34", "art": "aussage", "unser": "Das Telefonmonitoring wurde uneinheitlich umgesetzt, teils gar nicht."}, {"stelle": "bericht_hindernis.35", "art": "aussage", "unser": "Technische Probleme: Der Druck der Einweisungsbriefe schlug teils fehl, eine Schnittstelle zur Praxissoftware fehlte (Doppeldokumentation), und das CareCockpit war oft nur auf einem Computer installiert."}, {"stelle": "bericht_hindernis.36", "art": "aussage", "unser": "Krankenhäuser hielten VESPEERA für zu groß und komplex. Softwareanpassungen im Krankenhausinformationssystem sind vor allem für kleine Häuser zu teuer."}, {"stelle": "bericht_hindernis.37", "art": "aussage", "unser": "Der Kontakt zwischen den Leistungserbringern ließ sich nicht im gewünschten Ausmaß intensivieren."}, {"stelle": "bericht_hindernis.38", "art": "aussage", "unser": "In den Interviews der Prozessevaluation war eine geplante Einweisung anders definiert als bei der Bildung der Studienarme. Zudem vermischten Befragte die Intervention mit den Studienmaßnahmen."}, {"stelle": "bericht_hindernis.39", "art": "aussage", "unser": "Zum Interviewzeitpunkt hatten manche Praxen und vor allem Krankenhausmitarbeiter wenig oder keine Erfahrung mit VESPEERA; Prozesse wurden teils falsch verstanden."}, {"stelle": "bericht_hindernis.40", "art": "aussage", "unser": "Die konkreten Kostenwerte werden aus Datenschutzgründen nicht veröffentlicht."}, {"stelle": "bericht_hindernis.41", "art": "aussage", "unser": "Bei dringlichen Einweisungen fehlte oft ein freies Sprechzimmer, sodass die Komponenten an der Anmeldung durchgeführt wurden – ein Problem für Datenschutz und Schweigepflicht."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
@@ -728,6 +2911,8 @@ document.getElementById('laden').onclick = async () => {
     : '';
 };
 
+let gesendet = false;
+
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
@@ -777,9 +2962,17 @@ document.getElementById('senden').onclick = async () => {
       return;
     }
     if (!r.ok) throw new Error(r.status);
-    st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
-      + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
-      + 'speichern Sie sich rechts eine Kopie.';
+    /* Angekommen - und das soll man sehen, ohne danach zu suchen. */
+    const anzahl = d.korrekturen.length;
+    st.className = 'da';
+    st.innerHTML = 'Angekommen. Vielen Dank.<span>'
+      + (anzahl === 1 ? 'Eine Korrektur' : anzahl + ' Korrekturen')
+      + ' sind bei der Redaktion. Sie müssen nichts weiter tun – '
+      + 'ein zweites Senden ist nicht nötig. Wenn Sie möchten, '
+      + 'speichern Sie sich rechts eine Kopie.</span>';
+    knopf.textContent = 'Ist angekommen';
+    gesendet = true;
+    document.getElementById('nachtragen').hidden = false;
     document.getElementById('laden').classList.remove('zweit');
   } catch (x) {
     /* Lieber eine Datei als ein verlorener Beitrag. Bei den
@@ -789,8 +2982,25 @@ document.getElementById('senden').onclick = async () => {
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
   } finally {
-    knopf.disabled = false;
+    /* Nach einem geglueckten Versand bleibt der Knopf aus. Ein Knopf,
+       der wieder "Freigeben und senden" anbietet, ist eine
+       Aufforderung - und 41-mal hat jemand sie binnen 30 Sekunden
+       angenommen. */
+    if (!gesendet) knopf.disabled = false;
   }
+};
+
+/* Nachtragen bleibt moeglich, aber als eigener Entschluss. */
+document.getElementById('nachtragen').onclick = () => {
+  const knopf = document.getElementById('senden');
+  const st = document.getElementById('stand');
+  gesendet = false;
+  knopf.disabled = false;
+  knopf.textContent = 'Ergänzung senden';
+  document.getElementById('nachtragen').hidden = true;
+  st.className = '';
+  st.textContent = 'Ihre erste Rückmeldung bleibt gespeichert. '
+    + 'Ergänzen Sie, was fehlt, und senden Sie noch einmal.';
 };
 </script>
 </html>

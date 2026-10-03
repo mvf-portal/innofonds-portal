@@ -15,6 +15,11 @@ h3{font-size:15.5px;margin:0 0 6px;font-weight:620}
   padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 26px;font-size:15px}
 .p{border:1px solid var(--linie);border-radius:9px;padding:13px 16px;
   margin:0 0 14px}
+details.weitere{margin:22px 0 14px}
+details.weitere>summary{cursor:pointer;color:var(--gedaempft);
+  font-size:14.5px;padding:10px 14px;border:1px dashed var(--linie);
+  border-radius:9px}
+details.weitere[open]>summary{margin-bottom:14px}
 .unser{margin:0 0 6px}
 /* Das Ergebnis - kein Zitat. Es stand frueher in Anfuehrungszeichen
    wie eine Fundstelle aus dem Bericht und wurde deshalb fuer die
@@ -62,6 +67,17 @@ button{font:inherit;font-weight:600;padding:9px 20px;border-radius:7px;
   cursor:pointer}
 button.zweit{background:#fff;color:var(--gold)}
 #stand{font-size:14px;color:var(--gedaempft);margin:8px 0 0}
+/* Die Bestaetigung war das stillste Element der Seite - 14 Pixel in
+   Grau, unter zwei Knoepfen. 66-mal hat jemand deshalb ein zweites Mal
+   gesendet, im Mittel 22 Sekunden spaeter. Jetzt ist sie ein Kasten. */
+#stand.da{color:var(--text);font-size:15px;font-weight:600;
+  border:1px solid #2F5D3F;background:#E9F2EC;border-radius:8px;
+  padding:12px 15px;margin-top:12px}
+#stand.da span{display:block;font-weight:400;font-size:13.5px;
+  color:var(--gedaempft);margin-top:4px}
+#nachtragen{display:inline-block;margin-top:10px;font-size:13.5px;
+  color:var(--gedaempft);background:none;border:none;padding:0;
+  text-decoration:underline;cursor:pointer;font-weight:400}
 </style>
 <h1>INDEED – so stellen wir Ihr Projekt dar</h1>
 <p class="meta">Inanspruchnahme und sektorenübergreifende Versorgungsmuster von Patienten in Notfallversorgungsstrukturen in Deutschland<br>
@@ -787,6 +803,7 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <button id="senden">Freigeben und an die Redaktion senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
+  <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
@@ -940,6 +957,8 @@ document.getElementById('laden').onclick = async () => {
     : '';
 };
 
+let gesendet = false;
+
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
@@ -989,9 +1008,17 @@ document.getElementById('senden').onclick = async () => {
       return;
     }
     if (!r.ok) throw new Error(r.status);
-    st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
-      + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
-      + 'speichern Sie sich rechts eine Kopie.';
+    /* Angekommen - und das soll man sehen, ohne danach zu suchen. */
+    const anzahl = d.korrekturen.length;
+    st.className = 'da';
+    st.innerHTML = 'Angekommen. Vielen Dank.<span>'
+      + (anzahl === 1 ? 'Eine Korrektur' : anzahl + ' Korrekturen')
+      + ' sind bei der Redaktion. Sie müssen nichts weiter tun – '
+      + 'ein zweites Senden ist nicht nötig. Wenn Sie möchten, '
+      + 'speichern Sie sich rechts eine Kopie.</span>';
+    knopf.textContent = 'Ist angekommen';
+    gesendet = true;
+    document.getElementById('nachtragen').hidden = false;
     document.getElementById('laden').classList.remove('zweit');
   } catch (x) {
     /* Lieber eine Datei als ein verlorener Beitrag. Bei den
@@ -1001,8 +1028,25 @@ document.getElementById('senden').onclick = async () => {
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
   } finally {
-    knopf.disabled = false;
+    /* Nach einem geglueckten Versand bleibt der Knopf aus. Ein Knopf,
+       der wieder "Freigeben und senden" anbietet, ist eine
+       Aufforderung - und 41-mal hat jemand sie binnen 30 Sekunden
+       angenommen. */
+    if (!gesendet) knopf.disabled = false;
   }
+};
+
+/* Nachtragen bleibt moeglich, aber als eigener Entschluss. */
+document.getElementById('nachtragen').onclick = () => {
+  const knopf = document.getElementById('senden');
+  const st = document.getElementById('stand');
+  gesendet = false;
+  knopf.disabled = false;
+  knopf.textContent = 'Ergänzung senden';
+  document.getElementById('nachtragen').hidden = true;
+  st.className = '';
+  st.textContent = 'Ihre erste Rückmeldung bleibt gespeichert. '
+    + 'Ergänzen Sie, was fehlt, und senden Sie noch einmal.';
 };
 </script>
 </html>

@@ -15,6 +15,11 @@ h3{font-size:15.5px;margin:0 0 6px;font-weight:620}
   padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 26px;font-size:15px}
 .p{border:1px solid var(--linie);border-radius:9px;padding:13px 16px;
   margin:0 0 14px}
+details.weitere{margin:22px 0 14px}
+details.weitere>summary{cursor:pointer;color:var(--gedaempft);
+  font-size:14.5px;padding:10px 14px;border:1px dashed var(--linie);
+  border-radius:9px}
+details.weitere[open]>summary{margin-bottom:14px}
 .unser{margin:0 0 6px}
 /* Das Ergebnis - kein Zitat. Es stand frueher in Anfuehrungszeichen
    wie eine Fundstelle aus dem Bericht und wurde deshalb fuer die
@@ -62,6 +67,17 @@ button{font:inherit;font-weight:600;padding:9px 20px;border-radius:7px;
   cursor:pointer}
 button.zweit{background:#fff;color:var(--gold)}
 #stand{font-size:14px;color:var(--gedaempft);margin:8px 0 0}
+/* Die Bestaetigung war das stillste Element der Seite - 14 Pixel in
+   Grau, unter zwei Knoepfen. 66-mal hat jemand deshalb ein zweites Mal
+   gesendet, im Mittel 22 Sekunden spaeter. Jetzt ist sie ein Kasten. */
+#stand.da{color:var(--text);font-size:15px;font-weight:600;
+  border:1px solid #2F5D3F;background:#E9F2EC;border-radius:8px;
+  padding:12px 15px;margin-top:12px}
+#stand.da span{display:block;font-weight:400;font-size:13.5px;
+  color:var(--gedaempft);margin-top:4px}
+#nachtragen{display:inline-block;margin-top:10px;font-size:13.5px;
+  color:var(--gedaempft);background:none;border:none;padding:0;
+  text-decoration:underline;cursor:pointer;font-weight:400}
 </style>
 <h1>KEN-up – so stellen wir Ihr Projekt dar</h1>
 <p class="meta">Upgrade S3-Leitlinie: Klinische Ernährung in der Nephrologie<br>
@@ -158,7 +174,7 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
 </section>
 <section class="p" data-stelle="status">
   <h3>Stand</h3>
-  <p class="unser">laufend</p>
+  <p class="unser">Abschlussbericht wird erstellt</p>
   
   <div class="wahl">
     <label><input type="radio" name="ustatus" value="ok" checked>
@@ -357,10 +373,11 @@ schlechtesten Fall …"></textarea>
   <button id="senden">Freigeben und an die Redaktion senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
+  <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 581, "akronym": "KEN-up", "kennung": "VAJR5iBxTR6D", "stellen": [{"stelle": "titel", "art": "stamm", "unser": "Upgrade S3-Leitlinie: Klinische Ernährung in der Nephrologie"}, {"stelle": "foerderkennzeichen", "art": "stamm", "unser": "01VSF23005"}, {"stelle": "laufzeit", "art": "stamm", "unser": "2023-10 bis 2026-09"}, {"stelle": "foerdersumme", "art": "stamm", "unser": "348.000 Euro"}, {"stelle": "status", "art": "stamm", "unser": "laufend"}, {"stelle": "foerderbereich", "art": "stamm", "unser": "Versorgungsforschung"}, {"stelle": "versorgungsbereich", "art": "stamm", "unser": "sektorenübergreifend"}, {"stelle": "themenfeld", "art": "stamm", "unser": "Versorgung bei häufigeren Erkrankungen mit sektorenübergreifendem Koordinationsbedarf"}, {"stelle": "zielgruppen", "art": "stamm", "unser": "Erwachsene, Menschen mit chronischen Krankheiten"}, {"stelle": "bundesland", "art": "stamm", "unser": "Berlin"}, {"stelle": "leitung", "art": "stamm", "unser": "Prof. Dr. Martin Kuhlmann · Deutsche Gesellschaft für Ernährungsmedizin e. V."}, {"stelle": "beschreibung", "art": "stamm", "unser": "In Deutschland und vergleichbaren Industriestaaten leiden rund zehn Prozent der Bevölkerung an einer chronischen Nierenerkrankung. Darüber hinaus haben oder entwickeln 22 Prozent aller Menschen, die ins Krankhaus eingeliefert werden, ein akutes Nierenversagen, von denen über die Hälfte intensivmedizinisch versorgt werden muss. Sowohl akut als auch chronisch Nierenerkrankte haben vielfältige Stoffwechselstörungen und Nährstoffbedarfe. Individualisierte Ernährungskonzepte können deshalb zum Beispiel den Krankheitsverlauf positiv beeinflussen, die Dialysepflichtigkeit hinauszögern, kardiovaskuläre Komplikationen verringern und die Lebensqualität verbessern. Derzeit gibt es aber in Deutschland keine S3-Leitlinie zum ernährungsmedizinischen Management für Menschen mit akuten oder chronischen Nierenerkrankungen.\n\nDas Projektteam hat sich vorgenommen, eine sektorenübergreifende S3-Leitlinie zu entwickeln, die wissenschaftlich fundierte Empfehlungen zu ernährungsmedizinischen Maßnahmen für Nierenerkrankte aufzeigt. Im Vordergrund stehen die spezifischen und situativen Bedürfnisse von Erkrankten, Indikationen und Kontraindikationen sowie Art und Anwendung verschiedener Ernährungsformen.\n\nEine S3-Leitlinie soll die aktuell am besten nachgewiesene Wirksamkeit einer Therapie (Evidenz) darstellen. Dazu legen die Forschenden zunächst die konkreten Schlüsselfragen fest, führen eine systematische Literaturrecherche durch und bewerten schließlich die Evidenz. In einem festgelegten Verfahren formulieren sie Empfehlungen und stimmen abschließend gemeinsam mit Experten aus den beteiligten Fachgebieten über die Leitlinie ab. Dieser Abstimmungsprozess wird von der Arbeitsgemeinschaft der Wissenschaftlichen Medizinischen Fachgesellschaften (AWMF) moderiert. Das Projekt wird für 36 Monate mit insgesamt ca. 348.000 Euro gefördert.\n\nIm Erfolgsfall kann die geplante S3-Leitlinie dazu beitragen, den Krankheitsverlauf von Menschen mit chronischen Nierenerkrankungen positiv zu beeinflussen, das Risiko einer Mangelernährung sowie die Komplikationen während und nach stationären Behandlungen zu verringern und die Lebensqualität der Betroffenen zu erhöhen."}]};
+const D = {"projekt_id": 581, "akronym": "KEN-up", "kennung": "VAJR5iBxTR6D", "stellen": [{"stelle": "titel", "art": "stamm", "unser": "Upgrade S3-Leitlinie: Klinische Ernährung in der Nephrologie"}, {"stelle": "foerderkennzeichen", "art": "stamm", "unser": "01VSF23005"}, {"stelle": "laufzeit", "art": "stamm", "unser": "2023-10 bis 2026-09"}, {"stelle": "foerdersumme", "art": "stamm", "unser": "348.000 Euro"}, {"stelle": "status", "art": "stamm", "unser": "Abschlussbericht wird erstellt"}, {"stelle": "foerderbereich", "art": "stamm", "unser": "Versorgungsforschung"}, {"stelle": "versorgungsbereich", "art": "stamm", "unser": "sektorenübergreifend"}, {"stelle": "themenfeld", "art": "stamm", "unser": "Versorgung bei häufigeren Erkrankungen mit sektorenübergreifendem Koordinationsbedarf"}, {"stelle": "zielgruppen", "art": "stamm", "unser": "Erwachsene, Menschen mit chronischen Krankheiten"}, {"stelle": "bundesland", "art": "stamm", "unser": "Berlin"}, {"stelle": "leitung", "art": "stamm", "unser": "Prof. Dr. Martin Kuhlmann · Deutsche Gesellschaft für Ernährungsmedizin e. V."}, {"stelle": "beschreibung", "art": "stamm", "unser": "In Deutschland und vergleichbaren Industriestaaten leiden rund zehn Prozent der Bevölkerung an einer chronischen Nierenerkrankung. Darüber hinaus haben oder entwickeln 22 Prozent aller Menschen, die ins Krankhaus eingeliefert werden, ein akutes Nierenversagen, von denen über die Hälfte intensivmedizinisch versorgt werden muss. Sowohl akut als auch chronisch Nierenerkrankte haben vielfältige Stoffwechselstörungen und Nährstoffbedarfe. Individualisierte Ernährungskonzepte können deshalb zum Beispiel den Krankheitsverlauf positiv beeinflussen, die Dialysepflichtigkeit hinauszögern, kardiovaskuläre Komplikationen verringern und die Lebensqualität verbessern. Derzeit gibt es aber in Deutschland keine S3-Leitlinie zum ernährungsmedizinischen Management für Menschen mit akuten oder chronischen Nierenerkrankungen.\n\nDas Projektteam hat sich vorgenommen, eine sektorenübergreifende S3-Leitlinie zu entwickeln, die wissenschaftlich fundierte Empfehlungen zu ernährungsmedizinischen Maßnahmen für Nierenerkrankte aufzeigt. Im Vordergrund stehen die spezifischen und situativen Bedürfnisse von Erkrankten, Indikationen und Kontraindikationen sowie Art und Anwendung verschiedener Ernährungsformen.\n\nEine S3-Leitlinie soll die aktuell am besten nachgewiesene Wirksamkeit einer Therapie (Evidenz) darstellen. Dazu legen die Forschenden zunächst die konkreten Schlüsselfragen fest, führen eine systematische Literaturrecherche durch und bewerten schließlich die Evidenz. In einem festgelegten Verfahren formulieren sie Empfehlungen und stimmen abschließend gemeinsam mit Experten aus den beteiligten Fachgebieten über die Leitlinie ab. Dieser Abstimmungsprozess wird von der Arbeitsgemeinschaft der Wissenschaftlichen Medizinischen Fachgesellschaften (AWMF) moderiert. Das Projekt wird für 36 Monate mit insgesamt ca. 348.000 Euro gefördert.\n\nIm Erfolgsfall kann die geplante S3-Leitlinie dazu beitragen, den Krankheitsverlauf von Menschen mit chronischen Nierenerkrankungen positiv zu beeinflussen, das Risiko einer Mangelernährung sowie die Komplikationen während und nach stationären Behandlungen zu verringern und die Lebensqualität der Betroffenen zu erhöhen."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
@@ -510,6 +527,8 @@ document.getElementById('laden').onclick = async () => {
     : '';
 };
 
+let gesendet = false;
+
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
@@ -559,9 +578,17 @@ document.getElementById('senden').onclick = async () => {
       return;
     }
     if (!r.ok) throw new Error(r.status);
-    st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
-      + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
-      + 'speichern Sie sich rechts eine Kopie.';
+    /* Angekommen - und das soll man sehen, ohne danach zu suchen. */
+    const anzahl = d.korrekturen.length;
+    st.className = 'da';
+    st.innerHTML = 'Angekommen. Vielen Dank.<span>'
+      + (anzahl === 1 ? 'Eine Korrektur' : anzahl + ' Korrekturen')
+      + ' sind bei der Redaktion. Sie müssen nichts weiter tun – '
+      + 'ein zweites Senden ist nicht nötig. Wenn Sie möchten, '
+      + 'speichern Sie sich rechts eine Kopie.</span>';
+    knopf.textContent = 'Ist angekommen';
+    gesendet = true;
+    document.getElementById('nachtragen').hidden = false;
     document.getElementById('laden').classList.remove('zweit');
   } catch (x) {
     /* Lieber eine Datei als ein verlorener Beitrag. Bei den
@@ -571,8 +598,25 @@ document.getElementById('senden').onclick = async () => {
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
   } finally {
-    knopf.disabled = false;
+    /* Nach einem geglueckten Versand bleibt der Knopf aus. Ein Knopf,
+       der wieder "Freigeben und senden" anbietet, ist eine
+       Aufforderung - und 41-mal hat jemand sie binnen 30 Sekunden
+       angenommen. */
+    if (!gesendet) knopf.disabled = false;
   }
+};
+
+/* Nachtragen bleibt moeglich, aber als eigener Entschluss. */
+document.getElementById('nachtragen').onclick = () => {
+  const knopf = document.getElementById('senden');
+  const st = document.getElementById('stand');
+  gesendet = false;
+  knopf.disabled = false;
+  knopf.textContent = 'Ergänzung senden';
+  document.getElementById('nachtragen').hidden = true;
+  st.className = '';
+  st.textContent = 'Ihre erste Rückmeldung bleibt gespeichert. '
+    + 'Ergänzen Sie, was fehlt, und senden Sie noch einmal.';
 };
 </script>
 </html>

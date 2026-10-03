@@ -15,6 +15,11 @@ h3{font-size:15.5px;margin:0 0 6px;font-weight:620}
   padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 26px;font-size:15px}
 .p{border:1px solid var(--linie);border-radius:9px;padding:13px 16px;
   margin:0 0 14px}
+details.weitere{margin:22px 0 14px}
+details.weitere>summary{cursor:pointer;color:var(--gedaempft);
+  font-size:14.5px;padding:10px 14px;border:1px dashed var(--linie);
+  border-radius:9px}
+details.weitere[open]>summary{margin-bottom:14px}
 .unser{margin:0 0 6px}
 /* Das Ergebnis - kein Zitat. Es stand frueher in Anfuehrungszeichen
    wie eine Fundstelle aus dem Bericht und wurde deshalb fuer die
@@ -62,6 +67,17 @@ button{font:inherit;font-weight:600;padding:9px 20px;border-radius:7px;
   cursor:pointer}
 button.zweit{background:#fff;color:var(--gold)}
 #stand{font-size:14px;color:var(--gedaempft);margin:8px 0 0}
+/* Die Bestaetigung war das stillste Element der Seite - 14 Pixel in
+   Grau, unter zwei Knoepfen. 66-mal hat jemand deshalb ein zweites Mal
+   gesendet, im Mittel 22 Sekunden spaeter. Jetzt ist sie ein Kasten. */
+#stand.da{color:var(--text);font-size:15px;font-weight:600;
+  border:1px solid #2F5D3F;background:#E9F2EC;border-radius:8px;
+  padding:12px 15px;margin-top:12px}
+#stand.da span{display:block;font-weight:400;font-size:13.5px;
+  color:var(--gedaempft);margin-top:4px}
+#nachtragen{display:inline-block;margin-top:10px;font-size:13.5px;
+  color:var(--gedaempft);background:none;border:none;padding:0;
+  text-decoration:underline;cursor:pointer;font-weight:400}
 </style>
 <h1>PRECOVERY – so stellen wir Ihr Projekt dar</h1>
 <p class="meta">Prehabilitation „Karl-Heinz“ mit Schwerpunkt auf cardiale und kognitive Funktionen vor Eingriffen am Herzen: eine Analyse des Gesundheitszustands<br>
@@ -272,7 +288,7 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
 </section>
 <section class="p" data-stelle="leitung">
   <h3>Projektleitung</h3>
-  <p class="unser">Prof. Dr. Christine von Arnim · Universitätsmedizin Göttingen, Abteilung für Geriatrie</p>
+  <p class="unser">Prof. Dr. Christine von Arnim · Universitätsmedizin Göttingen, Klinik für Geriatrie</p>
   
   <div class="wahl">
     <label><input type="radio" name="uleitung" value="ok" checked>
@@ -374,10 +390,11 @@ schlechtesten Fall …"></textarea>
   <button id="senden">Freigeben und an die Redaktion senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
+  <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 502, "akronym": "PRECOVERY", "kennung": "Nx8a7AzPXhr9", "stellen": [{"stelle": "titel", "art": "stamm", "unser": "Prehabilitation „Karl-Heinz“ mit Schwerpunkt auf cardiale und kognitive Funktionen vor Eingriffen am Herzen: eine Analyse des Gesundheitszustands"}, {"stelle": "foerderkennzeichen", "art": "stamm", "unser": "01NVF21109"}, {"stelle": "laufzeit", "art": "stamm", "unser": "2022-11 bis 2026-10"}, {"stelle": "foerdersumme", "art": "stamm", "unser": "5.300.000 Euro"}, {"stelle": "status", "art": "stamm", "unser": "laufend"}, {"stelle": "foerderbereich", "art": "stamm", "unser": "Neue Versorgungsformen"}, {"stelle": "versorgungsbereich", "art": "stamm", "unser": "sektorenübergreifend"}, {"stelle": "themenfeld", "art": "stamm", "unser": "Integration und Vernetzung rehabilitativer Maßnahmen zur Steigerung des Behandlungserfolgs von GKV-Leistungen"}, {"stelle": "themenschwerpunkt", "art": "stamm", "unser": "Erkrankungen des Kreislaufsystems"}, {"stelle": "zielgruppen", "art": "stamm", "unser": "ältere Menschen, Erwachsene, Menschen mit chronischen Krankheiten, multimorbide Menschen"}, {"stelle": "leitung", "art": "stamm", "unser": "Prof. Dr. Christine von Arnim · Universitätsmedizin Göttingen, Abteilung für Geriatrie"}, {"stelle": "partner", "art": "stamm", "unser": "AOK – Die Gesundheitskasse für Niedersachsen; Brandenburg Klinik Berlin-Brandenburg GmbH; Gollée GmbH & Co; Herz-Kreislauf-Klinik Bevensen AG; Klinik Fallingbostel von Graevemeyer GmbH & Co. KG; Klinik- und Rehabilitationszentrum Lippoldsberg GmbH; Klinikum Oldenburg AöR; Krankenhaus Bernau GmbH; Medizinische Hochschule Hannover; Rehabilitationszentrum Oldenburg GmbH; Schüchtermann-Schiller’sche Kliniken Bad Rothenfelde GmbH & Co. KG; Städtisches Klinikum Braunschweig gGmbH; Universität Ulm; Universitätsklinikum Hamburg-Eppendorf; ZAR Zentrum für ambulante Rehabilitation GmbH am Universitätsklinikum Ulm"}, {"stelle": "beschreibung", "art": "stamm", "unser": "Etwa 40 Prozent der über 75-Jährigen in Deutschland leiden an Herz-Kreislauf-Erkrankungen; mehr als die Hälfte aller Todesfälle in dieser Altersgruppe sind darauf zurückzuführen. Insbesondere die Häufigkeit von fortschreitenden Herzklappenerkrankungen und koronaren Herzkrankheiten steigt mit zunehmendem Lebensalter an. Bei Menschen in höherem Lebensalter, die an mehreren Krankheiten leiden, besteht zudem ein erhöhtes Risiko bei Eingriffen am Herzen, die oft mit einer langen Genesungsphase verbunden sind. Nur etwa die Hälfte der Patientinnen und Patienten kann das Krankenhaus direkt nach einem solchen Eingriff verlassen; bei jedem zehnten Betroffenen wird eine Langzeitpflege notwendig.\n\nVor allem für Menschen, die einen Herzinfarkt erlitten haben, eine Herzschwäche oder eine koronare Herzerkrankung aufweisen, ist ein kardiales Rehabilitationsprogramm angeraten. Genauso sinnvoll aber kann es sein, Patientinnen und Patienten über 75 Jahre gezielt auf einen bevorstehenden größeren Eingriff am Herzen vorzubereiten. Ein solches sektorenübergreifendes und auf zwei Wochen angelegtes „Prehabilitationsprogramm“ soll im Projekt PRECOVERY entwickelt und evaluiert werden. Im Rahmen des Programms wird untersucht, ob sich der Gesundheitszustand der an der Prehabilitationsmaßnahme namens „Karl-Heinz“ ( K ognitiv & c A rdiale P R ehabi L itation vor HE r ZIN terventionen) teilnehmenden Patientinnen und Patienten im folgenden Jahr im Vergleich zur teilnehmenden Kontrollgruppe verbessert. Darüber hinaus werden gesundheitsökonomische Aspekte berücksichtigt und die Interventionskosten des Programms bestimmt. Das Projekt ist als randomisierte kontrollierte Studie angelegt, bei der jeweils 211 Patientinnen und Patienten nach dem Zufallsprinzip einer Interventions- und einer Kontrollgruppe zugeordnet werden. Deutschlandweit nehmen acht kardiologische/kardiochirurgische Fachzentren teil. Das Projekt wird für vier Jahre mit insgesamt ca. 5,3 Millionen Euro gefördert.\n\nIm Erfolgsfall kann der postoperative Genesungsprozess unterstützt und beschleunigt und das Programm in die Regelversorgung aufgenommen werden. Dies würde die Versorgung im Bereich der Herzmedizin insgesamt verbessern."}]};
+const D = {"projekt_id": 502, "akronym": "PRECOVERY", "kennung": "Nx8a7AzPXhr9", "stellen": [{"stelle": "titel", "art": "stamm", "unser": "Prehabilitation „Karl-Heinz“ mit Schwerpunkt auf cardiale und kognitive Funktionen vor Eingriffen am Herzen: eine Analyse des Gesundheitszustands"}, {"stelle": "foerderkennzeichen", "art": "stamm", "unser": "01NVF21109"}, {"stelle": "laufzeit", "art": "stamm", "unser": "2022-11 bis 2026-10"}, {"stelle": "foerdersumme", "art": "stamm", "unser": "5.300.000 Euro"}, {"stelle": "status", "art": "stamm", "unser": "laufend"}, {"stelle": "foerderbereich", "art": "stamm", "unser": "Neue Versorgungsformen"}, {"stelle": "versorgungsbereich", "art": "stamm", "unser": "sektorenübergreifend"}, {"stelle": "themenfeld", "art": "stamm", "unser": "Integration und Vernetzung rehabilitativer Maßnahmen zur Steigerung des Behandlungserfolgs von GKV-Leistungen"}, {"stelle": "themenschwerpunkt", "art": "stamm", "unser": "Erkrankungen des Kreislaufsystems"}, {"stelle": "zielgruppen", "art": "stamm", "unser": "ältere Menschen, Erwachsene, Menschen mit chronischen Krankheiten, multimorbide Menschen"}, {"stelle": "leitung", "art": "stamm", "unser": "Prof. Dr. Christine von Arnim · Universitätsmedizin Göttingen, Klinik für Geriatrie"}, {"stelle": "partner", "art": "stamm", "unser": "AOK – Die Gesundheitskasse für Niedersachsen; Brandenburg Klinik Berlin-Brandenburg GmbH; Gollée GmbH & Co; Herz-Kreislauf-Klinik Bevensen AG; Klinik Fallingbostel von Graevemeyer GmbH & Co. KG; Klinik- und Rehabilitationszentrum Lippoldsberg GmbH; Klinikum Oldenburg AöR; Krankenhaus Bernau GmbH; Medizinische Hochschule Hannover; Rehabilitationszentrum Oldenburg GmbH; Schüchtermann-Schiller’sche Kliniken Bad Rothenfelde GmbH & Co. KG; Städtisches Klinikum Braunschweig gGmbH; Universität Ulm; Universitätsklinikum Hamburg-Eppendorf; ZAR Zentrum für ambulante Rehabilitation GmbH am Universitätsklinikum Ulm"}, {"stelle": "beschreibung", "art": "stamm", "unser": "Etwa 40 Prozent der über 75-Jährigen in Deutschland leiden an Herz-Kreislauf-Erkrankungen; mehr als die Hälfte aller Todesfälle in dieser Altersgruppe sind darauf zurückzuführen. Insbesondere die Häufigkeit von fortschreitenden Herzklappenerkrankungen und koronaren Herzkrankheiten steigt mit zunehmendem Lebensalter an. Bei Menschen in höherem Lebensalter, die an mehreren Krankheiten leiden, besteht zudem ein erhöhtes Risiko bei Eingriffen am Herzen, die oft mit einer langen Genesungsphase verbunden sind. Nur etwa die Hälfte der Patientinnen und Patienten kann das Krankenhaus direkt nach einem solchen Eingriff verlassen; bei jedem zehnten Betroffenen wird eine Langzeitpflege notwendig.\n\nVor allem für Menschen, die einen Herzinfarkt erlitten haben, eine Herzschwäche oder eine koronare Herzerkrankung aufweisen, ist ein kardiales Rehabilitationsprogramm angeraten. Genauso sinnvoll aber kann es sein, Patientinnen und Patienten über 75 Jahre gezielt auf einen bevorstehenden größeren Eingriff am Herzen vorzubereiten. Ein solches sektorenübergreifendes und auf zwei Wochen angelegtes „Prehabilitationsprogramm“ soll im Projekt PRECOVERY entwickelt und evaluiert werden. Im Rahmen des Programms wird untersucht, ob sich der Gesundheitszustand der an der Prehabilitationsmaßnahme namens „Karl-Heinz“ ( K ognitiv & c A rdiale P R ehabi L itation vor HE r ZIN terventionen) teilnehmenden Patientinnen und Patienten im folgenden Jahr im Vergleich zur teilnehmenden Kontrollgruppe verbessert. Darüber hinaus werden gesundheitsökonomische Aspekte berücksichtigt und die Interventionskosten des Programms bestimmt. Das Projekt ist als randomisierte kontrollierte Studie angelegt, bei der jeweils 211 Patientinnen und Patienten nach dem Zufallsprinzip einer Interventions- und einer Kontrollgruppe zugeordnet werden. Deutschlandweit nehmen acht kardiologische/kardiochirurgische Fachzentren teil. Das Projekt wird für vier Jahre mit insgesamt ca. 5,3 Millionen Euro gefördert.\n\nIm Erfolgsfall kann der postoperative Genesungsprozess unterstützt und beschleunigt und das Programm in die Regelversorgung aufgenommen werden. Dies würde die Versorgung im Bereich der Herzmedizin insgesamt verbessern."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
@@ -527,6 +544,8 @@ document.getElementById('laden').onclick = async () => {
     : '';
 };
 
+let gesendet = false;
+
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
@@ -576,9 +595,17 @@ document.getElementById('senden').onclick = async () => {
       return;
     }
     if (!r.ok) throw new Error(r.status);
-    st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
-      + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
-      + 'speichern Sie sich rechts eine Kopie.';
+    /* Angekommen - und das soll man sehen, ohne danach zu suchen. */
+    const anzahl = d.korrekturen.length;
+    st.className = 'da';
+    st.innerHTML = 'Angekommen. Vielen Dank.<span>'
+      + (anzahl === 1 ? 'Eine Korrektur' : anzahl + ' Korrekturen')
+      + ' sind bei der Redaktion. Sie müssen nichts weiter tun – '
+      + 'ein zweites Senden ist nicht nötig. Wenn Sie möchten, '
+      + 'speichern Sie sich rechts eine Kopie.</span>';
+    knopf.textContent = 'Ist angekommen';
+    gesendet = true;
+    document.getElementById('nachtragen').hidden = false;
     document.getElementById('laden').classList.remove('zweit');
   } catch (x) {
     /* Lieber eine Datei als ein verlorener Beitrag. Bei den
@@ -588,8 +615,25 @@ document.getElementById('senden').onclick = async () => {
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
   } finally {
-    knopf.disabled = false;
+    /* Nach einem geglueckten Versand bleibt der Knopf aus. Ein Knopf,
+       der wieder "Freigeben und senden" anbietet, ist eine
+       Aufforderung - und 41-mal hat jemand sie binnen 30 Sekunden
+       angenommen. */
+    if (!gesendet) knopf.disabled = false;
   }
+};
+
+/* Nachtragen bleibt moeglich, aber als eigener Entschluss. */
+document.getElementById('nachtragen').onclick = () => {
+  const knopf = document.getElementById('senden');
+  const st = document.getElementById('stand');
+  gesendet = false;
+  knopf.disabled = false;
+  knopf.textContent = 'Ergänzung senden';
+  document.getElementById('nachtragen').hidden = true;
+  st.className = '';
+  st.textContent = 'Ihre erste Rückmeldung bleibt gespeichert. '
+    + 'Ergänzen Sie, was fehlt, und senden Sie noch einmal.';
 };
 </script>
 </html>

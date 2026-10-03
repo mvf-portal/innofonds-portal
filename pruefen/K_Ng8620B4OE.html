@@ -15,6 +15,11 @@ h3{font-size:15.5px;margin:0 0 6px;font-weight:620}
   padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 26px;font-size:15px}
 .p{border:1px solid var(--linie);border-radius:9px;padding:13px 16px;
   margin:0 0 14px}
+details.weitere{margin:22px 0 14px}
+details.weitere>summary{cursor:pointer;color:var(--gedaempft);
+  font-size:14.5px;padding:10px 14px;border:1px dashed var(--linie);
+  border-radius:9px}
+details.weitere[open]>summary{margin-bottom:14px}
 .unser{margin:0 0 6px}
 /* Das Ergebnis - kein Zitat. Es stand frueher in Anfuehrungszeichen
    wie eine Fundstelle aus dem Bericht und wurde deshalb fuer die
@@ -62,6 +67,17 @@ button{font:inherit;font-weight:600;padding:9px 20px;border-radius:7px;
   cursor:pointer}
 button.zweit{background:#fff;color:var(--gold)}
 #stand{font-size:14px;color:var(--gedaempft);margin:8px 0 0}
+/* Die Bestaetigung war das stillste Element der Seite - 14 Pixel in
+   Grau, unter zwei Knoepfen. 66-mal hat jemand deshalb ein zweites Mal
+   gesendet, im Mittel 22 Sekunden spaeter. Jetzt ist sie ein Kasten. */
+#stand.da{color:var(--text);font-size:15px;font-weight:600;
+  border:1px solid #2F5D3F;background:#E9F2EC;border-radius:8px;
+  padding:12px 15px;margin-top:12px}
+#stand.da span{display:block;font-weight:400;font-size:13.5px;
+  color:var(--gedaempft);margin-top:4px}
+#nachtragen{display:inline-block;margin-top:10px;font-size:13.5px;
+  color:var(--gedaempft);background:none;border:none;padding:0;
+  text-decoration:underline;cursor:pointer;font-weight:400}
 </style>
 <h1>CAROL – so stellen wir Ihr Projekt dar</h1>
 <p class="meta">Cardialer Arrest – Rückkehr zum optimalen Leben<br>
@@ -139,7 +155,7 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
 </section>
 <section class="p" data-stelle="foerdersumme">
   <h3>Fördersumme</h3>
-  <p class="unser">5.900.000 Euro</p>
+  <p class="unser">5.921.000 Euro</p>
   
   <div class="wahl">
     <label><input type="radio" name="ufoerdersumme" value="ok" checked>
@@ -359,10 +375,11 @@ schlechtesten Fall …"></textarea>
   <button id="senden">Freigeben und an die Redaktion senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
+  <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 826, "akronym": "CAROL", "kennung": "K_Ng8620B4OE", "stellen": [{"stelle": "titel", "art": "stamm", "unser": "Cardialer Arrest – Rückkehr zum optimalen Leben"}, {"stelle": "foerderkennzeichen", "art": "stamm", "unser": "01NVF25312"}, {"stelle": "laufzeit", "art": "stamm", "unser": "2026-11 bis 2030-10"}, {"stelle": "foerdersumme", "art": "stamm", "unser": "5.900.000 Euro"}, {"stelle": "status", "art": "stamm", "unser": "laufend"}, {"stelle": "foerderbereich", "art": "stamm", "unser": "Neue Versorgungsformen"}, {"stelle": "versorgungsbereich", "art": "stamm", "unser": "sektorenübergreifend"}, {"stelle": "themenfeld", "art": "stamm", "unser": "themenoffen"}, {"stelle": "zielgruppen", "art": "stamm", "unser": "ältere Menschen, Angehörige, Erwachsene, Leistungserbringer, Menschen mit chronischen Krankheiten, Menschen mit seltenen Krankheiten"}, {"stelle": "leitung", "art": "stamm", "unser": "Prof. Dr. Jan-Thorsten Gräsner · Christian-Albrechts-Universität zu Kiel, Universitätsklinikum Schleswig-Holstein, Institut für Rettungs- und Notfallmedizin"}, {"stelle": "partner", "art": "stamm", "unser": "BARMER; Goethe-Universität Frankfurt am Main; Kerckhoff-Klinik GmbH; LiKe Healthcare Research GmbH; Techniker Krankenkasse; Universitätsklinikum Schleswig-Holstein, Institut für Rettungs- und Notfallmedizin; Visionet GmbH"}, {"stelle": "beschreibung", "art": "stamm", "unser": "Ein außerklinischer Herz-Kreislauf-Stillstand (OHCA) ist ein zeitkritischer Notfall. In Deutschland sind jährlich etwa 136.000 Menschen davon betroffen. Viele Überlebende haben nach einem OHCA unterschiedlich starke geistige oder körperliche Einschränkungen und weisen psychosoziale Belastungen auf. Diese wirken sich auf den Alltag, die Arbeitsfähigkeit und die Teilhabe am gesellschaftlichen Leben aus. Gleichzeitig ist das familiäre Umfeld oft stark belastet. Bislang fehlen in Deutschland standardisierte Nachsorgekonzepte und ein strukturierter Versorgungspfad.\n\nZiel des Projekts CAROL ist es daher, für Patientinnen und Patienten mit OHCA sowie deren Angehörige einen sektorübergreifenden Nachsorgepfad zu etablieren. Dies soll den Genesungsprozess verbessern und die Rückkehr in den Alltag fördern. Zu diesem Zweck werden Zentren, die auf Herz-Kreislauf-Stillstände spezialisiert sind, um eine sogenannte Post-Reanimations-Ambulanz erweitert. Bereits auf der Intensivstation werden Betroffene und deren Angehörige von einer speziell ausgebildeten Pflegefachkraft kontaktiert. Diese begleitet sie über einen Zeitraum von einem Jahr, auch nach der Entlassung aus dem Krankenhaus. Es erfolgen regelmäßige Untersuchungen auf psychokardiologische Belastungen. Bei Patientinnen und Patienten unter 50 Jahren erfolgt zudem eine weiterführende Diagnostik, um genetisch bedingte Herzerkrankungen auszuschließen. Auf Basis der vorliegenden Untersuchungsergebnisse wird ein individueller Behandlungsplan erstellt. Die Pflegefachkraft koordiniert die Umsetzung des Behandlungsplans und ist zudem Ansprechperson für alle behandelnden Personen. Des Weiteren werden die Patientinnen und Patienten sowie deren Angehörige durch Schulungen zur aktiven Mitgestaltung ihrer Gesundheit befähigt.\n\nNach der einjährigen Begleitung überprüfen die Forschenden die Wirksamkeit der neuen Versorgungsform. Dabei wird untersucht, wie sich die psychische Belastung, die Lebensqualität und die Arbeitsfähigkeit der Patientinnen und Patienten verändert hat und ob es zu weiteren Herz-Kreislauf-Stillständen gekommen ist. Zudem werden die Angehörigen hinsichtlich einer Veränderung ihrer psychischen Belastung und Lebensqualität befragt. Ergänzend wird eine Kosten-Effektivitäts-Analyse durchgeführt.\n\nDas Projekt wird für vier Jahre mit ca. 5,9 Millionen Euro gefördert.\n\nIm Erfolgsfall steht Patientinnen und Patienten mit einem OHCA sowie deren Angehörigen ein sektorenübergreifender Nachsorgepfad zur Verfügung, so dass es zu keinen Versorgungsabbrüchen mehr kommt."}]};
+const D = {"projekt_id": 826, "akronym": "CAROL", "kennung": "K_Ng8620B4OE", "stellen": [{"stelle": "titel", "art": "stamm", "unser": "Cardialer Arrest – Rückkehr zum optimalen Leben"}, {"stelle": "foerderkennzeichen", "art": "stamm", "unser": "01NVF25312"}, {"stelle": "laufzeit", "art": "stamm", "unser": "2026-11 bis 2030-10"}, {"stelle": "foerdersumme", "art": "stamm", "unser": "5.921.000 Euro"}, {"stelle": "status", "art": "stamm", "unser": "laufend"}, {"stelle": "foerderbereich", "art": "stamm", "unser": "Neue Versorgungsformen"}, {"stelle": "versorgungsbereich", "art": "stamm", "unser": "sektorenübergreifend"}, {"stelle": "themenfeld", "art": "stamm", "unser": "themenoffen"}, {"stelle": "zielgruppen", "art": "stamm", "unser": "ältere Menschen, Angehörige, Erwachsene, Leistungserbringer, Menschen mit chronischen Krankheiten, Menschen mit seltenen Krankheiten"}, {"stelle": "leitung", "art": "stamm", "unser": "Prof. Dr. Jan-Thorsten Gräsner · Christian-Albrechts-Universität zu Kiel, Universitätsklinikum Schleswig-Holstein, Institut für Rettungs- und Notfallmedizin"}, {"stelle": "partner", "art": "stamm", "unser": "BARMER; Goethe-Universität Frankfurt am Main; Kerckhoff-Klinik GmbH; LiKe Healthcare Research GmbH; Techniker Krankenkasse; Universitätsklinikum Schleswig-Holstein, Institut für Rettungs- und Notfallmedizin; Visionet GmbH"}, {"stelle": "beschreibung", "art": "stamm", "unser": "Ein außerklinischer Herz-Kreislauf-Stillstand (OHCA) ist ein zeitkritischer Notfall. In Deutschland sind jährlich etwa 136.000 Menschen davon betroffen. Viele Überlebende haben nach einem OHCA unterschiedlich starke geistige oder körperliche Einschränkungen und weisen psychosoziale Belastungen auf. Diese wirken sich auf den Alltag, die Arbeitsfähigkeit und die Teilhabe am gesellschaftlichen Leben aus. Gleichzeitig ist das familiäre Umfeld oft stark belastet. Bislang fehlen in Deutschland standardisierte Nachsorgekonzepte und ein strukturierter Versorgungspfad.\n\nZiel des Projekts CAROL ist es daher, für Patientinnen und Patienten mit OHCA sowie deren Angehörige einen sektorübergreifenden Nachsorgepfad zu etablieren. Dies soll den Genesungsprozess verbessern und die Rückkehr in den Alltag fördern. Zu diesem Zweck werden Zentren, die auf Herz-Kreislauf-Stillstände spezialisiert sind, um eine sogenannte Post-Reanimations-Ambulanz erweitert. Bereits auf der Intensivstation werden Betroffene und deren Angehörige von einer speziell ausgebildeten Pflegefachkraft kontaktiert. Diese begleitet sie über einen Zeitraum von einem Jahr, auch nach der Entlassung aus dem Krankenhaus. Es erfolgen regelmäßige Untersuchungen auf psychokardiologische Belastungen. Bei Patientinnen und Patienten unter 50 Jahren erfolgt zudem eine weiterführende Diagnostik, um genetisch bedingte Herzerkrankungen auszuschließen. Auf Basis der vorliegenden Untersuchungsergebnisse wird ein individueller Behandlungsplan erstellt. Die Pflegefachkraft koordiniert die Umsetzung des Behandlungsplans und ist zudem Ansprechperson für alle behandelnden Personen. Des Weiteren werden die Patientinnen und Patienten sowie deren Angehörige durch Schulungen zur aktiven Mitgestaltung ihrer Gesundheit befähigt.\n\nNach der einjährigen Begleitung überprüfen die Forschenden die Wirksamkeit der neuen Versorgungsform. Dabei wird untersucht, wie sich die psychische Belastung, die Lebensqualität und die Arbeitsfähigkeit der Patientinnen und Patienten verändert hat und ob es zu weiteren Herz-Kreislauf-Stillständen gekommen ist. Zudem werden die Angehörigen hinsichtlich einer Veränderung ihrer psychischen Belastung und Lebensqualität befragt. Ergänzend wird eine Kosten-Effektivitäts-Analyse durchgeführt.\n\nDas Projekt wird für vier Jahre mit ca. 5,9 Millionen Euro gefördert.\n\nIm Erfolgsfall steht Patientinnen und Patienten mit einem OHCA sowie deren Angehörigen ein sektorenübergreifender Nachsorgepfad zur Verfügung, so dass es zu keinen Versorgungsabbrüchen mehr kommt."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
@@ -512,6 +529,8 @@ document.getElementById('laden').onclick = async () => {
     : '';
 };
 
+let gesendet = false;
+
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
@@ -561,9 +580,17 @@ document.getElementById('senden').onclick = async () => {
       return;
     }
     if (!r.ok) throw new Error(r.status);
-    st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
-      + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
-      + 'speichern Sie sich rechts eine Kopie.';
+    /* Angekommen - und das soll man sehen, ohne danach zu suchen. */
+    const anzahl = d.korrekturen.length;
+    st.className = 'da';
+    st.innerHTML = 'Angekommen. Vielen Dank.<span>'
+      + (anzahl === 1 ? 'Eine Korrektur' : anzahl + ' Korrekturen')
+      + ' sind bei der Redaktion. Sie müssen nichts weiter tun – '
+      + 'ein zweites Senden ist nicht nötig. Wenn Sie möchten, '
+      + 'speichern Sie sich rechts eine Kopie.</span>';
+    knopf.textContent = 'Ist angekommen';
+    gesendet = true;
+    document.getElementById('nachtragen').hidden = false;
     document.getElementById('laden').classList.remove('zweit');
   } catch (x) {
     /* Lieber eine Datei als ein verlorener Beitrag. Bei den
@@ -573,8 +600,25 @@ document.getElementById('senden').onclick = async () => {
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
   } finally {
-    knopf.disabled = false;
+    /* Nach einem geglueckten Versand bleibt der Knopf aus. Ein Knopf,
+       der wieder "Freigeben und senden" anbietet, ist eine
+       Aufforderung - und 41-mal hat jemand sie binnen 30 Sekunden
+       angenommen. */
+    if (!gesendet) knopf.disabled = false;
   }
+};
+
+/* Nachtragen bleibt moeglich, aber als eigener Entschluss. */
+document.getElementById('nachtragen').onclick = () => {
+  const knopf = document.getElementById('senden');
+  const st = document.getElementById('stand');
+  gesendet = false;
+  knopf.disabled = false;
+  knopf.textContent = 'Ergänzung senden';
+  document.getElementById('nachtragen').hidden = true;
+  st.className = '';
+  st.textContent = 'Ihre erste Rückmeldung bleibt gespeichert. '
+    + 'Ergänzen Sie, was fehlt, und senden Sie noch einmal.';
 };
 </script>
 </html>

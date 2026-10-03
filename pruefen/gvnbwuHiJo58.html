@@ -15,6 +15,11 @@ h3{font-size:15.5px;margin:0 0 6px;font-weight:620}
   padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 26px;font-size:15px}
 .p{border:1px solid var(--linie);border-radius:9px;padding:13px 16px;
   margin:0 0 14px}
+details.weitere{margin:22px 0 14px}
+details.weitere>summary{cursor:pointer;color:var(--gedaempft);
+  font-size:14.5px;padding:10px 14px;border:1px dashed var(--linie);
+  border-radius:9px}
+details.weitere[open]>summary{margin-bottom:14px}
 .unser{margin:0 0 6px}
 /* Das Ergebnis - kein Zitat. Es stand frueher in Anfuehrungszeichen
    wie eine Fundstelle aus dem Bericht und wurde deshalb fuer die
@@ -62,6 +67,17 @@ button{font:inherit;font-weight:600;padding:9px 20px;border-radius:7px;
   cursor:pointer}
 button.zweit{background:#fff;color:var(--gold)}
 #stand{font-size:14px;color:var(--gedaempft);margin:8px 0 0}
+/* Die Bestaetigung war das stillste Element der Seite - 14 Pixel in
+   Grau, unter zwei Knoepfen. 66-mal hat jemand deshalb ein zweites Mal
+   gesendet, im Mittel 22 Sekunden spaeter. Jetzt ist sie ein Kasten. */
+#stand.da{color:var(--text);font-size:15px;font-weight:600;
+  border:1px solid #2F5D3F;background:#E9F2EC;border-radius:8px;
+  padding:12px 15px;margin-top:12px}
+#stand.da span{display:block;font-weight:400;font-size:13.5px;
+  color:var(--gedaempft);margin-top:4px}
+#nachtragen{display:inline-block;margin-top:10px;font-size:13.5px;
+  color:var(--gedaempft);background:none;border:none;padding:0;
+  text-decoration:underline;cursor:pointer;font-weight:400}
 </style>
 <h1>BEPPO – so stellen wir Ihr Projekt dar</h1>
 <p class="meta">Evaluation BEwegungs- und sPorttherapeutischer Interventionen unter medizinischer Therapie in der Pädiatrischen Onkologie<br>
@@ -272,7 +288,7 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
 </section>
 <section class="p" data-stelle="leitung">
   <h3>Projektleitung</h3>
-  <p class="unser">Dr. Miriam Götte · Universitätsklinikum Essen, Institut für Sport- und Bewegungstherapie am Westdeutschen Tumorzentrum Essen</p>
+  <p class="unser">Priv.-Doz. Dr. Miriam Götte · Universitätsklinikum Essen, Institut für Sport- und Bewegungstherapie am Westdeutschen Tumorzentrum Essen</p>
   
   <div class="wahl">
     <label><input type="radio" name="uleitung" value="ok" checked>
@@ -365,7 +381,7 @@ schlechtesten Fall …"></textarea>
   <label>Fehlt sonst etwas Wesentliches?<textarea id="frei" rows="3"
     ></textarea></label>
   <label style="display:block;margin-top:10px">Ihr Name
-    <input type="text" id="wer" value="Dr. Miriam Götte"></label>
+    <input type="text" id="wer" value="Priv.-Doz. Dr. Miriam Götte"></label>
   <label style="display:block;margin-top:8px">E-Mail für Rückfragen
     <input type="email" id="mail" value="miriam.goette@uk-essen.de"></label>
 </div>
@@ -374,10 +390,11 @@ schlechtesten Fall …"></textarea>
   <button id="senden">Freigeben und an die Redaktion senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
+  <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 714, "akronym": "BEPPO", "kennung": "gvnbwuHiJo58", "stellen": [{"stelle": "titel", "art": "stamm", "unser": "Evaluation BEwegungs- und sPorttherapeutischer Interventionen unter medizinischer Therapie in der Pädiatrischen Onkologie"}, {"stelle": "foerderkennzeichen", "art": "stamm", "unser": "01NVF24318"}, {"stelle": "laufzeit", "art": "stamm", "unser": "2025-10 bis 2029-03"}, {"stelle": "foerdersumme", "art": "stamm", "unser": "7.300.000 Euro"}, {"stelle": "status", "art": "stamm", "unser": "laufend"}, {"stelle": "foerderbereich", "art": "stamm", "unser": "Neue Versorgungsformen"}, {"stelle": "versorgungsbereich", "art": "stamm", "unser": "sektorenübergreifend"}, {"stelle": "themenfeld", "art": "stamm", "unser": "themenoffen"}, {"stelle": "themenschwerpunkt", "art": "stamm", "unser": "onkologische Erkrankungen"}, {"stelle": "zielgruppen", "art": "stamm", "unser": "Angehörige, Kinder und Jugendliche, Menschen mit seltenen Krankheiten"}, {"stelle": "leitung", "art": "stamm", "unser": "Dr. Miriam Götte · Universitätsklinikum Essen, Institut für Sport- und Bewegungstherapie am Westdeutschen Tumorzentrum Essen"}, {"stelle": "partner", "art": "stamm", "unser": "AOK Rheinland/Hamburg - Die Gesundheitskasse; BARMER; Charité - Universitätsmedizin Berlin; DAK-Gesundheit; Diakoneo Klinik Hallerwiese-Cnopfsche Kinderklinik; Institut für Sport- und Bewegungstherapie am Westdeutschen Tumorzentrum Essen; Klinikum der Landeshauptstadt Stuttgart; TUM Klinikum Rechts der Isar; Techniker Krankenkasse; Universität Regensburg; Universitätsklinikum Bonn; Universitätsklinikum Hamburg-Eppendorf; Universitätsklinikum Jena; Universitätsklinikum Köln; Universitätsklinikum Ulm; Universitätsmedizin Frankfurt; Universitätsmedizin der Johannes Gutenberg-Universität Mainz"}, {"stelle": "beschreibung", "art": "stamm", "unser": "Wiederkehrende Klinikaufenthalte, körperlich und psychisch belastende medizinische Therapien und deren unerwünschte Wirkungen: Mit der Diagnose Krebs ändert sich bei Kindern und Jugendlichen nicht nur ihre komplette Lebenswelt, sondern auch das Bewegungsverhalten sehr stark. Dieser Bewegungsmangel verstärkt die negativen Folgen der Erkrankung und onkologischen Behandlung weiter; er äußert sich in reduzierter Muskelkraft, verminderter kardiorespiratorischer Leistungsfähigkeit, psychischen Belastungsreaktionen sowie verminderter Lebensqualität und Fatigue (Erschöpfung).\n\nDem wollen die Forschenden im Projekt BEPPO entgegenwirken und die Mobilität von Kindern und Jugendlichen während einer onkologischen Behandlung durch eine begleitende multimodale Sport- und Bewegungstherapie verbessern. Dazu entwickelten sie ein Behandlungskonzept, das die Muskelkraft und Mobilität, aber auch Lebensqualität der Betroffenen unterstützt, Nebenwirkungen der Behandlung verringert und der Vorbeugung von Spätfolgen dient. Diese neue Versorgungsform umfasst eine sechsmonatige angeleitete, zielgerichtete Sport- und Bewegungstherapie, die Setting übergreifend im stationären, ambulanten und häuslichen Umfeld (durch Telemedizin) umgesetzt und durch familienorientierte Bewegungsberatungen ergänzt wird. Den Effekt dieser Maßnahme vergleichen die Forschenden in einem randomisierten Ansatz (1:1) mit der jeweiligen standortspezifischen Regelversorgung. Das Projekt wird für dreieinhalb Jahre mit insgesamt ca. 7,3 Millionen Euro gefördert und an 13 kinderonkologischen Zentren umgesetzt.\n\nIm Erfolgsfall soll das bewegungstherapeutische Interventionsprogramm Eingang in die pädiatrisch-onkologische Regelversorgung finden und zur breiteren Anwendung der S2k-Leitlinie „Bewegungsförderung und Bewegungstherapie in der pädiatrischen Onkologie“ der Arbeitsgemeinschaft der Wissenschaftlichen und Medizinischen Fachgesellschaften beitragen. Durch die Reduktion unerwünschter Nebenwirkungen, den Erhalt der Mobilität und eine frühzeitige Rückkehr in den Lebensalltag ist eine Reduktion der Gesamtbehandlungskosten zu erwarten."}]};
+const D = {"projekt_id": 714, "akronym": "BEPPO", "kennung": "gvnbwuHiJo58", "stellen": [{"stelle": "titel", "art": "stamm", "unser": "Evaluation BEwegungs- und sPorttherapeutischer Interventionen unter medizinischer Therapie in der Pädiatrischen Onkologie"}, {"stelle": "foerderkennzeichen", "art": "stamm", "unser": "01NVF24318"}, {"stelle": "laufzeit", "art": "stamm", "unser": "2025-10 bis 2029-03"}, {"stelle": "foerdersumme", "art": "stamm", "unser": "7.300.000 Euro"}, {"stelle": "status", "art": "stamm", "unser": "laufend"}, {"stelle": "foerderbereich", "art": "stamm", "unser": "Neue Versorgungsformen"}, {"stelle": "versorgungsbereich", "art": "stamm", "unser": "sektorenübergreifend"}, {"stelle": "themenfeld", "art": "stamm", "unser": "themenoffen"}, {"stelle": "themenschwerpunkt", "art": "stamm", "unser": "onkologische Erkrankungen"}, {"stelle": "zielgruppen", "art": "stamm", "unser": "Angehörige, Kinder und Jugendliche, Menschen mit seltenen Krankheiten"}, {"stelle": "leitung", "art": "stamm", "unser": "Priv.-Doz. Dr. Miriam Götte · Universitätsklinikum Essen, Institut für Sport- und Bewegungstherapie am Westdeutschen Tumorzentrum Essen"}, {"stelle": "partner", "art": "stamm", "unser": "AOK Rheinland/Hamburg - Die Gesundheitskasse; BARMER; Charité - Universitätsmedizin Berlin; DAK-Gesundheit; Diakoneo Klinik Hallerwiese-Cnopfsche Kinderklinik; Institut für Sport- und Bewegungstherapie am Westdeutschen Tumorzentrum Essen; Klinikum der Landeshauptstadt Stuttgart; TUM Klinikum Rechts der Isar; Techniker Krankenkasse; Universität Regensburg; Universitätsklinikum Bonn; Universitätsklinikum Hamburg-Eppendorf; Universitätsklinikum Jena; Universitätsklinikum Köln; Universitätsklinikum Ulm; Universitätsmedizin Frankfurt; Universitätsmedizin der Johannes Gutenberg-Universität Mainz"}, {"stelle": "beschreibung", "art": "stamm", "unser": "Wiederkehrende Klinikaufenthalte, körperlich und psychisch belastende medizinische Therapien und deren unerwünschte Wirkungen: Mit der Diagnose Krebs ändert sich bei Kindern und Jugendlichen nicht nur ihre komplette Lebenswelt, sondern auch das Bewegungsverhalten sehr stark. Dieser Bewegungsmangel verstärkt die negativen Folgen der Erkrankung und onkologischen Behandlung weiter; er äußert sich in reduzierter Muskelkraft, verminderter kardiorespiratorischer Leistungsfähigkeit, psychischen Belastungsreaktionen sowie verminderter Lebensqualität und Fatigue (Erschöpfung).\n\nDem wollen die Forschenden im Projekt BEPPO entgegenwirken und die Mobilität von Kindern und Jugendlichen während einer onkologischen Behandlung durch eine begleitende multimodale Sport- und Bewegungstherapie verbessern. Dazu entwickelten sie ein Behandlungskonzept, das die Muskelkraft und Mobilität, aber auch Lebensqualität der Betroffenen unterstützt, Nebenwirkungen der Behandlung verringert und der Vorbeugung von Spätfolgen dient. Diese neue Versorgungsform umfasst eine sechsmonatige angeleitete, zielgerichtete Sport- und Bewegungstherapie, die Setting übergreifend im stationären, ambulanten und häuslichen Umfeld (durch Telemedizin) umgesetzt und durch familienorientierte Bewegungsberatungen ergänzt wird. Den Effekt dieser Maßnahme vergleichen die Forschenden in einem randomisierten Ansatz (1:1) mit der jeweiligen standortspezifischen Regelversorgung. Das Projekt wird für dreieinhalb Jahre mit insgesamt ca. 7,3 Millionen Euro gefördert und an 13 kinderonkologischen Zentren umgesetzt.\n\nIm Erfolgsfall soll das bewegungstherapeutische Interventionsprogramm Eingang in die pädiatrisch-onkologische Regelversorgung finden und zur breiteren Anwendung der S2k-Leitlinie „Bewegungsförderung und Bewegungstherapie in der pädiatrischen Onkologie“ der Arbeitsgemeinschaft der Wissenschaftlichen und Medizinischen Fachgesellschaften beitragen. Durch die Reduktion unerwünschter Nebenwirkungen, den Erhalt der Mobilität und eine frühzeitige Rückkehr in den Lebensalltag ist eine Reduktion der Gesamtbehandlungskosten zu erwarten."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
@@ -527,6 +544,8 @@ document.getElementById('laden').onclick = async () => {
     : '';
 };
 
+let gesendet = false;
+
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
@@ -576,9 +595,17 @@ document.getElementById('senden').onclick = async () => {
       return;
     }
     if (!r.ok) throw new Error(r.status);
-    st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
-      + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
-      + 'speichern Sie sich rechts eine Kopie.';
+    /* Angekommen - und das soll man sehen, ohne danach zu suchen. */
+    const anzahl = d.korrekturen.length;
+    st.className = 'da';
+    st.innerHTML = 'Angekommen. Vielen Dank.<span>'
+      + (anzahl === 1 ? 'Eine Korrektur' : anzahl + ' Korrekturen')
+      + ' sind bei der Redaktion. Sie müssen nichts weiter tun – '
+      + 'ein zweites Senden ist nicht nötig. Wenn Sie möchten, '
+      + 'speichern Sie sich rechts eine Kopie.</span>';
+    knopf.textContent = 'Ist angekommen';
+    gesendet = true;
+    document.getElementById('nachtragen').hidden = false;
     document.getElementById('laden').classList.remove('zweit');
   } catch (x) {
     /* Lieber eine Datei als ein verlorener Beitrag. Bei den
@@ -588,8 +615,25 @@ document.getElementById('senden').onclick = async () => {
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
   } finally {
-    knopf.disabled = false;
+    /* Nach einem geglueckten Versand bleibt der Knopf aus. Ein Knopf,
+       der wieder "Freigeben und senden" anbietet, ist eine
+       Aufforderung - und 41-mal hat jemand sie binnen 30 Sekunden
+       angenommen. */
+    if (!gesendet) knopf.disabled = false;
   }
+};
+
+/* Nachtragen bleibt moeglich, aber als eigener Entschluss. */
+document.getElementById('nachtragen').onclick = () => {
+  const knopf = document.getElementById('senden');
+  const st = document.getElementById('stand');
+  gesendet = false;
+  knopf.disabled = false;
+  knopf.textContent = 'Ergänzung senden';
+  document.getElementById('nachtragen').hidden = true;
+  st.className = '';
+  st.textContent = 'Ihre erste Rückmeldung bleibt gespeichert. '
+    + 'Ergänzen Sie, was fehlt, und senden Sie noch einmal.';
 };
 </script>
 </html>

@@ -15,6 +15,11 @@ h3{font-size:15.5px;margin:0 0 6px;font-weight:620}
   padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 26px;font-size:15px}
 .p{border:1px solid var(--linie);border-radius:9px;padding:13px 16px;
   margin:0 0 14px}
+details.weitere{margin:22px 0 14px}
+details.weitere>summary{cursor:pointer;color:var(--gedaempft);
+  font-size:14.5px;padding:10px 14px;border:1px dashed var(--linie);
+  border-radius:9px}
+details.weitere[open]>summary{margin-bottom:14px}
 .unser{margin:0 0 6px}
 /* Das Ergebnis - kein Zitat. Es stand frueher in Anfuehrungszeichen
    wie eine Fundstelle aus dem Bericht und wurde deshalb fuer die
@@ -62,6 +67,17 @@ button{font:inherit;font-weight:600;padding:9px 20px;border-radius:7px;
   cursor:pointer}
 button.zweit{background:#fff;color:var(--gold)}
 #stand{font-size:14px;color:var(--gedaempft);margin:8px 0 0}
+/* Die Bestaetigung war das stillste Element der Seite - 14 Pixel in
+   Grau, unter zwei Knoepfen. 66-mal hat jemand deshalb ein zweites Mal
+   gesendet, im Mittel 22 Sekunden spaeter. Jetzt ist sie ein Kasten. */
+#stand.da{color:var(--text);font-size:15px;font-weight:600;
+  border:1px solid #2F5D3F;background:#E9F2EC;border-radius:8px;
+  padding:12px 15px;margin-top:12px}
+#stand.da span{display:block;font-weight:400;font-size:13.5px;
+  color:var(--gedaempft);margin-top:4px}
+#nachtragen{display:inline-block;margin-top:10px;font-size:13.5px;
+  color:var(--gedaempft);background:none;border:none;padding:0;
+  text-decoration:underline;cursor:pointer;font-weight:400}
 </style>
 <h1>OptiStruk – so stellen wir Ihr Projekt dar</h1>
 <p class="meta">Optimale Zuordnung von Patienten zu Fachabteilungen in Krankenhäusern nach Strukturqualität<br>
@@ -239,7 +255,7 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="befund.2">
   <h3>Was erreicht wurde</h3>
-  <p class="unser">Regionale Unterschiede der Versorgungslage aufgezeigt</p>
+  <p class="unser">Die Versorgungslage ist für die drei untersuchten Krankheitsbilder regional verschieden</p>
   <blockquote>„Die Ergebnisse der Analysen zeigen, dass die Versorgungslage in Deutschland für die drei vom Projekt untersuchten K rankheitsbilder regional verschieden ist." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
     <label><input type="radio" name="ubefund.2" value="ok" checked>
@@ -502,10 +518,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <button id="senden">Freigeben und an die Redaktion senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
+  <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 123, "akronym": "OptiStruk", "kennung": "x575lNJDaM3K", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss beschließt, die Erkenntnisse aus OptiStruk dem Bundesministerium für Gesundheit und den für den Rettungsdienst zuständigen Landesministerien zur Information weiterzuleiten. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Nach Auffassung des Ausschusses hat das Projekt einen als Algorithmus umgesetzten Indikator für Strukturqualität erfolgreich entwickelt und evaluiert. Grundlage waren Literaturrecherche, ein Delphi-Verfahren und Routinedatenanalysen von Abrechnungsdaten der Betriebskrankenkassen; das methodische Vorgehen hält der Ausschuss für grundsätzlich angemessen. Die Analysen zeigen regionale Unterschiede der Versorgungslage, Versorgungslücken und Hinweise auf einen Zusammenhang zwischen Strukturqualität und Ein-Jahres-Mortalität. Einschränkend nennt der Ausschuss fehlende Angaben zu Schweregrad und Komorbiditäten in den Routinedaten sowie eine geringe Varianzaufklärung der Regressionsmodelle; eine weitere Validierung oder prospektive Betrachtung empfiehlt er. Weil die Erkenntnisse zum Diskurs über Reformen der Krankenhausversorgung beitragen können, werden sie zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss sieht einen möglichen Beitrag der Erkenntnisse zum fachlichen und politischen Diskurs über Reformansätze der Krankenhausversorgung. Er empfiehlt jedoch eine zusätzliche Validierung des Algorithmus anhand weiterer Daten oder eine prospektive Betrachtung."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "In den Routinedaten fehlen detaillierte Angaben etwa zu Schweregrad und Komorbiditäten; eine weitere Validierung oder prospektive Betrachtung wird empfohlen."}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Geringe Varianzaufklärung der Regressionsmodelle"}, {"stelle": "befund.0", "art": "befund", "unser": "Indikator für Strukturqualität als Algorithmus entwickelt und evaluiert"}, {"stelle": "befund.1", "art": "befund", "unser": "Methodisches Vorgehen grundsätzlich angemessen"}, {"stelle": "befund.2", "art": "befund", "unser": "Regionale Unterschiede der Versorgungslage aufgezeigt"}, {"stelle": "befund.3", "art": "befund", "unser": "Teilweise Nachweis, dass Verlegung oder direkte Einlieferung in passendere Krankenhäuser die Versorgungsqualität verbessert hätte"}, {"stelle": "befund.4", "art": "befund", "unser": "Hinweise auf einen Zusammenhang zwischen Strukturqualität und Ein-Jahres-Mortalität"}, {"stelle": "befund.5", "art": "befund", "unser": "Beitrag zum Reformdiskurs der Krankenhausversorgung"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Ein-Jahres-Mortalität Hirninfarkt (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3 mit Risikoadjustierung sowie KH- und regionalen FE)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Krankenhaus-Mortalität Hirninfarkt (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Ein-Jahres-Mortalität KHK akut (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Krankenhaus-Mortalität KHK akut (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Ein-Jahres-Mortalität KHK chronisch (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Krankenhaus-Mortalität KHK chronisch (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Durchschnittliche Verweildauer Hirninfarkt (deskriptiv)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Durchschnittliche Verweildauer KHK chronisch (deskriptiv)"}]};
+const D = {"projekt_id": 123, "akronym": "OptiStruk", "kennung": "x575lNJDaM3K", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss beschließt, die Erkenntnisse aus OptiStruk dem Bundesministerium für Gesundheit und den für den Rettungsdienst zuständigen Landesministerien zur Information weiterzuleiten. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Nach Auffassung des Ausschusses hat das Projekt einen als Algorithmus umgesetzten Indikator für Strukturqualität erfolgreich entwickelt und evaluiert. Grundlage waren Literaturrecherche, ein Delphi-Verfahren und Routinedatenanalysen von Abrechnungsdaten der Betriebskrankenkassen; das methodische Vorgehen hält der Ausschuss für grundsätzlich angemessen. Die Analysen zeigen regionale Unterschiede der Versorgungslage, Versorgungslücken und Hinweise auf einen Zusammenhang zwischen Strukturqualität und Ein-Jahres-Mortalität. Einschränkend nennt der Ausschuss fehlende Angaben zu Schweregrad und Komorbiditäten in den Routinedaten sowie eine geringe Varianzaufklärung der Regressionsmodelle; eine weitere Validierung oder prospektive Betrachtung empfiehlt er. Weil die Erkenntnisse zum Diskurs über Reformen der Krankenhausversorgung beitragen können, werden sie zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss sieht einen möglichen Beitrag der Erkenntnisse zum fachlichen und politischen Diskurs über Reformansätze der Krankenhausversorgung. Er empfiehlt jedoch eine zusätzliche Validierung des Algorithmus anhand weiterer Daten oder eine prospektive Betrachtung."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "In den Routinedaten fehlen detaillierte Angaben etwa zu Schweregrad und Komorbiditäten; eine weitere Validierung oder prospektive Betrachtung wird empfohlen."}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Geringe Varianzaufklärung der Regressionsmodelle"}, {"stelle": "befund.0", "art": "befund", "unser": "Indikator für Strukturqualität als Algorithmus entwickelt und evaluiert"}, {"stelle": "befund.1", "art": "befund", "unser": "Methodisches Vorgehen grundsätzlich angemessen"}, {"stelle": "befund.2", "art": "befund", "unser": "Die Versorgungslage ist für die drei untersuchten Krankheitsbilder regional verschieden"}, {"stelle": "befund.3", "art": "befund", "unser": "Teilweise Nachweis, dass Verlegung oder direkte Einlieferung in passendere Krankenhäuser die Versorgungsqualität verbessert hätte"}, {"stelle": "befund.4", "art": "befund", "unser": "Hinweise auf einen Zusammenhang zwischen Strukturqualität und Ein-Jahres-Mortalität"}, {"stelle": "befund.5", "art": "befund", "unser": "Beitrag zum Reformdiskurs der Krankenhausversorgung"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Ein-Jahres-Mortalität Hirninfarkt (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3 mit Risikoadjustierung sowie KH- und regionalen FE)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Krankenhaus-Mortalität Hirninfarkt (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Ein-Jahres-Mortalität KHK akut (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Krankenhaus-Mortalität KHK akut (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Ein-Jahres-Mortalität KHK chronisch (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Krankenhaus-Mortalität KHK chronisch (Effekt \"No Match\" gegenüber \"First Best\", Spezifikation 3)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Durchschnittliche Verweildauer Hirninfarkt (deskriptiv)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Durchschnittliche Verweildauer KHK chronisch (deskriptiv)"}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
@@ -655,6 +672,8 @@ document.getElementById('laden').onclick = async () => {
     : '';
 };
 
+let gesendet = false;
+
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
@@ -704,9 +723,17 @@ document.getElementById('senden').onclick = async () => {
       return;
     }
     if (!r.ok) throw new Error(r.status);
-    st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
-      + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
-      + 'speichern Sie sich rechts eine Kopie.';
+    /* Angekommen - und das soll man sehen, ohne danach zu suchen. */
+    const anzahl = d.korrekturen.length;
+    st.className = 'da';
+    st.innerHTML = 'Angekommen. Vielen Dank.<span>'
+      + (anzahl === 1 ? 'Eine Korrektur' : anzahl + ' Korrekturen')
+      + ' sind bei der Redaktion. Sie müssen nichts weiter tun – '
+      + 'ein zweites Senden ist nicht nötig. Wenn Sie möchten, '
+      + 'speichern Sie sich rechts eine Kopie.</span>';
+    knopf.textContent = 'Ist angekommen';
+    gesendet = true;
+    document.getElementById('nachtragen').hidden = false;
     document.getElementById('laden').classList.remove('zweit');
   } catch (x) {
     /* Lieber eine Datei als ein verlorener Beitrag. Bei den
@@ -716,8 +743,25 @@ document.getElementById('senden').onclick = async () => {
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
   } finally {
-    knopf.disabled = false;
+    /* Nach einem geglueckten Versand bleibt der Knopf aus. Ein Knopf,
+       der wieder "Freigeben und senden" anbietet, ist eine
+       Aufforderung - und 41-mal hat jemand sie binnen 30 Sekunden
+       angenommen. */
+    if (!gesendet) knopf.disabled = false;
   }
+};
+
+/* Nachtragen bleibt moeglich, aber als eigener Entschluss. */
+document.getElementById('nachtragen').onclick = () => {
+  const knopf = document.getElementById('senden');
+  const st = document.getElementById('stand');
+  gesendet = false;
+  knopf.disabled = false;
+  knopf.textContent = 'Ergänzung senden';
+  document.getElementById('nachtragen').hidden = true;
+  st.className = '';
+  st.textContent = 'Ihre erste Rückmeldung bleibt gespeichert. '
+    + 'Ergänzen Sie, was fehlt, und senden Sie noch einmal.';
 };
 </script>
 </html>

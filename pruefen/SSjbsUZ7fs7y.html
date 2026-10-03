@@ -15,6 +15,11 @@ h3{font-size:15.5px;margin:0 0 6px;font-weight:620}
   padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 26px;font-size:15px}
 .p{border:1px solid var(--linie);border-radius:9px;padding:13px 16px;
   margin:0 0 14px}
+details.weitere{margin:22px 0 14px}
+details.weitere>summary{cursor:pointer;color:var(--gedaempft);
+  font-size:14.5px;padding:10px 14px;border:1px dashed var(--linie);
+  border-radius:9px}
+details.weitere[open]>summary{margin-bottom:14px}
 .unser{margin:0 0 6px}
 /* Das Ergebnis - kein Zitat. Es stand frueher in Anfuehrungszeichen
    wie eine Fundstelle aus dem Bericht und wurde deshalb fuer die
@@ -62,6 +67,17 @@ button{font:inherit;font-weight:600;padding:9px 20px;border-radius:7px;
   cursor:pointer}
 button.zweit{background:#fff;color:var(--gold)}
 #stand{font-size:14px;color:var(--gedaempft);margin:8px 0 0}
+/* Die Bestaetigung war das stillste Element der Seite - 14 Pixel in
+   Grau, unter zwei Knoepfen. 66-mal hat jemand deshalb ein zweites Mal
+   gesendet, im Mittel 22 Sekunden spaeter. Jetzt ist sie ein Kasten. */
+#stand.da{color:var(--text);font-size:15px;font-weight:600;
+  border:1px solid #2F5D3F;background:#E9F2EC;border-radius:8px;
+  padding:12px 15px;margin-top:12px}
+#stand.da span{display:block;font-weight:400;font-size:13.5px;
+  color:var(--gedaempft);margin-top:4px}
+#nachtragen{display:inline-block;margin-top:10px;font-size:13.5px;
+  color:var(--gedaempft);background:none;border:none;padding:0;
+  text-decoration:underline;cursor:pointer;font-weight:400}
 </style>
 <h1>PREHAPS – so stellen wir Ihr Projekt dar</h1>
 <p class="meta">Modell einer phoniatrischen Prehabilitation vor onkologischer Therapie an einem Kopf- und Hals-Tumorzentrum – Eine Proof-of-Concept-Studie<br>
@@ -296,7 +312,7 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="befund.3">
   <h3>Was erreicht wurde</h3>
-  <p class="unser">Methoden als geeignet bewertet; Stärken der Studie benannt</p>
+  <p class="unser">Methoden als geeignet bewertet; Stärken der Studie waren u. a. die randomisierte Zuteilung zu den Gruppen, das Erreichen der Fallzahl, der geringe Drop-out, die teilweise verblindete Endpunkterhebung (bei Fremdbeurteilungen), die Nutzung etablierter Messinstrumente sowie der Follow-up-Zeitraum von bis zu 12 Monaten</p>
   <blockquote>„Stärken der Studie waren u. a. die randomisierte Zuteilung zu den Gruppen, das Erreichen der Fallzahl, der geringe Drop -out, die teilweise verblindete Endpunkterhebung (bei Fremdbeurteilungen), die Nutzung etablierter Messinstrumente sowie der Follow- Up-Zeitraum von bis zu zwölf Monaten." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
     <label><input type="radio" name="ubefund.3" value="ok" checked>
@@ -920,10 +936,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <button id="senden">Freigeben und an die Redaktion senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
+  <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 469, "akronym": "PREHAPS", "kennung": "SSjbsUZ7fs7y", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Ergebnisse des Projekts PREHAPS zur Information an die DKG, die DGHNO-KHC, die DGMKG, die DGHO, die Stiftung Deutsche Krebshilfe und den Bundesverband Kehlkopf- und Kopf-Hals-Tumore weiter. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Die Machbarkeit einer präventiven phoniatrisch-logopädischen Prähabilitation wurde in einer monozentrischen RCT erprobt. Für den primären Endpunkt, die objektive und subjektive Schluckfunktion sechs Wochen nach Therapieende, zeigten sich keine signifikanten Gruppenunterschiede. Bei den sekundären Endpunkten gab es nur vereinzelte positive Tendenzen, ein heterogenes Bild bei der Lebensqualität und überwiegend keine signifikanten Unterschiede. In Per-Protocol-Analysen und bei der Angstreduktion ergaben sich signifikante Ergebnisse zugunsten der Interventionsgruppe. Die Methoden hielt der Ausschuss für geeignet. Er sah jedoch ein Verzerrungspotenzial durch Baseline-Unterschiede bei der Tumorlokalisation und bemängelte zu positiv formulierte Schlussfolgerungen. Wegen der positiven Tendenzen und der signifikanten Ergebnisse in weiteren Analysen werden die Erkenntnisse zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "randomisiert kontrolliert (RCT)"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Kein signifikanter Unterschied im primären Endpunkt"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Keine signifikanten Unterschiede bei weiteren sekundären Endpunkten"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Heterogene Ergebnisse bei der Lebensqualität, teils zugunsten der Kontrollgruppe"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Verzerrungspotenzial durch Baseline-Unterschiede bei der Tumorlokalisation"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Schlussfolgerungen zu positiv formuliert, Limitationen unzureichend diskutiert"}, {"stelle": "befund.0", "art": "befund", "unser": "Machbarkeit der präventiven phoniatrischen Intervention erfolgreich erprobt"}, {"stelle": "befund.1", "art": "befund", "unser": "Signifikante Verbesserungen in Per-Protocol-Analysen bei objektiver und subjektiver Schluckbewertung"}, {"stelle": "befund.2", "art": "befund", "unser": "Signifikante Verringerung von Ängsten in der Interventionsgruppe"}, {"stelle": "befund.3", "art": "befund", "unser": "Methoden als geeignet bewertet; Stärken der Studie benannt"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "PAS (Penetration-Aspiration-Skala), 3 TL Götterspeise, Visite 2 (6 Wochen nach Therapieende), ITT"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "PAS, Becher Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "PAS, 1 TL Götterspeise, Visite 2, ITT"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "PAS, Feste Kost, Visite 2, ITT"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "PAS, 1 TL Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "YRS RSP (Sinus piriformis), 3 TL Götterspeise, Visite 2, ITT"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "YRS RSP, Feste Kost, Visite 2, ITT"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "YRS RSP, 1 TL Götterspeise, Visite 2, ITT"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "YRS RSP, 1 TL Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "YRS RSP, Becher Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "YRS RV (Vallecula), 3 TL Götterspeise, Visite 2, ITT"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "YRS RV, Feste Kost, Visite 2, ITT"}, {"stelle": "endpunkt.13", "art": "endpunkt", "unser": "YRS RV, 1 TL Götterspeise, Visite 2, ITT"}, {"stelle": "endpunkt.14", "art": "endpunkt", "unser": "YRS RV, 1 TL Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.15", "art": "endpunkt", "unser": "YRS RV, Becher Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.16", "art": "endpunkt", "unser": "FOIS-G (ärztliche Einschätzung des Oralisierungsgrades), Visite 2, ITT"}, {"stelle": "endpunkt.17", "art": "endpunkt", "unser": "DHI Gesamt, Visite 2, ITT"}, {"stelle": "endpunkt.18", "art": "endpunkt", "unser": "DHI funktional, Visite 2, ITT"}, {"stelle": "endpunkt.19", "art": "endpunkt", "unser": "DHI physisch, Visite 2, ITT"}, {"stelle": "endpunkt.20", "art": "endpunkt", "unser": "DHI emotional, Visite 2, ITT"}, {"stelle": "endpunkt.21", "art": "endpunkt", "unser": "HADS-Angst, Visite 2, ITT"}, {"stelle": "endpunkt.22", "art": "endpunkt", "unser": "HADS-Depression, Visite 2, ITT"}, {"stelle": "endpunkt.23", "art": "endpunkt", "unser": "PEG-Versorgung zu Visite 2 (Anteil Patienten mit PEG), ITT"}, {"stelle": "endpunkt.24", "art": "endpunkt", "unser": "Dauer der PEG-Abhängigkeit (Wochen), ITT"}, {"stelle": "endpunkt.25", "art": "endpunkt", "unser": "Zeit bis zur Dekanülierung nach Tracheotomie (Tage), ITT (n=16)"}, {"stelle": "endpunkt.26", "art": "endpunkt", "unser": "Berufliche Wiedereingliederung – Wiederaufnahme der Berufstätigkeit, ITT"}, {"stelle": "endpunkt.27", "art": "endpunkt", "unser": "Zeit bis zur Wiederaufnahme der Berufstätigkeit (Tage), ITT"}, {"stelle": "endpunkt.28", "art": "endpunkt", "unser": "EORTC QLQ-C30 Symptom Verstopfung (Constipation), Visite 4 und Visite 5, ITT"}, {"stelle": "endpunkt.29", "art": "endpunkt", "unser": "EORTC QLQ-C30 Dyspnoe, Visite 2, ITT"}, {"stelle": "endpunkt.30", "art": "endpunkt", "unser": "EORTC QLQ-C30 Schlaflosigkeit (Insomnia), Visite 2, ITT"}]};
+const D = {"projekt_id": 469, "akronym": "PREHAPS", "kennung": "SSjbsUZ7fs7y", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Ergebnisse des Projekts PREHAPS zur Information an die DKG, die DGHNO-KHC, die DGMKG, die DGHO, die Stiftung Deutsche Krebshilfe und den Bundesverband Kehlkopf- und Kopf-Hals-Tumore weiter. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Die Machbarkeit einer präventiven phoniatrisch-logopädischen Prähabilitation wurde in einer monozentrischen RCT erprobt. Für den primären Endpunkt, die objektive und subjektive Schluckfunktion sechs Wochen nach Therapieende, zeigten sich keine signifikanten Gruppenunterschiede. Bei den sekundären Endpunkten gab es nur vereinzelte positive Tendenzen, ein heterogenes Bild bei der Lebensqualität und überwiegend keine signifikanten Unterschiede. In Per-Protocol-Analysen und bei der Angstreduktion ergaben sich signifikante Ergebnisse zugunsten der Interventionsgruppe. Die Methoden hielt der Ausschuss für geeignet. Er sah jedoch ein Verzerrungspotenzial durch Baseline-Unterschiede bei der Tumorlokalisation und bemängelte zu positiv formulierte Schlussfolgerungen. Wegen der positiven Tendenzen und der signifikanten Ergebnisse in weiteren Analysen werden die Erkenntnisse zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "randomisiert kontrolliert (RCT)"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Kein signifikanter Unterschied im primären Endpunkt"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Keine signifikanten Unterschiede bei weiteren sekundären Endpunkten"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Heterogene Ergebnisse bei der Lebensqualität, teils zugunsten der Kontrollgruppe"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Verzerrungspotenzial durch Baseline-Unterschiede bei der Tumorlokalisation"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Schlussfolgerungen zu positiv formuliert, Limitationen unzureichend diskutiert"}, {"stelle": "befund.0", "art": "befund", "unser": "Machbarkeit der präventiven phoniatrischen Intervention erfolgreich erprobt"}, {"stelle": "befund.1", "art": "befund", "unser": "Signifikante Verbesserungen in Per-Protocol-Analysen bei objektiver und subjektiver Schluckbewertung"}, {"stelle": "befund.2", "art": "befund", "unser": "Signifikante Verringerung von Ängsten in der Interventionsgruppe"}, {"stelle": "befund.3", "art": "befund", "unser": "Methoden als geeignet bewertet; Stärken der Studie waren u. a. die randomisierte Zuteilung zu den Gruppen, das Erreichen der Fallzahl, der geringe Drop-out, die teilweise verblindete Endpunkterhebung (bei Fremdbeurteilungen), die Nutzung etablierter Messinstrumente sowie der Follow-up-Zeitraum von bis zu 12 Monaten"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "PAS (Penetration-Aspiration-Skala), 3 TL Götterspeise, Visite 2 (6 Wochen nach Therapieende), ITT"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "PAS, Becher Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "PAS, 1 TL Götterspeise, Visite 2, ITT"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "PAS, Feste Kost, Visite 2, ITT"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "PAS, 1 TL Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "YRS RSP (Sinus piriformis), 3 TL Götterspeise, Visite 2, ITT"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "YRS RSP, Feste Kost, Visite 2, ITT"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "YRS RSP, 1 TL Götterspeise, Visite 2, ITT"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "YRS RSP, 1 TL Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "YRS RSP, Becher Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "YRS RV (Vallecula), 3 TL Götterspeise, Visite 2, ITT"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "YRS RV, Feste Kost, Visite 2, ITT"}, {"stelle": "endpunkt.13", "art": "endpunkt", "unser": "YRS RV, 1 TL Götterspeise, Visite 2, ITT"}, {"stelle": "endpunkt.14", "art": "endpunkt", "unser": "YRS RV, 1 TL Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.15", "art": "endpunkt", "unser": "YRS RV, Becher Wasser, Visite 2, ITT"}, {"stelle": "endpunkt.16", "art": "endpunkt", "unser": "FOIS-G (ärztliche Einschätzung des Oralisierungsgrades), Visite 2, ITT"}, {"stelle": "endpunkt.17", "art": "endpunkt", "unser": "DHI Gesamt, Visite 2, ITT"}, {"stelle": "endpunkt.18", "art": "endpunkt", "unser": "DHI funktional, Visite 2, ITT"}, {"stelle": "endpunkt.19", "art": "endpunkt", "unser": "DHI physisch, Visite 2, ITT"}, {"stelle": "endpunkt.20", "art": "endpunkt", "unser": "DHI emotional, Visite 2, ITT"}, {"stelle": "endpunkt.21", "art": "endpunkt", "unser": "HADS-Angst, Visite 2, ITT"}, {"stelle": "endpunkt.22", "art": "endpunkt", "unser": "HADS-Depression, Visite 2, ITT"}, {"stelle": "endpunkt.23", "art": "endpunkt", "unser": "PEG-Versorgung zu Visite 2 (Anteil Patienten mit PEG), ITT"}, {"stelle": "endpunkt.24", "art": "endpunkt", "unser": "Dauer der PEG-Abhängigkeit (Wochen), ITT"}, {"stelle": "endpunkt.25", "art": "endpunkt", "unser": "Zeit bis zur Dekanülierung nach Tracheotomie (Tage), ITT (n=16)"}, {"stelle": "endpunkt.26", "art": "endpunkt", "unser": "Berufliche Wiedereingliederung – Wiederaufnahme der Berufstätigkeit, ITT"}, {"stelle": "endpunkt.27", "art": "endpunkt", "unser": "Zeit bis zur Wiederaufnahme der Berufstätigkeit (Tage), ITT"}, {"stelle": "endpunkt.28", "art": "endpunkt", "unser": "EORTC QLQ-C30 Symptom Verstopfung (Constipation), Visite 4 und Visite 5, ITT"}, {"stelle": "endpunkt.29", "art": "endpunkt", "unser": "EORTC QLQ-C30 Dyspnoe, Visite 2, ITT"}, {"stelle": "endpunkt.30", "art": "endpunkt", "unser": "EORTC QLQ-C30 Schlaflosigkeit (Insomnia), Visite 2, ITT"}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
@@ -1073,6 +1090,8 @@ document.getElementById('laden').onclick = async () => {
     : '';
 };
 
+let gesendet = false;
+
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
@@ -1122,9 +1141,17 @@ document.getElementById('senden').onclick = async () => {
       return;
     }
     if (!r.ok) throw new Error(r.status);
-    st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
-      + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
-      + 'speichern Sie sich rechts eine Kopie.';
+    /* Angekommen - und das soll man sehen, ohne danach zu suchen. */
+    const anzahl = d.korrekturen.length;
+    st.className = 'da';
+    st.innerHTML = 'Angekommen. Vielen Dank.<span>'
+      + (anzahl === 1 ? 'Eine Korrektur' : anzahl + ' Korrekturen')
+      + ' sind bei der Redaktion. Sie müssen nichts weiter tun – '
+      + 'ein zweites Senden ist nicht nötig. Wenn Sie möchten, '
+      + 'speichern Sie sich rechts eine Kopie.</span>';
+    knopf.textContent = 'Ist angekommen';
+    gesendet = true;
+    document.getElementById('nachtragen').hidden = false;
     document.getElementById('laden').classList.remove('zweit');
   } catch (x) {
     /* Lieber eine Datei als ein verlorener Beitrag. Bei den
@@ -1134,8 +1161,25 @@ document.getElementById('senden').onclick = async () => {
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
   } finally {
-    knopf.disabled = false;
+    /* Nach einem geglueckten Versand bleibt der Knopf aus. Ein Knopf,
+       der wieder "Freigeben und senden" anbietet, ist eine
+       Aufforderung - und 41-mal hat jemand sie binnen 30 Sekunden
+       angenommen. */
+    if (!gesendet) knopf.disabled = false;
   }
+};
+
+/* Nachtragen bleibt moeglich, aber als eigener Entschluss. */
+document.getElementById('nachtragen').onclick = () => {
+  const knopf = document.getElementById('senden');
+  const st = document.getElementById('stand');
+  gesendet = false;
+  knopf.disabled = false;
+  knopf.textContent = 'Ergänzung senden';
+  document.getElementById('nachtragen').hidden = true;
+  st.className = '';
+  st.textContent = 'Ihre erste Rückmeldung bleibt gespeichert. '
+    + 'Ergänzen Sie, was fehlt, und senden Sie noch einmal.';
 };
 </script>
 </html>

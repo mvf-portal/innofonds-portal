@@ -15,6 +15,11 @@ h3{font-size:15.5px;margin:0 0 6px;font-weight:620}
   padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 26px;font-size:15px}
 .p{border:1px solid var(--linie);border-radius:9px;padding:13px 16px;
   margin:0 0 14px}
+details.weitere{margin:22px 0 14px}
+details.weitere>summary{cursor:pointer;color:var(--gedaempft);
+  font-size:14.5px;padding:10px 14px;border:1px dashed var(--linie);
+  border-radius:9px}
+details.weitere[open]>summary{margin-bottom:14px}
 .unser{margin:0 0 6px}
 /* Das Ergebnis - kein Zitat. Es stand frueher in Anfuehrungszeichen
    wie eine Fundstelle aus dem Bericht und wurde deshalb fuer die
@@ -62,6 +67,17 @@ button{font:inherit;font-weight:600;padding:9px 20px;border-radius:7px;
   cursor:pointer}
 button.zweit{background:#fff;color:var(--gold)}
 #stand{font-size:14px;color:var(--gedaempft);margin:8px 0 0}
+/* Die Bestaetigung war das stillste Element der Seite - 14 Pixel in
+   Grau, unter zwei Knoepfen. 66-mal hat jemand deshalb ein zweites Mal
+   gesendet, im Mittel 22 Sekunden spaeter. Jetzt ist sie ein Kasten. */
+#stand.da{color:var(--text);font-size:15px;font-weight:600;
+  border:1px solid #2F5D3F;background:#E9F2EC;border-radius:8px;
+  padding:12px 15px;margin-top:12px}
+#stand.da span{display:block;font-weight:400;font-size:13.5px;
+  color:var(--gedaempft);margin-top:4px}
+#nachtragen{display:inline-block;margin-top:10px;font-size:13.5px;
+  color:var(--gedaempft);background:none;border:none;padding:0;
+  text-decoration:underline;cursor:pointer;font-weight:400}
 </style>
 <h1>PV-Monitor – so stellen wir Ihr Projekt dar</h1>
 <p class="meta">Nutzung von Routinedaten zur Pharmakovigilanz in Deutschland: Methodenentwicklung und erste Anwendungen<br>
@@ -106,7 +122,7 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
-  <p class="unser">Das Projekt entwickelte statistische Methoden und Deep-Learning-Algorithmen für die Pharmakovigilanz auf Basis von GKV-Abrechnungsdaten. Die Simulationsstudie zum Vergleich der Lernverfahren führte nicht bei allen Fragestellungen zum Ziel. Erfolgreich wurden dagegen zwei Verarbeitungsketten zur Signalgenerierung entwickelt und in einer Machbarkeitsstudie am Beispiel der DOAKs angewandt. Die generierten Signale spiegelten bereits bekannte Signale wider, zudem wurde ein unbekanntes, noch nicht verifiziertes Risikosignal gefunden. Der Ausschuss bewertet das Vorgehen als stark explorativ und die Methoden als in einem frühen Stadium befindlich. Vor einer praktischen Anwendung seien weitere Expertenkonsultationen und Einzelfallprüfungen in pharmakoepidemiologischen Studien nötig; das Potenzial zur Identifikation von UAWs sieht der Ausschuss jedoch als gezeigt an.</p>
+  <p class="unser">Das Projekt erforschte statistische Methoden und entwickelte Deep-Learning-Algorithmen für die Pharmakovigilanz auf Basis von GKV-Abrechnungsdaten. Die Simulationsstudie zum Vergleich der Lernverfahren führte nicht bei allen Fragestellungen zum Ziel. Erfolgreich wurden dagegen zwei Verarbeitungsketten aufgebaut.</p>
   
   <div class="wahl">
     <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
@@ -125,7 +141,7 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="studiendesign">
   <h3>Studiendesign</h3>
-  <p class="unser">Sekundärdatenanalyse</p>
+  <p class="unser">Sekundärdatenanalyse und Simulationsstudien</p>
   
   <div class="wahl">
     <label><input type="radio" name="ustudiendesign" value="ok" checked>
@@ -521,10 +537,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <button id="senden">Freigeben und an die Redaktion senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
+  <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 20, "akronym": "PV-Monitor", "kennung": "xxDodR-J5bnJ", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Erkenntnisse des Projekts PV-Monitor an das BfArM und das Paul-Ehrlich-Institut weiter. Beide werden gebeten, die Projekterkenntnisse gegebenenfalls im Rahmen einer Validierung zu prüfen und eine weitere Nutzbarmachung für die datengestützte Risikosignalerkennung zu erwägen. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt entwickelte statistische Methoden und Deep-Learning-Algorithmen für die Pharmakovigilanz auf Basis von GKV-Abrechnungsdaten. Die Simulationsstudie zum Vergleich der Lernverfahren führte nicht bei allen Fragestellungen zum Ziel. Erfolgreich wurden dagegen zwei Verarbeitungsketten zur Signalgenerierung entwickelt und in einer Machbarkeitsstudie am Beispiel der DOAKs angewandt. Die generierten Signale spiegelten bereits bekannte Signale wider, zudem wurde ein unbekanntes, noch nicht verifiziertes Risikosignal gefunden. Der Ausschuss bewertet das Vorgehen als stark explorativ und die Methoden als in einem frühen Stadium befindlich. Vor einer praktischen Anwendung seien weitere Expertenkonsultationen und Einzelfallprüfungen in pharmakoepidemiologischen Studien nötig; das Potenzial zur Identifikation von UAWs sieht der Ausschuss jedoch als gezeigt an."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine praktische Anwendung setzt nach dem Beschluss weitere Expertenkonsultationen und für jeden Einzelfall weitere pharmakoepidemiologische Überprüfungen voraus; gefundene Signale sollten stets von Expertinnen und Experten begutachtet werden. Die Übernahme in die datengestützte Risikosignalerkennung soll von BfArM und PEI geprüft werden."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Simulationsstudie zum Vergleich der maschinellen Lernverfahren führte nicht bei allen Fragestellungen zum Ziel"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Stark exploratives Vorgehen; Methoden in frühem Entwicklungsstadium"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Vor praktischer Anwendung sind weitere Expertenkonsultationen und Einzelfallprüfungen in pharmakoepidemiologischen Studien erforderlich"}, {"stelle": "befund.0", "art": "befund", "unser": "Zwei Verarbeitungsketten zur Signalgenerierung auf GKV-Abrechnungsdaten entwickelt und am Beispiel der DOAKs angewandt"}, {"stelle": "befund.1", "art": "befund", "unser": "Neue Forschungsansätze aufgezeigt; generierte Risikosignale spiegeln bereits bekannte Signale wider"}, {"stelle": "befund.2", "art": "befund", "unser": "Ein bisher unbekanntes Risikosignal identifiziert (noch nicht verifiziert)"}, {"stelle": "befund.3", "art": "befund", "unser": "Potenzial der Verarbeitungsketten zur Identifikation von UAWs auf GKV-Abrechnungsdaten gezeigt"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Gastrointestinale Blutung (Positivkontrolle), Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Intrakranielle Blutung (Positivkontrolle), Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Akute Leberschädigung, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Akute Nierenschädigung, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Zystitis, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Epilepsie, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Glaukom, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Sepsis, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "adressat.1", "art": "adressat", "unser": "In einer gemeinsamen Stellungnahme mit dem PEI berichtet das BfArM über eine komplementäre Analyse der Spontanberichte in EudraVigilance, die das vom PV-Monitor generierte Epilepsie-Signal unter DOAK nicht bestätigt hat. Die Signalerkennung aus GKV-Daten wird als möglicher weiterer Ansatz zum Signalmanagement betrachtet; eine Übernahme in ein Verfahren wird nicht benannt."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Das PEI hat die gemeinsame Stellungnahme mit dem BfArM abgegeben, nach der das Epilepsie-Signal durch die komplementäre Analyse nicht bestätigt wurde. Die Signaldetektion in GKV-Daten wird als Quelle erster Hinweise gewertet; eine Übernahme in ein Verfahren wird nicht benannt."}]};
+const D = {"projekt_id": 20, "akronym": "PV-Monitor", "kennung": "xxDodR-J5bnJ", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Erkenntnisse des Projekts PV-Monitor an das BfArM und das Paul-Ehrlich-Institut weiter. Beide werden gebeten, die Projekterkenntnisse gegebenenfalls im Rahmen einer Validierung zu prüfen und eine weitere Nutzbarmachung für die datengestützte Risikosignalerkennung zu erwägen. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt erforschte statistische Methoden und entwickelte Deep-Learning-Algorithmen für die Pharmakovigilanz auf Basis von GKV-Abrechnungsdaten. Die Simulationsstudie zum Vergleich der Lernverfahren führte nicht bei allen Fragestellungen zum Ziel. Erfolgreich wurden dagegen zwei Verarbeitungsketten aufgebaut."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse und Simulationsstudien"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine praktische Anwendung setzt nach dem Beschluss weitere Expertenkonsultationen und für jeden Einzelfall weitere pharmakoepidemiologische Überprüfungen voraus; gefundene Signale sollten stets von Expertinnen und Experten begutachtet werden. Die Übernahme in die datengestützte Risikosignalerkennung soll von BfArM und PEI geprüft werden."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Simulationsstudie zum Vergleich der maschinellen Lernverfahren führte nicht bei allen Fragestellungen zum Ziel"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Stark exploratives Vorgehen; Methoden in frühem Entwicklungsstadium"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Vor praktischer Anwendung sind weitere Expertenkonsultationen und Einzelfallprüfungen in pharmakoepidemiologischen Studien erforderlich"}, {"stelle": "befund.0", "art": "befund", "unser": "Zwei Verarbeitungsketten zur Signalgenerierung auf GKV-Abrechnungsdaten entwickelt und am Beispiel der DOAKs angewandt"}, {"stelle": "befund.1", "art": "befund", "unser": "Neue Forschungsansätze aufgezeigt; generierte Risikosignale spiegeln bereits bekannte Signale wider"}, {"stelle": "befund.2", "art": "befund", "unser": "Ein bisher unbekanntes Risikosignal identifiziert (noch nicht verifiziert)"}, {"stelle": "befund.3", "art": "befund", "unser": "Potenzial der Verarbeitungsketten zur Identifikation von UAWs auf GKV-Abrechnungsdaten gezeigt"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Gastrointestinale Blutung (Positivkontrolle), Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Intrakranielle Blutung (Positivkontrolle), Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Akute Leberschädigung, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Akute Nierenschädigung, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Zystitis, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Epilepsie, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Glaukom, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Sepsis, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "adressat.1", "art": "adressat", "unser": "In einer gemeinsamen Stellungnahme mit dem PEI berichtet das BfArM über eine komplementäre Analyse der Spontanberichte in EudraVigilance, die das vom PV-Monitor generierte Epilepsie-Signal unter DOAK nicht bestätigt hat. Die Signalerkennung aus GKV-Daten wird als möglicher weiterer Ansatz zum Signalmanagement betrachtet; eine Übernahme in ein Verfahren wird nicht benannt."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Das PEI hat die gemeinsame Stellungnahme mit dem BfArM abgegeben, nach der das Epilepsie-Signal durch die komplementäre Analyse nicht bestätigt wurde. Die Signaldetektion in GKV-Daten wird als Quelle erster Hinweise gewertet; eine Übernahme in ein Verfahren wird nicht benannt."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
@@ -674,6 +691,8 @@ document.getElementById('laden').onclick = async () => {
     : '';
 };
 
+let gesendet = false;
+
 document.getElementById('senden').onclick = async () => {
   const d = sammeln();
   const st = document.getElementById('stand');
@@ -723,9 +742,17 @@ document.getElementById('senden').onclick = async () => {
       return;
     }
     if (!r.ok) throw new Error(r.status);
-    st.textContent = 'Danke – Ihre Rückmeldung ist angekommen. '
-      + d.korrekturen.length + ' Korrektur(en). Wenn Sie möchten, '
-      + 'speichern Sie sich rechts eine Kopie.';
+    /* Angekommen - und das soll man sehen, ohne danach zu suchen. */
+    const anzahl = d.korrekturen.length;
+    st.className = 'da';
+    st.innerHTML = 'Angekommen. Vielen Dank.<span>'
+      + (anzahl === 1 ? 'Eine Korrektur' : anzahl + ' Korrekturen')
+      + ' sind bei der Redaktion. Sie müssen nichts weiter tun – '
+      + 'ein zweites Senden ist nicht nötig. Wenn Sie möchten, '
+      + 'speichern Sie sich rechts eine Kopie.</span>';
+    knopf.textContent = 'Ist angekommen';
+    gesendet = true;
+    document.getElementById('nachtragen').hidden = false;
     document.getElementById('laden').classList.remove('zweit');
   } catch (x) {
     /* Lieber eine Datei als ein verlorener Beitrag. Bei den
@@ -735,8 +762,25 @@ document.getElementById('senden').onclick = async () => {
     st.textContent = 'Das Absenden ging nicht durch. Ihre Angaben wurden '
       + 'als Datei gespeichert – bitte senden Sie sie an ' + MAIL + '.';
   } finally {
-    knopf.disabled = false;
+    /* Nach einem geglueckten Versand bleibt der Knopf aus. Ein Knopf,
+       der wieder "Freigeben und senden" anbietet, ist eine
+       Aufforderung - und 41-mal hat jemand sie binnen 30 Sekunden
+       angenommen. */
+    if (!gesendet) knopf.disabled = false;
   }
+};
+
+/* Nachtragen bleibt moeglich, aber als eigener Entschluss. */
+document.getElementById('nachtragen').onclick = () => {
+  const knopf = document.getElementById('senden');
+  const st = document.getElementById('stand');
+  gesendet = false;
+  knopf.disabled = false;
+  knopf.textContent = 'Ergänzung senden';
+  document.getElementById('nachtragen').hidden = true;
+  st.className = '';
+  st.textContent = 'Ihre erste Rückmeldung bleibt gespeichert. '
+    + 'Ergänzen Sie, was fehlt, und senden Sie noch einmal.';
 };
 </script>
 </html>
