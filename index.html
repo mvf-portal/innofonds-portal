@@ -312,7 +312,16 @@ h3.ebene.zusammen{border-bottom-style:dashed;color:var(--grau);
   font-weight:600}
 h3.ebene{margin:22px 0 10px;padding:0 0 5px;font-size:1.02em;
   font-weight:700;color:var(--text);border-bottom:2px solid var(--linie);
-  letter-spacing:.01em}
+  letter-spacing:.01em;display:flex;align-items:baseline;
+  justify-content:space-between;gap:12px;flex-wrap:wrap}
+a.quellknopf{flex:none;font-size:.8em;font-weight:600;letter-spacing:0;
+  padding:3px 10px;border:1px solid var(--linie);border-radius:999px;
+  background:#fff;color:var(--blau,#1f6feb);text-decoration:none;
+  white-space:nowrap}
+a.quellknopf:hover{background:var(--weich);border-color:var(--blau,#1f6feb)}
+a.quelle{color:inherit;text-decoration:underline;
+  text-decoration-style:dotted;text-underline-offset:2px}
+a.quelle:hover{color:var(--blau,#1f6feb)}
 .dossier>h3.ebene:first-of-type{margin-top:6px}
 details.herkunft{padding:0;border:1px solid var(--linie);
   border-radius:6px;background:var(--weich);margin-top:18px}
@@ -1624,6 +1633,32 @@ function epFamilien(liste) {
 
 /* Die Seitenzahl ist der Beleg. Sie fuehrt in den Bericht selbst, und
    zwar auf die Seite, auf der die Zahl steht. */
+/* Das PDF einer Dokumentart dieses Vorhabens, oder null. */
+function dokUrl(p, art) {
+  const d = (p.dok || []).find(x => x[0] === art);
+  return d ? (/^https?:/.test(d[1]) ? d[1] : BASIS + d[1]) : null;
+}
+
+/* Ein Sprung auf die gedruckte Seite. Browser und PDF-Betrachter
+   verstehen #page=N; wo die Seite fehlt oder das Dokument nicht
+   vorliegt, bleibt der Text stehen, statt ins Leere zu fuehren. */
+function seiteLink(u, seite, text) {
+  const n = /(\d+)/.exec(String(seite == null ? '' : seite));
+  return u && n
+    ? `<a href="${esc(u)}#page=${n[1]}" target="_blank" rel="noopener"
+         class="quelle">${text}</a>`
+    : text;
+}
+
+/* Der Knopf neben einer Ebenen-Ueberschrift. */
+function quellKnopf(u, wort) {
+  /* Rechts am Rand derselben Zeile - die Ueberschrift ist dafuer ein
+     flex-Container. So steht der Weg zur Quelle da, wo das Auge ihn
+     sucht, ohne den Titel zu zerreissen. */
+  return u ? `<a class="quellknopf" href="${esc(u)}" target="_blank"
+    rel="noopener">${wort} öffnen &rarr;</a>` : '';
+}
+
 function epBericht(p) {
   const d = (p.dok || []).find(x => x[0] === 'Ergebnisbericht')
          || (p.dok || []).find(x => x[0] === 'Evaluationsbericht');
@@ -4887,6 +4922,7 @@ function statusblock(p) {
 
 function karteHtml(p) {
   const x = p.x;
+  const uBeschluss = dokUrl(p, 'Beschlusstext');
   const dok = (p.dok||[]).map(([art,url]) =>
     `<a href="${BASIS}${url}" target="_blank" rel="noopener">${esc(art)}</a>`).join(' · ');
   let inhalt = '';
@@ -4894,17 +4930,22 @@ function karteHtml(p) {
     if (x.warum) inhalt += `<div class="abschnitt"><h4>Warum es so ausging</h4>
       <div>${esc(x.warum)}</div>
       ${x.zitat && x.zitat.text ? `<blockquote>„${esc(x.zitat.text)}“
-        <span class="seite">Beschlusstext${x.zitat.seite ? ', S. '+x.zitat.seite : ''}</span>
+        <span class="seite">${seiteLink(uBeschluss, x.zitat.seite,
+          'Beschlusstext' + (x.zitat.seite ? ', S. ' + esc(x.zitat.seite)
+           : ''))}</span>
         </blockquote>` : ''}</div>`;
     if ((x.minus||[]).length) inhalt += `<div class="abschnitt"><h4>Hindernisse laut Beschluss</h4>
       <ul class="punkte">${x.minus.map((h, i) => `<li>${
         ampel('hindernis_pruefung', p.id, i)} <b>${esc(h.kategorie)}:</b>
         ${esc(h.hindernis)}${h.zitat ? `<blockquote>„${esc(h.zitat)}“
-        <span class="seite">${h.seite ? 'S. '+h.seite : ''}</span></blockquote>` : ''}</li>`
+        <span class="seite">${h.seite
+          ? seiteLink(uBeschluss, h.seite, 'S. ' + esc(h.seite))
+          : ''}</span></blockquote>` : ''}</li>`
         ).join('')}</ul></div>`;
     if ((x.plus||[]).length) inhalt += `<div class="abschnitt"><h4>Was der Beschluss positiv vermerkt</h4>
       <ul class="punkte">${x.plus.map(f => `<li>${esc(f.faktor)}${f.zitat ?
-        `<blockquote>„${esc(f.zitat)}“<span class="seite">${f.seite ? 'S. '+f.seite : ''}</span>
+        `<blockquote>„${esc(f.zitat)}“<span class="seite">${f.seite
+          ? seiteLink(uBeschluss, f.seite, 'S. ' + esc(f.seite)) : ''}</span>
         </blockquote>` : ''}</li>`).join('')}</ul></div>`;
     if ((x.adr||[]).length) inhalt += `<div class="abschnitt"><h4>Adressaten</h4>
       <ul class="punkte">${x.adr.map(a => `<li><b>${esc(a.name)}:</b> ${esc(a.auftrag)}</li>`
@@ -5041,12 +5082,16 @@ const BERICHT = new Map();
 /* Die Berichts-Ebene liegt nicht mehr in der Seite, sondern in
    daten/<id>.json. Gezeichnet wird zuerst ein Platzhalter; sobald die
    Datei da ist, wird er ersetzt. */
-function berichtNachladen(id) {
+function berichtNachladen(p) {
+  /* Nimmt das ganze Vorhaben, nicht nur seine Nummer: Die Ebenen
+     verlinken auf die PDF dieses Vorhabens, und die stehen in
+     p.dok. */
+  const id = p.id;
   const ziel = document.getElementById('b-' + id);
   if (!ziel) return;
   const fertig = b => {
     BERICHT.set(id, b);
-    ziel.outerHTML = berichtsebene({id: id, b: b}) ||
+    ziel.outerHTML = berichtsebene({...p, b: b}) ||
       `<div class="abschnitt bericht"><p class="woher">Zu diesem
         Vorhaben liegt keine Auswertung der Berichte vor.</p></div>`;
   };
@@ -5079,13 +5124,14 @@ const KAPITELTITEL = {
   verwendung: 'Verwendung der Ergebnisse nach Ende der Förderung'
 };
 
-function kapitelblock(b) {
+function kapitelblock(b, p) {
   const k = b.kapitel || {};
   const namen = Object.keys(KAPITELTITEL).filter(n => k[n] && k[n].text);
   if (!namen.length) return '';
   const zeichen = namen.reduce((s, n) => s + k[n].text.length, 0);
+  const u = dokUrl(p || {}, 'Ergebnisbericht');
   return `<h3 class="ebene">2 &middot; Der Ergebnisbericht des
-    Vorhabens</h3>
+    Vorhabens${quellKnopf(u, 'Bericht')}</h3>
   <details class="abschnitt kapitel">
     <summary><b>Der Ergebnisbericht im Wortlaut</b> &ndash;
       ${namen.length} Kapitel, ${(zeichen / 1000).toFixed(0)}.000 Zeichen.
@@ -5107,15 +5153,16 @@ function kapitelblock(b) {
    anders - sie folgen dem Evaluationsdesign, nicht einer Vorlage.
    Darum stehen hier die Titel, die der Evaluator selbst vergeben
    hat. */
-function evalblock(b) {
+function evalblock(b, p) {
   const k = b.evalkapitel || {};
   const namen = Object.keys(k)
     .filter(n => k[n] && k[n].text)
     .sort((a, c) => (k[a].kapitel || 0) - (k[c].kapitel || 0));
   if (!namen.length) return '';
   const zeichen = namen.reduce((s, n) => s + k[n].text.length, 0);
+  const u = dokUrl(p || {}, 'Evaluationsbericht');
   return `<h3 class="ebene">3 &middot; Der Evaluationsbericht des
-    unabhängigen Evaluators</h3>
+    unabhängigen Evaluators${quellKnopf(u, 'Bericht')}</h3>
   <details class="abschnitt kapitel eval">
     <summary><b>Der Evaluationsbericht im Wortlaut</b> &ndash;
       ${namen.length} Kapitel, ${(zeichen / 1000).toFixed(0)}.000 Zeichen.
@@ -5124,7 +5171,8 @@ function evalblock(b) {
       übernommen, ohne Anhang und Literatur.</p>
     ${namen.map(n => `<div class="kap">
       <h5>${k[n].kapitel ? k[n].kapitel + '. ' : ''}${esc(k[n].titel || '')}
-        <span class="wie">S. ${k[n].von}–${k[n].bis}</span></h5>
+        <span class="wie">${seiteLink(u, k[n].von,
+          'S. ' + k[n].von + '–' + k[n].bis)}</span></h5>
       <div class="kaptext">${esc(k[n].text).replace(/\n\n+/g, '</p><p>')
         .replace(/^/, '<p>').replace(/$/, '</p>')}</div>
     </div>`).join('')}
@@ -5135,8 +5183,8 @@ function berichtsebene(p) {
   const b = p.b;
   if (!b) return '';
   const t = [];
-  t.push(kapitelblock(b));
-  t.push(evalblock(b));
+  t.push(kapitelblock(b, p));
+  t.push(evalblock(b, p));
   /* Alles ab hier liest BEIDE Berichte zusammen - es gehoert unter
      keine der drei Quellen, sondern hinter sie. Ohne Nummer: Die
      Nummern stehen fuer Quellen, und das hier ist keine. */
@@ -5202,8 +5250,9 @@ function dossierHtml(p) {
      Namen und Datum: Wer das liest, soll sehen, dass hier ein Mensch
      spricht und nicht unsere Auswertung. */
   teile.push(bereichblock(p));
+  const uBeschluss = dokUrl(p, 'Beschlusstext');
   teile.push(`<h3 class="ebene">1 &middot; Der Beschluss des
-    Innovationsausschusses</h3>`);
+    Innovationsausschusses${quellKnopf(uBeschluss, 'Beschluss')}</h3>`);
   if (p.bd) {
     const w = p.bis ? (() => {
       const e = /^(\d{4})-(\d{2})$/.exec(p.bis);
@@ -5217,8 +5266,9 @@ function dossierHtml(p) {
   if (x.warum) teile.push(`<div class="abschnitt"><h4>Warum es so ausging</h4>
     <div>${esc(x.warum)}</div>
     ${x.zitat && x.zitat.text ? `<blockquote>„${esc(x.zitat.text)}“
-      <span class="seite">Beschlusstext${x.zitat.seite
-        ? ', S. ' + x.zitat.seite : ''}</span></blockquote>` : ''}</div>`);
+      <span class="seite">${seiteLink(uBeschluss, x.zitat.seite,
+        'Beschlusstext' + (x.zitat.seite ? ', S. ' + esc(x.zitat.seite)
+         : ''))}</span></blockquote>` : ''}</div>`);
 /* Jede Stufe in einem Satz Alltagssprache. Die Marke nennt den
    Fall, der Satz sagt, was das für den Leser bedeutet - "primärer
    Endpunkt" und "Wirksamkeitsnachweis" sind sonst Hürden. */
@@ -5245,13 +5295,15 @@ const ERGKLAR = {
     <h4>Hindernisse laut Beschluss</h4><ul class="punkte">${x.minus.map(h =>
       `<li><b>${esc(h.kategorie)}:</b> ${esc(h.hindernis)}${h.zitat
         ? `<blockquote>„${esc(h.zitat)}“<span class="seite">${
-          h.seite ? 'S. ' + h.seite : ''}</span></blockquote>` : ''}</li>`
+          h.seite ? seiteLink(uBeschluss, h.seite, 'S. ' + esc(h.seite))
+          : ''}</span></blockquote>` : ''}</li>`
       ).join('')}</ul></div>`);
   if ((x.plus || []).length) teile.push(`<div class="abschnitt">
     <h4>Was der Beschluss positiv vermerkt</h4><ul class="punkte">${x.plus.map(f =>
       `<li>${esc(f.faktor)}${
         f.zitat ? `<blockquote>„${esc(f.zitat)}“
-        <span class="seite">${f.seite ? 'S. ' + f.seite : ''}</span>
+        <span class="seite">${f.seite
+          ? seiteLink(uBeschluss, f.seite, 'S. ' + esc(f.seite)) : ''}</span>
         </blockquote>` : ''}</li>`).join('')}</ul></div>`);
   /* Ab hier die Berichts-Ebene. Sie steht UNTER dem Beschluss, weil
      der Beschluss die Entscheidung ist; der Bericht ist, worauf sie
@@ -5263,7 +5315,7 @@ const ERGKLAR = {
      hat. setTimeout(0) wartet genau darauf. So braucht keine der
      Tabellen etwas davon zu wissen - und eine dritte, die spaeter
      dazukommt, bekommt es geschenkt. */
-  if (p.hat_b) setTimeout(() => berichtNachladen(p.id), 0);
+  if (p.hat_b) setTimeout(() => berichtNachladen(p), 0);
   teile.push(p.hat_b
     ? `<div id="b-${p.id}" class="abschnitt bericht"><p class="woher">
         Die Berichte werden geladen …</p></div>`
