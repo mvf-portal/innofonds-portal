@@ -54,6 +54,25 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .nein:hover{color:#a3261d;border-bottom-color:#a3261d}
 .p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
 .p.bestritten .nein{color:#a3261d}
+.beschlusstext{margin:0 0 30px}
+.volltext{font-size:14.5px;line-height:1.7;background:var(--weich);
+  padding:14px 16px;border-radius:7px;max-height:30em;overflow-y:auto;
+  border:1px solid var(--linie)}
+.volltext p{margin:0 0 11px}
+.seitenmarke{font-size:12px;color:var(--gedaempft);text-align:right;
+  border-top:1px dotted var(--linie);padding-top:7px;margin-top:14px}
+.p-tabelle{margin:0 0 20px}
+table.ep{width:100%;border-collapse:collapse;font-size:14px;
+  margin:8px 0 0}
+table.ep th{text-align:left;font-size:12.5px;color:var(--gedaempft);
+  font-weight:600;border-bottom:1px solid var(--linie);padding:0 8px 5px 0}
+table.ep td{padding:7px 8px 7px 0;border-bottom:1px solid #eef0f3;
+  vertical-align:top}
+table.ep tr.bestritten td{background:#fff7f6}
+td.fam{color:var(--gedaempft);white-space:nowrap}
+td.erg{color:var(--gedaempft)}
+td.tat{text-align:right;white-space:nowrap}
+tr.korrzeile td{border-bottom:0;padding-top:0}
 .neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
   padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
@@ -104,6 +123,7 @@ richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert hat</b> &ndash; und worauf Ihr Vorhaben hinausläuft.</p>
 </div>
+
 
 <h2>Die Angaben im Einzelnen</h2>
 
@@ -383,14 +403,31 @@ const MAIL = "info@m-vf.de";
    sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
    Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
    zu beheben, und das wirft alles Eingetippte weg. */
+/* Wo die Korrekturfelder eines Postens liegen. In einem Kasten
+   stehen sie darin; bei einer Tabellenzeile in der Zeile darunter,
+   weil ein <tr> keine <div> aufnehmen kann. Beide Funktionen fragen
+   hier - sonst zeigt die eine, was die andere nicht liest. */
+function korrBereich(sec) {
+  const drin = sec.querySelector('.korr');
+  if (drin) return drin;
+  const naechste = sec.nextElementSibling;
+  return naechste && naechste.classList.contains('korrzeile')
+    ? naechste.querySelector('.korr') : null;
+}
+
 function widersprechen(b) {
   const sec = b.closest('.p');
   const an = b.dataset.an !== '1';
   b.dataset.an = an ? '1' : '';
   const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
   if (r) r.checked = true;
-  const korr = sec.querySelector('.korr');
-  if (korr) korr.hidden = !an;
+  const korr = korrBereich(sec);
+  if (korr) {
+    korr.hidden = !an;
+    /* Die Tragzeile der Tabelle mit ein- und ausblenden. */
+    const zeile = korr.closest('.korrzeile');
+    if (zeile) zeile.hidden = !an;
+  }
   sec.classList.toggle('bestritten', an);
   b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
   if (an) {
@@ -422,8 +459,10 @@ function sammeln() {
   document.querySelectorAll('.p[data-stelle]').forEach(sec => {
     const gewaehlt = sec.querySelector('input[type=radio]:checked');
     if (!gewaehlt || gewaehlt.value !== 'nein') return;
+    const bereich = korrBereich(sec) || sec;
     const holen = f => {
-      const el = sec.querySelector(`[data-feld="${f}"]`);
+      const el = bereich.querySelector(`[data-feld="${f}"]`)
+        || sec.querySelector(`[data-feld="${f}"]`);
       return el ? el.value.trim() : '';
     };
     const st = sec.dataset.stelle;
