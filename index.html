@@ -383,6 +383,7 @@ details.weitere>summary{cursor:pointer;font-size:13px;
 /* Eine neu gefasste Aussage. Sie steht da wie jede andere; darunter
    klein, was vorher dastand. Wer heute etwas anderes liest als
    gestern, muss erfahren, dass und warum. */
+details.kapitel.eval{background:#f7f9fb;border-color:#d6dee6}
 details.kapitel{background:var(--weich);border:1px solid var(--linie);
   border-radius:8px;padding:12px 15px;margin:0 0 16px}
 details.kapitel summary{cursor:pointer;font-size:14.5px;line-height:1.5}
@@ -4998,11 +4999,38 @@ function kapitelblock(b) {
   </details>`;
 }
 
+/* Der Evaluationsbericht. Seine Kapitel heissen bei jedem Vorhaben
+   anders - sie folgen dem Evaluationsdesign, nicht einer Vorlage.
+   Darum stehen hier die Titel, die der Evaluator selbst vergeben
+   hat. */
+function evalblock(b) {
+  const k = b.evalkapitel || {};
+  const namen = Object.keys(k)
+    .filter(n => k[n] && k[n].text)
+    .sort((a, c) => (k[a].kapitel || 0) - (k[c].kapitel || 0));
+  if (!namen.length) return '';
+  const zeichen = namen.reduce((s, n) => s + k[n].text.length, 0);
+  return `<details class="abschnitt kapitel eval">
+    <summary><b>Der Evaluationsbericht im Wortlaut</b> &ndash;
+      ${namen.length} Kapitel, ${(zeichen / 1000).toFixed(0)}.000 Zeichen.
+      Aufklappen, um die Quelle selbst zu lesen.</summary>
+    <p class="woher">Vom unabhängigen Evaluator, unverändert
+      übernommen, ohne Anhang und Literatur.</p>
+    ${namen.map(n => `<div class="kap">
+      <h5>${k[n].kapitel ? k[n].kapitel + '. ' : ''}${esc(k[n].titel || '')}
+        <span class="wie">S. ${k[n].von}–${k[n].bis}</span></h5>
+      <div class="kaptext">${esc(k[n].text).replace(/\n\n+/g, '</p><p>')
+        .replace(/^/, '<p>').replace(/$/, '</p>')}</div>
+    </div>`).join('')}
+  </details>`;
+}
+
 function berichtsebene(p) {
   const b = p.b;
   if (!b) return '';
   const t = [];
   t.push(kapitelblock(b));
+  t.push(evalblock(b));
   if (b.kurz) t.push(`<div class="abschnitt bericht">
     <h4>Was die Berichte hergeben</h4>
     <p class="woher">Aus Ergebnis- und Evaluationsbericht, ohne die
