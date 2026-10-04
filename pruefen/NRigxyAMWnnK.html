@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF16009</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>27 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 62 Aussagen. Die übrigen
+35 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss spricht für das Projekt OSA-PSY auf Basis der Ergebnisse keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Im Projekt wurden Prüfparameter für Risikogruppen definiert und ein algorithmenbasiertes, IT-gestütztes Verordnungsunterstützungssystem entwickelt, das den zehn beteiligten Kliniken in ihren Krankenhausinformationssystemen zur Verfügung gestellt wurde. Der Ausschuss hält die Ergebnisse wegen der Limitationen der Studie nur für eingeschränkt verwertbar; sie können nicht unmittelbar für die Versorgungsgestaltung herangezogen werden. Die vier primären Endpunkte bezogen sich ausschließlich auf inadäquate Verordnungen als Surrogat für die Arzneimitteltherapiesicherheit. Patientenrelevante Endpunkte zu tatsächlich aufgetretenen unerwünschten Ereignissen wurden nicht erfasst. Zudem ließ sich keine statistisch signifikante Veränderung des ärztlichen Verordnungsverhaltens feststellen, und die Gründe dafür wurden nicht untersucht. Der Ausschuss sieht weiteren Forschungsbedarf und verweist auf bereits geförderte Projekte sowie auf eine neue Förderbekanntmachung.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">nicht angegeben</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Nach Auffassung des Ausschusses können die Ergebnisse nicht unmittelbar für die Versorgungsgestaltung herangezogen werden. Er sieht weiteren Forschungsbedarf zum Potenzial algorithmenbasierter, IT-gestützter Verordnungssysteme für die AMTS.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Die primären Endpunkte waren ausschließlich Surrogatparameter (inadäquate Verordnungen); patientenrelevante Endpunkte zu unerwünschten Ereignissen wurden nicht erfasst.</p>
+  
   <blockquote>„Die Wirksamkeit der Intervention wurde primär anhand von vier Endpunkten untersucht, die sich ausschließlich auf inadäquate Verordnungen als Surrogat für die Arzneimitteltherapiesicherheit bezogen. Patientenrelevante Endpunkte zu tatsächlich aufgetretenen unerwünschten Ereignissen wurden nicht erfasst." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,14 +176,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Keine statistisch signifikante Veränderung des ärztlichen Verordnungsverhaltens durch das Unterstützungssystem</p>
+  
   <blockquote>„Darüber hinaus konnte insgesamt keine statistisch signifikante Veränderung des ärztlichen Verordnungsverhaltens durch die Anwendung des elektronischen Unterstützungssystems verzeichnet werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -218,50 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.2">
   <h3>Hindernis laut Beschluss: Auswertung und Statistik <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Die Gründe für den ausgebliebenen Effekt wurden im Projekt nicht untersucht.</p>
+  
   <blockquote>„Darüber hinaus konnte insgesamt keine statistisch signifikante Veränderung des ärztlichen Verordnungsverhaltens durch die Anwendung des elektronischen Unterstützungssystems verzeichnet werden. Die Gründe hierfür wurden im Rahmen des Projekts nicht weiter erforscht." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Entwicklung eines algorithmenbasierten, IT-gestützten Verordnungsunterstützungssystems, das in den KIS von zehn Kliniken bereitgestellt wurde</p>
-  <blockquote>„Es wurde ein algorithmen basiertes, IT -gestütztes Verordnungsunterstützungssystem entwickelt und in den bestehenden Krankenhausinformationssystemen (KIS) der zehn beteiligten Kliniken zur Verfügung gestellt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Technische Beschreibung und Liste der Prüfkriterien zur weiteren Verwendung bereitgestellt</p>
-  <blockquote>„Eine technische Beschreibung einschließlich einer beispielhaften Datenbankabfrage des entwickelten elektronischen Unterstützungssystems zur Anbindung an das NEXUS -KIS sowie die Liste der dem Programmalgorithmus zugrundeliegenden Prüfkriterien inkl. Operationalisierungen wurde zur weiteren Verwendung zur Verfügung gestellt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -273,14 +214,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde <span class="ampel gelb">hier sind wir unsicher</span></h3>
+  <h3>Was der Beschluss positiv vermerkt <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Hoher Anteil potentiell inadäquater Arzneimitteltherapien in den Klinikdaten aufgezeigt</p>
+  
   <blockquote>„Im Projekt wurde innerhalb der analysierten Klinikdaten ein hoher Anteil an potentiell inadäquaten Arzneimitteltherapien aufgezeigt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">CYP-450-Interaktion (Anteil der Behandlungsfälle mit mindestens einer problematischen Verordnung/Kombination durch Verstoffwechselung in der Enzymgruppe Cytochrome P450) – Vergleich Studienphase 1 vs. 2</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -313,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">QT-Kombi. (gleichzeitige Gabe von mehr als einem QT-Zeit verlängernden Arzneimittel) – Vergleich Studienphase 1 vs. 2</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -332,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Antichol.-Kombi. (gleichzeitige Gabe von mehr als einem Anticholinergikum) – Vergleich Studienphase 1 vs. 2</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Priscus (Gabe von potentiell inadäquaten Arzneimitteln für ältere Patienten an Behandlungsfälle &gt; 64 Jahre) – Vergleich Studienphase 1 vs. 2</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Weitere Zielgrößen der Arzneimittelsicherheit (Verordnungen an Risikofälle, Off-label-Verordnungen, Durchführung vorgeschriebener Laborkontrollen bei Agomelatin, Clozapin, Lithium, Valproat) – Vergleich Studienphase 1 vs. 2</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Therapeutische Besserung: Veränderung des GAF-Wertes zwischen Aufnahme und Entlassung in Abhängigkeit vom Vorliegen mindestens einer problematischen Verordnung (Antichol. Kombi., CYP-450-Interakt., QT-Kombi., Priscus &gt; 64 Jahre)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Risiko mindestens einer problematischen Verordnung bei Polypharmazie (multivariat kontrolliertes Modell)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Risiko der Gabe von potentiell inadäquater Medikation (multivariat kontrolliertes Modell)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Vorhersagegüte (maschinelles Lernen) für das Risiko problematischer Verordnungen bei Aufnahme</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.10">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Vorhersagegüte (maschinelles Lernen) für die Wahrscheinlichkeit der Polypharmazie bei Aufnahme</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.10" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.11">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Wahrscheinlichkeit der gleichzeitigen Verordnung mehrerer QT-Zeit verlängernder Arzneimittel im Studienzentrum Rheingau (Diagnosegruppe F0) im Vergleich zu den anderen Studienzentren</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.11" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.12">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Polypharmazie (mindestens fünf Arzneimittel je Behandlungstag während des Aufenthaltes)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.12" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -523,11 +464,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben wertete Routinedaten zu Arzneimittelverordnungen in 10 psychiatrischen Kliniken des Konzerns vitos in zwei Einjahresperioden aus (erste Phase n=29.563, zweite Phase n=29.656 Behandlungsfälle). Geprüft wurde, ob ein in das Krankenhausinformationssystem integriertes IT-Tool zusammen mit Schulungen und der Präsentation der Befunde aus der ersten Periode das ärztliche Verordnungsverhalten bei problematischen Verordnungen ändert. Hauptzielgrößen waren CYP-450-Interaktionen, anticholinerge Kombinationen, QT-verlängernde Kombinationen und PRISCUS-Medikation ab 65 Jahren. Die zentrale Hypothese wurde weder für die Prüfkriterien noch für sekundäre Kenngrößen bestätigt; zwischen den Phasen zeigten sich nur sehr geringe Veränderungen. Für weitere Zielgrößen der Arzneimittelsicherheit fanden sich keine statistisch signifikanten Unterschiede; diese waren allerdings nicht geschult worden. Beschreibend fand der Bericht hohe Prävalenzen problematischer Verordnungen, etwa 83,2 % QT-verlängernde Verordnungen und 33,9 % PRISCUS-Verordnungen bei Älteren. Nach Modellrechnung ließen sich durch den Ersatz von sechs Wirkstoffen problematische Verordnungen um mehr als 85 % (Zusammenfassung) bzw. mehr als 74 % (erste Periode) reduzieren. Die Aussagekraft begrenzen das nicht randomisierte Vorher-Nachher-Design, die nicht messbare Nutzung des Tools wegen Anonymisierung und das Fehlen patientenrelevanter Endpunkte wie unerwünschter Ereignisse.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die zentrale Hypothese wurde weder für die ausgewählten Prüfkriterien noch für sekundäre Kenngrößen bestätigt. Sie lautete, dass das IT-gestützte Instrument zusammen mit der Präsentation der Befunde in den 10 Kliniken das ärztliche Verordnungsverhalten signifikant ändert.</p>
+  
   <blockquote>„„Diese Hypothese konnte weder in Bezug auf die ausgewählten Prüfkriterien, noch in Bezug auf sekundäre Kenngrößen bestätigt werden.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zwischen erster und zweiter Studienphase änderte sich der Anteil der Behandlungsfälle mit mindestens einer problematischen Verordnung in den vier Verschreibungsfeldern laut Bericht nur sehr gering.</p>
+  
   <blockquote>„„Insgesamt wurden nur sehr geringe Veränderungen in den jeweiligen Verschreibungsfeldern gezeigt.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,31 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das KIS-integrierte IT-Tool und die gezielten Schulungen hatten laut Zusammenfassung im Studienverlauf nur geringe bzw. lokale Effekte auf das Verordnungsverhalten.</p>
+  
   <blockquote>„„Das Krankenhausinformationssystem-integrierte, neu entwickelte IT -gestützte Tool und gezielte Schulungen hatten im Studienverlauf allerdings bisher nur geringe bzw. lokale Effekte auf das Verordnungsverhalten.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.4">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Der Bericht identifizierte vier wesentliche Problembereiche: Substanzen, die sich gegenseitig im Abbau beeinflussen, Kombinationen mit anticholinerger bzw. QT-verlängernder Wirkung und potentiell inadäquate Medikation ab 65 Jahren (Priscus-Liste).</p>
-  <blockquote>„„Insgesamt wurden vier wesentliche Problembereiche identifiziert. Problematisch ist die Verordnung von Substanzen, die sich gegenseitig in ihrem Abbau beeinflussen, die Kombination von Präparaten mit anticholinerger bzw. die QT-Zeit verlängernder Wirkung und die Gabe potentiell inadäquater Medikation“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">ITAT-Integration, Schulungsunterlagen und Präsentation in Beiräten gingen nicht mit einer statistisch nachweisbaren Änderung des Verordnungsverhaltens einher.</p>
+  
   <blockquote>„„Offensichtlich haben alle diese Maßnahmen zu keiner statistisch nachweisbaren Änderung des Verordnungsverhaltens geführt.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Design war nicht randomisiert, sondern ein Vergleich zweier Einjahreszeiträume vor und nach Einführung des Instruments; der Bericht hält die interne Validität durch den multizentrischen Ansatz dennoch für vergleichsweise gut gesichert.</p>
+  
   <blockquote>„„Das Studiendesign sah keine Randomisierung vor. Stattdessen wurden zwei Einjahres -Zeiträume vor und nach Einf ührung des IT-gestützten Instruments hinsichtlich der Häufigkeit von Leitlinienabweichungen verglichen.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,31 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen Datenschutzauflagen und der Beschränkung auf retrospektive Analysen konnte die tatsächliche Nutzung des ITAT weder erfasst noch einzelnen Behandlern zugeordnet werden.</p>
+  
   <blockquote>„„war es weder möglich, die tatsächliche Nutzung des ITAT zu erfassen und zu quantifizieren, noch Rückschlüsse auf die einzel nen Behandler zu ziehen“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Patientenrelevante Endpunkte wie unerwünschte Ereignisse wurden nicht erfasst, da nur Routinedaten verfügbar waren.</p>
-  <blockquote>„„mit Arzneimittelinteraktionen verbundene patientenrelevante Endpunkte wie z.B. unerwünschte Ereignisse nicht erfasst werden konnten, da die Studie sich allein auf vorhandene Routinedaten stützen musste.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -694,11 +597,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zum Austausch von sechs Wirkstoffen nennt die Zusammenfassung (S. 2) eine mögliche Reduktion der problematischen Verordnungen um mehr als 85 %, der Abschnitt zur ersten Studienperiode (S. 11) mehr als 74 % der unerwünschten Kombinationen; der Bericht erläutert die Differenz nicht.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -713,11 +616,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Die Zusammenfassung (S. 2) spricht von &#x27;nur geringe[n] bzw. lokale[n] Effekte[n]&#x27; von IT-Tool und Schulungen auf das Verordnungsverhalten, die Diskussion (S. 31) davon, dass alle Maßnahmen &#x27;zu keiner statistisch nachweisbaren Änderung des Verordnungsverhaltens geführt&#x27; haben.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -727,16 +630,130 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>29 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>35 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss spricht für das Projekt OSA-PSY auf Basis der Ergebnisse keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Nach Auffassung des Ausschusses können die Ergebnisse nicht unmittelbar für die Versorgungsgestaltung herangezogen werden. Er sieht weiteren Forschungsbedarf zum Potenzial algorithmenbasierter, IT-gestützter Verordnungssysteme für die AMTS.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Entwicklung eines algorithmenbasierten, IT-gestützten Verordnungsunterstützungssystems, das in den KIS von zehn Kliniken bereitgestellt wurde</p>
+  
+  <blockquote>„Es wurde ein algorithmen basiertes, IT -gestütztes Verordnungsunterstützungssystem entwickelt und in den bestehenden Krankenhausinformationssystemen (KIS) der zehn beteiligten Kliniken zur Verfügung gestellt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Technische Beschreibung und Liste der Prüfkriterien zur weiteren Verwendung bereitgestellt</p>
+  
+  <blockquote>„Eine technische Beschreibung einschließlich einer beispielhaften Datenbankabfrage des entwickelten elektronischen Unterstützungssystems zur Anbindung an das NEXUS -KIS sowie die Liste der dem Programmalgorithmus zugrundeliegenden Prüfkriterien inkl. Operationalisierungen wurde zur weiteren Verwendung zur Verfügung gestellt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.4">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Der Bericht identifizierte vier wesentliche Problembereiche: Substanzen, die sich gegenseitig im Abbau beeinflussen, Kombinationen mit anticholinerger bzw. QT-verlängernder Wirkung und potentiell inadäquate Medikation ab 65 Jahren (Priscus-Liste).</p>
+  
+  <blockquote>„„Insgesamt wurden vier wesentliche Problembereiche identifiziert. Problematisch ist die Verordnung von Substanzen, die sich gegenseitig in ihrem Abbau beeinflussen, die Kombination von Präparaten mit anticholinerger bzw. die QT-Zeit verlängernder Wirkung und die Gabe potentiell inadäquater Medikation“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Patientenrelevante Endpunkte wie unerwünschte Ereignisse wurden nicht erfasst, da nur Routinedaten verfügbar waren.</p>
+  
+  <blockquote>„„mit Arzneimittelinteraktionen verbundene patientenrelevante Endpunkte wie z.B. unerwünschte Ereignisse nicht erfasst werden konnten, da die Studie sich allein auf vorhandene Routinedaten stützen musste.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei weiteren Zielgrößen der Arzneimittelsicherheit (Risikofälle, Off-Label-Verordnungen, vorgeschriebene Laboruntersuchungen bei Neuansetzung von Agomelatin, Clozapin, Lithium, Valproat) fanden sich keine statistisch signifikanten Unterschiede zwischen den Studienphasen; diese Fragestellungen waren allerdings nicht geschult worden.</p>
+  
   <blockquote>„„Es konnten auch hier keine statistisch signifikanten Unterschiede in den hier untersuchten Prüfgrößen der Arzneimittelsicherheit zwischen den beiden Studienphasen gefunden werden, wobei diese Fragestellungen allerdings auch nicht geschult worden waren.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +767,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Zusammenfassung ließen sich die problematischen Verordnungen durch Ersatz von sechs Wirkstoffen durch Alternativen um mehr als 85 % reduzieren (Modellrechnung, keine durchgeführte Intervention).</p>
+  
   <blockquote>„„Durch Ersatz von nur 6 Wirkstoffen durch medikamentöse Alternativen ließe sich eine Reduktion der problematischen Verordnungen um mehr als 85% erreichen.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +786,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Auswertung der ersten Studienperiode (01.10.2017–30.09.2018) könnten durch Austausch von sechs Wirkstoffen mehr als 74 % der unerwünschten Kombinationen verhindert werden.</p>
+  
   <blockquote>„„Es konnte nachgewiesen werden, dass bereits durch den Austausch von sechs Medikamentenwirkstoffen mehr als 74 % der unerwünschten Kombinationen bzw. der daraus resultierenden Risiken verhindert werden könnten.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +805,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">14,4 % der psychiatrischen Patienten erhielten CYP-Inhibitoren oder -Induktoren; bei 43,6 % dieser Patienten bestand das Risiko einer laut Bericht klinisch relevanten pharmakokinetischen Interaktion.</p>
+  
   <blockquote>„„die Prävalenzrate an CYP -Inhibitor oder Induktor Verschreibungen bei psychiatrischen Patienten hoch ist (14,4%). Bei 43,6% dieser Patienten, bei denen CYP -Inhibitoren oder - Induktoren verschrieben wurden, bestand das Risiko einer klinisch relevanten pharmakokinetischen Arzneimittelinteraktion.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Patienten mit Interaktionsrisiko nahmen laut Bericht signifikant mehr Arzneimittel ein.</p>
+  
   <blockquote>„„nahmen Patienten mit dem Risiko einer Arzneimittelinteraktion signifikant mehr Arzneimittel ein.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Anticholinerge Verschreibungen lagen bei stationären psychiatrischen Patienten bei 35,4 %, anticholinerge Risikokombinationen bei 6,3 %; der Ersatz von trizyklischen Antidepressiva und Antihistaminika der 1. Generation würde den Anteil anticholinerger Medikation rechnerisch um 59,3 % senken.</p>
+  
   <blockquote>„„anticholinergen Arzneistoff -Verschreibungen bei stationären psychiatrischen Patienten hoch ist (35,4%), wurde bestätigt. Darüber hinaus lag die Prävalenzrate der anticholinergen Risikokombinationen bei 6,3%.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +862,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">83,2 % der psychiatrischen Patienten erhielten QT-Zeit-verlängernde Arzneistoffe; QT-verlängernde Risikokombinationen lagen bei 49,9 %.</p>
+  
   <blockquote>„„die Prävalenzrate an QT -Zeit verlängernden Arzneistoff Verschreibungen bei psychiatrischen Patienten hoch ist (83,2%), konnte in der Studie bestätigt werden. Die Prävalenzrate an QT-Zeit verlängernden Risikokombinationen lag bei 49,9%.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +881,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">33,9 % der psychiatrischen Alterspatienten erhielten PRISCUS-PIM; der Ersatz u.a. von trizyklischen Antidepressiva, Antihistaminika der 1. Generation, Benzodiazepinen, Z-Substanzen, Clonidin und Haloperidol &gt; 2 mg würde den PRISCUS-PIM-Anteil rechnerisch um 69,9 % senken.</p>
+  
   <blockquote>„„Dabei wurde eine hohe Prävalenzrate (33,9%) an PRISCUS -PIM Verschreibungen festgestellt.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +900,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Etwa ein Drittel der Patienten erhielt mindestens fünf Arzneimittel je Behandlungstag; in multivariat kontrollierten Modellen war das Risiko mindestens einer problematischen Verordnung bei Polypharmazie erhöht (OR 5,17; 95%-KI 4,90–5,44), ebenso bei Gabe potentiell inadäquater Medikation (OR 3,10; KI im Bericht durch Texteinschub verfälscht, lesbar 2,57–3,63).</p>
+  
   <blockquote>„„Das Risiko mindestens einer problematischen Verordnung war in multivariat kontrollierten Modellen bei Polypharmazie etwa fünffach (Odds Ratio 5,17; 95% KI 4,90 -5,44) bzw. für die Gabe von potentiell inadäquater Medikation dreifach erhöht (Odds Ratio 3,10;“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +919,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mit maschinellen Lernverfahren ließ sich bei Aufnahme das Risiko problematischer Verordnungen (ROC 0,72; 95%-KI 0,72–0,73) und die Wahrscheinlichkeit von Polypharmazie (0,83; 95%-KI 0,82–0,83) vorhersagen; der Bericht spricht von relativ hoher Vorhersagegüte.</p>
+  
   <blockquote>„„Durch maschinelle Lernverfahren war es aber möglich, bei Aufnahme der Patienten das Risiko der problematischen Verordnungen (ROC 0,72, 95% KI 0,72– 0,73) und der Wahrscheinlichkeit der Polypharmazie (0,83 , 95% KI 0,82 –0,83) mit einer relativ hohen Vorhersagegüte zu prädizieren.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +938,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Risikopatienten (Leber-, Nierenfunktionsstörung, Demenz) erhielten die definierten Wirkstoffe laut Bericht deutlich seltener als andere; relativ viele erhielten dennoch Lithiumpräparate bzw. trizyklische Antidepressiva.</p>
+  
   <blockquote>„„Zwar ist der Anteil der Verordnungen bei Risikopatienten deutlich geringer. Allerdings erhalten relativ viele Risikopatienten insbesondere Lithiumpräparate (CAVE: enge therapeutische Breite) bzw. trizyklische Antidepressiv a.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +957,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Prävalenz von Off-Label-Verschreibungen in der stationären Psychiatrie war laut Bericht hoch, insbesondere bei Antikonvulsiva zur Stimmungsstabilisierung.</p>
+  
   <blockquote>„„Die Prävalenzrate der off-label-Verschreibungen innerhalb der stationären psychiatrischen Behandlungen war hoch, insbesondere bei den Antikonvulsiva“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +976,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Unter den in erhöhter Dosierung verordneten Wirkstoffen waren Olanzapin und Duloxetin.</p>
+  
   <blockquote>„„Die in erhöhter Dosierung verordneten Wirkstoffe Olanzapin bzw. Duloxetin sind CYP1A2-Substrate.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +995,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Vorgeschriebene Kontrolluntersuchungen vor Eindosierung wurden laut Bericht bei allen vier Beispielwirkstoffen unzureichend durchgeführt, insbesondere bei Valproat.</p>
+  
   <blockquote>„„Insbesondere bei dem Mood- Stabilizer Valproat wurden die Kontrolluntersuchungen unzureichend durchgeführt, jedoch ist auch bei den anderen Arzneistoffen die Kontrolluntersuchung nur unzureichend durchgeführt worden.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1014,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei allen vier Substanzen gab es Patienten ohne oder mit erst nach mehr als 3 Tagen erfolgter Kontrolle, bei Agomelatin, Clozapin und Lithium mit kleinem Anteil; bei Valproat wurden Kontrollen zur Pankreatitis-Erkennung (u.a. Lipase) in mehr als der Hälfte der Fälle zu keinem Zeitpunkt durchgeführt.</p>
+  
   <blockquote>„„wobei der Anteil bei Agomelatin, Clozapin bzw. Lithium klein wa r. Auffällig war jedoch, dass in der Fachinformation als zur Erkennung einer Pankreatitis indizierte Kontrolluntersuchungen (u.a. Lipase) im Fall des Phasenprophylaktikums Valproat bei mehr als der Hälfte der Fälle zu keinem Zeitpunkt durchgeführt wurden“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1033,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In beiden Studienphasen standen laut Bericht in Anzahl und Eigenschaften sehr ähnliche Behandlungsfälle zur Verfügung (n=29.563 bzw. n=29.656).</p>
+  
   <blockquote>„„Für den Vergleich standen in den beiden Studienphasen sowohl in Anzahl auch in den Eigenschaften sehr ähnliche Behandlungsfälle zur Verfügung.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1052,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Drop-out-Quote der an das IMBI übermittelten Datensätze wegen mangelhafter Daten lag unter 1 %.</p>
+  
   <blockquote>„„Im Ergebnis lag die aufgrund mangelhafter Datensätze resultierende Drop Out -Quote der an das IMBI übermittelten Datensätze unter 1 %.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1071,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine erste explorative Analyse der Qualitätsindikator-Daten ergab keine richtungsweisenden Unterschiede zwischen den Kliniken, mit Ausnahme der durch eine fest angestellte Pharmazeutin beratenen Klinik vitos Rheingau.</p>
+  
   <blockquote>„„Die Auswertung der Qualitätsindikator-Daten ergab in einer ersten explorativen Analyse keine richtungsweisenden Befunde in Bezug auf mögliche Unterschiede der zunächst untersuchten Parameter (Abschnitt 6.1) zwischen den verschiedenen beteiligten Kliniken“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1090,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Studienzentrum Rheingau war für die Diagnosegruppe F0 die Wahrscheinlichkeit einer gleichzeitigen Verordnung mehrerer QT-verlängernder Arzneimittel im Vergleich zu den anderen Zentren um etwa ein Viertel geringer (OR 0,74); ein Konfidenzintervall oder p-Wert ist im Zitat nicht angegeben.</p>
+  
   <blockquote>„„die Wahrscheinlichkeit des Vorliegens einer gleichzeitigen Verordnung mehrerer QT- Zeit verlängernden Arzneimittel im Studienzentrum Rheingau für die Diagnosegruppe F0 um etwa ein Viertel verringert war im Vergleich zu den anderen Studienzentren (Odds-Ratio = 0.74).“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1109,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Mehrebenenmodell erreichten teilstationäre Behandlungsfälle etwa 4,7 Punkte weniger Veränderung auf der GAF-Skala zwischen Aufnahme und Entlassung als vollstationäre.</p>
+  
   <blockquote>„„teilstationäre Behandlungsfälle insgesamt etwa -4,7 Punkte weniger Veränderung auf der GAF- Skala erreichten als vollstationäre.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1128,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Fälle mit mindestens einer problematischen Verordnung (Anticholinergika-Kombination, CYP-450-Interaktion, QT-Kombination oder Priscus bei &gt; 64 Jahren) wiesen keine schlechteren Behandlungsergebnisse gemessen an der GAF-Veränderung auf.</p>
+  
   <blockquote>„„nicht zu einer Verschlechterung der Behandlungsergebnisse gemessen an der Veränderung der GAF-Skala geführt hatte.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Krankenhauskonzern vitos beschloss die Fortführung des Projekts über das Förderende hinaus und erklärte es 2020 zum dauerhaften Konzern-Projekt.</p>
+  
   <blockquote>„„Seitens des Krankenhauskonzerns (vitos gGmbH Kassel) wurde die Fortführung des Projekts über den Förderzentrum hinaus beschloss en und im Jahr 2020 zum dauerhaften Konzern-Projekt erklärt.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen strikter Anonymisierung und halbjährlicher Ausleitung abgeschlossener Fälle war eine unmittelbare Kommunikation mit den Verordnern während laufender Behandlungen nicht möglich und nicht vorgesehen.</p>
+  
   <blockquote>„„war eine unmittelbare Kommunikation mit den Verordnern in den einzelnen Kliniken während der aktuellen Behandlung nicht möglich und nicht vorgesehen.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1185,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eine spezifische Fallzahlberechnung wurde nicht durchgeführt.</p>
+  
   <blockquote>„„Eine spezifische Fallzahlberechnung wurde nicht durchgeführt.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1204,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der Anonymisierung ließ sich nicht feststellen, in welchem Umfang Fälle der zweiten Phase Wiederaufnahmen bereits im ersten Studienjahr erfasster Patienten waren.</p>
+  
   <blockquote>„„Aufgrund der Anonymisierung der Datensätze war kein direkter Vergleich möglich, in welchem Umfang es sich in den vers chiedenen Kliniken um stationäre Wiederaufnahmen handelte“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1223,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die weiteren Fragestellungen zur Arzneimittelsicherheit (Risikofälle, Off-Label, Laborkontrollen) waren nicht Gegenstand der Schulungen.</p>
+  
   <blockquote>„„wobei diese Fragestellungen allerdings auch nicht geschult worden waren.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1242,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Bericht stellt zur Diskussion, ob Art und Umfang der Schulungen ausreichend waren.</p>
+  
   <blockquote>„„Man kann diskutieren, ob Art und Umfang der durchgeführten Schulungen ausreichend gewesen sind.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1261,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In der ersten Studienperiode wich die Fallzahl ab, weil die Klinik vitos Herborn das digitale Verordnungsmodul erst während der Periode flächendeckend einführte.</p>
+  
   <blockquote>„„in einer der teilnehmenden Kliniken (vitos Herborn) das digitale Arzneimittelverordnungsmodul erst währenddessen flächendeckend eingeführt wurde.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1280,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die systematische Auswertung weiterer Daten, u.a. zur Dosis- und Präparatewahl, war bei Erstellung des Abschlussberichts nicht abgeschlossen.</p>
+  
   <blockquote>„„Die systematische Auswertung dieser Daten ist nicht primärer Gegenstand der Förderung dieses Projekts und zum Zeitpunkt der Erstellung des Abschlussberichts noch nicht fertiggestellt.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1313,28 +1330,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 9, "akronym": "OSA-PSY", "kennung": "NRigxyAMWnnK", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt OSA-PSY auf Basis der Ergebnisse keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Im Projekt wurden Prüfparameter für Risikogruppen definiert und ein algorithmenbasiertes, IT-gestütztes Verordnungsunterstützungssystem entwickelt, das den zehn beteiligten Kliniken in ihren Krankenhausinformationssystemen zur Verfügung gestellt wurde. Der Ausschuss hält die Ergebnisse wegen der Limitationen der Studie nur für eingeschränkt verwertbar; sie können nicht unmittelbar für die Versorgungsgestaltung herangezogen werden. Die vier primären Endpunkte bezogen sich ausschließlich auf inadäquate Verordnungen als Surrogat für die Arzneimitteltherapiesicherheit. Patientenrelevante Endpunkte zu tatsächlich aufgetretenen unerwünschten Ereignissen wurden nicht erfasst. Zudem ließ sich keine statistisch signifikante Veränderung des ärztlichen Verordnungsverhaltens feststellen, und die Gründe dafür wurden nicht untersucht. Der Ausschuss sieht weiteren Forschungsbedarf und verweist auf bereits geförderte Projekte sowie auf eine neue Förderbekanntmachung."}, {"stelle": "studiendesign", "art": "text", "unser": "nicht angegeben"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Nach Auffassung des Ausschusses können die Ergebnisse nicht unmittelbar für die Versorgungsgestaltung herangezogen werden. Er sieht weiteren Forschungsbedarf zum Potenzial algorithmenbasierter, IT-gestützter Verordnungssysteme für die AMTS."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die primären Endpunkte waren ausschließlich Surrogatparameter (inadäquate Verordnungen); patientenrelevante Endpunkte zu unerwünschten Ereignissen wurden nicht erfasst."}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Keine statistisch signifikante Veränderung des ärztlichen Verordnungsverhaltens durch das Unterstützungssystem"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Die Gründe für den ausgebliebenen Effekt wurden im Projekt nicht untersucht."}, {"stelle": "befund.0", "art": "befund", "unser": "Entwicklung eines algorithmenbasierten, IT-gestützten Verordnungsunterstützungssystems, das in den KIS von zehn Kliniken bereitgestellt wurde"}, {"stelle": "befund.1", "art": "befund", "unser": "Technische Beschreibung und Liste der Prüfkriterien zur weiteren Verwendung bereitgestellt"}, {"stelle": "befund.2", "art": "befund", "unser": "Hoher Anteil potentiell inadäquater Arzneimitteltherapien in den Klinikdaten aufgezeigt"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "CYP-450-Interaktion (Anteil der Behandlungsfälle mit mindestens einer problematischen Verordnung/Kombination durch Verstoffwechselung in der Enzymgruppe Cytochrome P450) – Vergleich Studienphase 1 vs. 2"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "QT-Kombi. (gleichzeitige Gabe von mehr als einem QT-Zeit verlängernden Arzneimittel) – Vergleich Studienphase 1 vs. 2"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Antichol.-Kombi. (gleichzeitige Gabe von mehr als einem Anticholinergikum) – Vergleich Studienphase 1 vs. 2"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Priscus (Gabe von potentiell inadäquaten Arzneimitteln für ältere Patienten an Behandlungsfälle > 64 Jahre) – Vergleich Studienphase 1 vs. 2"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Weitere Zielgrößen der Arzneimittelsicherheit (Verordnungen an Risikofälle, Off-label-Verordnungen, Durchführung vorgeschriebener Laborkontrollen bei Agomelatin, Clozapin, Lithium, Valproat) – Vergleich Studienphase 1 vs. 2"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Therapeutische Besserung: Veränderung des GAF-Wertes zwischen Aufnahme und Entlassung in Abhängigkeit vom Vorliegen mindestens einer problematischen Verordnung (Antichol. Kombi., CYP-450-Interakt., QT-Kombi., Priscus > 64 Jahre)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Risiko mindestens einer problematischen Verordnung bei Polypharmazie (multivariat kontrolliertes Modell)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Risiko der Gabe von potentiell inadäquater Medikation (multivariat kontrolliertes Modell)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Vorhersagegüte (maschinelles Lernen) für das Risiko problematischer Verordnungen bei Aufnahme"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Vorhersagegüte (maschinelles Lernen) für die Wahrscheinlichkeit der Polypharmazie bei Aufnahme"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Wahrscheinlichkeit der gleichzeitigen Verordnung mehrerer QT-Zeit verlängernder Arzneimittel im Studienzentrum Rheingau (Diagnosegruppe F0) im Vergleich zu den anderen Studienzentren"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Polypharmazie (mindestens fünf Arzneimittel je Behandlungstag während des Aufenthaltes)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben wertete Routinedaten zu Arzneimittelverordnungen in 10 psychiatrischen Kliniken des Konzerns vitos in zwei Einjahresperioden aus (erste Phase n=29.563, zweite Phase n=29.656 Behandlungsfälle). Geprüft wurde, ob ein in das Krankenhausinformationssystem integriertes IT-Tool zusammen mit Schulungen und der Präsentation der Befunde aus der ersten Periode das ärztliche Verordnungsverhalten bei problematischen Verordnungen ändert. Hauptzielgrößen waren CYP-450-Interaktionen, anticholinerge Kombinationen, QT-verlängernde Kombinationen und PRISCUS-Medikation ab 65 Jahren. Die zentrale Hypothese wurde weder für die Prüfkriterien noch für sekundäre Kenngrößen bestätigt; zwischen den Phasen zeigten sich nur sehr geringe Veränderungen. Für weitere Zielgrößen der Arzneimittelsicherheit fanden sich keine statistisch signifikanten Unterschiede; diese waren allerdings nicht geschult worden. Beschreibend fand der Bericht hohe Prävalenzen problematischer Verordnungen, etwa 83,2 % QT-verlängernde Verordnungen und 33,9 % PRISCUS-Verordnungen bei Älteren. Nach Modellrechnung ließen sich durch den Ersatz von sechs Wirkstoffen problematische Verordnungen um mehr als 85 % (Zusammenfassung) bzw. mehr als 74 % (erste Periode) reduzieren. Die Aussagekraft begrenzen das nicht randomisierte Vorher-Nachher-Design, die nicht messbare Nutzung des Tools wegen Anonymisierung und das Fehlen patientenrelevanter Endpunkte wie unerwünschter Ereignisse."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die zentrale Hypothese wurde weder für die ausgewählten Prüfkriterien noch für sekundäre Kenngrößen bestätigt. Sie lautete, dass das IT-gestützte Instrument zusammen mit der Präsentation der Befunde in den 10 Kliniken das ärztliche Verordnungsverhalten signifikant ändert."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Zwischen erster und zweiter Studienphase änderte sich der Anteil der Behandlungsfälle mit mindestens einer problematischen Verordnung in den vier Verschreibungsfeldern laut Bericht nur sehr gering."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Das KIS-integrierte IT-Tool und die gezielten Schulungen hatten laut Zusammenfassung im Studienverlauf nur geringe bzw. lokale Effekte auf das Verordnungsverhalten."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Der Bericht identifizierte vier wesentliche Problembereiche: Substanzen, die sich gegenseitig im Abbau beeinflussen, Kombinationen mit anticholinerger bzw. QT-verlängernder Wirkung und potentiell inadäquate Medikation ab 65 Jahren (Priscus-Liste)."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "ITAT-Integration, Schulungsunterlagen und Präsentation in Beiräten gingen nicht mit einer statistisch nachweisbaren Änderung des Verordnungsverhaltens einher."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Das Design war nicht randomisiert, sondern ein Vergleich zweier Einjahreszeiträume vor und nach Einführung des Instruments; der Bericht hält die interne Validität durch den multizentrischen Ansatz dennoch für vergleichsweise gut gesichert."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Wegen Datenschutzauflagen und der Beschränkung auf retrospektive Analysen konnte die tatsächliche Nutzung des ITAT weder erfasst noch einzelnen Behandlern zugeordnet werden."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Patientenrelevante Endpunkte wie unerwünschte Ereignisse wurden nicht erfasst, da nur Routinedaten verfügbar waren."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zum Austausch von sechs Wirkstoffen nennt die Zusammenfassung (S. 2) eine mögliche Reduktion der problematischen Verordnungen um mehr als 85 %, der Abschnitt zur ersten Studienperiode (S. 11) mehr als 74 % der unerwünschten Kombinationen; der Bericht erläutert die Differenz nicht."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Die Zusammenfassung (S. 2) spricht von 'nur geringe[n] bzw. lokale[n] Effekte[n]' von IT-Tool und Schulungen auf das Verordnungsverhalten, die Diskussion (S. 31) davon, dass alle Maßnahmen 'zu keiner statistisch nachweisbaren Änderung des Verordnungsverhaltens geführt' haben."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Bei weiteren Zielgrößen der Arzneimittelsicherheit (Risikofälle, Off-Label-Verordnungen, vorgeschriebene Laboruntersuchungen bei Neuansetzung von Agomelatin, Clozapin, Lithium, Valproat) fanden sich keine statistisch signifikanten Unterschiede zwischen den Studienphasen; diese Fragestellungen waren allerdings nicht geschult worden."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Laut Zusammenfassung ließen sich die problematischen Verordnungen durch Ersatz von sechs Wirkstoffen durch Alternativen um mehr als 85 % reduzieren (Modellrechnung, keine durchgeführte Intervention)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Nach Auswertung der ersten Studienperiode (01.10.2017–30.09.2018) könnten durch Austausch von sechs Wirkstoffen mehr als 74 % der unerwünschten Kombinationen verhindert werden."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "14,4 % der psychiatrischen Patienten erhielten CYP-Inhibitoren oder -Induktoren; bei 43,6 % dieser Patienten bestand das Risiko einer laut Bericht klinisch relevanten pharmakokinetischen Interaktion."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Patienten mit Interaktionsrisiko nahmen laut Bericht signifikant mehr Arzneimittel ein."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Anticholinerge Verschreibungen lagen bei stationären psychiatrischen Patienten bei 35,4 %, anticholinerge Risikokombinationen bei 6,3 %; der Ersatz von trizyklischen Antidepressiva und Antihistaminika der 1. Generation würde den Anteil anticholinerger Medikation rechnerisch um 59,3 % senken."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "83,2 % der psychiatrischen Patienten erhielten QT-Zeit-verlängernde Arzneistoffe; QT-verlängernde Risikokombinationen lagen bei 49,9 %."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "33,9 % der psychiatrischen Alterspatienten erhielten PRISCUS-PIM; der Ersatz u.a. von trizyklischen Antidepressiva, Antihistaminika der 1. Generation, Benzodiazepinen, Z-Substanzen, Clonidin und Haloperidol > 2 mg würde den PRISCUS-PIM-Anteil rechnerisch um 69,9 % senken."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Etwa ein Drittel der Patienten erhielt mindestens fünf Arzneimittel je Behandlungstag; in multivariat kontrollierten Modellen war das Risiko mindestens einer problematischen Verordnung bei Polypharmazie erhöht (OR 5,17; 95%-KI 4,90–5,44), ebenso bei Gabe potentiell inadäquater Medikation (OR 3,10; KI im Bericht durch Texteinschub verfälscht, lesbar 2,57–3,63)."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Mit maschinellen Lernverfahren ließ sich bei Aufnahme das Risiko problematischer Verordnungen (ROC 0,72; 95%-KI 0,72–0,73) und die Wahrscheinlichkeit von Polypharmazie (0,83; 95%-KI 0,82–0,83) vorhersagen; der Bericht spricht von relativ hoher Vorhersagegüte."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Risikopatienten (Leber-, Nierenfunktionsstörung, Demenz) erhielten die definierten Wirkstoffe laut Bericht deutlich seltener als andere; relativ viele erhielten dennoch Lithiumpräparate bzw. trizyklische Antidepressiva."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Die Prävalenz von Off-Label-Verschreibungen in der stationären Psychiatrie war laut Bericht hoch, insbesondere bei Antikonvulsiva zur Stimmungsstabilisierung."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Unter den in erhöhter Dosierung verordneten Wirkstoffen waren Olanzapin und Duloxetin."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Vorgeschriebene Kontrolluntersuchungen vor Eindosierung wurden laut Bericht bei allen vier Beispielwirkstoffen unzureichend durchgeführt, insbesondere bei Valproat."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Bei allen vier Substanzen gab es Patienten ohne oder mit erst nach mehr als 3 Tagen erfolgter Kontrolle, bei Agomelatin, Clozapin und Lithium mit kleinem Anteil; bei Valproat wurden Kontrollen zur Pankreatitis-Erkennung (u.a. Lipase) in mehr als der Hälfte der Fälle zu keinem Zeitpunkt durchgeführt."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "In beiden Studienphasen standen laut Bericht in Anzahl und Eigenschaften sehr ähnliche Behandlungsfälle zur Verfügung (n=29.563 bzw. n=29.656)."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Die Drop-out-Quote der an das IMBI übermittelten Datensätze wegen mangelhafter Daten lag unter 1 %."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Eine erste explorative Analyse der Qualitätsindikator-Daten ergab keine richtungsweisenden Unterschiede zwischen den Kliniken, mit Ausnahme der durch eine fest angestellte Pharmazeutin beratenen Klinik vitos Rheingau."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Im Studienzentrum Rheingau war für die Diagnosegruppe F0 die Wahrscheinlichkeit einer gleichzeitigen Verordnung mehrerer QT-verlängernder Arzneimittel im Vergleich zu den anderen Zentren um etwa ein Viertel geringer (OR 0,74); ein Konfidenzintervall oder p-Wert ist im Zitat nicht angegeben."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Im Mehrebenenmodell erreichten teilstationäre Behandlungsfälle etwa 4,7 Punkte weniger Veränderung auf der GAF-Skala zwischen Aufnahme und Entlassung als vollstationäre."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Fälle mit mindestens einer problematischen Verordnung (Anticholinergika-Kombination, CYP-450-Interaktion, QT-Kombination oder Priscus bei > 64 Jahren) wiesen keine schlechteren Behandlungsergebnisse gemessen an der GAF-Veränderung auf."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Der Krankenhauskonzern vitos beschloss die Fortführung des Projekts über das Förderende hinaus und erklärte es 2020 zum dauerhaften Konzern-Projekt."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Wegen strikter Anonymisierung und halbjährlicher Ausleitung abgeschlossener Fälle war eine unmittelbare Kommunikation mit den Verordnern während laufender Behandlungen nicht möglich und nicht vorgesehen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Eine spezifische Fallzahlberechnung wurde nicht durchgeführt."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Wegen der Anonymisierung ließ sich nicht feststellen, in welchem Umfang Fälle der zweiten Phase Wiederaufnahmen bereits im ersten Studienjahr erfasster Patienten waren."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die weiteren Fragestellungen zur Arzneimittelsicherheit (Risikofälle, Off-Label, Laborkontrollen) waren nicht Gegenstand der Schulungen."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Der Bericht stellt zur Diskussion, ob Art und Umfang der Schulungen ausreichend waren."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "In der ersten Studienperiode wich die Fallzahl ab, weil die Klinik vitos Herborn das digitale Verordnungsmodul erst während der Periode flächendeckend einführte."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die systematische Auswertung weiterer Daten, u.a. zur Dosis- und Präparatewahl, war bei Erstellung des Abschlussberichts nicht abgeschlossen."}]};
+const D = {"projekt_id": 9, "akronym": "OSA-PSY", "kennung": "NRigxyAMWnnK", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Im Projekt wurden Prüfparameter für Risikogruppen definiert und ein algorithmenbasiertes, IT-gestütztes Verordnungsunterstützungssystem entwickelt, das den zehn beteiligten Kliniken in ihren Krankenhausinformationssystemen zur Verfügung gestellt wurde. Der Ausschuss hält die Ergebnisse wegen der Limitationen der Studie nur für eingeschränkt verwertbar; sie können nicht unmittelbar für die Versorgungsgestaltung herangezogen werden. Die vier primären Endpunkte bezogen sich ausschließlich auf inadäquate Verordnungen als Surrogat für die Arzneimitteltherapiesicherheit. Patientenrelevante Endpunkte zu tatsächlich aufgetretenen unerwünschten Ereignissen wurden nicht erfasst. Zudem ließ sich keine statistisch signifikante Veränderung des ärztlichen Verordnungsverhaltens feststellen, und die Gründe dafür wurden nicht untersucht. Der Ausschuss sieht weiteren Forschungsbedarf und verweist auf bereits geförderte Projekte sowie auf eine neue Förderbekanntmachung."}, {"stelle": "studiendesign", "art": "text", "unser": "nicht angegeben"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die primären Endpunkte waren ausschließlich Surrogatparameter (inadäquate Verordnungen); patientenrelevante Endpunkte zu unerwünschten Ereignissen wurden nicht erfasst."}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Keine statistisch signifikante Veränderung des ärztlichen Verordnungsverhaltens durch das Unterstützungssystem"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Die Gründe für den ausgebliebenen Effekt wurden im Projekt nicht untersucht."}, {"stelle": "befund.2", "art": "befund", "unser": "Hoher Anteil potentiell inadäquater Arzneimitteltherapien in den Klinikdaten aufgezeigt"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "CYP-450-Interaktion (Anteil der Behandlungsfälle mit mindestens einer problematischen Verordnung/Kombination durch Verstoffwechselung in der Enzymgruppe Cytochrome P450) – Vergleich Studienphase 1 vs. 2"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "QT-Kombi. (gleichzeitige Gabe von mehr als einem QT-Zeit verlängernden Arzneimittel) – Vergleich Studienphase 1 vs. 2"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Antichol.-Kombi. (gleichzeitige Gabe von mehr als einem Anticholinergikum) – Vergleich Studienphase 1 vs. 2"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Priscus (Gabe von potentiell inadäquaten Arzneimitteln für ältere Patienten an Behandlungsfälle > 64 Jahre) – Vergleich Studienphase 1 vs. 2"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Weitere Zielgrößen der Arzneimittelsicherheit (Verordnungen an Risikofälle, Off-label-Verordnungen, Durchführung vorgeschriebener Laborkontrollen bei Agomelatin, Clozapin, Lithium, Valproat) – Vergleich Studienphase 1 vs. 2"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Therapeutische Besserung: Veränderung des GAF-Wertes zwischen Aufnahme und Entlassung in Abhängigkeit vom Vorliegen mindestens einer problematischen Verordnung (Antichol. Kombi., CYP-450-Interakt., QT-Kombi., Priscus > 64 Jahre)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Risiko mindestens einer problematischen Verordnung bei Polypharmazie (multivariat kontrolliertes Modell)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Risiko der Gabe von potentiell inadäquater Medikation (multivariat kontrolliertes Modell)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Vorhersagegüte (maschinelles Lernen) für das Risiko problematischer Verordnungen bei Aufnahme"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Vorhersagegüte (maschinelles Lernen) für die Wahrscheinlichkeit der Polypharmazie bei Aufnahme"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Wahrscheinlichkeit der gleichzeitigen Verordnung mehrerer QT-Zeit verlängernder Arzneimittel im Studienzentrum Rheingau (Diagnosegruppe F0) im Vergleich zu den anderen Studienzentren"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Polypharmazie (mindestens fünf Arzneimittel je Behandlungstag während des Aufenthaltes)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben wertete Routinedaten zu Arzneimittelverordnungen in 10 psychiatrischen Kliniken des Konzerns vitos in zwei Einjahresperioden aus (erste Phase n=29.563, zweite Phase n=29.656 Behandlungsfälle). Geprüft wurde, ob ein in das Krankenhausinformationssystem integriertes IT-Tool zusammen mit Schulungen und der Präsentation der Befunde aus der ersten Periode das ärztliche Verordnungsverhalten bei problematischen Verordnungen ändert. Hauptzielgrößen waren CYP-450-Interaktionen, anticholinerge Kombinationen, QT-verlängernde Kombinationen und PRISCUS-Medikation ab 65 Jahren. Die zentrale Hypothese wurde weder für die Prüfkriterien noch für sekundäre Kenngrößen bestätigt; zwischen den Phasen zeigten sich nur sehr geringe Veränderungen. Für weitere Zielgrößen der Arzneimittelsicherheit fanden sich keine statistisch signifikanten Unterschiede; diese waren allerdings nicht geschult worden. Beschreibend fand der Bericht hohe Prävalenzen problematischer Verordnungen, etwa 83,2 % QT-verlängernde Verordnungen und 33,9 % PRISCUS-Verordnungen bei Älteren. Nach Modellrechnung ließen sich durch den Ersatz von sechs Wirkstoffen problematische Verordnungen um mehr als 85 % (Zusammenfassung) bzw. mehr als 74 % (erste Periode) reduzieren. Die Aussagekraft begrenzen das nicht randomisierte Vorher-Nachher-Design, die nicht messbare Nutzung des Tools wegen Anonymisierung und das Fehlen patientenrelevanter Endpunkte wie unerwünschter Ereignisse."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die zentrale Hypothese wurde weder für die ausgewählten Prüfkriterien noch für sekundäre Kenngrößen bestätigt. Sie lautete, dass das IT-gestützte Instrument zusammen mit der Präsentation der Befunde in den 10 Kliniken das ärztliche Verordnungsverhalten signifikant ändert."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Zwischen erster und zweiter Studienphase änderte sich der Anteil der Behandlungsfälle mit mindestens einer problematischen Verordnung in den vier Verschreibungsfeldern laut Bericht nur sehr gering."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Das KIS-integrierte IT-Tool und die gezielten Schulungen hatten laut Zusammenfassung im Studienverlauf nur geringe bzw. lokale Effekte auf das Verordnungsverhalten."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "ITAT-Integration, Schulungsunterlagen und Präsentation in Beiräten gingen nicht mit einer statistisch nachweisbaren Änderung des Verordnungsverhaltens einher."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Das Design war nicht randomisiert, sondern ein Vergleich zweier Einjahreszeiträume vor und nach Einführung des Instruments; der Bericht hält die interne Validität durch den multizentrischen Ansatz dennoch für vergleichsweise gut gesichert."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Wegen Datenschutzauflagen und der Beschränkung auf retrospektive Analysen konnte die tatsächliche Nutzung des ITAT weder erfasst noch einzelnen Behandlern zugeordnet werden."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zum Austausch von sechs Wirkstoffen nennt die Zusammenfassung (S. 2) eine mögliche Reduktion der problematischen Verordnungen um mehr als 85 %, der Abschnitt zur ersten Studienperiode (S. 11) mehr als 74 % der unerwünschten Kombinationen; der Bericht erläutert die Differenz nicht."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Die Zusammenfassung (S. 2) spricht von 'nur geringe[n] bzw. lokale[n] Effekte[n]' von IT-Tool und Schulungen auf das Verordnungsverhalten, die Diskussion (S. 31) davon, dass alle Maßnahmen 'zu keiner statistisch nachweisbaren Änderung des Verordnungsverhaltens geführt' haben."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt OSA-PSY auf Basis der Ergebnisse keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Nach Auffassung des Ausschusses können die Ergebnisse nicht unmittelbar für die Versorgungsgestaltung herangezogen werden. Er sieht weiteren Forschungsbedarf zum Potenzial algorithmenbasierter, IT-gestützter Verordnungssysteme für die AMTS."}, {"stelle": "befund.0", "art": "befund", "unser": "Entwicklung eines algorithmenbasierten, IT-gestützten Verordnungsunterstützungssystems, das in den KIS von zehn Kliniken bereitgestellt wurde"}, {"stelle": "befund.1", "art": "befund", "unser": "Technische Beschreibung und Liste der Prüfkriterien zur weiteren Verwendung bereitgestellt"}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Der Bericht identifizierte vier wesentliche Problembereiche: Substanzen, die sich gegenseitig im Abbau beeinflussen, Kombinationen mit anticholinerger bzw. QT-verlängernder Wirkung und potentiell inadäquate Medikation ab 65 Jahren (Priscus-Liste)."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Patientenrelevante Endpunkte wie unerwünschte Ereignisse wurden nicht erfasst, da nur Routinedaten verfügbar waren."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Bei weiteren Zielgrößen der Arzneimittelsicherheit (Risikofälle, Off-Label-Verordnungen, vorgeschriebene Laboruntersuchungen bei Neuansetzung von Agomelatin, Clozapin, Lithium, Valproat) fanden sich keine statistisch signifikanten Unterschiede zwischen den Studienphasen; diese Fragestellungen waren allerdings nicht geschult worden."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Laut Zusammenfassung ließen sich die problematischen Verordnungen durch Ersatz von sechs Wirkstoffen durch Alternativen um mehr als 85 % reduzieren (Modellrechnung, keine durchgeführte Intervention)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Nach Auswertung der ersten Studienperiode (01.10.2017–30.09.2018) könnten durch Austausch von sechs Wirkstoffen mehr als 74 % der unerwünschten Kombinationen verhindert werden."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "14,4 % der psychiatrischen Patienten erhielten CYP-Inhibitoren oder -Induktoren; bei 43,6 % dieser Patienten bestand das Risiko einer laut Bericht klinisch relevanten pharmakokinetischen Interaktion."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Patienten mit Interaktionsrisiko nahmen laut Bericht signifikant mehr Arzneimittel ein."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Anticholinerge Verschreibungen lagen bei stationären psychiatrischen Patienten bei 35,4 %, anticholinerge Risikokombinationen bei 6,3 %; der Ersatz von trizyklischen Antidepressiva und Antihistaminika der 1. Generation würde den Anteil anticholinerger Medikation rechnerisch um 59,3 % senken."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "83,2 % der psychiatrischen Patienten erhielten QT-Zeit-verlängernde Arzneistoffe; QT-verlängernde Risikokombinationen lagen bei 49,9 %."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "33,9 % der psychiatrischen Alterspatienten erhielten PRISCUS-PIM; der Ersatz u.a. von trizyklischen Antidepressiva, Antihistaminika der 1. Generation, Benzodiazepinen, Z-Substanzen, Clonidin und Haloperidol > 2 mg würde den PRISCUS-PIM-Anteil rechnerisch um 69,9 % senken."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Etwa ein Drittel der Patienten erhielt mindestens fünf Arzneimittel je Behandlungstag; in multivariat kontrollierten Modellen war das Risiko mindestens einer problematischen Verordnung bei Polypharmazie erhöht (OR 5,17; 95%-KI 4,90–5,44), ebenso bei Gabe potentiell inadäquater Medikation (OR 3,10; KI im Bericht durch Texteinschub verfälscht, lesbar 2,57–3,63)."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Mit maschinellen Lernverfahren ließ sich bei Aufnahme das Risiko problematischer Verordnungen (ROC 0,72; 95%-KI 0,72–0,73) und die Wahrscheinlichkeit von Polypharmazie (0,83; 95%-KI 0,82–0,83) vorhersagen; der Bericht spricht von relativ hoher Vorhersagegüte."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Risikopatienten (Leber-, Nierenfunktionsstörung, Demenz) erhielten die definierten Wirkstoffe laut Bericht deutlich seltener als andere; relativ viele erhielten dennoch Lithiumpräparate bzw. trizyklische Antidepressiva."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Die Prävalenz von Off-Label-Verschreibungen in der stationären Psychiatrie war laut Bericht hoch, insbesondere bei Antikonvulsiva zur Stimmungsstabilisierung."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Unter den in erhöhter Dosierung verordneten Wirkstoffen waren Olanzapin und Duloxetin."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Vorgeschriebene Kontrolluntersuchungen vor Eindosierung wurden laut Bericht bei allen vier Beispielwirkstoffen unzureichend durchgeführt, insbesondere bei Valproat."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Bei allen vier Substanzen gab es Patienten ohne oder mit erst nach mehr als 3 Tagen erfolgter Kontrolle, bei Agomelatin, Clozapin und Lithium mit kleinem Anteil; bei Valproat wurden Kontrollen zur Pankreatitis-Erkennung (u.a. Lipase) in mehr als der Hälfte der Fälle zu keinem Zeitpunkt durchgeführt."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "In beiden Studienphasen standen laut Bericht in Anzahl und Eigenschaften sehr ähnliche Behandlungsfälle zur Verfügung (n=29.563 bzw. n=29.656)."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Die Drop-out-Quote der an das IMBI übermittelten Datensätze wegen mangelhafter Daten lag unter 1 %."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Eine erste explorative Analyse der Qualitätsindikator-Daten ergab keine richtungsweisenden Unterschiede zwischen den Kliniken, mit Ausnahme der durch eine fest angestellte Pharmazeutin beratenen Klinik vitos Rheingau."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Im Studienzentrum Rheingau war für die Diagnosegruppe F0 die Wahrscheinlichkeit einer gleichzeitigen Verordnung mehrerer QT-verlängernder Arzneimittel im Vergleich zu den anderen Zentren um etwa ein Viertel geringer (OR 0,74); ein Konfidenzintervall oder p-Wert ist im Zitat nicht angegeben."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Im Mehrebenenmodell erreichten teilstationäre Behandlungsfälle etwa 4,7 Punkte weniger Veränderung auf der GAF-Skala zwischen Aufnahme und Entlassung als vollstationäre."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Fälle mit mindestens einer problematischen Verordnung (Anticholinergika-Kombination, CYP-450-Interaktion, QT-Kombination oder Priscus bei > 64 Jahren) wiesen keine schlechteren Behandlungsergebnisse gemessen an der GAF-Veränderung auf."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Der Krankenhauskonzern vitos beschloss die Fortführung des Projekts über das Förderende hinaus und erklärte es 2020 zum dauerhaften Konzern-Projekt."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Wegen strikter Anonymisierung und halbjährlicher Ausleitung abgeschlossener Fälle war eine unmittelbare Kommunikation mit den Verordnern während laufender Behandlungen nicht möglich und nicht vorgesehen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Eine spezifische Fallzahlberechnung wurde nicht durchgeführt."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Wegen der Anonymisierung ließ sich nicht feststellen, in welchem Umfang Fälle der zweiten Phase Wiederaufnahmen bereits im ersten Studienjahr erfasster Patienten waren."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die weiteren Fragestellungen zur Arzneimittelsicherheit (Risikofälle, Off-Label, Laborkontrollen) waren nicht Gegenstand der Schulungen."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Der Bericht stellt zur Diskussion, ob Art und Umfang der Schulungen ausreichend waren."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "In der ersten Studienperiode wich die Fallzahl ab, weil die Klinik vitos Herborn das digitale Verordnungsmodul erst während der Periode flächendeckend einführte."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die systematische Auswertung weiterer Daten, u.a. zur Dosis- und Präparatewahl, war bei Erstellung des Abschlussberichts nicht abgeschlossen."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

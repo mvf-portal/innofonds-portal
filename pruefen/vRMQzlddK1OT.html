@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF21020</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>10 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 38 Aussagen. Die übrigen
+28 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die weiterentwickelte S3-Leitlinie zu ambulant erworbenen Harnwegsinfektionen bei Erwachsenen der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Die überarbeitete Leitlinie soll anleiten, ambulant erworbene Harnwegsinfektionen bei Erwachsenen effektiver zu behandeln und die Behandlungsergebnisse zu verbessern. Dabei sollen Antibiotikaresistenz und Antibiotic Stewardship berücksichtigt werden. Die Weiterentwicklung löst die bisher gültige Leitlinienversion von 2017 ab. Zusätzlich wurde eine Patientenleitlinie als evidenzbasierte Patienteninformation erstellt. Nach Auffassung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,91 +141,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
     
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
-  <blockquote>„Die weiterentwickelte Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3 Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Weiterentwicklung löst die bisherige Leitlinienversion von 2017 ab</p>
-  <blockquote>„Die vorliegende Weiterentwicklung der Leitlinie zu Epidemiologie, Diagnostik, Therapie, Prävention und Management von bakteriellen, ambulant erworbenen HWI bei Erwachsenen löst die bisher für den deutschen Sprachraum gültige Version der Leitlinie zur HWI von 2017 ab." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erstellung einer evidenzbasierten Patientenleitlinie</p>
-  <blockquote>„Die miterstellte Patientenleitlinie stellt für Betroffene eine evidenzbasierte Patienteninformation zur Verfügung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.1">
-  <h3>Arbeitsgemeinschaft der Wissenschaftlichen Medizinischen Fachgesellschaften e.V. (AWMF) – eingestuft als „umgesetzt“</h3>
-  <p class="unser">Die AWMF leitet den Ergebnisbericht und die Transferempfehlung an die beteiligten Fachgesellschaften und die Leitlinienkoordination weiter. Sie bezeichnet die Leitlinie als über das AWMF-Leitlinienregister publiziert (AWMF-Reg. Nr. 043-044).</p>
-  <blockquote>„„[...] für Ihre im Rahmen der Förderung durch den G-BA fertiggestellte und über das Leitlinienregister der AWMF publizierte Leitlinie weiterleiten zu können: S3-Leitlinie Epidemiologie, Diagnostik, Therapie, Prävention und Management unkomplizierter, bakterieller, ambulant erworbener Harnwegsinfektionen bei Erwachsenen (HWI) AWMF-Reg. Nr. 043-044“" <span class="s">S. 3</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
     <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
       ></textarea></label>
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
@@ -238,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben hat die S3-Leitlinie zu bakteriellen Harnwegsinfektionen bei Erwachsenen aktualisiert und eine Patientenleitlinie neu erstellt. Untersucht wurde keine Intervention. Das Projekt hat Evidenz aufbereitet und Empfehlungen konsentiert. Von 149 online vorabgestimmten Empfehlungen und Statements wurden auf der Konsensuskonferenz im Juni 2023 127 konsentiert, davon 74 evidenzbasiert und 53 konsensbasiert (58 %). Ende April 2024 verabschiedeten die beteiligten Fachgesellschaften die endgültige Fassung. Als Projektergebnisse liegen vier aktualisierte und zwei neue Dokumente vor. Die Evidenzgrundlage bilden 71 systematische Reviews bzw. Metaanalysen aus 805 Treffern sowie eine Synopse von acht Leitlinien. Für die Aussagekraft ist methodisch Folgendes maßgeblich: Die im Antrag geplante Bewertung mit GRADE war mit den Ressourcen nicht durchführbar und wurde durch Oxford 2009 ersetzt. In die Evidenztabellen ging nur die höchste Evidenzstufe ein; nur im Bereich Geriatrie wurden zusätzlich RCTs herangezogen. Katheter-assoziierte Harnwegsinfektionen wurden nur für geriatrische Patienten bearbeitet. Corona-bedingte Verzögerungen machten eine kostenneutrale Laufzeitverlängerung um drei Monate bzw. eine Eigenfinanzierung nötig.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Final wurden 127 Empfehlungen und Statements verfasst, davon 74 evidenzbasiert und 53 konsensbasiert. Der Anteil evidenzbasierter Empfehlungen von 58 % entspricht laut Bericht der Empfehlung der AWMF-Leitlinienkommission.</p>
+  
   <blockquote>„„Mit 74 evidenzbasierten und 53 konsensbasierten Empfehlungen liegt der Anteil der evidenzbasierten Empfehlungen bei 58 % und entspricht damit der Empfehlung der AWMF Leitlinien- Kommission.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als Projektergebnisse liegen vier aktualisierte und zwei neue Dokumente vor: Langversion, Kurzversion, Leitlinienreport, Evidenztabellen, Patientenleitlinie und Patientenleitlinienreport.</p>
+  
   <blockquote>„„Es liegen insgesamt vier aktualisierte und zwei neue Dokumente (Langversion, Kurzversion, Leitlinienreport, Evidenztabellen, Patientenleitlinie, Patientenleitlinienreport) hinsichtlich der Projektergebnisse vor.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die im Antrag geplante Evidenzbewertung mit GRADE war mit den personellen und zeitlichen Ressourcen nicht durchführbar. Auf Anregung der AWMF wurde die Bewertung nach Oxford 2009 fortgeführt.</p>
+  
   <blockquote>„„Der Aufwand der im Antrag geplanten Evidenzbewertung mit GRADE war hoch und mit den zur Verfügung stehenden personellen und zeitlichen Ressourcen nicht durchführbar.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In die Evidenztabellen wurde nur die höchste Evidenz aufgenommen; ursprünglich geplante RCTs bzw. Kohortenstudien wurden nicht berücksichtigt. Ein Grund war, dass niedrigere Evidenz bei den meisten Primärliteratursuchen zu viele Treffer ergeben hätte.</p>
+  
   <blockquote>„„Die Berücksichtigung einer niedrigeren Evidenz hatte bei de n überwiegenden Primärliteratursuchen zudem eine zu hohe Trefferquote zur Folge gehabt.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Katheter-assoziierte Harnwegsinfektionen wurden nur für geriatrische Patienten erarbeitet, nicht für andere Patientengruppen. Diese sollen in einer weiteren, neu zu erstellenden S3-Leitlinie behandelt werden.</p>
+  
   <blockquote>„„Katheter -assoziierte Harnwegsinfektionen ... in dieser Leitlinie nur bei den geriatrischen Patienten und nicht bei den anderen Patientengruppen erarbeitet. Letztere werden in einer geplanten, weiteren , neu zu e rstellenden S3-Leitlinie behandelt.“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -352,11 +274,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Der Titel des Vorhabens nennt „ambulant und stationär erworbene“ Harnwegsinfektionen. Laut Bericht wurde das Wort „stationär“ jedoch aus dem Titel der Leitlinie gestrichen, weil der alte Titel die Inhalte inkorrekt widerspiegele; betrachtet würden nur geriatrische Patienten, die zuhause oder im Pflegeheim leben (S. 5).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -371,11 +293,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Auf S. 13 heißt es, die Barrieren seien „erfolgreich bearbeitet“ worden und Daten zur Versorgungs- und Verordnungssituation lägen nun vor. Auf S. 4 heißt es dagegen, zum Antibiotic Stewardship im ambulanten Bereich seien nur spärlich Daten vorhanden. Die Aussagen betreffen nicht genau denselben Gegenstand; der Bericht setzt sie nicht zueinander in Beziehung.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -385,16 +307,111 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>23 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>28 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die weiterentwickelte S3-Leitlinie zu ambulant erworbenen Harnwegsinfektionen bei Erwachsenen der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
+  
+  <blockquote>„Die weiterentwickelte Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3 Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Weiterentwicklung löst die bisherige Leitlinienversion von 2017 ab</p>
+  
+  <blockquote>„Die vorliegende Weiterentwicklung der Leitlinie zu Epidemiologie, Diagnostik, Therapie, Prävention und Management von bakteriellen, ambulant erworbenen HWI bei Erwachsenen löst die bisher für den deutschen Sprachraum gültige Version der Leitlinie zur HWI von 2017 ab." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erstellung einer evidenzbasierten Patientenleitlinie</p>
+  
+  <blockquote>„Die miterstellte Patientenleitlinie stellt für Betroffene eine evidenzbasierte Patienteninformation zur Verfügung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.1">
+  <h3>Arbeitsgemeinschaft der Wissenschaftlichen Medizinischen Fachgesellschaften e.V. (AWMF) – eingestuft als „umgesetzt“</h3>
+  <p class="unser">Die AWMF leitet den Ergebnisbericht und die Transferempfehlung an die beteiligten Fachgesellschaften und die Leitlinienkoordination weiter. Sie bezeichnet die Leitlinie als über das AWMF-Leitlinienregister publiziert (AWMF-Reg. Nr. 043-044).</p>
+  
+  <blockquote>„„[...] für Ihre im Rahmen der Förderung durch den G-BA fertiggestellte und über das Leitlinienregister der AWMF publizierte Leitlinie weiterleiten zu können: S3-Leitlinie Epidemiologie, Diagnostik, Therapie, Prävention und Management unkomplizierter, bakterieller, ambulant erworbener Harnwegsinfektionen bei Erwachsenen (HWI) AWMF-Reg. Nr. 043-044“" <span class="s">S. 3</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.1" value="ok" checked hidden>
+    <input type="radio" name="uadressat.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von 149 vorbereiteten und online vorabgestimmten Empfehlungen und Statements wurden auf der Konsensuskonferenz am 20. und 21. Juni 2023 127 konsentiert.</p>
+  
   <blockquote>„„Von den 149 vorbereiteten Empfehlungen und Statements (online -Vorabstimmung), wurden final im Rahmen der Konsensuskonferenz am 20. – 21. Juni 2023 127 konsentiert“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -408,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Hauptsuche vom 25. August 2022 ergab 805 deutsch- und englischsprachige Treffer. Davon wurden final 71 systematische Reviews bzw. Metaanalysen eingeschlossen.</p>
+  
   <blockquote>„„Von den eingeschlossenen deutsch- und englischsprachigen 805 Treffern, wurden final 71 systematische Reviews/Metaanalysen eingeschlossen.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In die Leitliniensynopse wurden nach Sichtung der Volltexte acht deutsch- und englischsprachige Leitlinien eingeschlossen.</p>
+  
   <blockquote>„„Nach Sichtung der Leitlinienvolltexte wurden acht deutsch- und englischsprachige Leitlinien eingeschlossen.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Beim Kick-off wurden 19 Schlüsselfragen im PICO-Format ausgearbeitet.</p>
+  
   <blockquote>„„es wurden 19 Schlüsselfragen (im PICO-Format= Patient, Intervention, Compare, Outcome) ausgearbeitet“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die beteiligten Fachgesellschaften und Arbeitsgemeinschaften verabschiedeten die endgültige Fassung der Leitlinie Ende April 2024.</p>
+  
   <blockquote>„„Die endgültige Fassung der medizinischen Leitlinie wurde Ende April 2024 durch die beteiligten Fachgesellschaften und Arbeitsgemeinschaften verabschiedet.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die überarbeiteten Empfehlungen zur antibiotischen Therapie unkomplizierter Harnwegsinfektionen verstärken unter anderem die Empfehlungen gegen den unkritischen Einsatz nicht indizierter Reserveantibiotika, insbesondere der Fluorchinolone.</p>
+  
   <blockquote>„„die u. a. die Empfehlungen gegen den unkritischen Einsatz nicht indizierter Reserveantibiotika (insbesondere der Fluorchinolone) verstärken.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Empfehlung zur nicht-antimikrobiellen Behandlung unkomplizierter Harnwegsinfektionen wurde aufgrund neuer Evidenz bestärkt.</p>
+  
   <blockquote>„„Die Empfehlung zur nicht- antimikrobiellen Behandlung unkomplizierter Harnwegsinfektionen konnten aufgrund neuer Evidenz bestärkt werden.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die neu hinzugekommene Gruppe der geriatrischen Patienten mit und ohne Katheter wurden Spezifika zu Harnwegsinfektionen und asymptomatischer Bakteriurie auf Basis der aktuellen Evidenz zusammengestellt.</p>
+  
   <blockquote>„„Spezifika zur Epidemiologie, Diagnostik, Therapie und Prävention von Harnwegsinfektionen und asymptomatischer Bakteriurie wurden zudem auch für die neu hinzugekommene Patientengruppe der geriatrischen Patienten (mit und ohne Katheter) ... zusammengestellt.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Statt einer GRADE-Bewertung wurden die Outcomes in den Hintergrundtexten aufgeführt, um zu zeigen, dass eine Schaden-Nutzen-Abwägung erfolgt ist.</p>
+  
   <blockquote>„„In der Leitliniengruppe wurde daher beschlossen, auf GRADE zu verzichten und dafür in den Hintergrundtexten die Outcomes aufzuführen, um aufzuzeigen, dass eine Schaden-Nutzen-Abwägung erfolgt ist.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Projektnehmer geben an, unter den genannten Ein- und Ausschlusskriterien sei die höchstmögliche Evidenz gefunden und extrahiert worden.</p>
+  
   <blockquote>„„Im Hinblick auf die bereits unter Punkt 5 ( Methodik) genannten Ein- und Ausschlusskriterien konnte insgesamt die höchstmögliche Evidenz gefunden und extrahiert werden.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +596,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Projektnehmer geben an, mit der aktualisierten Leitlinie seien Therapieoptionen verbessert und das Bewusstsein für Antibiotikaresistenzen bei Ärzten und Patienten gestärkt worden. Messdaten dazu nennt der Abschnitt nicht.</p>
+  
   <blockquote>„„Mit der aktualisierten Leitlinie konnten Therapie-Optionen bei Harnwegsinfektionen verbessert und das Bewusstsein für die Entstehung von Antibiotikaresistenzen ... gestärkt werden.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +615,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Patientenleitlinie soll künftig Empowerment und Compliance der Betroffenen verbessern. Der Bericht formuliert dies als Erwartung.</p>
+  
   <blockquote>„„Ebenfalls soll die Patientenleitlinie z ukünftig das Empowerment und Compliance der betroffenen Patienten nachhaltig verbessern.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +634,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Projektnehmer schreiben der Leitlinie wegen des systematischen Vorgehens nach AWMF eine hohe wissenschaftliche Legitimation der Methode und der Umsetzung zu.</p>
+  
   <blockquote>„„Die S3 -Leitlinie verfügt somit über eine hohe wissenschaftliche Legitimation der Methode sowie einer entsprechend hohen Legitimation für die Umsetzung.“ – Bericht, S. 7" <span class="s">S. 7</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Angabe der Projektnehmer wurden im Zeitraum der Leitlinie organisatorische, strukturelle, personelle und finanzielle Barrieren erfolgreich bearbeitet. Zur Versorgungs- und Verordnungssituation lägen nun Daten vor.</p>
+  
   <blockquote>„„Im Zeitraum der Leitlinie sind zum Teil unter Mitwirkung der Autoren die organisatorischen, strukturellen, personellen und finanziellen Barrieren erfolgreich bearbeitet worden. Daten zur Versorgungs- und Verordnungssituation liegen nun vor.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +672,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Projektverlauf wurde das Wort „stationär“ aus dem Titel der Leitlinie gestrichen. Nach Meinung der Leitliniengruppe gab der alte Titel die Inhalte inkorrekt wieder.</p>
+  
   <blockquote>„„Die Titeländerung mit der Streichung des Wortes &quot;stationär&quot; wurde im Projektve rlauf beschlossen, da die Leitliniengruppe der Meinung ist, dass der alte Titel die Inhalte dieser Leitlinie inkorrekt widerspiegelt“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +691,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In der AG Geriatrie gab es nur wenige Studien der höchsten Evidenzstufe. Deshalb mussten dort bei den meisten Primärliteratursuchen zusätzlich RCTs herangezogen werden.</p>
+  
   <blockquote>„„Lediglich bei der AG-Geriatrie mussten aufgrund der geringen Anzahl von Studien mit der höchsten Evidenz, ebenfalls bei den meisten Primärliteratursuchen zusätzlich RCT s mit herangezogen werden.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zum Antibiotic Stewardship im ambulanten Bereich sind insgesamt nur spärlich Daten vorhanden.</p>
+  
   <blockquote>„„Insgesamt sind nur spärlich Daten zu m Antibiotic Stewardship (s. Punkt 1) im ambulanten Bereich vorhanden.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +729,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Evidenzaufarbeitung verzögerte sich unter anderem durch corona-bedingten Personalmangel in den Kliniken und wurde erst im Februar 2023 beendet.</p>
+  
   <blockquote>„„Dieser Prozess verzögerte sich insgesamt u. a. aufgrund von Corona-bedingtem Personalmangel in den Kliniken, sodass die Evidenzaufarbeitung erst im Februar 2023 beendet werden konnte.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +748,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Beginn der Datenextraktion und der Evidenztabellen verschob sich vom geplanten 1. Juli 2022 auf den 15. August 2022, ebenso die damit verbundenen Arbeitsprozesse.</p>
+  
   <blockquote>„„Verzögerung bzgl. des Beginns der Datenextraktion und den Evidenztabellen (geplantes Soll: 01. Juli 2022; neues Soll: 15. August 2022)“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +767,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei den Korrekturdurchläufen der AG-Texte wurden interne Deadlines um bis zu drei Wochen überschritten. Weil der ursprüngliche Zeitplan nicht realisierbar war, musste eine 3-monatige kostenneutrale Laufzeitverlängerung bzw. eine anschließende Eigenfinanzierung beantragt werden.</p>
+  
   <blockquote>„„Durch die Tatsache, dass der ursprüngliche Zeitplan nicht mehr realisierbar war, musste eine 3 -monatige kostenneutrale Laufzeitverlängerung bzw. eine sich daran anschließende Eigenfinanzierung beantragt werden.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +786,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die medizinische Leitlinie bildete die Basis der Patientenleitlinie. Weil sie verspätet finalisiert wurde, wurde auch die Patientenversion verspätet fertig.</p>
+  
   <blockquote>„„Aufgrund der sich insge samt verzögerten Finalisierung der medizinischen Leitlinie, die die Basis für die Patientenleitlinie darstellte, erfolgte ebenfalls eine verspätete Fertigstellung der Patientenversion.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +805,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die ursprünglich eingeplante Patientenvertreterin konnte nicht mitwirken. Erst im Januar 2023 fanden sich mit größerem Aufwand zwei Patientenvertreterinnen.</p>
+  
   <blockquote>„„Die erste ursprünglich eingeplante Patientenvertreterin konnte final nicht an der Leitlinienarbeit mi twirken. Erst mit größerem Aufwand g elang es im Januar 2023 zwei Patientenvertreterinnen zu finden“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Es bleiben Forschungsfragen offen, unter anderem die optimale Dauer der Antibiotikatherapie bei Männern mit Harnwegsinfektionen und mögliche Unterschiede zwischen jüngeren und älteren Männern.</p>
+  
   <blockquote>„„Was ist die optimale Therapiedauer einer Antibiotikabehandlung bei Männern mit Harnwegsinfektionen und gibt es Unterschiede in der Ther apiedauer zwischen jüngeren und älteren Männern?“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -857,28 +874,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 490, "akronym": "S3-LL HWI", "kennung": "vRMQzlddK1OT", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die weiterentwickelte S3-Leitlinie zu ambulant erworbenen Harnwegsinfektionen bei Erwachsenen der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Die überarbeitete Leitlinie soll anleiten, ambulant erworbene Harnwegsinfektionen bei Erwachsenen effektiver zu behandeln und die Behandlungsergebnisse zu verbessern. Dabei sollen Antibiotikaresistenz und Antibiotic Stewardship berücksichtigt werden. Die Weiterentwicklung löst die bisher gültige Leitlinienversion von 2017 ab. Zusätzlich wurde eine Patientenleitlinie als evidenzbasierte Patienteninformation erstellt. Nach Auffassung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "befund.0", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "befund.1", "art": "befund", "unser": "Weiterentwicklung löst die bisherige Leitlinienversion von 2017 ab"}, {"stelle": "befund.2", "art": "befund", "unser": "Erstellung einer evidenzbasierten Patientenleitlinie"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Die AWMF leitet den Ergebnisbericht und die Transferempfehlung an die beteiligten Fachgesellschaften und die Leitlinienkoordination weiter. Sie bezeichnet die Leitlinie als über das AWMF-Leitlinienregister publiziert (AWMF-Reg. Nr. 043-044)."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat die S3-Leitlinie zu bakteriellen Harnwegsinfektionen bei Erwachsenen aktualisiert und eine Patientenleitlinie neu erstellt. Untersucht wurde keine Intervention. Das Projekt hat Evidenz aufbereitet und Empfehlungen konsentiert. Von 149 online vorabgestimmten Empfehlungen und Statements wurden auf der Konsensuskonferenz im Juni 2023 127 konsentiert, davon 74 evidenzbasiert und 53 konsensbasiert (58 %). Ende April 2024 verabschiedeten die beteiligten Fachgesellschaften die endgültige Fassung. Als Projektergebnisse liegen vier aktualisierte und zwei neue Dokumente vor. Die Evidenzgrundlage bilden 71 systematische Reviews bzw. Metaanalysen aus 805 Treffern sowie eine Synopse von acht Leitlinien. Für die Aussagekraft ist methodisch Folgendes maßgeblich: Die im Antrag geplante Bewertung mit GRADE war mit den Ressourcen nicht durchführbar und wurde durch Oxford 2009 ersetzt. In die Evidenztabellen ging nur die höchste Evidenzstufe ein; nur im Bereich Geriatrie wurden zusätzlich RCTs herangezogen. Katheter-assoziierte Harnwegsinfektionen wurden nur für geriatrische Patienten bearbeitet. Corona-bedingte Verzögerungen machten eine kostenneutrale Laufzeitverlängerung um drei Monate bzw. eine Eigenfinanzierung nötig."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Final wurden 127 Empfehlungen und Statements verfasst, davon 74 evidenzbasiert und 53 konsensbasiert. Der Anteil evidenzbasierter Empfehlungen von 58 % entspricht laut Bericht der Empfehlung der AWMF-Leitlinienkommission."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Als Projektergebnisse liegen vier aktualisierte und zwei neue Dokumente vor: Langversion, Kurzversion, Leitlinienreport, Evidenztabellen, Patientenleitlinie und Patientenleitlinienreport."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die im Antrag geplante Evidenzbewertung mit GRADE war mit den personellen und zeitlichen Ressourcen nicht durchführbar. Auf Anregung der AWMF wurde die Bewertung nach Oxford 2009 fortgeführt."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "In die Evidenztabellen wurde nur die höchste Evidenz aufgenommen; ursprünglich geplante RCTs bzw. Kohortenstudien wurden nicht berücksichtigt. Ein Grund war, dass niedrigere Evidenz bei den meisten Primärliteratursuchen zu viele Treffer ergeben hätte."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Katheter-assoziierte Harnwegsinfektionen wurden nur für geriatrische Patienten erarbeitet, nicht für andere Patientengruppen. Diese sollen in einer weiteren, neu zu erstellenden S3-Leitlinie behandelt werden."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Der Titel des Vorhabens nennt „ambulant und stationär erworbene“ Harnwegsinfektionen. Laut Bericht wurde das Wort „stationär“ jedoch aus dem Titel der Leitlinie gestrichen, weil der alte Titel die Inhalte inkorrekt widerspiegele; betrachtet würden nur geriatrische Patienten, die zuhause oder im Pflegeheim leben (S. 5)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Auf S. 13 heißt es, die Barrieren seien „erfolgreich bearbeitet“ worden und Daten zur Versorgungs- und Verordnungssituation lägen nun vor. Auf S. 4 heißt es dagegen, zum Antibiotic Stewardship im ambulanten Bereich seien nur spärlich Daten vorhanden. Die Aussagen betreffen nicht genau denselben Gegenstand; der Bericht setzt sie nicht zueinander in Beziehung."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Von 149 vorbereiteten und online vorabgestimmten Empfehlungen und Statements wurden auf der Konsensuskonferenz am 20. und 21. Juni 2023 127 konsentiert."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die Hauptsuche vom 25. August 2022 ergab 805 deutsch- und englischsprachige Treffer. Davon wurden final 71 systematische Reviews bzw. Metaanalysen eingeschlossen."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "In die Leitliniensynopse wurden nach Sichtung der Volltexte acht deutsch- und englischsprachige Leitlinien eingeschlossen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Beim Kick-off wurden 19 Schlüsselfragen im PICO-Format ausgearbeitet."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die beteiligten Fachgesellschaften und Arbeitsgemeinschaften verabschiedeten die endgültige Fassung der Leitlinie Ende April 2024."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die überarbeiteten Empfehlungen zur antibiotischen Therapie unkomplizierter Harnwegsinfektionen verstärken unter anderem die Empfehlungen gegen den unkritischen Einsatz nicht indizierter Reserveantibiotika, insbesondere der Fluorchinolone."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die Empfehlung zur nicht-antimikrobiellen Behandlung unkomplizierter Harnwegsinfektionen wurde aufgrund neuer Evidenz bestärkt."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Für die neu hinzugekommene Gruppe der geriatrischen Patienten mit und ohne Katheter wurden Spezifika zu Harnwegsinfektionen und asymptomatischer Bakteriurie auf Basis der aktuellen Evidenz zusammengestellt."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Statt einer GRADE-Bewertung wurden die Outcomes in den Hintergrundtexten aufgeführt, um zu zeigen, dass eine Schaden-Nutzen-Abwägung erfolgt ist."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Projektnehmer geben an, unter den genannten Ein- und Ausschlusskriterien sei die höchstmögliche Evidenz gefunden und extrahiert worden."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die Projektnehmer geben an, mit der aktualisierten Leitlinie seien Therapieoptionen verbessert und das Bewusstsein für Antibiotikaresistenzen bei Ärzten und Patienten gestärkt worden. Messdaten dazu nennt der Abschnitt nicht."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Die Patientenleitlinie soll künftig Empowerment und Compliance der Betroffenen verbessern. Der Bericht formuliert dies als Erwartung."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Die Projektnehmer schreiben der Leitlinie wegen des systematischen Vorgehens nach AWMF eine hohe wissenschaftliche Legitimation der Methode und der Umsetzung zu."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Nach Angabe der Projektnehmer wurden im Zeitraum der Leitlinie organisatorische, strukturelle, personelle und finanzielle Barrieren erfolgreich bearbeitet. Zur Versorgungs- und Verordnungssituation lägen nun Daten vor."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Im Projektverlauf wurde das Wort „stationär“ aus dem Titel der Leitlinie gestrichen. Nach Meinung der Leitliniengruppe gab der alte Titel die Inhalte inkorrekt wieder."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "In der AG Geriatrie gab es nur wenige Studien der höchsten Evidenzstufe. Deshalb mussten dort bei den meisten Primärliteratursuchen zusätzlich RCTs herangezogen werden."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Zum Antibiotic Stewardship im ambulanten Bereich sind insgesamt nur spärlich Daten vorhanden."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Evidenzaufarbeitung verzögerte sich unter anderem durch corona-bedingten Personalmangel in den Kliniken und wurde erst im Februar 2023 beendet."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Der Beginn der Datenextraktion und der Evidenztabellen verschob sich vom geplanten 1. Juli 2022 auf den 15. August 2022, ebenso die damit verbundenen Arbeitsprozesse."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Bei den Korrekturdurchläufen der AG-Texte wurden interne Deadlines um bis zu drei Wochen überschritten. Weil der ursprüngliche Zeitplan nicht realisierbar war, musste eine 3-monatige kostenneutrale Laufzeitverlängerung bzw. eine anschließende Eigenfinanzierung beantragt werden."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die medizinische Leitlinie bildete die Basis der Patientenleitlinie. Weil sie verspätet finalisiert wurde, wurde auch die Patientenversion verspätet fertig."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die ursprünglich eingeplante Patientenvertreterin konnte nicht mitwirken. Erst im Januar 2023 fanden sich mit größerem Aufwand zwei Patientenvertreterinnen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Es bleiben Forschungsfragen offen, unter anderem die optimale Dauer der Antibiotikatherapie bei Männern mit Harnwegsinfektionen und mögliche Unterschiede zwischen jüngeren und älteren Männern."}]};
+const D = {"projekt_id": 490, "akronym": "S3-LL HWI", "kennung": "vRMQzlddK1OT", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Die überarbeitete Leitlinie soll anleiten, ambulant erworbene Harnwegsinfektionen bei Erwachsenen effektiver zu behandeln und die Behandlungsergebnisse zu verbessern. Dabei sollen Antibiotikaresistenz und Antibiotic Stewardship berücksichtigt werden. Die Weiterentwicklung löst die bisher gültige Leitlinienversion von 2017 ab. Zusätzlich wurde eine Patientenleitlinie als evidenzbasierte Patienteninformation erstellt. Nach Auffassung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat die S3-Leitlinie zu bakteriellen Harnwegsinfektionen bei Erwachsenen aktualisiert und eine Patientenleitlinie neu erstellt. Untersucht wurde keine Intervention. Das Projekt hat Evidenz aufbereitet und Empfehlungen konsentiert. Von 149 online vorabgestimmten Empfehlungen und Statements wurden auf der Konsensuskonferenz im Juni 2023 127 konsentiert, davon 74 evidenzbasiert und 53 konsensbasiert (58 %). Ende April 2024 verabschiedeten die beteiligten Fachgesellschaften die endgültige Fassung. Als Projektergebnisse liegen vier aktualisierte und zwei neue Dokumente vor. Die Evidenzgrundlage bilden 71 systematische Reviews bzw. Metaanalysen aus 805 Treffern sowie eine Synopse von acht Leitlinien. Für die Aussagekraft ist methodisch Folgendes maßgeblich: Die im Antrag geplante Bewertung mit GRADE war mit den Ressourcen nicht durchführbar und wurde durch Oxford 2009 ersetzt. In die Evidenztabellen ging nur die höchste Evidenzstufe ein; nur im Bereich Geriatrie wurden zusätzlich RCTs herangezogen. Katheter-assoziierte Harnwegsinfektionen wurden nur für geriatrische Patienten bearbeitet. Corona-bedingte Verzögerungen machten eine kostenneutrale Laufzeitverlängerung um drei Monate bzw. eine Eigenfinanzierung nötig."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Final wurden 127 Empfehlungen und Statements verfasst, davon 74 evidenzbasiert und 53 konsensbasiert. Der Anteil evidenzbasierter Empfehlungen von 58 % entspricht laut Bericht der Empfehlung der AWMF-Leitlinienkommission."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Als Projektergebnisse liegen vier aktualisierte und zwei neue Dokumente vor: Langversion, Kurzversion, Leitlinienreport, Evidenztabellen, Patientenleitlinie und Patientenleitlinienreport."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die im Antrag geplante Evidenzbewertung mit GRADE war mit den personellen und zeitlichen Ressourcen nicht durchführbar. Auf Anregung der AWMF wurde die Bewertung nach Oxford 2009 fortgeführt."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "In die Evidenztabellen wurde nur die höchste Evidenz aufgenommen; ursprünglich geplante RCTs bzw. Kohortenstudien wurden nicht berücksichtigt. Ein Grund war, dass niedrigere Evidenz bei den meisten Primärliteratursuchen zu viele Treffer ergeben hätte."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Katheter-assoziierte Harnwegsinfektionen wurden nur für geriatrische Patienten erarbeitet, nicht für andere Patientengruppen. Diese sollen in einer weiteren, neu zu erstellenden S3-Leitlinie behandelt werden."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Der Titel des Vorhabens nennt „ambulant und stationär erworbene“ Harnwegsinfektionen. Laut Bericht wurde das Wort „stationär“ jedoch aus dem Titel der Leitlinie gestrichen, weil der alte Titel die Inhalte inkorrekt widerspiegele; betrachtet würden nur geriatrische Patienten, die zuhause oder im Pflegeheim leben (S. 5)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Auf S. 13 heißt es, die Barrieren seien „erfolgreich bearbeitet“ worden und Daten zur Versorgungs- und Verordnungssituation lägen nun vor. Auf S. 4 heißt es dagegen, zum Antibiotic Stewardship im ambulanten Bereich seien nur spärlich Daten vorhanden. Die Aussagen betreffen nicht genau denselben Gegenstand; der Bericht setzt sie nicht zueinander in Beziehung."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die weiterentwickelte S3-Leitlinie zu ambulant erworbenen Harnwegsinfektionen bei Erwachsenen der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "befund.0", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "befund.1", "art": "befund", "unser": "Weiterentwicklung löst die bisherige Leitlinienversion von 2017 ab"}, {"stelle": "befund.2", "art": "befund", "unser": "Erstellung einer evidenzbasierten Patientenleitlinie"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Die AWMF leitet den Ergebnisbericht und die Transferempfehlung an die beteiligten Fachgesellschaften und die Leitlinienkoordination weiter. Sie bezeichnet die Leitlinie als über das AWMF-Leitlinienregister publiziert (AWMF-Reg. Nr. 043-044)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Von 149 vorbereiteten und online vorabgestimmten Empfehlungen und Statements wurden auf der Konsensuskonferenz am 20. und 21. Juni 2023 127 konsentiert."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die Hauptsuche vom 25. August 2022 ergab 805 deutsch- und englischsprachige Treffer. Davon wurden final 71 systematische Reviews bzw. Metaanalysen eingeschlossen."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "In die Leitliniensynopse wurden nach Sichtung der Volltexte acht deutsch- und englischsprachige Leitlinien eingeschlossen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Beim Kick-off wurden 19 Schlüsselfragen im PICO-Format ausgearbeitet."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die beteiligten Fachgesellschaften und Arbeitsgemeinschaften verabschiedeten die endgültige Fassung der Leitlinie Ende April 2024."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die überarbeiteten Empfehlungen zur antibiotischen Therapie unkomplizierter Harnwegsinfektionen verstärken unter anderem die Empfehlungen gegen den unkritischen Einsatz nicht indizierter Reserveantibiotika, insbesondere der Fluorchinolone."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die Empfehlung zur nicht-antimikrobiellen Behandlung unkomplizierter Harnwegsinfektionen wurde aufgrund neuer Evidenz bestärkt."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Für die neu hinzugekommene Gruppe der geriatrischen Patienten mit und ohne Katheter wurden Spezifika zu Harnwegsinfektionen und asymptomatischer Bakteriurie auf Basis der aktuellen Evidenz zusammengestellt."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Statt einer GRADE-Bewertung wurden die Outcomes in den Hintergrundtexten aufgeführt, um zu zeigen, dass eine Schaden-Nutzen-Abwägung erfolgt ist."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Projektnehmer geben an, unter den genannten Ein- und Ausschlusskriterien sei die höchstmögliche Evidenz gefunden und extrahiert worden."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die Projektnehmer geben an, mit der aktualisierten Leitlinie seien Therapieoptionen verbessert und das Bewusstsein für Antibiotikaresistenzen bei Ärzten und Patienten gestärkt worden. Messdaten dazu nennt der Abschnitt nicht."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Die Patientenleitlinie soll künftig Empowerment und Compliance der Betroffenen verbessern. Der Bericht formuliert dies als Erwartung."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Die Projektnehmer schreiben der Leitlinie wegen des systematischen Vorgehens nach AWMF eine hohe wissenschaftliche Legitimation der Methode und der Umsetzung zu."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Nach Angabe der Projektnehmer wurden im Zeitraum der Leitlinie organisatorische, strukturelle, personelle und finanzielle Barrieren erfolgreich bearbeitet. Zur Versorgungs- und Verordnungssituation lägen nun Daten vor."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Im Projektverlauf wurde das Wort „stationär“ aus dem Titel der Leitlinie gestrichen. Nach Meinung der Leitliniengruppe gab der alte Titel die Inhalte inkorrekt wieder."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "In der AG Geriatrie gab es nur wenige Studien der höchsten Evidenzstufe. Deshalb mussten dort bei den meisten Primärliteratursuchen zusätzlich RCTs herangezogen werden."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Zum Antibiotic Stewardship im ambulanten Bereich sind insgesamt nur spärlich Daten vorhanden."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Evidenzaufarbeitung verzögerte sich unter anderem durch corona-bedingten Personalmangel in den Kliniken und wurde erst im Februar 2023 beendet."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Der Beginn der Datenextraktion und der Evidenztabellen verschob sich vom geplanten 1. Juli 2022 auf den 15. August 2022, ebenso die damit verbundenen Arbeitsprozesse."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Bei den Korrekturdurchläufen der AG-Texte wurden interne Deadlines um bis zu drei Wochen überschritten. Weil der ursprüngliche Zeitplan nicht realisierbar war, musste eine 3-monatige kostenneutrale Laufzeitverlängerung bzw. eine anschließende Eigenfinanzierung beantragt werden."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die medizinische Leitlinie bildete die Basis der Patientenleitlinie. Weil sie verspätet finalisiert wurde, wurde auch die Patientenversion verspätet fertig."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die ursprünglich eingeplante Patientenvertreterin konnte nicht mitwirken. Erst im Januar 2023 fanden sich mit größerem Aufwand zwei Patientenvertreterinnen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Es bleiben Forschungsfragen offen, unter anderem die optimale Dauer der Antibiotikatherapie bei Männern mit Harnwegsinfektionen und mögliche Unterschiede zwischen jüngeren und älteren Männern."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

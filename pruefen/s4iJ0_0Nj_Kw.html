@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF23008</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>11 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 31 Aussagen. Die übrigen
+20 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die im Projekt ADAPT weiterentwickelte S3-Leitlinie zur Posttraumatischen Belastungsstörung der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Der Ausschuss hält fest, dass das Projekt die bestehende S3-Leitlinie zur Behandlung Posttraumatischer Belastungsstörungen erfolgreich aktualisiert hat. Sie wurde um Adressatinnen und Adressaten mit besonderen Bedürfnissen erweitert, etwa Kinder und Jugendliche sowie Menschen mit Fluchterfahrung. Verabschiedet wurden 18 evidenzbasierte und 48 konsensbasierte Empfehlungen zu Diagnostik und Behandlung. Zusätzlich wurde eine Patienteninformation erstellt. Die Leitlinie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien. Damit sieht er die Voraussetzung gegeben, ihr Potential zur Verbesserung der Versorgung entsprechend der Antragstellung auszuschöpfen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,106 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Beschluss enthält keine ausdrücklichen Aussagen zur Übertragbarkeit. Er sieht mit der Erfüllung der AWMF-Kriterien lediglich die Voraussetzung gegeben, das Potential der Leitlinie zur Verbesserung der Versorgung auszuschöpfen.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erfolgreiche Aktualisierung der S3-Leitlinie PTBS und Erweiterung um Zielgruppen mit besonderen Bedürfnissen</p>
-  <blockquote>„Das Projekt hat erfolgreich die bestehen de S3 -Leitlinie zur Behandlung Posttraumatischer Belastungsstörungen aktualisiert und um Adressatinnen und Adressaten mit besonderen Bedürfnissen (z. B. Kinder und Jugendliche sowie Menschen mit Fluchterfahrung) erweitert." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">18 evidenz- und 48 konsensbasierte Empfehlungen verabschiedet</p>
-  <blockquote>„Insgesamt konnten 18 evidenz- und 48 konsensbasierte Empfehlungen zur Diagnostik und Behandlung verabschiedet werden." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Evidenzbasierte Patienteninformation für Betroffene und Angehörige erstellt</p>
-  <blockquote>„Zudem stellt die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene und deren Angehörige zur Verfügung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
-  <blockquote>„Die weiterentwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3-Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -257,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben aktualisierte die S3-Leitlinie Posttraumatische Belastungsstörung und erweiterte sie um Zielgruppen mit besonderen Bedürfnissen; dazu wurden systematische Recherchen nach aggregierter Evidenz und nach Primärdaten durchgeführt und eine Konsensusgruppe mit 92 Beteiligten in 13 AWMF-moderierten Konsensustreffen eingesetzt. Über alle Recherchen wurden 30.905 Publikationen gesichtet, 1.059 Volltexte geprüft und 281 Publikationen eingeschlossen. Daraus entstanden 18 evidenzbasierte Empfehlungen (25,7 %), 48 Expert:innenkonsense (68,6 %) und 4 Statements (5,7 %); laut Bericht besteht bei den Empfehlungen ein hoher Konsens. Der Anteil evidenzbasierter Empfehlungen liegt unter den von der AWMF-Leitlinien-Kommission für eine S3-Leitlinie geforderten mindestens 50 %; die Steuergruppe behielt die S3-Stufe dennoch bei. Die Aussagekraft hängt daran, dass die Evidenzlage für viele Fragestellungen nach Angaben des Berichts gering war, evidenzbasierte Empfehlungen teilweise nur auf geringer bis mäßiger Evidenz beruhen und internationale Erkenntnisse häufig nicht uneingeschränkt auf das deutsche Versorgungssystem übertragbar sind. Für die Diagnostik wurde keine Evidenzbewertung vorgenommen. Der Bericht leitet aus der Zahl der Expert:innenkonsense Forschungsbedarf im deutschsprachigen Raum ab.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auf Basis der Evidenzlage wurden 18 klinische Empfehlungen formuliert, für die übrigen Fragestellungen 48 Expert:innenkonsense, zusätzlich 4 Statements.</p>
+  
   <blockquote>„„auf Grund der Evidenzlage 18 klinische Empfehlungen formuliert werden konnten, während die Evidenzlage für die restlichen klinischen Fragestellungen so gering war, dass 48 Expert:innenkonsense dazu formuliert wurden. Zusätzlich wurden 4 Statements formuliert.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von den Empfehlungen waren 25,7 % evidenzbasiert, 68,6 % konsensbasiert und 5,7 % Statements.</p>
+  
   <blockquote>„„Der Anteil derjenigen Empfehlungen, die evidenzbasiert sind, lag bei 18 (25,7%), der konsensbasierten Empfehlungen bei 48 (68,6%). Zusätzlich wurden 4 Statements formuliert (5,7%).“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,31 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht besteht bei den Empfehlungen ein hoher Konsens der Leitliniengruppe.</p>
+  
   <blockquote>„„E s besteht ein hoher Konsens bei den Empfehlungen, welches eine interdisziplinäre Einigkeit zu den Ergebnissen der Diskussionen und Konsense hervorhebt.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.6">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Trotz Unterschreitung des 50-%-Anteils evidenzbasierter Empfehlungen behielten Steuergruppe und Projektleitung die S3-Stufe bei, mit Verweis auf das methodische Vorgehen und eine nach Bericht hervorragende Evidenzbasis für zentrale Themen wie die psychotherapeutische Behandlung.</p>
-  <blockquote>„„entschied sich die Steuergruppe und Projektleitung nach Rücksprache zum Beibehalt der S3 -Stufe, da das methodische Vorgehen einer solchen entspricht und in Bezug auf zentrale Themenfelder (z.B. die psychotherapeutische Behandlung der PTBS betreffend) eine hervorrage nde Evidenzbasis existiert.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Anteil evidenzbasierter Empfehlungen entspricht nicht der Vorgabe der AWMF-Leitlinien-Kommission von mindestens 50 % formal evidenzbasierten Empfehlungen in einer S3-Leitlinie.</p>
+  
   <blockquote>„„Dies entspricht nicht der Empfehlung der AWMF -Leitlinien-Kommission, dass mindestens 50% formal evidenzbasierte Empfehlungen in einer S3 -Leitlinie vorhanden sein müssen.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Mangel an Evidenz hatte nach Angaben des Berichts häufige Expert:innenkonsense statt evidenzbasierter Empfehlungen zur Folge; zu Bereichen wie der Diagnostik wurden teilweise keine Publikationen gefunden, die den Suchkriterien entsprachen.</p>
+  
   <blockquote>„„Eine Herausforderung war der Mangel an Evidenz und die dadurch resultierenden häufigen Expert:innenkonse nse im Gegensatz zu evidenzbasierten Empfehlungen.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -388,32 +272,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Die evidenzbasierten Empfehlungen werden teilweise nur durch geringe bis mäßige Evidenz gestützt; der Bericht sieht Bedarf, sie künftig durch robustere Evidenz zu untermauern.</p>
+  <p class="unser">Die evidenzbasierten Empfehlungen werden teilweise durch geringe bis mäßige Evidenz gestützt; der Bericht sieht Bedarf, sie künftig durch robustere Evidenz zu untermauern.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Zusammenfassung enthielt eine Wertung, die im Bericht nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Die evidenzbasierten Empfehlungen werden teilweise nur durch geringe bis mäßige Evidenz gestützt; der Bericht sieht Bedarf, sie künftig durch robustere Evidenz zu untermauern.“</i></p>
   <blockquote>„„Die evidenzbasierten Empfehlungen werden teilweise durch geringe bis mäßige Evidenz gestützt, was auf die zuvor genannten Gründe zurückzuführen ist.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Vorhandene internationale Erkenntnisse sind laut Bericht häufig nicht uneingeschränkt auf das deutsche Sozial- und Versorgungssystem übertragbar.</p>
-  <blockquote>„„auch vorhandene internationale Erkenntnisse häufig nicht uneingeschränkt auf das deutsche Sozial- und Versorgungssystem übertragbar sind.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -428,11 +295,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zahl der konsensbasierten Empfehlungen: S. 20 und S. 26 nennen 48 Expert:innenkonsense (68,6 %), an anderer Stelle auf S. 26 ist von „insgesamt 66 konsensbasierte[n] Empfehlungen“ die Rede (66 entspricht der Summe aus 18 evidenzbasierten und 48 konsensbasierten Empfehlungen).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -447,11 +314,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Erfüllung der AWMF-Kriterien: S. 14 heißt es, die Leitlinie „erfüllt … alle von der AWMF definierten Kriterien“; S. 26 stellt fest, der Anteil evidenzbasierter Empfehlungen „entspricht nicht der Empfehlung der AWMF-Leitlinien-Kommission“ von mindestens 50 %.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -461,16 +328,168 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>12 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>20 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die im Projekt ADAPT weiterentwickelte S3-Leitlinie zur Posttraumatischen Belastungsstörung der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Beschluss enthält keine ausdrücklichen Aussagen zur Übertragbarkeit. Er sieht mit der Erfüllung der AWMF-Kriterien lediglich die Voraussetzung gegeben, das Potential der Leitlinie zur Verbesserung der Versorgung auszuschöpfen.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erfolgreiche Aktualisierung der S3-Leitlinie PTBS und Erweiterung um Zielgruppen mit besonderen Bedürfnissen</p>
+  
+  <blockquote>„Das Projekt hat erfolgreich die bestehen de S3 -Leitlinie zur Behandlung Posttraumatischer Belastungsstörungen aktualisiert und um Adressatinnen und Adressaten mit besonderen Bedürfnissen (z. B. Kinder und Jugendliche sowie Menschen mit Fluchterfahrung) erweitert." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">18 evidenz- und 48 konsensbasierte Empfehlungen verabschiedet</p>
+  
+  <blockquote>„Insgesamt konnten 18 evidenz- und 48 konsensbasierte Empfehlungen zur Diagnostik und Behandlung verabschiedet werden." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Evidenzbasierte Patienteninformation für Betroffene und Angehörige erstellt</p>
+  
+  <blockquote>„Zudem stellt die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene und deren Angehörige zur Verfügung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
+  
+  <blockquote>„Die weiterentwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3-Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.6">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Trotz Unterschreitung des 50-%-Anteils evidenzbasierter Empfehlungen behielten Steuergruppe und Projektleitung die S3-Stufe bei, mit Verweis auf das methodische Vorgehen und eine nach Bericht hervorragende Evidenzbasis für zentrale Themen wie die psychotherapeutische Behandlung.</p>
+  
+  <blockquote>„„entschied sich die Steuergruppe und Projektleitung nach Rücksprache zum Beibehalt der S3 -Stufe, da das methodische Vorgehen einer solchen entspricht und in Bezug auf zentrale Themenfelder (z.B. die psychotherapeutische Behandlung der PTBS betreffend) eine hervorrage nde Evidenzbasis existiert.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Vorhandene internationale Erkenntnisse sind laut Bericht häufig nicht uneingeschränkt auf das deutsche Sozial- und Versorgungssystem übertragbar.</p>
+  
+  <blockquote>„„auch vorhandene internationale Erkenntnisse häufig nicht uneingeschränkt auf das deutsche Sozial- und Versorgungssystem übertragbar sind.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Über alle Recherchen wurden 30.905 Publikationen gesichtet, 1.059 Volltexte geprüft und 281 Publikationen eingeschlossen.</p>
+  
   <blockquote>„„Insgesamt wurden 30.905 Publikationen und 1.059 Volltexte identifiziert und gesichtet sowie 281 Publikationen inkludiert.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +503,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Recherche nach aggregierter Evidenz ergab 21.013 Publikationen; von 850 geprüften Volltexten wurden 218 eingeschlossen.</p>
+  
   <blockquote>„„Es wurde eine Gesamtzahl von 21.013 Publikationen für die aggregierte Literatursuche identifiziert und gesichtet. Nach der Volltext -Prüfung von 850 Publikationen wurden 218 Publikationen inkludiert.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +522,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Recherche nach Primärdaten ergab 10.416 Publikationen; von 221 geprüften Volltexten wurden 63 eingeschlossen.</p>
+  
   <blockquote>„„Es wurde eine Gesamtzahl von 10.416 Publikationen für die Literatursuche der Primärevidenz identifiziert und gesichtet. Nach der Volltext -Prüfung von 221 Publikationen wurden 63 Publikationen inkludiert“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +541,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine Steuergruppe und eine Konsensusgruppe mit insgesamt 92 Beteiligten wurden eingerichtet; die Konsensusgruppe tagte in 13 AWMF-moderierten Konsensustreffen, und elf Arbeitsgruppen (eine pro Kapitel) wurden gebildet.</p>
+  
   <blockquote>„„eine Steuergruppe sowie eine Konsensusgruppe mit insgesamt 92 Beteiligten eingerichtet. Im Rahmen von 13 durch die AWMF neutral moderierten Konsensustreffen tagte die Konsensusgruppe regelmäßig. Zu Beginn dieses Prozesses wurden elf Arbeitsgruppen gebildet, jeweils eine pro Kapitel.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +560,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei einigen Personen wurden geringe bis moderate thematisch relevante Interessenkonflikte festgestellt; Personen mit geringen Konflikten übten keine leitenden Funktionen aus, Personen mit moderaten Konflikten nahmen an den entsprechenden Abstimmungen nicht teil.</p>
+  
   <blockquote>„„Bei geringen Interessenkonflikten wurde sichergestellt, dass keine leitenden Funktionen innerhalb der Leitliniengruppe ausgeübt wurden. Personen mit moderaten Interessenkonflikten haben nicht an den entsprechenden Abstimmungen teilgenommen.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +579,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine Patient:innenvertretung war beteiligt, über die nach Angaben des Berichts die Perspektive von Betroffenen in das Projekt einfloss.</p>
+  
   <blockquote>„„Durch die Beteiligung einer Patient:innenvertretung konnte die Perspektive von Patient:innen und Betroffenen in das Projekt und dessen Ergebnisse integriert werden.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +598,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zusätzlich wurden ein Leitlinienreport und ein Informationsblatt für Betroffene von (k)PTBS erstellt.</p>
+  
   <blockquote>„„wurden zudem ein Leitlinienreport sowie ein Informationsblatt für Betroffene von (komplexer) Posttraumatischen Belastungsstörung ((k)PTBS) durch das Leitliniensekreta riat erstellt.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +617,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für die AG Diagnostik und die diagnostischen Fragestellungen der AG Kinder und Jugendliche wurde keine Evidenzbewertung vorgenommen, sondern nur Zusammenfassungen erstellt, weil die Bewertungsinstrumente für die Studiendesigns nicht geeignet waren.</p>
+  
   <blockquote>„„Für die AG Diagnostik sowie die diagnostischen Fragestellungen der AG Behandlung der PTBS bei Kindern und Jugendlichen wurden keine Bewertungen der Evidenz vorgenommen, sondern ausschließlich Zusammenfassungen erstellt.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +636,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die aggregierte Evidenz beantwortete die klinischen Fragestellungen nicht vollständig, weshalb zusätzliche Primärdatenrecherchen (RCTs und Kohortenstudien) durchgeführt wurden.</p>
+  
   <blockquote>„„Da die identifizierte aggregierte Evidenz die klinischen Fragestellungen dieser Leitlinie nicht in Gänze beantworten konnten, wurden zusätzliche Primärdatenrecherchen (Randomisierte Kontrollstudien und Kohortenstudien) durchgeführt.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +655,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für die AGs Psychotherapeutische Behandlung, Komorbide Psychische Störungen und Kinder und Jugendliche wurde wegen der Publikationsmenge nur ab 2013 gesucht, für die AG Diagnostik ab 2007.</p>
+  
   <blockquote>„„für w elche ausschließlich Publikationen ab 2013 auf Grund der Summe an Publikationen gesucht wurden sowie die AG Diagnostik, für welche nach Rücksprache mit der AG Publikationen ab 2007 gesucht wurden.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +674,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eingeschlossen wurden nur deutsch- und englischsprachige Arbeiten, deren Übertragbarkeit auf das deutsche Versorgungssystem u. a. von den AGs eingeschätzt wurde.</p>
+  
   <blockquote>„„Inklusionsgründe für den Einschluss von identifizierten Arbeiten die deutsche und englische Sprache, die Übertragbarkeit auf das deutsche Versorgungssystem (u.a. durch die jeweiligen AGs eingeschätzt) sowie das Erfüllen der jeweiligen PICO-Inhalte.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +693,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zwei eingeladene Fachgesellschaften (Pflegewissenschaft und Physiotherapiewissenschaft) nahmen wegen mangelnder Ressourcen nicht teil.</p>
+  
   <blockquote>„„Leidglich zwei eingeladene Fachgesellschaften (Deutsche Gesellschaft für Pflegewissenschaft und Deutsche Gesellschaft für Physiotherapiewissenschaft ) konnten wegen mangelnder Ressourcen nicht teilnehmen.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -724,28 +743,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 584, "akronym": "ADAPT", "kennung": "s4iJ0_0Nj_Kw", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt ADAPT weiterentwickelte S3-Leitlinie zur Posttraumatischen Belastungsstörung der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss hält fest, dass das Projekt die bestehende S3-Leitlinie zur Behandlung Posttraumatischer Belastungsstörungen erfolgreich aktualisiert hat. Sie wurde um Adressatinnen und Adressaten mit besonderen Bedürfnissen erweitert, etwa Kinder und Jugendliche sowie Menschen mit Fluchterfahrung. Verabschiedet wurden 18 evidenzbasierte und 48 konsensbasierte Empfehlungen zu Diagnostik und Behandlung. Zusätzlich wurde eine Patienteninformation erstellt. Die Leitlinie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien. Damit sieht er die Voraussetzung gegeben, ihr Potential zur Verbesserung der Versorgung entsprechend der Antragstellung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss enthält keine ausdrücklichen Aussagen zur Übertragbarkeit. Er sieht mit der Erfüllung der AWMF-Kriterien lediglich die Voraussetzung gegeben, das Potential der Leitlinie zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "befund.0", "art": "befund", "unser": "Erfolgreiche Aktualisierung der S3-Leitlinie PTBS und Erweiterung um Zielgruppen mit besonderen Bedürfnissen"}, {"stelle": "befund.1", "art": "befund", "unser": "18 evidenz- und 48 konsensbasierte Empfehlungen verabschiedet"}, {"stelle": "befund.2", "art": "befund", "unser": "Evidenzbasierte Patienteninformation für Betroffene und Angehörige erstellt"}, {"stelle": "befund.3", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben aktualisierte die S3-Leitlinie Posttraumatische Belastungsstörung und erweiterte sie um Zielgruppen mit besonderen Bedürfnissen; dazu wurden systematische Recherchen nach aggregierter Evidenz und nach Primärdaten durchgeführt und eine Konsensusgruppe mit 92 Beteiligten in 13 AWMF-moderierten Konsensustreffen eingesetzt. Über alle Recherchen wurden 30.905 Publikationen gesichtet, 1.059 Volltexte geprüft und 281 Publikationen eingeschlossen. Daraus entstanden 18 evidenzbasierte Empfehlungen (25,7 %), 48 Expert:innenkonsense (68,6 %) und 4 Statements (5,7 %); laut Bericht besteht bei den Empfehlungen ein hoher Konsens. Der Anteil evidenzbasierter Empfehlungen liegt unter den von der AWMF-Leitlinien-Kommission für eine S3-Leitlinie geforderten mindestens 50 %; die Steuergruppe behielt die S3-Stufe dennoch bei. Die Aussagekraft hängt daran, dass die Evidenzlage für viele Fragestellungen nach Angaben des Berichts gering war, evidenzbasierte Empfehlungen teilweise nur auf geringer bis mäßiger Evidenz beruhen und internationale Erkenntnisse häufig nicht uneingeschränkt auf das deutsche Versorgungssystem übertragbar sind. Für die Diagnostik wurde keine Evidenzbewertung vorgenommen. Der Bericht leitet aus der Zahl der Expert:innenkonsense Forschungsbedarf im deutschsprachigen Raum ab."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Auf Basis der Evidenzlage wurden 18 klinische Empfehlungen formuliert, für die übrigen Fragestellungen 48 Expert:innenkonsense, zusätzlich 4 Statements."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Von den Empfehlungen waren 25,7 % evidenzbasiert, 68,6 % konsensbasiert und 5,7 % Statements."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Laut Bericht besteht bei den Empfehlungen ein hoher Konsens der Leitliniengruppe."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Trotz Unterschreitung des 50-%-Anteils evidenzbasierter Empfehlungen behielten Steuergruppe und Projektleitung die S3-Stufe bei, mit Verweis auf das methodische Vorgehen und eine nach Bericht hervorragende Evidenzbasis für zentrale Themen wie die psychotherapeutische Behandlung."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Der Anteil evidenzbasierter Empfehlungen entspricht nicht der Vorgabe der AWMF-Leitlinien-Kommission von mindestens 50 % formal evidenzbasierten Empfehlungen in einer S3-Leitlinie."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Der Mangel an Evidenz hatte nach Angaben des Berichts häufige Expert:innenkonsense statt evidenzbasierter Empfehlungen zur Folge; zu Bereichen wie der Diagnostik wurden teilweise keine Publikationen gefunden, die den Suchkriterien entsprachen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die evidenzbasierten Empfehlungen werden teilweise nur durch geringe bis mäßige Evidenz gestützt; der Bericht sieht Bedarf, sie künftig durch robustere Evidenz zu untermauern."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Vorhandene internationale Erkenntnisse sind laut Bericht häufig nicht uneingeschränkt auf das deutsche Sozial- und Versorgungssystem übertragbar."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zahl der konsensbasierten Empfehlungen: S. 20 und S. 26 nennen 48 Expert:innenkonsense (68,6 %), an anderer Stelle auf S. 26 ist von „insgesamt 66 konsensbasierte[n] Empfehlungen“ die Rede (66 entspricht der Summe aus 18 evidenzbasierten und 48 konsensbasierten Empfehlungen)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Erfüllung der AWMF-Kriterien: S. 14 heißt es, die Leitlinie „erfüllt … alle von der AWMF definierten Kriterien“; S. 26 stellt fest, der Anteil evidenzbasierter Empfehlungen „entspricht nicht der Empfehlung der AWMF-Leitlinien-Kommission“ von mindestens 50 %."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Über alle Recherchen wurden 30.905 Publikationen gesichtet, 1.059 Volltexte geprüft und 281 Publikationen eingeschlossen."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Die Recherche nach aggregierter Evidenz ergab 21.013 Publikationen; von 850 geprüften Volltexten wurden 218 eingeschlossen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die Recherche nach Primärdaten ergab 10.416 Publikationen; von 221 geprüften Volltexten wurden 63 eingeschlossen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Eine Steuergruppe und eine Konsensusgruppe mit insgesamt 92 Beteiligten wurden eingerichtet; die Konsensusgruppe tagte in 13 AWMF-moderierten Konsensustreffen, und elf Arbeitsgruppen (eine pro Kapitel) wurden gebildet."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Bei einigen Personen wurden geringe bis moderate thematisch relevante Interessenkonflikte festgestellt; Personen mit geringen Konflikten übten keine leitenden Funktionen aus, Personen mit moderaten Konflikten nahmen an den entsprechenden Abstimmungen nicht teil."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Eine Patient:innenvertretung war beteiligt, über die nach Angaben des Berichts die Perspektive von Betroffenen in das Projekt einfloss."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Zusätzlich wurden ein Leitlinienreport und ein Informationsblatt für Betroffene von (k)PTBS erstellt."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Für die AG Diagnostik und die diagnostischen Fragestellungen der AG Kinder und Jugendliche wurde keine Evidenzbewertung vorgenommen, sondern nur Zusammenfassungen erstellt, weil die Bewertungsinstrumente für die Studiendesigns nicht geeignet waren."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die aggregierte Evidenz beantwortete die klinischen Fragestellungen nicht vollständig, weshalb zusätzliche Primärdatenrecherchen (RCTs und Kohortenstudien) durchgeführt wurden."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Für die AGs Psychotherapeutische Behandlung, Komorbide Psychische Störungen und Kinder und Jugendliche wurde wegen der Publikationsmenge nur ab 2013 gesucht, für die AG Diagnostik ab 2007."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Eingeschlossen wurden nur deutsch- und englischsprachige Arbeiten, deren Übertragbarkeit auf das deutsche Versorgungssystem u. a. von den AGs eingeschätzt wurde."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Zwei eingeladene Fachgesellschaften (Pflegewissenschaft und Physiotherapiewissenschaft) nahmen wegen mangelnder Ressourcen nicht teil."}]};
+const D = {"projekt_id": 584, "akronym": "ADAPT", "kennung": "s4iJ0_0Nj_Kw", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss hält fest, dass das Projekt die bestehende S3-Leitlinie zur Behandlung Posttraumatischer Belastungsstörungen erfolgreich aktualisiert hat. Sie wurde um Adressatinnen und Adressaten mit besonderen Bedürfnissen erweitert, etwa Kinder und Jugendliche sowie Menschen mit Fluchterfahrung. Verabschiedet wurden 18 evidenzbasierte und 48 konsensbasierte Empfehlungen zu Diagnostik und Behandlung. Zusätzlich wurde eine Patienteninformation erstellt. Die Leitlinie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien. Damit sieht er die Voraussetzung gegeben, ihr Potential zur Verbesserung der Versorgung entsprechend der Antragstellung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben aktualisierte die S3-Leitlinie Posttraumatische Belastungsstörung und erweiterte sie um Zielgruppen mit besonderen Bedürfnissen; dazu wurden systematische Recherchen nach aggregierter Evidenz und nach Primärdaten durchgeführt und eine Konsensusgruppe mit 92 Beteiligten in 13 AWMF-moderierten Konsensustreffen eingesetzt. Über alle Recherchen wurden 30.905 Publikationen gesichtet, 1.059 Volltexte geprüft und 281 Publikationen eingeschlossen. Daraus entstanden 18 evidenzbasierte Empfehlungen (25,7 %), 48 Expert:innenkonsense (68,6 %) und 4 Statements (5,7 %); laut Bericht besteht bei den Empfehlungen ein hoher Konsens. Der Anteil evidenzbasierter Empfehlungen liegt unter den von der AWMF-Leitlinien-Kommission für eine S3-Leitlinie geforderten mindestens 50 %; die Steuergruppe behielt die S3-Stufe dennoch bei. Die Aussagekraft hängt daran, dass die Evidenzlage für viele Fragestellungen nach Angaben des Berichts gering war, evidenzbasierte Empfehlungen teilweise nur auf geringer bis mäßiger Evidenz beruhen und internationale Erkenntnisse häufig nicht uneingeschränkt auf das deutsche Versorgungssystem übertragbar sind. Für die Diagnostik wurde keine Evidenzbewertung vorgenommen. Der Bericht leitet aus der Zahl der Expert:innenkonsense Forschungsbedarf im deutschsprachigen Raum ab."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Auf Basis der Evidenzlage wurden 18 klinische Empfehlungen formuliert, für die übrigen Fragestellungen 48 Expert:innenkonsense, zusätzlich 4 Statements."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Von den Empfehlungen waren 25,7 % evidenzbasiert, 68,6 % konsensbasiert und 5,7 % Statements."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Laut Bericht besteht bei den Empfehlungen ein hoher Konsens der Leitliniengruppe."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Der Anteil evidenzbasierter Empfehlungen entspricht nicht der Vorgabe der AWMF-Leitlinien-Kommission von mindestens 50 % formal evidenzbasierten Empfehlungen in einer S3-Leitlinie."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Der Mangel an Evidenz hatte nach Angaben des Berichts häufige Expert:innenkonsense statt evidenzbasierter Empfehlungen zur Folge; zu Bereichen wie der Diagnostik wurden teilweise keine Publikationen gefunden, die den Suchkriterien entsprachen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die evidenzbasierten Empfehlungen werden teilweise durch geringe bis mäßige Evidenz gestützt; der Bericht sieht Bedarf, sie künftig durch robustere Evidenz zu untermauern."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zahl der konsensbasierten Empfehlungen: S. 20 und S. 26 nennen 48 Expert:innenkonsense (68,6 %), an anderer Stelle auf S. 26 ist von „insgesamt 66 konsensbasierte[n] Empfehlungen“ die Rede (66 entspricht der Summe aus 18 evidenzbasierten und 48 konsensbasierten Empfehlungen)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Erfüllung der AWMF-Kriterien: S. 14 heißt es, die Leitlinie „erfüllt … alle von der AWMF definierten Kriterien“; S. 26 stellt fest, der Anteil evidenzbasierter Empfehlungen „entspricht nicht der Empfehlung der AWMF-Leitlinien-Kommission“ von mindestens 50 %."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt ADAPT weiterentwickelte S3-Leitlinie zur Posttraumatischen Belastungsstörung der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss enthält keine ausdrücklichen Aussagen zur Übertragbarkeit. Er sieht mit der Erfüllung der AWMF-Kriterien lediglich die Voraussetzung gegeben, das Potential der Leitlinie zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "befund.0", "art": "befund", "unser": "Erfolgreiche Aktualisierung der S3-Leitlinie PTBS und Erweiterung um Zielgruppen mit besonderen Bedürfnissen"}, {"stelle": "befund.1", "art": "befund", "unser": "18 evidenz- und 48 konsensbasierte Empfehlungen verabschiedet"}, {"stelle": "befund.2", "art": "befund", "unser": "Evidenzbasierte Patienteninformation für Betroffene und Angehörige erstellt"}, {"stelle": "befund.3", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Trotz Unterschreitung des 50-%-Anteils evidenzbasierter Empfehlungen behielten Steuergruppe und Projektleitung die S3-Stufe bei, mit Verweis auf das methodische Vorgehen und eine nach Bericht hervorragende Evidenzbasis für zentrale Themen wie die psychotherapeutische Behandlung."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Vorhandene internationale Erkenntnisse sind laut Bericht häufig nicht uneingeschränkt auf das deutsche Sozial- und Versorgungssystem übertragbar."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Über alle Recherchen wurden 30.905 Publikationen gesichtet, 1.059 Volltexte geprüft und 281 Publikationen eingeschlossen."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Die Recherche nach aggregierter Evidenz ergab 21.013 Publikationen; von 850 geprüften Volltexten wurden 218 eingeschlossen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die Recherche nach Primärdaten ergab 10.416 Publikationen; von 221 geprüften Volltexten wurden 63 eingeschlossen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Eine Steuergruppe und eine Konsensusgruppe mit insgesamt 92 Beteiligten wurden eingerichtet; die Konsensusgruppe tagte in 13 AWMF-moderierten Konsensustreffen, und elf Arbeitsgruppen (eine pro Kapitel) wurden gebildet."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Bei einigen Personen wurden geringe bis moderate thematisch relevante Interessenkonflikte festgestellt; Personen mit geringen Konflikten übten keine leitenden Funktionen aus, Personen mit moderaten Konflikten nahmen an den entsprechenden Abstimmungen nicht teil."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Eine Patient:innenvertretung war beteiligt, über die nach Angaben des Berichts die Perspektive von Betroffenen in das Projekt einfloss."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Zusätzlich wurden ein Leitlinienreport und ein Informationsblatt für Betroffene von (k)PTBS erstellt."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Für die AG Diagnostik und die diagnostischen Fragestellungen der AG Kinder und Jugendliche wurde keine Evidenzbewertung vorgenommen, sondern nur Zusammenfassungen erstellt, weil die Bewertungsinstrumente für die Studiendesigns nicht geeignet waren."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die aggregierte Evidenz beantwortete die klinischen Fragestellungen nicht vollständig, weshalb zusätzliche Primärdatenrecherchen (RCTs und Kohortenstudien) durchgeführt wurden."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Für die AGs Psychotherapeutische Behandlung, Komorbide Psychische Störungen und Kinder und Jugendliche wurde wegen der Publikationsmenge nur ab 2013 gesucht, für die AG Diagnostik ab 2007."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Eingeschlossen wurden nur deutsch- und englischsprachige Arbeiten, deren Übertragbarkeit auf das deutsche Versorgungssystem u. a. von den AGs eingeschätzt wurde."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Zwei eingeladene Fachgesellschaften (Pflegewissenschaft und Physiotherapiewissenschaft) nahmen wegen mangelnder Ressourcen nicht teil."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

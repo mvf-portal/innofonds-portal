@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF17032</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>25 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 104 Aussagen. Die übrigen
+79 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss spricht für das Projekt Inno_RD keine Empfehlung aus. Die Erkenntnisse werden wegen der laufenden Diskussion über Reformen der Notfallversorgung zur Information an das BMG, die für den Rettungsdienst zuständigen Landesministerien, die DKG, den GKV-Spitzenverband, die KBV, die DGINA und die DGRN weitergeleitet. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt hat die Notfallversorgung mit Beteiligung des Rettungsdienstes in Bayern und Baden-Württemberg multimodal untersucht: mit einer Sekundärdatenanalyse, einer Patientenbefragung und einem Mixed-Methods-Konsensverfahren. Der Ausschuss hält die Methoden für angemessen. Die geplante prospektive Validierung von Qualitätsindikatoren konnte jedoch nicht umgesetzt werden. Wenige verknüpfbare Einsatzfälle begrenzten die Sekundärdatenanalyse, sodass nicht alle Fragestellungen beantwortet werden konnten. Die Rücklaufquote der Befragung war gering. Nicht nachvollziehbar ist, welche Erkenntnisse aus Datenanalyse und Befragung in die Handlungsempfehlungen eingingen, und dissente Positionen blieben unberücksichtigt. Weil die Ergebnisse zum fachlichen und politischen Reformdiskurs beitragen können, werden sie zur Information weitergeleitet.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Mixed Methods</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Beschluss sagt nichts ausdrücklich zur Übertragbarkeit auf die Regelversorgung. Er weist darauf hin, dass die Untersuchung beispielhaft an BKK-Versicherten in Bayern und Baden-Württemberg erfolgte. Die entwickelte Pseudonymisierungssoftware kann für ähnliche Forschungsansätze weiterverwendet werden.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Geplante prospektive Validierung von Qualitätsindikatoren des Rettungsdienstes durch versorgungsrelevante Outcomes nicht realisiert</p>
+  
   <blockquote>„Die beabsichtigte, prospektive Validierung von Qualitätsindikatoren des Rettungsdienstes durch versorgungsrelevante Outcomes konnte jedoch nicht realisiert werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,14 +176,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Fallzahl zu klein für die Auswertung</h3>
+  <h3>Hindernis laut Beschluss: Fallzahl in der Auswertung</h3>
   <p class="unser">Geringe Anzahl verknüpfbarer Einsatzfälle, daher nicht alle Fragestellungen beantwortbar</p>
+  
   <blockquote>„Bei der Sekundärdatenanalyse wirkte eine geringe Anzahl an verknüpfbaren Einsatz-Fällen limitierend. Daher konnten nicht alle Fragestellungen beantwortet werden (z. B. zu erbrachten Leistungen des Rettungsdienstes, Ableitung von Qualitätsindikatoren)." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -218,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.2">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Geringe Rücklaufquote der Patientenbefragung (ca. 20 %)</p>
+  
   <blockquote>„Bei der Befragung der Patientinnen und Patienten war die Rücklaufquote mit ca. 20 % recht gering." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.3">
   <h3>Hindernis laut Beschluss: Auswertung und Statistik</h3>
   <p class="unser">Nicht nachvollziehbar, welche Erkenntnisse aus Sekundäranalyse und Befragung in die Handlungsempfehlungen eingingen</p>
+  
   <blockquote>„Welche konkreten Erkenntnisse aus der Sekundäranalyse und Patientinnen- und Patientenbefragung zur Ableitung der Handlungsempfehlungen beitrugen, ist nicht nachvollziehbar." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -255,127 +234,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="hindernis.4">
   <h3>Hindernis laut Beschluss: Auswertung und Statistik</h3>
-  <p class="unser">Dissente Positionen im Konsensverfahren bei den Handlungsempfehlungen unberücksichtigt</p>
+  <p class="unser">Adäquates Verfahren zur Konsenserhebung, dissente Positionen bei den Handlungsempfehlungen jedoch unberücksichtigt</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung gab nur eine Hälfte des Beschlusssatzes wieder; die Neufassung nennt beide. Vorher stand hier:
+    <i>„Dissente Positionen im Konsensverfahren bei den Handlungsempfehlungen unberücksichtigt“</i></p>
   <blockquote>„Das Verfahren zur Konsenserhebung war adäquat, lässt jedoch dissente Positionen in den Handlungsempfehlungen unberücksichtigt." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Umfassende Beschreibung der Notfallversorgung durch die Sekundärdatenanalyse</p>
-  <blockquote>„Die durchgeführte Sekundärdatenanalyse bietet eine umfassende Beschreibung der Notfallversorgung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Neue Einsichten zu Einsatzanlässen und Meldepersonen aus der Patientenbefragung</p>
-  <blockquote>„Neben der Sekundärdatenanalyse erfolgte eine Befragung von 259 Patientinnen und Patienten mit Inanspruchnahme des Rettungsdienstes, welche neue Einsichten in die Anlässe und zu Meldepersonen bei Rettungsdiensteinsätzen lieferte." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">55 konsentierte Aussagen bzw. 19 Handlungsempfehlungen mit starkem Konsens zu vier Schwerpunktthemen</p>
-  <blockquote>„Im Ergebnis liegen nun 55 konsentierte Aussagen bzw. 19 Handlungsempfehlungen mit starkem Konsens für vier Schwerpunktthemen (1) Leitstelle/ Leitstellendisposition, (2) Patientenversorgende, (3) Dokumentation/ Evaluation und (4) Bevölkerung vor." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Angewandte Methoden vom Ausschuss als angemessen bewertet</p>
-  <blockquote>„Die angewandten Methoden waren angemessen." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Entwickelte Pseudonymisierungssoftware frei verfügbar und weiterverwendbar</p>
-  <blockquote>„Zur technischen Umsetzung des angewandten Datenlinkage -Verfahrens wurde eine Pseudonymisierungssoftware entwickelt. Diese steht nun frei zur Verfügung und kann für ähnliche Forschungsansätze weiterverwendet werden." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.5">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Beitrag zum fachlichen und politischen Reformdiskurs der Notfallversorgung</p>
-  <blockquote>„Die Ergebnisse können einen Beitrag zum aktuellen fachlichen und politischen Diskurs über Reformansätze der Notfallversorgung leisten." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -389,12 +256,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Verbleib der Patient:innen nach dem Rettungsdiensteinsatz (Behandlung in Versorgungssektoren am Einsatztag)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +275,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Mortalität am Tag des Rettungsdiensteinsatzes</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +294,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Überleben innerhalb eines Jahres (364 Tage) nach dem Index-Rettungsdiensteinsatz, stratifiziert nach Komorbidität</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +313,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Häufigkeit der Inanspruchnahme des Rettungsdienstes / Frequent-Nutzer:innen</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +332,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Hauptdiagnosen stationärer Aufnahmen am Tag des Rettungsdiensteinsatzes</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +351,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Komorbidität der Rettungsdienstpatient:innen</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +370,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Selbstberichtete Gründe und Anlässe für die Inanspruchnahme des Rettungsdienstes</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -522,12 +389,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Zustimmung von Expert:innen/Akteur:innen zu den abgeleiteten Handlungsempfehlungen</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -542,11 +409,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben Inno_RD untersuchte die Inanspruchnahme des Rettungsdienstes (RD) im Jahr 2016 im Mixed-Methods-Ansatz: Verknüpfung von Einsatzprotokollen, Leitstellendaten und Abrechnungsdaten von 10 BKK, eine schriftliche Patientenbefragung (259 Teilnehmende, Response 20 %) sowie Fokusgruppen mit anschließender Online-Befragung von Akteur:innen. Primäre Arbeitshypothese war, dass Struktur- und Prozessmerkmale von RD-Einsätzen mit versorgungsrelevanten Outcomes verbunden sind und sich daraus risikoadjustierte Qualitätsindikatoren ableiten lassen. Laut Bericht ließen sich dazu keine umfassenden Antworten finden; die Ableitung von Qualitätsindikatoren war nicht möglich, weil klinische Informationen fehlten und die Verknüpfung von Einsatzmerkmalen und Ergebnissen zu schwach war. Personenbezogen verknüpft wurden deterministisch 4.327 und probabilistisch 5.379 Einsatzprotokolle; auf datenliefernde Kassen ließen sich nur 5,6 % der abrechnungsfähigen Protokolle zurückführen. In den Kassendaten folgte bei 45,6 % der 224.524 Einsätze am Einsatztag ausschließlich eine stationäre Behandlung, bei etwa jedem sechsten Einsatz war taggleich keine Leistung dokumentiert; für mindestens 20 % wird ein grober Schätzwert ohne weiteren oder nur mit ambulantem Bedarf angegeben. 5,5 % der Patient:innen hatten drei oder mehr Einsätze; Mehrfachnutzung und Sterblichkeit im Folgejahr unterschieden sich nach Komorbidität (Elixhauser-Index). Aus Fokusgruppen abgeleitete Handlungsempfehlungen erhielten in der Online-Befragung (442 Fragebögen) mehrheitlich hohe bis sehr hohe Zustimmung. Die Aussagekraft hängt an der Annahme taggleicher Zuordnung in den Abrechnungsdaten, kleinen Untergruppen der rund 5.000 verknüpften Datensätze und wenig standardisierten Leitstellendaten.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +427,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Patientenbefragung: 259 Patient:innen mit RD-Einsatz 2016 nahmen teil (Response 20 %); die Mehrheit der Inanspruchnahmen war nicht von den Patient:innen selbst veranlasst, Gründe lagen vor allem im eigenen Versorgungsbedarf und subjektiv empfundenen Defiziten des Gesundheitssystems.</p>
+  
   <blockquote>„„E s wurden 259 Patient:innen mit einem RD -Einsatz im Jahr 2016 schriftlich befragt (Response: 20%). Es zeigte sich, dass die Mehrheit der Inanspruchnahmen nicht durch die Patient:innen selbst veranlasst waren“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +446,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die probabilistische Verknüpfung führte 5.660 Einsatzprotokolle eineindeutig mit Abrechnungsdaten zusammen; nach Bereinigung mit einem Mindestgewicht von 4,5 blieben 5.379 verknüpfte Protokolle.</p>
+  
   <blockquote>„„Durch den probabilistische Verknüpfungsalgorithmus ließen sich ne=5.660 Einsatzprotokolle eineindeutig mit den Abrechnungsdaten ver- knüpfen. Nach der Bereinigung von unplausiblen Verknüpfungen durch Ansetzen eines für die Akzeptanz minimal erforderlichen Gewichts von 4,5 verblieben ne=5.379 verknüpfte Einsatzprotokolle.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,88 +465,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In den Kassendaten schloss sich an 45,6 % der RD-Einsätze am Einsatztag ausschließlich eine stationäre Behandlung an.</p>
+  
   <blockquote>„„An näherungsweise der Hälfte aller Rettungseinsätze (45,6%) schlossen sich ausschließlich Behandlungen im stationären Sektor an, d. h. die Patient:innen wurden am Einsatztag stationär aufgenommen“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.13">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Von mehr als 72.000 Rettungsfahrten hatte rund die Hälfte der Patient:innen stationären Behandlungsbedarf; für mindestens 20 % bestand kein weiterer oder nur ambulanter Versorgungsbedarf (laut Bericht ein grober Schätzwert, siehe Hindernisse).</p>
-  <blockquote>„„Von mehr 72.000 Rettungsfahrten weist rund die Hälfte der Patienten einen stationären Behandlungsbedarf auf. Zugleich wurde erkennbar, dass für mindestens 20 % der Rettungsdienstpatienten kein weiterer oder (nur) ambulanter Versorgungsbedarf besteht.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.19">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Zusammenfassend beschreibt der Bericht, dass ein erheblicher Anteil der RD-Einsätze auf Häufignutzer mit drei und mehr Einsätzen pro Jahr und bei Vor- und Begleiterkrankungen auf vulnerable, nicht notwendigerweise alte Patient:innen entfällt; diese Merkmale bestimmen laut Bericht maßgeblich das mittelfristige Outcome wie das Versterben innerhalb eines Jahres.</p>
-  <blockquote>„„ein erheblicher Anteil der RD - Einsätze auf Häufignutzer mit drei und mehr Einsätzen im Jahr und bei Vorliegen von Vor- und Begleiterkrankungen vulnerable, nicht notwendigerweise jedoch primär alte und hochaltrige Patient:innen entfällt. Diese patienten- und krankheitsspezifischen Merkmale determinieren maßgeblich das mittelfristige Outcome“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.33">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Bei 116.089 durchgängig Versicherten waren 14 Tage nach dem Index-Einsatz mehr als 99 % ohne Komorbidität, etwa 96 % mit mittlerer und etwa 91 % mit hoher Komorbidität am Leben; nach 180 Tagen war der Anteil ohne Komorbidität nahezu unverändert, bei mittlerer 92 %, bei hoher 77 %; im zweiten Halbjahr vergrößerten sich die Unterschiede weiter.</p>
-  <blockquote>„„Während 14 Tage nach dem Rettungsdiensteinsatz mehr als 99% der nicht belasteten Patient:innen am Leben waren, beträgt der Vergleichsanteil für Gruppe 2 [...] etwa 96% bzw. für Gruppe 3 [...] etwa 91%. [...] so sank der Anteil auf 92% bzw. 77%.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.43">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Aus den Fokusgruppen wurden 59 Handlungsempfehlungen zu Leitstelle, Patientenversorgern, Dokumentation/Evaluation und Bevölkerung abgeleitet, die in der Online-Umfrage unter Akteur:innen des RD mehrheitlich hohe bis sehr hohe Zustimmung erhielten.</p>
-  <blockquote>„„Aus den Fokusgruppendiskussionen wurden insgesamt 59 Handlungsempfehlungen [...] abgeleitet, die bei der online -gestützten Umfrage bei Akteur:innen des RD mehrheitlich hohe bis sehr hohe Zustimmung erfuhren.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.43" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.43" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +484,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zur primären Fragestellung fanden die Auswertungen der Leitstellen- und GKV-Daten keine umfassenden Antworten.</p>
+  
   <blockquote>„„In den Auswertungen der Leitstellen- und GKV-Daten konnten auf die genannten Fragen keine umfassenden Antworten gefunden werden.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -711,13 +502,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Zum Anteil ohne Notfallbedarf ließ sich nur ein grober Schätzwert von etwa 20 % ableiten, weil klinische Informationen wie Schweregrad und individuelle Risikofaktoren fehlten; die Ableitung von Qualitätsindikatoren des RD war damit nicht möglich.</p>
+  <p class="unser">Zum Anteil ohne Notfallbedarf ließ sich ein grober Schätzwert von etwa 20 % ableiten; für eine belastbare Aussage fehlten klinische Informationen wie Schweregrad und individuelle Risikofaktoren; die Ableitung von Qualitätsindikatoren des RD war damit nicht möglich.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Zusammenfassung enthielt eine Wertung, die im Bericht nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Zum Anteil ohne Notfallbedarf ließ sich nur ein grober Schätzwert von etwa 20 % ableiten, weil klinische Informationen wie Schweregrad und individuelle Risikofaktoren fehlten; die Ableitung von Qualitätsindikatoren des RD war damit nicht möglich.“</i></p>
   <blockquote>„„Zu den Fragen i) und j) lässt sich ein grober Schätzwert von etwa 20 Prozent ableiten. Zu einer belastbaren Aussage fehlen aber in den uns verfügbaren Daten klinische Informationen wie Schweregrad und individuelle Risikofaktoren. Das gleiche gilt für Frage k. Damit war auch die Ableitung von Qualitätsindikatoren des Rettungsdienstes nicht möglich.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,50 +524,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eine Verknüpfung mit GKV-Daten war nur für Versicherte der 10 datenliefernden Kassen möglich; anhand des notierten Kassennamens ließen sich 5.921 von 106.317 Einsatzprotokollen (5,6 %) diesen Kassen zuordnen.</p>
+  
   <blockquote>„„Insgesamt ließen sich anhand des von den Einsatzkräften notierten Krankenkassennamens ne=5.921 Einsatzprotokolle (d. h. 5,6 % v. ne=106.317) auf an Inno_RD datenliefernde Krankenkassen zurückführen.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.5">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Wegen der Vielzahl der Verdachtsdiagnosen waren die Fallzahlen in relevanten Untergruppen der gut 5.000 verknüpften Datensätze klein.</p>
-  <blockquote>„„Aufgrund der Vielzahl der Verdachtsdiagnosen waren zudem die Fallzahlen in relevanten Untergruppen der gut 5.000 gelink ten Datensätze auch recht klein, so dass die Datengrundlage bzgl. der verlinkten Date in zukünftigen Projekten verbreitert werden sollte.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.6">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">In den Abrechnungsdaten waren RD-Leistungen und nachfolgende ambulante oder stationäre Behandlungen nicht eindeutig referenziert; die Zuordnung beruht auf taggleichen Daten.</p>
-  <blockquote>„„Als Problem bei der Identifikation von Behandlungsfällen erw ies sich, dass Leistungen des Rettungsdienstes, welche ambulanten Behandlungen oder stationären Aufnahmen vorrausgingen, in den in Inno_RD vorliegenden Abrechnungsdaten nicht eindeutig referenziert waren.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -789,11 +544,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zahl der Handlungsempfehlungen: Auf S. 2 werden 59 aus den Fokusgruppen abgeleitete Handlungsempfehlungen genannt, auf S. 25 insgesamt 55 Aussagen (35 Handlungsempfehlungen und 20 Sub-Statements).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -808,11 +563,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Patientenbefragung: S. 2 nennt 259 befragte Patient:innen (Response 20 %), S. 29 spricht von einer „Patientenbefragung mit 1.312 BKK-Versicherten“; ob 1.312 die angeschriebene Stichprobe bezeichnet, geht aus den Abschnitten nicht hervor.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -827,11 +582,279 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zahl der probabilistisch verknüpften Protokolle: S. 12 nennt nach Bereinigung 5.379, S. 20 legt der Analyse 5.361 verknüpfte bayerische Einsatzprotokolle zugrunde.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>79 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss spricht für das Projekt Inno_RD keine Empfehlung aus. Die Erkenntnisse werden wegen der laufenden Diskussion über Reformen der Notfallversorgung zur Information an das BMG, die für den Rettungsdienst zuständigen Landesministerien, die DKG, den GKV-Spitzenverband, die KBV, die DGINA und die DGRN weitergeleitet. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Beschluss sagt nichts ausdrücklich zur Übertragbarkeit auf die Regelversorgung. Er weist darauf hin, dass die Untersuchung beispielhaft an BKK-Versicherten in Bayern und Baden-Württemberg erfolgte. Die entwickelte Pseudonymisierungssoftware kann für ähnliche Forschungsansätze weiterverwendet werden.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Umfassende Beschreibung der Notfallversorgung durch die Sekundärdatenanalyse</p>
+  
+  <blockquote>„Die durchgeführte Sekundärdatenanalyse bietet eine umfassende Beschreibung der Notfallversorgung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Neue Einsichten zu Einsatzanlässen und Meldepersonen aus der Patientenbefragung</p>
+  
+  <blockquote>„Neben der Sekundärdatenanalyse erfolgte eine Befragung von 259 Patientinnen und Patienten mit Inanspruchnahme des Rettungsdienstes, welche neue Einsichten in die Anlässe und zu Meldepersonen bei Rettungsdiensteinsätzen lieferte." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">55 konsentierte Aussagen bzw. 19 Handlungsempfehlungen mit starkem Konsens zu vier Schwerpunktthemen</p>
+  
+  <blockquote>„Im Ergebnis liegen nun 55 konsentierte Aussagen bzw. 19 Handlungsempfehlungen mit starkem Konsens für vier Schwerpunktthemen (1) Leitstelle/ Leitstellendisposition, (2) Patientenversorgende, (3) Dokumentation/ Evaluation und (4) Bevölkerung vor." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Angewandte Methoden vom Ausschuss als angemessen bewertet</p>
+  
+  <blockquote>„Die angewandten Methoden waren angemessen." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.4">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Entwickelte Pseudonymisierungssoftware frei verfügbar und weiterverwendbar</p>
+  
+  <blockquote>„Zur technischen Umsetzung des angewandten Datenlinkage -Verfahrens wurde eine Pseudonymisierungssoftware entwickelt. Diese steht nun frei zur Verfügung und kann für ähnliche Forschungsansätze weiterverwendet werden." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.5">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Möglicher Beitrag zum fachlichen und politischen Reformdiskurs der Notfallversorgung</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung enthielt eine Wertung, die im Beschluss nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Beitrag zum fachlichen und politischen Reformdiskurs der Notfallversorgung“</i></p>
+  <blockquote>„Die Ergebnisse können einen Beitrag zum aktuellen fachlichen und politischen Diskurs über Reformansätze der Notfallversorgung leisten." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.5" value="ok" checked hidden>
+    <input type="radio" name="ubefund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.13">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Von mehr als 72.000 Rettungsfahrten hatte rund die Hälfte der Patient:innen stationären Behandlungsbedarf; für mindestens 20 % bestand kein weiterer oder nur ambulanter Versorgungsbedarf (laut Bericht ein grober Schätzwert, siehe Hindernisse).</p>
+  
+  <blockquote>„„Von mehr 72.000 Rettungsfahrten weist rund die Hälfte der Patienten einen stationären Behandlungsbedarf auf. Zugleich wurde erkennbar, dass für mindestens 20 % der Rettungsdienstpatienten kein weiterer oder (nur) ambulanter Versorgungsbedarf besteht.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.19">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Zusammenfassend beschreibt der Bericht, dass ein erheblicher Anteil der RD-Einsätze auf Häufignutzer mit drei und mehr Einsätzen pro Jahr und bei Vor- und Begleiterkrankungen auf vulnerable, nicht notwendigerweise alte Patient:innen entfällt; diese Merkmale bestimmen laut Bericht maßgeblich das mittelfristige Outcome wie das Versterben innerhalb eines Jahres.</p>
+  
+  <blockquote>„„ein erheblicher Anteil der RD - Einsätze auf Häufignutzer mit drei und mehr Einsätzen im Jahr und bei Vorliegen von Vor- und Begleiterkrankungen vulnerable, nicht notwendigerweise jedoch primär alte und hochaltrige Patient:innen entfällt. Diese patienten- und krankheitsspezifischen Merkmale determinieren maßgeblich das mittelfristige Outcome“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.33">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Bei 116.089 durchgängig Versicherten waren 14 Tage nach dem Index-Einsatz mehr als 99 % ohne Komorbidität, etwa 96 % mit mittlerer und etwa 91 % mit hoher Komorbidität am Leben; nach 180 Tagen war der Anteil ohne Komorbidität nahezu unverändert, bei mittlerer 92 %, bei hoher 77 %; im zweiten Halbjahr vergrößerten sich die Unterschiede weiter.</p>
+  
+  <blockquote>„„Während 14 Tage nach dem Rettungsdiensteinsatz mehr als 99% der nicht belasteten Patient:innen am Leben waren, beträgt der Vergleichsanteil für Gruppe 2 [...] etwa 96% bzw. für Gruppe 3 [...] etwa 91%. [...] so sank der Anteil auf 92% bzw. 77%.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.43">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Aus den Fokusgruppen wurden 59 Handlungsempfehlungen zu Leitstelle, Patientenversorgern, Dokumentation/Evaluation und Bevölkerung abgeleitet, die in der Online-Umfrage unter Akteur:innen des RD mehrheitlich hohe bis sehr hohe Zustimmung erhielten.</p>
+  
+  <blockquote>„„Aus den Fokusgruppendiskussionen wurden insgesamt 59 Handlungsempfehlungen [...] abgeleitet, die bei der online -gestützten Umfrage bei Akteur:innen des RD mehrheitlich hohe bis sehr hohe Zustimmung erfuhren.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.43" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.43" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.5">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Wegen der Vielzahl der Verdachtsdiagnosen waren die Fallzahlen in relevanten Untergruppen der gut 5.000 verknüpften Datensätze klein.</p>
+  
+  <blockquote>„„Aufgrund der Vielzahl der Verdachtsdiagnosen waren zudem die Fallzahlen in relevanten Untergruppen der gut 5.000 gelink ten Datensätze auch recht klein, so dass die Datengrundlage bzgl. der verlinkten Date in zukünftigen Projekten verbreitert werden sollte.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.6">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">In den Abrechnungsdaten waren RD-Leistungen und nachfolgende ambulante oder stationäre Behandlungen nicht eindeutig referenziert; die Zuordnung beruht auf taggleichen Daten.</p>
+  
+  <blockquote>„„Als Problem bei der Identifikation von Behandlungsfällen erw ies sich, dass Leistungen des Rettungsdienstes, welche ambulanten Behandlungen oder stationären Aufnahmen vorrausgingen, in den in Inno_RD vorliegenden Abrechnungsdaten nicht eindeutig referenziert waren.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -846,11 +869,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Notarztdaten: S. 27 hebt hervor, es sei erstmalig gelungen, Datensätze u. a. aus Leitstellen-, Notfallsanitäter:innendaten, Notarztprotokollen und GKV-Daten zu verknüpfen; S. 30 stellt fest, die Notarztdaten konnten gar nicht in die Analyse einbezogen werden.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -865,11 +888,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Stationärer Bedarf: S. 20 bezieht sich auf 224.524 Einsätze (45,6 % ausschließlich stationär, 13,0 % ambulant und stationär), S. 29 nennt „mehr als 72.000 Rettungsfahrten“, von denen rund die Hälfte stationären Bedarf aufweise; die Herkunft der Bezugsgröße 72.000 ist in den Abschnitten nicht erläutert.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -884,11 +907,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zielerreichung: S. 29 erklärt das Ziel, Versorgungsabläufe sektorenübergreifend zu quantifizieren, für gelungen, während S. 28 festhält, auf die Forschungsfragen hätten die Leitstellen- und GKV-Auswertungen keine umfassenden Antworten geliefert, und S. 29 die Ableitung von Qualitätsindikatoren als nicht möglich bezeichnet.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -898,16 +921,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>62 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Gegenüber der deterministischen Verknüpfung erhöhte die probabilistische die Fallzahl um 24,3 %; 19,0 % (1.022) der gültig verknüpften Protokolle hatten keine KVNR; die Übereinstimmung der Schlüsselvariablen lag minimal bei 98,0 % (Fahrstrecke).</p>
+  
   <blockquote>„„Möglich wurde durch die probabilistische Verknüpfung gegenüber der deterministischen Verknüpfung eine Fallzahlerhöhung von 24,3% . Insgesamt 19 ,0 % (ne=1.022) der gültig verknüpften Einsatzprotokolle wiesen dabei keine KVNR auf. [...] (Minimum: Fahrstrecke 98,0 % Übereinstimmung).“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +944,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Deterministisch wurden 4.327 Einsatzprotokolle personenbezogen mit GKV-Abrechnungsdaten verknüpft; alle abgeglichenen Merkmale stimmten zu mehr als 90 % überein (Minimum Fahrstrecke 97,8 %).</p>
+  
   <blockquote>„„Mit der deterministischen Verknüpfung gelang es, ne=4.327 Einsatzprotolle personenbezogen mit den GKV-Abrechnungsdaten zusammenführen. [...] Alle abgeglichenen Merkmale wiesen eine Übereinstimmung von weit mehr al 90 % auf (Minimum: Fahrstrecke 97,8 % Übereinstimmung).“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +963,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">127.859 bayerische Einsatzprotokolle (89,8 %) wurden mit Leitstellendaten verknüpft; die Zeitpunkte stimmten zu 98,4 % (Alarmierung) bzw. 98,1 % (Ankunft am Notfallort) überein.</p>
+  
   <blockquote>„„Insgesamt konnten n e=127.859, d. h. 89,8% aller Einsatzprotokolle aus Bayern mit Leitstellendaten verknüpft werden. [...] die Übereinstimmung des Zeitpunkts der Einsatzmittelalarmierung 98,4 %; die Übereinstimmung des Zeitpunkts der Ankunft am Notfallort 98,1 %.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +982,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Eingrenzung auf primäre Notfallrettungseinsätze blieben von 150.048 bayerischen Einsatzprotokollen 142.342 als Ausgangspunkt der Verknüpfungen.</p>
+  
   <blockquote>„„Im Ergebnis verbl ieben ne=142.342 Rettungsdienst- Einsatzprotokolle, welche den Ausgangspunkt für die hier dargestellten Verknüpfungen darstellten.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +1001,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Aus den Abrechnungsdaten der 10 BKK lagen nach Selektion Informationen zu 175.215 Versicherten mit 442.286 abgerechneten Leistungen vor, aus denen 224.524 RD-Einsätze gebildet wurden.</p>
+  
   <blockquote>„„Im Ergebnis lagen Informationen von np=175.215 Versicherten mit nl=442.286 abgerechneten Leistungen vor.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1020,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Ausgewertet wurden insgesamt 106.936 Einsatzprotokolle; das Patient:innenalter lag im Mittel bei 59,4, im Median bei 66 Jahren, 59,2 % der Einsätze erfolgten mit Notärzt:in.</p>
+  
   <blockquote>„„Gesamt 106.936 106.857 59,4 [59,3; 59,6] 25,2 66,0 [...] 63.238 (59,2%) [59,2%; 59,7%]“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1039,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Patient:innen der Projektkassen waren im Mittel 54,5 Jahre alt gegenüber 59,7 Jahren bei anderen Kassen; der Männeranteil lag bei 53,4 % gegenüber 49,6 %.</p>
+  
   <blockquote>„„wiesen sie mit 54,5 Jahren (ne=6.039) ein etwas geringeres Durchschnittsalter auf als Patient:innen mit Zugehörigkeit zu anderen Krankenkassen (Vergleichswert: 59,7 Jahre; ne=100.818). Mit 53,4% (ne=2.970) war der Männeranteil [...] im Vergleich zu 49,6% (n e=43.379) bei anderen Kassen etwas höher.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1058,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Notarztbeteiligung lag bei 60,5 % (Projektkassen) gegenüber 59,4 % (andere Kassen) und unterschied sich laut Bericht kaum; zwischen den zehn Projektkassen variierten die Merkmale laut Bericht zum Teil erheblich, das Durchschnittsalter etwa zwischen 67,6 und 37,6 Jahren.</p>
+  
   <blockquote>„„Beteiligung von Notärzt:innen unterschied sich mit 60,5% (ne=3.581) [...] gegenüber 59,4% (ne=59.657) bei Patient:innen anderer Krankenkassen kaum. [...] variierten zwischen den zehn aufgeführten Projektkassen zum Teil erheblich.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1077,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">An 25,8 % der RD-Einsätze schlossen sich taggleich ausschließlich ambulante Leistungen an, an 13,0 % ambulante und stationäre Behandlungen.</p>
+  
   <blockquote>„„Mit etwa jedem vierten Rettungsdiensteinsatz (25,8%) waren hingegeben ausschließlich Leistungen im ambulanten Sek tor verbunden. Für 13,0% der Rettungsdiensteinsätze lagen jeweils sowohl ambulante als auch stationäre Behandlungen vor.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1096,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für etwa jeden sechsten RD-Einsatz (34.932) war am Einsatztag keinerlei ambulante oder stationäre Leistung dokumentiert.</p>
+  
   <blockquote>„„Immerhin für jeden sechsten Rettungsdiensteinsatz (ne=34.932) waren taggleich keinerlei Leistungen im ambulanten oder stationären Sektor dokumentiert.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1115,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Mortalität am Einsatztag betrug 1,5 % (3.452 Einsätze); für verstorbene Patient:innen ohne taggleiche Versorgung lag der Vergleichswert bei 62,5 %, laut Bericht deutlich höher als bei Verstorbenen mit Versorgung.</p>
+  
   <blockquote>„„Die Patient:innen-Mortalität am Einsatztag betrug 1,5% (ne=3.452). Während der Anteil verstorbenen Patient:innen mit stationären oder ambulanten Versorgungen niedriger war, lag der Vergleichswert für verstorbene Patient:innen ohne Versorgung mit 62,5% deutlich höher“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1134,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei den taggleich Verstorbenen handelte es sich, insbesondere ohne nachfolgende Versorgung, überwiegend um Einsätze mit Notarztbeteiligung; die Verstorbenen waren älter und tendenziell häufiger männlich.</p>
+  
   <blockquote>„„insbesondere bei den Fällen ohne stationäre oder ambulante Versorgungen, ganz überwiegend um Einsätze mit Beteiligung von Notarzt:innen. Zudem wiesen die verstorbenen Patient:innen ein erhöhtes Alter auf und umfassten tendenziell häufiger Männer.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1153,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von 5.361 verknüpften bayerischen Einsatzprotokollen verstarben 1,6 % (85) der Patient:innen am Einsatztag; bei ihnen waren Aspiration (3,5 %) und Tumorleiden (2,5 %) als Verdachtserkrankungen codiert, bei Überlebenden laut Bericht deutlich seltener.</p>
+  
   <blockquote>„„Taggleich zum Rettungsdiensteinsatz verstarben von den dieser Gruppe 1,6% (ne=85) der Patient:innen. [...] Aspiration sowie Tumorleiden – jeweils codiert in 3,5% bzw. 2,5% der entsprechenden Einsatzprotokolle. Überlebten Patient:innen den Einsatztag, so wurden beide Verdachtserkrankungen hingegen deutlich seltener codiert“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1172,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Unter den Hauptdiagnosen taggleich beginnender stationärer Behandlungen entfielen 22,3 % (26.044) auf ICD-Kapitel XIX (Verletzungen, Vergiftungen).</p>
+  
   <blockquote>„„Mit Abstand am häufigsten wurden Hauptdiagnosen von taggleich mit Rettungsdiensteinsätzen beginnenden stationären Behandlungen mit n d=26.044 (22,3%) dem Kapitel XIX zugeordnet“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1191,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Weitere Hauptdiagnose-Kapitel: Kreislaufsystem 19,7 %, Symptome/abnorme Befunde 9,1 %, Atmungssystem 8,2 %, Nervensystem 6,4 %.</p>
+  
   <blockquote>„„19,7% der Hauptdiagnosen entfielen auf Krankheiten des Kreislaufsystems [...] auf Kapitel XVIII [...] 9,1%.; es folg ten Krankheiten des Atmungssystems (Kapitel X, J00-J99; 8,2%) sowie Krankheiten des Nervensystems (Kapitel VI, G00-G99; 6,4%).“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1210,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">82,9 % der Patient:innen hatten 2016 genau einen RD-Einsatz in den Abrechnungsdaten; das Maximum lag bei 83 Einsätzen.</p>
+  
   <blockquote>„„Für den größten Teil der Patient:innen (82,9%) ließ sich in den Abrechnungsdaten genau ein Rettungsdiensteinsatz identifizieren [...] Demgegenüber lag das Maximum bei 83 Rettungsdiensteinsätzen.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1229,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als Frequent-Nutzer:innen (mindestens drei Einsätze pro Jahr, mehr als eine SD über dem Mittel von 1,28) galten 5,5 % der Patient:innen; einen höheren Männeranteil unter ihnen bestätigten die Daten laut Bericht, wenn überhaupt, nur in geringem Umfang.</p>
+  
   <blockquote>„„Dies entspr ach einer M indestanzahl von drei jährlichen Einsätzen, der 5,5% der Patient:innen zugeordnet werden konnten [...] konnten in den Inno_RD vorliegenden Daten – wenn überhaupt – nur in einem geringen Umfang bestätigt werden .“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1248,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Korrelation zwischen Lebensalter und Häufigkeit der RD-Nutzung betrug Pearson r = 0,13, laut Bericht lediglich schwach.</p>
+  
   <blockquote>„„Die Korrelation zwischen Lebensalter und Häufigkeit der Rettungsdienstnutzung war mit Pearson‘s r von 0,13 lediglich schwach“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1267,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Verdachtserkrankung Asthma/exazerbierte COPD stand in unter 1 % der Protokolle von Einmal-Nutzer:innen und in etwa jedem fünfzehnten Protokoll von Frequent-Nutzer:innen; auch Pneumonie/Bronchitis war bei Frequent-Nutzer:innen vergleichsweise häufig.</p>
+  
   <blockquote>„„Während die Verdachtserkrankung Asthma bzw. exazerbierte COPD in Einsatzprotokollen von Einmalnutzer :innen kaum eine Rolle spielten (&lt;1%), wies etwa jedes fünfzehnte Einsatzprotokoll von Frequent-Nutzer:innen die entsprechende Verdachtserkrankung auf“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1286,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Verdachtserkrankung Krampfanfall fand sich in rund jedem zwanzigsten Protokoll von Frequent-Nutzer:innen, bei Einmal-Nutzer:innen selten.</p>
+  
   <blockquote>„„In rund jedem zwanzigsten Einsatzprotokoll von Frequent-Nutzer:innen fand sich zudem die Verdachtserkrankung Krampfanfall, unter den Einmal-Nutzer:innen ist diese hingegen selten.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1305,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auf ICD-Kapitel XIX entfielen 23,6 % der Hauptdiagnosen von Einmal-Nutzer:innen gegenüber 12,0 % bei Frequent-Nutzer:innen.</p>
+  
   <blockquote>„„Während 23,6% ( nd=22.109) aller von Einmal-Nutzer:innen ausgewerteten Hauptdiagnosen auf dieses Kapitel fallen, beträgt der Anteil unter den Frequent -Nutzer:innen gerade 12,0% (nd=3.151).“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1324,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auf ICD-Kapitel X (Atmungssystem) entfielen 13,4 % der Hauptdiagnosen von Frequent-Nutzer:innen gegenüber 6,9 % bei Einmal-Nutzer:innen.</p>
+  
   <blockquote>„„Hingege n zeigte sich mit 13,4% eine größere relative Bedeutung des Diagnosekapitel X (J00 -J99) bei Frequent-Nutzer:innen (Einmal-Nutzer:innen: 6,9%) .“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1343,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auf ICD-Kapitel V (psychische Erkrankungen, Verhaltensstörungen) entfielen 9,7 % der Hauptdiagnosen von Frequent-Nutzer:innen gegenüber 4,6 % bei Einmal-Nutzer:innen.</p>
+  
   <blockquote>„„Der Anteil entsprechender Diagnosen untersch ied sich mit 9,7% bei Frequent-Nutzer:innen im Vergleich zu lediglich 4,6% bei den Einmal-Nutzer:innen.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1362,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Elixhauser-Komorbiditätsindex (EKI) lag im Mittel bei 2,9 (SD 2,9; Median 2).</p>
+  
   <blockquote>„„Im Mittel weist der EKI einen Gesamtwert von 2,9 auf (Standardabweichung: 2,9; Median: 2).“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1381,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mit steigender Zahl von EKI-Indexpunkten war das Durchschnittsalter der drei Gruppen höher.</p>
+  
   <blockquote>„„Bei dem Vergleich der drei Gruppen zeigte sich zudem mit einer ansteigenden Zahl von Indexpunkten auf dem EKI ein höheres Durchschnittsalter“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1400,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Anteil von Mehrfachnutzungen des RD lag bei Patient:innen ohne Komorbidität bei 6,5 %, bei Patient:innen mit sechs und mehr Komorbiditäten bei nahezu 30 %.</p>
+  
   <blockquote>„„Während der Anteil von Mehrfachnutzungen unter den Patient :innen ohne Komorbidität bei 6,5% lag , betrug der Vergleichswert für Patient:innen mit sechs und mehr Komorbiditäten nahezu 30%.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1419,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bluthochdruck als Komorbidität wiesen 50,0 % der Patient:innen in Gruppe 2 (1–5 Indexpunkte) und 91,1 % in Gruppe 3 (6 und mehr) auf.</p>
+  
   <blockquote>„„Jede/r zweite Patient:in (50,0%) der Gruppe 2 wies Bluthochdruck als Komorbidität auf; in Gruppe 3 sogar neun von zehn Patient:innen (91,1%).“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1438,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Depression als Komorbidität wiesen 28,4 % der Patient:innen in Gruppe 2 und 44,2 % in Gruppe 3 auf.</p>
+  
   <blockquote>„„so wiesen dennoch mehr als ein Viertel der Patient :innen (28,4%) den entsprechenden Indexpunkt auf. Bei der Gruppe 3 (hohe Krankheitslast) lag sogar für nahezu jede/n zweite/n Patient:in (44,2%; ni=9.306) das Krankheitsbild vor.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1457,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Szenarien der Patientenbefragung: Bei starkem Blutverlust einer anderen Person würden 96,4 % den RD rufen, bei sich selbst 90,7 %; bei Bewusstlosigkeit einer anderen Person 92,4 %; bei ziehenden Brustschmerzen 65,6 % für andere und 59,8 % für sich selbst.</p>
+  
   <blockquote>„„antworteten 96,4 % der Befragten mit „Ja“. Bezogen auf sich selbst würden 90,7 % der Patient:innen einen RD rufen. 92,4 % der Befragten würden einen RD rufen, wenn jemand anderes bewusstlos ist. Bei ziehenden Brustschmerzen würden zwei Drittel der Befragten einen RD für jemand anderen rufen (65,6 %) und 59,8 % für sich selbst.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1476,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei einem Asthmaanfall einer anderen Person würden 48,2 % den RD rufen, bei sich selbst 35,9 % (Kappa = 0,693, laut Bericht starke Übereinstimmung).</p>
+  
   <blockquote>„„Wenn jemand anderes einen Asthmaanfall hat, würde ca. die Hälfte (48,2 %) der Patient:innen einen RD rufen. [...] Im Vergleich dazu würden nur 35,9 % der Befragten für sich selbst einen RD rufen [...] (Kappa=0,693; starke Übereinstimmung).“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1495,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.36">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Häufigste medizinische Gründe für die RD-Nutzung 2016 waren bei 253 Antwortenden Schmerzen (37,9 %) und Herz-Kreislauf-Probleme (32,0 %), bei durchschnittlich 2,2 Antworten pro Person.</p>
+  
   <blockquote>„„Der Fragenblock zu den medizinischen Gründen für die RD-Nutzung wurde von 253 Patient:innen beantwortet. [...] Der am häufigsten genannte Grund für die Nutzung des RD im Jahr 2016 waren Schmerzen (37,9 %). Am zweithäufigsten wurden Probleme mit Herz/Kreislauf berichtet (32,0 %).“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1514,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">89,0 % der Befragten bejahten einen Notfall als Grund für die RD-Nutzung, 84,3 % nannten, dass Dritte den RD gerufen haben.</p>
+  
   <blockquote>„„Das Vorliegen eines Notfalls wurde am häufigsten bejaht (89,0 %); 11,0 % der Patient:innen verneinten einen Notfall als Grund für die RD-Nutzung. Am zweithäufigsten wird der RD-Einsatz damit begründet, dass Dritte den RD gerufen haben (84,3 %).“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1533,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">42,3 % gaben als Grund an, dass niemand sie zur Notaufnahme oder Arztpraxis fahren konnte; die Projektnehmer deuten dies als Inanspruchnahme des RD auch als Fahrdienst.</p>
+  
   <blockquote>„„42,3 % bejahten als Grund die Tatsache, dass sie niemand zur Notaufnahme oder Arztpraxis fahren konnte und implizieren damit, dass sie den RD unter anderem als Fahrdienst in Anspruch genommen haben.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1552,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">48,4 % nannten mindestens einen durch das Gesundheitssystem bedingten Anlass, etwa Wartezeit auf einen Arzttermin, Beschwerden außerhalb der Praxisöffnungszeiten oder die Erreichbarkeit der 116 117.</p>
+  
   <blockquote>„„48,4 % der Patient:innen ga ben mind. einen Anlass für die RD -Nutzung an, der durch das Gesundheitssystem bedingt ist (zu lange Wartezeit auf einen Arzttermin; Beschwerden außerhalb der Öffnungszeiten des Haus - oder Facharztes; [...] Erreichbarkeit der 116 117).“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1571,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.40">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Notwendigkeit medizinischer Maßnahmen schätzten 53,5 % der Befragten als sehr dringlich und 11,5 % als gar nicht dringlich ein.</p>
+  
   <blockquote>„„Die Notwendigkeit von medizinischen Maßnahmen im erinnerten RD-Einsatz im Jahr 2016 wurde von 53,5 % der Befragten als sehr dringlich eingeschätzt. Für 11,5 % von ihnen war der Bedarf laut eigenen Angaben gar nicht dringlich.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.40" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.40" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.40" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.40" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1590,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.41">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der RD wurde nach Angabe der Befragten am häufigsten von Angehörigen (38,2 %) und am zweithäufigsten von unbekannten Dritten (18,7 %) gerufen.</p>
+  
   <blockquote>„„Ein Großteil der Patient:innen gab an, dass der RD in ihrem erinnerten Einsatz von Angehörigen (Familie, Partner:in ) gerufen wurde (38,2%). Am zweithäufigsten erfolgte der Anruf durch unbekannte Dritte (18,7 %).“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.41" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.41" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.41" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.41" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1609,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.42">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht wurden 84 % der Notfallanrufe mit RD-Beteiligung von Dritten getätigt; Datengrundlage u. a. eine Patientenbefragung mit 1.312 BKK-Versicherten.</p>
+  
   <blockquote>„„mit der Patientenbefragung mit 1.312 BKK-Versicherten beigetragen. Die Analysen des Inno_RD-Projektes zeigten, dass 84 % der Notfallanrufe mit Rettungsdienstbeteiligung von Dritten durchgeführt wurden.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.42" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.42" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.42" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.42" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1628,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.44">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">An anderer Stelle beschreibt der Bericht 55 abgeleitete Aussagen aus drei Fokusgruppen und den übrigen Modulen: 35 Handlungsempfehlungen und 20 Sub-Statements.</p>
+  
   <blockquote>„„insgesamt 55 Aussagen (35 Handlungsempfehlungen und 20 Sub-Statements zu den vier Schwerpunktthemen Leitstelle/Leitstellendisponent:in, Patientenversorger, Dokumentation/Evaluation und Bevölkerung abgeleitet werden“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.44" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.44" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.44" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.44" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1647,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.45">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In die Online-Befragung gingen 442 vollständig bis zur letzten inhaltlichen Seite bearbeitete Fragebögen ein; 19 der 26 Fokusgruppen-Teilnehmenden nahmen teil.</p>
+  
   <blockquote>„„In der Auswertung konnten insgesamt wurden 442 Fragebögen berücksichtigt werden. Es wurden all jene Fragebögen ausgewertet, deren letzte inhaltliche Seite erreicht wurde Von den 26 Teilnehmer:innen (TN) der FG haben 19 an der Befragung teilgenommen.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.45" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.45" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.45" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.45" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1666,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.46">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die höchste Zustimmung (99,8 %) erhielten u. a. die Empfehlung, die Disponierungskriterien der Rettungsmittel regelmäßig zu evaluieren.</p>
+  
   <blockquote>„„Die Disponierungskriterien der Rettungsmittel sollten regelmäßig evaluiert werden. (99,8 %)“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.46" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.46" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.46" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.46" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1685,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.47">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Empfehlung zu Angeboten zur Stärkung der Gesundheitskompetenz der Bevölkerung erhielt 95,9 % Zustimmung.</p>
+  
   <blockquote>„„Es bedarf Angebote zur Stärkung der Gesundheitskompetenz der Bevölkerung, damit diese den Rettungsdienst bei potenziell bed rohlichen Anlässen nur noch in Einzelfällen mit besonderem, medizinisch begründetem Bedarf nutzen. (95,9 %)“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.47" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.47" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.47" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.47" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1704,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Link zwischen Einsatzmerkmalen, Maßnahmen, nachfolgenden Leistungen und kurz- und mittelfristigen Ergebnissen war für Aussagen zur Validität von Qualitätsindikatoren zu schwach.</p>
+  
   <blockquote>„„der Link zu Merkmalen des Einsatzes zu den Maßnahmen im Einsatz, den nach Übergabe erbrachten Leistungen und den kurz- und mittelfristigen Ergebnissen sind zu schwach, als das belastbare Aussagen zur Validität von Qualitätsindikatoren getroffen werden konnten.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1723,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Leistungen des RD konnten nicht im Detail, sondern nur in Eckpunkten (Verdachtsdiagnose, weitere Versorgung) abgebildet werden.</p>
+  
   <blockquote>„„Die Leistungen des Rettungsdienstes konnten nicht im Detail abgebildet werden, sondern nur Eckpunkte des Einsatzes hinsichtlich Verdachtsdiagnose und weiterer Versorgung der Fälle.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1742,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die KVNR lag nur in 79,4 % der auf datenliefernde Kassen zurückgeführten Einsatzprotokolle vor; über die Gründe können nur Vermutungen angestellt werden.</p>
+  
   <blockquote>„„Jedoch lag die KVNR der versorgten Patient:innen nur in 79,4 % aller auf eine an Inno_RD datenliefernde Krankenkasse zurückgeführten Einsatzprotokolle vor . Über die Gründe hierfür können an dieser Stelle nur Vermutungen angestellt werden.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1761,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das deterministische Linkage konnte Protokolle ohne gültige KVNR nicht berücksichtigen (4.701 bzw. 20,6 % der auf datenliefernde Kassen zurückgeführten Protokolle).</p>
+  
   <blockquote>„„Per Definition nicht berücksichtigt werden konnten durch das deterministische Linkage allerdings Einsatzprotokolle, welche nicht über eine gültige KVNR verfügten (dies umfasst ne=4.701 aller auf datenliefernde Kassen zurückgeführten Einsatzprotokolle, d. h. 20,6 %).“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1780,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei der deterministischen Verknüpfung wurde pro Tag und Person nur ein Einsatzprotokoll herangezogen; mehrfache Einsätze derselben Person am selben Tag waren nicht abbildbar.</p>
+  
   <blockquote>„„wurde pro Tag und Person jeweils nur ein Einsatzprotokoll bzw. eine abgerechnete Leistung herangezogen. Mehrfache Rettungsdiensteinsätze in Hinblick auf die selben Patient :innen am selben Tag konnten demnach hier nicht abgebildet werden.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1799,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Auch bei der Aggregation der Abrechnungsdaten zu Einsätzen ist pro Tag und Person nur ein Einsatz abbildbar.</p>
+  
   <blockquote>„„Eine Unterscheidung von voneinander unabhängigen Rettungsdiensteinsätzen, welche zum selben Einsatzdatum für identische Patient :innen abgerechnet wurden, ist dabei nicht möglich; pro Tag und Person kann nur ein Einsatz abgebildet werden.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1795,12 +1818,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In der Praxis kann die Abgrenzung zwischen Krankentransporten und Rettungsfahrten in den Abrechnungspositionen unklar sein.</p>
+  
   <blockquote>„„Aufgrund von Gesprächen mit Rettungsdienstmitarbeiter:innen (sowie Projekterfahrung) ergibt sich jedoch, dass es in der Praxis zu unklaren Abgrenzungen, z. B. zwischen Krankentransporten und Rettungsfahrten, kommen kann.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1814,12 +1837,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei nicht übereinstimmenden Zeitpunkten in der Leitstellenverknüpfung ließ sich nicht unterscheiden, ob eine Fehlverknüpfung oder ein Dokumentationsfehler vorlag.</p>
+  
   <blockquote>„„Jedoch konnte auch im Fall nicht übereinstimmender Zeitpunkte nicht automatisch auf eine falsch-positive Verknüpfung geschlossen werden, da auch Fehler bei der Einsatzdokumentation (z. B. falsch eingetragene Uhrzeiten) die Nicht -Übereinstimmung nach sich ziehen konnten.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1833,12 +1856,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Einsatzprotokolle aus Baden-Württemberg umfassten nur das letzte Quartal 2016, weil die elektronische Einsatzdokumentation dort erst im Jahresverlauf begann.</p>
+  
   <blockquote>„„Während Einsatzprotokolle aus Bayern den Gesamtjahreszeitraum 2016 umfassten, waren die Vergleichsdaten aus Baden-Württemberg auf das letzte Quartal des Jahres beschränkt.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1852,12 +1875,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für Baden-Württemberg war die Selektion der Protokolle wegen eines abweichenden Dokumentationsstandards nicht möglich; von ursprünglich ca. 150.000 Protokollen verblieben 106.936.</p>
+  
   <blockquote>„„Bei Einsatzprotokollen aus Baden-Württemberg war die entsprechende Selektion aufgrund eines abwei chenden Dokumentationsstandards nicht möglich. Insgesamt n e=106.936 Einsatzprotokolle von Rettungsdiensteinsätzen verbleiben im Anschluss (von ursprünglich ca. ne=150.000).“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1871,12 +1894,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für Fragen zur Versorgung und zu langfristigen Outcomes verkleinert sich die auswertbare Datenmenge laut Bericht deutlich.</p>
+  
   <blockquote>„„Speziell für Fragestellungen in Hinblick auf die Versorgung oder langfristigen Outcomes von Notfallpatient:innen ergibt sich allerdings eine deutliche Verkleinerung der auswertbaren Datenmenge.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1890,12 +1913,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Einsatzprotokolle (6.039) und Abrechnungsdaten (7.683 Einsätze) der Projektkassen decken sich nicht; die Abrechnungsdaten enthalten etwa 25 % mehr Einsätze, möglicherweise wegen Operationalisierungsunterschieden und der Teiljahresabdeckung in Baden-Württemberg.</p>
+  
   <blockquote>„„Die um etwa 25% höhere Zahl an Einsätzen konnte dabei möglicherweise durch Unterschiede in der Operationalisierung (z. B. Aggregation der Kassendaten; Ausschluss von Einsatzprotokollen von Kranken- und Sekundärtransporten) erklärt werden“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1909,12 +1932,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Dokumentation der Leitstellendaten war wenig standardisiert; Notarztdaten konnten nicht in die Analyse einbezogen werden.</p>
+  
   <blockquote>„„Die Dokumentation der Leitstellendaten im Detail erwies sich allerdings als noch wenig standardisiert. Die Notarztdaten konnten gar nicht in die Analyse einbezogen werden.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1928,12 +1951,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Verdachtserkrankungen waren nur mit Vorsicht auswertbar, da 2.467 (46,0 %) der 5.361 verknüpften Protokolle keinen Eintrag enthielten.</p>
+  
   <blockquote>„„Die Auswertung der von den Einsatzkräften notierten Verdachtserkrankungen konnte nur mit Vorsicht erfolgen, da in ne=2.467 (46,0%) aller ne=5.361 verknüpften Einsatzprotokolle keinerlei Einträge vorgenommen wurden.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1947,12 +1970,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Fraglich ist laut Bericht, inwieweit die Einschätzungen der Einsatzkräfte zu Verdachtserkrankungen, insbesondere bei Mortalität, valide erfolgen können.</p>
+  
   <blockquote>„„Fraglich ist jedoch, in wie fern die entsprechenden Einschätzungen durch die Einsatzkräfte in der Praxis, insbesondere auch im Fall von Patient:innenmortalität, valide erfolgen können.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1966,12 +1989,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Abrechnungsdaten eignen sich nicht zur Untersuchung der Todesursachen; dafür wurden sie mit den Einsatzprotokollen verknüpft.</p>
+  
   <blockquote>„„Da die Abrechnungsdaten der Krankenkassen keine geeignete Informationsquelle für die Exploration der Todesursachen darstell ten, wurden die Kassendaten mit den Einsatzprotokollen verknüpft .“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1985,12 +2008,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.21">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ob Frequent-Nutzer:innen Zugang zu niedrigschwelligen sozialpsychiatrischen Angeboten hatten, lässt sich mit den Abrechnungsdaten nicht untersuchen.</p>
+  
   <blockquote>„„Inwiefern die entsprechenden Frequent-Nutzer:innen zum Zeitpunkt ihrer individuellen Notfallanlässe Zugang zu niedrigschwelligen sozialpsychiatrischen Betreuungs- oder Beratungsangeboten hatten, lässt sich auf Grundlage der Abrechnungsdaten nicht näher untersuchen.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2004,12 +2027,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.22">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die aus Fokusgruppen und Online-Befragung abgeleiteten Potenziale sind nicht quantifizierbar; Wirtschaftlichkeitspotenziale wurden nicht untersucht.</p>
+  
   <blockquote>„„konnten aus den Fokusgruppengesprächen und der inline -Befragung abgeleitet werden, ohne dass de ren Potenzial quantifizierbar wäre. Wirtschaftlichkeitspotenziale wurden nicht untersucht.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2023,12 +2046,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.23">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für die Online-Befragung ist keine Response-Angabe möglich, da die Grundgesamtheit der Akteur:innen unbekannt war.</p>
+  
   <blockquote>„„Aussagen zur Response können nicht gemacht werden, da die Grundgesamtheit der Akteur:innen nicht bekannt war.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2042,12 +2065,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.24">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Von 36 zugesagten Expert:innen nahmen 26 vor Ort an den Fokusgruppen teil.</p>
+  
   <blockquote>„„Von den 36 ursprünglich zugesagten Expert:innen haben 26 vor Ort an den FG teilgenommen.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2061,12 +2084,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.25">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das geplante letzte Treffen des Beirats fiel wegen der Corona-Pandemie aus.</p>
+  
   <blockquote>„„das geplante letzte Treffen musste aufgrund der Corona-Pandemie ausfallen.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2111,28 +2134,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 149, "akronym": "Inno_RD", "kennung": "BALyORXi9oTv", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt Inno_RD keine Empfehlung aus. Die Erkenntnisse werden wegen der laufenden Diskussion über Reformen der Notfallversorgung zur Information an das BMG, die für den Rettungsdienst zuständigen Landesministerien, die DKG, den GKV-Spitzenverband, die KBV, die DGINA und die DGRN weitergeleitet. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat die Notfallversorgung mit Beteiligung des Rettungsdienstes in Bayern und Baden-Württemberg multimodal untersucht: mit einer Sekundärdatenanalyse, einer Patientenbefragung und einem Mixed-Methods-Konsensverfahren. Der Ausschuss hält die Methoden für angemessen. Die geplante prospektive Validierung von Qualitätsindikatoren konnte jedoch nicht umgesetzt werden. Wenige verknüpfbare Einsatzfälle begrenzten die Sekundärdatenanalyse, sodass nicht alle Fragestellungen beantwortet werden konnten. Die Rücklaufquote der Befragung war gering. Nicht nachvollziehbar ist, welche Erkenntnisse aus Datenanalyse und Befragung in die Handlungsempfehlungen eingingen, und dissente Positionen blieben unberücksichtigt. Weil die Ergebnisse zum fachlichen und politischen Reformdiskurs beitragen können, werden sie zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss sagt nichts ausdrücklich zur Übertragbarkeit auf die Regelversorgung. Er weist darauf hin, dass die Untersuchung beispielhaft an BKK-Versicherten in Bayern und Baden-Württemberg erfolgte. Die entwickelte Pseudonymisierungssoftware kann für ähnliche Forschungsansätze weiterverwendet werden."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Geplante prospektive Validierung von Qualitätsindikatoren des Rettungsdienstes durch versorgungsrelevante Outcomes nicht realisiert"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Geringe Anzahl verknüpfbarer Einsatzfälle, daher nicht alle Fragestellungen beantwortbar"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Geringe Rücklaufquote der Patientenbefragung (ca. 20 %)"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Nicht nachvollziehbar, welche Erkenntnisse aus Sekundäranalyse und Befragung in die Handlungsempfehlungen eingingen"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Dissente Positionen im Konsensverfahren bei den Handlungsempfehlungen unberücksichtigt"}, {"stelle": "befund.0", "art": "befund", "unser": "Umfassende Beschreibung der Notfallversorgung durch die Sekundärdatenanalyse"}, {"stelle": "befund.1", "art": "befund", "unser": "Neue Einsichten zu Einsatzanlässen und Meldepersonen aus der Patientenbefragung"}, {"stelle": "befund.2", "art": "befund", "unser": "55 konsentierte Aussagen bzw. 19 Handlungsempfehlungen mit starkem Konsens zu vier Schwerpunktthemen"}, {"stelle": "befund.3", "art": "befund", "unser": "Angewandte Methoden vom Ausschuss als angemessen bewertet"}, {"stelle": "befund.4", "art": "befund", "unser": "Entwickelte Pseudonymisierungssoftware frei verfügbar und weiterverwendbar"}, {"stelle": "befund.5", "art": "befund", "unser": "Beitrag zum fachlichen und politischen Reformdiskurs der Notfallversorgung"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Verbleib der Patient:innen nach dem Rettungsdiensteinsatz (Behandlung in Versorgungssektoren am Einsatztag)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Mortalität am Tag des Rettungsdiensteinsatzes"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Überleben innerhalb eines Jahres (364 Tage) nach dem Index-Rettungsdiensteinsatz, stratifiziert nach Komorbidität"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Häufigkeit der Inanspruchnahme des Rettungsdienstes / Frequent-Nutzer:innen"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Hauptdiagnosen stationärer Aufnahmen am Tag des Rettungsdiensteinsatzes"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Komorbidität der Rettungsdienstpatient:innen"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Selbstberichtete Gründe und Anlässe für die Inanspruchnahme des Rettungsdienstes"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Zustimmung von Expert:innen/Akteur:innen zu den abgeleiteten Handlungsempfehlungen"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben Inno_RD untersuchte die Inanspruchnahme des Rettungsdienstes (RD) im Jahr 2016 im Mixed-Methods-Ansatz: Verknüpfung von Einsatzprotokollen, Leitstellendaten und Abrechnungsdaten von 10 BKK, eine schriftliche Patientenbefragung (259 Teilnehmende, Response 20 %) sowie Fokusgruppen mit anschließender Online-Befragung von Akteur:innen. Primäre Arbeitshypothese war, dass Struktur- und Prozessmerkmale von RD-Einsätzen mit versorgungsrelevanten Outcomes verbunden sind und sich daraus risikoadjustierte Qualitätsindikatoren ableiten lassen. Laut Bericht ließen sich dazu keine umfassenden Antworten finden; die Ableitung von Qualitätsindikatoren war nicht möglich, weil klinische Informationen fehlten und die Verknüpfung von Einsatzmerkmalen und Ergebnissen zu schwach war. Personenbezogen verknüpft wurden deterministisch 4.327 und probabilistisch 5.379 Einsatzprotokolle; auf datenliefernde Kassen ließen sich nur 5,6 % der abrechnungsfähigen Protokolle zurückführen. In den Kassendaten folgte bei 45,6 % der 224.524 Einsätze am Einsatztag ausschließlich eine stationäre Behandlung, bei etwa jedem sechsten Einsatz war taggleich keine Leistung dokumentiert; für mindestens 20 % wird ein grober Schätzwert ohne weiteren oder nur mit ambulantem Bedarf angegeben. 5,5 % der Patient:innen hatten drei oder mehr Einsätze; Mehrfachnutzung und Sterblichkeit im Folgejahr unterschieden sich nach Komorbidität (Elixhauser-Index). Aus Fokusgruppen abgeleitete Handlungsempfehlungen erhielten in der Online-Befragung (442 Fragebögen) mehrheitlich hohe bis sehr hohe Zustimmung. Die Aussagekraft hängt an der Annahme taggleicher Zuordnung in den Abrechnungsdaten, kleinen Untergruppen der rund 5.000 verknüpften Datensätze und wenig standardisierten Leitstellendaten."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Patientenbefragung: 259 Patient:innen mit RD-Einsatz 2016 nahmen teil (Response 20 %); die Mehrheit der Inanspruchnahmen war nicht von den Patient:innen selbst veranlasst, Gründe lagen vor allem im eigenen Versorgungsbedarf und subjektiv empfundenen Defiziten des Gesundheitssystems."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Die probabilistische Verknüpfung führte 5.660 Einsatzprotokolle eineindeutig mit Abrechnungsdaten zusammen; nach Bereinigung mit einem Mindestgewicht von 4,5 blieben 5.379 verknüpfte Protokolle."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "In den Kassendaten schloss sich an 45,6 % der RD-Einsätze am Einsatztag ausschließlich eine stationäre Behandlung an."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Von mehr als 72.000 Rettungsfahrten hatte rund die Hälfte der Patient:innen stationären Behandlungsbedarf; für mindestens 20 % bestand kein weiterer oder nur ambulanter Versorgungsbedarf (laut Bericht ein grober Schätzwert, siehe Hindernisse)."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Zusammenfassend beschreibt der Bericht, dass ein erheblicher Anteil der RD-Einsätze auf Häufignutzer mit drei und mehr Einsätzen pro Jahr und bei Vor- und Begleiterkrankungen auf vulnerable, nicht notwendigerweise alte Patient:innen entfällt; diese Merkmale bestimmen laut Bericht maßgeblich das mittelfristige Outcome wie das Versterben innerhalb eines Jahres."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Bei 116.089 durchgängig Versicherten waren 14 Tage nach dem Index-Einsatz mehr als 99 % ohne Komorbidität, etwa 96 % mit mittlerer und etwa 91 % mit hoher Komorbidität am Leben; nach 180 Tagen war der Anteil ohne Komorbidität nahezu unverändert, bei mittlerer 92 %, bei hoher 77 %; im zweiten Halbjahr vergrößerten sich die Unterschiede weiter."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Aus den Fokusgruppen wurden 59 Handlungsempfehlungen zu Leitstelle, Patientenversorgern, Dokumentation/Evaluation und Bevölkerung abgeleitet, die in der Online-Umfrage unter Akteur:innen des RD mehrheitlich hohe bis sehr hohe Zustimmung erhielten."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Zur primären Fragestellung fanden die Auswertungen der Leitstellen- und GKV-Daten keine umfassenden Antworten."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Zum Anteil ohne Notfallbedarf ließ sich nur ein grober Schätzwert von etwa 20 % ableiten, weil klinische Informationen wie Schweregrad und individuelle Risikofaktoren fehlten; die Ableitung von Qualitätsindikatoren des RD war damit nicht möglich."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Eine Verknüpfung mit GKV-Daten war nur für Versicherte der 10 datenliefernden Kassen möglich; anhand des notierten Kassennamens ließen sich 5.921 von 106.317 Einsatzprotokollen (5,6 %) diesen Kassen zuordnen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Wegen der Vielzahl der Verdachtsdiagnosen waren die Fallzahlen in relevanten Untergruppen der gut 5.000 verknüpften Datensätze klein."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "In den Abrechnungsdaten waren RD-Leistungen und nachfolgende ambulante oder stationäre Behandlungen nicht eindeutig referenziert; die Zuordnung beruht auf taggleichen Daten."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zahl der Handlungsempfehlungen: Auf S. 2 werden 59 aus den Fokusgruppen abgeleitete Handlungsempfehlungen genannt, auf S. 25 insgesamt 55 Aussagen (35 Handlungsempfehlungen und 20 Sub-Statements)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Patientenbefragung: S. 2 nennt 259 befragte Patient:innen (Response 20 %), S. 29 spricht von einer „Patientenbefragung mit 1.312 BKK-Versicherten“; ob 1.312 die angeschriebene Stichprobe bezeichnet, geht aus den Abschnitten nicht hervor."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Zahl der probabilistisch verknüpften Protokolle: S. 12 nennt nach Bereinigung 5.379, S. 20 legt der Analyse 5.361 verknüpfte bayerische Einsatzprotokolle zugrunde."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Notarztdaten: S. 27 hebt hervor, es sei erstmalig gelungen, Datensätze u. a. aus Leitstellen-, Notfallsanitäter:innendaten, Notarztprotokollen und GKV-Daten zu verknüpfen; S. 30 stellt fest, die Notarztdaten konnten gar nicht in die Analyse einbezogen werden."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Stationärer Bedarf: S. 20 bezieht sich auf 224.524 Einsätze (45,6 % ausschließlich stationär, 13,0 % ambulant und stationär), S. 29 nennt „mehr als 72.000 Rettungsfahrten“, von denen rund die Hälfte stationären Bedarf aufweise; die Herkunft der Bezugsgröße 72.000 ist in den Abschnitten nicht erläutert."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Zielerreichung: S. 29 erklärt das Ziel, Versorgungsabläufe sektorenübergreifend zu quantifizieren, für gelungen, während S. 28 festhält, auf die Forschungsfragen hätten die Leitstellen- und GKV-Auswertungen keine umfassenden Antworten geliefert, und S. 29 die Ableitung von Qualitätsindikatoren als nicht möglich bezeichnet."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Gegenüber der deterministischen Verknüpfung erhöhte die probabilistische die Fallzahl um 24,3 %; 19,0 % (1.022) der gültig verknüpften Protokolle hatten keine KVNR; die Übereinstimmung der Schlüsselvariablen lag minimal bei 98,0 % (Fahrstrecke)."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Deterministisch wurden 4.327 Einsatzprotokolle personenbezogen mit GKV-Abrechnungsdaten verknüpft; alle abgeglichenen Merkmale stimmten zu mehr als 90 % überein (Minimum Fahrstrecke 97,8 %)."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "127.859 bayerische Einsatzprotokolle (89,8 %) wurden mit Leitstellendaten verknüpft; die Zeitpunkte stimmten zu 98,4 % (Alarmierung) bzw. 98,1 % (Ankunft am Notfallort) überein."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Nach Eingrenzung auf primäre Notfallrettungseinsätze blieben von 150.048 bayerischen Einsatzprotokollen 142.342 als Ausgangspunkt der Verknüpfungen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Aus den Abrechnungsdaten der 10 BKK lagen nach Selektion Informationen zu 175.215 Versicherten mit 442.286 abgerechneten Leistungen vor, aus denen 224.524 RD-Einsätze gebildet wurden."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Ausgewertet wurden insgesamt 106.936 Einsatzprotokolle; das Patient:innenalter lag im Mittel bei 59,4, im Median bei 66 Jahren, 59,2 % der Einsätze erfolgten mit Notärzt:in."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Patient:innen der Projektkassen waren im Mittel 54,5 Jahre alt gegenüber 59,7 Jahren bei anderen Kassen; der Männeranteil lag bei 53,4 % gegenüber 49,6 %."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Notarztbeteiligung lag bei 60,5 % (Projektkassen) gegenüber 59,4 % (andere Kassen) und unterschied sich laut Bericht kaum; zwischen den zehn Projektkassen variierten die Merkmale laut Bericht zum Teil erheblich, das Durchschnittsalter etwa zwischen 67,6 und 37,6 Jahren."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "An 25,8 % der RD-Einsätze schlossen sich taggleich ausschließlich ambulante Leistungen an, an 13,0 % ambulante und stationäre Behandlungen."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Für etwa jeden sechsten RD-Einsatz (34.932) war am Einsatztag keinerlei ambulante oder stationäre Leistung dokumentiert."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Die Mortalität am Einsatztag betrug 1,5 % (3.452 Einsätze); für verstorbene Patient:innen ohne taggleiche Versorgung lag der Vergleichswert bei 62,5 %, laut Bericht deutlich höher als bei Verstorbenen mit Versorgung."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Bei den taggleich Verstorbenen handelte es sich, insbesondere ohne nachfolgende Versorgung, überwiegend um Einsätze mit Notarztbeteiligung; die Verstorbenen waren älter und tendenziell häufiger männlich."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Von 5.361 verknüpften bayerischen Einsatzprotokollen verstarben 1,6 % (85) der Patient:innen am Einsatztag; bei ihnen waren Aspiration (3,5 %) und Tumorleiden (2,5 %) als Verdachtserkrankungen codiert, bei Überlebenden laut Bericht deutlich seltener."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Unter den Hauptdiagnosen taggleich beginnender stationärer Behandlungen entfielen 22,3 % (26.044) auf ICD-Kapitel XIX (Verletzungen, Vergiftungen)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Weitere Hauptdiagnose-Kapitel: Kreislaufsystem 19,7 %, Symptome/abnorme Befunde 9,1 %, Atmungssystem 8,2 %, Nervensystem 6,4 %."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "82,9 % der Patient:innen hatten 2016 genau einen RD-Einsatz in den Abrechnungsdaten; das Maximum lag bei 83 Einsätzen."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Als Frequent-Nutzer:innen (mindestens drei Einsätze pro Jahr, mehr als eine SD über dem Mittel von 1,28) galten 5,5 % der Patient:innen; einen höheren Männeranteil unter ihnen bestätigten die Daten laut Bericht, wenn überhaupt, nur in geringem Umfang."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Die Korrelation zwischen Lebensalter und Häufigkeit der RD-Nutzung betrug Pearson r = 0,13, laut Bericht lediglich schwach."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Die Verdachtserkrankung Asthma/exazerbierte COPD stand in unter 1 % der Protokolle von Einmal-Nutzer:innen und in etwa jedem fünfzehnten Protokoll von Frequent-Nutzer:innen; auch Pneumonie/Bronchitis war bei Frequent-Nutzer:innen vergleichsweise häufig."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Die Verdachtserkrankung Krampfanfall fand sich in rund jedem zwanzigsten Protokoll von Frequent-Nutzer:innen, bei Einmal-Nutzer:innen selten."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Auf ICD-Kapitel XIX entfielen 23,6 % der Hauptdiagnosen von Einmal-Nutzer:innen gegenüber 12,0 % bei Frequent-Nutzer:innen."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Auf ICD-Kapitel X (Atmungssystem) entfielen 13,4 % der Hauptdiagnosen von Frequent-Nutzer:innen gegenüber 6,9 % bei Einmal-Nutzer:innen."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Auf ICD-Kapitel V (psychische Erkrankungen, Verhaltensstörungen) entfielen 9,7 % der Hauptdiagnosen von Frequent-Nutzer:innen gegenüber 4,6 % bei Einmal-Nutzer:innen."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Der Elixhauser-Komorbiditätsindex (EKI) lag im Mittel bei 2,9 (SD 2,9; Median 2)."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Mit steigender Zahl von EKI-Indexpunkten war das Durchschnittsalter der drei Gruppen höher."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Der Anteil von Mehrfachnutzungen des RD lag bei Patient:innen ohne Komorbidität bei 6,5 %, bei Patient:innen mit sechs und mehr Komorbiditäten bei nahezu 30 %."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Bluthochdruck als Komorbidität wiesen 50,0 % der Patient:innen in Gruppe 2 (1–5 Indexpunkte) und 91,1 % in Gruppe 3 (6 und mehr) auf."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Depression als Komorbidität wiesen 28,4 % der Patient:innen in Gruppe 2 und 44,2 % in Gruppe 3 auf."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Szenarien der Patientenbefragung: Bei starkem Blutverlust einer anderen Person würden 96,4 % den RD rufen, bei sich selbst 90,7 %; bei Bewusstlosigkeit einer anderen Person 92,4 %; bei ziehenden Brustschmerzen 65,6 % für andere und 59,8 % für sich selbst."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Bei einem Asthmaanfall einer anderen Person würden 48,2 % den RD rufen, bei sich selbst 35,9 % (Kappa = 0,693, laut Bericht starke Übereinstimmung)."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Häufigste medizinische Gründe für die RD-Nutzung 2016 waren bei 253 Antwortenden Schmerzen (37,9 %) und Herz-Kreislauf-Probleme (32,0 %), bei durchschnittlich 2,2 Antworten pro Person."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "89,0 % der Befragten bejahten einen Notfall als Grund für die RD-Nutzung, 84,3 % nannten, dass Dritte den RD gerufen haben."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "42,3 % gaben als Grund an, dass niemand sie zur Notaufnahme oder Arztpraxis fahren konnte; die Projektnehmer deuten dies als Inanspruchnahme des RD auch als Fahrdienst."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "48,4 % nannten mindestens einen durch das Gesundheitssystem bedingten Anlass, etwa Wartezeit auf einen Arzttermin, Beschwerden außerhalb der Praxisöffnungszeiten oder die Erreichbarkeit der 116 117."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Die Notwendigkeit medizinischer Maßnahmen schätzten 53,5 % der Befragten als sehr dringlich und 11,5 % als gar nicht dringlich ein."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "Der RD wurde nach Angabe der Befragten am häufigsten von Angehörigen (38,2 %) und am zweithäufigsten von unbekannten Dritten (18,7 %) gerufen."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Laut Bericht wurden 84 % der Notfallanrufe mit RD-Beteiligung von Dritten getätigt; Datengrundlage u. a. eine Patientenbefragung mit 1.312 BKK-Versicherten."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "An anderer Stelle beschreibt der Bericht 55 abgeleitete Aussagen aus drei Fokusgruppen und den übrigen Modulen: 35 Handlungsempfehlungen und 20 Sub-Statements."}, {"stelle": "bericht_befund.45", "art": "aussage", "unser": "In die Online-Befragung gingen 442 vollständig bis zur letzten inhaltlichen Seite bearbeitete Fragebögen ein; 19 der 26 Fokusgruppen-Teilnehmenden nahmen teil."}, {"stelle": "bericht_befund.46", "art": "aussage", "unser": "Die höchste Zustimmung (99,8 %) erhielten u. a. die Empfehlung, die Disponierungskriterien der Rettungsmittel regelmäßig zu evaluieren."}, {"stelle": "bericht_befund.47", "art": "aussage", "unser": "Die Empfehlung zu Angeboten zur Stärkung der Gesundheitskompetenz der Bevölkerung erhielt 95,9 % Zustimmung."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Der Link zwischen Einsatzmerkmalen, Maßnahmen, nachfolgenden Leistungen und kurz- und mittelfristigen Ergebnissen war für Aussagen zur Validität von Qualitätsindikatoren zu schwach."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Leistungen des RD konnten nicht im Detail, sondern nur in Eckpunkten (Verdachtsdiagnose, weitere Versorgung) abgebildet werden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die KVNR lag nur in 79,4 % der auf datenliefernde Kassen zurückgeführten Einsatzprotokolle vor; über die Gründe können nur Vermutungen angestellt werden."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Das deterministische Linkage konnte Protokolle ohne gültige KVNR nicht berücksichtigen (4.701 bzw. 20,6 % der auf datenliefernde Kassen zurückgeführten Protokolle)."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Bei der deterministischen Verknüpfung wurde pro Tag und Person nur ein Einsatzprotokoll herangezogen; mehrfache Einsätze derselben Person am selben Tag waren nicht abbildbar."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Auch bei der Aggregation der Abrechnungsdaten zu Einsätzen ist pro Tag und Person nur ein Einsatz abbildbar."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "In der Praxis kann die Abgrenzung zwischen Krankentransporten und Rettungsfahrten in den Abrechnungspositionen unklar sein."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Bei nicht übereinstimmenden Zeitpunkten in der Leitstellenverknüpfung ließ sich nicht unterscheiden, ob eine Fehlverknüpfung oder ein Dokumentationsfehler vorlag."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Einsatzprotokolle aus Baden-Württemberg umfassten nur das letzte Quartal 2016, weil die elektronische Einsatzdokumentation dort erst im Jahresverlauf begann."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Für Baden-Württemberg war die Selektion der Protokolle wegen eines abweichenden Dokumentationsstandards nicht möglich; von ursprünglich ca. 150.000 Protokollen verblieben 106.936."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Für Fragen zur Versorgung und zu langfristigen Outcomes verkleinert sich die auswertbare Datenmenge laut Bericht deutlich."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Einsatzprotokolle (6.039) und Abrechnungsdaten (7.683 Einsätze) der Projektkassen decken sich nicht; die Abrechnungsdaten enthalten etwa 25 % mehr Einsätze, möglicherweise wegen Operationalisierungsunterschieden und der Teiljahresabdeckung in Baden-Württemberg."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Die Dokumentation der Leitstellendaten war wenig standardisiert; Notarztdaten konnten nicht in die Analyse einbezogen werden."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Verdachtserkrankungen waren nur mit Vorsicht auswertbar, da 2.467 (46,0 %) der 5.361 verknüpften Protokolle keinen Eintrag enthielten."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Fraglich ist laut Bericht, inwieweit die Einschätzungen der Einsatzkräfte zu Verdachtserkrankungen, insbesondere bei Mortalität, valide erfolgen können."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Die Abrechnungsdaten eignen sich nicht zur Untersuchung der Todesursachen; dafür wurden sie mit den Einsatzprotokollen verknüpft."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Ob Frequent-Nutzer:innen Zugang zu niedrigschwelligen sozialpsychiatrischen Angeboten hatten, lässt sich mit den Abrechnungsdaten nicht untersuchen."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Die aus Fokusgruppen und Online-Befragung abgeleiteten Potenziale sind nicht quantifizierbar; Wirtschaftlichkeitspotenziale wurden nicht untersucht."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Für die Online-Befragung ist keine Response-Angabe möglich, da die Grundgesamtheit der Akteur:innen unbekannt war."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Von 36 zugesagten Expert:innen nahmen 26 vor Ort an den Fokusgruppen teil."}, {"stelle": "bericht_hindernis.25", "art": "aussage", "unser": "Das geplante letzte Treffen des Beirats fiel wegen der Corona-Pandemie aus."}]};
+const D = {"projekt_id": 149, "akronym": "Inno_RD", "kennung": "BALyORXi9oTv", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat die Notfallversorgung mit Beteiligung des Rettungsdienstes in Bayern und Baden-Württemberg multimodal untersucht: mit einer Sekundärdatenanalyse, einer Patientenbefragung und einem Mixed-Methods-Konsensverfahren. Der Ausschuss hält die Methoden für angemessen. Die geplante prospektive Validierung von Qualitätsindikatoren konnte jedoch nicht umgesetzt werden. Wenige verknüpfbare Einsatzfälle begrenzten die Sekundärdatenanalyse, sodass nicht alle Fragestellungen beantwortet werden konnten. Die Rücklaufquote der Befragung war gering. Nicht nachvollziehbar ist, welche Erkenntnisse aus Datenanalyse und Befragung in die Handlungsempfehlungen eingingen, und dissente Positionen blieben unberücksichtigt. Weil die Ergebnisse zum fachlichen und politischen Reformdiskurs beitragen können, werden sie zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Geplante prospektive Validierung von Qualitätsindikatoren des Rettungsdienstes durch versorgungsrelevante Outcomes nicht realisiert"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Geringe Anzahl verknüpfbarer Einsatzfälle, daher nicht alle Fragestellungen beantwortbar"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Geringe Rücklaufquote der Patientenbefragung (ca. 20 %)"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Nicht nachvollziehbar, welche Erkenntnisse aus Sekundäranalyse und Befragung in die Handlungsempfehlungen eingingen"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Adäquates Verfahren zur Konsenserhebung, dissente Positionen bei den Handlungsempfehlungen jedoch unberücksichtigt"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Verbleib der Patient:innen nach dem Rettungsdiensteinsatz (Behandlung in Versorgungssektoren am Einsatztag)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Mortalität am Tag des Rettungsdiensteinsatzes"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Überleben innerhalb eines Jahres (364 Tage) nach dem Index-Rettungsdiensteinsatz, stratifiziert nach Komorbidität"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Häufigkeit der Inanspruchnahme des Rettungsdienstes / Frequent-Nutzer:innen"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Hauptdiagnosen stationärer Aufnahmen am Tag des Rettungsdiensteinsatzes"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Komorbidität der Rettungsdienstpatient:innen"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Selbstberichtete Gründe und Anlässe für die Inanspruchnahme des Rettungsdienstes"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Zustimmung von Expert:innen/Akteur:innen zu den abgeleiteten Handlungsempfehlungen"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben Inno_RD untersuchte die Inanspruchnahme des Rettungsdienstes (RD) im Jahr 2016 im Mixed-Methods-Ansatz: Verknüpfung von Einsatzprotokollen, Leitstellendaten und Abrechnungsdaten von 10 BKK, eine schriftliche Patientenbefragung (259 Teilnehmende, Response 20 %) sowie Fokusgruppen mit anschließender Online-Befragung von Akteur:innen. Primäre Arbeitshypothese war, dass Struktur- und Prozessmerkmale von RD-Einsätzen mit versorgungsrelevanten Outcomes verbunden sind und sich daraus risikoadjustierte Qualitätsindikatoren ableiten lassen. Laut Bericht ließen sich dazu keine umfassenden Antworten finden; die Ableitung von Qualitätsindikatoren war nicht möglich, weil klinische Informationen fehlten und die Verknüpfung von Einsatzmerkmalen und Ergebnissen zu schwach war. Personenbezogen verknüpft wurden deterministisch 4.327 und probabilistisch 5.379 Einsatzprotokolle; auf datenliefernde Kassen ließen sich nur 5,6 % der abrechnungsfähigen Protokolle zurückführen. In den Kassendaten folgte bei 45,6 % der 224.524 Einsätze am Einsatztag ausschließlich eine stationäre Behandlung, bei etwa jedem sechsten Einsatz war taggleich keine Leistung dokumentiert; für mindestens 20 % wird ein grober Schätzwert ohne weiteren oder nur mit ambulantem Bedarf angegeben. 5,5 % der Patient:innen hatten drei oder mehr Einsätze; Mehrfachnutzung und Sterblichkeit im Folgejahr unterschieden sich nach Komorbidität (Elixhauser-Index). Aus Fokusgruppen abgeleitete Handlungsempfehlungen erhielten in der Online-Befragung (442 Fragebögen) mehrheitlich hohe bis sehr hohe Zustimmung. Die Aussagekraft hängt an der Annahme taggleicher Zuordnung in den Abrechnungsdaten, kleinen Untergruppen der rund 5.000 verknüpften Datensätze und wenig standardisierten Leitstellendaten."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Patientenbefragung: 259 Patient:innen mit RD-Einsatz 2016 nahmen teil (Response 20 %); die Mehrheit der Inanspruchnahmen war nicht von den Patient:innen selbst veranlasst, Gründe lagen vor allem im eigenen Versorgungsbedarf und subjektiv empfundenen Defiziten des Gesundheitssystems."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Die probabilistische Verknüpfung führte 5.660 Einsatzprotokolle eineindeutig mit Abrechnungsdaten zusammen; nach Bereinigung mit einem Mindestgewicht von 4,5 blieben 5.379 verknüpfte Protokolle."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "In den Kassendaten schloss sich an 45,6 % der RD-Einsätze am Einsatztag ausschließlich eine stationäre Behandlung an."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Zur primären Fragestellung fanden die Auswertungen der Leitstellen- und GKV-Daten keine umfassenden Antworten."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Zum Anteil ohne Notfallbedarf ließ sich ein grober Schätzwert von etwa 20 % ableiten; für eine belastbare Aussage fehlten klinische Informationen wie Schweregrad und individuelle Risikofaktoren; die Ableitung von Qualitätsindikatoren des RD war damit nicht möglich."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Eine Verknüpfung mit GKV-Daten war nur für Versicherte der 10 datenliefernden Kassen möglich; anhand des notierten Kassennamens ließen sich 5.921 von 106.317 Einsatzprotokollen (5,6 %) diesen Kassen zuordnen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zahl der Handlungsempfehlungen: Auf S. 2 werden 59 aus den Fokusgruppen abgeleitete Handlungsempfehlungen genannt, auf S. 25 insgesamt 55 Aussagen (35 Handlungsempfehlungen und 20 Sub-Statements)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Patientenbefragung: S. 2 nennt 259 befragte Patient:innen (Response 20 %), S. 29 spricht von einer „Patientenbefragung mit 1.312 BKK-Versicherten“; ob 1.312 die angeschriebene Stichprobe bezeichnet, geht aus den Abschnitten nicht hervor."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Zahl der probabilistisch verknüpften Protokolle: S. 12 nennt nach Bereinigung 5.379, S. 20 legt der Analyse 5.361 verknüpfte bayerische Einsatzprotokolle zugrunde."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt Inno_RD keine Empfehlung aus. Die Erkenntnisse werden wegen der laufenden Diskussion über Reformen der Notfallversorgung zur Information an das BMG, die für den Rettungsdienst zuständigen Landesministerien, die DKG, den GKV-Spitzenverband, die KBV, die DGINA und die DGRN weitergeleitet. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss sagt nichts ausdrücklich zur Übertragbarkeit auf die Regelversorgung. Er weist darauf hin, dass die Untersuchung beispielhaft an BKK-Versicherten in Bayern und Baden-Württemberg erfolgte. Die entwickelte Pseudonymisierungssoftware kann für ähnliche Forschungsansätze weiterverwendet werden."}, {"stelle": "befund.0", "art": "befund", "unser": "Umfassende Beschreibung der Notfallversorgung durch die Sekundärdatenanalyse"}, {"stelle": "befund.1", "art": "befund", "unser": "Neue Einsichten zu Einsatzanlässen und Meldepersonen aus der Patientenbefragung"}, {"stelle": "befund.2", "art": "befund", "unser": "55 konsentierte Aussagen bzw. 19 Handlungsempfehlungen mit starkem Konsens zu vier Schwerpunktthemen"}, {"stelle": "befund.3", "art": "befund", "unser": "Angewandte Methoden vom Ausschuss als angemessen bewertet"}, {"stelle": "befund.4", "art": "befund", "unser": "Entwickelte Pseudonymisierungssoftware frei verfügbar und weiterverwendbar"}, {"stelle": "befund.5", "art": "befund", "unser": "Möglicher Beitrag zum fachlichen und politischen Reformdiskurs der Notfallversorgung"}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Von mehr als 72.000 Rettungsfahrten hatte rund die Hälfte der Patient:innen stationären Behandlungsbedarf; für mindestens 20 % bestand kein weiterer oder nur ambulanter Versorgungsbedarf (laut Bericht ein grober Schätzwert, siehe Hindernisse)."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Zusammenfassend beschreibt der Bericht, dass ein erheblicher Anteil der RD-Einsätze auf Häufignutzer mit drei und mehr Einsätzen pro Jahr und bei Vor- und Begleiterkrankungen auf vulnerable, nicht notwendigerweise alte Patient:innen entfällt; diese Merkmale bestimmen laut Bericht maßgeblich das mittelfristige Outcome wie das Versterben innerhalb eines Jahres."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Bei 116.089 durchgängig Versicherten waren 14 Tage nach dem Index-Einsatz mehr als 99 % ohne Komorbidität, etwa 96 % mit mittlerer und etwa 91 % mit hoher Komorbidität am Leben; nach 180 Tagen war der Anteil ohne Komorbidität nahezu unverändert, bei mittlerer 92 %, bei hoher 77 %; im zweiten Halbjahr vergrößerten sich die Unterschiede weiter."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Aus den Fokusgruppen wurden 59 Handlungsempfehlungen zu Leitstelle, Patientenversorgern, Dokumentation/Evaluation und Bevölkerung abgeleitet, die in der Online-Umfrage unter Akteur:innen des RD mehrheitlich hohe bis sehr hohe Zustimmung erhielten."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Wegen der Vielzahl der Verdachtsdiagnosen waren die Fallzahlen in relevanten Untergruppen der gut 5.000 verknüpften Datensätze klein."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "In den Abrechnungsdaten waren RD-Leistungen und nachfolgende ambulante oder stationäre Behandlungen nicht eindeutig referenziert; die Zuordnung beruht auf taggleichen Daten."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Notarztdaten: S. 27 hebt hervor, es sei erstmalig gelungen, Datensätze u. a. aus Leitstellen-, Notfallsanitäter:innendaten, Notarztprotokollen und GKV-Daten zu verknüpfen; S. 30 stellt fest, die Notarztdaten konnten gar nicht in die Analyse einbezogen werden."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Stationärer Bedarf: S. 20 bezieht sich auf 224.524 Einsätze (45,6 % ausschließlich stationär, 13,0 % ambulant und stationär), S. 29 nennt „mehr als 72.000 Rettungsfahrten“, von denen rund die Hälfte stationären Bedarf aufweise; die Herkunft der Bezugsgröße 72.000 ist in den Abschnitten nicht erläutert."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Zielerreichung: S. 29 erklärt das Ziel, Versorgungsabläufe sektorenübergreifend zu quantifizieren, für gelungen, während S. 28 festhält, auf die Forschungsfragen hätten die Leitstellen- und GKV-Auswertungen keine umfassenden Antworten geliefert, und S. 29 die Ableitung von Qualitätsindikatoren als nicht möglich bezeichnet."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Gegenüber der deterministischen Verknüpfung erhöhte die probabilistische die Fallzahl um 24,3 %; 19,0 % (1.022) der gültig verknüpften Protokolle hatten keine KVNR; die Übereinstimmung der Schlüsselvariablen lag minimal bei 98,0 % (Fahrstrecke)."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Deterministisch wurden 4.327 Einsatzprotokolle personenbezogen mit GKV-Abrechnungsdaten verknüpft; alle abgeglichenen Merkmale stimmten zu mehr als 90 % überein (Minimum Fahrstrecke 97,8 %)."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "127.859 bayerische Einsatzprotokolle (89,8 %) wurden mit Leitstellendaten verknüpft; die Zeitpunkte stimmten zu 98,4 % (Alarmierung) bzw. 98,1 % (Ankunft am Notfallort) überein."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Nach Eingrenzung auf primäre Notfallrettungseinsätze blieben von 150.048 bayerischen Einsatzprotokollen 142.342 als Ausgangspunkt der Verknüpfungen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Aus den Abrechnungsdaten der 10 BKK lagen nach Selektion Informationen zu 175.215 Versicherten mit 442.286 abgerechneten Leistungen vor, aus denen 224.524 RD-Einsätze gebildet wurden."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Ausgewertet wurden insgesamt 106.936 Einsatzprotokolle; das Patient:innenalter lag im Mittel bei 59,4, im Median bei 66 Jahren, 59,2 % der Einsätze erfolgten mit Notärzt:in."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Patient:innen der Projektkassen waren im Mittel 54,5 Jahre alt gegenüber 59,7 Jahren bei anderen Kassen; der Männeranteil lag bei 53,4 % gegenüber 49,6 %."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Notarztbeteiligung lag bei 60,5 % (Projektkassen) gegenüber 59,4 % (andere Kassen) und unterschied sich laut Bericht kaum; zwischen den zehn Projektkassen variierten die Merkmale laut Bericht zum Teil erheblich, das Durchschnittsalter etwa zwischen 67,6 und 37,6 Jahren."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "An 25,8 % der RD-Einsätze schlossen sich taggleich ausschließlich ambulante Leistungen an, an 13,0 % ambulante und stationäre Behandlungen."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Für etwa jeden sechsten RD-Einsatz (34.932) war am Einsatztag keinerlei ambulante oder stationäre Leistung dokumentiert."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Die Mortalität am Einsatztag betrug 1,5 % (3.452 Einsätze); für verstorbene Patient:innen ohne taggleiche Versorgung lag der Vergleichswert bei 62,5 %, laut Bericht deutlich höher als bei Verstorbenen mit Versorgung."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Bei den taggleich Verstorbenen handelte es sich, insbesondere ohne nachfolgende Versorgung, überwiegend um Einsätze mit Notarztbeteiligung; die Verstorbenen waren älter und tendenziell häufiger männlich."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Von 5.361 verknüpften bayerischen Einsatzprotokollen verstarben 1,6 % (85) der Patient:innen am Einsatztag; bei ihnen waren Aspiration (3,5 %) und Tumorleiden (2,5 %) als Verdachtserkrankungen codiert, bei Überlebenden laut Bericht deutlich seltener."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Unter den Hauptdiagnosen taggleich beginnender stationärer Behandlungen entfielen 22,3 % (26.044) auf ICD-Kapitel XIX (Verletzungen, Vergiftungen)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Weitere Hauptdiagnose-Kapitel: Kreislaufsystem 19,7 %, Symptome/abnorme Befunde 9,1 %, Atmungssystem 8,2 %, Nervensystem 6,4 %."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "82,9 % der Patient:innen hatten 2016 genau einen RD-Einsatz in den Abrechnungsdaten; das Maximum lag bei 83 Einsätzen."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Als Frequent-Nutzer:innen (mindestens drei Einsätze pro Jahr, mehr als eine SD über dem Mittel von 1,28) galten 5,5 % der Patient:innen; einen höheren Männeranteil unter ihnen bestätigten die Daten laut Bericht, wenn überhaupt, nur in geringem Umfang."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Die Korrelation zwischen Lebensalter und Häufigkeit der RD-Nutzung betrug Pearson r = 0,13, laut Bericht lediglich schwach."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Die Verdachtserkrankung Asthma/exazerbierte COPD stand in unter 1 % der Protokolle von Einmal-Nutzer:innen und in etwa jedem fünfzehnten Protokoll von Frequent-Nutzer:innen; auch Pneumonie/Bronchitis war bei Frequent-Nutzer:innen vergleichsweise häufig."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Die Verdachtserkrankung Krampfanfall fand sich in rund jedem zwanzigsten Protokoll von Frequent-Nutzer:innen, bei Einmal-Nutzer:innen selten."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Auf ICD-Kapitel XIX entfielen 23,6 % der Hauptdiagnosen von Einmal-Nutzer:innen gegenüber 12,0 % bei Frequent-Nutzer:innen."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Auf ICD-Kapitel X (Atmungssystem) entfielen 13,4 % der Hauptdiagnosen von Frequent-Nutzer:innen gegenüber 6,9 % bei Einmal-Nutzer:innen."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Auf ICD-Kapitel V (psychische Erkrankungen, Verhaltensstörungen) entfielen 9,7 % der Hauptdiagnosen von Frequent-Nutzer:innen gegenüber 4,6 % bei Einmal-Nutzer:innen."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Der Elixhauser-Komorbiditätsindex (EKI) lag im Mittel bei 2,9 (SD 2,9; Median 2)."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Mit steigender Zahl von EKI-Indexpunkten war das Durchschnittsalter der drei Gruppen höher."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Der Anteil von Mehrfachnutzungen des RD lag bei Patient:innen ohne Komorbidität bei 6,5 %, bei Patient:innen mit sechs und mehr Komorbiditäten bei nahezu 30 %."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Bluthochdruck als Komorbidität wiesen 50,0 % der Patient:innen in Gruppe 2 (1–5 Indexpunkte) und 91,1 % in Gruppe 3 (6 und mehr) auf."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Depression als Komorbidität wiesen 28,4 % der Patient:innen in Gruppe 2 und 44,2 % in Gruppe 3 auf."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Szenarien der Patientenbefragung: Bei starkem Blutverlust einer anderen Person würden 96,4 % den RD rufen, bei sich selbst 90,7 %; bei Bewusstlosigkeit einer anderen Person 92,4 %; bei ziehenden Brustschmerzen 65,6 % für andere und 59,8 % für sich selbst."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Bei einem Asthmaanfall einer anderen Person würden 48,2 % den RD rufen, bei sich selbst 35,9 % (Kappa = 0,693, laut Bericht starke Übereinstimmung)."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Häufigste medizinische Gründe für die RD-Nutzung 2016 waren bei 253 Antwortenden Schmerzen (37,9 %) und Herz-Kreislauf-Probleme (32,0 %), bei durchschnittlich 2,2 Antworten pro Person."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "89,0 % der Befragten bejahten einen Notfall als Grund für die RD-Nutzung, 84,3 % nannten, dass Dritte den RD gerufen haben."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "42,3 % gaben als Grund an, dass niemand sie zur Notaufnahme oder Arztpraxis fahren konnte; die Projektnehmer deuten dies als Inanspruchnahme des RD auch als Fahrdienst."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "48,4 % nannten mindestens einen durch das Gesundheitssystem bedingten Anlass, etwa Wartezeit auf einen Arzttermin, Beschwerden außerhalb der Praxisöffnungszeiten oder die Erreichbarkeit der 116 117."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Die Notwendigkeit medizinischer Maßnahmen schätzten 53,5 % der Befragten als sehr dringlich und 11,5 % als gar nicht dringlich ein."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "Der RD wurde nach Angabe der Befragten am häufigsten von Angehörigen (38,2 %) und am zweithäufigsten von unbekannten Dritten (18,7 %) gerufen."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Laut Bericht wurden 84 % der Notfallanrufe mit RD-Beteiligung von Dritten getätigt; Datengrundlage u. a. eine Patientenbefragung mit 1.312 BKK-Versicherten."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "An anderer Stelle beschreibt der Bericht 55 abgeleitete Aussagen aus drei Fokusgruppen und den übrigen Modulen: 35 Handlungsempfehlungen und 20 Sub-Statements."}, {"stelle": "bericht_befund.45", "art": "aussage", "unser": "In die Online-Befragung gingen 442 vollständig bis zur letzten inhaltlichen Seite bearbeitete Fragebögen ein; 19 der 26 Fokusgruppen-Teilnehmenden nahmen teil."}, {"stelle": "bericht_befund.46", "art": "aussage", "unser": "Die höchste Zustimmung (99,8 %) erhielten u. a. die Empfehlung, die Disponierungskriterien der Rettungsmittel regelmäßig zu evaluieren."}, {"stelle": "bericht_befund.47", "art": "aussage", "unser": "Die Empfehlung zu Angeboten zur Stärkung der Gesundheitskompetenz der Bevölkerung erhielt 95,9 % Zustimmung."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Der Link zwischen Einsatzmerkmalen, Maßnahmen, nachfolgenden Leistungen und kurz- und mittelfristigen Ergebnissen war für Aussagen zur Validität von Qualitätsindikatoren zu schwach."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Leistungen des RD konnten nicht im Detail, sondern nur in Eckpunkten (Verdachtsdiagnose, weitere Versorgung) abgebildet werden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die KVNR lag nur in 79,4 % der auf datenliefernde Kassen zurückgeführten Einsatzprotokolle vor; über die Gründe können nur Vermutungen angestellt werden."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Das deterministische Linkage konnte Protokolle ohne gültige KVNR nicht berücksichtigen (4.701 bzw. 20,6 % der auf datenliefernde Kassen zurückgeführten Protokolle)."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Bei der deterministischen Verknüpfung wurde pro Tag und Person nur ein Einsatzprotokoll herangezogen; mehrfache Einsätze derselben Person am selben Tag waren nicht abbildbar."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Auch bei der Aggregation der Abrechnungsdaten zu Einsätzen ist pro Tag und Person nur ein Einsatz abbildbar."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "In der Praxis kann die Abgrenzung zwischen Krankentransporten und Rettungsfahrten in den Abrechnungspositionen unklar sein."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Bei nicht übereinstimmenden Zeitpunkten in der Leitstellenverknüpfung ließ sich nicht unterscheiden, ob eine Fehlverknüpfung oder ein Dokumentationsfehler vorlag."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Einsatzprotokolle aus Baden-Württemberg umfassten nur das letzte Quartal 2016, weil die elektronische Einsatzdokumentation dort erst im Jahresverlauf begann."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Für Baden-Württemberg war die Selektion der Protokolle wegen eines abweichenden Dokumentationsstandards nicht möglich; von ursprünglich ca. 150.000 Protokollen verblieben 106.936."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Für Fragen zur Versorgung und zu langfristigen Outcomes verkleinert sich die auswertbare Datenmenge laut Bericht deutlich."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Einsatzprotokolle (6.039) und Abrechnungsdaten (7.683 Einsätze) der Projektkassen decken sich nicht; die Abrechnungsdaten enthalten etwa 25 % mehr Einsätze, möglicherweise wegen Operationalisierungsunterschieden und der Teiljahresabdeckung in Baden-Württemberg."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Die Dokumentation der Leitstellendaten war wenig standardisiert; Notarztdaten konnten nicht in die Analyse einbezogen werden."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Verdachtserkrankungen waren nur mit Vorsicht auswertbar, da 2.467 (46,0 %) der 5.361 verknüpften Protokolle keinen Eintrag enthielten."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Fraglich ist laut Bericht, inwieweit die Einschätzungen der Einsatzkräfte zu Verdachtserkrankungen, insbesondere bei Mortalität, valide erfolgen können."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Die Abrechnungsdaten eignen sich nicht zur Untersuchung der Todesursachen; dafür wurden sie mit den Einsatzprotokollen verknüpft."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Ob Frequent-Nutzer:innen Zugang zu niedrigschwelligen sozialpsychiatrischen Angeboten hatten, lässt sich mit den Abrechnungsdaten nicht untersuchen."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Die aus Fokusgruppen und Online-Befragung abgeleiteten Potenziale sind nicht quantifizierbar; Wirtschaftlichkeitspotenziale wurden nicht untersucht."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Für die Online-Befragung ist keine Response-Angabe möglich, da die Grundgesamtheit der Akteur:innen unbekannt war."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Von 36 zugesagten Expert:innen nahmen 26 vor Ort an den Fokusgruppen teil."}, {"stelle": "bericht_hindernis.25", "art": "aussage", "unser": "Das geplante letzte Treffen des Beirats fiel wegen der Corona-Pandemie aus."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF22015</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>8 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 24 Aussagen. Die übrigen
+16 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die im Projekt weiterentwickelte S3-Leitlinie „Fissuren- und Grübchenversiegelung“ der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Der Ausschuss verweist darauf, dass Fissuren und Grübchen der bleibenden Backenzähne im Kindes- und Jugendalter besonders kariesanfällig sind und die Versiegelung eine zahnflächenspezifische Präventionsmaßnahme ist. Im Projekt wurde die bestehende S3-Leitlinie weiterentwickelt. Sie bleibt damit ein evidenz- und konsensbasiertes Instrument für eine qualitativ hochwertige, präventiv ausgerichtete Versorgung. Zusätzlich wurde eine Patientenleitlinie erarbeitet. Die Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potenzial zur Verbesserung der Versorgung auszuschöpfen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,87 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt lediglich fest, dass die Leitlinie die Voraussetzung erfüllt, ihr Potenzial zur Verbesserung der Versorgung auszuschöpfen.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Die bestehende S3-Leitlinie wurde als evidenz- und konsensbasiertes Instrument weiterentwickelt.</p>
-  <blockquote>„Im Rahmen des Projekts wurde die bereits bestehende S3 -Leitlinie „Fissuren - und Grübchenversiegelung“ weiterentwickelt und stellt somit weiterhin ein evidenz- und konsensbasiertes Instrument dar, welches eine qualitativ hochwertige sowie präventiv ausgerichtete Gesundheitsversorgung ermöglicht." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Eine Patientenleitlinie als evidenzbasierte Patienteninformation wurde erarbeitet.</p>
-  <blockquote>„Die erarbeitete Patientenleitlinie stellt zudem eine evidenzbasierte Patienteninformation für Betroffene zur Verfügung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Die Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien.</p>
-  <blockquote>„Die weiterentwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 -Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -238,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben aktualisierte die S3-Leitlinie „Fissuren- und Grübchenversiegelung“ (AWMF-Registernummer 083-002). Grundlage war eine systematische Recherche in Pubmed/Medline und Embase für den Zeitraum 1. Januar 2015 bis 30. Juni 2023. Die Evidenzqualität wurde nach GRADE bewertet. Die Empfehlungen wurden in einer formalen Konsensusfindung abgestimmt, Empfehlungs- und Konsensstärke wurden festgelegt. Die Leitlinie wurde fristgerecht bis zum 30. Juni 2024 eingereicht und publiziert. Sie enthält 17 Empfehlungen, davon 7 konsensbasiert und 10 evidenzbasiert. Neu aufgenommen wurden unter anderem Empfehlungen zu erhöhtem Kariesrisiko, zu Kindern und Jugendlichen mit Behinderungen und zu MIH-Molaren. Die Evidenzlage in diesen Bereichen ist laut Bericht zumeist niedrig, weitere klinische Studien seien notwendig. Die ursprünglich geplante einjährige Pilottestung bei Zahnärzten entfiel.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die S3-Leitlinie „Fissuren- und Grübchenversiegelung“ wurde in aktualisierter Form publiziert (AWMF-Registernummer 083-002).</p>
+  
   <blockquote>„„Im Ergebnis wurde die S3 -Leitlinie &quot; Fissuren- und Grübchenversiegelung &quot; in aktualisierter Form publiziert (AMWF Registernummer 083-002).“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die aktualisierte Leitlinie enthält 17 Empfehlungen: 7 konsensbasierte (41,2 %) und 10 evidenzbasierte (58,8 %).</p>
+  
   <blockquote>„„Die vorliegende Leitlinie enthält 7 konsensbasierte (41,2%) und 10 evidenzbasierte Empfehlungen (58,8%)“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Evidenzlage zu den neu aufgenommenen Bereichen ist laut Bericht zumeist niedrig; die Projektnehmer verweisen auf die Notwendigkeit weiterer klinischer Studien.</p>
+  
   <blockquote>„„Allerdings ist auf die Notwendigkeit weiterer klinischer Studien zu verweisen, da die Evidenzlage in diesem Bereich zumeist niedrig ist.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die ursprünglich geplante einjährige Pilottestung bei Zahnärzten wurde nicht durchgeführt. Die Projektnehmer begründen dies damit, dass sich die Handlungsempfehlungen nicht gravierend geändert hätten. Zudem seien Erkenntnisse einer früheren Pilottestung bereits in die Erstfassung eingeflossen.</p>
+  
   <blockquote>„„Während bei der initialen Projektplanung noch von einer einjährigen Pilottestung in der Anwendergruppe der Zahnärzte ausgegangen wurde, so k onnte mit Blick die Fortschreibung der vorhandenen Evidenz auf diesen Schritt verzichtet werden.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -333,11 +255,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Der Titel des Vorhabens und die Ergebnisdarstellung (S. 2) beziehen sich auf die S3-Leitlinie „Fissuren- und Grübchenversiegelung“. Die Aussage zur Zielerreichung in der Diskussion (S. 10) bezieht sich dagegen auf die S3-Leitlinie „Seltene Erkrankungen der Zähne“. Die Aussage, alle Projektziele seien erreicht, ist damit im Wortlaut einer anderen Leitlinie zugeordnet.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -347,16 +269,111 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>11 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>16 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die im Projekt weiterentwickelte S3-Leitlinie „Fissuren- und Grübchenversiegelung“ der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt lediglich fest, dass die Leitlinie die Voraussetzung erfüllt, ihr Potenzial zur Verbesserung der Versorgung auszuschöpfen.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Die bestehende S3-Leitlinie wurde als evidenz- und konsensbasiertes Instrument weiterentwickelt.</p>
+  
+  <blockquote>„Im Rahmen des Projekts wurde die bereits bestehende S3 -Leitlinie „Fissuren - und Grübchenversiegelung“ weiterentwickelt und stellt somit weiterhin ein evidenz- und konsensbasiertes Instrument dar, welches eine qualitativ hochwertige sowie präventiv ausgerichtete Gesundheitsversorgung ermöglicht." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Eine Patientenleitlinie als evidenzbasierte Patienteninformation wurde erarbeitet.</p>
+  
+  <blockquote>„Die erarbeitete Patientenleitlinie stellt zudem eine evidenzbasierte Patienteninformation für Betroffene zur Verfügung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Die Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien.</p>
+  
+  <blockquote>„Die weiterentwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 -Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinie wurde fristgerecht bis zum 30. Juni 2024 bei der AWMF eingereicht.</p>
+  
   <blockquote>„„Im Ergebnis des Arbeitsprozesses ist es gelungen, die S3-Leitlinie fristgerecht bis zum 30. Juni 2024 bei der AWMF einzureichen.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der vierwöchigen Konsultationsphase gingen keine Rückmeldungen ein; inhaltliche Änderungen ergaben sich daraus nicht.</p>
+  
   <blockquote>„„Im Rahmen der 4-wöchigen Konsultationsphase ergaben sich keine Rückmeldungen, was mit keinen inhaltlichen Änderungen verbunden war.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -389,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Erstellt und verfügbar gemacht wurden eine Langfassung, ein Leitlinienreport, ein Leitlinienbericht und eine Patientenfassung.</p>
+  
   <blockquote>„„Im Ergebnis der Leitlinienarbeit wurden die üblichen Dokumente, Langfassung, Leitlinienreport, Leitlinienbericht und Patientenfassung, erstellt und verfügbar gemacht.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -408,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auf eine Kurzfassung wurde verzichtet. Als Gründe nennt der Bericht die inhaltliche Schnittmenge mit der Patientenleitlinie und die Recherchierbarkeit der Langfassung.</p>
+  
   <blockquote>„„auf die Kurzfassung, welche Bestandteil bisheriger Leitlinienfassungen, verzichtet, da es einerseits eine hohe inhaltliche Schnittmenge zur Patientenleitlinie gab und andererseits relevante Inhalte in der Langfassung auch effizient recherchiert werden können.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Neu empfohlen wird die Versiegelung bei Kindern und Jugendlichen mit Behinderungen und besonderem medizinischem Unterstützungsbedarf. Die Evidenzqualität ist niedrig (GRADE), der Empfehlungsgrad moderat (sollte).</p>
+  
   <blockquote>„„Die Fissuren- und Grübchenversiegelung sollte bei Kindern und Jugendlichen mit Behinderungen und besonderem medizinischem Unterstützungsbedarf – insbesondere mit geistiger und Mehrfachbehinderung – aufgrund des erhöhten Kariesrisikos angewendet werden. ⊕⊕⊝⊝ Niedrig Moderat ⇑“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Versiegelung von MIH-Molaren mit abgegrenzten Opazitäten ohne Oberflächeneinbruch gibt die Leitlinie eine offene Empfehlung (kann) bei niedriger Evidenzqualität.</p>
+  
   <blockquote>„„Die Fissuren- und Grübchenversiegelung kann an MIH-Molaren mit abgegrenzten Opazitäten/Hypomineralisationen ohne Oberflächeneinbruch in Erwägung gezogen werden. ⊕⊕⊝⊝ Niedrig Offen ⇔“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Materialien mit hoher Retentionsrate, insbesondere niedrigvisköse methacrylatbasierte Versiegelungskunststoffe mit Säurekonditionierung, werden bei hoher Evidenzqualität stark empfohlen (sollen).</p>
+  
   <blockquote>„„Zur Fissuren- und Grübchenversiegelung sollen bevorzugt Materialien mit einer hohen Retentionsrate bzw. Überlebenswahrscheinlichkeit eingesetzt werden. Dazu zählen insbesondere niedrigvisköse, methacrylat-basierte Versiegelungskunststoffe ... ⊕⊕⊕⊕ Hoch Stark ⇑⇑“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die relative Trockenlegung mit vierhändigem Arbeiten wird bei niedriger Evidenzqualität moderat empfohlen (sollte). Begründet wird dies damit, dass die verfügbaren Retentionsdaten auf eine Gleichwertigkeit von relativer und absoluter Trockenlegung hindeuten.</p>
+  
   <blockquote>„„Die relative Trockenlegung mit vierhändigem Arbeiten sollte umgesetzt werden, da die verfügbaren Retentionsdaten auf eine Gleichwertigkeit der relativen und absoluten Trockenlegung hindeuten. ⊕⊕⊝⊝ Niedrig Moderat ⇑“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Darstellung der Projektnehmer lässt sich der Einsatz der Versiegelung bei erhöhtem Kariesrisiko, bei Kindern und Jugendlichen mit Behinderungen und bei MIH anhand der verfügbaren Literatur begründen. Damit seien Lücken geschlossen worden, die im klinischen Alltag wiederkehrend von Bedeutung sind.</p>
+  
   <blockquote>„„der Einsatz der Fissuren - und G rübchenversiegelung bei einem erhöhten Kariesrisiko, bei Kindern und Jugendlichen mit Behinderungen und bei Betroffen von Molaren-Inzisiven-Hypomineralisationen (MIH) Bestandteil der aktualisierten Fassung anhand der verfügbaren Literatur begründet werden kann.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die systematische Recherche umfasste zwei Datenbanken (Pubmed/Medline, Embase) und den Zeitraum vom 1. Januar 2015 bis 30. Juni 2023. Fallberichte und Fallserien wurden nicht berücksichtigt.</p>
+  
   <blockquote>„„Pubmed/Medline und Embase – für den Zeitraum vom 1. Januar 2015 bis zum 30. Juni 2023 systematisc h durchsucht. ... Fallberichte oder -serien wurden nicht berücksichtigt.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In der Diskussion wird die Leitlinie mit dem Titel einer anderen Leitlinie („Seltene Erkrankungen der Zähne“) bezeichnet.</p>
+  
   <blockquote>„„Mit der Erstellung der S3 -Leitlinie &quot;Seltene Erkrankungen der Zähne&quot; wurden alle eingangs formulierten Projektziele innerhalb der vorgesehenen Projektlaufzeit erreicht.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -591,28 +608,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 525, "akronym": "FissVers", "kennung": "L61461-_vczA", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt weiterentwickelte S3-Leitlinie „Fissuren- und Grübchenversiegelung“ der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss verweist darauf, dass Fissuren und Grübchen der bleibenden Backenzähne im Kindes- und Jugendalter besonders kariesanfällig sind und die Versiegelung eine zahnflächenspezifische Präventionsmaßnahme ist. Im Projekt wurde die bestehende S3-Leitlinie weiterentwickelt. Sie bleibt damit ein evidenz- und konsensbasiertes Instrument für eine qualitativ hochwertige, präventiv ausgerichtete Versorgung. Zusätzlich wurde eine Patientenleitlinie erarbeitet. Die Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potenzial zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt lediglich fest, dass die Leitlinie die Voraussetzung erfüllt, ihr Potenzial zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "befund.0", "art": "befund", "unser": "Die bestehende S3-Leitlinie wurde als evidenz- und konsensbasiertes Instrument weiterentwickelt."}, {"stelle": "befund.1", "art": "befund", "unser": "Eine Patientenleitlinie als evidenzbasierte Patienteninformation wurde erarbeitet."}, {"stelle": "befund.2", "art": "befund", "unser": "Die Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben aktualisierte die S3-Leitlinie „Fissuren- und Grübchenversiegelung“ (AWMF-Registernummer 083-002). Grundlage war eine systematische Recherche in Pubmed/Medline und Embase für den Zeitraum 1. Januar 2015 bis 30. Juni 2023. Die Evidenzqualität wurde nach GRADE bewertet. Die Empfehlungen wurden in einer formalen Konsensusfindung abgestimmt, Empfehlungs- und Konsensstärke wurden festgelegt. Die Leitlinie wurde fristgerecht bis zum 30. Juni 2024 eingereicht und publiziert. Sie enthält 17 Empfehlungen, davon 7 konsensbasiert und 10 evidenzbasiert. Neu aufgenommen wurden unter anderem Empfehlungen zu erhöhtem Kariesrisiko, zu Kindern und Jugendlichen mit Behinderungen und zu MIH-Molaren. Die Evidenzlage in diesen Bereichen ist laut Bericht zumeist niedrig, weitere klinische Studien seien notwendig. Die ursprünglich geplante einjährige Pilottestung bei Zahnärzten entfiel."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die S3-Leitlinie „Fissuren- und Grübchenversiegelung“ wurde in aktualisierter Form publiziert (AWMF-Registernummer 083-002)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Die aktualisierte Leitlinie enthält 17 Empfehlungen: 7 konsensbasierte (41,2 %) und 10 evidenzbasierte (58,8 %)."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Evidenzlage zu den neu aufgenommenen Bereichen ist laut Bericht zumeist niedrig; die Projektnehmer verweisen auf die Notwendigkeit weiterer klinischer Studien."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die ursprünglich geplante einjährige Pilottestung bei Zahnärzten wurde nicht durchgeführt. Die Projektnehmer begründen dies damit, dass sich die Handlungsempfehlungen nicht gravierend geändert hätten. Zudem seien Erkenntnisse einer früheren Pilottestung bereits in die Erstfassung eingeflossen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Der Titel des Vorhabens und die Ergebnisdarstellung (S. 2) beziehen sich auf die S3-Leitlinie „Fissuren- und Grübchenversiegelung“. Die Aussage zur Zielerreichung in der Diskussion (S. 10) bezieht sich dagegen auf die S3-Leitlinie „Seltene Erkrankungen der Zähne“. Die Aussage, alle Projektziele seien erreicht, ist damit im Wortlaut einer anderen Leitlinie zugeordnet."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Die Leitlinie wurde fristgerecht bis zum 30. Juni 2024 bei der AWMF eingereicht."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "In der vierwöchigen Konsultationsphase gingen keine Rückmeldungen ein; inhaltliche Änderungen ergaben sich daraus nicht."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Erstellt und verfügbar gemacht wurden eine Langfassung, ein Leitlinienreport, ein Leitlinienbericht und eine Patientenfassung."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Auf eine Kurzfassung wurde verzichtet. Als Gründe nennt der Bericht die inhaltliche Schnittmenge mit der Patientenleitlinie und die Recherchierbarkeit der Langfassung."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Neu empfohlen wird die Versiegelung bei Kindern und Jugendlichen mit Behinderungen und besonderem medizinischem Unterstützungsbedarf. Die Evidenzqualität ist niedrig (GRADE), der Empfehlungsgrad moderat (sollte)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Für die Versiegelung von MIH-Molaren mit abgegrenzten Opazitäten ohne Oberflächeneinbruch gibt die Leitlinie eine offene Empfehlung (kann) bei niedriger Evidenzqualität."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Materialien mit hoher Retentionsrate, insbesondere niedrigvisköse methacrylatbasierte Versiegelungskunststoffe mit Säurekonditionierung, werden bei hoher Evidenzqualität stark empfohlen (sollen)."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die relative Trockenlegung mit vierhändigem Arbeiten wird bei niedriger Evidenzqualität moderat empfohlen (sollte). Begründet wird dies damit, dass die verfügbaren Retentionsdaten auf eine Gleichwertigkeit von relativer und absoluter Trockenlegung hindeuten."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Nach Darstellung der Projektnehmer lässt sich der Einsatz der Versiegelung bei erhöhtem Kariesrisiko, bei Kindern und Jugendlichen mit Behinderungen und bei MIH anhand der verfügbaren Literatur begründen. Damit seien Lücken geschlossen worden, die im klinischen Alltag wiederkehrend von Bedeutung sind."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die systematische Recherche umfasste zwei Datenbanken (Pubmed/Medline, Embase) und den Zeitraum vom 1. Januar 2015 bis 30. Juni 2023. Fallberichte und Fallserien wurden nicht berücksichtigt."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "In der Diskussion wird die Leitlinie mit dem Titel einer anderen Leitlinie („Seltene Erkrankungen der Zähne“) bezeichnet."}]};
+const D = {"projekt_id": 525, "akronym": "FissVers", "kennung": "L61461-_vczA", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss verweist darauf, dass Fissuren und Grübchen der bleibenden Backenzähne im Kindes- und Jugendalter besonders kariesanfällig sind und die Versiegelung eine zahnflächenspezifische Präventionsmaßnahme ist. Im Projekt wurde die bestehende S3-Leitlinie weiterentwickelt. Sie bleibt damit ein evidenz- und konsensbasiertes Instrument für eine qualitativ hochwertige, präventiv ausgerichtete Versorgung. Zusätzlich wurde eine Patientenleitlinie erarbeitet. Die Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potenzial zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben aktualisierte die S3-Leitlinie „Fissuren- und Grübchenversiegelung“ (AWMF-Registernummer 083-002). Grundlage war eine systematische Recherche in Pubmed/Medline und Embase für den Zeitraum 1. Januar 2015 bis 30. Juni 2023. Die Evidenzqualität wurde nach GRADE bewertet. Die Empfehlungen wurden in einer formalen Konsensusfindung abgestimmt, Empfehlungs- und Konsensstärke wurden festgelegt. Die Leitlinie wurde fristgerecht bis zum 30. Juni 2024 eingereicht und publiziert. Sie enthält 17 Empfehlungen, davon 7 konsensbasiert und 10 evidenzbasiert. Neu aufgenommen wurden unter anderem Empfehlungen zu erhöhtem Kariesrisiko, zu Kindern und Jugendlichen mit Behinderungen und zu MIH-Molaren. Die Evidenzlage in diesen Bereichen ist laut Bericht zumeist niedrig, weitere klinische Studien seien notwendig. Die ursprünglich geplante einjährige Pilottestung bei Zahnärzten entfiel."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die S3-Leitlinie „Fissuren- und Grübchenversiegelung“ wurde in aktualisierter Form publiziert (AWMF-Registernummer 083-002)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Die aktualisierte Leitlinie enthält 17 Empfehlungen: 7 konsensbasierte (41,2 %) und 10 evidenzbasierte (58,8 %)."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Evidenzlage zu den neu aufgenommenen Bereichen ist laut Bericht zumeist niedrig; die Projektnehmer verweisen auf die Notwendigkeit weiterer klinischer Studien."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die ursprünglich geplante einjährige Pilottestung bei Zahnärzten wurde nicht durchgeführt. Die Projektnehmer begründen dies damit, dass sich die Handlungsempfehlungen nicht gravierend geändert hätten. Zudem seien Erkenntnisse einer früheren Pilottestung bereits in die Erstfassung eingeflossen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Der Titel des Vorhabens und die Ergebnisdarstellung (S. 2) beziehen sich auf die S3-Leitlinie „Fissuren- und Grübchenversiegelung“. Die Aussage zur Zielerreichung in der Diskussion (S. 10) bezieht sich dagegen auf die S3-Leitlinie „Seltene Erkrankungen der Zähne“. Die Aussage, alle Projektziele seien erreicht, ist damit im Wortlaut einer anderen Leitlinie zugeordnet."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt weiterentwickelte S3-Leitlinie „Fissuren- und Grübchenversiegelung“ der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt lediglich fest, dass die Leitlinie die Voraussetzung erfüllt, ihr Potenzial zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "befund.0", "art": "befund", "unser": "Die bestehende S3-Leitlinie wurde als evidenz- und konsensbasiertes Instrument weiterentwickelt."}, {"stelle": "befund.1", "art": "befund", "unser": "Eine Patientenleitlinie als evidenzbasierte Patienteninformation wurde erarbeitet."}, {"stelle": "befund.2", "art": "befund", "unser": "Die Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Die Leitlinie wurde fristgerecht bis zum 30. Juni 2024 bei der AWMF eingereicht."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "In der vierwöchigen Konsultationsphase gingen keine Rückmeldungen ein; inhaltliche Änderungen ergaben sich daraus nicht."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Erstellt und verfügbar gemacht wurden eine Langfassung, ein Leitlinienreport, ein Leitlinienbericht und eine Patientenfassung."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Auf eine Kurzfassung wurde verzichtet. Als Gründe nennt der Bericht die inhaltliche Schnittmenge mit der Patientenleitlinie und die Recherchierbarkeit der Langfassung."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Neu empfohlen wird die Versiegelung bei Kindern und Jugendlichen mit Behinderungen und besonderem medizinischem Unterstützungsbedarf. Die Evidenzqualität ist niedrig (GRADE), der Empfehlungsgrad moderat (sollte)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Für die Versiegelung von MIH-Molaren mit abgegrenzten Opazitäten ohne Oberflächeneinbruch gibt die Leitlinie eine offene Empfehlung (kann) bei niedriger Evidenzqualität."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Materialien mit hoher Retentionsrate, insbesondere niedrigvisköse methacrylatbasierte Versiegelungskunststoffe mit Säurekonditionierung, werden bei hoher Evidenzqualität stark empfohlen (sollen)."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die relative Trockenlegung mit vierhändigem Arbeiten wird bei niedriger Evidenzqualität moderat empfohlen (sollte). Begründet wird dies damit, dass die verfügbaren Retentionsdaten auf eine Gleichwertigkeit von relativer und absoluter Trockenlegung hindeuten."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Nach Darstellung der Projektnehmer lässt sich der Einsatz der Versiegelung bei erhöhtem Kariesrisiko, bei Kindern und Jugendlichen mit Behinderungen und bei MIH anhand der verfügbaren Literatur begründen. Damit seien Lücken geschlossen worden, die im klinischen Alltag wiederkehrend von Bedeutung sind."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die systematische Recherche umfasste zwei Datenbanken (Pubmed/Medline, Embase) und den Zeitraum vom 1. Januar 2015 bis 30. Juni 2023. Fallberichte und Fallserien wurden nicht berücksichtigt."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "In der Diskussion wird die Leitlinie mit dem Titel einer anderen Leitlinie („Seltene Erkrankungen der Zähne“) bezeichnet."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

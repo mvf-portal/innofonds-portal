@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF16038</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>23 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 57 Aussagen. Die übrigen
+34 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss bittet das BAMF, die Unabhängige Patientenberatung, das BMG und insbesondere die BZgA, auf Grundlage der Projekterkenntnisse zu prüfen, ob ihre Angebote zur kultursensiblen und mehrsprachigen Vermittlung von Basiswissen zum deutschen Gesundheitssystem und besonders zur Notfallversorgung weiterentwickelt werden müssen und können. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt untersuchte mit Befragungen von über 2.000 Patientinnen und Patienten mit und ohne Migrationshintergrund sowie von über 500 Geflüchteten, warum Notfallambulanzen genutzt werden und ob diese Nutzung angemessen ist. Nach dem Beschluss bestätigt das Projekt die Vermutung, dass Patientinnen und Patienten mit Migrationshintergrund (1. Generation) Notfallambulanzen häufig unangemessen in Anspruch nehmen. Der Ausschuss folgt grundsätzlich der Empfehlung, Gesundheitskompetenz und Systemkenntnisse von Migrantinnen und Migranten zu verbessern. Die weitergehenden Handlungsempfehlungen, nämlich eine digitale Gesundheitsanwendung und Health Guides in Integrierten Notfallzentren, waren nicht Untersuchungsgegenstand und sind noch nicht erprobt. Da es bereits zentrale mehrsprachige und kultursensible Angebote gibt, sollen zunächst diese auf eine Weiterentwicklung geprüft werden.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Sonstiges</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Die Handlungsempfehlungen zu einer digitalen Gesundheitsanwendung und zu Health Guides in Integrierten Notfallzentren sind nach dem Beschluss noch nicht erprobt. Statt neuer Formen sollen zunächst bestehende zentrale Angebote zur multilingualen und kultursensiblen Wissensvermittlung anhand der Projekterkenntnisse auf eine Weiterentwicklung geprüft werden.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -178,52 +157,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Übertragbarkeit unklar</h3>
+  <h3>Hindernis laut Beschluss: Übertragbarkeit</h3>
   <p class="unser">Die abgeleiteten Handlungsempfehlungen (digitale Gesundheitsanwendung, Health Guides in Integrierten Notfallzentren) waren nicht Untersuchungsgegenstand und sind nicht erprobt</p>
+  
   <blockquote>„Die vom Projekt abgeleiteten H andlungsempfehlungen zur Entwicklung einer digitalen Gesundheitsanwendung sowie zum Einsatz von Health Guides in zukünftigen Integrierten Notfallzentren waren nicht unmittelbar Untersuchungsgegenstand des Projektes und wurden daher noch nicht erprobt." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Bestätigung der Vermutung, dass Patientinnen und Patienten mit Migrationshintergrund (1. Generation) Notfallambulanzen häufig unangemessen nutzen</p>
-  <blockquote>„Im Ergebnis bestätigt das Projekt die Vermutung, dass häufig eine unangemessene Inanspruchnahme der Notfallambulanzen durch Patientinnen und Patienten mit Migrationshintergrund (1. Generation) vorliegt." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Der Ausschuss folgt grundsätzlich der Empfehlung, Gesundheitskompetenz und Systemkenntnisse von Migrantinnen und Migranten zu verbessern</p>
-  <blockquote>„Der Innovationsausschuss folgt grundsätzlich der daraus abgeleiteten Empfehlung des Projekts , die Gesundheitskompetenz und die Kenntnisse der Migrant innen und Migranten zum deutschen Gesundheitssystem zu verbessern." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Angemessenheit der Inanspruchnahme von Notaufnahmen – MigrantInnen 1. Generation vs. PatientInnen ohne Migrationshintergrund (Studienarm 1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -256,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Angemessenheit der Inanspruchnahme von Notaufnahmen – MigrantInnen 2. Generation vs. PatientInnen ohne Migrationshintergrund (Studienarm 1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -275,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Quote der Inanspruchnahme von Notaufnahmen innerhalb von 12 Monaten – Geflüchtete vs. AOK-Versicherte deutscher Nationalität (Studienarm 2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -294,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Quote der Inanspruchnahme von Notaufnahmen – Geflüchtete vs. AOK-Versicherte mit syrischer, iranischer oder irakischer Nationalität (Studienarm 2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -313,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Inanspruchnahme von Notaufnahmen nach selbst eingeschätzter Kommunikationsfähigkeit in deutscher Sprache (Studienarm 2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -332,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Inanspruchnahme von Notaufnahmen bei Problemen der Verständigung mit ambulanten ÄrztInnen (Studienarm 2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Inanspruchnahme von Notaufnahmen bei Unkenntnis der Notrufnummer (Studienarm 2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Inanspruchnahme von Notaufnahmen bei fehlender Kenntnis über Medikamente, Heil- und Hilfsmittel (Studienarm 2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Zufriedenheit und Versorgungserfahrung“</h3>
   <p class="unser">Unzufriedenheit des behandelnden Arztes bei höherer patientenseitiger Dringlichkeitseinschätzung (≥ 3 Punkte Differenz auf zehnstufiger Skala) (Studienarm 1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.10">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Unangemessene Nutzung bei Grund „Nähe“ für die Wahl der Notfallambulanz vs. Empfehlung von medizinischem Fachpersonal (Studienarm 1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.10" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -428,11 +369,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben untersuchte in zwei Studienarmen die Notfallversorgung von MigrantInnen und Geflüchteten. Studienarm 1 befragte PatientInnen und behandelnde Ärzte in Notfallambulanzen; primäre Zielgröße war die Angemessenheit der Inanspruchnahme, definiert als stationäre Aufnahme oder das gemeinsame Vorliegen von starken Schmerzen, hoher patientenseitiger Dringlichkeit und ärztlicher Empfehlung. In die Analyse gingen 2.327 PatientInnen ein (Responserate 56 %). Nach Adjustierung hatten MigrantInnen der 1. Generation eine signifikant höhere Chance einer unangemessenen Nutzung (OR 1,35; 95%-KI 1,06–1,73); für die 2. Generation (OR 1,38; 95%-KI 0,96–1,99) wurde das Signifikanzniveau von 5 % nicht erreicht. Studienarm 2 befragte 559 Geflüchtete; 19,14 % gaben mindestens einen Notaufnahmebesuch in 12 Monaten an, gegenüber 9,35 % bei deutschen AOK-Versicherten in Berlin laut Abrechnungsdaten. Häufigere Notaufnahmebesuche fanden sich bei fehlenden Deutschkenntnissen, Verständigungsproblemen mit ambulanten Ärzten, Unkenntnis der Notrufnummer und fehlender Kenntnis über die Versorgung mit Medikamenten, Heil- und Hilfsmitteln. Die Aussagekraft wird dadurch begrenzt, dass die Stichprobe nicht repräsentativ sein sollte, sich die Geschlechterverteilung zwischen den Gruppen unterscheidet, keine Daten zu Nichtteilnehmern vorliegen und die beiden Studienarme wegen unterschiedlicher Populationen und Zielgrößen nicht gemeinsam ausgewertet wurden. Für den Zusammenhang zwischen Notrufnummer-Kenntnis und Inanspruchnahme nennt der Bericht an zwei Stellen unterschiedliche Odds Ratios.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1, primäre Zielgröße: Nach Adjustierung hatten MigrantInnen der 1. Generation gegenüber PatientInnen ohne Migrationshintergrund eine signifikant höhere Chance einer unangemessenen Nutzung der Notfallambulanz (OR 1,35; 95%-KI 1,06–1,73).</p>
+  
   <blockquote>„„konnte im Kollektiv der befragten MigrantInnen (1. Generation) eine signifikant höhere Chance für eine unangemessenen Nutzung der Notfallambulanz im Vergleich zu der Patientengruppe ohne Migrationshintergrund festgestellt werden (OR 1,35; 95% Konfidenzintervall [1,06 ; 1,73]).“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1, primäre Zielgröße: Für PatientInnen der 2. Generation war die Chance einer unangemessenen Inanspruchnahme ebenfalls erhöht (OR 1,38; 95%-KI 0,96–1,99), erreichte jedoch das auf 5 % festgelegte Signifikanzniveau nicht.</p>
+  
   <blockquote>„„ebenfalls eine erhöhte Chance für eine unangemessene Inanspruchnahme nachweisbar (OR 1, 38, 95 % Konfidenzintervall [0,96; 1.99]), die jedoch nicht das auf 5% festgelegte Signifikanzniveau erreichte.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,31 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei der Herleitung der Proxy-Kriterien für Angemessenheit ergab die Kombination aller drei patientenseitigen Variablen die größte Übereinstimmung mit der ärztlichen Einschätzung, bei einer Sensitivität von 1,4 % und einer Spezifität von 8,8 %.</p>
+  
   <blockquote>„„die Verwendung aller 3 Variablen (müssen alle positiv kodiert sein) zur größten Übereinstimmung führt – gemessen mit Sensitivität (1,4%) und Spezifität (8,8%).“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.11">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Studienarm 2: Die Notfallquote der befragten Geflüchteten lag bei 19,14 % (107 von 559 mit mindestens einem Besuch in 12 Monaten); laut AOK-Abrechnungsdaten 2018 betrug die alters- und geschlechtsadjustierte Quote bei rund 220.000 deutschen Versicherten in Berlin 9,35 % und bei rund 14.500 Versicherten syrischer, iranischer oder irakischer Nationalität 10,92 %.</p>
-  <blockquote>„„Mit 19,14% liegt die Quote der Inanspruchnahme von Notaufnahmen in der Studienpopulation der Geflüchteten deutlich über der Alters - und Geschlechtsadjustierten Notfallquote bei Versicherten deutscher Nationalität von 9,35% [...] erhöhte Notfallquote von 10,92%“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1: Eine repräsentative Abbildung der (migrantischen) Bevölkerung war nicht Ziel der Studie; der Frauenanteil lag bei 62 % unter Nicht-MigrantInnen, 77 % in der 1. und 85 % in der 2. Generation.</p>
+  
   <blockquote>„„Der Anteil der weiblichen StudienteilnehmerInnen liegt bei 62% unter den nicht-MigrantInnen [...] In der 1. Generation liegt der Anteil weiblicher StudienteilnehmerInnen bei 77%, in der 2. Generation bei 85% [...] Eine repräsentative Abbildung der (migrantischen) Bevölkerung war nicht Ziel dieser Studie.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1: Häufigste Gründe für Nichtteilnahme waren Unwohlsein (25 %), mangelnde Motivation (19 %), sprachliche Probleme (14 %) und Ablehnung durch eine Begleitperson (8 %); weitere demographische Daten der Nichtteilnehmer konnten nicht erhoben werden.</p>
+  
   <blockquote>„„Patient/-in fühlt sich nicht wohl (25%), mangelnde Motivation zur Teilnahme (19%), sprachliche Probleme (14%) und eine Ablehnung der Teilnahme durch eine Begleitperson (8%). Weitere d emographische Daten der Nichtteilnehmer konnten [...] nicht erhoben werden.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die ursprünglich vorgesehene gemeinsame Auswertung und Publikation beider Studienarme wurde nicht umgesetzt, weil sie unterschiedliche Outcome-Parameter in unterschiedlichen Populationen untersuchen.</p>
+  
   <blockquote>„„Ursprünglich war eine gemeinsame Auswertung und Publikation der beiden Studienarme vorgesehen. Schon bei Erstellung des Studiendesigns zeigte sich jedoch, dass beide Studienarme unterschiedliche Outcome Parameter in unterschiedlichen Populationen untersuchen“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -580,11 +502,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zusammenhang zwischen Unkenntnis der Notrufnummer und Inanspruchnahme der Notaufnahme: Auf S. 2 wird OR 1,73 mit p=0,254 genannt und das Merkmal als „noch nicht signifikant“ bezeichnet; auf S. 23 wird für dieselben 19 % der Befragten OR 2,73 (0,46 vs. 0,24 Besuche pro Jahr) ohne p-Wert angegeben.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -599,11 +521,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zum Einfluss von Flucht und Vertreibung spricht S. 1 von einem „signifikanten Einfluss“, S. 21 von einem „starken Einfluss“; ein zugehöriger Test ist in den Abschnitten nicht berichtet – die Grundlage ist ein Vergleich der befragungsbasierten Notfallquote (19,14 %) mit Abrechnungsdaten (9,35 % bzw. 10,92 %).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -618,11 +540,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 1 führt die Inanspruchnahme „vor allem“ auf ungenügende Kenntnisse der Versorgungsstrukturen zurück; in Studienarm 1 war für die zur Prüfung dieser Hypothese gewählten Variablen Hausarzt und Eigenhilfemaßnahmen laut S. 18 kein relevanter Einfluss nachweisbar. Die Aussage auf S. 1 bezieht sich auf Studienarm 2.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -632,16 +554,111 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>29 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>34 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss bittet das BAMF, die Unabhängige Patientenberatung, das BMG und insbesondere die BZgA, auf Grundlage der Projekterkenntnisse zu prüfen, ob ihre Angebote zur kultursensiblen und mehrsprachigen Vermittlung von Basiswissen zum deutschen Gesundheitssystem und besonders zur Notfallversorgung weiterentwickelt werden müssen und können. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Die Handlungsempfehlungen zu einer digitalen Gesundheitsanwendung und zu Health Guides in Integrierten Notfallzentren sind nach dem Beschluss noch nicht erprobt. Statt neuer Formen sollen zunächst bestehende zentrale Angebote zur multilingualen und kultursensiblen Wissensvermittlung anhand der Projekterkenntnisse auf eine Weiterentwicklung geprüft werden.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Bestätigung der Vermutung, dass Patientinnen und Patienten mit Migrationshintergrund (1. Generation) Notfallambulanzen häufig unangemessen nutzen</p>
+  
+  <blockquote>„Im Ergebnis bestätigt das Projekt die Vermutung, dass häufig eine unangemessene Inanspruchnahme der Notfallambulanzen durch Patientinnen und Patienten mit Migrationshintergrund (1. Generation) vorliegt." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Der Ausschuss folgt grundsätzlich der Empfehlung, Gesundheitskompetenz und Systemkenntnisse von Migrantinnen und Migranten zu verbessern</p>
+  
+  <blockquote>„Der Innovationsausschuss folgt grundsätzlich der daraus abgeleiteten Empfehlung des Projekts , die Gesundheitskompetenz und die Kenntnisse der Migrant innen und Migranten zum deutschen Gesundheitssystem zu verbessern." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.11">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Studienarm 2: Die Notfallquote der befragten Geflüchteten lag bei 19,14 % (107 von 559 mit mindestens einem Besuch in 12 Monaten); laut AOK-Abrechnungsdaten 2018 betrug die alters- und geschlechtsadjustierte Quote bei rund 220.000 deutschen Versicherten in Berlin 9,35 % und bei rund 14.500 Versicherten syrischer, iranischer oder irakischer Nationalität 10,92 %.</p>
+  
+  <blockquote>„„Mit 19,14% liegt die Quote der Inanspruchnahme von Notaufnahmen in der Studienpopulation der Geflüchteten deutlich über der Alters - und Geschlechtsadjustierten Notfallquote bei Versicherten deutscher Nationalität von 9,35% [...] erhöhte Notfallquote von 10,92%“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1, unadjustiert: Eine angemessene Nutzung lag bei 47 % (675/1.426) der PatientInnen ohne Migrationshintergrund, 25 % (161/633) der 1. Generation und 19 % (51/263) der 2. Generation vor, insgesamt bei 38 % (887/2.327).</p>
+  
   <blockquote>„„Angemessenheit der Nutzung (a. oder (b und c. und d.) sind erfüllt) 675/1 426 (47%) 161/633 (25%) 51/263 (19%) 887/2 327 (38%)“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +672,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1: Von 4.176 angesprochenen PatientInnen gingen 2.327 in die Analyse ein; das entspricht einer Responserate von 56 %.</p>
+  
   <blockquote>„„so dass insgesamt 2.327 Patientendaten in die Analyse eingegangen sind, womit eine Responserate von 56% erreicht wurde.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +691,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1: Für das Vorhandensein eines Hausarztes und für Eigenhilfemaßnahmen war kein relevanter Einfluss nachweisbar; die Zahl der Notfallambulanzbesuche in den letzten 12 Monaten war negativ mit unangemessener Inanspruchnahme assoziiert.</p>
+  
   <blockquote>„„Die Auswertung zeigte, dass für keine der beiden Variablen ein relevanter Einfluss nachweisbar war. Zudem ergab die Analyse, dass die Anzahl der Besuche der Notfallambulanz in den letzten 12 Monaten [...] negativ mit einer unangemessenen Inanspruchnahme [...] assoziiert ist“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1: PatientInnen, die die Nähe der Notfallambulanz als Grund angaben, hatten gegenüber PatientInnen, die auf Empfehlung von medizinischem Fachpersonal kamen, eine höhere Chance einer unangemessenen Nutzung (OR 1,45; 95%-KI 1,14–1,84).</p>
+  
   <blockquote>„„zeigten eine höhere Chance einer unangemessenen Nutzung im Vergleich zu den Patient Inne, die die Notfallambulanz nach Ihren Angaben aufgrund einer Empfehlung von medizinischem Fachpersonal aufsuchten (OR 1,45, 95% Konfidenzintervall [1,14; 1,84]).“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +729,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1: Mittel- und hochakkulturierte Personen mit Migrationshintergrund unterschieden sich nach Adjustierung nicht signifikant von niedrig akkulturierten in Bezug auf unangemessene Nutzung.</p>
+  
   <blockquote>„„zeigten sich bei mittel - und hochakkulturierten Personen mit Migrationshintergrund keine signifikanten Unterschiede bzgl. einer unangemessenen Nutzung der Notfallambulanz im Vergleich zu Personen mit niedrigem Akkulturationsgrad.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +748,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1: Bei MigrantInnen der 1. Generation hatten die selbsteingeschätzten Deutschkenntnisse keinen zusätzlichen Einfluss auf die Angemessenheit der Inanspruchnahme, wohl aber auf die Zufriedenheit des Arztes mit Behandlung oder Arzt-Patienten-Kommunikation.</p>
+  
   <blockquote>„„bei den Migrant Innen (1. Generation) die selbsteingeschätzten Deutschkenntnisse keinen zusätzlichen Einfluss auf die Angemessenheit der Inanspruchnahme haben. Allerdings [...] Einfluss auf die Zufriedenheit des Arztes“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +767,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Arztbefragung: Die Ärzte waren mit 92 % der Untersuchungen von PatientInnen ohne Migrationshintergrund bzw. der 2. Generation zufrieden, mit 75 % der Untersuchungen von PatientInnen der 1. Generation.</p>
+  
   <blockquote>„„Die Ärzte sind zufrieden mit 92% der Untersuchungen von PatientInnen ohne Migrationshintergrund oder PatientInnen der 2. Generation. Dagegen trifft dies nur bei 75% der PatientInnen mit Migrationserfahrung der 1. Generation zu.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +786,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Arztbefragung: Lag die patientenseitige Dringlichkeitseinschätzung um 3 oder mehr Punkte über der ärztlichen, war die Chance auf Unzufriedenheit des Arztes signifikant erhöht (OR 1,88; 95%-KI 1,02–3,44); die mittlere Differenz betrug 2,1 Punkte ohne Migrationshintergrund, 4,1 in der 1. und 3,6 in der 2. Generation.</p>
+  
   <blockquote>„„erhöht signifikant die Chance auf die Unzufriedenheit des behandelnden Arztes (OR 1,88 , 95% Konfidenzintervall [1,02; 3,44]) [...] ohne Migrationshintergrund: 2,1 Punkte [...] MigrantInnen 1. Generation 4,1 (3,3) und MigrantInnen 2. Generation 3,6 (3,1).“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +805,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: Geflüchtete ohne mindestens kommunikationsfähige Deutschkenntnisse suchten die Notaufnahme 0,41-mal pro Jahr auf, solche mit kommunikationsfähigen Kenntnissen 0,13-mal (OR 2,94; p=0,0004).</p>
+  
   <blockquote>„„suchten mehr als dreimal häufiger (0,41x p.a.) die Notaufnahme innerhalb eines Jahres auf als Befragte mit mindestens kommunikationsfähigen Deutschkenntnissen (0,13x p.a.). Die Odds Ratio beträgt 2,94“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: 122 von 544 Befragten gaben Verständigungsprobleme mit ambulanten Ärzten an (davon 51 % inhaltlich, 30 % sprachlich, 10 % kulturell); sie suchten Notaufnahmen 0,48-mal pro Jahr auf, Befragte ohne solche Probleme 0,22-mal (OR 2,14; p=0,0076).</p>
+  
   <blockquote>„„hatten 122 Probleme, sich mit dem behandelnden Arzt zu verständigen. Davon geben 51% inhaltliche, 30% sprachliche und 10% kulturelle Probleme an. [...] (0,48 x p.a.) wie Befragte ohne Probleme bei Arztbesuchen (0,22x p.a). Die Odds Ratio beträgt 2,14.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: 19 % der Befragten (105 Personen) kennen keine Notrufnummer; sie suchten Notaufnahmen 0,46-mal pro Jahr auf, Befragte mit Kenntnis einer gültigen Notrufnummer 0,24-mal (OR 2,73). An anderer Stelle nennt der Bericht für dieses Merkmal OR 1,73 mit p=0,254 und bezeichnet es als noch nicht signifikant.</p>
+  
   <blockquote>„„19% der Befragten (105 Personen) wissen jedoch nicht, welche Nummer im Notfall zu wählen ist. Diese verzeichnen eine fast doppelt so häufige Inanspruchnahme einer Notaufnahme (0,46 x p.a.) wie Befragte, die eine der gültigen Notrufnummern kennen (0,24x p.a.). Die Odds Ratio beträgt 2,73“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +862,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: Bei einem Krankheitsfall nachts oder am Wochenende würden 38 % der Befragten gleich ins Krankenhaus bzw. die Notaufnahme gehen und 42 % zuerst den Notruf wählen.</p>
+  
   <blockquote>„„38% der Befragungsteilnehmer haben angegeben, dass sie bei einem Krankheitsfall nachts oder am Wochenende gleich ins Krankenhaus oder die Notfallaufnahme gehen würden, 42% würden zuerst den Notruf wählen.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +881,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: Geflüchtete mit eigener Wohnung suchten die Notaufnahme 0,38-mal pro Jahr auf, solche in Wohngemeinschaften 0,25-mal, in Wohnheimen 0,19-mal und bei deutschen Familien 0,19-mal.</p>
+  
   <blockquote>„„MigrantInnen, die eine eigene Wohnung bewohnen häufiger (0,38 x p.a.) als alle die in Wohngemeinschaften (0,25 x p.a.), Wohnheimen (0,19x p.a.) oder bei einer deutschen Familie (0,19x p.a.) leben die Notaufnahme in Anspruch nehmen.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +900,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: Geflüchtete in Wohngemeinschaften ohne Kontakt zu deutschen Muttersprachlern suchten die Notaufnahme 0,44-mal pro Jahr auf, solche in Wohngemeinschaften mit Kontakt zu Deutschsprachigen 0,19-mal.</p>
+  
   <blockquote>„„Geflüchtete, die in einer Wohngemeinschaft ohne Kontakt zu deutschen Muttersprachlern leben, waren mehr als doppelt so häufig in der Notaufnahme (0,44 x p.a.) als diejenigen, die in einer Wohngemeinschaft mit Kontakt zu Deutschsprachigen leben (0,19x p.a.).“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +919,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: Fast die Hälfte der Befragten (280) gab an, nichts über Gesundheitsvorsorgeleistungen zu wissen, 26 % (146) nichts über die Versorgung mit Medikamenten, Heil- und Hilfsmitteln.</p>
+  
   <blockquote>„„fast die Hälfte der Befragten (280) angab, nichts über Gesundheitsvorsorgeleistungen zu wissen. Zudem gaben 26% der Befragten (146) an, nichts über die Versorgung mit Medikamenten, Heil - und Hilfsmitteln zu wissen.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +938,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: Die Kenntnis über Vorsorgeleistungen hatte keinen signifikanten Einfluss auf die Inanspruchnahme von Notaufnahmen; Geflüchtete ohne Kenntnis über Medikamente, Heil- und Hilfsmittel suchten Notaufnahmen 0,36-mal pro Jahr auf, die übrigen 0,26-mal (OR 1,60).</p>
+  
   <blockquote>„„Während die Kenntnis über Vorsorgeleistungen keinen signifikanten Einfluss auf die Inanspruchnahme von Notaufnahmen hat, [...] Geflüchtete, die nichts darüber wissen haben 38% mehr Besuche in Notaufnahmen (0,36x p.a.) als diejenigen, die eine Antwort gegeben haben (0,26x p.a.). Die Odds Ratio beträgt hier 1,60.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +957,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: Informationen über die Zuständigkeit im Krankheitsfall beziehen 69 % der Befragten von Freunden, 51 % aus dem Internet und 55 % bei Apothekern und Ärzten.</p>
+  
   <blockquote>„„Informationen über die Zuständigkeit im Krankheitsfall beziehen 69% der Befragten von Freunden, 51% aus dem Internet und 55% bei Apothekern und Ärzten.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +976,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: 26 % der Befragten wünschen sich Informationen vom Arbeitgeber, 9 % nutzen ihn bisher; 33 % wünschen sich Informationen von Behörden und Kassen, 17 % nutzen diesen Kanal bereits.</p>
+  
   <blockquote>„„26% der Befragten wünschen sich solche Informationen auch vom Arbeitgeber, wobei bisher nur 9% diesen als Informationsquelle nutzen. 33% der Befragten wünschen sich auch von Behörden und Kassen Informationen [...] die Hälfte davon (17%) nutzt diesen Kanal bereits.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +995,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2, Freitextantworten zu Wünschen an das Gesundheitswesen: weniger Bürokratie 55 % (307), mehr Beratung und Information 42 % (242), mehr sprachkompetente Ansprechpartner 34 % (189), mehr Verständnis für die eigene Kultur 18 % (101).</p>
+  
   <blockquote>„„„weniger Bürokratie“ von 307 TeilnehmerInnen (55%) und die Erwartung „mehr Beratung und Information“ von 242 Teilnehmern (42%) [...] „mehr sprachkompetente Ansprechpartner“ 189 Teilnehmer (34%) sowie „mehr Verständnis für die eigene Kultur“ 101 Teilnehmer (18%)“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1014,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: Mit 597 Datensätzen wurde die geplante Fallzahl von 500 Interviews übertroffen; nach Ausschlüssen gingen 559 Beobachtungen in die Analyse ein.</p>
+  
   <blockquote>„„den Befragungszeitraum mit einer erreichten Fallzahl von 597 Datensätzen abzuschließen. Damit wurde die geplante Fallzahl von 500 Interviews deutlich übertroffen.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1033,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: Das logistische Modell zur Erklärung der Inanspruchnahme einer Notaufnahme erreichte eine AUC von 0,67, was der Bericht als hohe Erklärbarkeit bezeichnet.</p>
+  
   <blockquote>„„Das [...] logistische Modell erreicht mit einer AUC von 0,67 bereits mit wenigen Attributen eine hohe Erklärbarkeit der Inanspruchnahme einer Notaufnahme in der Studienpopulation 2.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1052,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1: Wegen großer demographischer und sozioökonomischer Unterschiede zwischen den Gruppen kann die Angemessenheit nur nach Adjustierung betrachtet werden.</p>
+  
   <blockquote>„„Die Rohdaten (Tabelle I) zeigen große Unterschiede beim Migrationstatus [...] aber auch bezüglich demographischer und sozioökonomischer Daten. Daher kann die Angemessenheit nur nach Adjustierung [...] betrachtet werden.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1071,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 1: Die Hypothese, ungenügende Kenntnisse der Versorgungsstrukturen erklärten die unangemessene Inanspruchnahme, ließ sich über die Variablen Hausarzt und Eigenhilfemaßnahmen nicht stützen; für keine war ein relevanter Einfluss nachweisbar.</p>
+  
   <blockquote>„„Um diese Hypothese zu verifizieren, testeten wir den Effekt des Vorhandenseins eines Hausarztes und von Eigenhilfemaßnahmen [...] Die Auswertung zeigte, dass für keine der beiden Variablen ein relevanter Einfluss nachweisbar war.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1090,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: Wegen rückläufiger Zuwanderung waren in den bbw-Integrationskursen immer weniger Geflüchtete eingeschrieben, teils stammten weniger als 25 % aus dem Nahen Osten; das angestrebte Profil der Studienpopulation war allein über die Kurse nicht erreichbar.</p>
+  
   <blockquote>„„durch die rückläufige Zuwanderung in den bbw Integrationskursen immer weniger geflüchtete KursteilnehmerInnen eingeschrieben sind. [...] z.T. weniger als 25% der TeilnehmerInnen aus dem Nahen Osten stammen“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1109,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: 38 Datensätze wurden ausgeschlossen – 26 wegen Nichtzugehörigkeit zur Zielpopulation, 8 wegen Abbruch auf Wunsch der Befragten, 4 wegen vermuteten technischen Versagens.</p>
+  
   <blockquote>„„wurden die Datensätze von 38 BefragungsteilnehmerInnen nicht in die Datenauswertung eingeschlossen [...] Bei 26 TeilnehmerInnen [...] nicht zur Zielpopulation gehören. Bei 8 TeilnehmerInnen, wurde das Interview [...] abgebrochen. Bei 4 [...] technischen Versagen“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1128,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Studienarm 2: Die Wissensfragen wurden nur danach ausgewertet, ob eine Antwort gegeben wurde; Inhalt und Qualität der Antworten wurden nicht geprüft.</p>
+  
   <blockquote>„„die gegebenen Antworten wurden nicht auf ihre Qualität oder ihren Inhalt überprüft, es wurde lediglich unterschieden zwischen denen, die eine Antwort gegeben haben und denen, die angegeben haben, keine Kenntnisse [...] zu besitzen.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In Studienarm 1 wurden keine Subgruppenanalysen durchgeführt.</p>
+  
   <blockquote>„„Subgruppenanalysen wurden nicht durchgeführt.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In Studienarm 2 wurden keine Subgruppenanalysen durchgeführt; die Parameter sind im Anhang deskriptiv dargestellt.</p>
+  
   <blockquote>„„Im Anhang 9 ist eine deskriptive Darstellung aller Ausprägungen und Gruppierungen der im Studienarm 2 betrachteten Parameter [...] enthalten. Subgruppenanalysen wurden nicht durchgeführt.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1185,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Projektstart verzögerte sich um 3 Monate, weil die Besetzung der Projektstellen länger dauerte als geplant.</p>
+  
   <blockquote>„„Die Besetzung der Projektstellen nahm mehr als die ursprünglich geplante Zeit in Anspruch, sodass sich der geplante Projektstart um 3 Monate verzögerte.“ – Bericht, S. 7" <span class="s">S. 7</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1218,28 +1235,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 37, "akronym": "NoMiG", "kennung": "OKGR51_4KFdQ", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss bittet das BAMF, die Unabhängige Patientenberatung, das BMG und insbesondere die BZgA, auf Grundlage der Projekterkenntnisse zu prüfen, ob ihre Angebote zur kultursensiblen und mehrsprachigen Vermittlung von Basiswissen zum deutschen Gesundheitssystem und besonders zur Notfallversorgung weiterentwickelt werden müssen und können. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt untersuchte mit Befragungen von über 2.000 Patientinnen und Patienten mit und ohne Migrationshintergrund sowie von über 500 Geflüchteten, warum Notfallambulanzen genutzt werden und ob diese Nutzung angemessen ist. Nach dem Beschluss bestätigt das Projekt die Vermutung, dass Patientinnen und Patienten mit Migrationshintergrund (1. Generation) Notfallambulanzen häufig unangemessen in Anspruch nehmen. Der Ausschuss folgt grundsätzlich der Empfehlung, Gesundheitskompetenz und Systemkenntnisse von Migrantinnen und Migranten zu verbessern. Die weitergehenden Handlungsempfehlungen, nämlich eine digitale Gesundheitsanwendung und Health Guides in Integrierten Notfallzentren, waren nicht Untersuchungsgegenstand und sind noch nicht erprobt. Da es bereits zentrale mehrsprachige und kultursensible Angebote gibt, sollen zunächst diese auf eine Weiterentwicklung geprüft werden."}, {"stelle": "studiendesign", "art": "text", "unser": "Sonstiges"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Die Handlungsempfehlungen zu einer digitalen Gesundheitsanwendung und zu Health Guides in Integrierten Notfallzentren sind nach dem Beschluss noch nicht erprobt. Statt neuer Formen sollen zunächst bestehende zentrale Angebote zur multilingualen und kultursensiblen Wissensvermittlung anhand der Projekterkenntnisse auf eine Weiterentwicklung geprüft werden."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die abgeleiteten Handlungsempfehlungen (digitale Gesundheitsanwendung, Health Guides in Integrierten Notfallzentren) waren nicht Untersuchungsgegenstand und sind nicht erprobt"}, {"stelle": "befund.0", "art": "befund", "unser": "Bestätigung der Vermutung, dass Patientinnen und Patienten mit Migrationshintergrund (1. Generation) Notfallambulanzen häufig unangemessen nutzen"}, {"stelle": "befund.1", "art": "befund", "unser": "Der Ausschuss folgt grundsätzlich der Empfehlung, Gesundheitskompetenz und Systemkenntnisse von Migrantinnen und Migranten zu verbessern"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Angemessenheit der Inanspruchnahme von Notaufnahmen – MigrantInnen 1. Generation vs. PatientInnen ohne Migrationshintergrund (Studienarm 1)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Angemessenheit der Inanspruchnahme von Notaufnahmen – MigrantInnen 2. Generation vs. PatientInnen ohne Migrationshintergrund (Studienarm 1)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Quote der Inanspruchnahme von Notaufnahmen innerhalb von 12 Monaten – Geflüchtete vs. AOK-Versicherte deutscher Nationalität (Studienarm 2)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Quote der Inanspruchnahme von Notaufnahmen – Geflüchtete vs. AOK-Versicherte mit syrischer, iranischer oder irakischer Nationalität (Studienarm 2)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Inanspruchnahme von Notaufnahmen nach selbst eingeschätzter Kommunikationsfähigkeit in deutscher Sprache (Studienarm 2)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Inanspruchnahme von Notaufnahmen bei Problemen der Verständigung mit ambulanten ÄrztInnen (Studienarm 2)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Inanspruchnahme von Notaufnahmen bei Unkenntnis der Notrufnummer (Studienarm 2)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Inanspruchnahme von Notaufnahmen bei fehlender Kenntnis über Medikamente, Heil- und Hilfsmittel (Studienarm 2)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Unzufriedenheit des behandelnden Arztes bei höherer patientenseitiger Dringlichkeitseinschätzung (≥ 3 Punkte Differenz auf zehnstufiger Skala) (Studienarm 1)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Unangemessene Nutzung bei Grund „Nähe“ für die Wahl der Notfallambulanz vs. Empfehlung von medizinischem Fachpersonal (Studienarm 1)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte in zwei Studienarmen die Notfallversorgung von MigrantInnen und Geflüchteten. Studienarm 1 befragte PatientInnen und behandelnde Ärzte in Notfallambulanzen; primäre Zielgröße war die Angemessenheit der Inanspruchnahme, definiert als stationäre Aufnahme oder das gemeinsame Vorliegen von starken Schmerzen, hoher patientenseitiger Dringlichkeit und ärztlicher Empfehlung. In die Analyse gingen 2.327 PatientInnen ein (Responserate 56 %). Nach Adjustierung hatten MigrantInnen der 1. Generation eine signifikant höhere Chance einer unangemessenen Nutzung (OR 1,35; 95%-KI 1,06–1,73); für die 2. Generation (OR 1,38; 95%-KI 0,96–1,99) wurde das Signifikanzniveau von 5 % nicht erreicht. Studienarm 2 befragte 559 Geflüchtete; 19,14 % gaben mindestens einen Notaufnahmebesuch in 12 Monaten an, gegenüber 9,35 % bei deutschen AOK-Versicherten in Berlin laut Abrechnungsdaten. Häufigere Notaufnahmebesuche fanden sich bei fehlenden Deutschkenntnissen, Verständigungsproblemen mit ambulanten Ärzten, Unkenntnis der Notrufnummer und fehlender Kenntnis über die Versorgung mit Medikamenten, Heil- und Hilfsmitteln. Die Aussagekraft wird dadurch begrenzt, dass die Stichprobe nicht repräsentativ sein sollte, sich die Geschlechterverteilung zwischen den Gruppen unterscheidet, keine Daten zu Nichtteilnehmern vorliegen und die beiden Studienarme wegen unterschiedlicher Populationen und Zielgrößen nicht gemeinsam ausgewertet wurden. Für den Zusammenhang zwischen Notrufnummer-Kenntnis und Inanspruchnahme nennt der Bericht an zwei Stellen unterschiedliche Odds Ratios."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Studienarm 1, primäre Zielgröße: Nach Adjustierung hatten MigrantInnen der 1. Generation gegenüber PatientInnen ohne Migrationshintergrund eine signifikant höhere Chance einer unangemessenen Nutzung der Notfallambulanz (OR 1,35; 95%-KI 1,06–1,73)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Studienarm 1, primäre Zielgröße: Für PatientInnen der 2. Generation war die Chance einer unangemessenen Inanspruchnahme ebenfalls erhöht (OR 1,38; 95%-KI 0,96–1,99), erreichte jedoch das auf 5 % festgelegte Signifikanzniveau nicht."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Bei der Herleitung der Proxy-Kriterien für Angemessenheit ergab die Kombination aller drei patientenseitigen Variablen die größte Übereinstimmung mit der ärztlichen Einschätzung, bei einer Sensitivität von 1,4 % und einer Spezifität von 8,8 %."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Studienarm 2: Die Notfallquote der befragten Geflüchteten lag bei 19,14 % (107 von 559 mit mindestens einem Besuch in 12 Monaten); laut AOK-Abrechnungsdaten 2018 betrug die alters- und geschlechtsadjustierte Quote bei rund 220.000 deutschen Versicherten in Berlin 9,35 % und bei rund 14.500 Versicherten syrischer, iranischer oder irakischer Nationalität 10,92 %."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Studienarm 1: Eine repräsentative Abbildung der (migrantischen) Bevölkerung war nicht Ziel der Studie; der Frauenanteil lag bei 62 % unter Nicht-MigrantInnen, 77 % in der 1. und 85 % in der 2. Generation."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Studienarm 1: Häufigste Gründe für Nichtteilnahme waren Unwohlsein (25 %), mangelnde Motivation (19 %), sprachliche Probleme (14 %) und Ablehnung durch eine Begleitperson (8 %); weitere demographische Daten der Nichtteilnehmer konnten nicht erhoben werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die ursprünglich vorgesehene gemeinsame Auswertung und Publikation beider Studienarme wurde nicht umgesetzt, weil sie unterschiedliche Outcome-Parameter in unterschiedlichen Populationen untersuchen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zusammenhang zwischen Unkenntnis der Notrufnummer und Inanspruchnahme der Notaufnahme: Auf S. 2 wird OR 1,73 mit p=0,254 genannt und das Merkmal als „noch nicht signifikant“ bezeichnet; auf S. 23 wird für dieselben 19 % der Befragten OR 2,73 (0,46 vs. 0,24 Besuche pro Jahr) ohne p-Wert angegeben."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Zum Einfluss von Flucht und Vertreibung spricht S. 1 von einem „signifikanten Einfluss“, S. 21 von einem „starken Einfluss“; ein zugehöriger Test ist in den Abschnitten nicht berichtet – die Grundlage ist ein Vergleich der befragungsbasierten Notfallquote (19,14 %) mit Abrechnungsdaten (9,35 % bzw. 10,92 %)."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "S. 1 führt die Inanspruchnahme „vor allem“ auf ungenügende Kenntnisse der Versorgungsstrukturen zurück; in Studienarm 1 war für die zur Prüfung dieser Hypothese gewählten Variablen Hausarzt und Eigenhilfemaßnahmen laut S. 18 kein relevanter Einfluss nachweisbar. Die Aussage auf S. 1 bezieht sich auf Studienarm 2."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Studienarm 1, unadjustiert: Eine angemessene Nutzung lag bei 47 % (675/1.426) der PatientInnen ohne Migrationshintergrund, 25 % (161/633) der 1. Generation und 19 % (51/263) der 2. Generation vor, insgesamt bei 38 % (887/2.327)."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Studienarm 1: Von 4.176 angesprochenen PatientInnen gingen 2.327 in die Analyse ein; das entspricht einer Responserate von 56 %."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Studienarm 1: Für das Vorhandensein eines Hausarztes und für Eigenhilfemaßnahmen war kein relevanter Einfluss nachweisbar; die Zahl der Notfallambulanzbesuche in den letzten 12 Monaten war negativ mit unangemessener Inanspruchnahme assoziiert."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Studienarm 1: PatientInnen, die die Nähe der Notfallambulanz als Grund angaben, hatten gegenüber PatientInnen, die auf Empfehlung von medizinischem Fachpersonal kamen, eine höhere Chance einer unangemessenen Nutzung (OR 1,45; 95%-KI 1,14–1,84)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Studienarm 1: Mittel- und hochakkulturierte Personen mit Migrationshintergrund unterschieden sich nach Adjustierung nicht signifikant von niedrig akkulturierten in Bezug auf unangemessene Nutzung."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Studienarm 1: Bei MigrantInnen der 1. Generation hatten die selbsteingeschätzten Deutschkenntnisse keinen zusätzlichen Einfluss auf die Angemessenheit der Inanspruchnahme, wohl aber auf die Zufriedenheit des Arztes mit Behandlung oder Arzt-Patienten-Kommunikation."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Arztbefragung: Die Ärzte waren mit 92 % der Untersuchungen von PatientInnen ohne Migrationshintergrund bzw. der 2. Generation zufrieden, mit 75 % der Untersuchungen von PatientInnen der 1. Generation."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Arztbefragung: Lag die patientenseitige Dringlichkeitseinschätzung um 3 oder mehr Punkte über der ärztlichen, war die Chance auf Unzufriedenheit des Arztes signifikant erhöht (OR 1,88; 95%-KI 1,02–3,44); die mittlere Differenz betrug 2,1 Punkte ohne Migrationshintergrund, 4,1 in der 1. und 3,6 in der 2. Generation."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Studienarm 2: Geflüchtete ohne mindestens kommunikationsfähige Deutschkenntnisse suchten die Notaufnahme 0,41-mal pro Jahr auf, solche mit kommunikationsfähigen Kenntnissen 0,13-mal (OR 2,94; p=0,0004)."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Studienarm 2: 122 von 544 Befragten gaben Verständigungsprobleme mit ambulanten Ärzten an (davon 51 % inhaltlich, 30 % sprachlich, 10 % kulturell); sie suchten Notaufnahmen 0,48-mal pro Jahr auf, Befragte ohne solche Probleme 0,22-mal (OR 2,14; p=0,0076)."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Studienarm 2: 19 % der Befragten (105 Personen) kennen keine Notrufnummer; sie suchten Notaufnahmen 0,46-mal pro Jahr auf, Befragte mit Kenntnis einer gültigen Notrufnummer 0,24-mal (OR 2,73). An anderer Stelle nennt der Bericht für dieses Merkmal OR 1,73 mit p=0,254 und bezeichnet es als noch nicht signifikant."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Studienarm 2: Bei einem Krankheitsfall nachts oder am Wochenende würden 38 % der Befragten gleich ins Krankenhaus bzw. die Notaufnahme gehen und 42 % zuerst den Notruf wählen."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Studienarm 2: Geflüchtete mit eigener Wohnung suchten die Notaufnahme 0,38-mal pro Jahr auf, solche in Wohngemeinschaften 0,25-mal, in Wohnheimen 0,19-mal und bei deutschen Familien 0,19-mal."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Studienarm 2: Geflüchtete in Wohngemeinschaften ohne Kontakt zu deutschen Muttersprachlern suchten die Notaufnahme 0,44-mal pro Jahr auf, solche in Wohngemeinschaften mit Kontakt zu Deutschsprachigen 0,19-mal."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Studienarm 2: Fast die Hälfte der Befragten (280) gab an, nichts über Gesundheitsvorsorgeleistungen zu wissen, 26 % (146) nichts über die Versorgung mit Medikamenten, Heil- und Hilfsmitteln."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Studienarm 2: Die Kenntnis über Vorsorgeleistungen hatte keinen signifikanten Einfluss auf die Inanspruchnahme von Notaufnahmen; Geflüchtete ohne Kenntnis über Medikamente, Heil- und Hilfsmittel suchten Notaufnahmen 0,36-mal pro Jahr auf, die übrigen 0,26-mal (OR 1,60)."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Studienarm 2: Informationen über die Zuständigkeit im Krankheitsfall beziehen 69 % der Befragten von Freunden, 51 % aus dem Internet und 55 % bei Apothekern und Ärzten."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Studienarm 2: 26 % der Befragten wünschen sich Informationen vom Arbeitgeber, 9 % nutzen ihn bisher; 33 % wünschen sich Informationen von Behörden und Kassen, 17 % nutzen diesen Kanal bereits."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Studienarm 2, Freitextantworten zu Wünschen an das Gesundheitswesen: weniger Bürokratie 55 % (307), mehr Beratung und Information 42 % (242), mehr sprachkompetente Ansprechpartner 34 % (189), mehr Verständnis für die eigene Kultur 18 % (101)."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Studienarm 2: Mit 597 Datensätzen wurde die geplante Fallzahl von 500 Interviews übertroffen; nach Ausschlüssen gingen 559 Beobachtungen in die Analyse ein."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Studienarm 2: Das logistische Modell zur Erklärung der Inanspruchnahme einer Notaufnahme erreichte eine AUC von 0,67, was der Bericht als hohe Erklärbarkeit bezeichnet."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Studienarm 1: Wegen großer demographischer und sozioökonomischer Unterschiede zwischen den Gruppen kann die Angemessenheit nur nach Adjustierung betrachtet werden."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Studienarm 1: Die Hypothese, ungenügende Kenntnisse der Versorgungsstrukturen erklärten die unangemessene Inanspruchnahme, ließ sich über die Variablen Hausarzt und Eigenhilfemaßnahmen nicht stützen; für keine war ein relevanter Einfluss nachweisbar."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Studienarm 2: Wegen rückläufiger Zuwanderung waren in den bbw-Integrationskursen immer weniger Geflüchtete eingeschrieben, teils stammten weniger als 25 % aus dem Nahen Osten; das angestrebte Profil der Studienpopulation war allein über die Kurse nicht erreichbar."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Studienarm 2: 38 Datensätze wurden ausgeschlossen – 26 wegen Nichtzugehörigkeit zur Zielpopulation, 8 wegen Abbruch auf Wunsch der Befragten, 4 wegen vermuteten technischen Versagens."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Studienarm 2: Die Wissensfragen wurden nur danach ausgewertet, ob eine Antwort gegeben wurde; Inhalt und Qualität der Antworten wurden nicht geprüft."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "In Studienarm 1 wurden keine Subgruppenanalysen durchgeführt."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "In Studienarm 2 wurden keine Subgruppenanalysen durchgeführt; die Parameter sind im Anhang deskriptiv dargestellt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Der Projektstart verzögerte sich um 3 Monate, weil die Besetzung der Projektstellen länger dauerte als geplant."}]};
+const D = {"projekt_id": 37, "akronym": "NoMiG", "kennung": "OKGR51_4KFdQ", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt untersuchte mit Befragungen von über 2.000 Patientinnen und Patienten mit und ohne Migrationshintergrund sowie von über 500 Geflüchteten, warum Notfallambulanzen genutzt werden und ob diese Nutzung angemessen ist. Nach dem Beschluss bestätigt das Projekt die Vermutung, dass Patientinnen und Patienten mit Migrationshintergrund (1. Generation) Notfallambulanzen häufig unangemessen in Anspruch nehmen. Der Ausschuss folgt grundsätzlich der Empfehlung, Gesundheitskompetenz und Systemkenntnisse von Migrantinnen und Migranten zu verbessern. Die weitergehenden Handlungsempfehlungen, nämlich eine digitale Gesundheitsanwendung und Health Guides in Integrierten Notfallzentren, waren nicht Untersuchungsgegenstand und sind noch nicht erprobt. Da es bereits zentrale mehrsprachige und kultursensible Angebote gibt, sollen zunächst diese auf eine Weiterentwicklung geprüft werden."}, {"stelle": "studiendesign", "art": "text", "unser": "Sonstiges"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die abgeleiteten Handlungsempfehlungen (digitale Gesundheitsanwendung, Health Guides in Integrierten Notfallzentren) waren nicht Untersuchungsgegenstand und sind nicht erprobt"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Angemessenheit der Inanspruchnahme von Notaufnahmen – MigrantInnen 1. Generation vs. PatientInnen ohne Migrationshintergrund (Studienarm 1)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Angemessenheit der Inanspruchnahme von Notaufnahmen – MigrantInnen 2. Generation vs. PatientInnen ohne Migrationshintergrund (Studienarm 1)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Quote der Inanspruchnahme von Notaufnahmen innerhalb von 12 Monaten – Geflüchtete vs. AOK-Versicherte deutscher Nationalität (Studienarm 2)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Quote der Inanspruchnahme von Notaufnahmen – Geflüchtete vs. AOK-Versicherte mit syrischer, iranischer oder irakischer Nationalität (Studienarm 2)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Inanspruchnahme von Notaufnahmen nach selbst eingeschätzter Kommunikationsfähigkeit in deutscher Sprache (Studienarm 2)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Inanspruchnahme von Notaufnahmen bei Problemen der Verständigung mit ambulanten ÄrztInnen (Studienarm 2)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Inanspruchnahme von Notaufnahmen bei Unkenntnis der Notrufnummer (Studienarm 2)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Inanspruchnahme von Notaufnahmen bei fehlender Kenntnis über Medikamente, Heil- und Hilfsmittel (Studienarm 2)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Unzufriedenheit des behandelnden Arztes bei höherer patientenseitiger Dringlichkeitseinschätzung (≥ 3 Punkte Differenz auf zehnstufiger Skala) (Studienarm 1)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Unangemessene Nutzung bei Grund „Nähe“ für die Wahl der Notfallambulanz vs. Empfehlung von medizinischem Fachpersonal (Studienarm 1)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte in zwei Studienarmen die Notfallversorgung von MigrantInnen und Geflüchteten. Studienarm 1 befragte PatientInnen und behandelnde Ärzte in Notfallambulanzen; primäre Zielgröße war die Angemessenheit der Inanspruchnahme, definiert als stationäre Aufnahme oder das gemeinsame Vorliegen von starken Schmerzen, hoher patientenseitiger Dringlichkeit und ärztlicher Empfehlung. In die Analyse gingen 2.327 PatientInnen ein (Responserate 56 %). Nach Adjustierung hatten MigrantInnen der 1. Generation eine signifikant höhere Chance einer unangemessenen Nutzung (OR 1,35; 95%-KI 1,06–1,73); für die 2. Generation (OR 1,38; 95%-KI 0,96–1,99) wurde das Signifikanzniveau von 5 % nicht erreicht. Studienarm 2 befragte 559 Geflüchtete; 19,14 % gaben mindestens einen Notaufnahmebesuch in 12 Monaten an, gegenüber 9,35 % bei deutschen AOK-Versicherten in Berlin laut Abrechnungsdaten. Häufigere Notaufnahmebesuche fanden sich bei fehlenden Deutschkenntnissen, Verständigungsproblemen mit ambulanten Ärzten, Unkenntnis der Notrufnummer und fehlender Kenntnis über die Versorgung mit Medikamenten, Heil- und Hilfsmitteln. Die Aussagekraft wird dadurch begrenzt, dass die Stichprobe nicht repräsentativ sein sollte, sich die Geschlechterverteilung zwischen den Gruppen unterscheidet, keine Daten zu Nichtteilnehmern vorliegen und die beiden Studienarme wegen unterschiedlicher Populationen und Zielgrößen nicht gemeinsam ausgewertet wurden. Für den Zusammenhang zwischen Notrufnummer-Kenntnis und Inanspruchnahme nennt der Bericht an zwei Stellen unterschiedliche Odds Ratios."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Studienarm 1, primäre Zielgröße: Nach Adjustierung hatten MigrantInnen der 1. Generation gegenüber PatientInnen ohne Migrationshintergrund eine signifikant höhere Chance einer unangemessenen Nutzung der Notfallambulanz (OR 1,35; 95%-KI 1,06–1,73)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Studienarm 1, primäre Zielgröße: Für PatientInnen der 2. Generation war die Chance einer unangemessenen Inanspruchnahme ebenfalls erhöht (OR 1,38; 95%-KI 0,96–1,99), erreichte jedoch das auf 5 % festgelegte Signifikanzniveau nicht."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Bei der Herleitung der Proxy-Kriterien für Angemessenheit ergab die Kombination aller drei patientenseitigen Variablen die größte Übereinstimmung mit der ärztlichen Einschätzung, bei einer Sensitivität von 1,4 % und einer Spezifität von 8,8 %."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Studienarm 1: Eine repräsentative Abbildung der (migrantischen) Bevölkerung war nicht Ziel der Studie; der Frauenanteil lag bei 62 % unter Nicht-MigrantInnen, 77 % in der 1. und 85 % in der 2. Generation."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Studienarm 1: Häufigste Gründe für Nichtteilnahme waren Unwohlsein (25 %), mangelnde Motivation (19 %), sprachliche Probleme (14 %) und Ablehnung durch eine Begleitperson (8 %); weitere demographische Daten der Nichtteilnehmer konnten nicht erhoben werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die ursprünglich vorgesehene gemeinsame Auswertung und Publikation beider Studienarme wurde nicht umgesetzt, weil sie unterschiedliche Outcome-Parameter in unterschiedlichen Populationen untersuchen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zusammenhang zwischen Unkenntnis der Notrufnummer und Inanspruchnahme der Notaufnahme: Auf S. 2 wird OR 1,73 mit p=0,254 genannt und das Merkmal als „noch nicht signifikant“ bezeichnet; auf S. 23 wird für dieselben 19 % der Befragten OR 2,73 (0,46 vs. 0,24 Besuche pro Jahr) ohne p-Wert angegeben."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Zum Einfluss von Flucht und Vertreibung spricht S. 1 von einem „signifikanten Einfluss“, S. 21 von einem „starken Einfluss“; ein zugehöriger Test ist in den Abschnitten nicht berichtet – die Grundlage ist ein Vergleich der befragungsbasierten Notfallquote (19,14 %) mit Abrechnungsdaten (9,35 % bzw. 10,92 %)."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "S. 1 führt die Inanspruchnahme „vor allem“ auf ungenügende Kenntnisse der Versorgungsstrukturen zurück; in Studienarm 1 war für die zur Prüfung dieser Hypothese gewählten Variablen Hausarzt und Eigenhilfemaßnahmen laut S. 18 kein relevanter Einfluss nachweisbar. Die Aussage auf S. 1 bezieht sich auf Studienarm 2."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss bittet das BAMF, die Unabhängige Patientenberatung, das BMG und insbesondere die BZgA, auf Grundlage der Projekterkenntnisse zu prüfen, ob ihre Angebote zur kultursensiblen und mehrsprachigen Vermittlung von Basiswissen zum deutschen Gesundheitssystem und besonders zur Notfallversorgung weiterentwickelt werden müssen und können. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Die Handlungsempfehlungen zu einer digitalen Gesundheitsanwendung und zu Health Guides in Integrierten Notfallzentren sind nach dem Beschluss noch nicht erprobt. Statt neuer Formen sollen zunächst bestehende zentrale Angebote zur multilingualen und kultursensiblen Wissensvermittlung anhand der Projekterkenntnisse auf eine Weiterentwicklung geprüft werden."}, {"stelle": "befund.0", "art": "befund", "unser": "Bestätigung der Vermutung, dass Patientinnen und Patienten mit Migrationshintergrund (1. Generation) Notfallambulanzen häufig unangemessen nutzen"}, {"stelle": "befund.1", "art": "befund", "unser": "Der Ausschuss folgt grundsätzlich der Empfehlung, Gesundheitskompetenz und Systemkenntnisse von Migrantinnen und Migranten zu verbessern"}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Studienarm 2: Die Notfallquote der befragten Geflüchteten lag bei 19,14 % (107 von 559 mit mindestens einem Besuch in 12 Monaten); laut AOK-Abrechnungsdaten 2018 betrug die alters- und geschlechtsadjustierte Quote bei rund 220.000 deutschen Versicherten in Berlin 9,35 % und bei rund 14.500 Versicherten syrischer, iranischer oder irakischer Nationalität 10,92 %."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Studienarm 1, unadjustiert: Eine angemessene Nutzung lag bei 47 % (675/1.426) der PatientInnen ohne Migrationshintergrund, 25 % (161/633) der 1. Generation und 19 % (51/263) der 2. Generation vor, insgesamt bei 38 % (887/2.327)."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Studienarm 1: Von 4.176 angesprochenen PatientInnen gingen 2.327 in die Analyse ein; das entspricht einer Responserate von 56 %."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Studienarm 1: Für das Vorhandensein eines Hausarztes und für Eigenhilfemaßnahmen war kein relevanter Einfluss nachweisbar; die Zahl der Notfallambulanzbesuche in den letzten 12 Monaten war negativ mit unangemessener Inanspruchnahme assoziiert."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Studienarm 1: PatientInnen, die die Nähe der Notfallambulanz als Grund angaben, hatten gegenüber PatientInnen, die auf Empfehlung von medizinischem Fachpersonal kamen, eine höhere Chance einer unangemessenen Nutzung (OR 1,45; 95%-KI 1,14–1,84)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Studienarm 1: Mittel- und hochakkulturierte Personen mit Migrationshintergrund unterschieden sich nach Adjustierung nicht signifikant von niedrig akkulturierten in Bezug auf unangemessene Nutzung."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Studienarm 1: Bei MigrantInnen der 1. Generation hatten die selbsteingeschätzten Deutschkenntnisse keinen zusätzlichen Einfluss auf die Angemessenheit der Inanspruchnahme, wohl aber auf die Zufriedenheit des Arztes mit Behandlung oder Arzt-Patienten-Kommunikation."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Arztbefragung: Die Ärzte waren mit 92 % der Untersuchungen von PatientInnen ohne Migrationshintergrund bzw. der 2. Generation zufrieden, mit 75 % der Untersuchungen von PatientInnen der 1. Generation."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Arztbefragung: Lag die patientenseitige Dringlichkeitseinschätzung um 3 oder mehr Punkte über der ärztlichen, war die Chance auf Unzufriedenheit des Arztes signifikant erhöht (OR 1,88; 95%-KI 1,02–3,44); die mittlere Differenz betrug 2,1 Punkte ohne Migrationshintergrund, 4,1 in der 1. und 3,6 in der 2. Generation."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Studienarm 2: Geflüchtete ohne mindestens kommunikationsfähige Deutschkenntnisse suchten die Notaufnahme 0,41-mal pro Jahr auf, solche mit kommunikationsfähigen Kenntnissen 0,13-mal (OR 2,94; p=0,0004)."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Studienarm 2: 122 von 544 Befragten gaben Verständigungsprobleme mit ambulanten Ärzten an (davon 51 % inhaltlich, 30 % sprachlich, 10 % kulturell); sie suchten Notaufnahmen 0,48-mal pro Jahr auf, Befragte ohne solche Probleme 0,22-mal (OR 2,14; p=0,0076)."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Studienarm 2: 19 % der Befragten (105 Personen) kennen keine Notrufnummer; sie suchten Notaufnahmen 0,46-mal pro Jahr auf, Befragte mit Kenntnis einer gültigen Notrufnummer 0,24-mal (OR 2,73). An anderer Stelle nennt der Bericht für dieses Merkmal OR 1,73 mit p=0,254 und bezeichnet es als noch nicht signifikant."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Studienarm 2: Bei einem Krankheitsfall nachts oder am Wochenende würden 38 % der Befragten gleich ins Krankenhaus bzw. die Notaufnahme gehen und 42 % zuerst den Notruf wählen."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Studienarm 2: Geflüchtete mit eigener Wohnung suchten die Notaufnahme 0,38-mal pro Jahr auf, solche in Wohngemeinschaften 0,25-mal, in Wohnheimen 0,19-mal und bei deutschen Familien 0,19-mal."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Studienarm 2: Geflüchtete in Wohngemeinschaften ohne Kontakt zu deutschen Muttersprachlern suchten die Notaufnahme 0,44-mal pro Jahr auf, solche in Wohngemeinschaften mit Kontakt zu Deutschsprachigen 0,19-mal."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Studienarm 2: Fast die Hälfte der Befragten (280) gab an, nichts über Gesundheitsvorsorgeleistungen zu wissen, 26 % (146) nichts über die Versorgung mit Medikamenten, Heil- und Hilfsmitteln."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Studienarm 2: Die Kenntnis über Vorsorgeleistungen hatte keinen signifikanten Einfluss auf die Inanspruchnahme von Notaufnahmen; Geflüchtete ohne Kenntnis über Medikamente, Heil- und Hilfsmittel suchten Notaufnahmen 0,36-mal pro Jahr auf, die übrigen 0,26-mal (OR 1,60)."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Studienarm 2: Informationen über die Zuständigkeit im Krankheitsfall beziehen 69 % der Befragten von Freunden, 51 % aus dem Internet und 55 % bei Apothekern und Ärzten."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Studienarm 2: 26 % der Befragten wünschen sich Informationen vom Arbeitgeber, 9 % nutzen ihn bisher; 33 % wünschen sich Informationen von Behörden und Kassen, 17 % nutzen diesen Kanal bereits."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Studienarm 2, Freitextantworten zu Wünschen an das Gesundheitswesen: weniger Bürokratie 55 % (307), mehr Beratung und Information 42 % (242), mehr sprachkompetente Ansprechpartner 34 % (189), mehr Verständnis für die eigene Kultur 18 % (101)."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Studienarm 2: Mit 597 Datensätzen wurde die geplante Fallzahl von 500 Interviews übertroffen; nach Ausschlüssen gingen 559 Beobachtungen in die Analyse ein."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Studienarm 2: Das logistische Modell zur Erklärung der Inanspruchnahme einer Notaufnahme erreichte eine AUC von 0,67, was der Bericht als hohe Erklärbarkeit bezeichnet."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Studienarm 1: Wegen großer demographischer und sozioökonomischer Unterschiede zwischen den Gruppen kann die Angemessenheit nur nach Adjustierung betrachtet werden."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Studienarm 1: Die Hypothese, ungenügende Kenntnisse der Versorgungsstrukturen erklärten die unangemessene Inanspruchnahme, ließ sich über die Variablen Hausarzt und Eigenhilfemaßnahmen nicht stützen; für keine war ein relevanter Einfluss nachweisbar."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Studienarm 2: Wegen rückläufiger Zuwanderung waren in den bbw-Integrationskursen immer weniger Geflüchtete eingeschrieben, teils stammten weniger als 25 % aus dem Nahen Osten; das angestrebte Profil der Studienpopulation war allein über die Kurse nicht erreichbar."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Studienarm 2: 38 Datensätze wurden ausgeschlossen – 26 wegen Nichtzugehörigkeit zur Zielpopulation, 8 wegen Abbruch auf Wunsch der Befragten, 4 wegen vermuteten technischen Versagens."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Studienarm 2: Die Wissensfragen wurden nur danach ausgewertet, ob eine Antwort gegeben wurde; Inhalt und Qualität der Antworten wurden nicht geprüft."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "In Studienarm 1 wurden keine Subgruppenanalysen durchgeführt."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "In Studienarm 2 wurden keine Subgruppenanalysen durchgeführt; die Parameter sind im Anhang deskriptiv dargestellt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Der Projektstart verzögerte sich um 3 Monate, weil die Besetzung der Projektstellen länger dauerte als geplant."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

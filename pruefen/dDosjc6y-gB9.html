@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF16012</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>31 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 102 Aussagen. Die übrigen
+71 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss spricht für die Verwendung der Ergebnisse des Projekts PIM-STOP keine Handlungsempfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt verglich die Diskriminationsfähigkeit der PIM-Listen PRISCUS, STOPP und FORTA hinsichtlich unerwünschter Arzneimittelwirkungen sowie der Inanspruchnahme und der Kosten von Gesundheitsleistungen. PRISCUS und STOPP schnitten in nahezu allen Aspekten besser ab als FORTA. Die Diskriminationsfähigkeit aller drei Listen ist insgesamt jedoch als unzureichend einzustufen. Das Studiendesign war grundsätzlich angemessen. Die Validität ist aber durch die fehlende Randomisierung und die ausschließliche Nutzung von Routinedaten einer Krankenkassenart eingeschränkt. Eine Empfehlung zum routinemäßigen Einsatz einer der Listen kann daher nicht ausgesprochen werden. Weiterer Forschungsbedarf besteht, vorzugsweise unter Einbeziehung von Primärdaten.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Sekundärdatenanalyse</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Eine Empfehlung zum routinemäßigen Einsatz einer der drei Listen in der Versorgungspraxis kann nicht ausgesprochen werden. Es besteht weiterer Forschungsbedarf zum Einsatz von PIM-Listen, vorzugsweise unter Einbeziehung von Primärdaten.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -178,14 +157,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Die Diskriminationsfähigkeit aller drei Listen ist insgesamt unzureichend</p>
+  
   <blockquote>„Auch wenn der Fokus auf den Vergleich der Diskriminationsfähigkeit der drei Listen lag, ist zu beachten, dass die Diskriminationsfähigkeit aller drei Listen insgesamt als unzureichend einzustufen ist." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -198,51 +177,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="hindernis.1">
   <h3>Hindernis laut Beschluss: Studienanlage</h3>
-  <p class="unser">Die Validität ist durch die fehlende Randomisierung und die ausschließliche Verwendung von Routinedaten einer Krankenkassenart eingeschränkt</p>
+  <p class="unser">Das Studiendesign war grundsätzlich angemessen, die Validität ist jedoch durch die fehlende Randomisierung und die ausschließliche Verwendung von Routinedaten einer Krankenkassenart eingeschränkt.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung gab nur eine Hälfte des Beschlusssatzes wieder; die Neufassung nennt beide. Vorher stand hier:
+    <i>„Die Validität ist durch die fehlende Randomisierung und die ausschließliche Verwendung von Routinedaten einer Krankenkassenart eingeschränkt“</i></p>
   <blockquote>„Das gewählte Studiendesign war grundsätzlich angemessen, die Validität der Ergebnisse ist jedoch durch die fehlende Randomisierung und die ausschließliche Verwendung von Routinedaten (einer Krankenkassenart) eingeschränkt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erkenntnisse darüber, wie die drei PIM-Listen unerwünschte Arzneimittelwirkungen, Inanspruchnahme und Kosten von Gesundheitsleistungen prädizieren</p>
-  <blockquote>„Im Rahmen des Projektes konnten wichtige Erkenntnisse darüber gewonnen werden, wie die drei untersuchten PIM-Listen das 1) Auftreten unerwünschter fataler und nicht -fataler Arzneimittelwirkungen sowie die 2) Inanspruchnahme und 3) Kosten von Gesundheitsleistungen prädizieren." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">PRISCUS- und STOPP-Liste zeigten in nahezu allen Aspekten eine höhere Diskriminationsfähigkeit als die FORTA-Liste</p>
-  <blockquote>„Die PRISCUS-Liste und die STOPP-Liste erzielten in nahezu allen Untersuchungsaspekten höhere Werte bei der Diskriminationsfähigkeit als die FORTA-Liste." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +199,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">UAW Einweisung (stationäre Aufnahmediagnose), inzidente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -275,12 +218,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">UAW Entlassung (stationäre Entlassdiagnose), inzidente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -294,12 +237,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">UAW Einweisung/Entlassung (kombiniert), inzidente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -313,12 +256,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Tod (Mortalität im 1. Quartal der Post-Phase), inzidente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -332,12 +275,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Komorbidität (Elixhauser stationär), inzidente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +294,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">UAW Einweisung, prävalente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +313,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">UAW Einweisung/Entlassung (kombiniert), prävalente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +332,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Tod (Mortalität), prävalente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +351,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Komorbidität (Elixhauser stationär), prävalente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +370,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.10">
   <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Gesamtkosten, inzidente PIMs (1. Quartal der Post-Phase)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.10" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +389,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.11">
   <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Stationäre Krankenhauskosten, inzidente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.11" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +408,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.12">
   <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Medikamentenkosten, inzidente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.12" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +427,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.13">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Stationäre Krankenhaustage, inzidente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.13" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +446,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.14">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Defined Daily Doses (DDD), inzidente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.14" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -522,12 +465,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.15">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Diskriminationsfähigkeit für UAW (Einweisung/Entlassung), inzidente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.15" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -541,12 +484,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.16">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Diskriminationsfähigkeit für Mortalität, inzidente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.16" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -560,12 +503,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.17">
   <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Gesamtkosten, prävalente PIMs</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.17" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -580,11 +523,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben verglich anhand von AOK-Routinedaten 2013–2015 von Versicherten ab 65 Jahren, wie gut die PIM-Listen PRISCUS, STOPP und FORTA unerwünschte Arzneimittelwirkungen (UAW), Mortalität, Komorbidität, Leistungsinanspruchnahme und Kosten vorhersagen. Ausgewertet wurden 3.235.804 Versicherte mit inzidenten und 5.290.656 mit prävalenten PIMs. Methodisch kamen Difference-in-Differences-Regressionen nach Entropy Balancing gegen eine nicht exponierte Kontrollgruppe sowie AUC-Analysen zum Einsatz. Nach der Gesamtbewertung des Berichts diskriminiert STOPP am besten für UAW und Komorbidität und PRISCUS für Mortalität; bei den Gesamtkosten sind beide praktisch identisch, FORTA liegt am niedrigsten. Die Unterschiede zwischen PRISCUS und STOPP schätzt der Bericht als relativ gering mit leichten Vorteilen für STOPP ein. Die AUC-Werte liegen für alle Listen zwischen 0,49 und 0,62; der Bericht stuft die Diskriminationsfähigkeit als generell nicht akzeptabel ein. Die Ergebnisse beziehen sich auf das erste Quartal nach der Exposition und beruhen auf der dokumentierten Abgabe statt der tatsächlichen Einnahme. Verzerrungen durch unbeobachtete Heterogenität schließt der Bericht nicht aus; eine direkte Übertragung in die Praxis hält er ohne weitere Untersuchungen, vorzugsweise RCTs, nicht für möglich.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +541,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Gesamtbewertung: STOPP hat die größte Diskriminationsfähigkeit für UAW und Komorbidität, PRISCUS für Mortalität. Bei den Gesamtkosten sind PRISCUS und STOPP praktisch identisch, FORTA hat die geringste Diskriminationsfähigkeit. Die Unterschiede zwischen PRISCUS und STOPP schätzt der Bericht als relativ gering mit leichten Vorteilen für STOPP ein.</p>
+  
   <blockquote>„„Über die größte Diskriminationsfähigkeit in Bezug auf UAWs und Komorbidität verfügt dabei die STOPP-Liste. PRISCUS verfügt über die größte Diskriminationsfähigkeit in Bezug auf die Mortalität. [...] Die bestehenden Unterschiede in der Diskriminationsfähigkeit zwischen PRISCUS und STOPP sind aber gener ell als relativ gering mit leichten Vorteilen für STOPP einzuschätzen.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +560,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Inzidente PIMs, erstes Quartal der Post-Phase, UAW nach Einweisungsdiagnose: Die Wahrscheinlichkeit lag in der Exponiertengruppe gegenüber der Kontrollgruppe um 6 % (STOPP), 4 % (PRISCUS) bzw. 3 % (FORTA) höher (Diff-in-Diff).</p>
+  
   <blockquote>„„Bezogen auf die Einweisungsdiagnose liegt die Wahrscheinlichkeit für die Prädiktion einer UAW durch die STOPP-Liste in der EG um 6 % höher als in der KG. Für die PRISCUS-Liste betragen die Wahrscheinlichkeiten 4 % und für die FORTA-Liste 3 %.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,69 +579,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Inzidente PIMs, Mortalität im ersten Quartal der Post-Phase: Die Wahrscheinlichkeit zu versterben lag in der Exponiertengruppe gegenüber der Kontrollgruppe um 3 % (PRISCUS), 2 % (STOPP) bzw. 0 % (FORTA) höher.</p>
+  
   <blockquote>„„Die Wahrscheinlichkeit für die Prädiktion des Todesfalls im 1. Quartal der Post-Phase durch die PRISCUS-Liste, liegt in der EG um 3 % höher als in der KG. Die entsprechenden Werte für STOPP und FORTA-Liste betragen 2 % und 0 %“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Inzidente PIMs, AUC für UAW (Einweisung/Entlassung): 0,61 (STOPP), 0,57 (PRISCUS), 0,54 (FORTA), jeweils SE=0,001.</p>
-  <blockquote>„„Im Hinblick auf das Auftreten einer UAW (Einweisung/Entlassung) ergibt sich die größte gemessene AUC mit einem Wert von 0,61 (SE=0,001) bei der STOPP -Liste gefolgt von PRISCUS mit 0,57 (SE= 0,001) und FORTA mit 0,54 (SE=0,001)“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.4">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Inzidente PIMs, AUC für Mortalität: 0,58 (PRISCUS), 0,57 (STOPP), 0,49 (FORTA), jeweils SE=0,001.</p>
-  <blockquote>„„Bezüglich des Versterbens ergibt sich die größte gemessene AUC mit einem Wert von 0,58 (SE=0,001) bei der PRISCUS-Liste gefolgt von STOPP mit 0,57 (SE= 0,001) und FORTA mit 0,49 (SE=0,001)“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.5">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Laut Bericht treten die Unterschiede zwischen Exponierten und Kontrollen bei inzidenten PIMs deutlicher hervor als bei prävalenten. Die am stärksten belastbaren Schlussfolgerungen lassen sich daher nach Ansicht der Autoren aus den inzidenten Analysen ziehen.</p>
-  <blockquote>„„Zusammenfassend lässt sich feststellen, dass die Diskriminationsfähigkeit der 3 getesteten Listen am größten im Bereich inzidenter PIM ist. Die am stärksten belastbarsten Schlussfolgerungen lassen sich deshalb auch basierend auf den Analysen zu den inzidenten PIMs treffen.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +598,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die AUC-Werte aller drei Listen stuft der Bericht für inzidente wie prävalente PIMs als generell nicht akzeptabel bzw. ungenügend ein.</p>
+  
   <blockquote>„„gilt trotzdem zu beachten, dass die durch die AUCs angezeigte Diskriminationsfähigkeit der 3 PIM-Listen generell als nicht akzeptabel einzustufen ist.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +617,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die PIM-Kodierung und damit sämtliche Resultate beruhen auf der dokumentierten Medikamentenabgabe statt auf der tatsächlichen Einnahme. Dadurch könnten die Effekte überschätzt werden.</p>
+  
   <blockquote>„„Die Kodierung der PIMs und somit sämtliche Resultate basieren lediglich auf der dokumentierten Medikamentenabgabe statt der tatsächlichen PIM-Einnahme. Dies könnte dazu führen, dass die Effekte der PIMs überschätzt werden.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,31 +636,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Entropy Balancing ist kein vollständiger Ersatz für eine Randomisierung. Nicht in Routinedaten enthaltene Confounder (z. B. gesundheitsbezogene Lebensqualität) können einen nicht überprüfbaren Bias verursachen.</p>
+  
   <blockquote>„„das von uns eingesetzte Verfahren des Entropy Balancings keinen 100 %igen Ersatz für eine „echte“ Randomisierung darstellen kann. Dies ist bedingt durch die unbeobachtete Heterogenität, die durch nicht berücksichtigte, weil in Routinedaten nicht enthaltene Confounder entstehen kann“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Die Autoren betrachten die Ergebnisse trotz relativ hoher Verallgemeinerbarkeit unter Vorbehalt. Eine direkte Übertragung in die Versorgungspraxis halten sie ohne weitere Untersuchungen nicht für möglich.</p>
-  <blockquote>„„Wegen der oben beschriebenen Limitationen erscheint die direkte Übertragung der Forschungsergebnisse in die Versorgungspraxis aber nicht ohne weitere Untersuchungen möglich.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -789,11 +656,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 23: Die um jeweils 2 % erhöhte UAW-Wahrscheinlichkeit für PRISCUS und STOPP steht im Abschnitt zu prävalenten PIMs (Vergleich Tabelle 6), der Satz spricht aber von „inzidenten PIMs“. Für inzidente PIMs nennt S. 19 dagegen 6 % (STOPP), 4 % (PRISCUS) und 3 % (FORTA).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -808,11 +675,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Mortalität: Kurzfassung (S. 2) und Gesamtbewertung (S. 27) schreiben PRISCUS die größte Diskriminationsfähigkeit für Mortalität zu. Bei prävalenten PIMs ist die AUC für Versterben jedoch bei STOPP am höchsten (0,62 vs. 0,58 PRISCUS, S. 23), während der Diff-in-Diff-Schätzer dort PRISCUS vorn sieht (2 % vs. 1 %).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -827,11 +694,163 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Übertragbarkeit: S. 28 nennt eine „hohe externe Validität und damit einhergehend eine hohe Übertragbarkeit“ als „gewährleistet“. S. 28 hält dagegen eine direkte Übertragung in die Praxis nicht ohne weitere Untersuchungen für möglich, S. 29 sieht Generalisierbarkeit und Übertragbarkeit durch Kodierartefakte womöglich eingeschränkt, S. 27 die Repräsentativität durch die Beschränkung auf die AOK.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>71 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss spricht für die Verwendung der Ergebnisse des Projekts PIM-STOP keine Handlungsempfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Eine Empfehlung zum routinemäßigen Einsatz einer der drei Listen in der Versorgungspraxis kann nicht ausgesprochen werden. Es besteht weiterer Forschungsbedarf zum Einsatz von PIM-Listen, vorzugsweise unter Einbeziehung von Primärdaten.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erkenntnisse darüber, wie die drei PIM-Listen unerwünschte Arzneimittelwirkungen, Inanspruchnahme und Kosten von Gesundheitsleistungen prädizieren</p>
+  
+  <blockquote>„Im Rahmen des Projektes konnten wichtige Erkenntnisse darüber gewonnen werden, wie die drei untersuchten PIM-Listen das 1) Auftreten unerwünschter fataler und nicht -fataler Arzneimittelwirkungen sowie die 2) Inanspruchnahme und 3) Kosten von Gesundheitsleistungen prädizieren." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">PRISCUS- und STOPP-Liste zeigten in nahezu allen Aspekten eine höhere Diskriminationsfähigkeit als die FORTA-Liste</p>
+  
+  <blockquote>„Die PRISCUS-Liste und die STOPP-Liste erzielten in nahezu allen Untersuchungsaspekten höhere Werte bei der Diskriminationsfähigkeit als die FORTA-Liste." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Inzidente PIMs, AUC für UAW (Einweisung/Entlassung): 0,61 (STOPP), 0,57 (PRISCUS), 0,54 (FORTA), jeweils SE=0,001.</p>
+  
+  <blockquote>„„Im Hinblick auf das Auftreten einer UAW (Einweisung/Entlassung) ergibt sich die größte gemessene AUC mit einem Wert von 0,61 (SE=0,001) bei der STOPP -Liste gefolgt von PRISCUS mit 0,57 (SE= 0,001) und FORTA mit 0,54 (SE=0,001)“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.4">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Inzidente PIMs, AUC für Mortalität: 0,58 (PRISCUS), 0,57 (STOPP), 0,49 (FORTA), jeweils SE=0,001.</p>
+  
+  <blockquote>„„Bezüglich des Versterbens ergibt sich die größte gemessene AUC mit einem Wert von 0,58 (SE=0,001) bei der PRISCUS-Liste gefolgt von STOPP mit 0,57 (SE= 0,001) und FORTA mit 0,49 (SE=0,001)“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.5">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Laut Bericht treten die Unterschiede zwischen Exponierten und Kontrollen bei inzidenten PIMs deutlicher hervor als bei prävalenten. Die am stärksten belastbaren Schlussfolgerungen lassen sich daher nach Ansicht der Autoren aus den inzidenten Analysen ziehen.</p>
+  
+  <blockquote>„„Zusammenfassend lässt sich feststellen, dass die Diskriminationsfähigkeit der 3 getesteten Listen am größten im Bereich inzidenter PIM ist. Die am stärksten belastbarsten Schlussfolgerungen lassen sich deshalb auch basierend auf den Analysen zu den inzidenten PIMs treffen.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Autoren betrachten die Ergebnisse trotz relativ hoher Verallgemeinerbarkeit unter Vorbehalt. Eine direkte Übertragung in die Versorgungspraxis halten sie ohne weitere Untersuchungen nicht für möglich.</p>
+  
+  <blockquote>„„Wegen der oben beschriebenen Limitationen erscheint die direkte Übertragung der Forschungsergebnisse in die Versorgungspraxis aber nicht ohne weitere Untersuchungen möglich.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -846,11 +865,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Balancierung: S. 15 bezeichnet die Balancierung als „nahezu perfekt“ hinsichtlich Mittelwert und Varianz. Auf derselben Seite heißt es, sie sei nur für den durchschnittlichen Verlauf aller drei Listen möglich gewesen, die Einzelkurven wichen von der Kontrollgruppe ab und eine Balancierung nach der Schiefe sei nicht durchführbar gewesen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -860,16 +879,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>62 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Inzidente PIMs, UAW nach kombinierter Einweisungs- und Entlassdiagnose: Diff-in-Diff-Wahrscheinlichkeiten von 7 % (STOPP), 5 % (PRISCUS) und 4 % (FORTA).</p>
+  
   <blockquote>„„Mit 7 % (STOPP), 5 % (PRISCUS) und 4 % (FORTA) liegen die entsprechenden Wahrscheinlichkeiten für die 3 Listen bei Betrachtung der kombinierten Einweisungs- und Entlassdiagnose etwas höher.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +902,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Inzidente PIMs, UAW nach Entlassungsdiagnose: Diff-in-Diff-Schätzer 0,04 (PRISCUS), 0,05 (STOPP) und 0,03 (FORTA); in der Tabelle ist der p-Wert jeweils mit 0,000 angegeben.</p>
+  
   <blockquote>„„UAW Entlassung 0,04 0,000 0,05 0,000 0,03 0,000“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +921,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die drei UAW-Varianten (Einweisung, Entlassung, kombiniert) führten laut Bericht praktisch zum gleichen Resultat; die Autoren werten die Ergebnisse daher als robust.</p>
+  
   <blockquote>„„Die Analyse der 3 UAW -Varianten führte inhaltlich allerdings praktisch zum gleichen Resultat, so dass die Ergebnisse als robust gelten können.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +940,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Inzidente PIMs, Komorbidität (Elixhauser-Index): Diff-in-Diff 0,32 (STOPP), 0,30 (PRISCUS) und 0,22 Punkte (FORTA).</p>
+  
   <blockquote>„„Gemessen durch den Elixhauser-Index zeigt die STOPP-Liste mit einem Diff-in-Diff-Schätzer von 0,32 die größte Diskriminationsfähigkeit bezüglich der Komorbidität. Der entsprechende Wert für die PRISCUS -Liste liegt mit 0,30 nur unwesentlich niedriger“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +959,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die analysierten Stichproben aus AOK-Daten 2013–2015 von Versicherten ab 65 Jahren umfassten 3.235.804 Versicherte (inzidente PIMs) bzw. 5.290.656 Versicherte (prävalente PIMs).</p>
+  
   <blockquote>„„Die analysierten Stichproben umfassten 3.235.804 Versicherte im Falle der inzidenten bzw. 5.290.656 Versicherte im Falle der prävalenten PIMs.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +978,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach der Balancierung umfasste die inzidente Analyse 690.543 Exponierte und 2.545.261 Kontrollen, die prävalente 2.745.350 Exponierte und 2.545.306 Kontrollen. Personen außerhalb des common support wurden ausgeschlossen (9.894 bzw. 36.307 Exponierte, 95.119 bzw. 95.094 Kontrollen).</p>
+  
   <blockquote>„„EG (Nach Balancierung) 690.543 (2.745.350) außerhalb des *common support 9.894 (36.307) KG 2.640.380 (2.640.400) KG (Nach Balancierung) 2.545.261 (2.545.306) außerhalb des *common support 95.119 (95.094)“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +997,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren bewerten die Balancierung beider Studiengruppen hinsichtlich Mittelwert und Varianz als nahezu perfekt.</p>
+  
   <blockquote>„„unter Einbeziehung aller verwendeten Balancierungsvariablen ist es gelungen, eine nahezu perfekte Balancierung beider Studiengruppen im Hinblick auf Mittelwert und Varianz herzustellen.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1016,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im ersten Quartal der Post-Phase (Q5) erhielten von den inzident Exponierten (N=690.543) 34,07 % eine PIM nach PRISCUS, 41,33 % nach STOPP und 46,41 % nach FORTA; von den prävalent Exponierten (N=2.745.350) 38,68 %, 48,22 % bzw. 48,40 %.</p>
+  
   <blockquote>„„Q5 Inzidenz 34,07 (235.274) 41,33 (285.386) 46,41 (320.477) 690.543 Prävalenz 38,68 (1.061.827) 48,22 (1.323.695) 48,40 (1.328.708) 2.745.350“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1035,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs: Die berechneten Koeffizienten für UAW, Mortalität und Komorbidität sind generell niedriger als bei inzidenten PIMs.</p>
+  
   <blockquote>„„dass die berechneten Koeffizienten für die prävalenten PIMs generell niedriger sind als ihre Pendants für die inzidenten PIMs.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1054,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für PRISCUS und STOPP weist der Bericht jeweils eine um 2 % erhöhte UAW-Wahrscheinlichkeit aus und hält beide für praktisch gleich gut zur UAW-Prädiktion geeignet. Der Wert steht im Abschnitt zu prävalenten PIMs, der Satz selbst spricht jedoch von inzidenten PIMs.</p>
+  
   <blockquote>„„Mit jeweils um 2 % erhöhten Wahrscheinlichkeiten, erscheinen im Falle der inzidenten PIMs, PRISCUS und STOPP praktisch gleich gut zur Prädiktion von UAWs geeignet.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1073,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs: Bei FORTA liegt die UAW-Wahrscheinlichkeit für nur über Einweisungs- bzw. nur über Entlassdiagnosen kodierte UAW bei 1 %, bei kombinierten Diagnosen mit 2 % gleichauf mit den anderen Listen.</p>
+  
   <blockquote>„„Die Wahrscheinlichkeiten für das Auftreten einer UAW durch eine Prädiktion der FORTA-Liste liegen, für nur durch Einweisungs- und Entlassdiagnosen kodierte UAW, mit 1 % etwas niedriger als bei PRISCUS und STOPP. Im Fall der kombinierten Einweisungs- und Entlassdiagnosen ist die Wahrscheinlichkeit mit 2 % mit den anderen beiden Listen aber identisch“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1092,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs, Mortalität: Diff-in-Diff 2 % (PRISCUS), 1 % (STOPP) und 0,00 (FORTA); in der Tabelle ist der p-Wert jeweils mit 0,000 angegeben.</p>
+  
   <blockquote>„„Tod 0,02 0,000 0,01 0,000 0,00 0,000“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1111,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs, Komorbidität (Elixhauser stationär): Diff-in-Diff 0,10 (PRISCUS), 0,11 (STOPP) und 0,09 (FORTA).</p>
+  
   <blockquote>„„Komorbidität Elixhauser stationär 0,10 0,000 0,11 0,000 0,09 0,000“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1130,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs, AUC für Versterben: 0,62 (STOPP), 0,58 (PRISCUS), 0,51 (FORTA), jeweils SE=0,001.</p>
+  
   <blockquote>„„Bezüglich des Versterbens ergibt sich die größte gemessene AUC mit einem Wert von 0,62 (SE=0,001) bei der STOPP-Liste gefolgt von PRISCUS mit 0,58 (SE= 0,001) und FORTA mit 0,51 (SE=0,001)“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1149,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs, AUC für UAW (Einweisung/Entlassung): 0,61 (STOPP), 0,56 (PRISCUS), 0,53 (FORTA), jeweils SE=0,001.</p>
+  
   <blockquote>„„ergibt sich die größte gemessene AUC mit einem Wert von 0,61 (SE=0,001) bei der STOPP -Liste gefolgt von PRIS-CUS mit 0,56 (SE= 0,001) und FORTA mit 0,53 (SE=0,001)“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1168,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auch bei prävalenten PIMs beschreibt der Bericht für Fragestellung 1 ein Kopf-an-Kopf-Rennen zwischen PRISCUS und STOPP.</p>
+  
   <blockquote>„„dass es insgesamt auch bei der Betrachtung der prävalenten PIM -Fälle ein Kopf an Kopf Rennen zwischen PRISCUS und STOPP zu beobachten gibt.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1187,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Inzidente PIMs, Leistungsinanspruchnahme im ersten Quartal der Post-Phase (Diff-in-Diff): Rehatage 0,35 (PRISCUS), 0,32 (STOPP) und 0,24 (FORTA); Krankenhaustage 2,55 (PRISCUS), 2,57 (STOPP) und 1,73 (FORTA).</p>
+  
   <blockquote>„„Der Diff-in-Diff im ersten Quartal der Post -Phase für die Reha- Tage beträgt 0,35 Tage für PRISCUS [...] und 0,32 Tage für STOPP [...] Die Diskriminationsfähigkeit der FORTA-Liste ist bei beiden Variablen mit 0,24 Rehatagen [...] bzw. 1,73 Krankenhaustagen [...] niedriger.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1206,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Inzidente PIMs, Defined Daily Doses (Diff-in-Diff): 100,30 (STOPP), 95,65 (PRISCUS) und 92,65 Einheiten (FORTA).</p>
+  
   <blockquote>„„Hinsichtlich der Defined Daily Doses betragen die Diff-in-Diffs zwischen der KG und den 3 PIM-Gruppen 100.30 (STOPP) (S. 50 i. Anlage_01) 95.65 (PRISCUS) (S. 50 i. Anlage_01) und 92.65 (FORTA)“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1225,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Inzidente PIMs, Gesamtkosten im ersten Quartal der Post-Phase (Diff-in-Diff): 1398,12 € (PRISCUS), 1397,16 € (STOPP) und 1013,29 € (FORTA). Der Bericht wertet PRISCUS und STOPP hier als praktisch gleichwertig und FORTA als deutlich niedriger.</p>
+  
   <blockquote>„„ist die Diskriminationsfähigkeit der PRISCUS- und STOPP-Liste mit Diff-in-Diffs von 1398,12 € [...] bzw. 1397.16 € [...] als praktisch gleichwertig anzusehen. Der Diff-in-Diff der FORTA-Liste liegt mit 1013,29 € deutlich niedriger“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1244,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Inzidente PIMs (Diff-in-Diff): Medikamentenkosten 154,40 € (PRISCUS), 102,95 € (STOPP) und 66,79 € (FORTA); stationäre Krankenhauskosten 1160,63 € (STOPP), 1115,79 € (PRISCUS) und 825,19 € (FORTA).</p>
+  
   <blockquote>„„Bei den Medikamentenkosten beträgt der Diff-in-Diff für PRISCUS 154,40 € [...] und für STOPP 102,95 € [...] Bei den stationären Krankenhauskosten ist der Unterschied am größten bei STOPP mit 1160,63 € [...] gefolgt von PRISCUS mit 1115,79 €“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1263,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Inzidente PIMs (Diff-in-Diff): Ambulante Kosten 68,69 € (PRISCUS), 85,26 € (STOPP) und 83,51 € (FORTA); Rehakosten 56,60 €, 46,08 € bzw. 33,28 €. In der Tabelle ist der p-Wert jeweils mit 0,000 angegeben.</p>
+  
   <blockquote>„„Ambulante Kosten 68,69 0,000 85,26 0,000 83,51 0,000 Rehakosten 56,60 0,000 46,08 0,000 33,28 0,000“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1282,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Inzidente PIMs, Heilmittelkosten: Nur hier hat FORTA mit einem Diff-in-Diff von 4,52 € den höchsten Wert der drei Listen; der absolute Betrag ist in diesem Bereich am niedrigsten.</p>
+  
   <blockquote>„„Nur im Bereich der Kosten für Heilmittel verfügt die FORTA-Liste mit einem Diff-in-Diff von 4,52 € [...] über eine höhere Diskriminationsfähigkeit als die anderen beiden Listen. Allerdings ist der absolute Betrag der Diff-in-Diffs in diesem Bereich auch am niedrigsten.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1301,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im zeitlichen Verlauf sinkt bei inzidenten PIMs die UAW-Wahrscheinlichkeit in den letzten drei Quartalen der Post-Phase für alle Listen wieder ab und nähert sich der Kontrollgruppe an.</p>
+  
   <blockquote>„„In den letzten 3 Quartalen der Post-Phase ist ein relativ rasches Absinken der Auftretenswahrscheinlichkeit für eine UAW für alle 3 PIM-Listen zu erkennen. Die Kurven der 3 PIM-Listen nähern sich wieder den Werten der KG an.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1320,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Kosten steigen im ersten Post-Quartal für alle Listen an, am stärksten bei STOPP und PRISCUS. Im folgenden Quartal sinken sie wieder und nähern sich danach der Kontrollgruppe an.</p>
+  
   <blockquote>„„Im ersten Quartal der Post-Phase ist ein relativ starkes Ansteigen der Kosten für alle 3 PIM-Listen zu erkennen. Am stärksten ist dieser Anstieg auch hier wieder bei STOPP - und PRISCUS-Liste. Im folgenden Quartal sinken die Kosten relativ stark ab“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1339,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Kurven der Exponierten steigen bereits vor dem Expositionsquartal an. Die Autoren führen dies vermutlich darauf zurück, dass einer PIM-Verschreibung in der Regel eine Verschlechterung des Gesundheitszustands vorausgeht.</p>
+  
   <blockquote>„„Das Ansteigen der Kurven für die 3 PIM -Listen vor dem eigentlichen 5. Quartal der Exposition, ist vermutlich dem Umstand geschuldet, dass die Verschreibung einer PIM nicht unabhängig von anderen Faktoren ist.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1358,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs: Die UAW-Wahrscheinlichkeit steigt im ersten Quartal der Post-Phase an, ein Anstieg zeigt sich bereits in der Prä-Phase. Der Ausschlag ist weniger markant als bei inzidenten PIMs, in den letzten Quartalen sinkt die Wahrscheinlichkeit wieder.</p>
+  
   <blockquote>„„D er Ausschlag während dem 1. Quartal der Post-Phase erscheint bei Betrachtung der prävalenten PIMs aber weniger markant. Auch hier ist wieder ein Absinken der Wahrscheinlichkeiten in den letzten Quartalen der Post-Phase zu erkennen.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1377,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs: Die Diff-in-Diff-Schätzer für Leistungsinanspruchnahme und Kosten liegen niedriger als bei inzidenten PIMs. Die DDD-Unterschiede erreichen ca. 50 % der Werte bei inzidenten PIMs.</p>
+  
   <blockquote>„„Die Werte für die Unterschiede bei den DDDs liegen auf einem Niveau das ca. 50 % der entsprechenden Werte bei Betrachtung inzidenter PIMs entspricht.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1396,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs, DDD im ersten Quartal der Post-Phase: PRISCUS 58,10, FORTA 41,68 und STOPP 39,43 DDD. Anders als bei inzidenten PIMs liegt PRISCUS hier vorn.</p>
+  
   <blockquote>„„Im Unterschied zu den inzidenten Fällen ist der größte Effekt bei PRISCUS mit 58 DDDs (S. 250 i. Anlage_01) gefolgt von FORTA mit 42 DDDs (S. 251 i. Anlage_01) und STOPP mit 40 DDDs“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1415,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs (Diff-in-Diff): Rehatage 0,12 (PRISCUS), 0,11 (STOPP) und 0,11 (FORTA); stationäre Krankenhaustage 0,87 (PRISCUS), 0,90 (STOPP) und 0,75 (FORTA).</p>
+  
   <blockquote>„„Leistungsinanspruchnahme Rehatage 0,12 0,000 0,11 0,000 0,11 0,000 Stationäre Krankenhaustage 0,87 0,000 0,90 0,000 0,75 0,000“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1434,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs, Gesamtkosten (Diff-in-Diff): 473 € (STOPP), 464 € (PRISCUS) und 414 € (FORTA). Der Bericht spricht von relevant kleineren Effekten als bei inzidenten PIMs.</p>
+  
   <blockquote>„„Auch die Analyse der Gesamtkosten offenbart, dass die Betrachtung prävalenter PIMs relevant kleinere Effekte zeitigt (Fragestellung 4). Der größte Diff-in-Diff ist hier bei den Gesamtkosten mit 473 € bei der STOPP-Liste“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1453,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.36">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs, stationäre Krankenhauskosten (Diff-in-Diff): 390 € (STOPP), 359 € (PRISCUS) und 330 € (FORTA).</p>
+  
   <blockquote>„„bei denen der Diff-in-Diff für STOPP bei 390 € liegt (S. 306 i. Anlage_01), gefolgt von PRSI-CUS mit 359 € (S. 305 i. Anlage_01) und FORTA mit 330 €“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1472,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs: Den größten Diff-in-Diff bei Medikamentenkosten (55 €) und Rehakosten (16 €) hat PRISCUS.</p>
+  
   <blockquote>„„Der größte Diff-in-Diff bei den Medikamentenkosten und Rehakosten ist bei der PRISCUS-Liste mit 55 € (S. 294 i. Anlage_01) respektive 16 €“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1491,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs: FORTA hat den größten Diff-in-Diff bei ambulanten Kosten (40 €) und Heilmitteln (2,41 €).</p>
+  
   <blockquote>„„ist der Diff -in-Diff der FORTA -Liste am größten bei den ambulanten Kosten (40 €) (S. 262 i. Anlage_01) und den Heilmitteln (2,41 €)“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1510,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prävalente PIMs: Die Wachstumskurven der Gesamtkosten verlaufen undifferenzierter als bei inzidenten PIMs.</p>
+  
   <blockquote>„„zeigt einen undifferenzierteren Kurvenverlauf als bei den inzidenten PIMs (Fragestellung 4).“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1529,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.40">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die aus der Literatur (Stausberg &amp; Hasford) übernommenen UAW-Codes stimmten zu 73,6 % mit den empirisch ermittelten Codes überein; verwendet wurde die Vereinigungsmenge beider Sets.</p>
+  
   <blockquote>„„Die Übereinstimmungsrate zwischen den aus der Literatur übernommenen Codes und den empirisch ermittelten Codes lag bei 73,6 %.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.40" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.40" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.40" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.40" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1548,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.41">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Proof-of-principle (Zufallsstichprobe aus WIdO-Daten 2010–2012): Ein sparsames, per BIC selektiertes Modell sagte potenziell UAW-bedingte Hospitalisierungen mit einem c-Index von 0,67 (95 %-KI 0,65–0,68) vorher. Größere und sparsamere Modelle erreichten eine ähnliche Vorhersagegüte.</p>
+  
   <blockquote>„„Die Vorhersagegüte bzw. Modellperformance gemessen an der Konkordanzstatistik (c-index) war zwischen größeren und sparsameren Modellen ähnlich, wobei die BIC -Selektion für potenziell UAW-bedingte Hospitalisierungen einen Schätzer von 0.67 (95 % Konfidenzintervall [0.65;0.68]) annahm.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.41" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.41" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.41" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.41" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1567,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.42">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Proof-of-principle waren STOPP-Kriterien für UAW prädiktiver als START-Kriterien.</p>
+  
   <blockquote>„„Generell waren STOPP -Kriterien für UAW prädiktiver (durchweg Mehrzahl an Prädiktoren aus der STOPP -Liste).“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.42" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.42" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.42" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.42" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1586,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.43">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Proof-of-principle-Stichprobe war im Mittel 76,05 Jahre alt (SD 7,17) und zu 66,7 % weiblich. Bei Hospitalisierungen jeglicher Ursache waren die unadjustierten Inzidenzraten zwischen den Expositionsgruppen sehr ähnlich.</p>
+  
   <blockquote>„„Die Patienten der Zufallsstichprobe waren im Mittel 76,05 Jahre alt (Standardabweichung 7,17 Jahre), worunter 66,7 % Frauen waren. [...] Unadjustierte Inzidenzraten waren sehr ähnlich, wenn Hospitalisierungen jeglicher Ursache betrachtet wurden.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.43" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.43" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.43" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.43" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1605,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.44">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als Zwischenfazit der Vorarbeiten halten die Autoren fest, dass sich STOPP-Kriterien operationalisieren lassen und prädiktiven Einfluss auf Endpunkte in Routinedaten haben.</p>
+  
   <blockquote>„„dass die klinisch-definierten STOPP-Kriterien sinnvoll operationalisiert werden können und tatsächlich prädiktiven Einfluss auf Endpunkte in Routinedaten nehmen.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.44" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.44" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.44" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.44" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1624,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.45">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren empfehlen, FORTA in der Versorgungspraxis nicht anzuwenden, weil mit PRISCUS und STOPP bessere Alternativen zur Verfügung stehen.</p>
+  
   <blockquote>„„Basierend auf diesen Ergebnissen empfehlen wir von einer Anwendung der FORTA -Liste in der Versorgungspraxis abzusehen, weil mit PRISCUS und STOPP bessere Alternativen zur Verfügung stehen.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.45" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.45" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.45" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.45" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1643,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.46">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für den klinischen Alltag empfehlen die Autoren PRISCUS, weil die Liste nur auf Wirkstoffinformationen (ATC) beruht und bei etwa gleicher Prädiktionskraft wie STOPP datensparsamer und mit geringerem Rechenaufwand umsetzbar ist.</p>
+  
   <blockquote>„„Für den Einsatz im klinischen Alltag gilt unsere Empfehlung dem Einsatz der PRISCUS-Liste, weil sich durch diese, basierend nur auf den Informationen der Wirkstoffe (ATC), ein höherer Grad an Datensparsamkeit gepaart mit geringerem Rechenaufwand bei etwa gleicher Prädiktionskraft wie STOPP erreicht ließe.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.46" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.46" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.46" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.46" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1662,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.47">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren halten die Integration einer PIM-Liste in Praxis- oder Krankenhaussoftware für vielversprechender als eine Patienten-App, weil bei einer App Überreaktionen von Patienten und Vorbehalte von Ärzten zu erwarten wären.</p>
+  
   <blockquote>„„erscheint die Integration einer PIM -Liste in eine Praxis- oder Krankenhaussoftware als vielversprechendere Alternative zur Erhöhung der Patientensicherheit.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.47" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.47" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.47" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.47" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1681,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.48">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine Modifikation der Listen sehen die Autoren skeptisch. Sie plädieren dafür, die Listen als Anlass für eine Neubewertung der Medikation zu nutzen und auf die Kompetenz der behandelnden Ärzte zu setzen.</p>
+  
   <blockquote>„„Die Sinnhaftigkeit einer damit verbunden nötigen Modifikation der getesteten Listen betrachten wir skeptisch.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.48" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.48" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.48" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.48" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1700,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die berichteten Diff-in-Diff-Resultate beziehen sich ausschließlich auf das erste Quartal der Post-Phase.</p>
+  
   <blockquote>„„Die beschriebenen Resultate beziehen sich ausschließlich auf das erste Quartal der Post -Phase.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1719,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Vor einem Einsatz im klinischen Alltag oder im Routinedaten-Monitoring sind nach Ansicht der Autoren weitere Tests in RCTs unverzichtbar.</p>
+  
   <blockquote>„„dass vorherige weitere Tests im Rahmen randomisiert kontrollierter Studien (RCT) eine unverzichtbare Voraussetzung darstellen.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1738,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei prävalenten PIMs sind die Effekte noch geringer als bei inzidenten, was eindeutige Schlussfolgerungen erschwert.</p>
+  
   <blockquote>„„Die Größe der Effekte ist hier noch geringer als bei den inzidenten Fällen. Das ziehen eindeutiger Schlussfolgerungen wird dadurch aber erschwert.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1757,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Verglichen wurden PIM-Exponierte mit Nicht-Exponierten. Ein Vergleich mit Personen, die eine sichere therapeutische Alternative erhalten, wäre laut Bericht realistischer.</p>
+  
   <blockquote>„„im Unterschied zu den von durchgeführten Vergleichen von Personen mit PIM-Exposition vs. Personen ohne PIM-Exposition z.B. Vergleiche mit Personen mit sicherer therapeutischer Alternative realistischer wären.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1776,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Balancierung war nur für den durchschnittlichen Verlauf aller drei Listen möglich; die Kurven der einzelnen Listen weichen vom Verlauf der Kontrollgruppe ab.</p>
+  
   <blockquote>„„Zu beachten ist hierbei, dass diese Balancierung nur für den durchschnittlichen Verlauf der Kurven aller 3 PIM-Listen möglich war. Wie aus Abbildung 3 hervorgeht weichen die einzelnen Kurven der 3 PIM-Listen vom Verlauf der Kurve für die KG ab.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1795,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eine Balancierung nach der Schiefe war nicht durchführbar.</p>
+  
   <blockquote>„„Eine Balancierung nach der Schiefe erwies sich als nicht durchführbar.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1795,12 +1814,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Medikamenteneinnahme im stationären Setting konnte nicht berücksichtigt werden, weil sie in den Routinedaten fehlt.</p>
+  
   <blockquote>„„Die Einnahme von Medikamenten im stationären Setting konnte bei der Konstruktion der PIM -Listen keine Berücksichtigung finden, weil diese in den Routinedaten nicht abgebildet sind.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1814,12 +1833,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ambulante Diagnosen wurden wegen fehlender genauer Datierung nicht genutzt. Die verwendeten stationären Diagnosen implizieren einen höheren Schweregrad, was bei der Interpretation zu berücksichtigen ist.</p>
+  
   <blockquote>„„Stationäre Diagnosen dagegen implizieren gleichzeitig einen höheren Schweregrad, was bei der Interpretation berücksichtigt werden muss.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1833,12 +1852,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Daten stammen nur von einer Krankenkasse (AOK). Die Repräsentativität könnte wegen eines unterschiedlichen sozioökonomischen Status eingeschränkt sein; die Autoren halten dies wegen der großen Versichertenzahl für vernachlässigbar.</p>
+  
   <blockquote>„„Der sozioökonomische Status der Versicherten deutscher Krankenkassen ist aber zum Teil unterschiedlich wodurch die Repräsentativität der Analysen eingeschränkt sein könnte. Angesichts der großen Zahl der bei der AOK Versicherten dürfte diese Einschränkung aber zu vernachlässigen sein.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1852,12 +1871,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Kodierartefakte bei ICD und ATC in Routinedaten können Generalisierbarkeit und Übertragbarkeit einschränken oder zu falschen Schlüssen führen.</p>
+  
   <blockquote>„„die Generalisierbarkeit und Übertragbarkeit von auf Routinedaten basierenden Studien z.B. durch auftretende Artefakte in den Kodierungen der ICDs und ATCs eingeschränkt sein könnten oder zu falschen Schlüssen führen kann.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1871,12 +1890,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die START-STOPP-Kriterien sind in der Anwendung auf Routinedaten nicht immer eindeutig und präzise.</p>
+  
   <blockquote>„„Eine Herausforderung stellen die „expliziten“ START- STOPP-Kriterien dar, welche in der Anwendung auf Routinedaten nicht immer eindeutig und präzise („explizit“) sind“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1890,12 +1909,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Auf Ebene einzelner Kriterien ergaben sich je nach Kriteriumsdefinition abweichende Effektschätzer, was in diesem Ausmaß nicht vorherzusehen war.</p>
+  
   <blockquote>„„wo doch auf Einzelkriteriumsebene mitunter abweichende Effektschätzer je nach Kriteriumsdefinition zu beobachten waren. Dies war nicht so stark vorherzusehen.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1909,12 +1928,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Unterversorgungsaspekte wurden nicht betrachtet; untersucht wurden nur Über- und Fehlversorgung.</p>
+  
   <blockquote>„„keine Unterversorgungsaspekte betrachtet, sondern Über - und Fehlversorgung fokussiert“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1928,12 +1947,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der vielen Interaktionsterme sind die Regressionsmodelle laut Bericht auch für geübte Analytiker nur mühsam zu interpretieren.</p>
+  
   <blockquote>„„wegen der Vielzahl der in ihnen enthaltenen Interaktionstermen auch für geübte Analytiker nur mühsam zu interpretieren.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1947,12 +1966,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Unstimmigkeiten in den Routinedaten des Testdatensatzes verzögerten die Vorbereitungsphase um ein Quartal und damit den Beginn der Aufbereitung des Gesamtdatensatzes.</p>
+  
   <blockquote>„„Der Abschluss der Vorbereitungsphase verzögerte sich dadurch um ein Quartal und zog einen verzögerten Beginn der Aufbereitung des Gesamtdatensatzes für die Evaluation nach sich.“ – Bericht, S. 7" <span class="s">S. 7</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1966,12 +1985,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ein Routinedaten-Monitoring ist für PRISCUS und STOPP technisch prinzipiell machbar, setzt aber eine Optimierung der Syntax zur Verringerung des Rechenaufwands voraus.</p>
+  
   <blockquote>„„Ein Einsatz im Monitoring von Routinedaten erscheint rein technisch für PRISCUS und STOPP prinzipiell machbar. Eine Optimierung der Syntax [...] wäre dafür aber eine notwendige Voraussetzung.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1985,12 +2004,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ein Feedback an behandelnde Ärzte bei potenziell inadäquater Medikation ist aus datenschutzrechtlichen Gründen derzeit nicht umsetzbar.</p>
+  
   <blockquote>„„aus datenschutzrechtlichen Gründen aktuell nicht umsetzbar.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2004,12 +2023,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.21">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Je nachdem, wie Ärzte ihr Verschreibungsverhalten auf PIM-Informationen hin ändern, könnten sich die ermittelten Parameter in der Versorgungsrealität als zu hoch oder zu niedrig erweisen.</p>
+  
   <blockquote>„„die im Rahmen des vorliegenden Projektes ermittelten Parameter als in der Versorgungsrealität zu hoch oder zu niedrig erweisen.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2023,12 +2042,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.22">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ob weiterreichende Patienteninformationen Sensitivität und Spezifität erhöhen würden, lässt sich aus den Ergebnissen nicht ableiten.</p>
+  
   <blockquote>„„Über die Wirkung weiterreichender Patienteninformationen auf die Prädiktivtät und damit eine mögliche Erhöhung der Sensitivität und Spezifität lassen sich aus den vorliegenden Projektergebnissen keine Schlüsse ableiten.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2073,28 +2092,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 12, "akronym": "PIM-STOP", "kennung": "dDosjc6y-gB9", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für die Verwendung der Ergebnisse des Projekts PIM-STOP keine Handlungsempfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt verglich die Diskriminationsfähigkeit der PIM-Listen PRISCUS, STOPP und FORTA hinsichtlich unerwünschter Arzneimittelwirkungen sowie der Inanspruchnahme und der Kosten von Gesundheitsleistungen. PRISCUS und STOPP schnitten in nahezu allen Aspekten besser ab als FORTA. Die Diskriminationsfähigkeit aller drei Listen ist insgesamt jedoch als unzureichend einzustufen. Das Studiendesign war grundsätzlich angemessen. Die Validität ist aber durch die fehlende Randomisierung und die ausschließliche Nutzung von Routinedaten einer Krankenkassenart eingeschränkt. Eine Empfehlung zum routinemäßigen Einsatz einer der Listen kann daher nicht ausgesprochen werden. Weiterer Forschungsbedarf besteht, vorzugsweise unter Einbeziehung von Primärdaten."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine Empfehlung zum routinemäßigen Einsatz einer der drei Listen in der Versorgungspraxis kann nicht ausgesprochen werden. Es besteht weiterer Forschungsbedarf zum Einsatz von PIM-Listen, vorzugsweise unter Einbeziehung von Primärdaten."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Diskriminationsfähigkeit aller drei Listen ist insgesamt unzureichend"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Die Validität ist durch die fehlende Randomisierung und die ausschließliche Verwendung von Routinedaten einer Krankenkassenart eingeschränkt"}, {"stelle": "befund.0", "art": "befund", "unser": "Erkenntnisse darüber, wie die drei PIM-Listen unerwünschte Arzneimittelwirkungen, Inanspruchnahme und Kosten von Gesundheitsleistungen prädizieren"}, {"stelle": "befund.1", "art": "befund", "unser": "PRISCUS- und STOPP-Liste zeigten in nahezu allen Aspekten eine höhere Diskriminationsfähigkeit als die FORTA-Liste"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "UAW Einweisung (stationäre Aufnahmediagnose), inzidente PIMs"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "UAW Entlassung (stationäre Entlassdiagnose), inzidente PIMs"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "UAW Einweisung/Entlassung (kombiniert), inzidente PIMs"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Tod (Mortalität im 1. Quartal der Post-Phase), inzidente PIMs"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Komorbidität (Elixhauser stationär), inzidente PIMs"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "UAW Einweisung, prävalente PIMs"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "UAW Einweisung/Entlassung (kombiniert), prävalente PIMs"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Tod (Mortalität), prävalente PIMs"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Komorbidität (Elixhauser stationär), prävalente PIMs"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Gesamtkosten, inzidente PIMs (1. Quartal der Post-Phase)"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Stationäre Krankenhauskosten, inzidente PIMs"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Medikamentenkosten, inzidente PIMs"}, {"stelle": "endpunkt.13", "art": "endpunkt", "unser": "Stationäre Krankenhaustage, inzidente PIMs"}, {"stelle": "endpunkt.14", "art": "endpunkt", "unser": "Defined Daily Doses (DDD), inzidente PIMs"}, {"stelle": "endpunkt.15", "art": "endpunkt", "unser": "Diskriminationsfähigkeit für UAW (Einweisung/Entlassung), inzidente PIMs"}, {"stelle": "endpunkt.16", "art": "endpunkt", "unser": "Diskriminationsfähigkeit für Mortalität, inzidente PIMs"}, {"stelle": "endpunkt.17", "art": "endpunkt", "unser": "Gesamtkosten, prävalente PIMs"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben verglich anhand von AOK-Routinedaten 2013–2015 von Versicherten ab 65 Jahren, wie gut die PIM-Listen PRISCUS, STOPP und FORTA unerwünschte Arzneimittelwirkungen (UAW), Mortalität, Komorbidität, Leistungsinanspruchnahme und Kosten vorhersagen. Ausgewertet wurden 3.235.804 Versicherte mit inzidenten und 5.290.656 mit prävalenten PIMs. Methodisch kamen Difference-in-Differences-Regressionen nach Entropy Balancing gegen eine nicht exponierte Kontrollgruppe sowie AUC-Analysen zum Einsatz. Nach der Gesamtbewertung des Berichts diskriminiert STOPP am besten für UAW und Komorbidität und PRISCUS für Mortalität; bei den Gesamtkosten sind beide praktisch identisch, FORTA liegt am niedrigsten. Die Unterschiede zwischen PRISCUS und STOPP schätzt der Bericht als relativ gering mit leichten Vorteilen für STOPP ein. Die AUC-Werte liegen für alle Listen zwischen 0,49 und 0,62; der Bericht stuft die Diskriminationsfähigkeit als generell nicht akzeptabel ein. Die Ergebnisse beziehen sich auf das erste Quartal nach der Exposition und beruhen auf der dokumentierten Abgabe statt der tatsächlichen Einnahme. Verzerrungen durch unbeobachtete Heterogenität schließt der Bericht nicht aus; eine direkte Übertragung in die Praxis hält er ohne weitere Untersuchungen, vorzugsweise RCTs, nicht für möglich."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Gesamtbewertung: STOPP hat die größte Diskriminationsfähigkeit für UAW und Komorbidität, PRISCUS für Mortalität. Bei den Gesamtkosten sind PRISCUS und STOPP praktisch identisch, FORTA hat die geringste Diskriminationsfähigkeit. Die Unterschiede zwischen PRISCUS und STOPP schätzt der Bericht als relativ gering mit leichten Vorteilen für STOPP ein."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Inzidente PIMs, erstes Quartal der Post-Phase, UAW nach Einweisungsdiagnose: Die Wahrscheinlichkeit lag in der Exponiertengruppe gegenüber der Kontrollgruppe um 6 % (STOPP), 4 % (PRISCUS) bzw. 3 % (FORTA) höher (Diff-in-Diff)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Inzidente PIMs, Mortalität im ersten Quartal der Post-Phase: Die Wahrscheinlichkeit zu versterben lag in der Exponiertengruppe gegenüber der Kontrollgruppe um 3 % (PRISCUS), 2 % (STOPP) bzw. 0 % (FORTA) höher."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Inzidente PIMs, AUC für UAW (Einweisung/Entlassung): 0,61 (STOPP), 0,57 (PRISCUS), 0,54 (FORTA), jeweils SE=0,001."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Inzidente PIMs, AUC für Mortalität: 0,58 (PRISCUS), 0,57 (STOPP), 0,49 (FORTA), jeweils SE=0,001."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Laut Bericht treten die Unterschiede zwischen Exponierten und Kontrollen bei inzidenten PIMs deutlicher hervor als bei prävalenten. Die am stärksten belastbaren Schlussfolgerungen lassen sich daher nach Ansicht der Autoren aus den inzidenten Analysen ziehen."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die AUC-Werte aller drei Listen stuft der Bericht für inzidente wie prävalente PIMs als generell nicht akzeptabel bzw. ungenügend ein."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die PIM-Kodierung und damit sämtliche Resultate beruhen auf der dokumentierten Medikamentenabgabe statt auf der tatsächlichen Einnahme. Dadurch könnten die Effekte überschätzt werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Entropy Balancing ist kein vollständiger Ersatz für eine Randomisierung. Nicht in Routinedaten enthaltene Confounder (z. B. gesundheitsbezogene Lebensqualität) können einen nicht überprüfbaren Bias verursachen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Autoren betrachten die Ergebnisse trotz relativ hoher Verallgemeinerbarkeit unter Vorbehalt. Eine direkte Übertragung in die Versorgungspraxis halten sie ohne weitere Untersuchungen nicht für möglich."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "S. 23: Die um jeweils 2 % erhöhte UAW-Wahrscheinlichkeit für PRISCUS und STOPP steht im Abschnitt zu prävalenten PIMs (Vergleich Tabelle 6), der Satz spricht aber von „inzidenten PIMs“. Für inzidente PIMs nennt S. 19 dagegen 6 % (STOPP), 4 % (PRISCUS) und 3 % (FORTA)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Mortalität: Kurzfassung (S. 2) und Gesamtbewertung (S. 27) schreiben PRISCUS die größte Diskriminationsfähigkeit für Mortalität zu. Bei prävalenten PIMs ist die AUC für Versterben jedoch bei STOPP am höchsten (0,62 vs. 0,58 PRISCUS, S. 23), während der Diff-in-Diff-Schätzer dort PRISCUS vorn sieht (2 % vs. 1 %)."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Übertragbarkeit: S. 28 nennt eine „hohe externe Validität und damit einhergehend eine hohe Übertragbarkeit“ als „gewährleistet“. S. 28 hält dagegen eine direkte Übertragung in die Praxis nicht ohne weitere Untersuchungen für möglich, S. 29 sieht Generalisierbarkeit und Übertragbarkeit durch Kodierartefakte womöglich eingeschränkt, S. 27 die Repräsentativität durch die Beschränkung auf die AOK."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Balancierung: S. 15 bezeichnet die Balancierung als „nahezu perfekt“ hinsichtlich Mittelwert und Varianz. Auf derselben Seite heißt es, sie sei nur für den durchschnittlichen Verlauf aller drei Listen möglich gewesen, die Einzelkurven wichen von der Kontrollgruppe ab und eine Balancierung nach der Schiefe sei nicht durchführbar gewesen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Inzidente PIMs, UAW nach kombinierter Einweisungs- und Entlassdiagnose: Diff-in-Diff-Wahrscheinlichkeiten von 7 % (STOPP), 5 % (PRISCUS) und 4 % (FORTA)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Inzidente PIMs, UAW nach Entlassungsdiagnose: Diff-in-Diff-Schätzer 0,04 (PRISCUS), 0,05 (STOPP) und 0,03 (FORTA); in der Tabelle ist der p-Wert jeweils mit 0,000 angegeben."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die drei UAW-Varianten (Einweisung, Entlassung, kombiniert) führten laut Bericht praktisch zum gleichen Resultat; die Autoren werten die Ergebnisse daher als robust."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Inzidente PIMs, Komorbidität (Elixhauser-Index): Diff-in-Diff 0,32 (STOPP), 0,30 (PRISCUS) und 0,22 Punkte (FORTA)."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die analysierten Stichproben aus AOK-Daten 2013–2015 von Versicherten ab 65 Jahren umfassten 3.235.804 Versicherte (inzidente PIMs) bzw. 5.290.656 Versicherte (prävalente PIMs)."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Nach der Balancierung umfasste die inzidente Analyse 690.543 Exponierte und 2.545.261 Kontrollen, die prävalente 2.745.350 Exponierte und 2.545.306 Kontrollen. Personen außerhalb des common support wurden ausgeschlossen (9.894 bzw. 36.307 Exponierte, 95.119 bzw. 95.094 Kontrollen)."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die Autoren bewerten die Balancierung beider Studiengruppen hinsichtlich Mittelwert und Varianz als nahezu perfekt."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Im ersten Quartal der Post-Phase (Q5) erhielten von den inzident Exponierten (N=690.543) 34,07 % eine PIM nach PRISCUS, 41,33 % nach STOPP und 46,41 % nach FORTA; von den prävalent Exponierten (N=2.745.350) 38,68 %, 48,22 % bzw. 48,40 %."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Prävalente PIMs: Die berechneten Koeffizienten für UAW, Mortalität und Komorbidität sind generell niedriger als bei inzidenten PIMs."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Für PRISCUS und STOPP weist der Bericht jeweils eine um 2 % erhöhte UAW-Wahrscheinlichkeit aus und hält beide für praktisch gleich gut zur UAW-Prädiktion geeignet. Der Wert steht im Abschnitt zu prävalenten PIMs, der Satz selbst spricht jedoch von inzidenten PIMs."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Prävalente PIMs: Bei FORTA liegt die UAW-Wahrscheinlichkeit für nur über Einweisungs- bzw. nur über Entlassdiagnosen kodierte UAW bei 1 %, bei kombinierten Diagnosen mit 2 % gleichauf mit den anderen Listen."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Prävalente PIMs, Mortalität: Diff-in-Diff 2 % (PRISCUS), 1 % (STOPP) und 0,00 (FORTA); in der Tabelle ist der p-Wert jeweils mit 0,000 angegeben."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Prävalente PIMs, Komorbidität (Elixhauser stationär): Diff-in-Diff 0,10 (PRISCUS), 0,11 (STOPP) und 0,09 (FORTA)."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Prävalente PIMs, AUC für Versterben: 0,62 (STOPP), 0,58 (PRISCUS), 0,51 (FORTA), jeweils SE=0,001."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Prävalente PIMs, AUC für UAW (Einweisung/Entlassung): 0,61 (STOPP), 0,56 (PRISCUS), 0,53 (FORTA), jeweils SE=0,001."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Auch bei prävalenten PIMs beschreibt der Bericht für Fragestellung 1 ein Kopf-an-Kopf-Rennen zwischen PRISCUS und STOPP."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Inzidente PIMs, Leistungsinanspruchnahme im ersten Quartal der Post-Phase (Diff-in-Diff): Rehatage 0,35 (PRISCUS), 0,32 (STOPP) und 0,24 (FORTA); Krankenhaustage 2,55 (PRISCUS), 2,57 (STOPP) und 1,73 (FORTA)."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Inzidente PIMs, Defined Daily Doses (Diff-in-Diff): 100,30 (STOPP), 95,65 (PRISCUS) und 92,65 Einheiten (FORTA)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Inzidente PIMs, Gesamtkosten im ersten Quartal der Post-Phase (Diff-in-Diff): 1398,12 € (PRISCUS), 1397,16 € (STOPP) und 1013,29 € (FORTA). Der Bericht wertet PRISCUS und STOPP hier als praktisch gleichwertig und FORTA als deutlich niedriger."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Inzidente PIMs (Diff-in-Diff): Medikamentenkosten 154,40 € (PRISCUS), 102,95 € (STOPP) und 66,79 € (FORTA); stationäre Krankenhauskosten 1160,63 € (STOPP), 1115,79 € (PRISCUS) und 825,19 € (FORTA)."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Inzidente PIMs (Diff-in-Diff): Ambulante Kosten 68,69 € (PRISCUS), 85,26 € (STOPP) und 83,51 € (FORTA); Rehakosten 56,60 €, 46,08 € bzw. 33,28 €. In der Tabelle ist der p-Wert jeweils mit 0,000 angegeben."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Inzidente PIMs, Heilmittelkosten: Nur hier hat FORTA mit einem Diff-in-Diff von 4,52 € den höchsten Wert der drei Listen; der absolute Betrag ist in diesem Bereich am niedrigsten."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Im zeitlichen Verlauf sinkt bei inzidenten PIMs die UAW-Wahrscheinlichkeit in den letzten drei Quartalen der Post-Phase für alle Listen wieder ab und nähert sich der Kontrollgruppe an."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Die Kosten steigen im ersten Post-Quartal für alle Listen an, am stärksten bei STOPP und PRISCUS. Im folgenden Quartal sinken sie wieder und nähern sich danach der Kontrollgruppe an."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Die Kurven der Exponierten steigen bereits vor dem Expositionsquartal an. Die Autoren führen dies vermutlich darauf zurück, dass einer PIM-Verschreibung in der Regel eine Verschlechterung des Gesundheitszustands vorausgeht."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Prävalente PIMs: Die UAW-Wahrscheinlichkeit steigt im ersten Quartal der Post-Phase an, ein Anstieg zeigt sich bereits in der Prä-Phase. Der Ausschlag ist weniger markant als bei inzidenten PIMs, in den letzten Quartalen sinkt die Wahrscheinlichkeit wieder."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Prävalente PIMs: Die Diff-in-Diff-Schätzer für Leistungsinanspruchnahme und Kosten liegen niedriger als bei inzidenten PIMs. Die DDD-Unterschiede erreichen ca. 50 % der Werte bei inzidenten PIMs."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Prävalente PIMs, DDD im ersten Quartal der Post-Phase: PRISCUS 58,10, FORTA 41,68 und STOPP 39,43 DDD. Anders als bei inzidenten PIMs liegt PRISCUS hier vorn."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Prävalente PIMs (Diff-in-Diff): Rehatage 0,12 (PRISCUS), 0,11 (STOPP) und 0,11 (FORTA); stationäre Krankenhaustage 0,87 (PRISCUS), 0,90 (STOPP) und 0,75 (FORTA)."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Prävalente PIMs, Gesamtkosten (Diff-in-Diff): 473 € (STOPP), 464 € (PRISCUS) und 414 € (FORTA). Der Bericht spricht von relevant kleineren Effekten als bei inzidenten PIMs."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Prävalente PIMs, stationäre Krankenhauskosten (Diff-in-Diff): 390 € (STOPP), 359 € (PRISCUS) und 330 € (FORTA)."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Prävalente PIMs: Den größten Diff-in-Diff bei Medikamentenkosten (55 €) und Rehakosten (16 €) hat PRISCUS."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Prävalente PIMs: FORTA hat den größten Diff-in-Diff bei ambulanten Kosten (40 €) und Heilmitteln (2,41 €)."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Prävalente PIMs: Die Wachstumskurven der Gesamtkosten verlaufen undifferenzierter als bei inzidenten PIMs."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Die aus der Literatur (Stausberg & Hasford) übernommenen UAW-Codes stimmten zu 73,6 % mit den empirisch ermittelten Codes überein; verwendet wurde die Vereinigungsmenge beider Sets."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "Proof-of-principle (Zufallsstichprobe aus WIdO-Daten 2010–2012): Ein sparsames, per BIC selektiertes Modell sagte potenziell UAW-bedingte Hospitalisierungen mit einem c-Index von 0,67 (95 %-KI 0,65–0,68) vorher. Größere und sparsamere Modelle erreichten eine ähnliche Vorhersagegüte."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Im Proof-of-principle waren STOPP-Kriterien für UAW prädiktiver als START-Kriterien."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Die Proof-of-principle-Stichprobe war im Mittel 76,05 Jahre alt (SD 7,17) und zu 66,7 % weiblich. Bei Hospitalisierungen jeglicher Ursache waren die unadjustierten Inzidenzraten zwischen den Expositionsgruppen sehr ähnlich."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "Als Zwischenfazit der Vorarbeiten halten die Autoren fest, dass sich STOPP-Kriterien operationalisieren lassen und prädiktiven Einfluss auf Endpunkte in Routinedaten haben."}, {"stelle": "bericht_befund.45", "art": "aussage", "unser": "Die Autoren empfehlen, FORTA in der Versorgungspraxis nicht anzuwenden, weil mit PRISCUS und STOPP bessere Alternativen zur Verfügung stehen."}, {"stelle": "bericht_befund.46", "art": "aussage", "unser": "Für den klinischen Alltag empfehlen die Autoren PRISCUS, weil die Liste nur auf Wirkstoffinformationen (ATC) beruht und bei etwa gleicher Prädiktionskraft wie STOPP datensparsamer und mit geringerem Rechenaufwand umsetzbar ist."}, {"stelle": "bericht_befund.47", "art": "aussage", "unser": "Die Autoren halten die Integration einer PIM-Liste in Praxis- oder Krankenhaussoftware für vielversprechender als eine Patienten-App, weil bei einer App Überreaktionen von Patienten und Vorbehalte von Ärzten zu erwarten wären."}, {"stelle": "bericht_befund.48", "art": "aussage", "unser": "Eine Modifikation der Listen sehen die Autoren skeptisch. Sie plädieren dafür, die Listen als Anlass für eine Neubewertung der Medikation zu nutzen und auf die Kompetenz der behandelnden Ärzte zu setzen."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die berichteten Diff-in-Diff-Resultate beziehen sich ausschließlich auf das erste Quartal der Post-Phase."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Vor einem Einsatz im klinischen Alltag oder im Routinedaten-Monitoring sind nach Ansicht der Autoren weitere Tests in RCTs unverzichtbar."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Bei prävalenten PIMs sind die Effekte noch geringer als bei inzidenten, was eindeutige Schlussfolgerungen erschwert."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Verglichen wurden PIM-Exponierte mit Nicht-Exponierten. Ein Vergleich mit Personen, die eine sichere therapeutische Alternative erhalten, wäre laut Bericht realistischer."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Balancierung war nur für den durchschnittlichen Verlauf aller drei Listen möglich; die Kurven der einzelnen Listen weichen vom Verlauf der Kontrollgruppe ab."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Eine Balancierung nach der Schiefe war nicht durchführbar."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Medikamenteneinnahme im stationären Setting konnte nicht berücksichtigt werden, weil sie in den Routinedaten fehlt."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Ambulante Diagnosen wurden wegen fehlender genauer Datierung nicht genutzt. Die verwendeten stationären Diagnosen implizieren einen höheren Schweregrad, was bei der Interpretation zu berücksichtigen ist."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Daten stammen nur von einer Krankenkasse (AOK). Die Repräsentativität könnte wegen eines unterschiedlichen sozioökonomischen Status eingeschränkt sein; die Autoren halten dies wegen der großen Versichertenzahl für vernachlässigbar."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Kodierartefakte bei ICD und ATC in Routinedaten können Generalisierbarkeit und Übertragbarkeit einschränken oder zu falschen Schlüssen führen."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die START-STOPP-Kriterien sind in der Anwendung auf Routinedaten nicht immer eindeutig und präzise."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Auf Ebene einzelner Kriterien ergaben sich je nach Kriteriumsdefinition abweichende Effektschätzer, was in diesem Ausmaß nicht vorherzusehen war."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Unterversorgungsaspekte wurden nicht betrachtet; untersucht wurden nur Über- und Fehlversorgung."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Wegen der vielen Interaktionsterme sind die Regressionsmodelle laut Bericht auch für geübte Analytiker nur mühsam zu interpretieren."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Unstimmigkeiten in den Routinedaten des Testdatensatzes verzögerten die Vorbereitungsphase um ein Quartal und damit den Beginn der Aufbereitung des Gesamtdatensatzes."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Ein Routinedaten-Monitoring ist für PRISCUS und STOPP technisch prinzipiell machbar, setzt aber eine Optimierung der Syntax zur Verringerung des Rechenaufwands voraus."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Ein Feedback an behandelnde Ärzte bei potenziell inadäquater Medikation ist aus datenschutzrechtlichen Gründen derzeit nicht umsetzbar."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Je nachdem, wie Ärzte ihr Verschreibungsverhalten auf PIM-Informationen hin ändern, könnten sich die ermittelten Parameter in der Versorgungsrealität als zu hoch oder zu niedrig erweisen."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Ob weiterreichende Patienteninformationen Sensitivität und Spezifität erhöhen würden, lässt sich aus den Ergebnissen nicht ableiten."}]};
+const D = {"projekt_id": 12, "akronym": "PIM-STOP", "kennung": "dDosjc6y-gB9", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt verglich die Diskriminationsfähigkeit der PIM-Listen PRISCUS, STOPP und FORTA hinsichtlich unerwünschter Arzneimittelwirkungen sowie der Inanspruchnahme und der Kosten von Gesundheitsleistungen. PRISCUS und STOPP schnitten in nahezu allen Aspekten besser ab als FORTA. Die Diskriminationsfähigkeit aller drei Listen ist insgesamt jedoch als unzureichend einzustufen. Das Studiendesign war grundsätzlich angemessen. Die Validität ist aber durch die fehlende Randomisierung und die ausschließliche Nutzung von Routinedaten einer Krankenkassenart eingeschränkt. Eine Empfehlung zum routinemäßigen Einsatz einer der Listen kann daher nicht ausgesprochen werden. Weiterer Forschungsbedarf besteht, vorzugsweise unter Einbeziehung von Primärdaten."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Diskriminationsfähigkeit aller drei Listen ist insgesamt unzureichend"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Das Studiendesign war grundsätzlich angemessen, die Validität ist jedoch durch die fehlende Randomisierung und die ausschließliche Verwendung von Routinedaten einer Krankenkassenart eingeschränkt."}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "UAW Einweisung (stationäre Aufnahmediagnose), inzidente PIMs"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "UAW Entlassung (stationäre Entlassdiagnose), inzidente PIMs"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "UAW Einweisung/Entlassung (kombiniert), inzidente PIMs"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Tod (Mortalität im 1. Quartal der Post-Phase), inzidente PIMs"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Komorbidität (Elixhauser stationär), inzidente PIMs"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "UAW Einweisung, prävalente PIMs"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "UAW Einweisung/Entlassung (kombiniert), prävalente PIMs"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Tod (Mortalität), prävalente PIMs"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Komorbidität (Elixhauser stationär), prävalente PIMs"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Gesamtkosten, inzidente PIMs (1. Quartal der Post-Phase)"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Stationäre Krankenhauskosten, inzidente PIMs"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Medikamentenkosten, inzidente PIMs"}, {"stelle": "endpunkt.13", "art": "endpunkt", "unser": "Stationäre Krankenhaustage, inzidente PIMs"}, {"stelle": "endpunkt.14", "art": "endpunkt", "unser": "Defined Daily Doses (DDD), inzidente PIMs"}, {"stelle": "endpunkt.15", "art": "endpunkt", "unser": "Diskriminationsfähigkeit für UAW (Einweisung/Entlassung), inzidente PIMs"}, {"stelle": "endpunkt.16", "art": "endpunkt", "unser": "Diskriminationsfähigkeit für Mortalität, inzidente PIMs"}, {"stelle": "endpunkt.17", "art": "endpunkt", "unser": "Gesamtkosten, prävalente PIMs"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben verglich anhand von AOK-Routinedaten 2013–2015 von Versicherten ab 65 Jahren, wie gut die PIM-Listen PRISCUS, STOPP und FORTA unerwünschte Arzneimittelwirkungen (UAW), Mortalität, Komorbidität, Leistungsinanspruchnahme und Kosten vorhersagen. Ausgewertet wurden 3.235.804 Versicherte mit inzidenten und 5.290.656 mit prävalenten PIMs. Methodisch kamen Difference-in-Differences-Regressionen nach Entropy Balancing gegen eine nicht exponierte Kontrollgruppe sowie AUC-Analysen zum Einsatz. Nach der Gesamtbewertung des Berichts diskriminiert STOPP am besten für UAW und Komorbidität und PRISCUS für Mortalität; bei den Gesamtkosten sind beide praktisch identisch, FORTA liegt am niedrigsten. Die Unterschiede zwischen PRISCUS und STOPP schätzt der Bericht als relativ gering mit leichten Vorteilen für STOPP ein. Die AUC-Werte liegen für alle Listen zwischen 0,49 und 0,62; der Bericht stuft die Diskriminationsfähigkeit als generell nicht akzeptabel ein. Die Ergebnisse beziehen sich auf das erste Quartal nach der Exposition und beruhen auf der dokumentierten Abgabe statt der tatsächlichen Einnahme. Verzerrungen durch unbeobachtete Heterogenität schließt der Bericht nicht aus; eine direkte Übertragung in die Praxis hält er ohne weitere Untersuchungen, vorzugsweise RCTs, nicht für möglich."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Gesamtbewertung: STOPP hat die größte Diskriminationsfähigkeit für UAW und Komorbidität, PRISCUS für Mortalität. Bei den Gesamtkosten sind PRISCUS und STOPP praktisch identisch, FORTA hat die geringste Diskriminationsfähigkeit. Die Unterschiede zwischen PRISCUS und STOPP schätzt der Bericht als relativ gering mit leichten Vorteilen für STOPP ein."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Inzidente PIMs, erstes Quartal der Post-Phase, UAW nach Einweisungsdiagnose: Die Wahrscheinlichkeit lag in der Exponiertengruppe gegenüber der Kontrollgruppe um 6 % (STOPP), 4 % (PRISCUS) bzw. 3 % (FORTA) höher (Diff-in-Diff)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Inzidente PIMs, Mortalität im ersten Quartal der Post-Phase: Die Wahrscheinlichkeit zu versterben lag in der Exponiertengruppe gegenüber der Kontrollgruppe um 3 % (PRISCUS), 2 % (STOPP) bzw. 0 % (FORTA) höher."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die AUC-Werte aller drei Listen stuft der Bericht für inzidente wie prävalente PIMs als generell nicht akzeptabel bzw. ungenügend ein."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die PIM-Kodierung und damit sämtliche Resultate beruhen auf der dokumentierten Medikamentenabgabe statt auf der tatsächlichen Einnahme. Dadurch könnten die Effekte überschätzt werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Entropy Balancing ist kein vollständiger Ersatz für eine Randomisierung. Nicht in Routinedaten enthaltene Confounder (z. B. gesundheitsbezogene Lebensqualität) können einen nicht überprüfbaren Bias verursachen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "S. 23: Die um jeweils 2 % erhöhte UAW-Wahrscheinlichkeit für PRISCUS und STOPP steht im Abschnitt zu prävalenten PIMs (Vergleich Tabelle 6), der Satz spricht aber von „inzidenten PIMs“. Für inzidente PIMs nennt S. 19 dagegen 6 % (STOPP), 4 % (PRISCUS) und 3 % (FORTA)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Mortalität: Kurzfassung (S. 2) und Gesamtbewertung (S. 27) schreiben PRISCUS die größte Diskriminationsfähigkeit für Mortalität zu. Bei prävalenten PIMs ist die AUC für Versterben jedoch bei STOPP am höchsten (0,62 vs. 0,58 PRISCUS, S. 23), während der Diff-in-Diff-Schätzer dort PRISCUS vorn sieht (2 % vs. 1 %)."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Übertragbarkeit: S. 28 nennt eine „hohe externe Validität und damit einhergehend eine hohe Übertragbarkeit“ als „gewährleistet“. S. 28 hält dagegen eine direkte Übertragung in die Praxis nicht ohne weitere Untersuchungen für möglich, S. 29 sieht Generalisierbarkeit und Übertragbarkeit durch Kodierartefakte womöglich eingeschränkt, S. 27 die Repräsentativität durch die Beschränkung auf die AOK."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für die Verwendung der Ergebnisse des Projekts PIM-STOP keine Handlungsempfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine Empfehlung zum routinemäßigen Einsatz einer der drei Listen in der Versorgungspraxis kann nicht ausgesprochen werden. Es besteht weiterer Forschungsbedarf zum Einsatz von PIM-Listen, vorzugsweise unter Einbeziehung von Primärdaten."}, {"stelle": "befund.0", "art": "befund", "unser": "Erkenntnisse darüber, wie die drei PIM-Listen unerwünschte Arzneimittelwirkungen, Inanspruchnahme und Kosten von Gesundheitsleistungen prädizieren"}, {"stelle": "befund.1", "art": "befund", "unser": "PRISCUS- und STOPP-Liste zeigten in nahezu allen Aspekten eine höhere Diskriminationsfähigkeit als die FORTA-Liste"}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Inzidente PIMs, AUC für UAW (Einweisung/Entlassung): 0,61 (STOPP), 0,57 (PRISCUS), 0,54 (FORTA), jeweils SE=0,001."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Inzidente PIMs, AUC für Mortalität: 0,58 (PRISCUS), 0,57 (STOPP), 0,49 (FORTA), jeweils SE=0,001."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Laut Bericht treten die Unterschiede zwischen Exponierten und Kontrollen bei inzidenten PIMs deutlicher hervor als bei prävalenten. Die am stärksten belastbaren Schlussfolgerungen lassen sich daher nach Ansicht der Autoren aus den inzidenten Analysen ziehen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Autoren betrachten die Ergebnisse trotz relativ hoher Verallgemeinerbarkeit unter Vorbehalt. Eine direkte Übertragung in die Versorgungspraxis halten sie ohne weitere Untersuchungen nicht für möglich."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Balancierung: S. 15 bezeichnet die Balancierung als „nahezu perfekt“ hinsichtlich Mittelwert und Varianz. Auf derselben Seite heißt es, sie sei nur für den durchschnittlichen Verlauf aller drei Listen möglich gewesen, die Einzelkurven wichen von der Kontrollgruppe ab und eine Balancierung nach der Schiefe sei nicht durchführbar gewesen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Inzidente PIMs, UAW nach kombinierter Einweisungs- und Entlassdiagnose: Diff-in-Diff-Wahrscheinlichkeiten von 7 % (STOPP), 5 % (PRISCUS) und 4 % (FORTA)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Inzidente PIMs, UAW nach Entlassungsdiagnose: Diff-in-Diff-Schätzer 0,04 (PRISCUS), 0,05 (STOPP) und 0,03 (FORTA); in der Tabelle ist der p-Wert jeweils mit 0,000 angegeben."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die drei UAW-Varianten (Einweisung, Entlassung, kombiniert) führten laut Bericht praktisch zum gleichen Resultat; die Autoren werten die Ergebnisse daher als robust."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Inzidente PIMs, Komorbidität (Elixhauser-Index): Diff-in-Diff 0,32 (STOPP), 0,30 (PRISCUS) und 0,22 Punkte (FORTA)."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die analysierten Stichproben aus AOK-Daten 2013–2015 von Versicherten ab 65 Jahren umfassten 3.235.804 Versicherte (inzidente PIMs) bzw. 5.290.656 Versicherte (prävalente PIMs)."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Nach der Balancierung umfasste die inzidente Analyse 690.543 Exponierte und 2.545.261 Kontrollen, die prävalente 2.745.350 Exponierte und 2.545.306 Kontrollen. Personen außerhalb des common support wurden ausgeschlossen (9.894 bzw. 36.307 Exponierte, 95.119 bzw. 95.094 Kontrollen)."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die Autoren bewerten die Balancierung beider Studiengruppen hinsichtlich Mittelwert und Varianz als nahezu perfekt."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Im ersten Quartal der Post-Phase (Q5) erhielten von den inzident Exponierten (N=690.543) 34,07 % eine PIM nach PRISCUS, 41,33 % nach STOPP und 46,41 % nach FORTA; von den prävalent Exponierten (N=2.745.350) 38,68 %, 48,22 % bzw. 48,40 %."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Prävalente PIMs: Die berechneten Koeffizienten für UAW, Mortalität und Komorbidität sind generell niedriger als bei inzidenten PIMs."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Für PRISCUS und STOPP weist der Bericht jeweils eine um 2 % erhöhte UAW-Wahrscheinlichkeit aus und hält beide für praktisch gleich gut zur UAW-Prädiktion geeignet. Der Wert steht im Abschnitt zu prävalenten PIMs, der Satz selbst spricht jedoch von inzidenten PIMs."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Prävalente PIMs: Bei FORTA liegt die UAW-Wahrscheinlichkeit für nur über Einweisungs- bzw. nur über Entlassdiagnosen kodierte UAW bei 1 %, bei kombinierten Diagnosen mit 2 % gleichauf mit den anderen Listen."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Prävalente PIMs, Mortalität: Diff-in-Diff 2 % (PRISCUS), 1 % (STOPP) und 0,00 (FORTA); in der Tabelle ist der p-Wert jeweils mit 0,000 angegeben."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Prävalente PIMs, Komorbidität (Elixhauser stationär): Diff-in-Diff 0,10 (PRISCUS), 0,11 (STOPP) und 0,09 (FORTA)."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Prävalente PIMs, AUC für Versterben: 0,62 (STOPP), 0,58 (PRISCUS), 0,51 (FORTA), jeweils SE=0,001."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Prävalente PIMs, AUC für UAW (Einweisung/Entlassung): 0,61 (STOPP), 0,56 (PRISCUS), 0,53 (FORTA), jeweils SE=0,001."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Auch bei prävalenten PIMs beschreibt der Bericht für Fragestellung 1 ein Kopf-an-Kopf-Rennen zwischen PRISCUS und STOPP."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Inzidente PIMs, Leistungsinanspruchnahme im ersten Quartal der Post-Phase (Diff-in-Diff): Rehatage 0,35 (PRISCUS), 0,32 (STOPP) und 0,24 (FORTA); Krankenhaustage 2,55 (PRISCUS), 2,57 (STOPP) und 1,73 (FORTA)."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Inzidente PIMs, Defined Daily Doses (Diff-in-Diff): 100,30 (STOPP), 95,65 (PRISCUS) und 92,65 Einheiten (FORTA)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Inzidente PIMs, Gesamtkosten im ersten Quartal der Post-Phase (Diff-in-Diff): 1398,12 € (PRISCUS), 1397,16 € (STOPP) und 1013,29 € (FORTA). Der Bericht wertet PRISCUS und STOPP hier als praktisch gleichwertig und FORTA als deutlich niedriger."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Inzidente PIMs (Diff-in-Diff): Medikamentenkosten 154,40 € (PRISCUS), 102,95 € (STOPP) und 66,79 € (FORTA); stationäre Krankenhauskosten 1160,63 € (STOPP), 1115,79 € (PRISCUS) und 825,19 € (FORTA)."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Inzidente PIMs (Diff-in-Diff): Ambulante Kosten 68,69 € (PRISCUS), 85,26 € (STOPP) und 83,51 € (FORTA); Rehakosten 56,60 €, 46,08 € bzw. 33,28 €. In der Tabelle ist der p-Wert jeweils mit 0,000 angegeben."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Inzidente PIMs, Heilmittelkosten: Nur hier hat FORTA mit einem Diff-in-Diff von 4,52 € den höchsten Wert der drei Listen; der absolute Betrag ist in diesem Bereich am niedrigsten."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Im zeitlichen Verlauf sinkt bei inzidenten PIMs die UAW-Wahrscheinlichkeit in den letzten drei Quartalen der Post-Phase für alle Listen wieder ab und nähert sich der Kontrollgruppe an."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Die Kosten steigen im ersten Post-Quartal für alle Listen an, am stärksten bei STOPP und PRISCUS. Im folgenden Quartal sinken sie wieder und nähern sich danach der Kontrollgruppe an."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Die Kurven der Exponierten steigen bereits vor dem Expositionsquartal an. Die Autoren führen dies vermutlich darauf zurück, dass einer PIM-Verschreibung in der Regel eine Verschlechterung des Gesundheitszustands vorausgeht."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Prävalente PIMs: Die UAW-Wahrscheinlichkeit steigt im ersten Quartal der Post-Phase an, ein Anstieg zeigt sich bereits in der Prä-Phase. Der Ausschlag ist weniger markant als bei inzidenten PIMs, in den letzten Quartalen sinkt die Wahrscheinlichkeit wieder."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Prävalente PIMs: Die Diff-in-Diff-Schätzer für Leistungsinanspruchnahme und Kosten liegen niedriger als bei inzidenten PIMs. Die DDD-Unterschiede erreichen ca. 50 % der Werte bei inzidenten PIMs."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Prävalente PIMs, DDD im ersten Quartal der Post-Phase: PRISCUS 58,10, FORTA 41,68 und STOPP 39,43 DDD. Anders als bei inzidenten PIMs liegt PRISCUS hier vorn."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Prävalente PIMs (Diff-in-Diff): Rehatage 0,12 (PRISCUS), 0,11 (STOPP) und 0,11 (FORTA); stationäre Krankenhaustage 0,87 (PRISCUS), 0,90 (STOPP) und 0,75 (FORTA)."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Prävalente PIMs, Gesamtkosten (Diff-in-Diff): 473 € (STOPP), 464 € (PRISCUS) und 414 € (FORTA). Der Bericht spricht von relevant kleineren Effekten als bei inzidenten PIMs."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Prävalente PIMs, stationäre Krankenhauskosten (Diff-in-Diff): 390 € (STOPP), 359 € (PRISCUS) und 330 € (FORTA)."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Prävalente PIMs: Den größten Diff-in-Diff bei Medikamentenkosten (55 €) und Rehakosten (16 €) hat PRISCUS."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Prävalente PIMs: FORTA hat den größten Diff-in-Diff bei ambulanten Kosten (40 €) und Heilmitteln (2,41 €)."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Prävalente PIMs: Die Wachstumskurven der Gesamtkosten verlaufen undifferenzierter als bei inzidenten PIMs."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Die aus der Literatur (Stausberg & Hasford) übernommenen UAW-Codes stimmten zu 73,6 % mit den empirisch ermittelten Codes überein; verwendet wurde die Vereinigungsmenge beider Sets."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "Proof-of-principle (Zufallsstichprobe aus WIdO-Daten 2010–2012): Ein sparsames, per BIC selektiertes Modell sagte potenziell UAW-bedingte Hospitalisierungen mit einem c-Index von 0,67 (95 %-KI 0,65–0,68) vorher. Größere und sparsamere Modelle erreichten eine ähnliche Vorhersagegüte."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Im Proof-of-principle waren STOPP-Kriterien für UAW prädiktiver als START-Kriterien."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Die Proof-of-principle-Stichprobe war im Mittel 76,05 Jahre alt (SD 7,17) und zu 66,7 % weiblich. Bei Hospitalisierungen jeglicher Ursache waren die unadjustierten Inzidenzraten zwischen den Expositionsgruppen sehr ähnlich."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "Als Zwischenfazit der Vorarbeiten halten die Autoren fest, dass sich STOPP-Kriterien operationalisieren lassen und prädiktiven Einfluss auf Endpunkte in Routinedaten haben."}, {"stelle": "bericht_befund.45", "art": "aussage", "unser": "Die Autoren empfehlen, FORTA in der Versorgungspraxis nicht anzuwenden, weil mit PRISCUS und STOPP bessere Alternativen zur Verfügung stehen."}, {"stelle": "bericht_befund.46", "art": "aussage", "unser": "Für den klinischen Alltag empfehlen die Autoren PRISCUS, weil die Liste nur auf Wirkstoffinformationen (ATC) beruht und bei etwa gleicher Prädiktionskraft wie STOPP datensparsamer und mit geringerem Rechenaufwand umsetzbar ist."}, {"stelle": "bericht_befund.47", "art": "aussage", "unser": "Die Autoren halten die Integration einer PIM-Liste in Praxis- oder Krankenhaussoftware für vielversprechender als eine Patienten-App, weil bei einer App Überreaktionen von Patienten und Vorbehalte von Ärzten zu erwarten wären."}, {"stelle": "bericht_befund.48", "art": "aussage", "unser": "Eine Modifikation der Listen sehen die Autoren skeptisch. Sie plädieren dafür, die Listen als Anlass für eine Neubewertung der Medikation zu nutzen und auf die Kompetenz der behandelnden Ärzte zu setzen."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die berichteten Diff-in-Diff-Resultate beziehen sich ausschließlich auf das erste Quartal der Post-Phase."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Vor einem Einsatz im klinischen Alltag oder im Routinedaten-Monitoring sind nach Ansicht der Autoren weitere Tests in RCTs unverzichtbar."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Bei prävalenten PIMs sind die Effekte noch geringer als bei inzidenten, was eindeutige Schlussfolgerungen erschwert."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Verglichen wurden PIM-Exponierte mit Nicht-Exponierten. Ein Vergleich mit Personen, die eine sichere therapeutische Alternative erhalten, wäre laut Bericht realistischer."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Balancierung war nur für den durchschnittlichen Verlauf aller drei Listen möglich; die Kurven der einzelnen Listen weichen vom Verlauf der Kontrollgruppe ab."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Eine Balancierung nach der Schiefe war nicht durchführbar."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Medikamenteneinnahme im stationären Setting konnte nicht berücksichtigt werden, weil sie in den Routinedaten fehlt."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Ambulante Diagnosen wurden wegen fehlender genauer Datierung nicht genutzt. Die verwendeten stationären Diagnosen implizieren einen höheren Schweregrad, was bei der Interpretation zu berücksichtigen ist."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Daten stammen nur von einer Krankenkasse (AOK). Die Repräsentativität könnte wegen eines unterschiedlichen sozioökonomischen Status eingeschränkt sein; die Autoren halten dies wegen der großen Versichertenzahl für vernachlässigbar."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Kodierartefakte bei ICD und ATC in Routinedaten können Generalisierbarkeit und Übertragbarkeit einschränken oder zu falschen Schlüssen führen."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die START-STOPP-Kriterien sind in der Anwendung auf Routinedaten nicht immer eindeutig und präzise."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Auf Ebene einzelner Kriterien ergaben sich je nach Kriteriumsdefinition abweichende Effektschätzer, was in diesem Ausmaß nicht vorherzusehen war."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Unterversorgungsaspekte wurden nicht betrachtet; untersucht wurden nur Über- und Fehlversorgung."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Wegen der vielen Interaktionsterme sind die Regressionsmodelle laut Bericht auch für geübte Analytiker nur mühsam zu interpretieren."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Unstimmigkeiten in den Routinedaten des Testdatensatzes verzögerten die Vorbereitungsphase um ein Quartal und damit den Beginn der Aufbereitung des Gesamtdatensatzes."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Ein Routinedaten-Monitoring ist für PRISCUS und STOPP technisch prinzipiell machbar, setzt aber eine Optimierung der Syntax zur Verringerung des Rechenaufwands voraus."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Ein Feedback an behandelnde Ärzte bei potenziell inadäquater Medikation ist aus datenschutzrechtlichen Gründen derzeit nicht umsetzbar."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Je nachdem, wie Ärzte ihr Verschreibungsverhalten auf PIM-Informationen hin ändern, könnten sich die ermittelten Parameter in der Versorgungsrealität als zu hoch oder zu niedrig erweisen."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Ob weiterreichende Patienteninformationen Sensitivität und Spezifität erhöhen würden, lässt sich aus den Ergebnissen nicht ableiten."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

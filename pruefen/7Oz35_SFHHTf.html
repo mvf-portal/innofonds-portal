@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF19043</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>28 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 116 Aussagen. Die übrigen
+88 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss leitet die Erkenntnisse des Projekts zur Information an die Verbände der Kranken- und Pflegekassen auf Bundesebene (mit der Bitte um Weiterleitung an die Landesverbände), an die Kassenärztlichen Vereinigungen, die Landesärztekammern und den Deutschen Hausärzteverband weiter. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt hat ein Case Management für venös bedingte chronische Wunden in der Hausarztpraxis entwickelt, implementiert und evaluiert. Der primäre Endpunkt ist die Dauer bis zur vollständigen Wundheilung. Diese war in der Interventionsgruppe im Durchschnitt kürzer, der Unterschied war jedoch nicht statistisch signifikant. Einzelne sekundäre Endpunkte verbesserten sich signifikant, andere zeigten keine Wirkung. Die Kostendifferenz war groß, aber nicht signifikant. Der Ausschuss hält die Methoden für prinzipiell geeignet. Wegen der geringen Zahl eingeschlossener Patientinnen und Patienten (58 statt 126 geplant) sieht er die Aussagekraft jedoch als eingeschränkt an. Da wichtige Erkenntnisse und ein Versorgungskonzept vorliegen, werden die Ergebnisse zur Prüfung weitergeleitet.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,11 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">randomisiert kontrolliert (RCT)</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -159,14 +157,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Fallzahl nicht erreicht</h3>
-  <p class="unser">Geplante Fallzahl in der RCT deutlich unterschritten (58 statt 126)</p>
+  <h3>Hindernis laut Beschluss: Fallzahl bei der Rekrutierung</h3>
+  <p class="unser">Geplante Fallzahl in der RCT unterschritten (58 statt 126)</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung enthielt eine Wertung, die im Beschluss nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Geplante Fallzahl in der RCT deutlich unterschritten (58 statt 126)“</i></p>
   <blockquote>„Insgesamt konnten 58 (von geplanten 126) Patientinnen und Patienten in die randomisierte kontrollierte Studie (Phase 3) eingeschlossen und von 53 Personen Followup-Daten erhoben werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -178,14 +178,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
-  <p class="unser">Kein statistisch signifikanter Unterschied beim primären Endpunkt (Dauer bis zur Wundheilung)</p>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
+  <p class="unser">Dauer bis zur Wundheilung (primärer Endpunkt) in der IG im Durchschnitt kürzer als in der KG, der Unterschied jedoch nicht statistisch signifikant</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung gab nur eine Hälfte des Beschlusssatzes wieder; die Neufassung nennt beide. Vorher stand hier:
+    <i>„Kein statistisch signifikanter Unterschied beim primären Endpunkt (Dauer bis zur Wundheilung)“</i></p>
   <blockquote>„Die Dauer bis zur vollständigen Wundheilung in Tagen (primärer Endpunkt) war in der IG im Durchschnitt kürzer als in der KG, wobei der Unterschied nicht statistisch signifikant war." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,14 +199,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.2">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
-  <p class="unser">Keine Wirkung auf weitere sekundäre Endpunkte (Ulcusgröße, Rezidive, Zufriedenheit, Wundinfektion u. a.)</p>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
+  <p class="unser">Keine Wirkung auf weitere sekundäre Endpunkte aufgezeigt (Ulcusgröße, Rezidive, Zufriedenheit, Wundinfektion u. a.)</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung enthielt eine Wertung, die im Beschluss nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Keine Wirkung auf weitere sekundäre Endpunkte (Ulcusgröße, Rezidive, Zufriedenheit, Wundinfektion u. a.)“</i></p>
   <blockquote>„Für weitere sekundäre Endpunkte (Größe der Ulcera, Anzahl Rezidive, Patientenzufriedenheit und -aufklärung, Auftreten von Wundinfektion und Gabe einer antibiotischen Therapie bei Wundinfektion) konnte keine Wirkung der Intervention aufgezeigt werden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -216,14 +220,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.3">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
-  <p class="unser">Kostendifferenz zwischen den Gruppen nicht statistisch signifikant</p>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
+  <p class="unser">Deutlich geringere durchschnittliche Gesamtbehandlungskosten in der IG (ca. 1.800 €) als in der KG (8.200 €), die Differenz jedoch nicht statistisch signifikant</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung gab nur eine Hälfte des Beschlusssatzes wieder; die Neufassung nennt beide. Vorher stand hier:
+    <i>„Kostendifferenz zwischen den Gruppen nicht statistisch signifikant“</i></p>
   <blockquote>„Bei der Auswertung der durchschnittlichen Gesamtbehandlungskosten für Patientinnen und Patienten mit venös bedingten chronischen Wunden zeigte sich eine starke Differenz zwischen IG (ca. 1.800 €) und KG (8.200 €), die jedoch nicht statistisch signifikant war." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -235,128 +241,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.4">
-  <h3>Hindernis laut Beschluss: Fallzahl zu klein für die Auswertung</h3>
+  <h3>Hindernis laut Beschluss: Fallzahl in der Auswertung</h3>
   <p class="unser">Eingeschränkte Aussagekraft der Effekt- und gesundheitsökonomischen Evaluation wegen geringer Patientenzahl</p>
+  
   <blockquote>„Insgesamt ist die Aussagekraft der Ergebnisse der Effekt- und der gesundheitsökonomischen Evaluation jedoch aufgrund der geringen Anzahl eingeschlossener Patientinnen und Patienten eingeschränkt." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Case Management für venöse chronische Wunden in der Hausarztpraxis entwickelt, implementiert und evaluiert</p>
-  <blockquote>„Das Projekt hat erfolgreich ein Case Management für venös bedingte chronische Wunden in der Hausarztpraxis entwickelt, implementiert und evaluiert." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Höhere Wahrscheinlichkeit einer Wundheilung in der Interventionsgruppe</p>
-  <blockquote>„Die Wahrscheinlichkeit für das Eintreten einer Wundheilung in der IG war 3,6 -mal höher als in der KG." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Signifikant bessere Ergebnisse bei einem Teil der sekundären Endpunkte (Depressivität, Lebensqualität, Gesundheitszustand, Termin-Adhärenz)</p>
-  <blockquote>„Für einen Teil der sekundären Endpunkte (Depressivität, gesundheitsbezogene Lebensqualität bezogen auf alltägliche Tätigkeiten und Schmerzen, Gesundheitszustand und Termin -Adhärenz), konnten in der IG zwölf Monate nach Patienteneinschluss bessere Ergebnisse mit statistischer Signifikanz erzielt werden." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Häufiger leitliniengerechte Kompressionstherapie in der Interventionsgruppe</p>
-  <blockquote>„Eine leitliniengerechte Kompressionstherapie wurde in der IG in 72 Prozent der Fälle umgesetzt, gegenüber 33 Prozent in der KG." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Akzeptanz der Interventionselemente bei Versorgenden und Patientinnen und Patienten</p>
-  <blockquote>„Die Prozessevaluation ließ auf eine Akzeptanz für die Interventionselemente seitens der Versorgenden sowie seitens der Patientinnen und Patienten schließen." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.5">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Wichtige Erkenntnisse zur Versorgungssituation und entwickeltes Versorgungskonzept als Anhaltspunkte zur Optimierung der Versorgung</p>
-  <blockquote>„Insgesamt hat das Projekt wichtige Erkenntnisse bezüglich der Versorgungssituation von Patientinnen und Patienten mit venös bedingten chronischen Wunden generiert und ein patientenorientiertes Versorgungskonzept mit einem software -gestütztes Fallmanagement-Konzept und einem eLearning entwickelt. Damit liegen wertvolle Anhaltspunkte zur Optimierung der Versorgung von Menschen mit diesen chronischen Wunden vor." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,12 +262,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Zeit bis zur vollständigen Wundheilung (&quot;time-to-heal&quot;) – Cox-Proportional-Hazards-Regression (Shared-Frailty-Modell), fotodokumentiert bestätigte Wundheilung</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +281,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Vollständige Wundheilung nach 12 Monaten (Hauptzielkriterium, Odds Ratio)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +300,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Wundheilung – Kaplan-Meier-Analyse der durch die Praxen berichteten Wundheilungen ohne übermittelte Fotodokumentation</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +319,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Anwendung/Verordnung einer leitliniengerechten Kompressionstherapie</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +338,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Depressivität zu T2 (12 Monate)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +357,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Lebensqualität“</h3>
   <p class="unser">Gesundheitsbezogene Lebensqualität – Index zu T2</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +376,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Lebensqualität“</h3>
   <p class="unser">Gesundheitszustand zu T2</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +395,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Zufriedenheit und Versorgungserfahrung“</h3>
   <p class="unser">Patientenzufriedenheit und -aufklärung zu T2</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -522,12 +414,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Anzahl der Rezidive</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -541,12 +433,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.10">
   <h3>Gemessen wurde – eingeordnet als „Komplikationen und Patientensicherheit“</h3>
   <p class="unser">Auftreten von Wundinfektionen</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.10" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -560,12 +452,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.11">
   <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Fallbezogene ambulante Behandlungskosten über 12 Monate (Gesamtkosten ohne stationäre Aufenthalte)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.11" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -580,11 +472,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben entwickelte für Hausarztpraxen ein Versorgungskonzept zum Ulcus cruris venosum (UCC). Es umfasst E-Learning-Kurse, SOPs, das Softwaremodul „Ulcus Cruris“ im CareCockpit und die Einbindung von MFA. Untersucht wurde es in einer Meta-Analyse, einer Befragungsstudie, einer nicht-randomisierten Pilotstudie, einer multizentrischen RCT, zwei Prozessevaluationen und einer Routinedatenanalyse von AOK-BW-Versicherten. Für den primären Endpunkt der RCT, die Zeit bis zur vollständigen Wundheilung, ergab sich eine HR von 2,71 (95%-KI 0,66–11,06; p=0,16). Die Odds Ratio für vollständige Wundheilung von 3,60 [0,97; 13,36] gibt der Bericht mit p&lt;0,05 an und nennt sie signifikant; das angegebene Intervall schließt die 1 ein. Leitliniengerechte Kompressionstherapie lag in der RCT bei 72 % gegenüber 33 % (p&lt;0,05). Die fallbezogenen ambulanten Kosten betrugen 1.457 € gegenüber 3.113 € bzw. 3.153 € (p&lt;0,05). Laut Routinedaten erhalten etwa 80 % der Betroffenen keine kausal orientierte Behandlung. Geplant waren in der RCT 126 Patient:innen in 42 Praxen; eingeschlossen wurden 59 (an anderer Stelle 58), 53 davon mit Follow-up. Der primäre Endpunkt wurde von der Wundheilungsrate auf die Wundheilungsdauer geändert. Die Detailergebnisse von RCT, Prozessevaluation II und Routinedatenanalyse sind bis 30.09.2025 gesperrt. Die Projektnehmer stufen die Intervention als hochwirksam ein und empfehlen eine Breitenimplementierung.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +490,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">RCT, primärer Endpunkt Zeit bis zur vollständigen Wundheilung: Das Shared-Frailty-Cox-Modell ergab eine HR von 2,71 (95%-KI 0,66–11,06; ICC 0,005; p=0,16). Analysiert wurde zu einem zweiseitigen Signifikanzniveau von 5 %.</p>
+  
   <blockquote>„„Das zugrunde gelegte statistische Modell ergab für das Eintreten einer Wundhe ilung eine HR von 2.71 (95% CI [0.66, 11.06]; ICC = 0.005; p = 0.16)).“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +509,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">RCT: Die Odds Ratio für vollständige Wundheilung betrug 3,60 [0,97; 13,36] zugunsten der Interventionsgruppe (p&lt;0,05). Der Bericht bezeichnet sie als „Hauptzielkriterium“ und nennt die Überlegenheit nach 12 Monaten signifikant (S. 55).</p>
+  
   <blockquote>„„Die Odds Ratio für das Hauptzielkriterium Wundheilung betrug 3.60 [0.97, 13.36] zugunsten der Interventionsgruppe (p&lt;0.05).“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,50 +528,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">RCT: Eine leitliniengerechte Kompressionstherapie wurde in der Interventionsgruppe in 72 % der Fälle verordnet, in der Kontrollgruppe in 33 % (p&lt;0,05).</p>
+  
   <blockquote>„„Eine leitliniengerechte Verordnung der Kompressionstherapie erfolgte in der Interventionsgruppe in 72% im Vergleich zu 33% der Fälle in der Kontrollgruppe (p&lt;0.05).“ – Bericht, S. 47" <span class="s">S. 47</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">RCT: Die durchschnittlichen fallbezogenen ambulanten Behandlungskosten betrugen 1.457 € in der Interventionsgruppe und 3.113 € in der Kontrollgruppe (p&lt;0,05). Auf S. 2 stehen für die Kontrollgruppe 3.153 ± 1.843 €.</p>
-  <blockquote>„„Die durchschnittlichen fallbezogenen ambulanten Behandlungskosten beliefen sich auf 1.457 € in der Interventionsgruppe gegenüber 3.113 € in der Kontrollgruppe (p&lt;0.05).“ – Bericht, S. 47" <span class="s">S. 47</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.4">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Routinedatenanalyse: Etwa 80 % der ambulant versorgten Patient:innen mit UCV erhalten weder eine konsequente Kompressionstherapie noch eine operative Behandlung.</p>
-  <blockquote>„„Die vorliegende Analyse zeigt, dass in der ambulanten Versorgung etwa 80% der Patient:innen mit UCV weder eine konsequente Kompressionstherapie noch eine operative Behandlung und somit keine kausal orientierte Behandlung erhalten.“ – Bericht, S. 56" <span class="s">S. 56</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +547,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">RCT: Geplant waren 126 Patient:innen (63 je Gruppe) in 42 Praxen (21 je Gruppe). Gemeldet wurden 59 Einschlüsse, für 53 liegen Follow-up-Daten vor; die Gruppen umfassten 38 und 15 Patient:innen.</p>
+  
   <blockquote>„„Somit ergab sich für die Studie eine zu rekrutierende Gesamtfallzahl von n=126 Patient:innen (n=63 je Gruppe) in n=42 Praxen (n=21 je Gruppe).“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +566,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">RCT: Der primäre Endpunkt wurde von der Wundheilungsrate auf die Wundheilungsdauer geändert. Eine gesonderte Analyse der Wundheilungsraten und der Remissionsdauer entfiel deshalb.</p>
+  
   <blockquote>„„Aufgrund der Änderung des primären Endpunktes zur Wundheilungsdauer anstelle der Wundheilungsraten wurde eine gesonderte Analyse der Wundheilungsraten und Dauer der Remission entbe hrlich.“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,31 +585,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Detailergebnisse der RCT, der Prozessevaluation Teil II und der Routinedatenanalyse sind wegen geplanter Publikation bis 30.09.2025 gesperrt und im Bericht nicht dargestellt.</p>
+  
   <blockquote>„„Aufgrund der vorgesehenen wissenschaftlichen Publikation sind die Detailergebnisse der multizentrischen randomisierten kontrollierten Studie (Anlage 3 1) bis 30.09.2025 zur Veröffentlichung gesperrt.“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">RCT: Insbesondere die sekundären Endpunkte wurden mit deutlich geringeren Fallzahlen ausgewertet als geplant. Die Maßnahmen zur Rekrutierungsförderung blieben hinter den Erwartungen zurück.</p>
-  <blockquote>„„Insbesondere die Auswertung der sekundären Endpunkte erfolgte daher mit deutlich geringeren Fallzahlen als in der Planungsphase vorgesehen.“ – Bericht, S. 55" <span class="s">S. 55</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -770,11 +605,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">RCT, Odds Ratio für vollständige Wundheilung: Angegeben sind 3,60 [0,97; 13,36] mit p&lt;0,05 (S. 2, 46), auf S. 55 als „signifikante Überlegenheit“ bezeichnet. Das angegebene Intervall schließt die 1 ein.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -789,11 +624,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">RCT, primärer Endpunkt: Der Methodenteil nennt die Zeit bis zur vollständigen Wundheilung als Hauptzielkriterium (S. 24/25; Ergebnis HR 2,71, p=0,16). S. 46 bezeichnet dagegen die Odds Ratio für Wundheilung als „Hauptzielkriterium“. Zudem soll eine gesonderte Analyse der Wundheilungsraten wegen der Endpunktänderung entbehrlich sein (S. 24, 46), während die Wirksamkeitsaussagen auf S. 2 und 55 auf genau dieser Odds Ratio beruhen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -808,11 +643,203 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">RCT, Fallzahl: S. 46 nennt 59 gemeldete Einschlüsse und 53 mit Follow-up, S. 55/56 nennt 58 eingeschlossene Studienteilnehmer:innen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>88 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss leitet die Erkenntnisse des Projekts zur Information an die Verbände der Kranken- und Pflegekassen auf Bundesebene (mit der Bitte um Weiterleitung an die Landesverbände), an die Kassenärztlichen Vereinigungen, die Landesärztekammern und den Deutschen Hausärzteverband weiter. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Case Management für venöse chronische Wunden in der Hausarztpraxis entwickelt, implementiert und evaluiert</p>
+  
+  <blockquote>„Das Projekt hat erfolgreich ein Case Management für venös bedingte chronische Wunden in der Hausarztpraxis entwickelt, implementiert und evaluiert." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Höhere Wahrscheinlichkeit einer Wundheilung in der Interventionsgruppe</p>
+  
+  <blockquote>„Die Wahrscheinlichkeit für das Eintreten einer Wundheilung in der IG war 3,6 -mal höher als in der KG." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Signifikant bessere Ergebnisse bei einem Teil der sekundären Endpunkte (Depressivität, Lebensqualität, Gesundheitszustand, Termin-Adhärenz)</p>
+  
+  <blockquote>„Für einen Teil der sekundären Endpunkte (Depressivität, gesundheitsbezogene Lebensqualität bezogen auf alltägliche Tätigkeiten und Schmerzen, Gesundheitszustand und Termin -Adhärenz), konnten in der IG zwölf Monate nach Patienteneinschluss bessere Ergebnisse mit statistischer Signifikanz erzielt werden." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Häufiger leitliniengerechte Kompressionstherapie in der Interventionsgruppe</p>
+  
+  <blockquote>„Eine leitliniengerechte Kompressionstherapie wurde in der IG in 72 Prozent der Fälle umgesetzt, gegenüber 33 Prozent in der KG." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.4">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Akzeptanz der Interventionselemente bei Versorgenden und Patientinnen und Patienten</p>
+  
+  <blockquote>„Die Prozessevaluation ließ auf eine Akzeptanz für die Interventionselemente seitens der Versorgenden sowie seitens der Patientinnen und Patienten schließen." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.5">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Wichtige Erkenntnisse zur Versorgungssituation und entwickeltes Versorgungskonzept als Anhaltspunkte zur Optimierung der Versorgung</p>
+  
+  <blockquote>„Insgesamt hat das Projekt wichtige Erkenntnisse bezüglich der Versorgungssituation von Patientinnen und Patienten mit venös bedingten chronischen Wunden generiert und ein patientenorientiertes Versorgungskonzept mit einem software -gestütztes Fallmanagement-Konzept und einem eLearning entwickelt. Damit liegen wertvolle Anhaltspunkte zur Optimierung der Versorgung von Menschen mit diesen chronischen Wunden vor." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.5" value="ok" checked hidden>
+    <input type="radio" name="ubefund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">RCT: Die durchschnittlichen fallbezogenen ambulanten Behandlungskosten betrugen 1.457 € in der Interventionsgruppe und 3.113 € in der Kontrollgruppe (p&lt;0,05). Auf S. 2 stehen für die Kontrollgruppe 3.153 ± 1.843 €.</p>
+  
+  <blockquote>„„Die durchschnittlichen fallbezogenen ambulanten Behandlungskosten beliefen sich auf 1.457 € in der Interventionsgruppe gegenüber 3.113 € in der Kontrollgruppe (p&lt;0.05).“ – Bericht, S. 47" <span class="s">S. 47</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.4">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Routinedatenanalyse: Etwa 80 % der ambulant versorgten Patient:innen mit UCV erhalten weder eine konsequente Kompressionstherapie noch eine operative Behandlung.</p>
+  
+  <blockquote>„„Die vorliegende Analyse zeigt, dass in der ambulanten Versorgung etwa 80% der Patient:innen mit UCV weder eine konsequente Kompressionstherapie noch eine operative Behandlung und somit keine kausal orientierte Behandlung erhalten.“ – Bericht, S. 56" <span class="s">S. 56</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">RCT: Insbesondere die sekundären Endpunkte wurden mit deutlich geringeren Fallzahlen ausgewertet als in der Planungsphase vorgesehen.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Zusammenfassung enthielt eine Wertung, die im Bericht nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„RCT: Insbesondere die sekundären Endpunkte wurden mit deutlich geringeren Fallzahlen ausgewertet als geplant. Die Maßnahmen zur Rekrutierungsförderung blieben hinter den Erwartungen zurück.“</i></p>
+  <blockquote>„„Insbesondere die Auswertung der sekundären Endpunkte erfolgte daher mit deutlich geringeren Fallzahlen als in der Planungsphase vorgesehen.“ – Bericht, S. 55" <span class="s">S. 55</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -827,11 +854,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">RCT, Kosten der Kontrollgruppe: S. 2 nennt 3.153 ± 1.843 €, S. 47 nennt 3.113 €.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -846,11 +873,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">RCT, Gesamtaussage: S. 58 spricht von einem positiven Effekt „in allen untersuchten Domänen“, S. 55 von Effekten auf die Lebensqualität. Die Tabelle auf S. 47 kennzeichnet den EQ-5D-5L-Index mit „nein“; Rezidive (p=0,925) und die HR des primären Endpunkts (p=0,16) sind nicht als Unterschied ausgewiesen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -865,11 +892,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Meta-Analyse, OR 1,91 [0,99; 3,67]: Laut S. 2 „belegte“ sie die Wirksamkeit von Schulungsmaßnahmen auf die Wundheilung. Laut S. 49 konnte der Effekt nicht auf dem üblichen Signifikanzniveau nachgewiesen werden.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -884,11 +911,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Meta-Analyse, Ulkusgröße: Das Konfidenzintervall steht auf S. 31 als „-11,91–2,53“, auf S. 49 als „[-11.91; -2.53]“.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -903,11 +930,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Pilotstudie, Anwendungsrate leitliniengerechter Kompression in der Interventionsgruppe: S. 2, 36 und 51 nennen 95 %, S. 53 nennt 90 %.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -922,11 +949,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Pilotstudie, Untergruppe mit Heilungsrate 73 % vs. 36 %: S. 37 beschreibt Ulzera mit einer Dauer von „mindestens 6 Monaten“, S. 51 Ulcera, die „≤ 6 Monate“ bestanden.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -941,11 +968,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Pilotstudie, Rezidivprophylaxe (9/10 vs. 1/7): Auf S. 36 werden beide Vergleichsgruppen als „Interventionsgruppe“ bezeichnet.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -960,11 +987,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Pilotstudie: Laut S. 21 wurden die p-Werte rein deskriptiv interpretiert. S. 37 bezeichnet den PACIC-Bereich Self-help and education dennoch als „signifikant höher“, und S. 2 leitet aus p=0,006 eine „Wirkung“ ab.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -979,11 +1006,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Routinedatenanalyse, operative Kausaltherapie: S. 48 nennt etwa 1 % Stammveneneingriffe, S. 57 etwa 2 % kausal orientierte operative Therapie.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -998,11 +1025,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Kostenersparnis pro Krankheitsfall: S. 2 nennt ca. 1.600 € bei konsequent durchgeführter Kompressionstherapie, S. 55 schreibt ca. 1.600 € der UCC-Intervention in der RCT zu. Die Routinedatenanalyse beziffert die Kostendifferenz bei konsequenter Kompression auf ca. 1.400 € (S. 48, 57).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1012,16 +1039,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>68 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">RCT: Die Praxen meldeten 59 Einschlüsse; für 53 Patient:innen liegen Follow-up-Daten vor. Vorzeitig beendet wurde die Teilnahme bei 4 Patient:innen der Interventions- und 2 der Kontrollgruppe.</p>
+  
   <blockquote>„„Insgesamt wurden 59 Patienteneinschlüsse durch die teilnehmenden Praxen gemeldet. Für 53 eingeschlossene Patient:innen wurden Follow -up-Daten erhoben. Bei 4 Patient:innen der Interventions- und 2 Patient:innen der Kontrollgruppe kam es zu einem vorzeitigen Ende“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1062,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">RCT: Ein Rezidiv hatten 4 von 38 Patient:innen der Interventionsgruppe und 1 von 15 der Kontrollgruppe (p=0,925).</p>
+  
   <blockquote>„„4 von 38 Patient:innen in der IG hatten ein Rezidiv, während in der KG bei 1 der 15 Patient:innen ein Rezidiv gemeldet wurde (p=0.925).“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1081,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">RCT, patientenberichtete Endpunkte zu T2 (Interventions- vs. Kontrollgruppe): Depressivität (PHQ-9) 5,3 vs. 9,9 und Gesundheitszustand (EQ-VAS) 67 vs. 48 sind in der Tabelle mit „ja“ gekennzeichnet. Der EQ-5D-5L-Index (0,78 vs. 0,62) ist mit „nein“ gekennzeichnet.</p>
+  
   <blockquote>„„Depressivität (PHQ-9) T2-Baseline 5.3 -0.84 9.9 3.1 ja ja QoL Index (EQ-5D-5L) T2-Baseline 0.78 -0.0044 0.62 -0.2 nein nein Gesundheitszustand (VAS EQ- 5D-5L) 67 48 ja“ – Bericht, S. 47" <span class="s">S. 47</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1100,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil II: Versorger:innen und Patient:innen akzeptierten die Interventionskomponenten in hohem Maß. Sie berichteten eine aktivere Patientenbeteiligung, eine gestärkte Rolle der MFA und einen Wandel hin zum regelhaften Einsatz der Kompressionstherapie.</p>
+  
   <blockquote>„„Die Ergebnisse der Prozessevaluation Teil II bestätigen die hohe Akzeptanz der Interventionskomponenten sowohl auf Versorger - als auch Patient:innenseite .“ – Bericht, S. 56" <span class="s">S. 56</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1119,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Meta-Analyse: Von neun in die quantitative Synthese einbezogenen RCTs untersuchten sechs Studien mit 343 Patient:innen die Wundheilungsrate.</p>
+  
   <blockquote>„„Von den neun Studien, die für die weitere quantitative Synthese berücksichtigt wurden, untersuchten sechs Studien mit insgesamt 343 Patient:innen die Wundheilungsrate“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1138,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Meta-Analyse: Für edukative Interventionen ergab sich nach 12 Wochen eine OR für die Wundheilung von 1,91 (95%-KI 0,99–3,67; random-effects). Laut Bericht ließ sich der Effekt wegen der wenigen Studien nicht auf dem üblichen Signifikanzniveau nachweisen.</p>
+  
   <blockquote>„„(OR: 1.91, 95%-KI: [ 0.99; 3.67]). Der Effekt konnte hier jedoch aufgrund der wenigen verfügbaren Studien nicht auf dem üblichen Signifikanzniveau nachgewiesen werden.“ – Bericht, S. 49" <span class="s">S. 49</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1157,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Meta-Analyse (3 Studien, 128 Patient:innen): Für die Ulkusgröße berichtet der Bericht eine signifikante mittlere Reduktion (MD −7,22 cm²; 95%-KI −11,91 bis −2,53).</p>
+  
   <blockquote>„„Jedoch konnte eine signifikante mittlere Reduktion der Ulkusgröße (MD: -7.22, 95%-KI: [-11.91; -2.53]) festgestellt werden.“ – Bericht, S. 49" <span class="s">S. 49</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1176,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Meta-Analyse: Einzelne RCTs beobachteten positive Auswirkungen edukativer Maßnahmen auf Schmerzen, Lebensqualität und funktionelle Mobilität. Eine quantitative Analyse war dafür nicht möglich.</p>
+  
   <blockquote>„„wurden in mehreren RCTs positive Auswirkungen von edukativen Maßnahmen auf Schmerzen [37] Lebensqualität [37] und funktionelle Mobilität [40] beobachtet, allerdings war für diese Zielkriterien keine quantitative Analyse möglich.“ – Bericht, S. 49" <span class="s">S. 49</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1195,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Meta-Analyse: Für die Leg-Club-Intervention, die soziale Interaktion und Edukation kombiniert, wird ein positiver Effekt auf die Wundheilung berichtet.</p>
+  
   <blockquote>„„In dieser Analyse wurde festgeste llt, dass die Leg-Club-Intervention, die soziale Interaktion und edukative Maßnahmen kombiniert, einen positiven Effekt auf die Wundheilung hat.“ – Bericht, S. 49" <span class="s">S. 49</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1214,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Befragungsstudie: Ausgewertet wurden 29 Interviews und Fragebögen von 10 Hausärzt:innen, 10 MFA und 9 Patient:innen.</p>
+  
   <blockquote>„„In die Analyse flossen daher insgesamt 29 Interviews und Fragebögen ein (Hausärzt:innen (n = 10), MFA (n = 10) und Patient:innen (n = 9)).“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1233,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Befragungsstudie: Bei Versorger:innen und Patient:innen zeigten sich ein Schulungsbedarf und die Akzeptanz der geplanten Interventionselemente.</p>
+  
   <blockquote>„„Die durchgeführte Befragungsstudie bestätigte einen Schulungsbedarf und die Akzeptanz für die geplanten Interventionselemente auf Seiten der Versorger:innen und Patient:innen.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1252,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Befragungsstudie: Alle drei Gruppen sahen in Schulungsmaßnahmen einen hohen Mehrwert für die Versorgungsqualität (Median 5 = sehr hohe Zustimmung).</p>
+  
   <blockquote>„„Alle drei Teilnehmergruppen sahen ein Potenzial für einen hohen Mehrwert in Bezug auf die Optimierung der Versorgungsqualität (MED 5 = sehr hohe Zustimmung).“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1271,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Befragungsstudie: Der Nutzung von SOPs stimmten die Befragten mit Median 4 zu. Dass SOPs die Versorgungsqualität verbessern könnten, erhielt Median 5.</p>
+  
   <blockquote>„„Hausärzt:innen, MFAs und Patient:innen äußerten eine hohe Zustimmung zur Nutzung von SOPs für die UCV-Versorgung an (MED 4 = hohe Zustimmung).“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1290,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Befragungsstudie: Hausärzt:innen berichteten mehrheitlich von Schwierigkeiten bei der Einhaltung der Kompressionstherapie.</p>
+  
   <blockquote>„„Hausärzt:innen berichteten mehrheitlich von Schwierigkeiten hinsichtlich der Einhaltung der Kompressionstherapie“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1309,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Befragungsstudie: Die Befragten sahen Wissensdefizite bei allen beteiligten Professionen. Nicht alle Versorger betrachteten die Kompressionstherapie als zentrales Behandlungselement.</p>
+  
   <blockquote>„„Sowohl Versorger:innen als auch Patient:innen in dieser Studie sahen Wissensdefizite bei allen beteiligte n Professionen. […] aber nicht alle Versorger betrachteten diese als ein zentrales Element der UCV -Behandlung.“ – Bericht, S. 50" <span class="s">S. 50</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1328,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Befragungsstudie: Den Fallmanagementansatz bewerteten die Teilnehmenden positiv. Ärzt:innen bewerteten eine stärkere Einbindung geschulter MFA positiv.</p>
+  
   <blockquote>„„Die Teilnehmer:innen dieser Studie hatten eine positive Meinung über d en vorgeschlagenen Fallmanagementansatz“ – Bericht, S. 50" <span class="s">S. 50</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1347,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Befragungsstudie: Laut Teilnehmenden erfolgt die ambulante UCV-Versorgung überwiegend durch Hausarztpraxen.</p>
+  
   <blockquote>„„Die ambulante Versorgung von Patient:innen mit UCV erfolge hierbei überwiegend durch hausärztliche Praxen“ – Bericht, S. 50" <span class="s">S. 50</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1366,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Die Praxen rekrutierten zwischen 1. Dezember 2020 und 27. Oktober 2021 je 20 Patient:innen pro Studienarm.</p>
+  
   <blockquote>„„Die teilnehmenden Hausarztpraxen haben zwischen dem 1. Dezember 2020 und dem 27. Oktober 2021 UCV -Patient:innen rekrutiert, bis die geplante Stichprobengröße von 20 Patient:innen in beiden Studienarmen erreicht wurde.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1385,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Eine leitliniengerechte Kompressionstherapie erhielten 19/20 (95 %) der Interventions- und 11/19 (58 %) der Kontrollgruppe (p=0,006).</p>
+  
   <blockquote>„„Eine leitliniengerechte Kompressionstherapie wurde in der Interventionsgruppe häufiger angewendet (19/20 [95%] vs . 11/19 [58%]; p = 0.006).“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1404,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: In der Interventionsgruppe erhielten alle Patient:innen eine Kompressionstherapie. In der Kontrollgruppe erhielten 3 von 19 (16 %) keine Kompression (p=0,064).</p>
+  
   <blockquote>„„Alle Patient:innen in der Interventionsgruppe erhielten eine Kompressionstherapie; in der Kontrollgruppe erhielten 3 von 19 [16%] Patient:innen überhaupt keine Kompression [p = 0.064].“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1423,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Nach Abheilung erhielten 9 von 10 (90 %) gegenüber 1 von 7 (14 %) Patient:innen Kompressionsstrümpfe zur Rezidivprophylaxe (p=0,002). Im Text werden beide Gruppen als „Interventionsgruppe“ bezeichnet.</p>
+  
   <blockquote>„„In der Interventionsgruppe erhielten 9 von 10 Patient:innen [90%] nach Abheilung der Wunde medizinische Kompressionsstrümpfe zur Rezidivprophylaxe, verglichen mit 1 von 7 [14%] in der Interventionsgruppe [p = 0.002].“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1442,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: In der Untergruppe nach Ulkusdauer betrug die Heilungsrate nach 12 Wochen 8/11 (73 %) gegenüber 4/11 (36 %) (p=0,087). Die Untergruppe ist auf S. 37 als „mindestens 6 Monate“, auf S. 51 als „≤ 6 Monate“ beschrieben.</p>
+  
   <blockquote>„„betrug die Heilungsrate nach 12 Wochen 8 von 11 [73%] in der Interventionsgruppe im Vergleich zu 4 von 11 [3 6%] in der Kontrollgruppe (p = 0.087).“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1461,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Die Gesamtheilungsrate nach 12 Wochen betrug 10/20 (50 %) gegenüber 7/19 (37 %) (p=0,408).</p>
+  
   <blockquote>„„Die Gesamtheilungsrate nach 12 Wochen betrug 10 von 20 [50%] gegenüber 7 von 19 [37%] (p = 0.408).“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1480,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Die Wundgröße veränderte sich nach 12 Wochen um −6,3 ± 38,8 cm² in der Interventions- und um −0,2 ± 14,3 cm² in der Kontrollgruppe (p=0,722).</p>
+  
   <blockquote>„„Die Veränderung der Wundgröße nach 12 Wochen betrug -6,3 ± 38,8 cm² (Interventionsgruppe) und -0,2 ± 14,3 cm² (Kontrol lgruppe) (p = 0.722).“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1499,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Bei Schmerzen, Lebensqualität und depressiven Symptomen gab es nach 12 Wochen laut Bericht keine Unterschiede zwischen den Gruppen.</p>
+  
   <blockquote>„„Hinsichtlich Schmerzen, Lebensqualität und depressiven Symptomen gab es keine Unterschiede zwischen beiden Gruppen nach 12 Wochen (Tabelle 25).“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1518,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Bei der allgemeinen Patientenzufriedenheit (PACIC-5A) stellte der Bericht keinen Unterschied fest (67,3 ± 24,5 vs. 68,1 ± 18,5; p=0,872).</p>
+  
   <blockquote>„„Es wurde kein Unterschied hinsichtlich der allgemeinen Patientenzufriedenheit mittels PACIC-5A festgestellt (67,3 ± 24, 5 Interventionsgruppe gegenüber 68,1 ± 18,5 Kontrollgruppe; p = 0.872).“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1537,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Im PACIC-5A-Bereich Self-help and education gab die Interventionsgruppe laut Bericht signifikant höhere Zustimmungswerte an (42,9 ± 41,6 vs. 11,4 ± 28,8; p=0,044).</p>
+  
   <blockquote>„„Die Patient:innen der Interventionsgruppe gaben signifikant höhere Zustimmungswerte für den Bereich“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1556,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Als therapieadhärent galten in beiden Gruppen 18/20 Patient:innen (90 %; p=1).</p>
+  
   <blockquote>„„Die Rate der Patient:innen, die als therapieadhärent betrachtet wurden, unterschied sich nicht zwischen den Gruppen (18/20 [90%] Interventionsgruppe gegenüber 18/20 Kontrollgruppe [90%]; p = 1).“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1575,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Die Gesamtkosten betrugen 1.380 ± 1.347 € in der Interventions- und 2.049 ± 2.784 € in der Kontrollgruppe (p=0,342).</p>
+  
   <blockquote>„„Gesamtkosten 1.380 ± 1.347 € 2.049 ± 2.784 € 0.342“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1594,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Die ICER betrug −669 € für die gesundheitsbezogene Lebensqualität und −669 € mit 13 % Abweichung für die Wundheilungsrate.</p>
+  
   <blockquote>„„Der entsprechende ICER betrug -669 € für die gesundheitsbezogene Lebensqualität und -669 € mit einer Abweichung von 13% für die Rate der Wundheilung.“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1613,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Die im Mittel um 669 € niedrigeren Kosten über 3 Monate gehen laut Bericht hauptsächlich auf geringere Ausgaben für lokaltherapeutische Maßnahmen, vor allem Verbandsmaterialien, zurück.</p>
+  
   <blockquote>„„Die im Mittel niedrigeren Kosten in der Interventionsgruppe sind hauptsächlich auf geringere Ausgaben für lokaltherapeutische Maßnahmen und insbesondere Verbandsmaterialien zurückzuführen.“ – Bericht, S. 52" <span class="s">S. 52</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1632,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.36">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil I: Befragt wurden 26 Teilnehmende (7 Hausärzt:innen, 6 MFA, 8 Patient:innen, 5 Stakeholder), 25 Fragebögen wurden ausgefüllt. Die Rücklaufquoten betrugen 75 % und 71 %.</p>
+  
   <blockquote>„„Zwischen Juli und Dezember 2021 wurden insgesamt 26 Teilnehmer (7 Hausärzt:innen, 6 MFAs,8 Patient:i nnen und 5 Stakeholder) befragt und 25 (7 Hausärzt:innen, 6 MFAs ,7 Patient:innen und 5 Stakeholder) Fragebögen ausgefüllt, was Rücklaufquoten von 75 % und 71 % entspricht.“ – Bericht, S. 38" <span class="s">S. 38</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1651,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil I: Die Zufriedenheit mit den Interventionen war laut Bericht hoch. Außer dem E-Learning für Patient:innen wurden die Interventionen mehrheitlich vollständig genutzt; die Interventionstreue lag im Mittel bei 72 %.</p>
+  
   <blockquote>„„Insgesamt war die Zufriedenheit der Teilnehmer:innen mit den Interventionen hoch. Abgesehen vom E -Learning für Patient:innen wurden die Interventionen mehrheitlich vollständig genutzt, womit die Interventionstreue im Mittel bei 72% lag“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1670,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil I: Die Zufriedenheit der Patient:innen mit der Versorgung lag vor der Studie bei 3,2 ± 1,6 und danach bei 5 ± 0. Eine Verbesserung der Versorgung bewerteten sie mit 4,8 ± 0,4.</p>
+  
   <blockquote>„„Die Patient:innen empfanden eine Verbesserung der Versorgung seit ihrer Teilnahme an der Pilotstudie (4.8 ± 0.4). Ihre Zufriedenheit mit der Versorgung betrug 3.2 ± 1.6 vor der Studie und 5 ± 0 nach der Studienteilnahme.“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1689,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil I: Die Zufriedenheit mit den SOPs betrug bei Hausärzt:innen 4,6 ± 0,5 und bei MFA 4,7 ± 0,8.</p>
+  
   <blockquote>„„Die Zufriedenheit mit den SOPs war bei Hausärzt:innen (4.6 ± 0.5) und MFAs (4.7 ± 0.8) sehr hoch.“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1708,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.40">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil I: Nach der Intervention sahen Hausärzt:innen (5 ± 0) sowie MFA und Patient:innen (4,83 ± 0,41) die Kompressionstherapie als wesentliches Behandlungselement. Hausärzt:innen (4 ± 1,3) und MFA (3,5 ± 1,6) fühlten sich besser informiert.</p>
+  
   <blockquote>„„dass die Kompressionstherapie sowohl von den Hausärzt:innen (5 ± 0) als auch von den MFAs und den Patient:innen (4.83 ± 0.41) als wesentliches Behandlungselement zur Erzielung der Wundheilung bei UCV angesehen wurde.“ – Bericht, S. 42" <span class="s">S. 42</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.40" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.40" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.40" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.40" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1727,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.41">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil I: Bei der Patientenaufklärung fühlten sich Hausärzt:innen (4,7 ± 0,5) und MFA (4,5 ± 0,5) besser unterstützt.</p>
+  
   <blockquote>„„Hinsichtlich Patientenaufklärung berichteten sowohl Hausärzt:innen (4.7 ± 0.5) als auch MFAs (4.5 ± 0.5), sich besser bei der Patientenaufklärung unterstützt zu fühlen.“ – Bericht, S. 42" <span class="s">S. 42</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.41" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.41" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.41" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.41" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1746,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.42">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil I: Praxisteams und Patient:innen nahmen eine gestärkte Rolle der MFA als Case Manager wahr, mit stärkerer Beteiligung an Wundbehandlung und Patientenaufklärung.</p>
+  
   <blockquote>„„Eine Stärkung der zentralen Rolle der MFAs als case manager und eine verstärkte Beteiligung an der Wundbehandlung und Patientenaufklärung wurden von den Praxisteams und den Patient:innen gleichermaßen wahrgenommen.“ – Bericht, S. 53" <span class="s">S. 53</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.42" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.42" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.42" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.42" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1765,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.43">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil I: Laut Bericht legen die Ergebnisse nahe, dass die meisten Patient:innen an Wissen und Gesundheitskompetenz gewonnen haben.</p>
+  
   <blockquote>„„Die Ergebnisse dieser Prozessevaluation legen nahe, dass die meisten Patient:innen nach dem Kontakt mit den Interventionen einen Zuwachs an Wissen und Gesundheitskompetenz erfahren haben“ – Bericht, S. 54" <span class="s">S. 54</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.43" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.43" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.43" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.43" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1784,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.44">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Routinedatenanalyse: Die Ausgangspopulation umfasste 40.046 AOK-BW-Versicherte, die 2015–2019 mindestens einmal ambulant eine UCV-Diagnose hatten. Darunter waren 8.092 inzidente Fälle.</p>
+  
   <blockquote>„„In der Ausgangspopulation für die Analysen waren 40.046 Versicherte der AOK BW, die in den Jahren 2015 bis 2019 mindestens einmal im ambulanten Bereich die Diagnose eines UCV hatten. Es konnten 8.092 inzidente Erkrankungsfälle in den Daten identifiziert werden.“ – Bericht, S. 48" <span class="s">S. 48</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.44" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.44" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.44" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.44" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1803,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.45">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Routinedatenanalyse: Weniger als die Hälfte der Versicherten erhielt innerhalb von 90 Tagen nach Erkrankung ein Kompressionsmittel. Eine konsequente, frühzeitige Kompressionstherapie erhielten 14 %, einen Stammveneneingriff etwa 1 %.</p>
+  
   <blockquote>„„Weniger als die Hälfte der Versicherten erhielt innerhalb der ersten 9 0 Tage nach Erkrankung ein Kompressionsmittel. Eine konsequente, regelmäßige und frühzeitige Kompressionstherapie erhielten lediglich 14% der Versicherten.“ – Bericht, S. 48" <span class="s">S. 48</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.45" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.45" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.45" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.45" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1795,12 +1822,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.46">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Routinedatenanalyse: Versicherte mit regelmäßig verordneter Kompressionstherapie heilten im Vergleich zum restlichen Kollektiv etwa 66 Tage schneller. Ihre Gesamtkosten in der Erkrankungsdauer lagen etwa 1.400 € niedriger; der Bericht spricht hier von einer Assoziation.</p>
+  
   <blockquote>„„Für Patient:innen mit regelmäßig verordneter Kompressionstherapie konnte eine schnellere Wundheilung von ca. 66 Tagen gezeigt werden. Die Gesamtkosten innerhalb der Erkrankungsdauer waren für die Versicherten mit konsequenter, regelmäßiger Kompressionstherapie ca. 1400 € geringer“ – Bericht, S. 48" <span class="s">S. 48</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.46" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.46" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.46" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.46" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1814,12 +1841,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.47">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Hochrechnung: Bei flächendeckender Implementierung in Deutschland wäre unter Berücksichtigung der Inzidenz rechnerisch eine jährliche Kostenersparnis von etwa 235 Mio. € möglich.</p>
+  
   <blockquote>„„Unter Berücksichtigung der Inzidenz des UCV wäre bei flächendeckender Implementierung in Deutschland rechnerisch eine jährliche Kostenersparnis von ca. 235 Millionen € möglich.“ – Bericht, S. 58" <span class="s">S. 58</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.47" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.47" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.47" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.47" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1833,12 +1860,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.48">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die E-Learning-Kurse und das Softwaremodul „Ulcus Cruris“ für das CareCockpit wurden im September 2020 fristgerecht fertiggestellt. Phase I verlief gemäß Zeitplan.</p>
+  
   <blockquote>„„konnten die Interventionsinstrumente im September 2020 fristgerecht fertiggestellt werden.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.48" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.48" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.48" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.48" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1852,12 +1879,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">RCT: Die Rekrutierung lag laut Bericht deutlich hinter der Fallzahlplanung. Als Gründe werden die Covid-19-Pandemie Anfang 2022, eine Infektionswelle im Frühherbst 2022 und eine im Vergleich zur Literatur geringere reale Prävalenz einschlussfähiger Patient:innen genannt.</p>
+  
   <blockquote>„„Die Rekrutierungsdynamik lag deutlich hinter den angestrebten Zielen gemäß statistischer Fallzahlplanung. […] Ein weiterer Grund war eine im Vergleich zur Literatur geringere reale Prävalenz einschlussfähiger Patient:innen“ – Bericht, S. 55" <span class="s">S. 55</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1871,12 +1898,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Als maßgeblich für das Verfehlen der Rekrutierungsziele in der RCT sehen die Projektbeteiligten die unzureichende Bereitschaft der Praxen, an Forschung mit Dokumentationsaufwand mitzuwirken.</p>
+  
   <blockquote>„„erscheint eine unzureichende Bereitschaft z ur Mitwirkung an Forschungsprojekten mit einem Dokumentationsaufwand nachvollziehbar und war aus Sicht der Projektbeteiligten maßgeblich für die Nichterreichung der Patientenrekrutierungsziele in der RCT.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1890,12 +1917,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">RCT: Per Amendment wurden die Einschlusskriterien gelockert; zugelassen waren nun Patient:innen mit bis zu 12 Monate bestehendem UCV.</p>
+  
   <blockquote>„„eine Lockerung der Einschlusskriterien dahingehend vorgenommen, dass Patient:innen mit bis zu 12 Monate bestehendem UCV eingeschlos sen werden durften.“ – Bericht, S. 55" <span class="s">S. 55</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1909,12 +1936,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen pandemiebedingter Rekrutierungsverzögerungen in den Phasen II und III wurde eine kostenneutrale Laufzeitverlängerung um 12 Monate beantragt. Sie wurde am 21.01.2022 bewilligt.</p>
+  
   <blockquote>„„Es wurde daher eine kostenneutrale Laufzeitverlängerung um 12 Monate beantragt, die am 21.01.2022 bewilligt wurde .“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1928,12 +1955,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht erschwerte die COVID-19-Pandemie die Durchführung der begleitenden Studien und die Datenerhebung erheblich.</p>
+  
   <blockquote>„„Limitationen ergaben sich in erster Linie im Hinblick auf die Durchführung der begleitenden wissenschaftlichen Studien und der Datenerhebung, die im Zuge der COVID19 -Pandemie erheblich erschwert wurde.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1947,12 +1974,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Kosten der hausärztlichen Versorgung ließen sich nur über Pauschalen approximieren. Behandlungsart und Abrechnungshäufigkeit blieben dabei unberücksichtigt.</p>
+  
   <blockquote>„„Damit können die tatsächlich anfallenden Kosten nur approximiert werden, da die Art der Behandlung oder auch die Häufigk eit, mit der Pauschalen pro Quartal abgerechnet werden können, nicht berücksichtigt wird.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1966,12 +1993,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Fehlende Werte wurden aus der Analyse ausgeschlossen.</p>
+  
   <blockquote>„„Fehlende Werte wurden aus der Analyse ausgeschlossen.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1985,12 +2012,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Wegen der kleinen Stichprobe und des nicht-konfirmatorischen Designs lassen sich laut Bericht keine sicheren Schlüsse zu Wundheilung, Lebensqualität und Kosteneffektivität ziehen.</p>
+  
   <blockquote>„„Hier sind insbesondere die kleine Stichprobengröße und nicht -konfirmatorische Design zu nennen. Sichere Schlussfolgerungen zu den Effekten auf Wundheilung, Lebensqualität und Kosteneffektivität können daher nicht gezogen werden.“ – Bericht, S. 52" <span class="s">S. 52</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2004,12 +2031,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Wegen des explorativen Charakters wurden die p-Werte nur deskriptiv interpretiert.</p>
+  
   <blockquote>„„Im Rahmen der Datenanalyse erfolgte die Interpretation der p-Werte, aufgrund des explorativen Charakters der Studie (Pilotstudie), rein deskriptiv.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2023,12 +2050,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie, gesundheitsökonomische Analyse: Wegen der geringen Stichprobengröße wurden zufällige Unterschiede zwischen den Gruppen statistisch nicht kontrolliert.</p>
+  
   <blockquote>„„Aufgrund der geringen Stichprobe ngröße wurden zufällige Unterschiede zwischen der Kontroll- und der Interventionsgruppe statistisch nicht kontrolliert.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2042,12 +2069,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Pilotstudie: Die Lebensqualität (EQ-5D-5L) unterschied sich zu Baseline zwischen den Gruppen, Median 60,0 gegenüber 72,5 (p=0,043, in der Tabelle mit Stern markiert).</p>
+  
   <blockquote>„„Lebensqualität (EQ-5D-5L) Median (IQR) 60.0 (47.5 – 72.5) 72.5 (55.0 – 95.5) 67.5 (50.0 – 82.5) 0.043*“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2061,12 +2088,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Meta-Analyse: Als wesentliche Limitationen nennt der Bericht die geringe Zahl verfügbarer RCTs und die heterogenen Interventionen.</p>
+  
   <blockquote>„„Als Limitation der vorliegenden Meta -Analyse ist in erster Li nie auf die geringe Anzahl an verfügbaren RCTs sowie auf die Heterogenität der Interventionen der eingeschlossenen RCTs hinzuweisen.“ – Bericht, S. 49" <span class="s">S. 49</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2080,12 +2107,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Meta-Analyse: Biasbedenken ergeben sich aus kleinen Stichproben der eingeschlossenen Studien und fehlender Verblindung in einigen Studien.</p>
+  
   <blockquote>„„Ein Grund für Bedenken sind die kleinen Stichprobengrößen der eingeschlossenen Studien. Daneben war es in einigen Studien nicht möglich, die Patient:innen und die Personen, die die Intervention durchführten, zu verbl inden.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2099,12 +2126,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Meta-Analyse: Für PUSH, Schmerz, Lebensqualität und Funktionalität war wegen heterogener Ergebnismaße keine quantitative Bewertung möglich.</p>
+  
   <blockquote>„„Aufgrund heterogener Ergebnismaße war eine quantitative Bewertung nicht möglich.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2118,12 +2145,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Befragungsstudie: Eingesetzt wurde ein studienspezifischer, nicht validierter Fragebogen.</p>
+  
   <blockquote>„„Ein studienspezifischer, nicht -validierter Fragebogen wurde entwickelt“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2137,12 +2164,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Befragungsstudie: Die Interviewpartner stammten aus dem akademischen Umfeld der Forschungs- und Lehrpraxen der Universitätsklinik Heidelberg. Das kann laut Bericht zu sozial erwünschten Antworten und einer Überschätzung der Akzeptanz geführt haben.</p>
+  
   <blockquote>„„Bewertungen hinsichtlich der geplanten Interventionskomponenten könnten hierdurch beeinflusst und möglicherweise zu sozial erwünschten Antworten geführt haben, was zu einer Überschätzung der Akzeptanz führen könnte.“ – Bericht, S. 50" <span class="s">S. 50</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2156,12 +2183,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Befragungsstudie: Ein Patient:innen-Interview wurde wegen zurückgezogener Einwilligung ausgeschlossen.</p>
+  
   <blockquote>„„Ein Patient:innen-Interview und zugehöriger Fragebogen wurde aufgrund zurückgezogener Einwilligung aus der Analyse ausgeschlossen.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2175,12 +2202,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.21">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil I: Die angestrebte Stichprobengröße wurde nicht erreicht. Overconfidence Bias und soziale Erwünschtheit könnten die Ergebnisse beeinflusst haben, und die Fragebögen waren nicht validiert.</p>
+  
   <blockquote>„„Erstens konnte die angestrebte Stichprobengröße nicht erreicht werden, obschon ein hoher Grad an thematischer Sättigung erreicht wurde. Zweitens könnten overconfidence bias und soziale Erwünschtheit die Ergebnisse der Fragebögen und der Interviews beeinflusst haben .“ – Bericht, S. 54" <span class="s">S. 54</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2194,12 +2221,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.22">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil I: Eine Praxis wurde ausgeschlossen, weil sie keine Patient:innen eingeschlossen hatte. Von einer weiteren Praxis lag keine Zustimmung vor.</p>
+  
   <blockquote>„„Eine Praxis wurde von der Rekrutierung ausgeschlossen, da in dieser Praxis keine Patient:innen eingeschlossen wurden, und von einer Praxis konnte die Zustimmung zur Teilnahme nicht eingeholt werden.“ – Bericht, S. 38" <span class="s">S. 38</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2213,12 +2240,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.23">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Prozessevaluation Teil I: Für das E-Learning für Patient:innen weist die Tabelle zur Interventionstreue den Wert 1 (10) aus.</p>
+  
   <blockquote>„„E-Learning für Patient:innen • Zufriedenheit • Aufwand 1 (10) -“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2232,12 +2259,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.24">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Als meistgenannter Kontextfaktor gelten fehlende Ressourcen an Zeit, Personal und Geld, verschärft durch die Covid-19-Pandemie. Die Kostenerstattung für die zeitaufwändige UCV-Versorgung empfanden die Befragten als unbefriedigend.</p>
+  
   <blockquote>„„Der meistgenannte Kontextfaktor waren die Ressourcen. Dazu gehören Zeit, eine besonders kritische Ressource angesichts der zum Zeitpunkt der Erhebungen akuten Covid -19-Pandemie, Personal und Geld.“ – Bericht, S. 45" <span class="s">S. 45</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2251,12 +2278,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.25">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Einige Befragte bezweifelten, dass sich das E-Learning-Format eignet, um die korrekte Anlage von Kompressionsverbänden zu vermitteln. Dafür hielten sie einen Workshop für geeigneter.</p>
+  
   <blockquote>„„Einige Befrag te stellten die Effektivität eines E-Learning-Formats für die Vermittlung der Fertigkeit der korrekten Anlage eines Kompressionsverbands infrage, wofür sich ihrer Einschätzung nach ein Workshop besser eignen würde.“ – Bericht, S. 45" <span class="s">S. 45</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2270,12 +2297,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.26">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Als mögliche Barrieren der Therapietreue wurden genannt: mangelndes Wissen, Schmerzen und Unannehmlichkeiten, sozio-psychologische Probleme wie Ästhetik und Geduld sowie häufige Praxisbesuche und lange Behandlungsdauer.</p>
+  
   <blockquote>„„Diese umfassen neben mangelndem Wissen hinsichtlich ihrer Wirksamkeit auch patientenindividuelle (wie Schmerzen und Unannehmlichkeiten) oder sozio -psychologische (Ästhetik, Geduld etc.) Probleme mit der Kompressionstherapie“ – Bericht, S. 53" <span class="s">S. 53</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2289,12 +2316,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.27">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Insellösungen und Anwendungen mit aufwendiger Dokumentation nehmen Versorger:innen laut Befragungsstudie und Prozessevaluationen nicht an.</p>
+  
   <blockquote>„„Hierbei ist allerdings zu beachten, dass Insellösungen oder Anwendungen mit einer aufwendigen Dokumentation von Versorger:innen nicht angenommen werden“ – Bericht, S. 60" <span class="s">S. 60</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2339,28 +2366,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 347, "akronym": "ULCUS CRURIS CARE", "kennung": "7Oz35_SFHHTf", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Erkenntnisse des Projekts zur Information an die Verbände der Kranken- und Pflegekassen auf Bundesebene (mit der Bitte um Weiterleitung an die Landesverbände), an die Kassenärztlichen Vereinigungen, die Landesärztekammern und den Deutschen Hausärzteverband weiter. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat ein Case Management für venös bedingte chronische Wunden in der Hausarztpraxis entwickelt, implementiert und evaluiert. Der primäre Endpunkt ist die Dauer bis zur vollständigen Wundheilung. Diese war in der Interventionsgruppe im Durchschnitt kürzer, der Unterschied war jedoch nicht statistisch signifikant. Einzelne sekundäre Endpunkte verbesserten sich signifikant, andere zeigten keine Wirkung. Die Kostendifferenz war groß, aber nicht signifikant. Der Ausschuss hält die Methoden für prinzipiell geeignet. Wegen der geringen Zahl eingeschlossener Patientinnen und Patienten (58 statt 126 geplant) sieht er die Aussagekraft jedoch als eingeschränkt an. Da wichtige Erkenntnisse und ein Versorgungskonzept vorliegen, werden die Ergebnisse zur Prüfung weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "randomisiert kontrolliert (RCT)"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Geplante Fallzahl in der RCT deutlich unterschritten (58 statt 126)"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Kein statistisch signifikanter Unterschied beim primären Endpunkt (Dauer bis zur Wundheilung)"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Keine Wirkung auf weitere sekundäre Endpunkte (Ulcusgröße, Rezidive, Zufriedenheit, Wundinfektion u. a.)"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Kostendifferenz zwischen den Gruppen nicht statistisch signifikant"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Eingeschränkte Aussagekraft der Effekt- und gesundheitsökonomischen Evaluation wegen geringer Patientenzahl"}, {"stelle": "befund.0", "art": "befund", "unser": "Case Management für venöse chronische Wunden in der Hausarztpraxis entwickelt, implementiert und evaluiert"}, {"stelle": "befund.1", "art": "befund", "unser": "Höhere Wahrscheinlichkeit einer Wundheilung in der Interventionsgruppe"}, {"stelle": "befund.2", "art": "befund", "unser": "Signifikant bessere Ergebnisse bei einem Teil der sekundären Endpunkte (Depressivität, Lebensqualität, Gesundheitszustand, Termin-Adhärenz)"}, {"stelle": "befund.3", "art": "befund", "unser": "Häufiger leitliniengerechte Kompressionstherapie in der Interventionsgruppe"}, {"stelle": "befund.4", "art": "befund", "unser": "Akzeptanz der Interventionselemente bei Versorgenden und Patientinnen und Patienten"}, {"stelle": "befund.5", "art": "befund", "unser": "Wichtige Erkenntnisse zur Versorgungssituation und entwickeltes Versorgungskonzept als Anhaltspunkte zur Optimierung der Versorgung"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Zeit bis zur vollständigen Wundheilung (\"time-to-heal\") – Cox-Proportional-Hazards-Regression (Shared-Frailty-Modell), fotodokumentiert bestätigte Wundheilung"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Vollständige Wundheilung nach 12 Monaten (Hauptzielkriterium, Odds Ratio)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Wundheilung – Kaplan-Meier-Analyse der durch die Praxen berichteten Wundheilungen ohne übermittelte Fotodokumentation"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Anwendung/Verordnung einer leitliniengerechten Kompressionstherapie"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Depressivität zu T2 (12 Monate)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität – Index zu T2"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Gesundheitszustand zu T2"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Patientenzufriedenheit und -aufklärung zu T2"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Anzahl der Rezidive"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Auftreten von Wundinfektionen"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Fallbezogene ambulante Behandlungskosten über 12 Monate (Gesamtkosten ohne stationäre Aufenthalte)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben entwickelte für Hausarztpraxen ein Versorgungskonzept zum Ulcus cruris venosum (UCC). Es umfasst E-Learning-Kurse, SOPs, das Softwaremodul „Ulcus Cruris“ im CareCockpit und die Einbindung von MFA. Untersucht wurde es in einer Meta-Analyse, einer Befragungsstudie, einer nicht-randomisierten Pilotstudie, einer multizentrischen RCT, zwei Prozessevaluationen und einer Routinedatenanalyse von AOK-BW-Versicherten. Für den primären Endpunkt der RCT, die Zeit bis zur vollständigen Wundheilung, ergab sich eine HR von 2,71 (95%-KI 0,66–11,06; p=0,16). Die Odds Ratio für vollständige Wundheilung von 3,60 [0,97; 13,36] gibt der Bericht mit p<0,05 an und nennt sie signifikant; das angegebene Intervall schließt die 1 ein. Leitliniengerechte Kompressionstherapie lag in der RCT bei 72 % gegenüber 33 % (p<0,05). Die fallbezogenen ambulanten Kosten betrugen 1.457 € gegenüber 3.113 € bzw. 3.153 € (p<0,05). Laut Routinedaten erhalten etwa 80 % der Betroffenen keine kausal orientierte Behandlung. Geplant waren in der RCT 126 Patient:innen in 42 Praxen; eingeschlossen wurden 59 (an anderer Stelle 58), 53 davon mit Follow-up. Der primäre Endpunkt wurde von der Wundheilungsrate auf die Wundheilungsdauer geändert. Die Detailergebnisse von RCT, Prozessevaluation II und Routinedatenanalyse sind bis 30.09.2025 gesperrt. Die Projektnehmer stufen die Intervention als hochwirksam ein und empfehlen eine Breitenimplementierung."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "RCT, primärer Endpunkt Zeit bis zur vollständigen Wundheilung: Das Shared-Frailty-Cox-Modell ergab eine HR von 2,71 (95%-KI 0,66–11,06; ICC 0,005; p=0,16). Analysiert wurde zu einem zweiseitigen Signifikanzniveau von 5 %."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "RCT: Die Odds Ratio für vollständige Wundheilung betrug 3,60 [0,97; 13,36] zugunsten der Interventionsgruppe (p<0,05). Der Bericht bezeichnet sie als „Hauptzielkriterium“ und nennt die Überlegenheit nach 12 Monaten signifikant (S. 55)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "RCT: Eine leitliniengerechte Kompressionstherapie wurde in der Interventionsgruppe in 72 % der Fälle verordnet, in der Kontrollgruppe in 33 % (p<0,05)."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "RCT: Die durchschnittlichen fallbezogenen ambulanten Behandlungskosten betrugen 1.457 € in der Interventionsgruppe und 3.113 € in der Kontrollgruppe (p<0,05). Auf S. 2 stehen für die Kontrollgruppe 3.153 ± 1.843 €."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Routinedatenanalyse: Etwa 80 % der ambulant versorgten Patient:innen mit UCV erhalten weder eine konsequente Kompressionstherapie noch eine operative Behandlung."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "RCT: Geplant waren 126 Patient:innen (63 je Gruppe) in 42 Praxen (21 je Gruppe). Gemeldet wurden 59 Einschlüsse, für 53 liegen Follow-up-Daten vor; die Gruppen umfassten 38 und 15 Patient:innen."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "RCT: Der primäre Endpunkt wurde von der Wundheilungsrate auf die Wundheilungsdauer geändert. Eine gesonderte Analyse der Wundheilungsraten und der Remissionsdauer entfiel deshalb."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die Detailergebnisse der RCT, der Prozessevaluation Teil II und der Routinedatenanalyse sind wegen geplanter Publikation bis 30.09.2025 gesperrt und im Bericht nicht dargestellt."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "RCT: Insbesondere die sekundären Endpunkte wurden mit deutlich geringeren Fallzahlen ausgewertet als geplant. Die Maßnahmen zur Rekrutierungsförderung blieben hinter den Erwartungen zurück."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "RCT, Odds Ratio für vollständige Wundheilung: Angegeben sind 3,60 [0,97; 13,36] mit p<0,05 (S. 2, 46), auf S. 55 als „signifikante Überlegenheit“ bezeichnet. Das angegebene Intervall schließt die 1 ein."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "RCT, primärer Endpunkt: Der Methodenteil nennt die Zeit bis zur vollständigen Wundheilung als Hauptzielkriterium (S. 24/25; Ergebnis HR 2,71, p=0,16). S. 46 bezeichnet dagegen die Odds Ratio für Wundheilung als „Hauptzielkriterium“. Zudem soll eine gesonderte Analyse der Wundheilungsraten wegen der Endpunktänderung entbehrlich sein (S. 24, 46), während die Wirksamkeitsaussagen auf S. 2 und 55 auf genau dieser Odds Ratio beruhen."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "RCT, Fallzahl: S. 46 nennt 59 gemeldete Einschlüsse und 53 mit Follow-up, S. 55/56 nennt 58 eingeschlossene Studienteilnehmer:innen."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "RCT, Kosten der Kontrollgruppe: S. 2 nennt 3.153 ± 1.843 €, S. 47 nennt 3.113 €."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "RCT, Gesamtaussage: S. 58 spricht von einem positiven Effekt „in allen untersuchten Domänen“, S. 55 von Effekten auf die Lebensqualität. Die Tabelle auf S. 47 kennzeichnet den EQ-5D-5L-Index mit „nein“; Rezidive (p=0,925) und die HR des primären Endpunkts (p=0,16) sind nicht als Unterschied ausgewiesen."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Meta-Analyse, OR 1,91 [0,99; 3,67]: Laut S. 2 „belegte“ sie die Wirksamkeit von Schulungsmaßnahmen auf die Wundheilung. Laut S. 49 konnte der Effekt nicht auf dem üblichen Signifikanzniveau nachgewiesen werden."}, {"stelle": "bericht_unstimmig.6", "art": "aussage", "unser": "Meta-Analyse, Ulkusgröße: Das Konfidenzintervall steht auf S. 31 als „-11,91–2,53“, auf S. 49 als „[-11.91; -2.53]“."}, {"stelle": "bericht_unstimmig.7", "art": "aussage", "unser": "Pilotstudie, Anwendungsrate leitliniengerechter Kompression in der Interventionsgruppe: S. 2, 36 und 51 nennen 95 %, S. 53 nennt 90 %."}, {"stelle": "bericht_unstimmig.8", "art": "aussage", "unser": "Pilotstudie, Untergruppe mit Heilungsrate 73 % vs. 36 %: S. 37 beschreibt Ulzera mit einer Dauer von „mindestens 6 Monaten“, S. 51 Ulcera, die „≤ 6 Monate“ bestanden."}, {"stelle": "bericht_unstimmig.9", "art": "aussage", "unser": "Pilotstudie, Rezidivprophylaxe (9/10 vs. 1/7): Auf S. 36 werden beide Vergleichsgruppen als „Interventionsgruppe“ bezeichnet."}, {"stelle": "bericht_unstimmig.10", "art": "aussage", "unser": "Pilotstudie: Laut S. 21 wurden die p-Werte rein deskriptiv interpretiert. S. 37 bezeichnet den PACIC-Bereich Self-help and education dennoch als „signifikant höher“, und S. 2 leitet aus p=0,006 eine „Wirkung“ ab."}, {"stelle": "bericht_unstimmig.11", "art": "aussage", "unser": "Routinedatenanalyse, operative Kausaltherapie: S. 48 nennt etwa 1 % Stammveneneingriffe, S. 57 etwa 2 % kausal orientierte operative Therapie."}, {"stelle": "bericht_unstimmig.12", "art": "aussage", "unser": "Kostenersparnis pro Krankheitsfall: S. 2 nennt ca. 1.600 € bei konsequent durchgeführter Kompressionstherapie, S. 55 schreibt ca. 1.600 € der UCC-Intervention in der RCT zu. Die Routinedatenanalyse beziffert die Kostendifferenz bei konsequenter Kompression auf ca. 1.400 € (S. 48, 57)."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "RCT: Die Praxen meldeten 59 Einschlüsse; für 53 Patient:innen liegen Follow-up-Daten vor. Vorzeitig beendet wurde die Teilnahme bei 4 Patient:innen der Interventions- und 2 der Kontrollgruppe."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "RCT: Ein Rezidiv hatten 4 von 38 Patient:innen der Interventionsgruppe und 1 von 15 der Kontrollgruppe (p=0,925)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "RCT, patientenberichtete Endpunkte zu T2 (Interventions- vs. Kontrollgruppe): Depressivität (PHQ-9) 5,3 vs. 9,9 und Gesundheitszustand (EQ-VAS) 67 vs. 48 sind in der Tabelle mit „ja“ gekennzeichnet. Der EQ-5D-5L-Index (0,78 vs. 0,62) ist mit „nein“ gekennzeichnet."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Prozessevaluation Teil II: Versorger:innen und Patient:innen akzeptierten die Interventionskomponenten in hohem Maß. Sie berichteten eine aktivere Patientenbeteiligung, eine gestärkte Rolle der MFA und einen Wandel hin zum regelhaften Einsatz der Kompressionstherapie."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Meta-Analyse: Von neun in die quantitative Synthese einbezogenen RCTs untersuchten sechs Studien mit 343 Patient:innen die Wundheilungsrate."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Meta-Analyse: Für edukative Interventionen ergab sich nach 12 Wochen eine OR für die Wundheilung von 1,91 (95%-KI 0,99–3,67; random-effects). Laut Bericht ließ sich der Effekt wegen der wenigen Studien nicht auf dem üblichen Signifikanzniveau nachweisen."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Meta-Analyse (3 Studien, 128 Patient:innen): Für die Ulkusgröße berichtet der Bericht eine signifikante mittlere Reduktion (MD −7,22 cm²; 95%-KI −11,91 bis −2,53)."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Meta-Analyse: Einzelne RCTs beobachteten positive Auswirkungen edukativer Maßnahmen auf Schmerzen, Lebensqualität und funktionelle Mobilität. Eine quantitative Analyse war dafür nicht möglich."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Meta-Analyse: Für die Leg-Club-Intervention, die soziale Interaktion und Edukation kombiniert, wird ein positiver Effekt auf die Wundheilung berichtet."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Befragungsstudie: Ausgewertet wurden 29 Interviews und Fragebögen von 10 Hausärzt:innen, 10 MFA und 9 Patient:innen."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Befragungsstudie: Bei Versorger:innen und Patient:innen zeigten sich ein Schulungsbedarf und die Akzeptanz der geplanten Interventionselemente."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Befragungsstudie: Alle drei Gruppen sahen in Schulungsmaßnahmen einen hohen Mehrwert für die Versorgungsqualität (Median 5 = sehr hohe Zustimmung)."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Befragungsstudie: Der Nutzung von SOPs stimmten die Befragten mit Median 4 zu. Dass SOPs die Versorgungsqualität verbessern könnten, erhielt Median 5."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Befragungsstudie: Hausärzt:innen berichteten mehrheitlich von Schwierigkeiten bei der Einhaltung der Kompressionstherapie."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Befragungsstudie: Die Befragten sahen Wissensdefizite bei allen beteiligten Professionen. Nicht alle Versorger betrachteten die Kompressionstherapie als zentrales Behandlungselement."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Befragungsstudie: Den Fallmanagementansatz bewerteten die Teilnehmenden positiv. Ärzt:innen bewerteten eine stärkere Einbindung geschulter MFA positiv."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Befragungsstudie: Laut Teilnehmenden erfolgt die ambulante UCV-Versorgung überwiegend durch Hausarztpraxen."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Pilotstudie: Die Praxen rekrutierten zwischen 1. Dezember 2020 und 27. Oktober 2021 je 20 Patient:innen pro Studienarm."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Pilotstudie: Eine leitliniengerechte Kompressionstherapie erhielten 19/20 (95 %) der Interventions- und 11/19 (58 %) der Kontrollgruppe (p=0,006)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Pilotstudie: In der Interventionsgruppe erhielten alle Patient:innen eine Kompressionstherapie. In der Kontrollgruppe erhielten 3 von 19 (16 %) keine Kompression (p=0,064)."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Pilotstudie: Nach Abheilung erhielten 9 von 10 (90 %) gegenüber 1 von 7 (14 %) Patient:innen Kompressionsstrümpfe zur Rezidivprophylaxe (p=0,002). Im Text werden beide Gruppen als „Interventionsgruppe“ bezeichnet."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Pilotstudie: In der Untergruppe nach Ulkusdauer betrug die Heilungsrate nach 12 Wochen 8/11 (73 %) gegenüber 4/11 (36 %) (p=0,087). Die Untergruppe ist auf S. 37 als „mindestens 6 Monate“, auf S. 51 als „≤ 6 Monate“ beschrieben."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Pilotstudie: Die Gesamtheilungsrate nach 12 Wochen betrug 10/20 (50 %) gegenüber 7/19 (37 %) (p=0,408)."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Pilotstudie: Die Wundgröße veränderte sich nach 12 Wochen um −6,3 ± 38,8 cm² in der Interventions- und um −0,2 ± 14,3 cm² in der Kontrollgruppe (p=0,722)."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Pilotstudie: Bei Schmerzen, Lebensqualität und depressiven Symptomen gab es nach 12 Wochen laut Bericht keine Unterschiede zwischen den Gruppen."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Pilotstudie: Bei der allgemeinen Patientenzufriedenheit (PACIC-5A) stellte der Bericht keinen Unterschied fest (67,3 ± 24,5 vs. 68,1 ± 18,5; p=0,872)."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Pilotstudie: Im PACIC-5A-Bereich Self-help and education gab die Interventionsgruppe laut Bericht signifikant höhere Zustimmungswerte an (42,9 ± 41,6 vs. 11,4 ± 28,8; p=0,044)."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Pilotstudie: Als therapieadhärent galten in beiden Gruppen 18/20 Patient:innen (90 %; p=1)."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Pilotstudie: Die Gesamtkosten betrugen 1.380 ± 1.347 € in der Interventions- und 2.049 ± 2.784 € in der Kontrollgruppe (p=0,342)."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Pilotstudie: Die ICER betrug −669 € für die gesundheitsbezogene Lebensqualität und −669 € mit 13 % Abweichung für die Wundheilungsrate."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Pilotstudie: Die im Mittel um 669 € niedrigeren Kosten über 3 Monate gehen laut Bericht hauptsächlich auf geringere Ausgaben für lokaltherapeutische Maßnahmen, vor allem Verbandsmaterialien, zurück."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Prozessevaluation Teil I: Befragt wurden 26 Teilnehmende (7 Hausärzt:innen, 6 MFA, 8 Patient:innen, 5 Stakeholder), 25 Fragebögen wurden ausgefüllt. Die Rücklaufquoten betrugen 75 % und 71 %."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Prozessevaluation Teil I: Die Zufriedenheit mit den Interventionen war laut Bericht hoch. Außer dem E-Learning für Patient:innen wurden die Interventionen mehrheitlich vollständig genutzt; die Interventionstreue lag im Mittel bei 72 %."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Prozessevaluation Teil I: Die Zufriedenheit der Patient:innen mit der Versorgung lag vor der Studie bei 3,2 ± 1,6 und danach bei 5 ± 0. Eine Verbesserung der Versorgung bewerteten sie mit 4,8 ± 0,4."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Prozessevaluation Teil I: Die Zufriedenheit mit den SOPs betrug bei Hausärzt:innen 4,6 ± 0,5 und bei MFA 4,7 ± 0,8."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Prozessevaluation Teil I: Nach der Intervention sahen Hausärzt:innen (5 ± 0) sowie MFA und Patient:innen (4,83 ± 0,41) die Kompressionstherapie als wesentliches Behandlungselement. Hausärzt:innen (4 ± 1,3) und MFA (3,5 ± 1,6) fühlten sich besser informiert."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "Prozessevaluation Teil I: Bei der Patientenaufklärung fühlten sich Hausärzt:innen (4,7 ± 0,5) und MFA (4,5 ± 0,5) besser unterstützt."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Prozessevaluation Teil I: Praxisteams und Patient:innen nahmen eine gestärkte Rolle der MFA als Case Manager wahr, mit stärkerer Beteiligung an Wundbehandlung und Patientenaufklärung."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Prozessevaluation Teil I: Laut Bericht legen die Ergebnisse nahe, dass die meisten Patient:innen an Wissen und Gesundheitskompetenz gewonnen haben."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "Routinedatenanalyse: Die Ausgangspopulation umfasste 40.046 AOK-BW-Versicherte, die 2015–2019 mindestens einmal ambulant eine UCV-Diagnose hatten. Darunter waren 8.092 inzidente Fälle."}, {"stelle": "bericht_befund.45", "art": "aussage", "unser": "Routinedatenanalyse: Weniger als die Hälfte der Versicherten erhielt innerhalb von 90 Tagen nach Erkrankung ein Kompressionsmittel. Eine konsequente, frühzeitige Kompressionstherapie erhielten 14 %, einen Stammveneneingriff etwa 1 %."}, {"stelle": "bericht_befund.46", "art": "aussage", "unser": "Routinedatenanalyse: Versicherte mit regelmäßig verordneter Kompressionstherapie heilten im Vergleich zum restlichen Kollektiv etwa 66 Tage schneller. Ihre Gesamtkosten in der Erkrankungsdauer lagen etwa 1.400 € niedriger; der Bericht spricht hier von einer Assoziation."}, {"stelle": "bericht_befund.47", "art": "aussage", "unser": "Hochrechnung: Bei flächendeckender Implementierung in Deutschland wäre unter Berücksichtigung der Inzidenz rechnerisch eine jährliche Kostenersparnis von etwa 235 Mio. € möglich."}, {"stelle": "bericht_befund.48", "art": "aussage", "unser": "Die E-Learning-Kurse und das Softwaremodul „Ulcus Cruris“ für das CareCockpit wurden im September 2020 fristgerecht fertiggestellt. Phase I verlief gemäß Zeitplan."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "RCT: Die Rekrutierung lag laut Bericht deutlich hinter der Fallzahlplanung. Als Gründe werden die Covid-19-Pandemie Anfang 2022, eine Infektionswelle im Frühherbst 2022 und eine im Vergleich zur Literatur geringere reale Prävalenz einschlussfähiger Patient:innen genannt."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Als maßgeblich für das Verfehlen der Rekrutierungsziele in der RCT sehen die Projektbeteiligten die unzureichende Bereitschaft der Praxen, an Forschung mit Dokumentationsaufwand mitzuwirken."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "RCT: Per Amendment wurden die Einschlusskriterien gelockert; zugelassen waren nun Patient:innen mit bis zu 12 Monate bestehendem UCV."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Wegen pandemiebedingter Rekrutierungsverzögerungen in den Phasen II und III wurde eine kostenneutrale Laufzeitverlängerung um 12 Monate beantragt. Sie wurde am 21.01.2022 bewilligt."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Laut Bericht erschwerte die COVID-19-Pandemie die Durchführung der begleitenden Studien und die Datenerhebung erheblich."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Kosten der hausärztlichen Versorgung ließen sich nur über Pauschalen approximieren. Behandlungsart und Abrechnungshäufigkeit blieben dabei unberücksichtigt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Fehlende Werte wurden aus der Analyse ausgeschlossen."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Pilotstudie: Wegen der kleinen Stichprobe und des nicht-konfirmatorischen Designs lassen sich laut Bericht keine sicheren Schlüsse zu Wundheilung, Lebensqualität und Kosteneffektivität ziehen."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Pilotstudie: Wegen des explorativen Charakters wurden die p-Werte nur deskriptiv interpretiert."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Pilotstudie, gesundheitsökonomische Analyse: Wegen der geringen Stichprobengröße wurden zufällige Unterschiede zwischen den Gruppen statistisch nicht kontrolliert."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Pilotstudie: Die Lebensqualität (EQ-5D-5L) unterschied sich zu Baseline zwischen den Gruppen, Median 60,0 gegenüber 72,5 (p=0,043, in der Tabelle mit Stern markiert)."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Meta-Analyse: Als wesentliche Limitationen nennt der Bericht die geringe Zahl verfügbarer RCTs und die heterogenen Interventionen."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Meta-Analyse: Biasbedenken ergeben sich aus kleinen Stichproben der eingeschlossenen Studien und fehlender Verblindung in einigen Studien."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Meta-Analyse: Für PUSH, Schmerz, Lebensqualität und Funktionalität war wegen heterogener Ergebnismaße keine quantitative Bewertung möglich."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Befragungsstudie: Eingesetzt wurde ein studienspezifischer, nicht validierter Fragebogen."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Befragungsstudie: Die Interviewpartner stammten aus dem akademischen Umfeld der Forschungs- und Lehrpraxen der Universitätsklinik Heidelberg. Das kann laut Bericht zu sozial erwünschten Antworten und einer Überschätzung der Akzeptanz geführt haben."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Befragungsstudie: Ein Patient:innen-Interview wurde wegen zurückgezogener Einwilligung ausgeschlossen."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Prozessevaluation Teil I: Die angestrebte Stichprobengröße wurde nicht erreicht. Overconfidence Bias und soziale Erwünschtheit könnten die Ergebnisse beeinflusst haben, und die Fragebögen waren nicht validiert."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Prozessevaluation Teil I: Eine Praxis wurde ausgeschlossen, weil sie keine Patient:innen eingeschlossen hatte. Von einer weiteren Praxis lag keine Zustimmung vor."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Prozessevaluation Teil I: Für das E-Learning für Patient:innen weist die Tabelle zur Interventionstreue den Wert 1 (10) aus."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Als meistgenannter Kontextfaktor gelten fehlende Ressourcen an Zeit, Personal und Geld, verschärft durch die Covid-19-Pandemie. Die Kostenerstattung für die zeitaufwändige UCV-Versorgung empfanden die Befragten als unbefriedigend."}, {"stelle": "bericht_hindernis.25", "art": "aussage", "unser": "Einige Befragte bezweifelten, dass sich das E-Learning-Format eignet, um die korrekte Anlage von Kompressionsverbänden zu vermitteln. Dafür hielten sie einen Workshop für geeigneter."}, {"stelle": "bericht_hindernis.26", "art": "aussage", "unser": "Als mögliche Barrieren der Therapietreue wurden genannt: mangelndes Wissen, Schmerzen und Unannehmlichkeiten, sozio-psychologische Probleme wie Ästhetik und Geduld sowie häufige Praxisbesuche und lange Behandlungsdauer."}, {"stelle": "bericht_hindernis.27", "art": "aussage", "unser": "Insellösungen und Anwendungen mit aufwendiger Dokumentation nehmen Versorger:innen laut Befragungsstudie und Prozessevaluationen nicht an."}]};
+const D = {"projekt_id": 347, "akronym": "ULCUS CRURIS CARE", "kennung": "7Oz35_SFHHTf", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat ein Case Management für venös bedingte chronische Wunden in der Hausarztpraxis entwickelt, implementiert und evaluiert. Der primäre Endpunkt ist die Dauer bis zur vollständigen Wundheilung. Diese war in der Interventionsgruppe im Durchschnitt kürzer, der Unterschied war jedoch nicht statistisch signifikant. Einzelne sekundäre Endpunkte verbesserten sich signifikant, andere zeigten keine Wirkung. Die Kostendifferenz war groß, aber nicht signifikant. Der Ausschuss hält die Methoden für prinzipiell geeignet. Wegen der geringen Zahl eingeschlossener Patientinnen und Patienten (58 statt 126 geplant) sieht er die Aussagekraft jedoch als eingeschränkt an. Da wichtige Erkenntnisse und ein Versorgungskonzept vorliegen, werden die Ergebnisse zur Prüfung weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "randomisiert kontrolliert (RCT)"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Geplante Fallzahl in der RCT unterschritten (58 statt 126)"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Dauer bis zur Wundheilung (primärer Endpunkt) in der IG im Durchschnitt kürzer als in der KG, der Unterschied jedoch nicht statistisch signifikant"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Keine Wirkung auf weitere sekundäre Endpunkte aufgezeigt (Ulcusgröße, Rezidive, Zufriedenheit, Wundinfektion u. a.)"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Deutlich geringere durchschnittliche Gesamtbehandlungskosten in der IG (ca. 1.800 €) als in der KG (8.200 €), die Differenz jedoch nicht statistisch signifikant"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Eingeschränkte Aussagekraft der Effekt- und gesundheitsökonomischen Evaluation wegen geringer Patientenzahl"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Zeit bis zur vollständigen Wundheilung (\"time-to-heal\") – Cox-Proportional-Hazards-Regression (Shared-Frailty-Modell), fotodokumentiert bestätigte Wundheilung"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Vollständige Wundheilung nach 12 Monaten (Hauptzielkriterium, Odds Ratio)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Wundheilung – Kaplan-Meier-Analyse der durch die Praxen berichteten Wundheilungen ohne übermittelte Fotodokumentation"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Anwendung/Verordnung einer leitliniengerechten Kompressionstherapie"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Depressivität zu T2 (12 Monate)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität – Index zu T2"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Gesundheitszustand zu T2"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Patientenzufriedenheit und -aufklärung zu T2"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Anzahl der Rezidive"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Auftreten von Wundinfektionen"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Fallbezogene ambulante Behandlungskosten über 12 Monate (Gesamtkosten ohne stationäre Aufenthalte)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben entwickelte für Hausarztpraxen ein Versorgungskonzept zum Ulcus cruris venosum (UCC). Es umfasst E-Learning-Kurse, SOPs, das Softwaremodul „Ulcus Cruris“ im CareCockpit und die Einbindung von MFA. Untersucht wurde es in einer Meta-Analyse, einer Befragungsstudie, einer nicht-randomisierten Pilotstudie, einer multizentrischen RCT, zwei Prozessevaluationen und einer Routinedatenanalyse von AOK-BW-Versicherten. Für den primären Endpunkt der RCT, die Zeit bis zur vollständigen Wundheilung, ergab sich eine HR von 2,71 (95%-KI 0,66–11,06; p=0,16). Die Odds Ratio für vollständige Wundheilung von 3,60 [0,97; 13,36] gibt der Bericht mit p<0,05 an und nennt sie signifikant; das angegebene Intervall schließt die 1 ein. Leitliniengerechte Kompressionstherapie lag in der RCT bei 72 % gegenüber 33 % (p<0,05). Die fallbezogenen ambulanten Kosten betrugen 1.457 € gegenüber 3.113 € bzw. 3.153 € (p<0,05). Laut Routinedaten erhalten etwa 80 % der Betroffenen keine kausal orientierte Behandlung. Geplant waren in der RCT 126 Patient:innen in 42 Praxen; eingeschlossen wurden 59 (an anderer Stelle 58), 53 davon mit Follow-up. Der primäre Endpunkt wurde von der Wundheilungsrate auf die Wundheilungsdauer geändert. Die Detailergebnisse von RCT, Prozessevaluation II und Routinedatenanalyse sind bis 30.09.2025 gesperrt. Die Projektnehmer stufen die Intervention als hochwirksam ein und empfehlen eine Breitenimplementierung."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "RCT, primärer Endpunkt Zeit bis zur vollständigen Wundheilung: Das Shared-Frailty-Cox-Modell ergab eine HR von 2,71 (95%-KI 0,66–11,06; ICC 0,005; p=0,16). Analysiert wurde zu einem zweiseitigen Signifikanzniveau von 5 %."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "RCT: Die Odds Ratio für vollständige Wundheilung betrug 3,60 [0,97; 13,36] zugunsten der Interventionsgruppe (p<0,05). Der Bericht bezeichnet sie als „Hauptzielkriterium“ und nennt die Überlegenheit nach 12 Monaten signifikant (S. 55)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "RCT: Eine leitliniengerechte Kompressionstherapie wurde in der Interventionsgruppe in 72 % der Fälle verordnet, in der Kontrollgruppe in 33 % (p<0,05)."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "RCT: Geplant waren 126 Patient:innen (63 je Gruppe) in 42 Praxen (21 je Gruppe). Gemeldet wurden 59 Einschlüsse, für 53 liegen Follow-up-Daten vor; die Gruppen umfassten 38 und 15 Patient:innen."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "RCT: Der primäre Endpunkt wurde von der Wundheilungsrate auf die Wundheilungsdauer geändert. Eine gesonderte Analyse der Wundheilungsraten und der Remissionsdauer entfiel deshalb."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die Detailergebnisse der RCT, der Prozessevaluation Teil II und der Routinedatenanalyse sind wegen geplanter Publikation bis 30.09.2025 gesperrt und im Bericht nicht dargestellt."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "RCT, Odds Ratio für vollständige Wundheilung: Angegeben sind 3,60 [0,97; 13,36] mit p<0,05 (S. 2, 46), auf S. 55 als „signifikante Überlegenheit“ bezeichnet. Das angegebene Intervall schließt die 1 ein."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "RCT, primärer Endpunkt: Der Methodenteil nennt die Zeit bis zur vollständigen Wundheilung als Hauptzielkriterium (S. 24/25; Ergebnis HR 2,71, p=0,16). S. 46 bezeichnet dagegen die Odds Ratio für Wundheilung als „Hauptzielkriterium“. Zudem soll eine gesonderte Analyse der Wundheilungsraten wegen der Endpunktänderung entbehrlich sein (S. 24, 46), während die Wirksamkeitsaussagen auf S. 2 und 55 auf genau dieser Odds Ratio beruhen."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "RCT, Fallzahl: S. 46 nennt 59 gemeldete Einschlüsse und 53 mit Follow-up, S. 55/56 nennt 58 eingeschlossene Studienteilnehmer:innen."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Erkenntnisse des Projekts zur Information an die Verbände der Kranken- und Pflegekassen auf Bundesebene (mit der Bitte um Weiterleitung an die Landesverbände), an die Kassenärztlichen Vereinigungen, die Landesärztekammern und den Deutschen Hausärzteverband weiter. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "befund.0", "art": "befund", "unser": "Case Management für venöse chronische Wunden in der Hausarztpraxis entwickelt, implementiert und evaluiert"}, {"stelle": "befund.1", "art": "befund", "unser": "Höhere Wahrscheinlichkeit einer Wundheilung in der Interventionsgruppe"}, {"stelle": "befund.2", "art": "befund", "unser": "Signifikant bessere Ergebnisse bei einem Teil der sekundären Endpunkte (Depressivität, Lebensqualität, Gesundheitszustand, Termin-Adhärenz)"}, {"stelle": "befund.3", "art": "befund", "unser": "Häufiger leitliniengerechte Kompressionstherapie in der Interventionsgruppe"}, {"stelle": "befund.4", "art": "befund", "unser": "Akzeptanz der Interventionselemente bei Versorgenden und Patientinnen und Patienten"}, {"stelle": "befund.5", "art": "befund", "unser": "Wichtige Erkenntnisse zur Versorgungssituation und entwickeltes Versorgungskonzept als Anhaltspunkte zur Optimierung der Versorgung"}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "RCT: Die durchschnittlichen fallbezogenen ambulanten Behandlungskosten betrugen 1.457 € in der Interventionsgruppe und 3.113 € in der Kontrollgruppe (p<0,05). Auf S. 2 stehen für die Kontrollgruppe 3.153 ± 1.843 €."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Routinedatenanalyse: Etwa 80 % der ambulant versorgten Patient:innen mit UCV erhalten weder eine konsequente Kompressionstherapie noch eine operative Behandlung."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "RCT: Insbesondere die sekundären Endpunkte wurden mit deutlich geringeren Fallzahlen ausgewertet als in der Planungsphase vorgesehen."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "RCT, Kosten der Kontrollgruppe: S. 2 nennt 3.153 ± 1.843 €, S. 47 nennt 3.113 €."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "RCT, Gesamtaussage: S. 58 spricht von einem positiven Effekt „in allen untersuchten Domänen“, S. 55 von Effekten auf die Lebensqualität. Die Tabelle auf S. 47 kennzeichnet den EQ-5D-5L-Index mit „nein“; Rezidive (p=0,925) und die HR des primären Endpunkts (p=0,16) sind nicht als Unterschied ausgewiesen."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Meta-Analyse, OR 1,91 [0,99; 3,67]: Laut S. 2 „belegte“ sie die Wirksamkeit von Schulungsmaßnahmen auf die Wundheilung. Laut S. 49 konnte der Effekt nicht auf dem üblichen Signifikanzniveau nachgewiesen werden."}, {"stelle": "bericht_unstimmig.6", "art": "aussage", "unser": "Meta-Analyse, Ulkusgröße: Das Konfidenzintervall steht auf S. 31 als „-11,91–2,53“, auf S. 49 als „[-11.91; -2.53]“."}, {"stelle": "bericht_unstimmig.7", "art": "aussage", "unser": "Pilotstudie, Anwendungsrate leitliniengerechter Kompression in der Interventionsgruppe: S. 2, 36 und 51 nennen 95 %, S. 53 nennt 90 %."}, {"stelle": "bericht_unstimmig.8", "art": "aussage", "unser": "Pilotstudie, Untergruppe mit Heilungsrate 73 % vs. 36 %: S. 37 beschreibt Ulzera mit einer Dauer von „mindestens 6 Monaten“, S. 51 Ulcera, die „≤ 6 Monate“ bestanden."}, {"stelle": "bericht_unstimmig.9", "art": "aussage", "unser": "Pilotstudie, Rezidivprophylaxe (9/10 vs. 1/7): Auf S. 36 werden beide Vergleichsgruppen als „Interventionsgruppe“ bezeichnet."}, {"stelle": "bericht_unstimmig.10", "art": "aussage", "unser": "Pilotstudie: Laut S. 21 wurden die p-Werte rein deskriptiv interpretiert. S. 37 bezeichnet den PACIC-Bereich Self-help and education dennoch als „signifikant höher“, und S. 2 leitet aus p=0,006 eine „Wirkung“ ab."}, {"stelle": "bericht_unstimmig.11", "art": "aussage", "unser": "Routinedatenanalyse, operative Kausaltherapie: S. 48 nennt etwa 1 % Stammveneneingriffe, S. 57 etwa 2 % kausal orientierte operative Therapie."}, {"stelle": "bericht_unstimmig.12", "art": "aussage", "unser": "Kostenersparnis pro Krankheitsfall: S. 2 nennt ca. 1.600 € bei konsequent durchgeführter Kompressionstherapie, S. 55 schreibt ca. 1.600 € der UCC-Intervention in der RCT zu. Die Routinedatenanalyse beziffert die Kostendifferenz bei konsequenter Kompression auf ca. 1.400 € (S. 48, 57)."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "RCT: Die Praxen meldeten 59 Einschlüsse; für 53 Patient:innen liegen Follow-up-Daten vor. Vorzeitig beendet wurde die Teilnahme bei 4 Patient:innen der Interventions- und 2 der Kontrollgruppe."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "RCT: Ein Rezidiv hatten 4 von 38 Patient:innen der Interventionsgruppe und 1 von 15 der Kontrollgruppe (p=0,925)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "RCT, patientenberichtete Endpunkte zu T2 (Interventions- vs. Kontrollgruppe): Depressivität (PHQ-9) 5,3 vs. 9,9 und Gesundheitszustand (EQ-VAS) 67 vs. 48 sind in der Tabelle mit „ja“ gekennzeichnet. Der EQ-5D-5L-Index (0,78 vs. 0,62) ist mit „nein“ gekennzeichnet."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Prozessevaluation Teil II: Versorger:innen und Patient:innen akzeptierten die Interventionskomponenten in hohem Maß. Sie berichteten eine aktivere Patientenbeteiligung, eine gestärkte Rolle der MFA und einen Wandel hin zum regelhaften Einsatz der Kompressionstherapie."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Meta-Analyse: Von neun in die quantitative Synthese einbezogenen RCTs untersuchten sechs Studien mit 343 Patient:innen die Wundheilungsrate."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Meta-Analyse: Für edukative Interventionen ergab sich nach 12 Wochen eine OR für die Wundheilung von 1,91 (95%-KI 0,99–3,67; random-effects). Laut Bericht ließ sich der Effekt wegen der wenigen Studien nicht auf dem üblichen Signifikanzniveau nachweisen."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Meta-Analyse (3 Studien, 128 Patient:innen): Für die Ulkusgröße berichtet der Bericht eine signifikante mittlere Reduktion (MD −7,22 cm²; 95%-KI −11,91 bis −2,53)."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Meta-Analyse: Einzelne RCTs beobachteten positive Auswirkungen edukativer Maßnahmen auf Schmerzen, Lebensqualität und funktionelle Mobilität. Eine quantitative Analyse war dafür nicht möglich."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Meta-Analyse: Für die Leg-Club-Intervention, die soziale Interaktion und Edukation kombiniert, wird ein positiver Effekt auf die Wundheilung berichtet."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Befragungsstudie: Ausgewertet wurden 29 Interviews und Fragebögen von 10 Hausärzt:innen, 10 MFA und 9 Patient:innen."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Befragungsstudie: Bei Versorger:innen und Patient:innen zeigten sich ein Schulungsbedarf und die Akzeptanz der geplanten Interventionselemente."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Befragungsstudie: Alle drei Gruppen sahen in Schulungsmaßnahmen einen hohen Mehrwert für die Versorgungsqualität (Median 5 = sehr hohe Zustimmung)."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Befragungsstudie: Der Nutzung von SOPs stimmten die Befragten mit Median 4 zu. Dass SOPs die Versorgungsqualität verbessern könnten, erhielt Median 5."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Befragungsstudie: Hausärzt:innen berichteten mehrheitlich von Schwierigkeiten bei der Einhaltung der Kompressionstherapie."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Befragungsstudie: Die Befragten sahen Wissensdefizite bei allen beteiligten Professionen. Nicht alle Versorger betrachteten die Kompressionstherapie als zentrales Behandlungselement."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Befragungsstudie: Den Fallmanagementansatz bewerteten die Teilnehmenden positiv. Ärzt:innen bewerteten eine stärkere Einbindung geschulter MFA positiv."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Befragungsstudie: Laut Teilnehmenden erfolgt die ambulante UCV-Versorgung überwiegend durch Hausarztpraxen."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Pilotstudie: Die Praxen rekrutierten zwischen 1. Dezember 2020 und 27. Oktober 2021 je 20 Patient:innen pro Studienarm."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Pilotstudie: Eine leitliniengerechte Kompressionstherapie erhielten 19/20 (95 %) der Interventions- und 11/19 (58 %) der Kontrollgruppe (p=0,006)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Pilotstudie: In der Interventionsgruppe erhielten alle Patient:innen eine Kompressionstherapie. In der Kontrollgruppe erhielten 3 von 19 (16 %) keine Kompression (p=0,064)."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Pilotstudie: Nach Abheilung erhielten 9 von 10 (90 %) gegenüber 1 von 7 (14 %) Patient:innen Kompressionsstrümpfe zur Rezidivprophylaxe (p=0,002). Im Text werden beide Gruppen als „Interventionsgruppe“ bezeichnet."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Pilotstudie: In der Untergruppe nach Ulkusdauer betrug die Heilungsrate nach 12 Wochen 8/11 (73 %) gegenüber 4/11 (36 %) (p=0,087). Die Untergruppe ist auf S. 37 als „mindestens 6 Monate“, auf S. 51 als „≤ 6 Monate“ beschrieben."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Pilotstudie: Die Gesamtheilungsrate nach 12 Wochen betrug 10/20 (50 %) gegenüber 7/19 (37 %) (p=0,408)."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Pilotstudie: Die Wundgröße veränderte sich nach 12 Wochen um −6,3 ± 38,8 cm² in der Interventions- und um −0,2 ± 14,3 cm² in der Kontrollgruppe (p=0,722)."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Pilotstudie: Bei Schmerzen, Lebensqualität und depressiven Symptomen gab es nach 12 Wochen laut Bericht keine Unterschiede zwischen den Gruppen."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Pilotstudie: Bei der allgemeinen Patientenzufriedenheit (PACIC-5A) stellte der Bericht keinen Unterschied fest (67,3 ± 24,5 vs. 68,1 ± 18,5; p=0,872)."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Pilotstudie: Im PACIC-5A-Bereich Self-help and education gab die Interventionsgruppe laut Bericht signifikant höhere Zustimmungswerte an (42,9 ± 41,6 vs. 11,4 ± 28,8; p=0,044)."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Pilotstudie: Als therapieadhärent galten in beiden Gruppen 18/20 Patient:innen (90 %; p=1)."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Pilotstudie: Die Gesamtkosten betrugen 1.380 ± 1.347 € in der Interventions- und 2.049 ± 2.784 € in der Kontrollgruppe (p=0,342)."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Pilotstudie: Die ICER betrug −669 € für die gesundheitsbezogene Lebensqualität und −669 € mit 13 % Abweichung für die Wundheilungsrate."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Pilotstudie: Die im Mittel um 669 € niedrigeren Kosten über 3 Monate gehen laut Bericht hauptsächlich auf geringere Ausgaben für lokaltherapeutische Maßnahmen, vor allem Verbandsmaterialien, zurück."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Prozessevaluation Teil I: Befragt wurden 26 Teilnehmende (7 Hausärzt:innen, 6 MFA, 8 Patient:innen, 5 Stakeholder), 25 Fragebögen wurden ausgefüllt. Die Rücklaufquoten betrugen 75 % und 71 %."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Prozessevaluation Teil I: Die Zufriedenheit mit den Interventionen war laut Bericht hoch. Außer dem E-Learning für Patient:innen wurden die Interventionen mehrheitlich vollständig genutzt; die Interventionstreue lag im Mittel bei 72 %."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Prozessevaluation Teil I: Die Zufriedenheit der Patient:innen mit der Versorgung lag vor der Studie bei 3,2 ± 1,6 und danach bei 5 ± 0. Eine Verbesserung der Versorgung bewerteten sie mit 4,8 ± 0,4."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Prozessevaluation Teil I: Die Zufriedenheit mit den SOPs betrug bei Hausärzt:innen 4,6 ± 0,5 und bei MFA 4,7 ± 0,8."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Prozessevaluation Teil I: Nach der Intervention sahen Hausärzt:innen (5 ± 0) sowie MFA und Patient:innen (4,83 ± 0,41) die Kompressionstherapie als wesentliches Behandlungselement. Hausärzt:innen (4 ± 1,3) und MFA (3,5 ± 1,6) fühlten sich besser informiert."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "Prozessevaluation Teil I: Bei der Patientenaufklärung fühlten sich Hausärzt:innen (4,7 ± 0,5) und MFA (4,5 ± 0,5) besser unterstützt."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Prozessevaluation Teil I: Praxisteams und Patient:innen nahmen eine gestärkte Rolle der MFA als Case Manager wahr, mit stärkerer Beteiligung an Wundbehandlung und Patientenaufklärung."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Prozessevaluation Teil I: Laut Bericht legen die Ergebnisse nahe, dass die meisten Patient:innen an Wissen und Gesundheitskompetenz gewonnen haben."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "Routinedatenanalyse: Die Ausgangspopulation umfasste 40.046 AOK-BW-Versicherte, die 2015–2019 mindestens einmal ambulant eine UCV-Diagnose hatten. Darunter waren 8.092 inzidente Fälle."}, {"stelle": "bericht_befund.45", "art": "aussage", "unser": "Routinedatenanalyse: Weniger als die Hälfte der Versicherten erhielt innerhalb von 90 Tagen nach Erkrankung ein Kompressionsmittel. Eine konsequente, frühzeitige Kompressionstherapie erhielten 14 %, einen Stammveneneingriff etwa 1 %."}, {"stelle": "bericht_befund.46", "art": "aussage", "unser": "Routinedatenanalyse: Versicherte mit regelmäßig verordneter Kompressionstherapie heilten im Vergleich zum restlichen Kollektiv etwa 66 Tage schneller. Ihre Gesamtkosten in der Erkrankungsdauer lagen etwa 1.400 € niedriger; der Bericht spricht hier von einer Assoziation."}, {"stelle": "bericht_befund.47", "art": "aussage", "unser": "Hochrechnung: Bei flächendeckender Implementierung in Deutschland wäre unter Berücksichtigung der Inzidenz rechnerisch eine jährliche Kostenersparnis von etwa 235 Mio. € möglich."}, {"stelle": "bericht_befund.48", "art": "aussage", "unser": "Die E-Learning-Kurse und das Softwaremodul „Ulcus Cruris“ für das CareCockpit wurden im September 2020 fristgerecht fertiggestellt. Phase I verlief gemäß Zeitplan."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "RCT: Die Rekrutierung lag laut Bericht deutlich hinter der Fallzahlplanung. Als Gründe werden die Covid-19-Pandemie Anfang 2022, eine Infektionswelle im Frühherbst 2022 und eine im Vergleich zur Literatur geringere reale Prävalenz einschlussfähiger Patient:innen genannt."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Als maßgeblich für das Verfehlen der Rekrutierungsziele in der RCT sehen die Projektbeteiligten die unzureichende Bereitschaft der Praxen, an Forschung mit Dokumentationsaufwand mitzuwirken."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "RCT: Per Amendment wurden die Einschlusskriterien gelockert; zugelassen waren nun Patient:innen mit bis zu 12 Monate bestehendem UCV."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Wegen pandemiebedingter Rekrutierungsverzögerungen in den Phasen II und III wurde eine kostenneutrale Laufzeitverlängerung um 12 Monate beantragt. Sie wurde am 21.01.2022 bewilligt."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Laut Bericht erschwerte die COVID-19-Pandemie die Durchführung der begleitenden Studien und die Datenerhebung erheblich."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Kosten der hausärztlichen Versorgung ließen sich nur über Pauschalen approximieren. Behandlungsart und Abrechnungshäufigkeit blieben dabei unberücksichtigt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Fehlende Werte wurden aus der Analyse ausgeschlossen."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Pilotstudie: Wegen der kleinen Stichprobe und des nicht-konfirmatorischen Designs lassen sich laut Bericht keine sicheren Schlüsse zu Wundheilung, Lebensqualität und Kosteneffektivität ziehen."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Pilotstudie: Wegen des explorativen Charakters wurden die p-Werte nur deskriptiv interpretiert."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Pilotstudie, gesundheitsökonomische Analyse: Wegen der geringen Stichprobengröße wurden zufällige Unterschiede zwischen den Gruppen statistisch nicht kontrolliert."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Pilotstudie: Die Lebensqualität (EQ-5D-5L) unterschied sich zu Baseline zwischen den Gruppen, Median 60,0 gegenüber 72,5 (p=0,043, in der Tabelle mit Stern markiert)."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Meta-Analyse: Als wesentliche Limitationen nennt der Bericht die geringe Zahl verfügbarer RCTs und die heterogenen Interventionen."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Meta-Analyse: Biasbedenken ergeben sich aus kleinen Stichproben der eingeschlossenen Studien und fehlender Verblindung in einigen Studien."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Meta-Analyse: Für PUSH, Schmerz, Lebensqualität und Funktionalität war wegen heterogener Ergebnismaße keine quantitative Bewertung möglich."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Befragungsstudie: Eingesetzt wurde ein studienspezifischer, nicht validierter Fragebogen."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Befragungsstudie: Die Interviewpartner stammten aus dem akademischen Umfeld der Forschungs- und Lehrpraxen der Universitätsklinik Heidelberg. Das kann laut Bericht zu sozial erwünschten Antworten und einer Überschätzung der Akzeptanz geführt haben."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Befragungsstudie: Ein Patient:innen-Interview wurde wegen zurückgezogener Einwilligung ausgeschlossen."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Prozessevaluation Teil I: Die angestrebte Stichprobengröße wurde nicht erreicht. Overconfidence Bias und soziale Erwünschtheit könnten die Ergebnisse beeinflusst haben, und die Fragebögen waren nicht validiert."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Prozessevaluation Teil I: Eine Praxis wurde ausgeschlossen, weil sie keine Patient:innen eingeschlossen hatte. Von einer weiteren Praxis lag keine Zustimmung vor."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Prozessevaluation Teil I: Für das E-Learning für Patient:innen weist die Tabelle zur Interventionstreue den Wert 1 (10) aus."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Als meistgenannter Kontextfaktor gelten fehlende Ressourcen an Zeit, Personal und Geld, verschärft durch die Covid-19-Pandemie. Die Kostenerstattung für die zeitaufwändige UCV-Versorgung empfanden die Befragten als unbefriedigend."}, {"stelle": "bericht_hindernis.25", "art": "aussage", "unser": "Einige Befragte bezweifelten, dass sich das E-Learning-Format eignet, um die korrekte Anlage von Kompressionsverbänden zu vermitteln. Dafür hielten sie einen Workshop für geeigneter."}, {"stelle": "bericht_hindernis.26", "art": "aussage", "unser": "Als mögliche Barrieren der Therapietreue wurden genannt: mangelndes Wissen, Schmerzen und Unannehmlichkeiten, sozio-psychologische Probleme wie Ästhetik und Geduld sowie häufige Praxisbesuche und lange Behandlungsdauer."}, {"stelle": "bericht_hindernis.27", "art": "aussage", "unser": "Insellösungen und Anwendungen mit aufwendiger Dokumentation nehmen Versorger:innen laut Befragungsstudie und Prozessevaluationen nicht an."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

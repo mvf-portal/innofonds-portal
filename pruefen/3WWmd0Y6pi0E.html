@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF20013</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>27 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 83 Aussagen. Die übrigen
+56 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss leitet die Projektergebnisse zur Information an das IQTIG und an die IQM Initiative Qualitätsmedizin e. V. weiter. Zusätzlich gehen die Erkenntnisse mit Blick auf die Entwicklung eines OMOP-Modells für GKV-Routinedaten zur Information an das BMG und das BfArM. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Im Projekt wurden erstmals GKV-Routinedaten mit Klinikdaten verknüpft. Mit Machine-Learning-Methoden entstanden hybride Qualitätsindikatoren für vier Leistungsbereiche, dazu minimal erforderliche klinische Datensets. Die Matching-Raten waren überwiegend sehr gut. Für Schulterendoprothese/Osteosynthese gelang jedoch kein Matching. Eine verbesserte Modellgüte zeigte sich nur beim Hirninfarkt, und dieses Ergebnis muss an einer größeren Population überprüft werden. Keine Machine-Learning-Methode war der logistischen Regression generell überlegen. Einschränkend wirkten unvollständige klinische Daten, die geringe Fallzahl beim kolorektalen Karzinom und die nicht-systematische Methodik von Literaturrecherche und Expertenberatungen. Trotz dieser Einschränkungen sieht der Ausschuss einen Beitrag zur methodischen Weiterentwicklung der Qualitätssicherung mit Routinedaten und ein frei zugängliches Feinkonzept; er leitet die Ergebnisse deshalb zur Information weiter.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Sekundärdatenanalyse</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit in die Regelversorgung. Die Ergebnisse zum Hirninfarkt müssen vor Schlussfolgerungen an einer größeren Studienpopulation überprüft werden. Das entwickelte Feinkonzept steht der (Fach-)Öffentlichkeit frei zugänglich zur Anwendung zur Verfügung.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Für Schulterendoprothese/Osteosynthese fehlten relevante klinische Informationen; es kam kein Matching zustande</p>
+  
   <blockquote>„Für den Leistungsbereich Schulterendoprothese oder Osteosynthese konnten in den klinischen Daten jedoch keine relevanten Informationen für die Risikoadjustierung identifiziert werden und kein Matching erfolgen." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,14 +176,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Verbesserte Modellgüte und Einfluss auf die Qualitätsbeurteilung nur beim Hirninfarkt</p>
+  
   <blockquote>„Eine verbesserte Modellgüte und ein Einfluss auf die Beurteilung der Qualität anhand der hausspezifischen Standardisierten Mortalitäts - bzw. Morbiditätsraten (SMR) konnte nur für den Leistungsbereich Hirninfarkt aufgezeigt werden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -216,14 +195,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.2">
-  <h3>Hindernis laut Beschluss: Fallzahl zu klein für die Auswertung</h3>
+  <h3>Hindernis laut Beschluss: Fallzahl in der Auswertung</h3>
   <p class="unser">Ergebnisse zum Hirninfarkt müssen an einer größeren Studienpopulation überprüft werden</p>
+  
   <blockquote>„Eine verbesserte Modellgüte und ein Einfluss auf die Beurteilung der Qualität anhand der hausspezifischen Standardisierten Mortalitäts - bzw. Morbiditätsraten (SMR) konnte nur für den Leistungsbereich Hirninfarkt aufgezeigt werden. Eine Überprüfung dieser Ergebnisse anhand einer größeren Studienpopulation ist jedoch erforderlich, bevor Schlussfolgerungen getroffen werden können." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -235,14 +214,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.3">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Keine Machine-Learning-Methode der logistischen Regression generell überlegen</p>
+  
   <blockquote>„Insgesamt zeigte sich, dass keine der getesteten Machine Learning-Methoden der logistischen Regression bei der Modellierung von Qualitätsindikatoren generell überlegen war." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.4">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Teils unvollständige klinische Informationen aus den Kliniken</p>
+  
   <blockquote>„Teils unvollständige klinischen Informationen aus den Kliniken und die geringe Fallzahl bei der Indikation kolorektales Karzinom wirkten sich limitierend auf die Ergebnisse aus." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -273,14 +252,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.5">
-  <h3>Hindernis laut Beschluss: Fallzahl zu klein für die Auswertung</h3>
+  <h3>Hindernis laut Beschluss: Fallzahl in der Auswertung</h3>
   <p class="unser">Geringe Fallzahl bei der Indikation kolorektales Karzinom</p>
+  
   <blockquote>„Teils unvollständige klinischen Informationen aus den Kliniken und die geringe Fallzahl bei der Indikation kolorektales Karzinom wirkten sich limitierend auf die Ergebnisse aus." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.5" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,126 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.6">
   <h3>Hindernis laut Beschluss: Studienanlage</h3>
   <p class="unser">Literaturrecherchen und Expertenberatungen ohne systematische Methodik</p>
+  
   <blockquote>„Die Literaturrecherchen im Vorfeld der projektbegleitenden Expertenberatungen sowie die Expertenberatungen selbst erfolgten auf Basis einer nicht-systematischen Methodik." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erstmalige erfolgreiche Verknüpfung von GKV-Routinedaten mit Krankenhausdaten und Entwicklung hybrider Qualitätsindikatoren</p>
-  <blockquote>„Erstmals wurden erfolgreich GKV -Routinedaten mit Daten aus Krankenhäusern verknüpft und unter Zuhilfenahme von Machine Learning -Methoden sogenannte hybride Qualitätsindikatoren entwickelt sowie minimal erforderliche klinische Datensets vom Projekt identifiziert." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Hybrider Datensatz im OMOP-Standard erarbeitet</p>
-  <blockquote>„Für die longitudinalen Sekundärdatenanalyse wurden GKV-Routinedaten der Allgemeinen Ortskrankenkassen (AOK) für den Zeitraum von 2015 bis 2021 auf Patientenebene mit klinischen Daten von 14 teilnehmenden Kliniken verknüpft und ein hybrider Datensatz im Observational Medical Outcomes Partnership (OMOP)-Standard erarbeitet." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Überwiegend sehr gute Matching-Raten</p>
-  <blockquote>„Die Ergebnisse zeigten für das Matching (GKV-Routinedaten und klinische Fälle) überwiegend sehr gute Matching -Raten ((akuter Myokardinfarkt (99 %), Hirninfarkt (94 %) und kolorektales Karzinom (98 %))." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Angewandte Methoden im Wesentlichen geeignet</p>
-  <blockquote>„Die angewandten Methoden waren im Wesentlichen geeignet zur Beantwortung der Fragestellungen." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Beitrag zur methodischen Weiterentwicklung der Qualitätssicherung mit Routinedaten</p>
-  <blockquote>„Trotz der genannten Einschränkungen konnte das Projekt einen Beitrag zur methodischen Weiterentwicklung des Verfahrens zur Qualitätssicherung mit Routinedaten leisten." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.5">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Frei zugängliches Feinkonzept für die dynamische Darstellung der Ergebnisqualität</p>
-  <blockquote>„Mit dem im Projekt entwickelten Feinkonzept für die dynamische Darstellung der vergleichenden Ergebnisqualität steht der (Fach -) Öffentlichkeit ein frei zugängliches Konzept zur Anwendung zur Verfügung." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.6" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Modellgüte der Risikoadjustierung beim akuten Myokardinfarkt (hybrides Modell mit Hb und eGFR vs. reines GKV-Routinedatenmodell)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Übereinstimmung der krankenhausspezifischen SMR-Rangfolge zwischen den Modellen beim akuten Myokardinfarkt</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Modellgüte der Risikoadjustierung bei proximaler Humerusfraktur (HFRS-Modell vs. Komorbiditätsmodell)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Komplikationen und Patientensicherheit“</h3>
   <p class="unser">Einfluss des Hospital Frailty Risk Score auf Komplikationen und Sterblichkeit bei proximaler Humerusfraktur</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Modellgüte der Risikoadjustierung beim Schlaganfall (Modell mit NIHSS vs. ohne NIHSS)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -522,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Übereinstimmung der krankenhausspezifischen SMR-Rangfolge beim Schlaganfall (Modelle mit vs. ohne NIHSS)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -541,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Modellgüte beim kolorektalen Karzinom für das Outcome MTL30 (Modell mit TNM vs. ohne TNM)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -560,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Modellgüte Machine-Learning-Methoden versus logistische Regression</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -576,91 +441,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
       ></textarea></label>
   </div>
 </section>
-<section class="p" data-stelle="adressat.1">
-  <h3>Institut für Qualitätssicherung und Transparenz im Gesundheitswesen (IQTIG) – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung des IQTIG aufgeführt. Ein ausdrücklicher Vermerk, dass es nicht geantwortet hat, fehlt.</p>
-  <blockquote>„Die im Projekt erzielten Ergebnisse werden an das Institut für Qualitätssicherung und Transparenz im Gesundheitswesen (IQTIG) und an IQM Initiative Qualitätsmedizin e.V. zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.2">
-  <h3>IQM Initiative Qualitätsmedizin e.V. – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung der IQM aufgeführt. Ein ausdrücklicher Vermerk, dass sie nicht geantwortet hat, fehlt.</p>
-  <blockquote>„Die im Projekt erzielten Ergebnisse werden an das Institut für Qualitätssicherung und Transparenz im Gesundheitswesen (IQTIG) und an IQM Initiative Qualitätsmedizin e.V. zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.3">
-  <h3>Bundesministerium für Gesundheit (BMG) – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung des BMG aufgeführt. Ein ausdrücklicher Vermerk, dass es nicht geantwortet hat, fehlt.</p>
-  <blockquote>„Die Die im Projekt erzielten Erkenntnisse werden zudem im Hinblick auf die Entwicklung eines Observational Medical Outcomes Partnership (OMOP)-Modells für GKV-Routinedaten an das Bundesministerium für Gesundheit (BMG) und das Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.4">
-  <h3>Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) – eingestuft als „zur Kenntnis genommen“</h3>
-  <p class="unser">Das BfArM sieht in dem Forschungsvorhaben positive Ansätze. Es verweist darauf, dass die Herausforderung der Überführung deutscher Vokabulare auf internationale Terminologien seiner Einschätzung entspricht, die mit der Semantikstrategie adressiert wird.</p>
-  <blockquote>„Das BfArM sieht in dem Forschungsvorhaben positive Ansätze. Insbesondere die offene Herausforderung der vollständigen Überführung der deutschen Vokabulare auf internationale Terminologien (wie z.B. Systematized Nomenclature of Medicine and Clinical Terms ( SNOMED-CT)) entspricht auch der Einschätzung, die seitens des BfArMs mit der Semantikstrategie [...] adressiert wird." <span class="s">S. 4</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="bericht_kurz">
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben untersuchte für vier stationäre Leistungsbereiche, ob die Verknüpfung von GKV-Routinedaten der AOK mit klinischen Daten teilnehmender Krankenhäuser die Risikoadjustierung von Qualitätsindikatoren verändert: akuter Myokardinfarkt (AMI), proximale Humerusfraktur (PHF), Schlaganfall (STROKE) und kolorektales Karzinom (KRK). Zusätzlich wurden Machine-Learning-Methoden (Elastic Net, XGBoost, neuronales Netz) mit der logistischen Regression verglichen. Gemessen wurde die Modellgüte (ROC-AUC, PR-AUC, Brier Score) und die Rangkorrelation der krankenhausspezifischen SMR. Beim AMI erhöhten Hb und eGFR die ROC-AUC nicht. Die eGFR ließ sich über ICD-Surrogate (N17/N18) approximieren, und die SMR-Ränge korrelierten zwischen den Modellen mit ρ=0,92 bis 0,96. Für PHF fanden sich keine relevanten klinischen Daten; ausgewertet wurde nur mit Routinedaten und dem HFRS. Beim Schlaganfall erhöhte der NIHSS die ROC-AUC für die 30-Tage-Sterblichkeit um bis zu 10 % (I63) bzw. 15 % (I61), und die SMR-Ränge mit und ohne NIHSS korrelierten laut Bericht nur schwach bis moderat. Wegen selektiver Stichprobe sind dort Verzerrungen nicht auszuschließen. Für KRK reichten die vollständigen Datensätze nicht aus. ML-Methoden brachten laut Bericht für die meisten Ergebnisse keine oder nur marginale Verbesserungen (maximal 0,09 ROC-AUC). Die Aussagekraft hängt am Ausschluss unvollständiger Fälle ohne Imputation: Je nach Bereich blieben 42 % bis 53 % der initialen Fälle.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">AMI: Das rein routinedatenbasierte Modell erreichte je nach Outcome eine ROC-AUC von 0,74 bis 0,86; mit den klinischen Risikofaktoren Hb und eGFR lag sie bei 0,74 bis 0,87, laut Bericht ohne Erhöhung.</p>
+  
   <blockquote>„„Das ausschließlich auf GKV -Routinedaten basierende Modell ergab je nach Outcome ROC - AUC-Werte von 0,74 bis 0,86. Das Hinzufügen der klinischen Risikofaktoren Hb und eGFR führte zu keiner Erhöhung der ROC-AUC-Werte (0,74-0,87)“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">AMI: Die SMR-Ränge der Krankenhäuser korrelierten zwischen den drei Risikoadjustierungsmodellen für alle Outcomes mit Spearman ρ=0,92 bis 0,96; der Bericht bezeichnet dies als starke Korrelation.</p>
+  
   <blockquote>„„Die Ergebnisse zeigen für alle Outcomes eine starke Korrelation zwischen den drei Modellen (Spearman -Rangkorrelation 𝝆=0,92 bis 0,96).“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,69 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">AMI: Die eGFR war der einzige klinische Faktor mit Korrelation zu den Outcomes und ließ sich über die Stadien der ICD-Codes N17 und N18 approximieren. Das Modell mit diesen Surrogaten erreichte für alle Outcomes eine ROC-AUC von 0,77 bis 0,89 und lag damit über dem hybriden Modell mit eGFR.</p>
+  
   <blockquote>„„der einzige klinische Faktor, der eine geringe Korrelation mit den Outcomes zeigte, die eGFR, deren Informationsgehalt in den GKV-Routinedaten durch Differenzierung der Stadien der ICD -10 Codes N17 und N18 [...] approximiert werden konnte“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.7">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Schlaganfall: Das rein routinedatenbasierte Modell erreichte eine ROC-AUC von 0,51 bis 0,91. Mit dem NIHSS stieg die ROC-AUC für die 30-Tage-Sterblichkeit um bis zu 10 % (I63) bzw. 15 % (I61), laut Bericht teils signifikant (ohne p-Wert). Für Reinfarkt und Pflegegraderhöhung lagen die Zugewinne bei 2 % bis 8,5 %.</p>
-  <blockquote>„„Die Hinzunahme des klinischen NIHSS führte zu teils signifikanter Erhöhung der ROC -AUC-Werte von bis zu 10% für I63 und 15% für I61 beim Outcome Sterblichkeit innerhalb von 30 Tagen.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.8">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Schlaganfall: Die SMR-Ränge der Modelle mit und ohne NIHSS korrelierten für alle Outcomes mit Spearman ρ=−0,72 bis 0,92; der Bericht nennt dies eine schwache bis moderate Korrelation.</p>
-  <blockquote>„„Der Vergleich der SMR -Rangkorrelationen zeigt für alle Outcomes nur eine schwache bis moderate Korrelation zwischen den Modellen mit und ohne NIHSS (Spearman -Rangkorrelation 𝝆=-0,72 bis 0,92).“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.9">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Laut Bericht verbesserten einzelne ML-Methoden für einige Outcomes die Modellgüte gegenüber der logistischen Regression, höchstens um 0,09 ROC-AUC (XGBoost). Für die meisten Ergebnisse gab es keine oder nur marginale Verbesserungen.</p>
-  <blockquote>„„Für einige Outcomes verbesserten einzelne ML-Methoden die Modellgüte (höchster Zuwachs bei ROC-AUC=0,09 durch XGBoost). Dennoch wurden für die meisten Ergebnisse keine oder nur marginale Verbesserungen durch die ML-Methoden erzielt.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Schlaganfall: Die Fallzahl war gering (insbesondere I61), und NIHSS-Angaben lagen nur für einen Teil der Fälle vor. Laut Bericht ist daher eine Verzerrung durch selektive Patienten- bzw. Krankenhausauswahl möglich.</p>
+  
   <blockquote>„„Da jedoch die Fallzahl (insbesondere bei I61) und generell die Verfügbarkeit der klinischen NIHSS Information nur bei einem Teil der ausgewählten Fälle vorlag, besteht die Mögli chkeit einer Verzerrung der Ergebnisse aufgrund selektiver Patientenauswahl.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Nach Ausschluss der Fälle mit fehlenden klinischen Angaben umfassten die finalen hybriden Populationen 53 % (AMI, 3.148), 46 % (Schlaganfall, 5.012) und 42 % (KRK, 494) der initialen Fälle. Ausgeschlossen wurden 1.391, 5.128 bzw. 516 Fälle.</p>
+  
   <blockquote>„„Die finalen hybriden Studienpopulationen umfassten 3.148 AMI -Fälle (53% der initialen Fälle), 5.012 STROKE -Fälle (46% der initialen Fälle), [...] und 494 KRK -Fälle (42% der initialen Fälle)“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,31 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">AMI: Ob vollzählig verfügbare klinische Daten die Risikoadjustierung verbessern würden, konnte das Projekt nicht beantworten.</p>
+  
   <blockquote>„„Inwieweit bei vollzähliger Verfügbarkeit der klinischen Daten die Risikoadjustierung weiter verbessert werden könnte, kann im Rahmen dies es Projektes nicht beantwortet werden.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.6">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">KRK: In den Kliniken lagen nicht genügend vollständige Datensätze vor, um die Relevanz klinischer Daten zu bewerten.</p>
-  <blockquote>„„Für die Bewertung der Relevanz klinischer Daten beim kolorektalem Karzinom lagen in den Kliniken nicht genügend vollständige Datensätze vor.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -865,11 +578,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Schlaganfall, SMR-Korrelation: S. 28 nennt ρ=−0,72 bis 0,92 eine „schwache bis moderate Korrelation“. Beim AMI wird ein Bereich von ρ=0,92 bis 0,96 als „starke Korrelation“ bezeichnet (S. 27), und die Obergrenze 0,92 ist in beiden Bereichen dieselbe.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -884,11 +597,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">AMI, Population des Surrogatmodells: Nach S. 26 wurde das Modell mit eGFR-Surrogaten auf einer gleich großen Teilstichprobe des bundesweiten Datensatzes getestet. S. 30 ordnet dasselbe Ergebnis (ROC-AUC 0,77–0,89) der hybriden AMI-Studienpopulation (N=3.148) zu.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -903,11 +616,315 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">AMI, klinische Faktoren: Laut S. 2 wurden für AMI klinische Faktoren mit Einfluss auf die Risikoadjustierung identifiziert. Nach S. 26/27 erhöhten Hb und eGFR die ROC-AUC nicht, und die verfügbaren klinischen Daten verbesserten die routinedatenbasierte Risikoadjustierung nicht.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>56 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss leitet die Projektergebnisse zur Information an das IQTIG und an die IQM Initiative Qualitätsmedizin e. V. weiter. Zusätzlich gehen die Erkenntnisse mit Blick auf die Entwicklung eines OMOP-Modells für GKV-Routinedaten zur Information an das BMG und das BfArM. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit in die Regelversorgung. Die Ergebnisse zum Hirninfarkt müssen vor Schlussfolgerungen an einer größeren Studienpopulation überprüft werden. Das entwickelte Feinkonzept steht der (Fach-)Öffentlichkeit frei zugänglich zur Anwendung zur Verfügung.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erstmalige erfolgreiche Verknüpfung von GKV-Routinedaten mit Krankenhausdaten und Entwicklung hybrider Qualitätsindikatoren</p>
+  
+  <blockquote>„Erstmals wurden erfolgreich GKV -Routinedaten mit Daten aus Krankenhäusern verknüpft und unter Zuhilfenahme von Machine Learning -Methoden sogenannte hybride Qualitätsindikatoren entwickelt sowie minimal erforderliche klinische Datensets vom Projekt identifiziert." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Hybrider Datensatz im OMOP-Standard erarbeitet</p>
+  
+  <blockquote>„Für die longitudinalen Sekundärdatenanalyse wurden GKV-Routinedaten der Allgemeinen Ortskrankenkassen (AOK) für den Zeitraum von 2015 bis 2021 auf Patientenebene mit klinischen Daten von 14 teilnehmenden Kliniken verknüpft und ein hybrider Datensatz im Observational Medical Outcomes Partnership (OMOP)-Standard erarbeitet." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Überwiegend sehr gute Matching-Raten</p>
+  
+  <blockquote>„Die Ergebnisse zeigten für das Matching (GKV-Routinedaten und klinische Fälle) überwiegend sehr gute Matching -Raten ((akuter Myokardinfarkt (99 %), Hirninfarkt (94 %) und kolorektales Karzinom (98 %))." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Angewandte Methoden im Wesentlichen geeignet</p>
+  
+  <blockquote>„Die angewandten Methoden waren im Wesentlichen geeignet zur Beantwortung der Fragestellungen." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.4">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Beitrag zur methodischen Weiterentwicklung der Qualitätssicherung mit Routinedaten</p>
+  
+  <blockquote>„Trotz der genannten Einschränkungen konnte das Projekt einen Beitrag zur methodischen Weiterentwicklung des Verfahrens zur Qualitätssicherung mit Routinedaten leisten." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.5">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Frei zugängliches Feinkonzept für die dynamische Darstellung der Ergebnisqualität</p>
+  
+  <blockquote>„Mit dem im Projekt entwickelten Feinkonzept für die dynamische Darstellung der vergleichenden Ergebnisqualität steht der (Fach -) Öffentlichkeit ein frei zugängliches Konzept zur Anwendung zur Verfügung." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.5" value="ok" checked hidden>
+    <input type="radio" name="ubefund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.1">
+  <h3>Institut für Qualitätssicherung und Transparenz im Gesundheitswesen (IQTIG) – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung des IQTIG aufgeführt. Ein ausdrücklicher Vermerk, dass es nicht geantwortet hat, fehlt.</p>
+  
+  <blockquote>„Die im Projekt erzielten Ergebnisse werden an das Institut für Qualitätssicherung und Transparenz im Gesundheitswesen (IQTIG) und an IQM Initiative Qualitätsmedizin e.V. zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.1" value="ok" checked hidden>
+    <input type="radio" name="uadressat.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.2">
+  <h3>IQM Initiative Qualitätsmedizin e.V. – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung der IQM aufgeführt. Ein ausdrücklicher Vermerk, dass sie nicht geantwortet hat, fehlt.</p>
+  
+  <blockquote>„Die im Projekt erzielten Ergebnisse werden an das Institut für Qualitätssicherung und Transparenz im Gesundheitswesen (IQTIG) und an IQM Initiative Qualitätsmedizin e.V. zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.2" value="ok" checked hidden>
+    <input type="radio" name="uadressat.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.3">
+  <h3>Bundesministerium für Gesundheit (BMG) – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung des BMG aufgeführt. Ein ausdrücklicher Vermerk, dass es nicht geantwortet hat, fehlt.</p>
+  
+  <blockquote>„Die Die im Projekt erzielten Erkenntnisse werden zudem im Hinblick auf die Entwicklung eines Observational Medical Outcomes Partnership (OMOP)-Modells für GKV-Routinedaten an das Bundesministerium für Gesundheit (BMG) und das Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.3" value="ok" checked hidden>
+    <input type="radio" name="uadressat.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.4">
+  <h3>Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) – eingestuft als „zur Kenntnis genommen“</h3>
+  <p class="unser">Das BfArM sieht in dem Forschungsvorhaben positive Ansätze. Es verweist darauf, dass die Herausforderung der Überführung deutscher Vokabulare auf internationale Terminologien seiner Einschätzung entspricht, die mit der Semantikstrategie adressiert wird.</p>
+  
+  <blockquote>„Das BfArM sieht in dem Forschungsvorhaben positive Ansätze. Insbesondere die offene Herausforderung der vollständigen Überführung der deutschen Vokabulare auf internationale Terminologien (wie z.B. Systematized Nomenclature of Medicine and Clinical Terms ( SNOMED-CT)) entspricht auch der Einschätzung, die seitens des BfArMs mit der Semantikstrategie [...] adressiert wird." <span class="s">S. 4</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.4" value="ok" checked hidden>
+    <input type="radio" name="uadressat.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.7">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Schlaganfall: Das rein routinedatenbasierte Modell erreichte eine ROC-AUC von 0,51 bis 0,91. Mit dem NIHSS stieg die ROC-AUC für die 30-Tage-Sterblichkeit um bis zu 10 % (I63) bzw. 15 % (I61), laut Bericht teils signifikant (ohne p-Wert). Für Reinfarkt und Pflegegraderhöhung lagen die Zugewinne bei 2 % bis 8,5 %.</p>
+  
+  <blockquote>„„Die Hinzunahme des klinischen NIHSS führte zu teils signifikanter Erhöhung der ROC -AUC-Werte von bis zu 10% für I63 und 15% für I61 beim Outcome Sterblichkeit innerhalb von 30 Tagen.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.8">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Schlaganfall: Die SMR-Ränge der Modelle mit und ohne NIHSS korrelierten für alle Outcomes mit Spearman ρ=−0,72 bis 0,92; der Bericht nennt dies eine schwache bis moderate Korrelation.</p>
+  
+  <blockquote>„„Der Vergleich der SMR -Rangkorrelationen zeigt für alle Outcomes nur eine schwache bis moderate Korrelation zwischen den Modellen mit und ohne NIHSS (Spearman -Rangkorrelation 𝝆=-0,72 bis 0,92).“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.9">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Laut Bericht verbesserten einzelne ML-Methoden für einige Outcomes die Modellgüte gegenüber der logistischen Regression, höchstens um 0,09 ROC-AUC (XGBoost). Für die meisten Ergebnisse gab es keine oder nur marginale Verbesserungen.</p>
+  
+  <blockquote>„„Für einige Outcomes verbesserten einzelne ML-Methoden die Modellgüte (höchster Zuwachs bei ROC-AUC=0,09 durch XGBoost). Dennoch wurden für die meisten Ergebnisse keine oder nur marginale Verbesserungen durch die ML-Methoden erzielt.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.6">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">KRK: In den Kliniken lagen nicht genügend vollständige Datensätze vor, um die Relevanz klinischer Daten zu bewerten.</p>
+  
+  <blockquote>„„Für die Bewertung der Relevanz klinischer Daten beim kolorektalem Karzinom lagen in den Kliniken nicht genügend vollständige Datensätze vor.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -922,11 +939,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">KRK, Outcomes: S. 22 nennt fünf geplante Outcomes. In der ML-Analyse (S. 29) ist neben MTL30 nur von den „beiden anderen Outcomes“ Relaparotomie und Wiederaufnahme innerhalb von 14 Tagen die Rede.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -936,16 +953,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>39 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">AMI: Die Korrelation der eGFR mit den Outcomes lag bei Phi 0,19 bis 0,29; für Hb wird keine Korrelation berichtet.</p>
+  
   <blockquote>„„Lediglich eGFR zeigte eine leichte Korrelation mit den Outc omes (Phi-Korrelationskoeffizienten zwischen 0,19 und 0,29).“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +976,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">AMI: Das SMR-Ranking des Surrogatmodells korrelierte mit dem des Modells mit eGFR und Hb mit Spearman 0,93 bis 1,0 (p&lt;0,001); laut Bericht wurde kein Effekt auf die SMR festgestellt.</p>
+  
   <blockquote>„„wurde kein Effekt auf die krankenhausspezifischen SMR festgestellt. Das Ranking der krankenhausspezifischen SMR wies eine starke Korrelation mit de m SMR Ranking auf [...] (Spearman -Rangkorrelation 0,93-1,0, p &lt; 0,001)“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +995,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">AMI: Im finalen Surrogatmodell hatte der kardiogene Schock für alle Outcomes den größten Einfluss (OR bis 18,5 für Tod innerhalb von 30 Tagen). Für akutes Nierenversagen Stadium 3 berichtet der Bericht eine signifikante Risikoerhöhung mit einem OR bis 6,1.</p>
+  
   <blockquote>„„erwies sich der kardiogene Schock mit eine m OR von bis zu 18,5 für Versterben innerhalb von 30 Tagen als der einflussreichste Risikofaktor für alle Outcomes. Nach Schock zeigte akutes Nierenversagen im Stadium 3 [...] eine signifikante Risikoerhöhung mit einem OR von bis zu 6,1“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1014,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">AMI: Für die 30-Tage-Sterblichkeit lag die ROC-AUC bei 0,89; das hybride AMI-Modell der CMS hat laut Bericht eine c-Statistik von 0,78.</p>
+  
   <blockquote>„„Die erzielte Modellgüte für Sterblichkeit innerhalb von 30 Tagen (ROC -AUC 0,89) übertrifft die Modellgüte des hybriden Modells für AMI [...] des Centers for Medicare &amp; Medicaid Services (CMS), das eine c-Statistik von 0,78 für die 30-Tage-Mortalität aufweist.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1033,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">ML-Vergleich je Bereich: Bei AMI lag die Verbesserung der Modellgüte bei höchstens 3 %, bei PHF bei höchstens 1 %. Beim Schlaganfall betrugen die drei höchsten Zuwächse 3,5 % (Elastic Net), 6,4 % und 8,9 % (XGBoost), bei KRK 4,7 % (XGBoost).</p>
+  
   <blockquote>„„Bei keinem der Outcomes von AMI erreichte n die ML -Methoden eine Verbesserung der Modellgüte von mehr als 3%, und bei PHF von mehr als 1%. Bei STROKE [...] die drei höchsten Zuwächse 3,5% (Elastic Net), 6,4% und 8,9% (XGBoost) betrugen. Bei KRK [...] 4,7%.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1052,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Rangkorrelation der SMR zwischen logistischer Regression und der jeweils besten ML-Methode war in der Schlaganfallpopulation am niedrigsten und in den AMI- und PHF-Populationen am höchsten.</p>
+  
   <blockquote>„„Wobei d ie niedrigsten Korrelationen innerhalb der STRO KE-Population und die höchsten Korrelationen innerhalb der AMI und PHF Populationen erzielt wurden.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1071,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">ML bei AMI (n=165.130 AOK-Fälle): Das neuronale Netz erreichte für MACCE nach 365 Tagen eine ROC-AUC von 0,786 gegenüber 0,762 der logistischen Regression (+2,4 %), die PR-AUC lag um 4,5 % höher, der Brier Score bei 0,147 bzw. 0,154. Für die 30-Tage-Sterblichkeit betrug das Plus 0,8 %, für MACCE plus Herzinsuffizienz nach 365 Tagen 1,5 %.</p>
+  
   <blockquote>„„betrug die größte Verbesserung der ROC-AUC 2,4% zwischen logistischer Regression und dem neuronalen Netz für das Ergebnis MACCE 365 Tage (ROC-AUC 0,762 bzw. 0,786).“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1090,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">ML bei AMI: Für MACCE nach 30 Tagen und für MACCE plus Herzinsuffizienz nach 30 Tagen war XGBoost am besten (ROC-AUC je +2,3 %; PR-AUC +5,5 % bzw. +5,4 %). Der Brier Score blieb laut Bericht relativ stabil.</p>
+  
   <blockquote>„„Für die Outcomes MACCE 30 Tage und MACCE plus Herzinsuffizienz 30 Tage zeigte XGBoost die beste Modellgüte mit einer Steigerung von 2,3% für beide Outcomes.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1109,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">ML bei PHF (n=34.912 AOK-Fälle): Die höchste Verbesserung der ROC-AUC betrug 1,0 % (neuronales Netz, jede sekundäre ipsilaterale Operation innerhalb von 365 Tagen).</p>
+  
   <blockquote>„„wobei die höchste Verbesserung in der ROC-AUC bei 1,0% (Neuronales Netz) für das Outcome jede sekundäre Operation (ipsilateral) innerhalb von 365 Tagen lag.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1128,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">ML bei PHF: Das Elastic Net lag bei drei Outcomes um 0,1 bis 0,3 % über der logistischen Regression: frühe chirurgische Komplikationen und Revisionen (90 Tage), chirurgische Komplikationen und Revisionen (365 Tage) und andere Komplikationen im Indexaufenthalt.</p>
+  
   <blockquote>„„Das Elastic Net erzielte die beste Modellgüte mit um 0,1 -0,3% höheren ROC-AUC-Werten als die Logistische Regression für drei der Outcomes“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">ML bei PHF: Für die Sterblichkeit im Indexaufenthalt lag keine ML-Methode über der logistischen Regression (ROC-AUC 0,890).</p>
+  
   <blockquote>„„Für Sterblichkeit während des Indexaufenthalts zeigte keine der ML-Methoden eine überlegene Modellgüte im Vergleich zur Logistischen Regres sion (ROC -AUC 0,890) .“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">ML beim Schlaganfall (n=5.012 Hybridfälle): Für 30-Tage-Sterblichkeit und Reinfarkt nach 90 Tagen lagen die ROC-AUC-Unterschiede zur logistischen Regression bei bis zu 3,5 %, die meisten um oder unter 1 %. Für die Pflegegradzunahme innerhalb von 180 Tagen erhöhte XGBoost die ROC-AUC um 0,089 (I61, n=511) bzw. 0,064 (I63, n=4.501).</p>
+  
   <blockquote>„„Eine klare Ausnahme von diesem Muster wurde für beide Studienpopulationen von STROKE (I61 n=511; I63 n=4.501) für das Ergebnis Pflegegradzunahme innerhalb von 180 Tagen festgestellt. Für dieses Ergebnis zeigte XGBoost eine Verbesserung der ROC-AUC von 0,089 (I61) und 0,064 (I63) .“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1185,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">ML bei KRK (MTL30): XGBoost lag um 4,7 % über der logistischen Regression. Die ROC-AUC blieb unter 70 %, die PR-AUC lag um 75 %, der Brier Score um 0,25.</p>
+  
   <blockquote>„„Für das Outcome MTL 30 konnte eine Verbesserung von 4,7% erreicht werden, wenn man die Modellgüte von XGBoost mit der der Logistischen Regression vergleicht. Maximale Modellanpassungen mit ROC-AUC-Werten &lt;70%, PR-AUC um 75% und B um 0,25 wurden erzielt.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1204,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">PHF: Der HFRS war der einflussreichste Risikofaktor für alle Outcomes (ROC-AUC 0,63 bis 0,87). Das Komorbiditätsmodell ohne HFRS erreichte 0,61 bis 0,84.</p>
+  
   <blockquote>„„Die Ergebnisse zeigen, dass der HFRS der einflussreichste Risikofaktor für alle PHF -Outcomes ist, mit ROC -AUC-Werten von 0,63 bis 0,87 je nach Outcome, während das Komorbiditätsmodell ohne HFRS niedrigere ROC -AUC-Werte für alle Outcomes erzielte (0,61 bis 0,84).“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1223,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">PHF: Laut Bericht veränderte der HFRS das SMR-Ranking nicht. Die Spearman-Korrelation zwischen den Modellen mit und ohne HFRS lag bei 0,89 bis 1,00, die mittlere SMR-Differenz bei 0,0006 bis 0,03 und die maximale Differenz bei 0,4 bzw. 4,6.</p>
+  
   <blockquote>„„Obwohl der HFRS der einflussreichste Risikofaktor ist, beeinflusste er nicht das Ranking der hausindividuellen SMR.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1242,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">PHF: Ein mittlerer HFRS ergab laut Bericht ein signifikantes OR von 1,4 (KI 1,3–1,5) für jegliche sekundäre Operation und bis 5,8 (KI 4,0–8,4) für Tod im Indexaufenthalt. Ein hoher HFRS ergab ORs von 2,0 (KI 1,8–2,3) für sekundäre Operation, 17,6 (KI 14,9–20,8) für allgemeine Komplikationen und 13,2 (KI 8,5–20,4) für Tod im Indexaufenthalt.</p>
+  
   <blockquote>„„Ein mittlerer HFRS führte zu einem signifikanten OR von 1,4 ( KI 1,3-1,5) für jegliche sekundäre Operation und bis zu 5,8 ( KI 4,0-8,4) für Versterben während des Indexaufenthalts.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1261,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">KRK: Für MTL30 erreichte das reine Routinedatenmodell eine ROC-AUC vergleichbar mit den Modellen mit TNM. Alle Modelle lagen unter 70 %, und das TNM-Stadium wurde nicht als Haupteinflussfaktor ausgewählt.</p>
+  
   <blockquote>„„Die Güte (ROC -AUC) war jedoch immer &lt;70% in Modellen mit und ohne TNM -Information. Das TNM -Stadium (sowie UICC -Stadium) wurde nicht als Haupteinflussfaktor ausgewählt.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1280,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Studienpopulationen: AMI mit 165.130 AOK-Fällen bzw. 3.148 Hybridfällen, PHF mit 34.912 AOK-Fällen, Schlaganfall mit 5.012 Hybridfällen und KRK mit 494 Hybridfällen.</p>
+  
   <blockquote>„„Die Studienpopulation umfasste stationäre Fälle mit akutem Myokardinfarkt (n=165.130 [AOK], 3.148 [Hybrid]) , [...] Humerusfrakturen (n=34.912 [AOK]), Hirninfarkt/intrazerebraler Blutung (n=5.012 [Hybrid]) und Kolon -/Rektumoperation bei Karzinom (n=494 [Hybrid]).“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1299,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das Matching der in den GKV-Routinedaten identifizierten Fälle mit den von den Kliniken gelieferten Fällen erreichte 99 % (AMI), 94 % (Schlaganfall) und 98 % (KRK).</p>
+  
   <blockquote>„„resultierte in Matching-Raten von 99% für AMI, 94% für STROKE und 98% für KRK.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1318,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Es wurde ein Datenschutzkonzept entwickelt, das der Bericht als übertragbar bezeichnet. Auf seiner Grundlage wurde die Datennutzung nach § 75 SGB X ohne Einwilligung genehmigt, und die Daten wurden trotz fehlender Interoperabilität auf OMOP CDM gemappt.</p>
+  
   <blockquote>„„ein auf künftige Projekte und andere gesetzliche Krankenversicherungen übertragbares Datenschutzkonzept entwickeln, auf dessen Grundlage die Datennutzung nach § 75 SGB X ohne die Einwilligungserklärung der Patientin oder des Patienten genehmigt wurde.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1337,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die aufbereiteten GKV-Vokabulare wurden für OMOP-basierte Forschung in einem GitHub-Repository veröffentlicht.</p>
+  
   <blockquote>„„erfolgte eine Veröffentlichung der aufbereiteten Vokabulare in einem GitHub -Repository [36].“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1356,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für vier Leistungsbereiche wurde exemplarisch ein Feinkonzept für eine dynamische Qualitätsplattform erstellt.</p>
+  
   <blockquote>„„Das Konzeptpapier soll Varianten für die perspektivische Umsetzung einer solchen dynamischen Qualitätsplattform skizzieren. Dies geschah exemplarisch für vier Leistungsbereiche“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1375,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Schlaganfall: Laut Bericht sollten die Ergebnisse an einer größeren Population und einem breiteren Klinikspektrum, insbesondere niedrigerer Versorgungsstufen, wiederholt werden, bevor direkte Schlussfolgerungen gezogen werden.</p>
+  
   <blockquote>„„dennoch die Ergebnisse an einer größeren Studienpopulation wiederholt werden sollten, bevor direkte Schlussfolgerungen gezogen werden können. Auch der Einbezug von einem breiteren Klinikspektrum, insbesondere niedriger Versorgungsstufen, ist zwingend angeraten.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1394,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Fälle ohne vollständige Angaben in den ausgewählten klinischen Variablen wurden ausgeschlossen; auf eine Imputation wurde verzichtet.</p>
+  
   <blockquote>„„Fälle, die nicht in allen für den Leistungsbereich ausgewählten klinischen Daten eine Angabe hatten, wurden ausgeschlossen. [...] wurde an dieser Stelle auf die Imputation fehlender Daten verzichtet.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1413,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht verkleinerte die begrenzte Verfügbarkeit klinischer Informationen die Studienpopulation und hat möglicherweise Verzerrungen eingebracht.</p>
+  
   <blockquote>„„D ie begrenzte Verfügbarkeit klinischer Informationen führte zu einer Verkleinerung der Studienpopulation und hat möglicherweise Verzerrung in die Ergebnisse eingebracht.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1432,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">KRK: Wegen unvollständiger TNM-Angaben wurden weitere Fälle und Kliniken ausgeschlossen; auswertbar waren insgesamt 494 Fälle.</p>
+  
   <blockquote>„„Die Verfügbarkeit der TNM-Information war unvollständig und resultierte in einem weiteren Ausschluss von Fällen/Kliniken [...], so dass insgesamt nur 494 Fälle in die Auswertung einbezogen werden konnten.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1451,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">KRK: Wegen sehr kleiner Fallzahlen wurden die drei Behandlungsgruppen (I–III) zusammengelegt und gemeinsam ausgewertet.</p>
+  
   <blockquote>„„Da unter anderem die Fallzahlen in den drei Gruppen (I-III) sehr klein waren, wurden alle Fälle der drei Gruppen vereint und gemeinsam ausgewertet.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1470,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">KRK: Außer beim Kombinationsoutcome MTL30 konvergierten die Modelle wegen der Indikatorprävalenz und der geringen Fallzahl nicht; analysiert werden konnte nur MTL30.</p>
+  
   <blockquote>„„Da bei allen Outcomes, bis auf den Kombinationsoutcome MTL30, die Indikatorprävalenz in Verbindung mit der insgesamt geringen Fallzahl zu nicht konvergierenden Modellen führte, konnte nur für das Outcome MTL30 eine Analyse durchgeführt werden.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1489,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">KRK: Geringe Fallzahlen pro Krankenhaus führten zu numerischen Instabilitäten. Ein Effekt des Tumorschweregrads auf die Risikoadjustierung ist daher nicht auszuschließen, sein Einfluss auf das SMR-Ranking konnte nicht quantifiziert werden, und SMR wurden nicht berechnet.</p>
+  
   <blockquote>„„ergaben sich jedoch numerische Instabilitäten in den s tatistischen Modellierungen, so dass ein Effekt des Tumorschweregrades auf die Risikoadjustierung nicht ausgeschlossen werden kann. [...] wurden keine SMR für das KRK berechnet.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1508,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">KRK, ML-Analyse: Für Relaparotomie im Indexaufenthalt und Wiederaufnahme innerhalb von 14 Tagen sagten die Modelle wegen seltener Ereignisse und 494 Fällen stets die Mehrheitsklasse vorher; Ergebnisse liegen dazu nicht vor.</p>
+  
   <blockquote>„„waren die Modelle nicht in der Lage, diese seltenen Ereignisse zu adressieren und prädiktierten stets die Mehrheitsklasse. Daher können zu anderen Outcomes keine Ergebnisse gezeigt werden.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1527,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Schlaganfall: In den GKV-Routinedaten fand sich kein Surrogat für den NIHSS. Getestete OPS-Codes zu Beatmungsart und -dauer verbesserten die Modellgüte nicht, und ein Backward-Fit ergab keinen Zusammenhang.</p>
+  
   <blockquote>„„Eine Suche nach Surrogaten des NIHSS innerhalb der GKV -Routinedaten ergab keine Treffer. [...] Ein direkter Backward-Fit des NIHSS auf die OPS-Codes ergab keine(n) Korrelation/Zusammenhang.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1546,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die im Bereich Schlaganfall als Datenquelle genutzten Schlaganfallbögen müssen nicht verpflichtend erstellt werden.</p>
+  
   <blockquote>„„Die im Bereich Schlaganfall als Datenquelle genutzten Schlaganfallbögen müssen nicht verpflichtend erstellt werden.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1565,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">PHF: In den klinischen Daten wurden keine für Risikoadjustierung oder Outcomemessung relevanten Informationen gefunden, auch keine Angaben zu Mobilität oder Gebrechlichkeit. Ein Matching fand nicht statt, und die Indikatoren wurden auf bundesweiten Routinedaten ohne klinische Daten gebildet.</p>
+  
   <blockquote>„„Für den Leistungsbereich PHF konnten in den klinischen Daten keine für die Risikoadjustierung oder zur Outcomemessung relevanten Informationen identifiziert werden, weshalb die GKV -Routinedaten der PHF Population nicht mit den klinischen Daten gematcht [...] wurden.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1584,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">PHF: 42 % der Diagnosen in den klinischen Daten waren auf das Entlassungsdatum kodiert. Das Diagnosedatum gilt daher laut Bericht nicht als repräsentativ für den Erkrankungsbeginn.</p>
+  
   <blockquote>„„Da jedoch 42% der Diagnosen in den klinischen Daten auf das Entlassungsdatum kodiert waren, kann davon ausgegangen werden, dass das Diagnosedatum nicht für den Beginn der Erkrankung repräsentativ ist.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1603,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">PHF: Weil klinische Daten zur Gebrechlichkeit fehlten, wurde ersatzweise der Hospital Frailty Risk Score auf Basis der Routinedaten verwendet.</p>
+  
   <blockquote>„„Aufgrund der fehlenden Daten zur Gebrechlichkeit in den klinischen Daten wurde der Hospital Frailty Risk Score (HFRS) auf Basis der GKV -Routinedaten verwendet“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1622,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die digitale Verfügbarkeit klinischer Daten in den Kliniken war im Betrachtungszeitraum vor allem bei Medikation, Vitaldaten und Tumordaten gering bzw. unvollständig.</p>
+  
   <blockquote>„„dass die digitale Datenverfügbarkeit insbesondere im Bereich der Medikation, Vitaldaten und Tumordaten für den Betrachtungsze itraum noch gering bzw. eingeschränkt und unvollständig war“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1641,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Routinedaten stammen nur von AOK-Versicherten; Versicherte anderer Kassen können sich in Alter, Geschlecht, Sozialstatus und Morbidität unterscheiden. Laut Bericht trägt die indirekte Standardisierung der SMR zum Ausgleich bei.</p>
+  
   <blockquote>„„können Unterschiede hinsichtlich Alter, Geschlecht, Sozialstatus und Morbidität zwischen Patientinnen und Patienten bestehen, die bei verschiedenen deutschen Krankenkassen versichert sind [35]. Die indirekte Standardisierung der SMR trägt dazu bei, diese Effekt e auszugleichen.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1660,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Harmonisierung der GKV-Routinedaten in OMOP CDM war laut Bericht eine große Herausforderung, weil zu Projektbeginn keine umfassende Transformation existierte.</p>
+  
   <blockquote>„„stellte insbesondere die Datenharmonisierung von GKV -Routinedaten in OMOP CDM eine weitere große Herausforderung dar, da mit Beginn des Projektes keine umfassende Transformation von GKV -Routinedaten nach OMOP CDM existierte.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1679,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die vollständige Überführung der deutschen GKV-Vokabulare in internationale Terminologien wie SNOMED-CT und in die OHDSI-Standardvokabulare ist offen.</p>
+  
   <blockquote>„„Eine offene Herausforderung stellt die vollständige Überführung dieser deutschen Vokabulare auf internationale Terminologien (wie z.B. [...] SNOMED -CT)) sowie eine Integration in die standardisierten Vokabulare von OHDSI dar.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1712,28 +1729,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 393, "akronym": "Hybrid-QI", "kennung": "3WWmd0Y6pi0E", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Projektergebnisse zur Information an das IQTIG und an die IQM Initiative Qualitätsmedizin e. V. weiter. Zusätzlich gehen die Erkenntnisse mit Blick auf die Entwicklung eines OMOP-Modells für GKV-Routinedaten zur Information an das BMG und das BfArM. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Im Projekt wurden erstmals GKV-Routinedaten mit Klinikdaten verknüpft. Mit Machine-Learning-Methoden entstanden hybride Qualitätsindikatoren für vier Leistungsbereiche, dazu minimal erforderliche klinische Datensets. Die Matching-Raten waren überwiegend sehr gut. Für Schulterendoprothese/Osteosynthese gelang jedoch kein Matching. Eine verbesserte Modellgüte zeigte sich nur beim Hirninfarkt, und dieses Ergebnis muss an einer größeren Population überprüft werden. Keine Machine-Learning-Methode war der logistischen Regression generell überlegen. Einschränkend wirkten unvollständige klinische Daten, die geringe Fallzahl beim kolorektalen Karzinom und die nicht-systematische Methodik von Literaturrecherche und Expertenberatungen. Trotz dieser Einschränkungen sieht der Ausschuss einen Beitrag zur methodischen Weiterentwicklung der Qualitätssicherung mit Routinedaten und ein frei zugängliches Feinkonzept; er leitet die Ergebnisse deshalb zur Information weiter."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit in die Regelversorgung. Die Ergebnisse zum Hirninfarkt müssen vor Schlussfolgerungen an einer größeren Studienpopulation überprüft werden. Das entwickelte Feinkonzept steht der (Fach-)Öffentlichkeit frei zugänglich zur Anwendung zur Verfügung."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Für Schulterendoprothese/Osteosynthese fehlten relevante klinische Informationen; es kam kein Matching zustande"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Verbesserte Modellgüte und Einfluss auf die Qualitätsbeurteilung nur beim Hirninfarkt"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Ergebnisse zum Hirninfarkt müssen an einer größeren Studienpopulation überprüft werden"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Keine Machine-Learning-Methode der logistischen Regression generell überlegen"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Teils unvollständige klinische Informationen aus den Kliniken"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Geringe Fallzahl bei der Indikation kolorektales Karzinom"}, {"stelle": "hindernis.6", "art": "hindernis", "unser": "Literaturrecherchen und Expertenberatungen ohne systematische Methodik"}, {"stelle": "befund.0", "art": "befund", "unser": "Erstmalige erfolgreiche Verknüpfung von GKV-Routinedaten mit Krankenhausdaten und Entwicklung hybrider Qualitätsindikatoren"}, {"stelle": "befund.1", "art": "befund", "unser": "Hybrider Datensatz im OMOP-Standard erarbeitet"}, {"stelle": "befund.2", "art": "befund", "unser": "Überwiegend sehr gute Matching-Raten"}, {"stelle": "befund.3", "art": "befund", "unser": "Angewandte Methoden im Wesentlichen geeignet"}, {"stelle": "befund.4", "art": "befund", "unser": "Beitrag zur methodischen Weiterentwicklung der Qualitätssicherung mit Routinedaten"}, {"stelle": "befund.5", "art": "befund", "unser": "Frei zugängliches Feinkonzept für die dynamische Darstellung der Ergebnisqualität"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Modellgüte der Risikoadjustierung beim akuten Myokardinfarkt (hybrides Modell mit Hb und eGFR vs. reines GKV-Routinedatenmodell)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Übereinstimmung der krankenhausspezifischen SMR-Rangfolge zwischen den Modellen beim akuten Myokardinfarkt"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Modellgüte der Risikoadjustierung bei proximaler Humerusfraktur (HFRS-Modell vs. Komorbiditätsmodell)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Einfluss des Hospital Frailty Risk Score auf Komplikationen und Sterblichkeit bei proximaler Humerusfraktur"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Modellgüte der Risikoadjustierung beim Schlaganfall (Modell mit NIHSS vs. ohne NIHSS)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Übereinstimmung der krankenhausspezifischen SMR-Rangfolge beim Schlaganfall (Modelle mit vs. ohne NIHSS)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Modellgüte beim kolorektalen Karzinom für das Outcome MTL30 (Modell mit TNM vs. ohne TNM)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Modellgüte Machine-Learning-Methoden versus logistische Regression"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des IQTIG aufgeführt. Ein ausdrücklicher Vermerk, dass es nicht geantwortet hat, fehlt."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung der IQM aufgeführt. Ein ausdrücklicher Vermerk, dass sie nicht geantwortet hat, fehlt."}, {"stelle": "adressat.3", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des BMG aufgeführt. Ein ausdrücklicher Vermerk, dass es nicht geantwortet hat, fehlt."}, {"stelle": "adressat.4", "art": "adressat", "unser": "Das BfArM sieht in dem Forschungsvorhaben positive Ansätze. Es verweist darauf, dass die Herausforderung der Überführung deutscher Vokabulare auf internationale Terminologien seiner Einschätzung entspricht, die mit der Semantikstrategie adressiert wird."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte für vier stationäre Leistungsbereiche, ob die Verknüpfung von GKV-Routinedaten der AOK mit klinischen Daten teilnehmender Krankenhäuser die Risikoadjustierung von Qualitätsindikatoren verändert: akuter Myokardinfarkt (AMI), proximale Humerusfraktur (PHF), Schlaganfall (STROKE) und kolorektales Karzinom (KRK). Zusätzlich wurden Machine-Learning-Methoden (Elastic Net, XGBoost, neuronales Netz) mit der logistischen Regression verglichen. Gemessen wurde die Modellgüte (ROC-AUC, PR-AUC, Brier Score) und die Rangkorrelation der krankenhausspezifischen SMR. Beim AMI erhöhten Hb und eGFR die ROC-AUC nicht. Die eGFR ließ sich über ICD-Surrogate (N17/N18) approximieren, und die SMR-Ränge korrelierten zwischen den Modellen mit ρ=0,92 bis 0,96. Für PHF fanden sich keine relevanten klinischen Daten; ausgewertet wurde nur mit Routinedaten und dem HFRS. Beim Schlaganfall erhöhte der NIHSS die ROC-AUC für die 30-Tage-Sterblichkeit um bis zu 10 % (I63) bzw. 15 % (I61), und die SMR-Ränge mit und ohne NIHSS korrelierten laut Bericht nur schwach bis moderat. Wegen selektiver Stichprobe sind dort Verzerrungen nicht auszuschließen. Für KRK reichten die vollständigen Datensätze nicht aus. ML-Methoden brachten laut Bericht für die meisten Ergebnisse keine oder nur marginale Verbesserungen (maximal 0,09 ROC-AUC). Die Aussagekraft hängt am Ausschluss unvollständiger Fälle ohne Imputation: Je nach Bereich blieben 42 % bis 53 % der initialen Fälle."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "AMI: Das rein routinedatenbasierte Modell erreichte je nach Outcome eine ROC-AUC von 0,74 bis 0,86; mit den klinischen Risikofaktoren Hb und eGFR lag sie bei 0,74 bis 0,87, laut Bericht ohne Erhöhung."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "AMI: Die SMR-Ränge der Krankenhäuser korrelierten zwischen den drei Risikoadjustierungsmodellen für alle Outcomes mit Spearman ρ=0,92 bis 0,96; der Bericht bezeichnet dies als starke Korrelation."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "AMI: Die eGFR war der einzige klinische Faktor mit Korrelation zu den Outcomes und ließ sich über die Stadien der ICD-Codes N17 und N18 approximieren. Das Modell mit diesen Surrogaten erreichte für alle Outcomes eine ROC-AUC von 0,77 bis 0,89 und lag damit über dem hybriden Modell mit eGFR."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Schlaganfall: Das rein routinedatenbasierte Modell erreichte eine ROC-AUC von 0,51 bis 0,91. Mit dem NIHSS stieg die ROC-AUC für die 30-Tage-Sterblichkeit um bis zu 10 % (I63) bzw. 15 % (I61), laut Bericht teils signifikant (ohne p-Wert). Für Reinfarkt und Pflegegraderhöhung lagen die Zugewinne bei 2 % bis 8,5 %."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Schlaganfall: Die SMR-Ränge der Modelle mit und ohne NIHSS korrelierten für alle Outcomes mit Spearman ρ=−0,72 bis 0,92; der Bericht nennt dies eine schwache bis moderate Korrelation."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Laut Bericht verbesserten einzelne ML-Methoden für einige Outcomes die Modellgüte gegenüber der logistischen Regression, höchstens um 0,09 ROC-AUC (XGBoost). Für die meisten Ergebnisse gab es keine oder nur marginale Verbesserungen."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Schlaganfall: Die Fallzahl war gering (insbesondere I61), und NIHSS-Angaben lagen nur für einen Teil der Fälle vor. Laut Bericht ist daher eine Verzerrung durch selektive Patienten- bzw. Krankenhausauswahl möglich."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Nach Ausschluss der Fälle mit fehlenden klinischen Angaben umfassten die finalen hybriden Populationen 53 % (AMI, 3.148), 46 % (Schlaganfall, 5.012) und 42 % (KRK, 494) der initialen Fälle. Ausgeschlossen wurden 1.391, 5.128 bzw. 516 Fälle."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "AMI: Ob vollzählig verfügbare klinische Daten die Risikoadjustierung verbessern würden, konnte das Projekt nicht beantworten."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "KRK: In den Kliniken lagen nicht genügend vollständige Datensätze vor, um die Relevanz klinischer Daten zu bewerten."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Schlaganfall, SMR-Korrelation: S. 28 nennt ρ=−0,72 bis 0,92 eine „schwache bis moderate Korrelation“. Beim AMI wird ein Bereich von ρ=0,92 bis 0,96 als „starke Korrelation“ bezeichnet (S. 27), und die Obergrenze 0,92 ist in beiden Bereichen dieselbe."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "AMI, Population des Surrogatmodells: Nach S. 26 wurde das Modell mit eGFR-Surrogaten auf einer gleich großen Teilstichprobe des bundesweiten Datensatzes getestet. S. 30 ordnet dasselbe Ergebnis (ROC-AUC 0,77–0,89) der hybriden AMI-Studienpopulation (N=3.148) zu."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "AMI, klinische Faktoren: Laut S. 2 wurden für AMI klinische Faktoren mit Einfluss auf die Risikoadjustierung identifiziert. Nach S. 26/27 erhöhten Hb und eGFR die ROC-AUC nicht, und die verfügbaren klinischen Daten verbesserten die routinedatenbasierte Risikoadjustierung nicht."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "KRK, Outcomes: S. 22 nennt fünf geplante Outcomes. In der ML-Analyse (S. 29) ist neben MTL30 nur von den „beiden anderen Outcomes“ Relaparotomie und Wiederaufnahme innerhalb von 14 Tagen die Rede."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "AMI: Die Korrelation der eGFR mit den Outcomes lag bei Phi 0,19 bis 0,29; für Hb wird keine Korrelation berichtet."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "AMI: Das SMR-Ranking des Surrogatmodells korrelierte mit dem des Modells mit eGFR und Hb mit Spearman 0,93 bis 1,0 (p<0,001); laut Bericht wurde kein Effekt auf die SMR festgestellt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "AMI: Im finalen Surrogatmodell hatte der kardiogene Schock für alle Outcomes den größten Einfluss (OR bis 18,5 für Tod innerhalb von 30 Tagen). Für akutes Nierenversagen Stadium 3 berichtet der Bericht eine signifikante Risikoerhöhung mit einem OR bis 6,1."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "AMI: Für die 30-Tage-Sterblichkeit lag die ROC-AUC bei 0,89; das hybride AMI-Modell der CMS hat laut Bericht eine c-Statistik von 0,78."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "ML-Vergleich je Bereich: Bei AMI lag die Verbesserung der Modellgüte bei höchstens 3 %, bei PHF bei höchstens 1 %. Beim Schlaganfall betrugen die drei höchsten Zuwächse 3,5 % (Elastic Net), 6,4 % und 8,9 % (XGBoost), bei KRK 4,7 % (XGBoost)."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Rangkorrelation der SMR zwischen logistischer Regression und der jeweils besten ML-Methode war in der Schlaganfallpopulation am niedrigsten und in den AMI- und PHF-Populationen am höchsten."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "ML bei AMI (n=165.130 AOK-Fälle): Das neuronale Netz erreichte für MACCE nach 365 Tagen eine ROC-AUC von 0,786 gegenüber 0,762 der logistischen Regression (+2,4 %), die PR-AUC lag um 4,5 % höher, der Brier Score bei 0,147 bzw. 0,154. Für die 30-Tage-Sterblichkeit betrug das Plus 0,8 %, für MACCE plus Herzinsuffizienz nach 365 Tagen 1,5 %."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "ML bei AMI: Für MACCE nach 30 Tagen und für MACCE plus Herzinsuffizienz nach 30 Tagen war XGBoost am besten (ROC-AUC je +2,3 %; PR-AUC +5,5 % bzw. +5,4 %). Der Brier Score blieb laut Bericht relativ stabil."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "ML bei PHF (n=34.912 AOK-Fälle): Die höchste Verbesserung der ROC-AUC betrug 1,0 % (neuronales Netz, jede sekundäre ipsilaterale Operation innerhalb von 365 Tagen)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "ML bei PHF: Das Elastic Net lag bei drei Outcomes um 0,1 bis 0,3 % über der logistischen Regression: frühe chirurgische Komplikationen und Revisionen (90 Tage), chirurgische Komplikationen und Revisionen (365 Tage) und andere Komplikationen im Indexaufenthalt."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "ML bei PHF: Für die Sterblichkeit im Indexaufenthalt lag keine ML-Methode über der logistischen Regression (ROC-AUC 0,890)."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "ML beim Schlaganfall (n=5.012 Hybridfälle): Für 30-Tage-Sterblichkeit und Reinfarkt nach 90 Tagen lagen die ROC-AUC-Unterschiede zur logistischen Regression bei bis zu 3,5 %, die meisten um oder unter 1 %. Für die Pflegegradzunahme innerhalb von 180 Tagen erhöhte XGBoost die ROC-AUC um 0,089 (I61, n=511) bzw. 0,064 (I63, n=4.501)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "ML bei KRK (MTL30): XGBoost lag um 4,7 % über der logistischen Regression. Die ROC-AUC blieb unter 70 %, die PR-AUC lag um 75 %, der Brier Score um 0,25."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "PHF: Der HFRS war der einflussreichste Risikofaktor für alle Outcomes (ROC-AUC 0,63 bis 0,87). Das Komorbiditätsmodell ohne HFRS erreichte 0,61 bis 0,84."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "PHF: Laut Bericht veränderte der HFRS das SMR-Ranking nicht. Die Spearman-Korrelation zwischen den Modellen mit und ohne HFRS lag bei 0,89 bis 1,00, die mittlere SMR-Differenz bei 0,0006 bis 0,03 und die maximale Differenz bei 0,4 bzw. 4,6."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "PHF: Ein mittlerer HFRS ergab laut Bericht ein signifikantes OR von 1,4 (KI 1,3–1,5) für jegliche sekundäre Operation und bis 5,8 (KI 4,0–8,4) für Tod im Indexaufenthalt. Ein hoher HFRS ergab ORs von 2,0 (KI 1,8–2,3) für sekundäre Operation, 17,6 (KI 14,9–20,8) für allgemeine Komplikationen und 13,2 (KI 8,5–20,4) für Tod im Indexaufenthalt."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "KRK: Für MTL30 erreichte das reine Routinedatenmodell eine ROC-AUC vergleichbar mit den Modellen mit TNM. Alle Modelle lagen unter 70 %, und das TNM-Stadium wurde nicht als Haupteinflussfaktor ausgewählt."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Studienpopulationen: AMI mit 165.130 AOK-Fällen bzw. 3.148 Hybridfällen, PHF mit 34.912 AOK-Fällen, Schlaganfall mit 5.012 Hybridfällen und KRK mit 494 Hybridfällen."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Das Matching der in den GKV-Routinedaten identifizierten Fälle mit den von den Kliniken gelieferten Fällen erreichte 99 % (AMI), 94 % (Schlaganfall) und 98 % (KRK)."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Es wurde ein Datenschutzkonzept entwickelt, das der Bericht als übertragbar bezeichnet. Auf seiner Grundlage wurde die Datennutzung nach § 75 SGB X ohne Einwilligung genehmigt, und die Daten wurden trotz fehlender Interoperabilität auf OMOP CDM gemappt."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Die aufbereiteten GKV-Vokabulare wurden für OMOP-basierte Forschung in einem GitHub-Repository veröffentlicht."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Für vier Leistungsbereiche wurde exemplarisch ein Feinkonzept für eine dynamische Qualitätsplattform erstellt."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Schlaganfall: Laut Bericht sollten die Ergebnisse an einer größeren Population und einem breiteren Klinikspektrum, insbesondere niedrigerer Versorgungsstufen, wiederholt werden, bevor direkte Schlussfolgerungen gezogen werden."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Fälle ohne vollständige Angaben in den ausgewählten klinischen Variablen wurden ausgeschlossen; auf eine Imputation wurde verzichtet."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Laut Bericht verkleinerte die begrenzte Verfügbarkeit klinischer Informationen die Studienpopulation und hat möglicherweise Verzerrungen eingebracht."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "KRK: Wegen unvollständiger TNM-Angaben wurden weitere Fälle und Kliniken ausgeschlossen; auswertbar waren insgesamt 494 Fälle."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "KRK: Wegen sehr kleiner Fallzahlen wurden die drei Behandlungsgruppen (I–III) zusammengelegt und gemeinsam ausgewertet."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "KRK: Außer beim Kombinationsoutcome MTL30 konvergierten die Modelle wegen der Indikatorprävalenz und der geringen Fallzahl nicht; analysiert werden konnte nur MTL30."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "KRK: Geringe Fallzahlen pro Krankenhaus führten zu numerischen Instabilitäten. Ein Effekt des Tumorschweregrads auf die Risikoadjustierung ist daher nicht auszuschließen, sein Einfluss auf das SMR-Ranking konnte nicht quantifiziert werden, und SMR wurden nicht berechnet."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "KRK, ML-Analyse: Für Relaparotomie im Indexaufenthalt und Wiederaufnahme innerhalb von 14 Tagen sagten die Modelle wegen seltener Ereignisse und 494 Fällen stets die Mehrheitsklasse vorher; Ergebnisse liegen dazu nicht vor."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Schlaganfall: In den GKV-Routinedaten fand sich kein Surrogat für den NIHSS. Getestete OPS-Codes zu Beatmungsart und -dauer verbesserten die Modellgüte nicht, und ein Backward-Fit ergab keinen Zusammenhang."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die im Bereich Schlaganfall als Datenquelle genutzten Schlaganfallbögen müssen nicht verpflichtend erstellt werden."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "PHF: In den klinischen Daten wurden keine für Risikoadjustierung oder Outcomemessung relevanten Informationen gefunden, auch keine Angaben zu Mobilität oder Gebrechlichkeit. Ein Matching fand nicht statt, und die Indikatoren wurden auf bundesweiten Routinedaten ohne klinische Daten gebildet."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "PHF: 42 % der Diagnosen in den klinischen Daten waren auf das Entlassungsdatum kodiert. Das Diagnosedatum gilt daher laut Bericht nicht als repräsentativ für den Erkrankungsbeginn."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "PHF: Weil klinische Daten zur Gebrechlichkeit fehlten, wurde ersatzweise der Hospital Frailty Risk Score auf Basis der Routinedaten verwendet."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Die digitale Verfügbarkeit klinischer Daten in den Kliniken war im Betrachtungszeitraum vor allem bei Medikation, Vitaldaten und Tumordaten gering bzw. unvollständig."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Die Routinedaten stammen nur von AOK-Versicherten; Versicherte anderer Kassen können sich in Alter, Geschlecht, Sozialstatus und Morbidität unterscheiden. Laut Bericht trägt die indirekte Standardisierung der SMR zum Ausgleich bei."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Die Harmonisierung der GKV-Routinedaten in OMOP CDM war laut Bericht eine große Herausforderung, weil zu Projektbeginn keine umfassende Transformation existierte."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Die vollständige Überführung der deutschen GKV-Vokabulare in internationale Terminologien wie SNOMED-CT und in die OHDSI-Standardvokabulare ist offen."}]};
+const D = {"projekt_id": 393, "akronym": "Hybrid-QI", "kennung": "3WWmd0Y6pi0E", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Im Projekt wurden erstmals GKV-Routinedaten mit Klinikdaten verknüpft. Mit Machine-Learning-Methoden entstanden hybride Qualitätsindikatoren für vier Leistungsbereiche, dazu minimal erforderliche klinische Datensets. Die Matching-Raten waren überwiegend sehr gut. Für Schulterendoprothese/Osteosynthese gelang jedoch kein Matching. Eine verbesserte Modellgüte zeigte sich nur beim Hirninfarkt, und dieses Ergebnis muss an einer größeren Population überprüft werden. Keine Machine-Learning-Methode war der logistischen Regression generell überlegen. Einschränkend wirkten unvollständige klinische Daten, die geringe Fallzahl beim kolorektalen Karzinom und die nicht-systematische Methodik von Literaturrecherche und Expertenberatungen. Trotz dieser Einschränkungen sieht der Ausschuss einen Beitrag zur methodischen Weiterentwicklung der Qualitätssicherung mit Routinedaten und ein frei zugängliches Feinkonzept; er leitet die Ergebnisse deshalb zur Information weiter."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Für Schulterendoprothese/Osteosynthese fehlten relevante klinische Informationen; es kam kein Matching zustande"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Verbesserte Modellgüte und Einfluss auf die Qualitätsbeurteilung nur beim Hirninfarkt"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Ergebnisse zum Hirninfarkt müssen an einer größeren Studienpopulation überprüft werden"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Keine Machine-Learning-Methode der logistischen Regression generell überlegen"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Teils unvollständige klinische Informationen aus den Kliniken"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Geringe Fallzahl bei der Indikation kolorektales Karzinom"}, {"stelle": "hindernis.6", "art": "hindernis", "unser": "Literaturrecherchen und Expertenberatungen ohne systematische Methodik"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Modellgüte der Risikoadjustierung beim akuten Myokardinfarkt (hybrides Modell mit Hb und eGFR vs. reines GKV-Routinedatenmodell)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Übereinstimmung der krankenhausspezifischen SMR-Rangfolge zwischen den Modellen beim akuten Myokardinfarkt"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Modellgüte der Risikoadjustierung bei proximaler Humerusfraktur (HFRS-Modell vs. Komorbiditätsmodell)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Einfluss des Hospital Frailty Risk Score auf Komplikationen und Sterblichkeit bei proximaler Humerusfraktur"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Modellgüte der Risikoadjustierung beim Schlaganfall (Modell mit NIHSS vs. ohne NIHSS)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Übereinstimmung der krankenhausspezifischen SMR-Rangfolge beim Schlaganfall (Modelle mit vs. ohne NIHSS)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Modellgüte beim kolorektalen Karzinom für das Outcome MTL30 (Modell mit TNM vs. ohne TNM)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Modellgüte Machine-Learning-Methoden versus logistische Regression"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte für vier stationäre Leistungsbereiche, ob die Verknüpfung von GKV-Routinedaten der AOK mit klinischen Daten teilnehmender Krankenhäuser die Risikoadjustierung von Qualitätsindikatoren verändert: akuter Myokardinfarkt (AMI), proximale Humerusfraktur (PHF), Schlaganfall (STROKE) und kolorektales Karzinom (KRK). Zusätzlich wurden Machine-Learning-Methoden (Elastic Net, XGBoost, neuronales Netz) mit der logistischen Regression verglichen. Gemessen wurde die Modellgüte (ROC-AUC, PR-AUC, Brier Score) und die Rangkorrelation der krankenhausspezifischen SMR. Beim AMI erhöhten Hb und eGFR die ROC-AUC nicht. Die eGFR ließ sich über ICD-Surrogate (N17/N18) approximieren, und die SMR-Ränge korrelierten zwischen den Modellen mit ρ=0,92 bis 0,96. Für PHF fanden sich keine relevanten klinischen Daten; ausgewertet wurde nur mit Routinedaten und dem HFRS. Beim Schlaganfall erhöhte der NIHSS die ROC-AUC für die 30-Tage-Sterblichkeit um bis zu 10 % (I63) bzw. 15 % (I61), und die SMR-Ränge mit und ohne NIHSS korrelierten laut Bericht nur schwach bis moderat. Wegen selektiver Stichprobe sind dort Verzerrungen nicht auszuschließen. Für KRK reichten die vollständigen Datensätze nicht aus. ML-Methoden brachten laut Bericht für die meisten Ergebnisse keine oder nur marginale Verbesserungen (maximal 0,09 ROC-AUC). Die Aussagekraft hängt am Ausschluss unvollständiger Fälle ohne Imputation: Je nach Bereich blieben 42 % bis 53 % der initialen Fälle."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "AMI: Das rein routinedatenbasierte Modell erreichte je nach Outcome eine ROC-AUC von 0,74 bis 0,86; mit den klinischen Risikofaktoren Hb und eGFR lag sie bei 0,74 bis 0,87, laut Bericht ohne Erhöhung."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "AMI: Die SMR-Ränge der Krankenhäuser korrelierten zwischen den drei Risikoadjustierungsmodellen für alle Outcomes mit Spearman ρ=0,92 bis 0,96; der Bericht bezeichnet dies als starke Korrelation."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "AMI: Die eGFR war der einzige klinische Faktor mit Korrelation zu den Outcomes und ließ sich über die Stadien der ICD-Codes N17 und N18 approximieren. Das Modell mit diesen Surrogaten erreichte für alle Outcomes eine ROC-AUC von 0,77 bis 0,89 und lag damit über dem hybriden Modell mit eGFR."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Schlaganfall: Die Fallzahl war gering (insbesondere I61), und NIHSS-Angaben lagen nur für einen Teil der Fälle vor. Laut Bericht ist daher eine Verzerrung durch selektive Patienten- bzw. Krankenhausauswahl möglich."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Nach Ausschluss der Fälle mit fehlenden klinischen Angaben umfassten die finalen hybriden Populationen 53 % (AMI, 3.148), 46 % (Schlaganfall, 5.012) und 42 % (KRK, 494) der initialen Fälle. Ausgeschlossen wurden 1.391, 5.128 bzw. 516 Fälle."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "AMI: Ob vollzählig verfügbare klinische Daten die Risikoadjustierung verbessern würden, konnte das Projekt nicht beantworten."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Schlaganfall, SMR-Korrelation: S. 28 nennt ρ=−0,72 bis 0,92 eine „schwache bis moderate Korrelation“. Beim AMI wird ein Bereich von ρ=0,92 bis 0,96 als „starke Korrelation“ bezeichnet (S. 27), und die Obergrenze 0,92 ist in beiden Bereichen dieselbe."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "AMI, Population des Surrogatmodells: Nach S. 26 wurde das Modell mit eGFR-Surrogaten auf einer gleich großen Teilstichprobe des bundesweiten Datensatzes getestet. S. 30 ordnet dasselbe Ergebnis (ROC-AUC 0,77–0,89) der hybriden AMI-Studienpopulation (N=3.148) zu."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "AMI, klinische Faktoren: Laut S. 2 wurden für AMI klinische Faktoren mit Einfluss auf die Risikoadjustierung identifiziert. Nach S. 26/27 erhöhten Hb und eGFR die ROC-AUC nicht, und die verfügbaren klinischen Daten verbesserten die routinedatenbasierte Risikoadjustierung nicht."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Projektergebnisse zur Information an das IQTIG und an die IQM Initiative Qualitätsmedizin e. V. weiter. Zusätzlich gehen die Erkenntnisse mit Blick auf die Entwicklung eines OMOP-Modells für GKV-Routinedaten zur Information an das BMG und das BfArM. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit in die Regelversorgung. Die Ergebnisse zum Hirninfarkt müssen vor Schlussfolgerungen an einer größeren Studienpopulation überprüft werden. Das entwickelte Feinkonzept steht der (Fach-)Öffentlichkeit frei zugänglich zur Anwendung zur Verfügung."}, {"stelle": "befund.0", "art": "befund", "unser": "Erstmalige erfolgreiche Verknüpfung von GKV-Routinedaten mit Krankenhausdaten und Entwicklung hybrider Qualitätsindikatoren"}, {"stelle": "befund.1", "art": "befund", "unser": "Hybrider Datensatz im OMOP-Standard erarbeitet"}, {"stelle": "befund.2", "art": "befund", "unser": "Überwiegend sehr gute Matching-Raten"}, {"stelle": "befund.3", "art": "befund", "unser": "Angewandte Methoden im Wesentlichen geeignet"}, {"stelle": "befund.4", "art": "befund", "unser": "Beitrag zur methodischen Weiterentwicklung der Qualitätssicherung mit Routinedaten"}, {"stelle": "befund.5", "art": "befund", "unser": "Frei zugängliches Feinkonzept für die dynamische Darstellung der Ergebnisqualität"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des IQTIG aufgeführt. Ein ausdrücklicher Vermerk, dass es nicht geantwortet hat, fehlt."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung der IQM aufgeführt. Ein ausdrücklicher Vermerk, dass sie nicht geantwortet hat, fehlt."}, {"stelle": "adressat.3", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des BMG aufgeführt. Ein ausdrücklicher Vermerk, dass es nicht geantwortet hat, fehlt."}, {"stelle": "adressat.4", "art": "adressat", "unser": "Das BfArM sieht in dem Forschungsvorhaben positive Ansätze. Es verweist darauf, dass die Herausforderung der Überführung deutscher Vokabulare auf internationale Terminologien seiner Einschätzung entspricht, die mit der Semantikstrategie adressiert wird."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Schlaganfall: Das rein routinedatenbasierte Modell erreichte eine ROC-AUC von 0,51 bis 0,91. Mit dem NIHSS stieg die ROC-AUC für die 30-Tage-Sterblichkeit um bis zu 10 % (I63) bzw. 15 % (I61), laut Bericht teils signifikant (ohne p-Wert). Für Reinfarkt und Pflegegraderhöhung lagen die Zugewinne bei 2 % bis 8,5 %."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Schlaganfall: Die SMR-Ränge der Modelle mit und ohne NIHSS korrelierten für alle Outcomes mit Spearman ρ=−0,72 bis 0,92; der Bericht nennt dies eine schwache bis moderate Korrelation."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Laut Bericht verbesserten einzelne ML-Methoden für einige Outcomes die Modellgüte gegenüber der logistischen Regression, höchstens um 0,09 ROC-AUC (XGBoost). Für die meisten Ergebnisse gab es keine oder nur marginale Verbesserungen."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "KRK: In den Kliniken lagen nicht genügend vollständige Datensätze vor, um die Relevanz klinischer Daten zu bewerten."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "KRK, Outcomes: S. 22 nennt fünf geplante Outcomes. In der ML-Analyse (S. 29) ist neben MTL30 nur von den „beiden anderen Outcomes“ Relaparotomie und Wiederaufnahme innerhalb von 14 Tagen die Rede."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "AMI: Die Korrelation der eGFR mit den Outcomes lag bei Phi 0,19 bis 0,29; für Hb wird keine Korrelation berichtet."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "AMI: Das SMR-Ranking des Surrogatmodells korrelierte mit dem des Modells mit eGFR und Hb mit Spearman 0,93 bis 1,0 (p<0,001); laut Bericht wurde kein Effekt auf die SMR festgestellt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "AMI: Im finalen Surrogatmodell hatte der kardiogene Schock für alle Outcomes den größten Einfluss (OR bis 18,5 für Tod innerhalb von 30 Tagen). Für akutes Nierenversagen Stadium 3 berichtet der Bericht eine signifikante Risikoerhöhung mit einem OR bis 6,1."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "AMI: Für die 30-Tage-Sterblichkeit lag die ROC-AUC bei 0,89; das hybride AMI-Modell der CMS hat laut Bericht eine c-Statistik von 0,78."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "ML-Vergleich je Bereich: Bei AMI lag die Verbesserung der Modellgüte bei höchstens 3 %, bei PHF bei höchstens 1 %. Beim Schlaganfall betrugen die drei höchsten Zuwächse 3,5 % (Elastic Net), 6,4 % und 8,9 % (XGBoost), bei KRK 4,7 % (XGBoost)."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Rangkorrelation der SMR zwischen logistischer Regression und der jeweils besten ML-Methode war in der Schlaganfallpopulation am niedrigsten und in den AMI- und PHF-Populationen am höchsten."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "ML bei AMI (n=165.130 AOK-Fälle): Das neuronale Netz erreichte für MACCE nach 365 Tagen eine ROC-AUC von 0,786 gegenüber 0,762 der logistischen Regression (+2,4 %), die PR-AUC lag um 4,5 % höher, der Brier Score bei 0,147 bzw. 0,154. Für die 30-Tage-Sterblichkeit betrug das Plus 0,8 %, für MACCE plus Herzinsuffizienz nach 365 Tagen 1,5 %."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "ML bei AMI: Für MACCE nach 30 Tagen und für MACCE plus Herzinsuffizienz nach 30 Tagen war XGBoost am besten (ROC-AUC je +2,3 %; PR-AUC +5,5 % bzw. +5,4 %). Der Brier Score blieb laut Bericht relativ stabil."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "ML bei PHF (n=34.912 AOK-Fälle): Die höchste Verbesserung der ROC-AUC betrug 1,0 % (neuronales Netz, jede sekundäre ipsilaterale Operation innerhalb von 365 Tagen)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "ML bei PHF: Das Elastic Net lag bei drei Outcomes um 0,1 bis 0,3 % über der logistischen Regression: frühe chirurgische Komplikationen und Revisionen (90 Tage), chirurgische Komplikationen und Revisionen (365 Tage) und andere Komplikationen im Indexaufenthalt."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "ML bei PHF: Für die Sterblichkeit im Indexaufenthalt lag keine ML-Methode über der logistischen Regression (ROC-AUC 0,890)."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "ML beim Schlaganfall (n=5.012 Hybridfälle): Für 30-Tage-Sterblichkeit und Reinfarkt nach 90 Tagen lagen die ROC-AUC-Unterschiede zur logistischen Regression bei bis zu 3,5 %, die meisten um oder unter 1 %. Für die Pflegegradzunahme innerhalb von 180 Tagen erhöhte XGBoost die ROC-AUC um 0,089 (I61, n=511) bzw. 0,064 (I63, n=4.501)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "ML bei KRK (MTL30): XGBoost lag um 4,7 % über der logistischen Regression. Die ROC-AUC blieb unter 70 %, die PR-AUC lag um 75 %, der Brier Score um 0,25."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "PHF: Der HFRS war der einflussreichste Risikofaktor für alle Outcomes (ROC-AUC 0,63 bis 0,87). Das Komorbiditätsmodell ohne HFRS erreichte 0,61 bis 0,84."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "PHF: Laut Bericht veränderte der HFRS das SMR-Ranking nicht. Die Spearman-Korrelation zwischen den Modellen mit und ohne HFRS lag bei 0,89 bis 1,00, die mittlere SMR-Differenz bei 0,0006 bis 0,03 und die maximale Differenz bei 0,4 bzw. 4,6."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "PHF: Ein mittlerer HFRS ergab laut Bericht ein signifikantes OR von 1,4 (KI 1,3–1,5) für jegliche sekundäre Operation und bis 5,8 (KI 4,0–8,4) für Tod im Indexaufenthalt. Ein hoher HFRS ergab ORs von 2,0 (KI 1,8–2,3) für sekundäre Operation, 17,6 (KI 14,9–20,8) für allgemeine Komplikationen und 13,2 (KI 8,5–20,4) für Tod im Indexaufenthalt."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "KRK: Für MTL30 erreichte das reine Routinedatenmodell eine ROC-AUC vergleichbar mit den Modellen mit TNM. Alle Modelle lagen unter 70 %, und das TNM-Stadium wurde nicht als Haupteinflussfaktor ausgewählt."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Studienpopulationen: AMI mit 165.130 AOK-Fällen bzw. 3.148 Hybridfällen, PHF mit 34.912 AOK-Fällen, Schlaganfall mit 5.012 Hybridfällen und KRK mit 494 Hybridfällen."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Das Matching der in den GKV-Routinedaten identifizierten Fälle mit den von den Kliniken gelieferten Fällen erreichte 99 % (AMI), 94 % (Schlaganfall) und 98 % (KRK)."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Es wurde ein Datenschutzkonzept entwickelt, das der Bericht als übertragbar bezeichnet. Auf seiner Grundlage wurde die Datennutzung nach § 75 SGB X ohne Einwilligung genehmigt, und die Daten wurden trotz fehlender Interoperabilität auf OMOP CDM gemappt."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Die aufbereiteten GKV-Vokabulare wurden für OMOP-basierte Forschung in einem GitHub-Repository veröffentlicht."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Für vier Leistungsbereiche wurde exemplarisch ein Feinkonzept für eine dynamische Qualitätsplattform erstellt."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Schlaganfall: Laut Bericht sollten die Ergebnisse an einer größeren Population und einem breiteren Klinikspektrum, insbesondere niedrigerer Versorgungsstufen, wiederholt werden, bevor direkte Schlussfolgerungen gezogen werden."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Fälle ohne vollständige Angaben in den ausgewählten klinischen Variablen wurden ausgeschlossen; auf eine Imputation wurde verzichtet."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Laut Bericht verkleinerte die begrenzte Verfügbarkeit klinischer Informationen die Studienpopulation und hat möglicherweise Verzerrungen eingebracht."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "KRK: Wegen unvollständiger TNM-Angaben wurden weitere Fälle und Kliniken ausgeschlossen; auswertbar waren insgesamt 494 Fälle."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "KRK: Wegen sehr kleiner Fallzahlen wurden die drei Behandlungsgruppen (I–III) zusammengelegt und gemeinsam ausgewertet."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "KRK: Außer beim Kombinationsoutcome MTL30 konvergierten die Modelle wegen der Indikatorprävalenz und der geringen Fallzahl nicht; analysiert werden konnte nur MTL30."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "KRK: Geringe Fallzahlen pro Krankenhaus führten zu numerischen Instabilitäten. Ein Effekt des Tumorschweregrads auf die Risikoadjustierung ist daher nicht auszuschließen, sein Einfluss auf das SMR-Ranking konnte nicht quantifiziert werden, und SMR wurden nicht berechnet."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "KRK, ML-Analyse: Für Relaparotomie im Indexaufenthalt und Wiederaufnahme innerhalb von 14 Tagen sagten die Modelle wegen seltener Ereignisse und 494 Fällen stets die Mehrheitsklasse vorher; Ergebnisse liegen dazu nicht vor."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Schlaganfall: In den GKV-Routinedaten fand sich kein Surrogat für den NIHSS. Getestete OPS-Codes zu Beatmungsart und -dauer verbesserten die Modellgüte nicht, und ein Backward-Fit ergab keinen Zusammenhang."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die im Bereich Schlaganfall als Datenquelle genutzten Schlaganfallbögen müssen nicht verpflichtend erstellt werden."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "PHF: In den klinischen Daten wurden keine für Risikoadjustierung oder Outcomemessung relevanten Informationen gefunden, auch keine Angaben zu Mobilität oder Gebrechlichkeit. Ein Matching fand nicht statt, und die Indikatoren wurden auf bundesweiten Routinedaten ohne klinische Daten gebildet."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "PHF: 42 % der Diagnosen in den klinischen Daten waren auf das Entlassungsdatum kodiert. Das Diagnosedatum gilt daher laut Bericht nicht als repräsentativ für den Erkrankungsbeginn."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "PHF: Weil klinische Daten zur Gebrechlichkeit fehlten, wurde ersatzweise der Hospital Frailty Risk Score auf Basis der Routinedaten verwendet."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Die digitale Verfügbarkeit klinischer Daten in den Kliniken war im Betrachtungszeitraum vor allem bei Medikation, Vitaldaten und Tumordaten gering bzw. unvollständig."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Die Routinedaten stammen nur von AOK-Versicherten; Versicherte anderer Kassen können sich in Alter, Geschlecht, Sozialstatus und Morbidität unterscheiden. Laut Bericht trägt die indirekte Standardisierung der SMR zum Ausgleich bei."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Die Harmonisierung der GKV-Routinedaten in OMOP CDM war laut Bericht eine große Herausforderung, weil zu Projektbeginn keine umfassende Transformation existierte."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Die vollständige Überführung der deutschen GKV-Vokabulare in internationale Terminologien wie SNOMED-CT und in die OHDSI-Standardvokabulare ist offen."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

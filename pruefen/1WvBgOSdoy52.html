@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF22013</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>12 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 45 Aussagen. Die übrigen
+33 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die im Projekt FrailtyOP neu entwickelte S3-Leitlinie zur perioperativen Versorgung von Patientinnen und Patienten mit Frailty der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung der Erkenntnisse an die AWMF beauftragt.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Der Ausschuss verweist darauf, dass bei älteren und gebrechlichen Menschen zunehmend komplexe chirurgische Eingriffe erfolgen, es im deutschsprachigen Raum bisher aber keine Empfehlungen für diese vulnerable Gruppe gab. Das Projekt hat nach seiner Darstellung erfolgreich eine S3-Leitlinie mit evidenzbasierten Empfehlungen zum prä-, intra- und postoperativen Management sowie zu ethischen Überlegungen entwickelt. Die Leitlinie soll Ärztinnen und Ärzten im stationären und ambulanten Bereich als Entscheidungshilfe dienen, Komplikationen identifizieren helfen und Präventivmaßnahmen anstoßen. Ergänzend wurde eine Patientenleitlinie erstellt. Da die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien erfüllt, sieht der Ausschuss die Voraussetzung gegeben, ihr Potential zur Verbesserung der Versorgung auszuschöpfen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,87 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Die Leitlinie soll Ärztinnen und Ärzten sowohl im stationären als auch im ambulanten Bereich als Entscheidungshilfe dienen. Weitere Aussagen zur Übertragbarkeit enthält der Beschluss nicht.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erfolgreiche Entwicklung einer neuen S3-Leitlinie mit evidenzbasierten Empfehlungen für Patientinnen und Patienten mit Frailty</p>
-  <blockquote>„Vor diesem Hintergrund entwickelte das Projekt erfolgreich eine neue S3-Leitlinie mit evidenzbasierten Empfehlungen zum Management von Patientinnen und Patienten mit Frailty." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erstellung einer Patientenleitlinie als evidenzbasierte Patienteninformation</p>
-  <blockquote>„Die miterstellte Patientenleitlinie stellt für Betroffene eine evidenzbasierte Patienteninformation zur Verfügung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
-  <blockquote>„Die neu entwickelte S3 - Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 - Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -238,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben hat eine S3-Leitlinie zur perioperativen Versorgung von Patient:innen mit Frailty auf Grundlage einer systematischen Literaturrecherche, GRADE-Bewertung und Delphi-basierter Konsensfindung erstellt. Beschlossen wurden 20 Empfehlungen, alle im starken Konsens: 9 evidenzbasierte (davon 2 Adaptationen aus anderen Leitlinien) und 11 konsensbasierte. Zu acht Fragestellungen wurde mangels Evidenz keine Empfehlung ausgesprochen. Die Evidenz der evidenzbasierten Empfehlungen wurde bei vier als „low“ und bei fünf (darunter beide Adaptationen) als „very low“ bewertet. Inhaltlich neu sind unter anderem ein Screening aller elektiven Patient:innen ab 70 Jahren mit der Clinical Frailty Scale und ein Vorschlag zur multimodalen Prähabilitation vor bestimmten Eingriffen. Neben der Langfassung entstanden eine Patient:innenversion, eine maschinenlesbare Version und eine Bereitstellung auf MAGICapp. Die Aussagekraft hängt an einer heterogenen und dünnen Studienlage ohne standardisierte Frailty-Diagnostik; vielfach musste auf Studien an älteren Patient:innen ohne Frailty-Messung zurückgegriffen werden. Die Implementierung wurde nicht untersucht; die Projektnehmer geben an, deren Herausforderungen nur vermuten zu können.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Insgesamt wurden 20 Empfehlungen beschlossen, alle im starken Konsens; davon 9 evidenzbasierte (einschließlich 2 Adaptationen aus anderen Leitlinien) und 11 konsensbasierte.</p>
+  
   <blockquote>„„Insgesamt wurden 20 Empfehlungen beschlossen, alle im starken Konsens. Dabei handelt es sich um 9 evidenzbasierte, davon zwei Adaptationen aus anderen Leitlinien, und 1 1 konsensbasierte Empfehlungen“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von den 20 Empfehlungen wurden 4 nach GRADE als „low“ und 3 als „very low“ bewertet; bei den 2 Leitlinienadaptationen wurde das Evidenzlevel wegen abweichender Zielpopulationen auf „very low“ herabgesetzt; 11 sind Expert:innenempfehlungen.</p>
+  
   <blockquote>„„4 wurden als low nach GRADE bewertet 3 wurden als very low nach GRADE bewertet 2 Level of Evidence der Leitlinienadaptationen wurde übernommen, jedoch mit einer herabgesetzten Qualität aufgrund unterschiedlicher Zielpopulationen (very low) 11 Expert:innenempfehlungen“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zu acht Fragestellungen konnte mangels Evidenz keine Empfehlung ausgesprochen werden.</p>
+  
   <blockquote>„„Es wurden 20 neue Empfehlungen entwickelt ; zu acht Fragestellungen konnte mangels Evidenz keine Empfehlung ausgesprochen werden.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Heterogene Studien und fehlende Standardisierung der Frailty-Diagnostik erschwerten die Vergleichbarkeit, führten zu vielen Ausschlüssen im Screening, und die Mehrzahl der Empfehlungen musste als Expert:innenempfehlung formuliert werden oder entfiel.</p>
+  
   <blockquote>„„die Heterogenität der Studien sowie die fehlende Standardisierung der Frailty-Diagnostik, was zum einen die direkte Vergleichbarkeit der Studien erschwerte und zu vielen Ausschlüssen während des Screenings führte. Zum anderen musste die Mehrzahl der Empfehlungen als Expert:innenempfehlungen formuliert werden“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Es konnten nur Empfehlungen mit „low“- oder „very low“-Evidenz ausgesprochen werden; auch die übernommenen Adaptationen wiesen eine sehr geringe Evidenzqualität auf.</p>
+  
   <blockquote>„„Infolgedessen konnten nur „low“ oder „very low“ Empfehlungen ausgesprochen werden, oder es wurden Adaptationen bestehender Leitlinien übernommen, die ebenfalls eine sehr geringe Evidenzqualität aufwiesen.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Viele zugrunde liegende Studien wurden an älteren, nicht notwendigerweise frailen Menschen durchgeführt, sodass ihre Ergebnisse nur indirekt auf Patient:innen mit Frailty übertragen werden konnten.</p>
+  
   <blockquote>„„Oftmals wurden Studien an älteren Menschen durchgeführt, wob ei „alt“ nicht automatisch „frail“ bedeutet. Daher konnten viele Studien ergebnisse nur indirekt auf fraile Patient:innen übertragen werden.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -371,11 +293,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Begründung der Laufzeitverlängerung: S. 17 führt die Verzögerung auf den länger als geplant dauernden Review-Prozess mit den Fachgesellschaften zurück, S. 28 auf Bearbeitungszeit und Aufgabenumfang, die Mehrarbeit erforderten und die geplanten Veröffentlichungen systematischer Reviews verhinderten.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -390,11 +312,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 27 spricht von einer „fundierte[n] und evidenzbasierte[n] Grundlage für die Empfehlungen“, während S. 26–29 angeben, dass 11 der 20 Empfehlungen konsensbasiert sind, die Mehrzahl als Expert:innenempfehlungen formuliert werden musste und nur „low“- oder „very low“-Evidenz vorlag.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -409,11 +331,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 2 bezeichnet alle 20 Empfehlungen als „neue Empfehlungen“, darunter zählen laut S. 17 und S. 26 jedoch zwei aus anderen Leitlinien adaptierte Empfehlungen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -423,16 +345,111 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>28 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>33 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die im Projekt FrailtyOP neu entwickelte S3-Leitlinie zur perioperativen Versorgung von Patientinnen und Patienten mit Frailty der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung der Erkenntnisse an die AWMF beauftragt.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Die Leitlinie soll Ärztinnen und Ärzten sowohl im stationären als auch im ambulanten Bereich als Entscheidungshilfe dienen. Weitere Aussagen zur Übertragbarkeit enthält der Beschluss nicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erfolgreiche Entwicklung einer neuen S3-Leitlinie mit evidenzbasierten Empfehlungen für Patientinnen und Patienten mit Frailty</p>
+  
+  <blockquote>„Vor diesem Hintergrund entwickelte das Projekt erfolgreich eine neue S3-Leitlinie mit evidenzbasierten Empfehlungen zum Management von Patientinnen und Patienten mit Frailty." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erstellung einer Patientenleitlinie als evidenzbasierte Patienteninformation</p>
+  
+  <blockquote>„Die miterstellte Patientenleitlinie stellt für Betroffene eine evidenzbasierte Patienteninformation zur Verfügung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
+  
+  <blockquote>„Die neu entwickelte S3 - Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 - Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als Hauptergebnis nennt der Bericht die systematische evidenz- und konsensbasierte S3-Leitlinie sowie eine laienverständliche und eine maschinenlesbare Version.</p>
+  
   <blockquote>„„Somit ist das Hauptergebnis des Projektes die Erstellung einer systematischen evidenz - und konsensbasierten S3 -Leitlinie, zudem die Veröffentlichung einer laienverständlichen und einer maschinenlesbaren Version.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Neben der Langfassung entstanden ein Leitlinienreport, eine Patient:innenversion, ein Methodenreport zur Patient:innenversion, eine maschinenlesbare Version der Empfehlungen und die digitale Bereitstellung auf MAGICapp.</p>
+  
   <blockquote>„„Neben der Langfassung der Leitlinie entstanden der Leitlinienreport, eine Patient:innenversion, ein Methodenreport zur Patient:innenversion, eine machinenlesbare Version der Empfehlungen sowie die digitale Bereitstellung der Leitlinie auf MAGICapp.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinie legt fest, dass alle elektiven Patient:innen ab 70 Jahren mit der Clinical Frailty Scale auf Frailty gescreent werden sollen, in Übereinstimmung mit anderen Leitlinien, u. a. der europäischen Leitlinie zur präoperativen Evaluierung.</p>
+  
   <blockquote>„„Festlegung, dass alle elektiven Patient:innen ≥ 70 Jahre auf Frailty mittels Clinical Frailty Scale gescreent werden sollen. Damit konsistente Standardisierung des Screenings mit anderen Leitlinien“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinie schlägt vor, Patient:innen mit Frailty vor geplanter abdominal-, kardio- oder thoraxchirurgischer Operation oder Hüft-Totalendoprothese eine multimodale Prähabilitation anzubieten.</p>
+  
   <blockquote>„„Neuerung durch die Leitlinie ist ein Vorschlag für eine multimodale Prähabilitation bei Patient:innen mit Frailty, bei denen eine abdominal -, kardio- oder thoraxchirurgische Operation oder eine Totalendoprothese des Hüftgelenks geplant ist, anzubieten.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für intensivmedizinisch versorgte Patient:innen wurde die Mobilisationsempfehlung einer bestehenden S3-Leitlinie adaptiert und ergänzt, dass vor Verlegung mindestens der sitzende Zustand erreicht werden sollte.</p>
+  
   <blockquote>„„wurde die Empfehlung der S3-Leitlinie Lagerungstherapie und Mobilisation von kritisch Erkrankten auf Intensivstationen adaptiert und ergänzt, dass zumindest der sitzende Zustand vor Verlegung erreicht werden sollte.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinie enthält den als evidenzbasiert bezeichneten Vorschlag, bei Patient:innen mit Frailty postoperativ systematisch die Möglichkeit einer stationären Reha-Maßnahme zu prüfen; die Projektnehmer heben ihn als ressourcenrelevant hervor.</p>
+  
   <blockquote>„„Wesentlich aus Ressourcensicht ist der auf Evidenz basierende Vorschlag, bei Patient:innen mit Frailty postoperativ die Möglichkeit einer stationären Reha-Maßnahme systematisch zu prüfen.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Langversion beschreibt die Studienlage auch zu den PICO-Fragen ohne Empfehlung und benennt offene Forschungsfragen.</p>
+  
   <blockquote>„„Die Langversion der Leitlinie beschreibt in den Hintergrundtexten detailliert die aktuelle Studienlage, auch zu den PICO, zu denen keine Empfehlung abgegeben werden konnte, und zeigt offene Forschungsfragen auf.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die maschinenlesbare Version wurden die Standards SNOMED, LOINC, ATC und ICD-10 angewandt; die Projektnehmer erwarten davon eine Integration in Decision-Support- und Qualitätskontrollsysteme.</p>
+  
   <blockquote>„„Für die Erstellung der maschinenlesbaren Version der Leitlinienempfehlungen wurden Standards wie SNOMED, LOINC, ATC und ICD-10 angewandt.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +596,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Projektnehmer sehen nach Literaturrecherche und Evidenzbewertung „deutlichen Forschungsbedarf“, insbesondere an RCTs mit Patient:innen mit Frailty und an standardisierten Screening- und Diagnosekriterien.</p>
+  
   <blockquote>„„Besonders hervorzuheben ist der Bedarf an RCTs, die gezielt Patient:innen mit Frailty einbezieh en und die Effektivität spezifischer Interventionen untersuchen. Eine Standardisierung von Screening und diagnostischen Kriterien ist ebenso dringend erforderlich“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +615,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der dünnen Evidenzlage wurden zunächst wegen unpassender Population ausgeschlossene Studien an älteren perioperativen Patient:innen ohne explizite Frailty-Messung erneut durchsucht und gegebenenfalls aufgenommen.</p>
+  
   <blockquote>„„Nach Sichtung der eingeschlossenen Literatur zeigte sich eine sehr dünne Evidenzlage, sodass die aufgrund unpassender Population ausgeschlossenen Studien ... an perioperativen bzw. periinterventionellen älteren Patient:innen , in denen nicht explizit Frailty gemessen wurde, durchsucht und ggf. in den Evidenzkörper aufgenommen wurden.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +634,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Arbeitsgruppen durften bei Bedarf Beobachtungsstudien aufnehmen.</p>
+  
   <blockquote>„„Auch wurden die Arbeitsgruppen darauf hingewiesen, dass , wenn notwendig , Beobachtungsstudien aufgenommen werden können.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die adaptierten Empfehlungen wurden wegen Indirektheit abgestuft, da die Ursprungsleitlinien nicht nur Patient:innen mit Frailty betrachteten.</p>
+  
   <blockquote>„„jedoch erfolgte aufgrund der gleichen Population (nicht nur Patient:innen mit Frailty) der zugrundeliegenden Leitlinien eine Abstufung aufgrund von Indirektheit.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +672,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Als Hauptproblem nennt der Bericht, dass Frailty in hochqualitativen Studien weiterhin unzureichend miterfasst oder untersucht wird.</p>
+  
   <blockquote>„„Das wesentliche Hauptproblem ist, dass ... weiterhin Frailty unzureichend in hochqualitativen Studien miterfasst oder gar untersucht wird.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +691,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Geschlecht, Komorbiditäten und sozioökonomische Faktoren wurden in vielen Studien unzureichend berücksichtigt.</p>
+  
   <blockquote>„„der Einfluss von individuellen Patient:innenmerkmalen wie Geschlecht, Komorbid itäten und sozioökonomischen Faktoren in vielen Studien unzureichend berücksichtigt wurde.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für perioperative Konzepte ist die Evidenz bei Frailty schwach; die Leitlinie schlägt sie vor, weil die Maßnahmen grundsätzlich als sinnvoll angesehen werden.</p>
+  
   <blockquote>„„Die Evidenzlage für Patient:innen mit Frailty ist schwach; die Leitlinie schlägt die Umsetzung von perioperativen Konzepten vor, da die Maßnahmen grundsätzlich als sinnvoll angesehen werden.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +729,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für den Zeitraum von der Operation bis zur Krankenhausentlassung gibt es wenig Evidenz.</p>
+  
   <blockquote>„„Für den direkten postoperativen Bereich bis zur Krankenhausentlassung gibt es wenig Evidenz .“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +748,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Detailfragen zu Interventionen, etwa zum Ausmaß der Prähabilitation, wurden in der ersten Fassung nicht bearbeitet.</p>
+  
   <blockquote>„„Eine weitere Limitation ist, dass Detailfragen zu Interventionen wie z.B. Ausmaß der Prähabilitation in dieser ersten Fassung nicht bearbeitet werden konnten, da sie den Rahmen gesprengt hätten.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +767,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zu digitalisierten Lösungen und zum Betreuungsaufwand wurden keine PICO-Fragen gestellt und keine Aussagen getroffen; die Evidenz wäre nach Einschätzung des Berichts auch unzureichend gewesen.</p>
+  
   <blockquote>„„Zu diesen The matiken hat die Leitlinie keine Aussagen gemacht und auch keine PICO -Fragen gestellt.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +786,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Über besondere Fortbildungen für die Behandlung von Patient:innen mit Frailty kann keine Aussage getroffen werden.</p>
+  
   <blockquote>„„Über besondere Fortbildung für die Behandlung von Patient:innen mit Frailty kann keine Aussage getroffen werden.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +805,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Literaturauswahl war auf englisch- und deutschsprachige Publikationen beschränkt.</p>
+  
   <blockquote>„„aus allen Ländern, jedoch Publikationssprachen Englisch oder Deutsch“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Da es sich um eine Erstversion handelt, können die Herausforderungen der Implementierung nur vermutet werden; eine Umsetzung wurde im Projekt nicht untersucht.</p>
+  
   <blockquote>„„Da es sich bei dieser Leitlinie um eine Erstversion handelt, können die Herausforderungen bei der Implementierung nur vermutet werden.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die weiterführende Diagnostik nach positivem Screening kann vor allem kleinere Krankenhäuser vor personelle Herausforderungen stellen; für die Prähabilitation ist die Kostenübernahme durch die gesetzlichen Krankenkassen nicht geklärt.</p>
+  
   <blockquote>„„Die Empfehlung zur weiterführenden Diagnostik nach positivem Frailty -Screening kann vor allem kleinere Krankenhäuser vor personelle Herausforderungen stellen. ... beispielsweise ist eine Koste nübernahme durch die gesetzlichen Krankenkassen bisher nicht geklärt.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +862,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Unterschiedliche Ressourcen und organisatorische Voraussetzungen der Einrichtungen können die flächendeckende Einführung der Leitlinie erschweren.</p>
+  
   <blockquote>„„Verschiedene Kliniken und Gesundheitseinrichtungen werden unterschiedliche Ressourcen und organisatorische Voraussetzungen haben, was die flächendeckende Einführung der Leitlinie erschwert.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +881,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bestehende Vergütungsstrukturen für Rehabilitation und perioperative Konzepte sind nicht immer auf die Bedürfnisse und den Ressourcenbedarf von Patient:innen mit Frailty ausgerichtet.</p>
+  
   <blockquote>„„jedoch sind diese nicht immer explizit auf die besonderen Bedürfnisse von Patient:innen mit Frailty und den entsprechenden Ressourcenbedarf ausgerichtet .“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +900,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Klinische Entscheidungshilfesysteme müssen weiterhin getestet und an die Kliniken und deren IT-Infrastruktur angepasst werden.</p>
+  
   <blockquote>„„Dennoch müssen klinische Entscheidungshilfesysteme weiterhin umfassend getestet und an die verschiedenen Bedürfnisse der Kliniken und deren IT -Infrastruktur angepasst werden.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +919,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der PDF-Export aus MAGICapp ist nicht in allen Ebenen vollständig; vollständig ist die Darstellung nur online nach Veröffentlichung.</p>
+  
   <blockquote>„„Es sei darauf hingewiesen, dass der Export nicht vollständig in allen Ebenen ist, sondern eine vollständige Darstellung nur online nach Veröffentlichung möglich ist.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +938,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Im letzten Quartal verzögerte sich das Projekt, weil der Review-Prozess mit den Fachgesellschaften und die Anpassungen länger dauerten; die Laufzeit wurde kostenneutral um zwei Monate verlängert, ohne inhaltliche Änderungen.</p>
+  
   <blockquote>„„der Review -Prozess mit den Fachgesellschaften und die darauffolgenden Anpassungen ... längere Zeit benötigte als ursprünglich geplant ... Inhaltlich gab es keine Änderungen, jedoch wurde eine Verlängerung der Projektlaufzeit um zwei Monate beantragt und kostenneutral genehmigt.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +957,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.21">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bearbeitungszeit und Aufgabenumfang erforderten Mehrarbeit von Projektkoordination und -leitung; geplante Veröffentlichungen systematischer Reviews einzelner PICOs konnten im Förderzeitraum nicht realisiert werden.</p>
+  
   <blockquote>„„Dies hatte zur Folge, dass geplante Veröffentlichungen der systematischen Reviews einzelner PICOs während des Förderzeitraums nicht realisiert werden konnten und eine Verlängerung des Projekts beantragt werden musste.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -990,28 +1007,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 523, "akronym": "FrailtyOP", "kennung": "1WvBgOSdoy52", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt FrailtyOP neu entwickelte S3-Leitlinie zur perioperativen Versorgung von Patientinnen und Patienten mit Frailty der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung der Erkenntnisse an die AWMF beauftragt."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss verweist darauf, dass bei älteren und gebrechlichen Menschen zunehmend komplexe chirurgische Eingriffe erfolgen, es im deutschsprachigen Raum bisher aber keine Empfehlungen für diese vulnerable Gruppe gab. Das Projekt hat nach seiner Darstellung erfolgreich eine S3-Leitlinie mit evidenzbasierten Empfehlungen zum prä-, intra- und postoperativen Management sowie zu ethischen Überlegungen entwickelt. Die Leitlinie soll Ärztinnen und Ärzten im stationären und ambulanten Bereich als Entscheidungshilfe dienen, Komplikationen identifizieren helfen und Präventivmaßnahmen anstoßen. Ergänzend wurde eine Patientenleitlinie erstellt. Da die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien erfüllt, sieht der Ausschuss die Voraussetzung gegeben, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Die Leitlinie soll Ärztinnen und Ärzten sowohl im stationären als auch im ambulanten Bereich als Entscheidungshilfe dienen. Weitere Aussagen zur Übertragbarkeit enthält der Beschluss nicht."}, {"stelle": "befund.0", "art": "befund", "unser": "Erfolgreiche Entwicklung einer neuen S3-Leitlinie mit evidenzbasierten Empfehlungen für Patientinnen und Patienten mit Frailty"}, {"stelle": "befund.1", "art": "befund", "unser": "Erstellung einer Patientenleitlinie als evidenzbasierte Patienteninformation"}, {"stelle": "befund.2", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat eine S3-Leitlinie zur perioperativen Versorgung von Patient:innen mit Frailty auf Grundlage einer systematischen Literaturrecherche, GRADE-Bewertung und Delphi-basierter Konsensfindung erstellt. Beschlossen wurden 20 Empfehlungen, alle im starken Konsens: 9 evidenzbasierte (davon 2 Adaptationen aus anderen Leitlinien) und 11 konsensbasierte. Zu acht Fragestellungen wurde mangels Evidenz keine Empfehlung ausgesprochen. Die Evidenz der evidenzbasierten Empfehlungen wurde bei vier als „low“ und bei fünf (darunter beide Adaptationen) als „very low“ bewertet. Inhaltlich neu sind unter anderem ein Screening aller elektiven Patient:innen ab 70 Jahren mit der Clinical Frailty Scale und ein Vorschlag zur multimodalen Prähabilitation vor bestimmten Eingriffen. Neben der Langfassung entstanden eine Patient:innenversion, eine maschinenlesbare Version und eine Bereitstellung auf MAGICapp. Die Aussagekraft hängt an einer heterogenen und dünnen Studienlage ohne standardisierte Frailty-Diagnostik; vielfach musste auf Studien an älteren Patient:innen ohne Frailty-Messung zurückgegriffen werden. Die Implementierung wurde nicht untersucht; die Projektnehmer geben an, deren Herausforderungen nur vermuten zu können."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Insgesamt wurden 20 Empfehlungen beschlossen, alle im starken Konsens; davon 9 evidenzbasierte (einschließlich 2 Adaptationen aus anderen Leitlinien) und 11 konsensbasierte."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Von den 20 Empfehlungen wurden 4 nach GRADE als „low“ und 3 als „very low“ bewertet; bei den 2 Leitlinienadaptationen wurde das Evidenzlevel wegen abweichender Zielpopulationen auf „very low“ herabgesetzt; 11 sind Expert:innenempfehlungen."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Zu acht Fragestellungen konnte mangels Evidenz keine Empfehlung ausgesprochen werden."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Heterogene Studien und fehlende Standardisierung der Frailty-Diagnostik erschwerten die Vergleichbarkeit, führten zu vielen Ausschlüssen im Screening, und die Mehrzahl der Empfehlungen musste als Expert:innenempfehlung formuliert werden oder entfiel."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Es konnten nur Empfehlungen mit „low“- oder „very low“-Evidenz ausgesprochen werden; auch die übernommenen Adaptationen wiesen eine sehr geringe Evidenzqualität auf."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Viele zugrunde liegende Studien wurden an älteren, nicht notwendigerweise frailen Menschen durchgeführt, sodass ihre Ergebnisse nur indirekt auf Patient:innen mit Frailty übertragen werden konnten."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Begründung der Laufzeitverlängerung: S. 17 führt die Verzögerung auf den länger als geplant dauernden Review-Prozess mit den Fachgesellschaften zurück, S. 28 auf Bearbeitungszeit und Aufgabenumfang, die Mehrarbeit erforderten und die geplanten Veröffentlichungen systematischer Reviews verhinderten."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "S. 27 spricht von einer „fundierte[n] und evidenzbasierte[n] Grundlage für die Empfehlungen“, während S. 26–29 angeben, dass 11 der 20 Empfehlungen konsensbasiert sind, die Mehrzahl als Expert:innenempfehlungen formuliert werden musste und nur „low“- oder „very low“-Evidenz vorlag."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "S. 2 bezeichnet alle 20 Empfehlungen als „neue Empfehlungen“, darunter zählen laut S. 17 und S. 26 jedoch zwei aus anderen Leitlinien adaptierte Empfehlungen."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Als Hauptergebnis nennt der Bericht die systematische evidenz- und konsensbasierte S3-Leitlinie sowie eine laienverständliche und eine maschinenlesbare Version."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Neben der Langfassung entstanden ein Leitlinienreport, eine Patient:innenversion, ein Methodenreport zur Patient:innenversion, eine maschinenlesbare Version der Empfehlungen und die digitale Bereitstellung auf MAGICapp."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die Leitlinie legt fest, dass alle elektiven Patient:innen ab 70 Jahren mit der Clinical Frailty Scale auf Frailty gescreent werden sollen, in Übereinstimmung mit anderen Leitlinien, u. a. der europäischen Leitlinie zur präoperativen Evaluierung."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die Leitlinie schlägt vor, Patient:innen mit Frailty vor geplanter abdominal-, kardio- oder thoraxchirurgischer Operation oder Hüft-Totalendoprothese eine multimodale Prähabilitation anzubieten."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Für intensivmedizinisch versorgte Patient:innen wurde die Mobilisationsempfehlung einer bestehenden S3-Leitlinie adaptiert und ergänzt, dass vor Verlegung mindestens der sitzende Zustand erreicht werden sollte."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die Leitlinie enthält den als evidenzbasiert bezeichneten Vorschlag, bei Patient:innen mit Frailty postoperativ systematisch die Möglichkeit einer stationären Reha-Maßnahme zu prüfen; die Projektnehmer heben ihn als ressourcenrelevant hervor."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Langversion beschreibt die Studienlage auch zu den PICO-Fragen ohne Empfehlung und benennt offene Forschungsfragen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Für die maschinenlesbare Version wurden die Standards SNOMED, LOINC, ATC und ICD-10 angewandt; die Projektnehmer erwarten davon eine Integration in Decision-Support- und Qualitätskontrollsysteme."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Projektnehmer sehen nach Literaturrecherche und Evidenzbewertung „deutlichen Forschungsbedarf“, insbesondere an RCTs mit Patient:innen mit Frailty und an standardisierten Screening- und Diagnosekriterien."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Wegen der dünnen Evidenzlage wurden zunächst wegen unpassender Population ausgeschlossene Studien an älteren perioperativen Patient:innen ohne explizite Frailty-Messung erneut durchsucht und gegebenenfalls aufgenommen."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Arbeitsgruppen durften bei Bedarf Beobachtungsstudien aufnehmen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die adaptierten Empfehlungen wurden wegen Indirektheit abgestuft, da die Ursprungsleitlinien nicht nur Patient:innen mit Frailty betrachteten."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Als Hauptproblem nennt der Bericht, dass Frailty in hochqualitativen Studien weiterhin unzureichend miterfasst oder untersucht wird."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Geschlecht, Komorbiditäten und sozioökonomische Faktoren wurden in vielen Studien unzureichend berücksichtigt."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Für perioperative Konzepte ist die Evidenz bei Frailty schwach; die Leitlinie schlägt sie vor, weil die Maßnahmen grundsätzlich als sinnvoll angesehen werden."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Für den Zeitraum von der Operation bis zur Krankenhausentlassung gibt es wenig Evidenz."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Detailfragen zu Interventionen, etwa zum Ausmaß der Prähabilitation, wurden in der ersten Fassung nicht bearbeitet."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Zu digitalisierten Lösungen und zum Betreuungsaufwand wurden keine PICO-Fragen gestellt und keine Aussagen getroffen; die Evidenz wäre nach Einschätzung des Berichts auch unzureichend gewesen."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Über besondere Fortbildungen für die Behandlung von Patient:innen mit Frailty kann keine Aussage getroffen werden."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Literaturauswahl war auf englisch- und deutschsprachige Publikationen beschränkt."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Da es sich um eine Erstversion handelt, können die Herausforderungen der Implementierung nur vermutet werden; eine Umsetzung wurde im Projekt nicht untersucht."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die weiterführende Diagnostik nach positivem Screening kann vor allem kleinere Krankenhäuser vor personelle Herausforderungen stellen; für die Prähabilitation ist die Kostenübernahme durch die gesetzlichen Krankenkassen nicht geklärt."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Unterschiedliche Ressourcen und organisatorische Voraussetzungen der Einrichtungen können die flächendeckende Einführung der Leitlinie erschweren."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Bestehende Vergütungsstrukturen für Rehabilitation und perioperative Konzepte sind nicht immer auf die Bedürfnisse und den Ressourcenbedarf von Patient:innen mit Frailty ausgerichtet."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Klinische Entscheidungshilfesysteme müssen weiterhin getestet und an die Kliniken und deren IT-Infrastruktur angepasst werden."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Der PDF-Export aus MAGICapp ist nicht in allen Ebenen vollständig; vollständig ist die Darstellung nur online nach Veröffentlichung."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Im letzten Quartal verzögerte sich das Projekt, weil der Review-Prozess mit den Fachgesellschaften und die Anpassungen länger dauerten; die Laufzeit wurde kostenneutral um zwei Monate verlängert, ohne inhaltliche Änderungen."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Bearbeitungszeit und Aufgabenumfang erforderten Mehrarbeit von Projektkoordination und -leitung; geplante Veröffentlichungen systematischer Reviews einzelner PICOs konnten im Förderzeitraum nicht realisiert werden."}]};
+const D = {"projekt_id": 523, "akronym": "FrailtyOP", "kennung": "1WvBgOSdoy52", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss verweist darauf, dass bei älteren und gebrechlichen Menschen zunehmend komplexe chirurgische Eingriffe erfolgen, es im deutschsprachigen Raum bisher aber keine Empfehlungen für diese vulnerable Gruppe gab. Das Projekt hat nach seiner Darstellung erfolgreich eine S3-Leitlinie mit evidenzbasierten Empfehlungen zum prä-, intra- und postoperativen Management sowie zu ethischen Überlegungen entwickelt. Die Leitlinie soll Ärztinnen und Ärzten im stationären und ambulanten Bereich als Entscheidungshilfe dienen, Komplikationen identifizieren helfen und Präventivmaßnahmen anstoßen. Ergänzend wurde eine Patientenleitlinie erstellt. Da die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien erfüllt, sieht der Ausschuss die Voraussetzung gegeben, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat eine S3-Leitlinie zur perioperativen Versorgung von Patient:innen mit Frailty auf Grundlage einer systematischen Literaturrecherche, GRADE-Bewertung und Delphi-basierter Konsensfindung erstellt. Beschlossen wurden 20 Empfehlungen, alle im starken Konsens: 9 evidenzbasierte (davon 2 Adaptationen aus anderen Leitlinien) und 11 konsensbasierte. Zu acht Fragestellungen wurde mangels Evidenz keine Empfehlung ausgesprochen. Die Evidenz der evidenzbasierten Empfehlungen wurde bei vier als „low“ und bei fünf (darunter beide Adaptationen) als „very low“ bewertet. Inhaltlich neu sind unter anderem ein Screening aller elektiven Patient:innen ab 70 Jahren mit der Clinical Frailty Scale und ein Vorschlag zur multimodalen Prähabilitation vor bestimmten Eingriffen. Neben der Langfassung entstanden eine Patient:innenversion, eine maschinenlesbare Version und eine Bereitstellung auf MAGICapp. Die Aussagekraft hängt an einer heterogenen und dünnen Studienlage ohne standardisierte Frailty-Diagnostik; vielfach musste auf Studien an älteren Patient:innen ohne Frailty-Messung zurückgegriffen werden. Die Implementierung wurde nicht untersucht; die Projektnehmer geben an, deren Herausforderungen nur vermuten zu können."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Insgesamt wurden 20 Empfehlungen beschlossen, alle im starken Konsens; davon 9 evidenzbasierte (einschließlich 2 Adaptationen aus anderen Leitlinien) und 11 konsensbasierte."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Von den 20 Empfehlungen wurden 4 nach GRADE als „low“ und 3 als „very low“ bewertet; bei den 2 Leitlinienadaptationen wurde das Evidenzlevel wegen abweichender Zielpopulationen auf „very low“ herabgesetzt; 11 sind Expert:innenempfehlungen."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Zu acht Fragestellungen konnte mangels Evidenz keine Empfehlung ausgesprochen werden."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Heterogene Studien und fehlende Standardisierung der Frailty-Diagnostik erschwerten die Vergleichbarkeit, führten zu vielen Ausschlüssen im Screening, und die Mehrzahl der Empfehlungen musste als Expert:innenempfehlung formuliert werden oder entfiel."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Es konnten nur Empfehlungen mit „low“- oder „very low“-Evidenz ausgesprochen werden; auch die übernommenen Adaptationen wiesen eine sehr geringe Evidenzqualität auf."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Viele zugrunde liegende Studien wurden an älteren, nicht notwendigerweise frailen Menschen durchgeführt, sodass ihre Ergebnisse nur indirekt auf Patient:innen mit Frailty übertragen werden konnten."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Begründung der Laufzeitverlängerung: S. 17 führt die Verzögerung auf den länger als geplant dauernden Review-Prozess mit den Fachgesellschaften zurück, S. 28 auf Bearbeitungszeit und Aufgabenumfang, die Mehrarbeit erforderten und die geplanten Veröffentlichungen systematischer Reviews verhinderten."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "S. 27 spricht von einer „fundierte[n] und evidenzbasierte[n] Grundlage für die Empfehlungen“, während S. 26–29 angeben, dass 11 der 20 Empfehlungen konsensbasiert sind, die Mehrzahl als Expert:innenempfehlungen formuliert werden musste und nur „low“- oder „very low“-Evidenz vorlag."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "S. 2 bezeichnet alle 20 Empfehlungen als „neue Empfehlungen“, darunter zählen laut S. 17 und S. 26 jedoch zwei aus anderen Leitlinien adaptierte Empfehlungen."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt FrailtyOP neu entwickelte S3-Leitlinie zur perioperativen Versorgung von Patientinnen und Patienten mit Frailty der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung der Erkenntnisse an die AWMF beauftragt."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Die Leitlinie soll Ärztinnen und Ärzten sowohl im stationären als auch im ambulanten Bereich als Entscheidungshilfe dienen. Weitere Aussagen zur Übertragbarkeit enthält der Beschluss nicht."}, {"stelle": "befund.0", "art": "befund", "unser": "Erfolgreiche Entwicklung einer neuen S3-Leitlinie mit evidenzbasierten Empfehlungen für Patientinnen und Patienten mit Frailty"}, {"stelle": "befund.1", "art": "befund", "unser": "Erstellung einer Patientenleitlinie als evidenzbasierte Patienteninformation"}, {"stelle": "befund.2", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Als Hauptergebnis nennt der Bericht die systematische evidenz- und konsensbasierte S3-Leitlinie sowie eine laienverständliche und eine maschinenlesbare Version."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Neben der Langfassung entstanden ein Leitlinienreport, eine Patient:innenversion, ein Methodenreport zur Patient:innenversion, eine maschinenlesbare Version der Empfehlungen und die digitale Bereitstellung auf MAGICapp."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die Leitlinie legt fest, dass alle elektiven Patient:innen ab 70 Jahren mit der Clinical Frailty Scale auf Frailty gescreent werden sollen, in Übereinstimmung mit anderen Leitlinien, u. a. der europäischen Leitlinie zur präoperativen Evaluierung."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die Leitlinie schlägt vor, Patient:innen mit Frailty vor geplanter abdominal-, kardio- oder thoraxchirurgischer Operation oder Hüft-Totalendoprothese eine multimodale Prähabilitation anzubieten."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Für intensivmedizinisch versorgte Patient:innen wurde die Mobilisationsempfehlung einer bestehenden S3-Leitlinie adaptiert und ergänzt, dass vor Verlegung mindestens der sitzende Zustand erreicht werden sollte."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die Leitlinie enthält den als evidenzbasiert bezeichneten Vorschlag, bei Patient:innen mit Frailty postoperativ systematisch die Möglichkeit einer stationären Reha-Maßnahme zu prüfen; die Projektnehmer heben ihn als ressourcenrelevant hervor."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Langversion beschreibt die Studienlage auch zu den PICO-Fragen ohne Empfehlung und benennt offene Forschungsfragen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Für die maschinenlesbare Version wurden die Standards SNOMED, LOINC, ATC und ICD-10 angewandt; die Projektnehmer erwarten davon eine Integration in Decision-Support- und Qualitätskontrollsysteme."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Projektnehmer sehen nach Literaturrecherche und Evidenzbewertung „deutlichen Forschungsbedarf“, insbesondere an RCTs mit Patient:innen mit Frailty und an standardisierten Screening- und Diagnosekriterien."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Wegen der dünnen Evidenzlage wurden zunächst wegen unpassender Population ausgeschlossene Studien an älteren perioperativen Patient:innen ohne explizite Frailty-Messung erneut durchsucht und gegebenenfalls aufgenommen."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Arbeitsgruppen durften bei Bedarf Beobachtungsstudien aufnehmen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die adaptierten Empfehlungen wurden wegen Indirektheit abgestuft, da die Ursprungsleitlinien nicht nur Patient:innen mit Frailty betrachteten."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Als Hauptproblem nennt der Bericht, dass Frailty in hochqualitativen Studien weiterhin unzureichend miterfasst oder untersucht wird."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Geschlecht, Komorbiditäten und sozioökonomische Faktoren wurden in vielen Studien unzureichend berücksichtigt."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Für perioperative Konzepte ist die Evidenz bei Frailty schwach; die Leitlinie schlägt sie vor, weil die Maßnahmen grundsätzlich als sinnvoll angesehen werden."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Für den Zeitraum von der Operation bis zur Krankenhausentlassung gibt es wenig Evidenz."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Detailfragen zu Interventionen, etwa zum Ausmaß der Prähabilitation, wurden in der ersten Fassung nicht bearbeitet."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Zu digitalisierten Lösungen und zum Betreuungsaufwand wurden keine PICO-Fragen gestellt und keine Aussagen getroffen; die Evidenz wäre nach Einschätzung des Berichts auch unzureichend gewesen."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Über besondere Fortbildungen für die Behandlung von Patient:innen mit Frailty kann keine Aussage getroffen werden."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Literaturauswahl war auf englisch- und deutschsprachige Publikationen beschränkt."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Da es sich um eine Erstversion handelt, können die Herausforderungen der Implementierung nur vermutet werden; eine Umsetzung wurde im Projekt nicht untersucht."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die weiterführende Diagnostik nach positivem Screening kann vor allem kleinere Krankenhäuser vor personelle Herausforderungen stellen; für die Prähabilitation ist die Kostenübernahme durch die gesetzlichen Krankenkassen nicht geklärt."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Unterschiedliche Ressourcen und organisatorische Voraussetzungen der Einrichtungen können die flächendeckende Einführung der Leitlinie erschweren."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Bestehende Vergütungsstrukturen für Rehabilitation und perioperative Konzepte sind nicht immer auf die Bedürfnisse und den Ressourcenbedarf von Patient:innen mit Frailty ausgerichtet."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Klinische Entscheidungshilfesysteme müssen weiterhin getestet und an die Kliniken und deren IT-Infrastruktur angepasst werden."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Der PDF-Export aus MAGICapp ist nicht in allen Ebenen vollständig; vollständig ist die Darstellung nur online nach Veröffentlichung."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Im letzten Quartal verzögerte sich das Projekt, weil der Review-Prozess mit den Fachgesellschaften und die Anpassungen länger dauerten; die Laufzeit wurde kostenneutral um zwei Monate verlängert, ohne inhaltliche Änderungen."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Bearbeitungszeit und Aufgabenumfang erforderten Mehrarbeit von Projektkoordination und -leitung; geplante Veröffentlichungen systematischer Reviews einzelner PICOs konnten im Förderzeitraum nicht realisiert werden."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

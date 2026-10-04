@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF21011</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>9 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 29 Aussagen. Die übrigen
+20 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die im Projekt DS22q neu entwickelte S3-Leitlinie zum Deletion- und Duplikationssyndrom 22q11.2 der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Deletion- und Duplikationssyndrom 22q11.2 umfasst seltene Erkrankungen mit erheblicher körperlicher und psychischer Morbidität. Das Projekt hat erstmals eine interdisziplinär entwickelte S3-Leitlinie mit 80 Empfehlungen, unter anderem zu humangenetischer Diagnostik, Komorbiditätsabklärung, Versorgung und Prävention, erstellt. Nach Einschätzung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,49 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erstmalige interdisziplinär entwickelte S3-Leitlinie mit 80 Empfehlungen erstellt</p>
-  <blockquote>„Das Projekt hat erstmalig eine interdisziplinär entwickelte S3 -Leitlinie zum Deletion - und Duplikationssyndrom 22q11.2 mit insgesamt 80 Empfehlungen z. B. zu allgemeinen interdisziplinären Empfehlungen, zur Humang enetischen Diagnostik, zur Abklärung auf Komorbidität, zur Versorgung sowie zur Prävention erstellt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
-  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 - Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -200,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben hat erstmals interdisziplinär eine AWMF-Leitlinie zum Deletions- und Duplikationssyndrom 22q11.2 bei Kindern, Jugendlichen und Erwachsenen erarbeitet; nach Angabe des Berichts wurde das S3-Niveau erreicht. Die Leitlinie enthält 80 Empfehlungen zu interdisziplinären Aspekten, humangenetischer Diagnostik, Abklärung auf Komorbidität, Versorgung sowie Prävention und Resilienzförderung. Grundlage waren eine systematische Evidenzbasierung, darunter eine bereits veröffentlichte eigene Meta-Analyse zur Prävalenz kongenitaler Herzfehler, sowie eine strukturierte Konsensfindung mit Konsenskonferenzen und Delphi-Verfahren. Alle beteiligten Fachgesellschaften außer der DGPP stimmten zu; deren Verabschiedung steht noch aus, sie hat aber keine inhaltlichen Änderungswünsche gemeldet. Die Aussagekraft hängt daran, dass für diese seltene Erkrankung wenige Studien hoher Qualität vorliegen: Diagnostik- und Komorbiditätsempfehlungen stützen sich auf Prävalenzstudien mit erhöhter Indirektheit, für die Versorgung von Komorbiditäten verweist die Leitlinie mangels syndromspezifischer Evidenz auf bestehende AWMF-Leitlinien, und wo Evidenz fehlte, wurde im Expertenkonsens empfohlen. In mehreren Fällen wurde trotz niedrig bewerteter Evidenz ein hoher Empfehlungsgrad vergeben. Größere randomisiert-kontrollierte Interventionsstudien und größere Studien zum Duplikationssyndrom fehlen nach Angabe des Berichts.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -218,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Erstmals wurde interdisziplinär eine AWMF-Leitlinie zum Deletions- und Duplikationssyndrom 22q11.2 entwickelt; nach Angabe des Berichts wurde das S3-Niveau erreicht.</p>
+  
   <blockquote>„„Interdisziplinär entwickelt wurde erstmalig eine AWMF -Leitlinie zum Deletions- und Duplikationssyndrom 22q11.2. Das S3-Niveau wurde erreicht.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinie enthält 80 Empfehlungen zu interdisziplinären Aspekten, humangenetischer Diagnostik, Abklärung auf Komorbidität, Versorgung sowie Prävention und Resilienzförderung bezüglich der Prädisposition für psychische Erkrankungen.</p>
+  
   <blockquote>„„Die Leitlinie gibt insgesamt 80 Empfehlungen, darunter allgemeine interdisziplinäre Empfehlungen, Empfehlungen zur Humangenetischen Diagnostik, zur Abklärung auf Komorbidität, zur Versorgung sowie zur Prävention und Resilienzförderung“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Versorgung von Komorbiditäten fanden sich einige wenige Studien zu spezifischen Empfehlungen; weitgehend ergab die Literaturrecherche keine Evidenz, die ein Abweichen vom Vorgehen nach bestehenden Leitlinien belegen würde.</p>
+  
   <blockquote>„„weitgehend war das Ergebnis der ausführlichen Literaturrecherche jedoch, dass es keine Evidenz gibt die eine Abweichung vom Vorgehen nach bestehenden Leitlinien belegen würde.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Evidenzbasierung wurde durch das verminderte Vorliegen hochwertiger Studien zu seltenen Erkrankungen erschwert; Diagnostik- und Komorbiditätsempfehlungen stützen sich auf Studien zu Auftretenswahrscheinlichkeiten, woraus sich eine erhöhte Indirektheit bei der Evidenzbewertung ergab.</p>
+  
   <blockquote>„„Die Evidenzbasierung wurde durch das im Bereich der Erforschung seltener Erkrankungen bestehende verminderte Vorliegen von Studien von hoher Qualität erschwert. [...] Entsprechend ergab sich eine erhöhte Indirektheit bei der Evidenzbewertung.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In mehreren Fällen wurde trotz niedrig bewerteter Evidenz ein hoher Empfehlungsgrad vergeben, begründet mit der Relevanz für Betroffene und langjähriger klinischer Best Practice; wegen der Gewichtung der Nutzen-Schaden-Abwägung können Empfehlungsgrad und Evidenzstärke voneinander abweichen.</p>
+  
   <blockquote>„„wurde in mehreren Fällen auch bei als niedrig bewerteter Evidenz ein hoher Empfehlungsgrad vergeben.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +273,69 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wo die Evidenzbasierung keine ausreichenden Ergebnisse ergab, wurden Empfehlungen im Expertenkonsens formuliert, gestützt auf die Erfahrung der von der Betroffenenorganisation benannten Kompetenzzentren und expertenbeigesteuerte Literatur.</p>
+  
   <blockquote>„„In den Fällen, in denen die Evidenzbasierung keine ausreichenden Ergebnisse ergab, wurden Empfehlungen im Expertenkonsens formuliert.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>20 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die im Projekt DS22q neu entwickelte S3-Leitlinie zum Deletion- und Duplikationssyndrom 22q11.2 der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erstmalige interdisziplinär entwickelte S3-Leitlinie mit 80 Empfehlungen erstellt</p>
+  
+  <blockquote>„Das Projekt hat erstmalig eine interdisziplinär entwickelte S3 -Leitlinie zum Deletion - und Duplikationssyndrom 22q11.2 mit insgesamt 80 Empfehlungen z. B. zu allgemeinen interdisziplinären Empfehlungen, zur Humang enetischen Diagnostik, zur Abklärung auf Komorbidität, zur Versorgung sowie zur Prävention erstellt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
+  
+  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 - Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Es fehlen insbesondere größere randomisiert-kontrollierte Interventionsstudien sowie größere Studien zum Duplikationssyndrom 22q11.2.</p>
+  
   <blockquote>„„Insbesondere fehlen größere Studien zu Interventionen in Form randomisiert -kontrollierter klin ischer Studien sowie größere Studien zum Duplikationssyndrom 22q11.2.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -347,16 +364,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>16 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Da nur wenige syndromspezifische Interventionen in der Literatur gefunden wurden, nimmt die Leitlinie bei der Versorgung der Komorbiditäten Bezug auf bestehende AWMF-Leitlinien und weist auf die Sicherstellung der regulären Versorgung sowie den Forschungsbedarf hin.</p>
+  
   <blockquote>„„Da nur wenige für die Syndrome spezifische Interventionen in der Literatur gefunden wurden, nimmt die Leitlinie hier Bezug zu bestehenden AWMF-Leitlinien.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Evidenzbasierung lieferte Angaben zu Prävalenzen möglicher Komorbiditäten, die in die Aufklärung über 22q11.2DS eingehen können, und identifizierte Forschungslücken.</p>
+  
   <blockquote>„„Die Ergebnisse der Evidenzbasierung haben einerseits Angaben zu Prävalenzen möglicher Komorbiditäten ergeben, welche Teil einer gezielten und präzisen Aufklärung über 22q11.2DS werden können. Zudem wurden Forschungslücken identifiziert“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -389,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die im Projekt durchgeführte Meta-Analyse zur Prävalenz von Herzfehlern beim Deletionssyndrom 22q11.2 ist bereits veröffentlicht (Sauter et al., 2025).</p>
+  
   <blockquote>„„Die Meta -Analyse zu Herzfehlern bei Menschen mit Deletionssyndrom 22q11.2DS wurde bereits veröffentlicht (Sauter et al., 2025) .“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -408,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Alle beteiligten Fachgesellschaften außer der DGPP stimmten ohne Vorbehalt oder mit wenigen redaktionellen Änderungen zu.</p>
+  
   <blockquote>„„Alle beteiligten Fachgesellschaften mit Ausnahme der DGPP stimmten ohne Vorbehalt bzw. nur mit wenigen redaktionellen Änderungen zu.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Wegen der Relevanz der kardiologischen Empfehlungen wurden in einem weiteren Delphi-Verfahren die Empfehlungsgrade von vier Empfehlungen erneut geprüft und abgestimmt.</p>
+  
   <blockquote>„„Angesichts ihrer Bedeutung wurde ein weiteres Delphi-Verfahren umgesetzt, in dem die Empfehlungsgrade von insgesamt vier Empfehlungen erneut geprüft und darüber abgestimmt wurde.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der öffentlichen Konsultation über die Seiten der AWMF und der DGKJP wurden keine Kommentare eingereicht.</p>
+  
   <blockquote>„„Im Rahmen der öffentlichen Konsultation wurde die Leitlinie auf der AWMF -Seite sowie der Seite der DGKJP online gestellt. Kommentare wurden keine eingereicht.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auf die per E-Mail versandten Abbildungen und tabellarischen Übersichten kamen lediglich kleine Anmerkungen.</p>
+  
   <blockquote>„„Mail versandt mit der Bitte um schriftliches Feedback. Lediglich kleine Anmerkungen wurden gegeben.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Angabe des Projekts wurde die Bekanntheit der Syndrome schon vor der Veröffentlichung durch Kongressvorträge und Publikationen „deutlich gesteigert“, was der Bericht an einer Zunahme von Beratungsanfragen von Behandlerseite an das Spezialzentrum ZEDE in Würzburg festmacht.</p>
+  
   <blockquote>„„konnte die Bekanntheit der Syndrome deutlich gesteigert werden. Dies zeigte sich in einer Zunahme an Anfragen zur Beratung an das Spezialzentrum für Deletions - und Duplikationssyndrom 22q11.2 (ZEDE) am Uniklinikum Würzburg von Behandlerseite.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Angabe des Projekts wurde auch bei weiteren Berufsgruppen eine höhere Bekanntheit erzielt, etwa erkennbar an Vorstellungen von Familien am ZEDE22q11 auf Anraten von Lehrkräften.</p>
+  
   <blockquote>„„Auch konnte bereits eine höhere Bekanntheit bei weiteren Berufsgruppen erzielt werden, was sich etwa an der Vorstellung von Familien am ZEDE22q11 auf Anraten von Lehrkräften zeigte.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Resonanz auf die Vorstellung der Empfehlungen auf Fachkongressen und bei Veranstaltungen der Betroffenenorganisation „Wir sind 22Q e.V.“ wird als durchgehend positiv beschrieben.</p>
+  
   <blockquote>„„Die Resonanzen auf die Vorstellung der Leitlinienempfehlung sowohl auf Fachkongressen als auch im Rahmen von Veranstaltungen der Betroffenenorganisation „Wir sind 22Q e.V.“ war durchgehend positiv.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Projektnehmer erwarten, dass die Leitlinie zu einer kooperativ-interdisziplinären Versorgungsverbesserung führt und die Projektziele nach Veröffentlichung und geplanten Implementierungsmaßnahmen vollumfänglich erreicht werden; dies ist eine Erwartung, kein gemessenes Ergebnis.</p>
+  
   <blockquote>„„Wir erwarten daher, dass nach Veröffentlichung sowie durch die noch geplanten Implementierungsmaßnahmen die gesetzten Ziele des Projekts (s. Punkt 1) vollumfänglich erreicht werden.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Verabschiedung durch den Vorstand der DGPP steht noch aus; sie wurde aus Zeitgründen auf nach der Veröffentlichung verschoben, die DGPP meldete jedoch keine inhaltlichen Änderungsanregungen.</p>
+  
   <blockquote>„„Aus Zeitgründen musste die Verabschiedung durch die DGPP auf nach d er Veröffentlichung verschoben werden, wobei die DGPP bereits rückmeldete keine inhaltlichen Änderungsanregungen zu haben.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +596,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die zweite Konsenskonferenz konnte wegen Krankheit nicht neutral durch die AWMF moderiert werden und wurde als Arbeitstreffen durchgeführt.</p>
+  
   <blockquote>„„Aufgrund von Krankheit konnte keine neutrale Moderation von Seiten der AWMF ermöglicht werden, wes-halb das Treffen als Arbeitstreffen durchgeführt wurde.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +615,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zu einzelnen Empfehlungen gab es Anmerkungen, sodass sie in der folgenden Konsenskonferenz erneut besprochen wurden.</p>
+  
   <blockquote>„„Bei einzelnen Empfehlungen wurden Anmerkungen gegeben, daher wurden diese in der kommenden Konsenskonferenz erneut besprochen.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +634,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Abbildungen und die tabellarische Zusammenfassung aller Empfehlungen konnten aus Zeitmangel in der dritten Konsenskonferenz nicht mehr diskutiert werden und wurden stattdessen per E-Mail abgestimmt.</p>
+  
   <blockquote>„„Aufgrund mangelnder zeitlicher Res-sourcen konnten diese in der Konsenskonferenz nicht mehr diskutiert werden.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Es besteht Forschungsbedarf, und Fachzentren zu weiteren möglichen Organbeteiligungen müssen erst aufgebaut werden.</p>
+  
   <blockquote>„„Zudem besteht Forschungsbedarf und die Notwendigkeit des Aufbaus von Fachzentren zu weiteren möglichen Organbeteiligungen.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -686,28 +703,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 481, "akronym": "DS22q", "kennung": "6oKLtfVi8ysj", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt DS22q neu entwickelte S3-Leitlinie zum Deletion- und Duplikationssyndrom 22q11.2 der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Deletion- und Duplikationssyndrom 22q11.2 umfasst seltene Erkrankungen mit erheblicher körperlicher und psychischer Morbidität. Das Projekt hat erstmals eine interdisziplinär entwickelte S3-Leitlinie mit 80 Empfehlungen, unter anderem zu humangenetischer Diagnostik, Komorbiditätsabklärung, Versorgung und Prävention, erstellt. Nach Einschätzung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "befund.0", "art": "befund", "unser": "Erstmalige interdisziplinär entwickelte S3-Leitlinie mit 80 Empfehlungen erstellt"}, {"stelle": "befund.1", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat erstmals interdisziplinär eine AWMF-Leitlinie zum Deletions- und Duplikationssyndrom 22q11.2 bei Kindern, Jugendlichen und Erwachsenen erarbeitet; nach Angabe des Berichts wurde das S3-Niveau erreicht. Die Leitlinie enthält 80 Empfehlungen zu interdisziplinären Aspekten, humangenetischer Diagnostik, Abklärung auf Komorbidität, Versorgung sowie Prävention und Resilienzförderung. Grundlage waren eine systematische Evidenzbasierung, darunter eine bereits veröffentlichte eigene Meta-Analyse zur Prävalenz kongenitaler Herzfehler, sowie eine strukturierte Konsensfindung mit Konsenskonferenzen und Delphi-Verfahren. Alle beteiligten Fachgesellschaften außer der DGPP stimmten zu; deren Verabschiedung steht noch aus, sie hat aber keine inhaltlichen Änderungswünsche gemeldet. Die Aussagekraft hängt daran, dass für diese seltene Erkrankung wenige Studien hoher Qualität vorliegen: Diagnostik- und Komorbiditätsempfehlungen stützen sich auf Prävalenzstudien mit erhöhter Indirektheit, für die Versorgung von Komorbiditäten verweist die Leitlinie mangels syndromspezifischer Evidenz auf bestehende AWMF-Leitlinien, und wo Evidenz fehlte, wurde im Expertenkonsens empfohlen. In mehreren Fällen wurde trotz niedrig bewerteter Evidenz ein hoher Empfehlungsgrad vergeben. Größere randomisiert-kontrollierte Interventionsstudien und größere Studien zum Duplikationssyndrom fehlen nach Angabe des Berichts."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Erstmals wurde interdisziplinär eine AWMF-Leitlinie zum Deletions- und Duplikationssyndrom 22q11.2 entwickelt; nach Angabe des Berichts wurde das S3-Niveau erreicht."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Die Leitlinie enthält 80 Empfehlungen zu interdisziplinären Aspekten, humangenetischer Diagnostik, Abklärung auf Komorbidität, Versorgung sowie Prävention und Resilienzförderung bezüglich der Prädisposition für psychische Erkrankungen."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Für die Versorgung von Komorbiditäten fanden sich einige wenige Studien zu spezifischen Empfehlungen; weitgehend ergab die Literaturrecherche keine Evidenz, die ein Abweichen vom Vorgehen nach bestehenden Leitlinien belegen würde."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Evidenzbasierung wurde durch das verminderte Vorliegen hochwertiger Studien zu seltenen Erkrankungen erschwert; Diagnostik- und Komorbiditätsempfehlungen stützen sich auf Studien zu Auftretenswahrscheinlichkeiten, woraus sich eine erhöhte Indirektheit bei der Evidenzbewertung ergab."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "In mehreren Fällen wurde trotz niedrig bewerteter Evidenz ein hoher Empfehlungsgrad vergeben, begründet mit der Relevanz für Betroffene und langjähriger klinischer Best Practice; wegen der Gewichtung der Nutzen-Schaden-Abwägung können Empfehlungsgrad und Evidenzstärke voneinander abweichen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Wo die Evidenzbasierung keine ausreichenden Ergebnisse ergab, wurden Empfehlungen im Expertenkonsens formuliert, gestützt auf die Erfahrung der von der Betroffenenorganisation benannten Kompetenzzentren und expertenbeigesteuerte Literatur."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Es fehlen insbesondere größere randomisiert-kontrollierte Interventionsstudien sowie größere Studien zum Duplikationssyndrom 22q11.2."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Da nur wenige syndromspezifische Interventionen in der Literatur gefunden wurden, nimmt die Leitlinie bei der Versorgung der Komorbiditäten Bezug auf bestehende AWMF-Leitlinien und weist auf die Sicherstellung der regulären Versorgung sowie den Forschungsbedarf hin."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Die Evidenzbasierung lieferte Angaben zu Prävalenzen möglicher Komorbiditäten, die in die Aufklärung über 22q11.2DS eingehen können, und identifizierte Forschungslücken."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die im Projekt durchgeführte Meta-Analyse zur Prävalenz von Herzfehlern beim Deletionssyndrom 22q11.2 ist bereits veröffentlicht (Sauter et al., 2025)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Alle beteiligten Fachgesellschaften außer der DGPP stimmten ohne Vorbehalt oder mit wenigen redaktionellen Änderungen zu."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Wegen der Relevanz der kardiologischen Empfehlungen wurden in einem weiteren Delphi-Verfahren die Empfehlungsgrade von vier Empfehlungen erneut geprüft und abgestimmt."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "In der öffentlichen Konsultation über die Seiten der AWMF und der DGKJP wurden keine Kommentare eingereicht."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Auf die per E-Mail versandten Abbildungen und tabellarischen Übersichten kamen lediglich kleine Anmerkungen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Nach Angabe des Projekts wurde die Bekanntheit der Syndrome schon vor der Veröffentlichung durch Kongressvorträge und Publikationen „deutlich gesteigert“, was der Bericht an einer Zunahme von Beratungsanfragen von Behandlerseite an das Spezialzentrum ZEDE in Würzburg festmacht."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Nach Angabe des Projekts wurde auch bei weiteren Berufsgruppen eine höhere Bekanntheit erzielt, etwa erkennbar an Vorstellungen von Familien am ZEDE22q11 auf Anraten von Lehrkräften."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die Resonanz auf die Vorstellung der Empfehlungen auf Fachkongressen und bei Veranstaltungen der Betroffenenorganisation „Wir sind 22Q e.V.“ wird als durchgehend positiv beschrieben."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Die Projektnehmer erwarten, dass die Leitlinie zu einer kooperativ-interdisziplinären Versorgungsverbesserung führt und die Projektziele nach Veröffentlichung und geplanten Implementierungsmaßnahmen vollumfänglich erreicht werden; dies ist eine Erwartung, kein gemessenes Ergebnis."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Verabschiedung durch den Vorstand der DGPP steht noch aus; sie wurde aus Zeitgründen auf nach der Veröffentlichung verschoben, die DGPP meldete jedoch keine inhaltlichen Änderungsanregungen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die zweite Konsenskonferenz konnte wegen Krankheit nicht neutral durch die AWMF moderiert werden und wurde als Arbeitstreffen durchgeführt."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Zu einzelnen Empfehlungen gab es Anmerkungen, sodass sie in der folgenden Konsenskonferenz erneut besprochen wurden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Abbildungen und die tabellarische Zusammenfassung aller Empfehlungen konnten aus Zeitmangel in der dritten Konsenskonferenz nicht mehr diskutiert werden und wurden stattdessen per E-Mail abgestimmt."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Es besteht Forschungsbedarf, und Fachzentren zu weiteren möglichen Organbeteiligungen müssen erst aufgebaut werden."}]};
+const D = {"projekt_id": 481, "akronym": "DS22q", "kennung": "6oKLtfVi8ysj", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Deletion- und Duplikationssyndrom 22q11.2 umfasst seltene Erkrankungen mit erheblicher körperlicher und psychischer Morbidität. Das Projekt hat erstmals eine interdisziplinär entwickelte S3-Leitlinie mit 80 Empfehlungen, unter anderem zu humangenetischer Diagnostik, Komorbiditätsabklärung, Versorgung und Prävention, erstellt. Nach Einschätzung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat erstmals interdisziplinär eine AWMF-Leitlinie zum Deletions- und Duplikationssyndrom 22q11.2 bei Kindern, Jugendlichen und Erwachsenen erarbeitet; nach Angabe des Berichts wurde das S3-Niveau erreicht. Die Leitlinie enthält 80 Empfehlungen zu interdisziplinären Aspekten, humangenetischer Diagnostik, Abklärung auf Komorbidität, Versorgung sowie Prävention und Resilienzförderung. Grundlage waren eine systematische Evidenzbasierung, darunter eine bereits veröffentlichte eigene Meta-Analyse zur Prävalenz kongenitaler Herzfehler, sowie eine strukturierte Konsensfindung mit Konsenskonferenzen und Delphi-Verfahren. Alle beteiligten Fachgesellschaften außer der DGPP stimmten zu; deren Verabschiedung steht noch aus, sie hat aber keine inhaltlichen Änderungswünsche gemeldet. Die Aussagekraft hängt daran, dass für diese seltene Erkrankung wenige Studien hoher Qualität vorliegen: Diagnostik- und Komorbiditätsempfehlungen stützen sich auf Prävalenzstudien mit erhöhter Indirektheit, für die Versorgung von Komorbiditäten verweist die Leitlinie mangels syndromspezifischer Evidenz auf bestehende AWMF-Leitlinien, und wo Evidenz fehlte, wurde im Expertenkonsens empfohlen. In mehreren Fällen wurde trotz niedrig bewerteter Evidenz ein hoher Empfehlungsgrad vergeben. Größere randomisiert-kontrollierte Interventionsstudien und größere Studien zum Duplikationssyndrom fehlen nach Angabe des Berichts."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Erstmals wurde interdisziplinär eine AWMF-Leitlinie zum Deletions- und Duplikationssyndrom 22q11.2 entwickelt; nach Angabe des Berichts wurde das S3-Niveau erreicht."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Die Leitlinie enthält 80 Empfehlungen zu interdisziplinären Aspekten, humangenetischer Diagnostik, Abklärung auf Komorbidität, Versorgung sowie Prävention und Resilienzförderung bezüglich der Prädisposition für psychische Erkrankungen."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Für die Versorgung von Komorbiditäten fanden sich einige wenige Studien zu spezifischen Empfehlungen; weitgehend ergab die Literaturrecherche keine Evidenz, die ein Abweichen vom Vorgehen nach bestehenden Leitlinien belegen würde."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Evidenzbasierung wurde durch das verminderte Vorliegen hochwertiger Studien zu seltenen Erkrankungen erschwert; Diagnostik- und Komorbiditätsempfehlungen stützen sich auf Studien zu Auftretenswahrscheinlichkeiten, woraus sich eine erhöhte Indirektheit bei der Evidenzbewertung ergab."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "In mehreren Fällen wurde trotz niedrig bewerteter Evidenz ein hoher Empfehlungsgrad vergeben, begründet mit der Relevanz für Betroffene und langjähriger klinischer Best Practice; wegen der Gewichtung der Nutzen-Schaden-Abwägung können Empfehlungsgrad und Evidenzstärke voneinander abweichen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Wo die Evidenzbasierung keine ausreichenden Ergebnisse ergab, wurden Empfehlungen im Expertenkonsens formuliert, gestützt auf die Erfahrung der von der Betroffenenorganisation benannten Kompetenzzentren und expertenbeigesteuerte Literatur."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt DS22q neu entwickelte S3-Leitlinie zum Deletion- und Duplikationssyndrom 22q11.2 der AWMF zur Veröffentlichung im AWMF-Leitlinien-Register zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "befund.0", "art": "befund", "unser": "Erstmalige interdisziplinär entwickelte S3-Leitlinie mit 80 Empfehlungen erstellt"}, {"stelle": "befund.1", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Es fehlen insbesondere größere randomisiert-kontrollierte Interventionsstudien sowie größere Studien zum Duplikationssyndrom 22q11.2."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Da nur wenige syndromspezifische Interventionen in der Literatur gefunden wurden, nimmt die Leitlinie bei der Versorgung der Komorbiditäten Bezug auf bestehende AWMF-Leitlinien und weist auf die Sicherstellung der regulären Versorgung sowie den Forschungsbedarf hin."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Die Evidenzbasierung lieferte Angaben zu Prävalenzen möglicher Komorbiditäten, die in die Aufklärung über 22q11.2DS eingehen können, und identifizierte Forschungslücken."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die im Projekt durchgeführte Meta-Analyse zur Prävalenz von Herzfehlern beim Deletionssyndrom 22q11.2 ist bereits veröffentlicht (Sauter et al., 2025)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Alle beteiligten Fachgesellschaften außer der DGPP stimmten ohne Vorbehalt oder mit wenigen redaktionellen Änderungen zu."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Wegen der Relevanz der kardiologischen Empfehlungen wurden in einem weiteren Delphi-Verfahren die Empfehlungsgrade von vier Empfehlungen erneut geprüft und abgestimmt."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "In der öffentlichen Konsultation über die Seiten der AWMF und der DGKJP wurden keine Kommentare eingereicht."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Auf die per E-Mail versandten Abbildungen und tabellarischen Übersichten kamen lediglich kleine Anmerkungen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Nach Angabe des Projekts wurde die Bekanntheit der Syndrome schon vor der Veröffentlichung durch Kongressvorträge und Publikationen „deutlich gesteigert“, was der Bericht an einer Zunahme von Beratungsanfragen von Behandlerseite an das Spezialzentrum ZEDE in Würzburg festmacht."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Nach Angabe des Projekts wurde auch bei weiteren Berufsgruppen eine höhere Bekanntheit erzielt, etwa erkennbar an Vorstellungen von Familien am ZEDE22q11 auf Anraten von Lehrkräften."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die Resonanz auf die Vorstellung der Empfehlungen auf Fachkongressen und bei Veranstaltungen der Betroffenenorganisation „Wir sind 22Q e.V.“ wird als durchgehend positiv beschrieben."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Die Projektnehmer erwarten, dass die Leitlinie zu einer kooperativ-interdisziplinären Versorgungsverbesserung führt und die Projektziele nach Veröffentlichung und geplanten Implementierungsmaßnahmen vollumfänglich erreicht werden; dies ist eine Erwartung, kein gemessenes Ergebnis."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Verabschiedung durch den Vorstand der DGPP steht noch aus; sie wurde aus Zeitgründen auf nach der Veröffentlichung verschoben, die DGPP meldete jedoch keine inhaltlichen Änderungsanregungen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die zweite Konsenskonferenz konnte wegen Krankheit nicht neutral durch die AWMF moderiert werden und wurde als Arbeitstreffen durchgeführt."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Zu einzelnen Empfehlungen gab es Anmerkungen, sodass sie in der folgenden Konsenskonferenz erneut besprochen wurden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Abbildungen und die tabellarische Zusammenfassung aller Empfehlungen konnten aus Zeitmangel in der dritten Konsenskonferenz nicht mehr diskutiert werden und wurden stattdessen per E-Mail abgestimmt."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Es besteht Forschungsbedarf, und Fachzentren zu weiteren möglichen Organbeteiligungen müssen erst aufgebaut werden."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

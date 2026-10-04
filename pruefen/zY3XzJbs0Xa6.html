@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF16040</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>27 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 72 Aussagen. Die übrigen
+45 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss spricht für das Projekt VaMB keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Mit der Value-Stream-Mapping-Methode wurden für die vier teilnehmenden Brustzentren Maßnahmen zur Verbesserung des Entlassmanagements erstellt und teilweise umgesetzt. Die Veränderungen der Prozess- und Wartezeiten fielen je nach Zentrum sehr unterschiedlich aus und waren überwiegend nicht signifikant. Ein allgemeiner Zusammenhang zwischen der Methode und den Zeiten lässt sich laut Ausschuss nicht belegen. Er führt dies auch auf Limitationen des Studiendesigns zurück: wenige Zentren, unterschiedliche Abläufe und Maßnahmen je Zentrum sowie eine uneinheitliche Operationalisierung der Zeitmessung. Die Befragungen von Patientinnen und Mitarbeitenden erlauben wegen geringer Teilnehmerzahl keine allgemeingültigen Aussagen. Zudem verweist der Ausschuss darauf, dass der Entlassprozess seit Oktober 2017 über einen Rahmenvertrag geregelt ist.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">nicht angegeben</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Laut Ausschuss lassen sich auf Basis der Projektergebnisse keine generalisierten Aussagen treffen. Zur Übertragbarkeit in die Regelversorgung äußert er sich darüber hinaus nicht.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -178,14 +157,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Die Veränderungen der Prozess- und Wartezeiten waren je nach Brustzentrum heterogen und überwiegend nicht signifikant.</p>
+  
   <blockquote>„Die Ergebnisse zur Veränderung der Prozess- und Wartezeiten fielen je nach Brustzentrum sehr heterogen aus und waren überwiegend nicht signifikant." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -199,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.1">
   <h3>Hindernis laut Beschluss: Studienanlage <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Geringe Anzahl eingeschlossener Brustzentren als Limitation des Studiendesigns</p>
+  
   <blockquote>„Insgesamt lassen sich auf Basis der Projektergebnisse keine generalisierten Aussagen zum Zusammenhang zwischen den Prozess - und Wartezeiten u nd der Methode des VSMs treffen, was auch mit den Limitationen des Studiendesigns zusammenhängt. Dazu zählen die geringe Anzahl von eingeschlossenen Brustzentren, die variierenden Abläufe des Entlassungsprozesses und den definierten Maßnahmen zur Prozessverbesserung je Brustzentrum und die unterschiedliche Operationalisierung der Start- und Endpunkte der Zeitmessung." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -218,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.2">
   <h3>Hindernis laut Beschluss: Studienanlage</h3>
   <p class="unser">Abläufe des Entlassungsprozesses und definierte Verbesserungsmaßnahmen variierten je Brustzentrum.</p>
+  
   <blockquote>„Insgesamt lassen sich auf Basis der Projektergebnisse keine generalisierten Aussagen zum Zusammenhang zwischen den Prozess - und Wartezeiten u nd der Methode des VSMs treffen, was auch mit den Limitationen des Studiendesigns zusammenhängt. Dazu zählen die geringe Anzahl von eingeschlossenen Brustzentren, die variierenden Abläufe des Entlassungsprozesses und den definierten Maßnahmen zur Prozessverbesserung je Brustzentrum und die unterschiedliche Operationalisierung der Start- und Endpunkte der Zeitmessung." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.3">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Start- und Endpunkte der Zeitmessung wurden unterschiedlich operationalisiert.</p>
+  
   <blockquote>„Insgesamt lassen sich auf Basis der Projektergebnisse keine generalisierten Aussagen zum Zusammenhang zwischen den Prozess - und Wartezeiten u nd der Methode des VSMs treffen, was auch mit den Limitationen des Studiendesigns zusammenhängt. Dazu zählen die geringe Anzahl von eingeschlossenen Brustzentren, die variierenden Abläufe des Entlassungsprozesses und den definierten Maßnahmen zur Prozessverbesserung je Brustzentrum und die unterschiedliche Operationalisierung der Start- und Endpunkte der Zeitmessung." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -254,14 +233,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.4">
-  <h3>Hindernis laut Beschluss: Fallzahl zu klein für die Auswertung</h3>
+  <h3>Hindernis laut Beschluss: Fallzahl in der Auswertung</h3>
   <p class="unser">Wegen geringer Teilnehmerzahl erlauben die Befragungen von Patientinnen und Mitarbeitenden keine allgemeingültigen Aussagen.</p>
+  
   <blockquote>„Auch die Ergebnisse der Patientinnenbefragung sowie der Befragung der Mitarbeiterinnen und Mitarbeiter lassen aufgrund der geringen Teilnehmer zahl keine allgemeingültigen Aussagen zu." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.5">
   <h3>Hindernis laut Beschluss: Regulatorik und Rechtsrahmen <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Der Entlassprozess ist seit Oktober 2017, zeitgleich mit dem Projektstart, über einen Rahmenvertrag zum Entlassmanagement geregelt.</p>
+  
   <blockquote>„Der Entlassprozess wird seit Oktober 2017 (zeitgleich mit dem VaMB Projektstart) über einen Rahmenvertrag über das Entlassmanagement geregelt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.5" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">H1-A) Prozesszeit (Process time) über alle BZ</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -313,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">H1-B) Wartezeit (Waiting time) über alle BZ</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -332,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">H1-C) Durchlaufzeit (Lead time) über alle BZ</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">H1-B) Wartezeit (Waiting time) – Subgruppe BZ 3</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">H1-C) Durchlaufzeit (Lead time) – Subgruppe BZ 3</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">H1-A) Prozesszeit – Subgruppe BZ 3</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Wissen, Kompetenz und Selbstmanagement“</h3>
   <p class="unser">H2) Patientinnenbewertung &#x27;Wie zuversichtlich sind Sie zu Hause zu Recht zu kommen?&#x27; (Vorher-Nachher, gesamt)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Wissen, Kompetenz und Selbstmanagement“</h3>
   <p class="unser">H2) Patientinnenbewertung &#x27;Wie zuversichtlich sind Sie zu Hause mit der Medikamenteneinnahme zu Recht zu kommen?&#x27; (Vorher-Nachher, gesamt)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Versorgungskoordination und Schnittstellen“</h3>
   <p class="unser">H2) Patientinnenbewertung &#x27;Wussten Sie rechtzeitig über Ihren Entlassungstermin Bescheid?&#x27; (Vorher-Nachher, gesamt)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -466,11 +445,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben untersuchte in vier Brustzentren (BZ), ob die Anwendung von Value Stream Mapping (VSM) den Entlassungsprozess optimiert. Geprüft wurde auf drei Ebenen: Zeitmessung (Prozess-, Warte- und Durchlaufzeit), Patientinnenbefragung und Mitarbeiterbefragung, jeweils zu T0, T1 und T2, ergänzt durch acht Interviews. Analysiert wurden 252 Entlassungsprozesse, 203 Patientinnenfragebögen (Teil 1) und 101 Mitarbeiterfragebögen von 46 Mitarbeitenden. Über alle BZ stieg die Prozesszeit nicht signifikant, Warte- und Durchlaufzeit blieben unverändert. Nur in BZ 3 sanken Wartezeit und Durchlaufzeit, die Durchlaufzeit signifikant um 2,54 Tage; dort wurde H1 bestätigt. Die Hypothesen zur Sicht der Patientinnen (H2) und der Mitarbeitenden (H3) wurden verworfen. Über alle BZ waren die Patientinnen nach der Intervention signifikant weniger zuversichtlich, zu Hause und mit der Medikamenteneinnahme zurechtzukommen; auf Ebene der einzelnen BZ bestätigte sich das nicht. Nach eigener Einschätzung der Autoren haben die Ergebnisse wegen unzureichender Fallzahlen, unterschiedlicher Prozessabläufe und variierender Maßnahmen nur hinweisenden Charakter und erlauben keine Aussage zur Evidenz von VSM; die Umsetzung der Maßnahmen wurde nicht überprüft.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Hypothesen wurden größtenteils nicht oder nur teilweise bestätigt; eine Wirksamkeit auf der Zeitebene kann laut Bericht in Teilen angenommen werden, nicht aber auf Ebene der Patientinnen und Mitarbeitenden.</p>
+  
   <blockquote>„„Durch die Ergebnisse der Studie konnten die Hypothesen zum Großteil nicht bzw. nur in Teilen bestätigt werden. [...] Eine Wirksamkeit der Methode hinsichtlich der Zeitebene kann in Teilen angenommen werden, allerdings nicht für die Ebenen der Patientinnen und Mitarbeitenden.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Über alle BZ (N=252) stieg die Prozesszeit nicht signifikant: kurzfristig um 1,18 Stunden (T0: 5,42 h auf T1: 6,6 h), langfristig um 0,80 Stunden (T2: 6,22 h).</p>
+  
   <blockquote>„„Über alle BZ hinweg konnte eine nicht signifikante Erhöhung der Prozesszeit festgestellt werden (H1- A) [...] Der Kurzzeiteffekt zeigte eine Zunahme um 1,18 Stunden (von T0: 5,42 Stunden auf T1: 6,6 Stunden), im Langzeiteffekt war die Zunahme auf 0,80 Stunden (von T0: 5,42 Stunden auf T2: 6,22 Stunden) reduziert.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,88 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Über alle BZ blieb die Wartezeit unverändert und die Durchlaufzeit wurde nicht reduziert; die Subhypothesen H1-B und H1-C wurden verworfen.</p>
+  
   <blockquote>„„Die zweite (H1-B) und dritte (H1-C) Subhypothese wurden durch die Ergebnisse verworfen, d. h. über alle BZ betrachtet, hat sich die Wartezeit für die Patientinnen nicht verändert und die Durchlaufzeit wurde nicht reduziert.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Für BZ 3 wurde H1 bestätigt: Die nicht-wertschöpfende Zeit (Wartezeit) verkürzte sich signifikant.</p>
-  <blockquote>„„Die nicht -wertschöpfende Zeit (also die Wartezeit) hat sich dabei signifikant verkürzt. Das bedeutet, H1 kann für BZ 3 bestätigt werden“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.11">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Hypothese H2 wurde verworfen: Die Patientinnen nahmen weder zu T1 noch zu T2 eine Verbesserung des Entlassungsprozesses wahr.</p>
-  <blockquote>„„Zusammenfassend kann gesagt werden, dass nach Abschluss der Analysen die Hypothese 2 verworfen werden musste. Das bedeutet, dass die Patientinnen weder zum Zeitpunkt T1 noch zum Zeitpunkt T2 eine Verbesserung des Entlassungsprozesses wahrnehmen.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.16">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Hypothese H3 wurde verworfen: In keiner Skala der Mitarbeiterbewertung (Organisation, Informationen, Entlassungsgespräch, Entlassungsbrief, Medikamentenplan, Ansprechpartner, Nachsorgeschritte) zeigten sich deskriptive oder statistisch signifikante Verbesserungen; getestet werden konnte nur zwischen T0 und T1.</p>
-  <blockquote>„„zeigen sich weder deskriptiv, noch statistisch signifikante Verbesserungen (nur zwischen T0 und T1 möglich). Die Analyse zeigt, dass die Hypothese verworfen werden muss te“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.18">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Laut den interviewten Mitarbeitenden wurden durch die Visualisierung Zusammenhänge zwischen den Prozessschritten erkennbar, sodass in allen vier BZ Schwachstellen aufgedeckt und Maßnahmen entwickelt werden konnten.</p>
-  <blockquote>„„Demgegenüber berichten die interviewten Mitarbeitenden, dass durch die Visualisierung des Entlassungsprozesses, Zusammenhänge zwischen den einzelnen Prozessschritten deutlich wurden, sodass Schwachstellen in alle vier BZ aufgedeckt und entsprechende Maßnahmen entwickelt werden konnten.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren nennen als Limitationen unzureichende Fallzahlen, unterschiedliche Abläufe des Entlassungsprozesses und variierende Maßnahmen; die Ergebnisse haben daher hinweisenden Charakter und erlauben keine Aussage zur Evidenz von VSM.</p>
+  
   <blockquote>„„Die Limitationen der Studienergebnisse ergeben sich durch die unzureichenden Fallzahlen, den unterschiedlichen Ablauf des Entlassungsprozesses und die variierenden Maßnahmen zur Prozessverbesserung. Von daher weisen die Ergebnisse einen hinweisenden Charakter auf und können keine Aussage zur Evidenz der Methode VSM treffen.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Prozessabläufe waren in den BZ unterschiedlicher organisiert als erwartet, etwa beim Abschlussgespräch; die Maßnahmen der BZ sind daher nicht vergleichbar.</p>
+  
   <blockquote>„„Der Prozessablauf war in den jeweiligen BZ unterschiedlicher organisiert als erwartet (z. B. Abschlussgespräche wurden in einem BZ während des Krankenhausaufenthalts mit der BCN geführt, in einem anderen BZ wurde das Gespräch nach dem Aufenthalt durch ärztliches Personal durchgeführt). D ie Maßnahmen der BZ sind daher nicht vergleichbar.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,31 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Implementierung der Maßnahmen wurde nicht formativ begleitet und ihre Umsetzung nicht überprüft.</p>
+  
   <blockquote>„„Bei zukünftigen Studien sollte die Implementierung der eruierten Maßnahmen formativ begleitet werden, um so Hindernisse frühzeitig erkennen zu können. Dieses Vorgehen würde auch ein Überprüfen der Umsetzung vorsehen. Dies wurde in der vorliegenden Studie nicht berücksichtigt.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.4">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Die Mitarbeiterbefragung erreichte 101 statt der geplanten 300 Fragebögen, davon 50 aus BZ 3 (BZ 1: 13, BZ 2: 17, BZ 4: 21); beteiligt waren 46 verschiedene Mitarbeitende mit T0=45, T1=31 und T2=25.</p>
-  <blockquote>„„wurde mit einer Fallzahl von N=101 die erzielte Fallzahl der Studie nicht erreicht [...] Die Hälfte (N=50) der Mitarbeiterfragebögen wurden in BZ 3 ausgefüllt (BZ 1=13, BZ 2=17, BZ 4=21). Insgesamt nahmen N=46 unterschiedliche Mitarbeitende an der Befragung teil (T 0=45, T1=31, T2=25).“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -694,11 +578,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Der Text auf S. 24 sagt, bei den Mitarbeiterskalen zeigten sich „weder deskriptiv, noch statistisch signifikante Verbesserungen“; die Mittelwerte auf derselben Seite steigen jedoch für Medikamentenplan (3,13/3,29/3,30), Ansprechpartner (3,71/3,95/3,96) und zu T1 für das Entlassungsgespräch (3,49 auf 3,71).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -713,11 +597,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Die Kurzfassung (S. 3) sagt, Prozessveränderungen seien auf Patientinnenebene „nicht messbar“ gewesen; S. 21–22 berichten dagegen über alle BZ signifikant niedrigere Zuversichtswerte der Patientinnen nach der Intervention (Mann-Whitney Z=-2,42 und Z=-2,39), die auf BZ-Ebene allerdings nicht bestätigt wurden.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -732,11 +616,144 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Die Kurzfassung (S. 3) berichtet eine „Verlängerung der einzelnen Prozessschritte und damit eine längere Kontaktzeit“, ohne zu erwähnen, dass die Erhöhung der Prozesszeit über alle BZ laut S. 19 nicht signifikant war.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>45 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss spricht für das Projekt VaMB keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Laut Ausschuss lassen sich auf Basis der Projektergebnisse keine generalisierten Aussagen treffen. Zur Übertragbarkeit in die Regelversorgung äußert er sich darüber hinaus nicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Für BZ 3 wurde H1 bestätigt: Die nicht-wertschöpfende Zeit (Wartezeit) verkürzte sich signifikant.</p>
+  
+  <blockquote>„„Die nicht -wertschöpfende Zeit (also die Wartezeit) hat sich dabei signifikant verkürzt. Das bedeutet, H1 kann für BZ 3 bestätigt werden“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.11">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Hypothese H2 wurde verworfen: Die Patientinnen nahmen weder zu T1 noch zu T2 eine Verbesserung des Entlassungsprozesses wahr.</p>
+  
+  <blockquote>„„Zusammenfassend kann gesagt werden, dass nach Abschluss der Analysen die Hypothese 2 verworfen werden musste. Das bedeutet, dass die Patientinnen weder zum Zeitpunkt T1 noch zum Zeitpunkt T2 eine Verbesserung des Entlassungsprozesses wahrnehmen.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.16">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Hypothese H3 wurde verworfen: In keiner Skala der Mitarbeiterbewertung (Organisation, Informationen, Entlassungsgespräch, Entlassungsbrief, Medikamentenplan, Ansprechpartner, Nachsorgeschritte) zeigten sich deskriptive oder statistisch signifikante Verbesserungen; getestet werden konnte nur zwischen T0 und T1.</p>
+  
+  <blockquote>„„zeigen sich weder deskriptiv, noch statistisch signifikante Verbesserungen (nur zwischen T0 und T1 möglich). Die Analyse zeigt, dass die Hypothese verworfen werden muss te“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.18">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Laut den interviewten Mitarbeitenden wurden durch die Visualisierung Zusammenhänge zwischen den Prozessschritten erkennbar, sodass in allen vier BZ Schwachstellen aufgedeckt und Maßnahmen entwickelt werden konnten.</p>
+  
+  <blockquote>„„Demgegenüber berichten die interviewten Mitarbeitenden, dass durch die Visualisierung des Entlassungsprozesses, Zusammenhänge zwischen den einzelnen Prozessschritten deutlich wurden, sodass Schwachstellen in alle vier BZ aufgedeckt und entsprechende Maßnahmen entwickelt werden konnten.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.4">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Mitarbeiterbefragung erreichte 101 statt der geplanten 300 Fragebögen, davon 50 aus BZ 3 (BZ 1: 13, BZ 2: 17, BZ 4: 21); beteiligt waren 46 verschiedene Mitarbeitende mit T0=45, T1=31 und T2=25.</p>
+  
+  <blockquote>„„wurde mit einer Fallzahl von N=101 die erzielte Fallzahl der Studie nicht erreicht [...] Die Hälfte (N=50) der Mitarbeiterfragebögen wurden in BZ 3 ausgefüllt (BZ 1=13, BZ 2=17, BZ 4=21). Insgesamt nahmen N=46 unterschiedliche Mitarbeitende an der Befragung teil (T 0=45, T1=31, T2=25).“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -751,11 +768,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Laut Kurzfassung (S. 3) wurden nach Aussage der Interviewten „Schwachstellen in alle vier BZ aufgedeckt“; laut Interviewauswertung (S. 26) sahen beide Professionen „kein Verbesserungspotential für den ‚gut funktionierenden Entlassungsprozess‘“.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -765,16 +782,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>37 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In BZ 3 halbierte sich die Wartezeit von 5,02 Tagen (Prämessung) auf 2,51 Tage (Follow-up); der Bericht spricht von einem starken Effekt.</p>
+  
   <blockquote>„„Die Wartezeit (H1-B) hat sich von der Prämessung mit 5,02 Tagen auf 2,51 Tage bei der Follow-up-Messung halbiert. Damit hat sich die Wartezeit mit einem starken Effekt reduziert.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +805,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In BZ 3 sank die Durchlaufzeit signifikant um 2,54 Tage, von 5,38 auf 2,84 Tage; H1-C wurde für BZ 3 angenommen.</p>
+  
   <blockquote>„„Mit einer Reduktion um 2,54 Tagen, von 5,38 Tagen zur Prämessung auf 2,84 Tagen zur Follow -up-Messung, hat sich ebenfalls die Durchlaufzeit signifikant verändert [...], womit H1-C) für BZ 3 angenommen werden kann.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In BZ 3 veränderte sich die Prozesszeit nicht signifikant (T0: 0,36; T1: 0,34; T2: 0,33); H1-A wurde verworfen.</p>
+  
   <blockquote>„„Für BZ 3 musste H1-A) ebenfalls verworfen werden, da sich die Proz esszeit (T0: 0,36; T1: 0,34; T2: 0,33) kaum und damit nicht signifikant v erändert hat.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In BZ 1, BZ 2 und BZ 4 ergaben sich keine signifikanten Veränderungen von Prozess-, Warte- oder Durchlaufzeit; H1-A bis H1-C wurden dort verworfen.</p>
+  
   <blockquote>„„Für BZ 1, BZ 2 und BZ 4 mussten die H1 -A) – C) verworfen werden. Das bedeutet, hier haben sich keine signifikanten Veränderungen der Prozesszeit, Wartezeit oder Durchlaufzeit ergeben.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +862,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Kurzfassung zeigte die Zeitmessung über 252 Entlassungsprozesse verlängerte Prozessschritte und damit eine längere Kontaktzeit zwischen Patientinnen und Versorgenden.</p>
+  
   <blockquote>„„Insgesamt konnten N=252 Entlassungsprozesse analysiert werden. Die Auswertungen der Zeitmessung zeigen eine Verlängerung der einzelnen Prozessschritte und damit eine längere Kontaktzeit zwischen Patientinnen und den Versorgenden.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +881,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von 27 erarbeiteten Maßnahmen waren 14 über die Zeitmessung überprüfbar; bei 9 davon stellte der Bericht einen positiven Trend fest, etwa verkürzte Wartezeiten vor Gesprächen bzw. Untersuchungen in einzelnen BZ.</p>
+  
   <blockquote>„„Die erarbeiteten Maßnahmen waren etwa zur Hälfte (14 von 27 Maßnahmen) durch die Zeitmessung überprüfbar. Bei den meisten der messbaren Maßnahmen (N=9) konnte ein positiver Trend festgestellt werden. So konnten Wartezeiten vor Gesprächen bzw. Untersuchungen bei einzelnen BZ reduziert werden“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +900,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Einzelne Prozessschritte, etwa die Organisation des Abschlussgesprächs, wurden zeitlich messbar optimiert.</p>
+  
   <blockquote>„„Einzelne Prozessschritte, wie die Organisation des Abschlussgespräches, konnten zeitlich messbar optimiert werden.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +919,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Über alle BZ waren die Patientinnen zu T1 bzw. T2 signifikant weniger zuversichtlich, zu Hause und mit der Medikamenteneinnahme zurechtzukommen, was der Bericht als Verschlechterung durch das VSM deutet; auf Ebene der einzelnen BZ bestätigte sich der Effekt nicht.</p>
+  
   <blockquote>„„In beiden Analysen werden nur einzelne Variablen auf der Ebene aller BZ signifikant. [...] die Patientinnen zu T1 bzw. T2 weniger zuversichtlich sind zu Hause und mit der Medikamenteneinnahme zu Recht zu kommen. Dies würde eine Verschlechterung durch die Durchführung des VSM bedeuten. Der Effekt kann auf BZ Ebene allerdings nicht bestätigt werden.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +938,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mittelwerte der Patientinnenbewertung über alle BZ (Skala 1–5) zu T0/T1/T2: Zuversicht, zu Hause zurechtzukommen, 4,53/4,22/4,29; Zuversicht bei der Medikamenteneinnahme 4,81/4,56/4,64; rechtzeitiges Wissen um den Entlassungstermin 4,32/4,23/4,20.</p>
+  
   <blockquote>„„Gesamt T0 60 4,53 0,79 59 4,81 0,47 60 4,32 1,07 T1 63 4,22 0,85 62 4,56 0,69 65 4,23 0,95 T2 68 4,29 0,83 67 4,64 0,67 69 4,20 1,09“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +957,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Mann-Whitney-U-Test über alle BZ waren die Unterschiede für die Zuversicht, zu Hause zurechtzukommen (N=191, Z=-2,42), und bei der Medikamenteneinnahme (N=188, Z=-2,39) als signifikant gekennzeichnet, für das rechtzeitige Wissen um den Entlassungstermin (N=194, Z=-1,23) nicht.</p>
+  
   <blockquote>„„Gesamt Wie zuversichtlich sind Sie zu Hause zu Recht zu kommen? 191 -2,42* Wie zuversichtlich sind Sie zu Hause mit der Medikamenteneinnahme zu Recht zu kommen? 188 -2,39* Wussten Sie rechtzeitig über Ihren Entlassungstermin Bescheid? 194 -1,23“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +976,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Regression über alle BZ war T1 mit der Zuversicht, zu Hause zurechtzukommen (-0,30), und mit der Zuversicht bei der Medikamenteneinnahme (-0,26) negativ und als signifikant gekennzeichnet verknüpft.</p>
+  
   <blockquote>„„T1 -0,32 -0,45 -0,30* -0,20 -0,10 -0,26* -0,18 0,41 -0,05“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +995,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mittelwerte der Mitarbeiterbewertung zu T0/T1/T2: Entlassungsorganisation 3,81/3,80/3,71; Informationen 4,21/4,16/3,90; Entlassungsgespräch 3,49/3,71/3,47; Entlassungsbrief 3,73/3,73/3,79; Medikamentenplan 3,13/3,29/3,30; Ansprechpartner 3,71/3,95/3,96; Nachsorgeschritte 4,41/4,21/4,16.</p>
+  
   <blockquote>„„Entlassungsorganisation 42 3,81 29 3,80 24 3,71 Informationen 42 4,21 29 4,16 25 3,90 Entlassungsgespräch 39 3,49 30 3,71 25 3,47 Entlassungsbrief 37 3,73 28 3,73 25 3,79 Medikamentenplan 39 3,13 29 3,29 25 3,30 Ansprechpartner 35 3,71 21 3,95 24 3,96 Nachsorgeschritte 38 4,41 28 4,21 25 4,16“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1014,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Interviews (Domäne Intervention Characteristics): Ärzt*innen und BCNs hatten keine größeren Veränderungen durch VSM erwartet, konnten aber Verschwendung erkennen und Maßnahmen entwickeln; durch die gemeinsame Abbildung entstand eine berufsgruppenübergreifende Sicht auf den Gesamtprozess.</p>
+  
   <blockquote>„„die Ärzt*innen und BCNs keine größeren Veränderungen durch die VSM -Methode erwartet hatten, aber in der Lage waren, Verschwendung zu erkennen und geeignete Maßnahmen zu entwickeln. [...] entwickelten sie eine gemeinsame Sichtweise des gesamten Prozesses“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1033,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Interviews (Domäne Character of Individuals): Beide Professionen sahen kein Verbesserungspotential für den Entlassungsprozess; die Ärzt*innen gingen von Einschränkungen bei der Übertragung der Methode auf Krankenhäuser aus.</p>
+  
   <blockquote>„„Aus Sicht der beiden Professionen besteht kein Verbesserungspotential für den „gut funktionierenden Entlassungsprozess“. Die Gruppe der Ärzt*innen ging von Einschränkungen bei der Übertragung der Methode in Krankenhäuser aus, da hier nicht standardisierbare, personenbezogene Dienstleistungen erbracht werden.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1052,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Interviews (Domäne Process): Die VSM-Projekttreffen wurden als sehr gut organisiert, vorbereitet und durchgeführt beschrieben; die Veränderungsprozesse wurden jedoch oft durch die tägliche Arbeitsroutine aufgewogen.</p>
+  
   <blockquote>„„Die VSM -Projekttreffen wurden als sehr gut organisiert, vorbereitet und durchgeführt beschrieben. Die Ergebnisse zeigen, dass die Veränderungs prozesse oft durch die tägliche Arbeitsroutine aufgewogen werden.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1071,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Um Rückmeldung zum Umsetzungsstand der Maßnahmen zu T1 und T2 gebeten, antwortete nur BZ 4.</p>
+  
   <blockquote>„„Zusätzlich wurden den BZ die Aktionsliste zu den beiden Zeitpunkten T1 und T2 zugesandt, mit der Bitte um Rückmeldung des Status der Umsetzung der einzelnen Maßnahmen. Dieser Bitte ist jedoch nur BZ 4 nachgekommen“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1090,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Mitarbeiterbefragung konnte nur zwischen dem ersten und zweiten Messzeitpunkt getestet werden; wegen der geringen Fallzahl ist die statistische Auswertung rein explorativ.</p>
+  
   <blockquote>„„Die Testun g wurde mit den Daten des ersten Messzeitpunktes und des zweiten Messzeitpunktes durchgeführt, da nur hier die Fallzahl der abhängigen Gruppen ausreichend ist. [...] Aufgrund der geringen Fallzahl ist die statistische Auswertung rein explorativ zu bewerten“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1109,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren führen die nicht signifikanten Ergebnisse der Mitarbeiterbefragung größtenteils auf die niedrige Fallzahl durch geringen Rücklauf und Drop-out zurück; eine Drop-out-Analyse war aus Datenschutzgründen nicht möglich.</p>
+  
   <blockquote>„„Die nicht signifikanten Ergebnisse lassen sich zum größten Teil auf die niedrige Fallzahl zurückführen, die bedingt sind durch den geringen Rücklauf, sowie einer Reduktion der Anzahl der teilnehmenden Mitarbeitenden im Verlauf der Studie (Drop-Out). Eine genaue Drop-Out Analyse konnte aus datenschutzrechtlichen Gründen nicht durchgeführt werden.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1128,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eine nach BZ stratifizierte Analyse der Mitarbeiterbefragung war wegen der geringen Fallzahlen nicht möglich.</p>
+  
   <blockquote>„„Eine Analyse stratifiziert nach BZ war, aufgrund der geringen Fallzahlen nicht möglich.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen des geringen Rücklaufs der Mitarbeiterbefragung wurden zusätzlich Einzelinterviews geführt, um H3 beantworten zu können.</p>
+  
   <blockquote>„„Aufgrund eines geringen Rücklaufs der Mitarbeiterbefragungen wurden zusätzliche Einzelinterviews mit Mitarbeitenden durchgeführt, um die Hypothese H3 beantworten zu können“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren gehen davon aus, dass die Effektstärke kleiner war als angenommen und die Fallzahl nicht ausreichte, um einen Effekt statistisch nachzuweisen.</p>
+  
   <blockquote>„„Zunächst muss dav on ausgegangen werden, dass die Effektstärke geringer war als angenommen und die Fallzahl damit nicht hoch genug war, um einen Effekt statistisch nachzuweisen.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1185,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Fallzahl der Patientinnenbefragung wurde trotz dreimaliger Erinnerung nicht erreicht; genannt werden fehlende Kapazität der Mitarbeitenden zur Motivation der Patientinnen, geringe Teilnahmemotivation der belasteten Patientinnen und ein designbedingt nicht kontinuierlicher Einschluss.</p>
+  
   <blockquote>„„Die Fallzahl wurde nicht erreicht, trotz des Einsatzes der dreimaligen Erinnerung nach Dillman (25). Mögliche Gründe [...] die mangelnde Kapazität der Mitarbeitenden, die Patientinnen zur Teilnahme zu motivieren, sowie die unzureichende Teilnahmemotivation seitens der Patientinnen“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1204,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zu T1 und T2 war die Teilnahmebereitschaft der Patientinnen geringer als erwartet, und der Erhebungszeitraum ließ sich wegen der Arbeitszeiten der Study Nurse nicht immer bis zur Zielgröße erweitern (T1 bei BZ 1 und BZ 4).</p>
+  
   <blockquote>„„Zu T1 und T2 rekrutierte die Study Nurse so viele Patientinnen wie möglich, bei geringerer Teilnahmebereitschaft als erwartet, war der Erhebungszeitraum aufgrund ihrer Arbeitszeiten allerdings nicht immer bis zur Zielgröße erweiterbar (T1 bei BZ1 und BZ4).“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1223,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Erhebung zu T1 war auf drei bis vier Wochen geplant und wurde, soweit möglich, ausgedehnt, um die Fallzahl zu erreichen.</p>
+  
   <blockquote>„„Die Erhebung war wie T0 für drei bis vier Wochen geplant, wurde allerdings, nach Möglichkeit, soweit ausgedehnt, dass die Fallzahl erreicht werden konnte“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1242,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">BZ 1 erreichte die Mindestfallzahl von 15 nicht und wurde im Vorher-Nachher-Vergleich der Patientinnenbefragung nicht gesondert eingeschlossen.</p>
+  
   <blockquote>„„Aufgrund der nicht erreichten Fallzahl von N=15 konnte BZ 1 nicht eingeschlossen werden.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1261,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Patientinnen wurden nur im Querschnitt befragt und konnten den Entlassungsprozess vor und nach der Intervention nicht vergleichen.</p>
+  
   <blockquote>„„Die Patientinnen konnten nur im Querschnitt befragt werden, d. h. sie konnten nur den aktuellen Zustand bewerten und hatten damit keinen Vergleich zwischen dem erlebten Entlassungsprozess vor und nach der Intervention.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1280,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Nicht-Annahme von H2 ist laut Bericht vor dem Hintergrund eines Deckeneffekts zu sehen, da die Patientinnen den Entlassungsprozess bereits zu T0 positiv bewerteten.</p>
+  
   <blockquote>„„Die Nicht-Annahme der Hypothese H2 ist zudem vor dem Hintergrund eines „Deckeneffektes“ zu interpretieren. So haben die Patientinnen bereits zum Messzeitpunkt T0 den Entlassungsprozess positiv bewertet.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1299,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen vieler fehlender Werte wurden keine weiteren Kontrollvariablen aufgenommen; nur 81 % (N=164) sendeten Teil 2 der Patientinnenbefragung zurück.</p>
+  
   <blockquote>„„Durch die hohe Anzahl an fehlenden Werten hätte die Aufnahme weiterer Kontrollvariablen die Fallzahl zu stark gesenkt. Nur 81% (N=164) sendeten den zweiten Teil der Befragung zurück.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1318,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Teil 2 der Patientinnenbefragung wurde erst nachträglich in den Projektplan aufgenommen, sodass für ihn keine Fallzahlberechnung und keine Einkalkulierung des Drop-outs möglich war.</p>
+  
   <blockquote>„„Da Teil 2 der Patientinnenbefragung erst im Nachhinein zum Projektplan hinzugefügt wurde, war hierzu keine Fallzahlberechnung und Einkalkulierung des potentiellen Dop-Outs möglich.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1337,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Study Nurse beobachtete mehrere Patientinnen parallel und konnte nicht alle Zeiten erfassen; das könnte zu fehlenden Werten und einer zu niedrig gemessenen Prozesszeit geführt haben.</p>
+  
   <blockquote>„„Einschränkungen ergaben sich bei der Datenerhebun g insbesondere durch die parallele Beobachtung von mehreren Patientinnen durch die gleiche Study Nurse. Diese konnte somit nicht alle Zeiten beobachten und erfassen. Dies könnte zu fehlenden Werten bei den Prozessschritten und damit zu einer geringeren Prozesszeit geführt haben.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1356,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Wartezeiten wurden nicht für alle Patientinnen gemessen, sondern errechnet, weil eine Study Nurse für mehrere Patientinnen zuständig war.</p>
+  
   <blockquote>„„Die Wartezeiten konnten nicht für alle Patienti nnen über die Zeitmessung erhoben werden, da ein Study Nurse für mehrere Patientinnen zuständig war, so wurde die Wartezeit errechnet.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1375,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In die Analyse von Prozess-, Warte- und Durchlaufzeit gingen nur Patientinnen mit vollständig erhobenem Entlassungsprozess ein; die Fallzahl wich daher von der Gesamtzahl der Zeitmessungen ab (266 erreicht, 14 unvollständig).</p>
+  
   <blockquote>„„Die Fallzahl variierte dabei von der Gesamtzahl der erhobenen Zeitmessungen, da nur Patientinnen in die Analyse der Prozess-, Warte- und Durchlaufzeit geschlossen werden konnten, für die der gesamte Entlassungsprozess erhoben worden war.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1394,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.21">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Umsetzung der Veränderungsmaßnahmen war zum Teil schwierig, unter anderem weil die Alltagsroutinen den Veränderungsprozess überlagerten.</p>
+  
   <blockquote>„„Die Umsetzung der angestrebten Veränderungsmaßnahmen gestaltete sich zum Teil schwierig, bspw. da die Alltagsroutine n den Veränderungsprozess überlagerten.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1413,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.22">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In den Interviews erwiesen sich hierarchische Strukturen als Haupthindernis für die Umsetzung von Maßnahmen jenseits individueller Verantwortlichkeiten; berichtet wurde zudem Zeitmangel wegen Personalmangels.</p>
+  
   <blockquote>„„Es zeigte sich, dass die gegenwärtigen hierarchischen Strukturen das Haupthindernis für die wirksame Umsetzung von Maßnahmen darstellen, die über den Rahmen der individuellen Verantwortlichkeiten hinausgehen. Ebenfalls wurde ein Zeitmangel aufgrund von Personalmangel berichtet.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1432,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.23">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Ebenen der Wirksamkeitsprüfung (Zeitmessung, Patientinnen-, Mitarbeiterbefragung) wurden ohne Beteiligung der BZ ausgewählt.</p>
+  
   <blockquote>„„Zu bedenken ist auch, dass die Ebenen der Wirksamkeitsüberprüfung (Zeitmessung, Patientinnenbefragung, Mitarbeiterbefragung) nicht-partizipativ, ohne eine Beteiligung der BZ ausgewählt wurden.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1451,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.24">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der für April 2020 geplante Benchmark-Workshop der vier BZ fand wegen der Einschränkungen der Corona-Pandemie nicht statt.</p>
+  
   <blockquote>„„Der für den April 2020 geplante Benchmark-Workshop innerhalb der vier untersuchten BZ hat aufgrund der Einschränkungen resultierend aus der Corona- Pandemie nicht stattgefunden.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1470,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.25">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Ziel einer Evidenzaussage zu VSM wurde wegen geringer Fallzahlen nicht abschließend erreicht; das geplante VSM-Manual wurde deshalb nicht erstellt.</p>
+  
   <blockquote>„„Ziel der Studie war es Aussagen zur Evidenz der VSM -Methode treffen zu können. Dies konnte aufgrund der geringen Fallzahlen nicht abschließend realisiert werden. Die fehlende Evidenzbasis führte letztendlich dazu, vom Vorhaben der Manual-Erstellung abzusehen“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1503,28 +1520,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 39, "akronym": "VaMB", "kennung": "zY3XzJbs0Xa6", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt VaMB keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Mit der Value-Stream-Mapping-Methode wurden für die vier teilnehmenden Brustzentren Maßnahmen zur Verbesserung des Entlassmanagements erstellt und teilweise umgesetzt. Die Veränderungen der Prozess- und Wartezeiten fielen je nach Zentrum sehr unterschiedlich aus und waren überwiegend nicht signifikant. Ein allgemeiner Zusammenhang zwischen der Methode und den Zeiten lässt sich laut Ausschuss nicht belegen. Er führt dies auch auf Limitationen des Studiendesigns zurück: wenige Zentren, unterschiedliche Abläufe und Maßnahmen je Zentrum sowie eine uneinheitliche Operationalisierung der Zeitmessung. Die Befragungen von Patientinnen und Mitarbeitenden erlauben wegen geringer Teilnehmerzahl keine allgemeingültigen Aussagen. Zudem verweist der Ausschuss darauf, dass der Entlassprozess seit Oktober 2017 über einen Rahmenvertrag geregelt ist."}, {"stelle": "studiendesign", "art": "text", "unser": "nicht angegeben"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Laut Ausschuss lassen sich auf Basis der Projektergebnisse keine generalisierten Aussagen treffen. Zur Übertragbarkeit in die Regelversorgung äußert er sich darüber hinaus nicht."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Veränderungen der Prozess- und Wartezeiten waren je nach Brustzentrum heterogen und überwiegend nicht signifikant."}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Geringe Anzahl eingeschlossener Brustzentren als Limitation des Studiendesigns"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Abläufe des Entlassungsprozesses und definierte Verbesserungsmaßnahmen variierten je Brustzentrum."}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Start- und Endpunkte der Zeitmessung wurden unterschiedlich operationalisiert."}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Wegen geringer Teilnehmerzahl erlauben die Befragungen von Patientinnen und Mitarbeitenden keine allgemeingültigen Aussagen."}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Der Entlassprozess ist seit Oktober 2017, zeitgleich mit dem Projektstart, über einen Rahmenvertrag zum Entlassmanagement geregelt."}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "H1-A) Prozesszeit (Process time) über alle BZ"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "H1-B) Wartezeit (Waiting time) über alle BZ"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "H1-C) Durchlaufzeit (Lead time) über alle BZ"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "H1-B) Wartezeit (Waiting time) – Subgruppe BZ 3"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "H1-C) Durchlaufzeit (Lead time) – Subgruppe BZ 3"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "H1-A) Prozesszeit – Subgruppe BZ 3"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "H2) Patientinnenbewertung 'Wie zuversichtlich sind Sie zu Hause zu Recht zu kommen?' (Vorher-Nachher, gesamt)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "H2) Patientinnenbewertung 'Wie zuversichtlich sind Sie zu Hause mit der Medikamenteneinnahme zu Recht zu kommen?' (Vorher-Nachher, gesamt)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "H2) Patientinnenbewertung 'Wussten Sie rechtzeitig über Ihren Entlassungstermin Bescheid?' (Vorher-Nachher, gesamt)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte in vier Brustzentren (BZ), ob die Anwendung von Value Stream Mapping (VSM) den Entlassungsprozess optimiert. Geprüft wurde auf drei Ebenen: Zeitmessung (Prozess-, Warte- und Durchlaufzeit), Patientinnenbefragung und Mitarbeiterbefragung, jeweils zu T0, T1 und T2, ergänzt durch acht Interviews. Analysiert wurden 252 Entlassungsprozesse, 203 Patientinnenfragebögen (Teil 1) und 101 Mitarbeiterfragebögen von 46 Mitarbeitenden. Über alle BZ stieg die Prozesszeit nicht signifikant, Warte- und Durchlaufzeit blieben unverändert. Nur in BZ 3 sanken Wartezeit und Durchlaufzeit, die Durchlaufzeit signifikant um 2,54 Tage; dort wurde H1 bestätigt. Die Hypothesen zur Sicht der Patientinnen (H2) und der Mitarbeitenden (H3) wurden verworfen. Über alle BZ waren die Patientinnen nach der Intervention signifikant weniger zuversichtlich, zu Hause und mit der Medikamenteneinnahme zurechtzukommen; auf Ebene der einzelnen BZ bestätigte sich das nicht. Nach eigener Einschätzung der Autoren haben die Ergebnisse wegen unzureichender Fallzahlen, unterschiedlicher Prozessabläufe und variierender Maßnahmen nur hinweisenden Charakter und erlauben keine Aussage zur Evidenz von VSM; die Umsetzung der Maßnahmen wurde nicht überprüft."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die Hypothesen wurden größtenteils nicht oder nur teilweise bestätigt; eine Wirksamkeit auf der Zeitebene kann laut Bericht in Teilen angenommen werden, nicht aber auf Ebene der Patientinnen und Mitarbeitenden."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Über alle BZ (N=252) stieg die Prozesszeit nicht signifikant: kurzfristig um 1,18 Stunden (T0: 5,42 h auf T1: 6,6 h), langfristig um 0,80 Stunden (T2: 6,22 h)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Über alle BZ blieb die Wartezeit unverändert und die Durchlaufzeit wurde nicht reduziert; die Subhypothesen H1-B und H1-C wurden verworfen."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Für BZ 3 wurde H1 bestätigt: Die nicht-wertschöpfende Zeit (Wartezeit) verkürzte sich signifikant."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Hypothese H2 wurde verworfen: Die Patientinnen nahmen weder zu T1 noch zu T2 eine Verbesserung des Entlassungsprozesses wahr."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Hypothese H3 wurde verworfen: In keiner Skala der Mitarbeiterbewertung (Organisation, Informationen, Entlassungsgespräch, Entlassungsbrief, Medikamentenplan, Ansprechpartner, Nachsorgeschritte) zeigten sich deskriptive oder statistisch signifikante Verbesserungen; getestet werden konnte nur zwischen T0 und T1."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Laut den interviewten Mitarbeitenden wurden durch die Visualisierung Zusammenhänge zwischen den Prozessschritten erkennbar, sodass in allen vier BZ Schwachstellen aufgedeckt und Maßnahmen entwickelt werden konnten."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Autoren nennen als Limitationen unzureichende Fallzahlen, unterschiedliche Abläufe des Entlassungsprozesses und variierende Maßnahmen; die Ergebnisse haben daher hinweisenden Charakter und erlauben keine Aussage zur Evidenz von VSM."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Prozessabläufe waren in den BZ unterschiedlicher organisiert als erwartet, etwa beim Abschlussgespräch; die Maßnahmen der BZ sind daher nicht vergleichbar."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die Implementierung der Maßnahmen wurde nicht formativ begleitet und ihre Umsetzung nicht überprüft."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Mitarbeiterbefragung erreichte 101 statt der geplanten 300 Fragebögen, davon 50 aus BZ 3 (BZ 1: 13, BZ 2: 17, BZ 4: 21); beteiligt waren 46 verschiedene Mitarbeitende mit T0=45, T1=31 und T2=25."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Der Text auf S. 24 sagt, bei den Mitarbeiterskalen zeigten sich „weder deskriptiv, noch statistisch signifikante Verbesserungen“; die Mittelwerte auf derselben Seite steigen jedoch für Medikamentenplan (3,13/3,29/3,30), Ansprechpartner (3,71/3,95/3,96) und zu T1 für das Entlassungsgespräch (3,49 auf 3,71)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Die Kurzfassung (S. 3) sagt, Prozessveränderungen seien auf Patientinnenebene „nicht messbar“ gewesen; S. 21–22 berichten dagegen über alle BZ signifikant niedrigere Zuversichtswerte der Patientinnen nach der Intervention (Mann-Whitney Z=-2,42 und Z=-2,39), die auf BZ-Ebene allerdings nicht bestätigt wurden."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Die Kurzfassung (S. 3) berichtet eine „Verlängerung der einzelnen Prozessschritte und damit eine längere Kontaktzeit“, ohne zu erwähnen, dass die Erhöhung der Prozesszeit über alle BZ laut S. 19 nicht signifikant war."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Laut Kurzfassung (S. 3) wurden nach Aussage der Interviewten „Schwachstellen in alle vier BZ aufgedeckt“; laut Interviewauswertung (S. 26) sahen beide Professionen „kein Verbesserungspotential für den ‚gut funktionierenden Entlassungsprozess‘“."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "In BZ 3 halbierte sich die Wartezeit von 5,02 Tagen (Prämessung) auf 2,51 Tage (Follow-up); der Bericht spricht von einem starken Effekt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "In BZ 3 sank die Durchlaufzeit signifikant um 2,54 Tage, von 5,38 auf 2,84 Tage; H1-C wurde für BZ 3 angenommen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "In BZ 3 veränderte sich die Prozesszeit nicht signifikant (T0: 0,36; T1: 0,34; T2: 0,33); H1-A wurde verworfen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "In BZ 1, BZ 2 und BZ 4 ergaben sich keine signifikanten Veränderungen von Prozess-, Warte- oder Durchlaufzeit; H1-A bis H1-C wurden dort verworfen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Laut Kurzfassung zeigte die Zeitmessung über 252 Entlassungsprozesse verlängerte Prozessschritte und damit eine längere Kontaktzeit zwischen Patientinnen und Versorgenden."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Von 27 erarbeiteten Maßnahmen waren 14 über die Zeitmessung überprüfbar; bei 9 davon stellte der Bericht einen positiven Trend fest, etwa verkürzte Wartezeiten vor Gesprächen bzw. Untersuchungen in einzelnen BZ."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Einzelne Prozessschritte, etwa die Organisation des Abschlussgesprächs, wurden zeitlich messbar optimiert."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Über alle BZ waren die Patientinnen zu T1 bzw. T2 signifikant weniger zuversichtlich, zu Hause und mit der Medikamenteneinnahme zurechtzukommen, was der Bericht als Verschlechterung durch das VSM deutet; auf Ebene der einzelnen BZ bestätigte sich der Effekt nicht."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Mittelwerte der Patientinnenbewertung über alle BZ (Skala 1–5) zu T0/T1/T2: Zuversicht, zu Hause zurechtzukommen, 4,53/4,22/4,29; Zuversicht bei der Medikamenteneinnahme 4,81/4,56/4,64; rechtzeitiges Wissen um den Entlassungstermin 4,32/4,23/4,20."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Im Mann-Whitney-U-Test über alle BZ waren die Unterschiede für die Zuversicht, zu Hause zurechtzukommen (N=191, Z=-2,42), und bei der Medikamenteneinnahme (N=188, Z=-2,39) als signifikant gekennzeichnet, für das rechtzeitige Wissen um den Entlassungstermin (N=194, Z=-1,23) nicht."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "In der Regression über alle BZ war T1 mit der Zuversicht, zu Hause zurechtzukommen (-0,30), und mit der Zuversicht bei der Medikamenteneinnahme (-0,26) negativ und als signifikant gekennzeichnet verknüpft."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Mittelwerte der Mitarbeiterbewertung zu T0/T1/T2: Entlassungsorganisation 3,81/3,80/3,71; Informationen 4,21/4,16/3,90; Entlassungsgespräch 3,49/3,71/3,47; Entlassungsbrief 3,73/3,73/3,79; Medikamentenplan 3,13/3,29/3,30; Ansprechpartner 3,71/3,95/3,96; Nachsorgeschritte 4,41/4,21/4,16."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Interviews (Domäne Intervention Characteristics): Ärzt*innen und BCNs hatten keine größeren Veränderungen durch VSM erwartet, konnten aber Verschwendung erkennen und Maßnahmen entwickeln; durch die gemeinsame Abbildung entstand eine berufsgruppenübergreifende Sicht auf den Gesamtprozess."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Interviews (Domäne Character of Individuals): Beide Professionen sahen kein Verbesserungspotential für den Entlassungsprozess; die Ärzt*innen gingen von Einschränkungen bei der Übertragung der Methode auf Krankenhäuser aus."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Interviews (Domäne Process): Die VSM-Projekttreffen wurden als sehr gut organisiert, vorbereitet und durchgeführt beschrieben; die Veränderungsprozesse wurden jedoch oft durch die tägliche Arbeitsroutine aufgewogen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Um Rückmeldung zum Umsetzungsstand der Maßnahmen zu T1 und T2 gebeten, antwortete nur BZ 4."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Mitarbeiterbefragung konnte nur zwischen dem ersten und zweiten Messzeitpunkt getestet werden; wegen der geringen Fallzahl ist die statistische Auswertung rein explorativ."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die Autoren führen die nicht signifikanten Ergebnisse der Mitarbeiterbefragung größtenteils auf die niedrige Fallzahl durch geringen Rücklauf und Drop-out zurück; eine Drop-out-Analyse war aus Datenschutzgründen nicht möglich."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Eine nach BZ stratifizierte Analyse der Mitarbeiterbefragung war wegen der geringen Fallzahlen nicht möglich."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Wegen des geringen Rücklaufs der Mitarbeiterbefragung wurden zusätzlich Einzelinterviews geführt, um H3 beantworten zu können."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Autoren gehen davon aus, dass die Effektstärke kleiner war als angenommen und die Fallzahl nicht ausreichte, um einen Effekt statistisch nachzuweisen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Fallzahl der Patientinnenbefragung wurde trotz dreimaliger Erinnerung nicht erreicht; genannt werden fehlende Kapazität der Mitarbeitenden zur Motivation der Patientinnen, geringe Teilnahmemotivation der belasteten Patientinnen und ein designbedingt nicht kontinuierlicher Einschluss."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Zu T1 und T2 war die Teilnahmebereitschaft der Patientinnen geringer als erwartet, und der Erhebungszeitraum ließ sich wegen der Arbeitszeiten der Study Nurse nicht immer bis zur Zielgröße erweitern (T1 bei BZ 1 und BZ 4)."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Erhebung zu T1 war auf drei bis vier Wochen geplant und wurde, soweit möglich, ausgedehnt, um die Fallzahl zu erreichen."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "BZ 1 erreichte die Mindestfallzahl von 15 nicht und wurde im Vorher-Nachher-Vergleich der Patientinnenbefragung nicht gesondert eingeschlossen."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Patientinnen wurden nur im Querschnitt befragt und konnten den Entlassungsprozess vor und nach der Intervention nicht vergleichen."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die Nicht-Annahme von H2 ist laut Bericht vor dem Hintergrund eines Deckeneffekts zu sehen, da die Patientinnen den Entlassungsprozess bereits zu T0 positiv bewerteten."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Wegen vieler fehlender Werte wurden keine weiteren Kontrollvariablen aufgenommen; nur 81 % (N=164) sendeten Teil 2 der Patientinnenbefragung zurück."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Teil 2 der Patientinnenbefragung wurde erst nachträglich in den Projektplan aufgenommen, sodass für ihn keine Fallzahlberechnung und keine Einkalkulierung des Drop-outs möglich war."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Die Study Nurse beobachtete mehrere Patientinnen parallel und konnte nicht alle Zeiten erfassen; das könnte zu fehlenden Werten und einer zu niedrig gemessenen Prozesszeit geführt haben."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Die Wartezeiten wurden nicht für alle Patientinnen gemessen, sondern errechnet, weil eine Study Nurse für mehrere Patientinnen zuständig war."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "In die Analyse von Prozess-, Warte- und Durchlaufzeit gingen nur Patientinnen mit vollständig erhobenem Entlassungsprozess ein; die Fallzahl wich daher von der Gesamtzahl der Zeitmessungen ab (266 erreicht, 14 unvollständig)."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Die Umsetzung der Veränderungsmaßnahmen war zum Teil schwierig, unter anderem weil die Alltagsroutinen den Veränderungsprozess überlagerten."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "In den Interviews erwiesen sich hierarchische Strukturen als Haupthindernis für die Umsetzung von Maßnahmen jenseits individueller Verantwortlichkeiten; berichtet wurde zudem Zeitmangel wegen Personalmangels."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Die Ebenen der Wirksamkeitsprüfung (Zeitmessung, Patientinnen-, Mitarbeiterbefragung) wurden ohne Beteiligung der BZ ausgewählt."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Der für April 2020 geplante Benchmark-Workshop der vier BZ fand wegen der Einschränkungen der Corona-Pandemie nicht statt."}, {"stelle": "bericht_hindernis.25", "art": "aussage", "unser": "Das Ziel einer Evidenzaussage zu VSM wurde wegen geringer Fallzahlen nicht abschließend erreicht; das geplante VSM-Manual wurde deshalb nicht erstellt."}]};
+const D = {"projekt_id": 39, "akronym": "VaMB", "kennung": "zY3XzJbs0Xa6", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Mit der Value-Stream-Mapping-Methode wurden für die vier teilnehmenden Brustzentren Maßnahmen zur Verbesserung des Entlassmanagements erstellt und teilweise umgesetzt. Die Veränderungen der Prozess- und Wartezeiten fielen je nach Zentrum sehr unterschiedlich aus und waren überwiegend nicht signifikant. Ein allgemeiner Zusammenhang zwischen der Methode und den Zeiten lässt sich laut Ausschuss nicht belegen. Er führt dies auch auf Limitationen des Studiendesigns zurück: wenige Zentren, unterschiedliche Abläufe und Maßnahmen je Zentrum sowie eine uneinheitliche Operationalisierung der Zeitmessung. Die Befragungen von Patientinnen und Mitarbeitenden erlauben wegen geringer Teilnehmerzahl keine allgemeingültigen Aussagen. Zudem verweist der Ausschuss darauf, dass der Entlassprozess seit Oktober 2017 über einen Rahmenvertrag geregelt ist."}, {"stelle": "studiendesign", "art": "text", "unser": "nicht angegeben"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Veränderungen der Prozess- und Wartezeiten waren je nach Brustzentrum heterogen und überwiegend nicht signifikant."}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Geringe Anzahl eingeschlossener Brustzentren als Limitation des Studiendesigns"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Abläufe des Entlassungsprozesses und definierte Verbesserungsmaßnahmen variierten je Brustzentrum."}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Start- und Endpunkte der Zeitmessung wurden unterschiedlich operationalisiert."}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Wegen geringer Teilnehmerzahl erlauben die Befragungen von Patientinnen und Mitarbeitenden keine allgemeingültigen Aussagen."}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Der Entlassprozess ist seit Oktober 2017, zeitgleich mit dem Projektstart, über einen Rahmenvertrag zum Entlassmanagement geregelt."}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "H1-A) Prozesszeit (Process time) über alle BZ"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "H1-B) Wartezeit (Waiting time) über alle BZ"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "H1-C) Durchlaufzeit (Lead time) über alle BZ"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "H1-B) Wartezeit (Waiting time) – Subgruppe BZ 3"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "H1-C) Durchlaufzeit (Lead time) – Subgruppe BZ 3"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "H1-A) Prozesszeit – Subgruppe BZ 3"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "H2) Patientinnenbewertung 'Wie zuversichtlich sind Sie zu Hause zu Recht zu kommen?' (Vorher-Nachher, gesamt)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "H2) Patientinnenbewertung 'Wie zuversichtlich sind Sie zu Hause mit der Medikamenteneinnahme zu Recht zu kommen?' (Vorher-Nachher, gesamt)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "H2) Patientinnenbewertung 'Wussten Sie rechtzeitig über Ihren Entlassungstermin Bescheid?' (Vorher-Nachher, gesamt)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte in vier Brustzentren (BZ), ob die Anwendung von Value Stream Mapping (VSM) den Entlassungsprozess optimiert. Geprüft wurde auf drei Ebenen: Zeitmessung (Prozess-, Warte- und Durchlaufzeit), Patientinnenbefragung und Mitarbeiterbefragung, jeweils zu T0, T1 und T2, ergänzt durch acht Interviews. Analysiert wurden 252 Entlassungsprozesse, 203 Patientinnenfragebögen (Teil 1) und 101 Mitarbeiterfragebögen von 46 Mitarbeitenden. Über alle BZ stieg die Prozesszeit nicht signifikant, Warte- und Durchlaufzeit blieben unverändert. Nur in BZ 3 sanken Wartezeit und Durchlaufzeit, die Durchlaufzeit signifikant um 2,54 Tage; dort wurde H1 bestätigt. Die Hypothesen zur Sicht der Patientinnen (H2) und der Mitarbeitenden (H3) wurden verworfen. Über alle BZ waren die Patientinnen nach der Intervention signifikant weniger zuversichtlich, zu Hause und mit der Medikamenteneinnahme zurechtzukommen; auf Ebene der einzelnen BZ bestätigte sich das nicht. Nach eigener Einschätzung der Autoren haben die Ergebnisse wegen unzureichender Fallzahlen, unterschiedlicher Prozessabläufe und variierender Maßnahmen nur hinweisenden Charakter und erlauben keine Aussage zur Evidenz von VSM; die Umsetzung der Maßnahmen wurde nicht überprüft."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die Hypothesen wurden größtenteils nicht oder nur teilweise bestätigt; eine Wirksamkeit auf der Zeitebene kann laut Bericht in Teilen angenommen werden, nicht aber auf Ebene der Patientinnen und Mitarbeitenden."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Über alle BZ (N=252) stieg die Prozesszeit nicht signifikant: kurzfristig um 1,18 Stunden (T0: 5,42 h auf T1: 6,6 h), langfristig um 0,80 Stunden (T2: 6,22 h)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Über alle BZ blieb die Wartezeit unverändert und die Durchlaufzeit wurde nicht reduziert; die Subhypothesen H1-B und H1-C wurden verworfen."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Autoren nennen als Limitationen unzureichende Fallzahlen, unterschiedliche Abläufe des Entlassungsprozesses und variierende Maßnahmen; die Ergebnisse haben daher hinweisenden Charakter und erlauben keine Aussage zur Evidenz von VSM."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Prozessabläufe waren in den BZ unterschiedlicher organisiert als erwartet, etwa beim Abschlussgespräch; die Maßnahmen der BZ sind daher nicht vergleichbar."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die Implementierung der Maßnahmen wurde nicht formativ begleitet und ihre Umsetzung nicht überprüft."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Der Text auf S. 24 sagt, bei den Mitarbeiterskalen zeigten sich „weder deskriptiv, noch statistisch signifikante Verbesserungen“; die Mittelwerte auf derselben Seite steigen jedoch für Medikamentenplan (3,13/3,29/3,30), Ansprechpartner (3,71/3,95/3,96) und zu T1 für das Entlassungsgespräch (3,49 auf 3,71)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Die Kurzfassung (S. 3) sagt, Prozessveränderungen seien auf Patientinnenebene „nicht messbar“ gewesen; S. 21–22 berichten dagegen über alle BZ signifikant niedrigere Zuversichtswerte der Patientinnen nach der Intervention (Mann-Whitney Z=-2,42 und Z=-2,39), die auf BZ-Ebene allerdings nicht bestätigt wurden."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Die Kurzfassung (S. 3) berichtet eine „Verlängerung der einzelnen Prozessschritte und damit eine längere Kontaktzeit“, ohne zu erwähnen, dass die Erhöhung der Prozesszeit über alle BZ laut S. 19 nicht signifikant war."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt VaMB keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Laut Ausschuss lassen sich auf Basis der Projektergebnisse keine generalisierten Aussagen treffen. Zur Übertragbarkeit in die Regelversorgung äußert er sich darüber hinaus nicht."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Für BZ 3 wurde H1 bestätigt: Die nicht-wertschöpfende Zeit (Wartezeit) verkürzte sich signifikant."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Hypothese H2 wurde verworfen: Die Patientinnen nahmen weder zu T1 noch zu T2 eine Verbesserung des Entlassungsprozesses wahr."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Hypothese H3 wurde verworfen: In keiner Skala der Mitarbeiterbewertung (Organisation, Informationen, Entlassungsgespräch, Entlassungsbrief, Medikamentenplan, Ansprechpartner, Nachsorgeschritte) zeigten sich deskriptive oder statistisch signifikante Verbesserungen; getestet werden konnte nur zwischen T0 und T1."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Laut den interviewten Mitarbeitenden wurden durch die Visualisierung Zusammenhänge zwischen den Prozessschritten erkennbar, sodass in allen vier BZ Schwachstellen aufgedeckt und Maßnahmen entwickelt werden konnten."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Mitarbeiterbefragung erreichte 101 statt der geplanten 300 Fragebögen, davon 50 aus BZ 3 (BZ 1: 13, BZ 2: 17, BZ 4: 21); beteiligt waren 46 verschiedene Mitarbeitende mit T0=45, T1=31 und T2=25."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Laut Kurzfassung (S. 3) wurden nach Aussage der Interviewten „Schwachstellen in alle vier BZ aufgedeckt“; laut Interviewauswertung (S. 26) sahen beide Professionen „kein Verbesserungspotential für den ‚gut funktionierenden Entlassungsprozess‘“."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "In BZ 3 halbierte sich die Wartezeit von 5,02 Tagen (Prämessung) auf 2,51 Tage (Follow-up); der Bericht spricht von einem starken Effekt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "In BZ 3 sank die Durchlaufzeit signifikant um 2,54 Tage, von 5,38 auf 2,84 Tage; H1-C wurde für BZ 3 angenommen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "In BZ 3 veränderte sich die Prozesszeit nicht signifikant (T0: 0,36; T1: 0,34; T2: 0,33); H1-A wurde verworfen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "In BZ 1, BZ 2 und BZ 4 ergaben sich keine signifikanten Veränderungen von Prozess-, Warte- oder Durchlaufzeit; H1-A bis H1-C wurden dort verworfen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Laut Kurzfassung zeigte die Zeitmessung über 252 Entlassungsprozesse verlängerte Prozessschritte und damit eine längere Kontaktzeit zwischen Patientinnen und Versorgenden."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Von 27 erarbeiteten Maßnahmen waren 14 über die Zeitmessung überprüfbar; bei 9 davon stellte der Bericht einen positiven Trend fest, etwa verkürzte Wartezeiten vor Gesprächen bzw. Untersuchungen in einzelnen BZ."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Einzelne Prozessschritte, etwa die Organisation des Abschlussgesprächs, wurden zeitlich messbar optimiert."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Über alle BZ waren die Patientinnen zu T1 bzw. T2 signifikant weniger zuversichtlich, zu Hause und mit der Medikamenteneinnahme zurechtzukommen, was der Bericht als Verschlechterung durch das VSM deutet; auf Ebene der einzelnen BZ bestätigte sich der Effekt nicht."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Mittelwerte der Patientinnenbewertung über alle BZ (Skala 1–5) zu T0/T1/T2: Zuversicht, zu Hause zurechtzukommen, 4,53/4,22/4,29; Zuversicht bei der Medikamenteneinnahme 4,81/4,56/4,64; rechtzeitiges Wissen um den Entlassungstermin 4,32/4,23/4,20."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Im Mann-Whitney-U-Test über alle BZ waren die Unterschiede für die Zuversicht, zu Hause zurechtzukommen (N=191, Z=-2,42), und bei der Medikamenteneinnahme (N=188, Z=-2,39) als signifikant gekennzeichnet, für das rechtzeitige Wissen um den Entlassungstermin (N=194, Z=-1,23) nicht."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "In der Regression über alle BZ war T1 mit der Zuversicht, zu Hause zurechtzukommen (-0,30), und mit der Zuversicht bei der Medikamenteneinnahme (-0,26) negativ und als signifikant gekennzeichnet verknüpft."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Mittelwerte der Mitarbeiterbewertung zu T0/T1/T2: Entlassungsorganisation 3,81/3,80/3,71; Informationen 4,21/4,16/3,90; Entlassungsgespräch 3,49/3,71/3,47; Entlassungsbrief 3,73/3,73/3,79; Medikamentenplan 3,13/3,29/3,30; Ansprechpartner 3,71/3,95/3,96; Nachsorgeschritte 4,41/4,21/4,16."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Interviews (Domäne Intervention Characteristics): Ärzt*innen und BCNs hatten keine größeren Veränderungen durch VSM erwartet, konnten aber Verschwendung erkennen und Maßnahmen entwickeln; durch die gemeinsame Abbildung entstand eine berufsgruppenübergreifende Sicht auf den Gesamtprozess."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Interviews (Domäne Character of Individuals): Beide Professionen sahen kein Verbesserungspotential für den Entlassungsprozess; die Ärzt*innen gingen von Einschränkungen bei der Übertragung der Methode auf Krankenhäuser aus."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Interviews (Domäne Process): Die VSM-Projekttreffen wurden als sehr gut organisiert, vorbereitet und durchgeführt beschrieben; die Veränderungsprozesse wurden jedoch oft durch die tägliche Arbeitsroutine aufgewogen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Um Rückmeldung zum Umsetzungsstand der Maßnahmen zu T1 und T2 gebeten, antwortete nur BZ 4."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Mitarbeiterbefragung konnte nur zwischen dem ersten und zweiten Messzeitpunkt getestet werden; wegen der geringen Fallzahl ist die statistische Auswertung rein explorativ."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die Autoren führen die nicht signifikanten Ergebnisse der Mitarbeiterbefragung größtenteils auf die niedrige Fallzahl durch geringen Rücklauf und Drop-out zurück; eine Drop-out-Analyse war aus Datenschutzgründen nicht möglich."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Eine nach BZ stratifizierte Analyse der Mitarbeiterbefragung war wegen der geringen Fallzahlen nicht möglich."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Wegen des geringen Rücklaufs der Mitarbeiterbefragung wurden zusätzlich Einzelinterviews geführt, um H3 beantworten zu können."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Autoren gehen davon aus, dass die Effektstärke kleiner war als angenommen und die Fallzahl nicht ausreichte, um einen Effekt statistisch nachzuweisen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Fallzahl der Patientinnenbefragung wurde trotz dreimaliger Erinnerung nicht erreicht; genannt werden fehlende Kapazität der Mitarbeitenden zur Motivation der Patientinnen, geringe Teilnahmemotivation der belasteten Patientinnen und ein designbedingt nicht kontinuierlicher Einschluss."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Zu T1 und T2 war die Teilnahmebereitschaft der Patientinnen geringer als erwartet, und der Erhebungszeitraum ließ sich wegen der Arbeitszeiten der Study Nurse nicht immer bis zur Zielgröße erweitern (T1 bei BZ 1 und BZ 4)."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Erhebung zu T1 war auf drei bis vier Wochen geplant und wurde, soweit möglich, ausgedehnt, um die Fallzahl zu erreichen."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "BZ 1 erreichte die Mindestfallzahl von 15 nicht und wurde im Vorher-Nachher-Vergleich der Patientinnenbefragung nicht gesondert eingeschlossen."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Patientinnen wurden nur im Querschnitt befragt und konnten den Entlassungsprozess vor und nach der Intervention nicht vergleichen."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die Nicht-Annahme von H2 ist laut Bericht vor dem Hintergrund eines Deckeneffekts zu sehen, da die Patientinnen den Entlassungsprozess bereits zu T0 positiv bewerteten."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Wegen vieler fehlender Werte wurden keine weiteren Kontrollvariablen aufgenommen; nur 81 % (N=164) sendeten Teil 2 der Patientinnenbefragung zurück."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Teil 2 der Patientinnenbefragung wurde erst nachträglich in den Projektplan aufgenommen, sodass für ihn keine Fallzahlberechnung und keine Einkalkulierung des Drop-outs möglich war."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Die Study Nurse beobachtete mehrere Patientinnen parallel und konnte nicht alle Zeiten erfassen; das könnte zu fehlenden Werten und einer zu niedrig gemessenen Prozesszeit geführt haben."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Die Wartezeiten wurden nicht für alle Patientinnen gemessen, sondern errechnet, weil eine Study Nurse für mehrere Patientinnen zuständig war."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "In die Analyse von Prozess-, Warte- und Durchlaufzeit gingen nur Patientinnen mit vollständig erhobenem Entlassungsprozess ein; die Fallzahl wich daher von der Gesamtzahl der Zeitmessungen ab (266 erreicht, 14 unvollständig)."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Die Umsetzung der Veränderungsmaßnahmen war zum Teil schwierig, unter anderem weil die Alltagsroutinen den Veränderungsprozess überlagerten."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "In den Interviews erwiesen sich hierarchische Strukturen als Haupthindernis für die Umsetzung von Maßnahmen jenseits individueller Verantwortlichkeiten; berichtet wurde zudem Zeitmangel wegen Personalmangels."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Die Ebenen der Wirksamkeitsprüfung (Zeitmessung, Patientinnen-, Mitarbeiterbefragung) wurden ohne Beteiligung der BZ ausgewählt."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Der für April 2020 geplante Benchmark-Workshop der vier BZ fand wegen der Einschränkungen der Corona-Pandemie nicht statt."}, {"stelle": "bericht_hindernis.25", "art": "aussage", "unser": "Das Ziel einer Evidenzaussage zu VSM wurde wegen geringer Fallzahlen nicht abschließend erreicht; das geplante VSM-Manual wurde deshalb nicht erstellt."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

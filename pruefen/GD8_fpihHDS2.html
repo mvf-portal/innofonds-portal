@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF18042</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>14 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 81 Aussagen. Die übrigen
+67 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss leitet die Ergebnisse von SAVENT zur Information weiter: an den Unterausschuss Veranlasste Leistungen des G-BA, insbesondere mit Blick auf die Weiterentwicklung der Hilfsmittel-Richtlinie, sowie an den GKV-Spitzenverband, das ZQP, den DBfK und den IPV. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Nach Auffassung des Ausschusses hat das Projekt vertiefte Einblicke in die beatmungsspezifische Hilfsmittelversorgung häuslich beatmeter Personen gewonnen. Es hat edukative und sicherheitsbezogene Anforderungen im Versorgungsprozess herausgearbeitet. Grundlage waren qualitative Interviews mit Betroffenen, Angehörigen und professionellen Akteuren; daraus wurden in Workshops Empfehlungen in acht Anforderungsbereichen abgeleitet. Die Methoden hält der Ausschuss grundsätzlich für geeignet. Einschränkend nennt er, dass die geplante Längsschnitterhebung wegen der Corona-Pandemie entfiel und die Empfehlungen ohne systematische Konsentierung abgeleitet wurden. Die Erfassung der Sichtweisen beatmeter Personen sieht er als enormen Mehrwert, und die Empfehlungen können eine wichtige Grundlage für Weiterentwicklungen sein. Daher werden die Erkenntnisse zur Information weitergeleitet.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">qualitative Studie</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit. Er hält fest, dass die Empfehlungen eine wichtige Grundlage für künftige Weiterentwicklungen des Versorgungsprozesses sein können. Außerdem richten sie sich an Leistungserbringer, Leistungsträger, Aufsichtsbehörden, Politik, Bildung, Beratungsstellen und Forschung.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: COVID-19-Pandemie</h3>
   <p class="unser">Die geplante längsschnittliche Erfassung in Teilprojekt 1 entfiel wegen der Corona-Pandemie</p>
+  
   <blockquote>„Eine geplante längsschnittliche Erfassung in Teilprojekt 1 konnte aufgrund der Beschränkungen und Umstände durch die Corona ‐Pandemie nicht erfolgen." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -198,207 +177,19 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="hindernis.1">
   <h3>Hindernis laut Beschluss: Studienanlage <span class="ampel gelb">hier sind wir unsicher</span></h3>
-  <p class="unser">Die Empfehlungen wurden ohne systematische Konsentierung abgeleitet</p>
+  <p class="unser">Die Empfehlungen wurden angemessen, jedoch ohne systematische Konsentierung abgeleitet</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung gab nur eine Hälfte des Beschlusssatzes wieder; die Neufassung nennt beide. Vorher stand hier:
+    <i>„Die Empfehlungen wurden ohne systematische Konsentierung abgeleitet“</i></p>
   <blockquote>„Die Ableitung der Empfehlungen war angemessen, ist jedoch ohne systematische Konsentierung erfolgt." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
     
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Vertiefte Einblicke in die Praxis der beatmungsspezifischen Hilfsmittelversorgung und Herausarbeitung edukativer und sicherheitsbezogener Anforderungen</p>
-  <blockquote>„Das Projekt SAVENT konnte erfolgreich vertiefte Einblicke in die Praxis der beatmungsspezifischen Hilfsmittelversorgung nach § 33 SGB V häuslich beatmeter Personen in Deutschland gewinnen und edukative und sicherheitsbezogene Anforderungen im Versorgungsprozess herausarbeiten." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Empfehlungen in acht Anforderungsbereichen zu Hilfsmitteln, Versorgungsprozess und personenbezogenen Aspekten</p>
-  <blockquote>„Die daraus abgeleiteten Empfehlungen, welche acht Anforderungsbereichen zugeordnet werden, lassen erkennen, dass sie einerseits auf die Beschaffenheit der Hilfsmittel selbst bezogen sind, andererseits vor allem aber auch auf Versorgungsprozess‐ und personenbezogene Aspekte." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Methoden grundsätzlich geeignet</p>
-  <blockquote>„Die Methoden waren grundsätzlich geeignet, um die Fragestellungen zu beantworten." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erfassung der Sichtweisen beatmeter Personen als enormer Mehrwert für die Forschung</p>
-  <blockquote>„Der Innovationsausschuss beim Gemeinsamen Bundesauschuss teilt die Auffassung des Projekts, dass die Erfassung der Sichtweisen dieser Zielgruppe, für die Versorgungs‐ und Patientensicherheitsforschung einen enormen Mehrwert darstellt." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Empfehlungen als mögliche Grundlage für die Weiterentwicklung des Versorgungsprozesses</p>
-  <blockquote>„Die im Projekt SAVENT entwickelten Empfehlungen können eine wichtige Grundlage für zukünftige Weiterentwicklungen und Verbesserung des Versorgungsprozesses darstellen." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.1">
-  <h3>Gemeinsamer Bundesausschuss – Unterausschuss Veranlasste Leistungen (UA VL) – eingestuft als „in Bearbeitung“</h3>
-  <p class="unser">Der UA VL hat sich in der Sitzung am 17. Oktober 2023 befasst und die AG HilfsM-RL mit der Sichtung beauftragt. Die Ergebnisse sollen im Rahmen laufender und zukünftiger Änderungsbedarfe der Richtlinie betrachtet werden; ob und wie sie Anwendung finden, ist noch nicht absehbar.</p>
-  <blockquote>„Inwieweit die Empfehlungen konkret Anwendungen finden, ist zum jetzigen Zeitpunkt jedoch nicht absehbar. Wir werden die Ergebnisse des Projektes SAVENT im Rahmen laufender und zukünftiger Änderungsbedarfe der Richtlinie mit betrachten." <span class="s">S. 5</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.2">
-  <h3>GKV-Spitzenverband – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung des GKV-Spitzenverbands aufgeführt.</p>
-  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Unterausschuss Veranlasste Leistungen des Gemeinsamen Bundesausschusses […] sowie, den GKV-Spitzenverband, das Zentrum für Qualität in der Pflege (ZQP), den Deutschen Berufsverband für Pflegeberufe - Bundesverband e.V. (DBfK) und den Intensivpflegeverband Deutschland e.V. (IPV) zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.3">
-  <h3>Zentrum für Qualität in der Pflege (ZQP) – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung des ZQP aufgeführt.</p>
-  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Unterausschuss Veranlasste Leistungen des Gemeinsamen Bundesausschusses […] sowie, den GKV-Spitzenverband, das Zentrum für Qualität in der Pflege (ZQP), den Deutschen Berufsverband für Pflegeberufe - Bundesverband e.V. (DBfK) und den Intensivpflegeverband Deutschland e.V. (IPV) zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.4">
-  <h3>Deutscher Berufsverband für Pflegeberufe - Bundesverband e.V. (DBfK) – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung des DBfK aufgeführt.</p>
-  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Unterausschuss Veranlasste Leistungen des Gemeinsamen Bundesausschusses […] sowie, den GKV-Spitzenverband, das Zentrum für Qualität in der Pflege (ZQP), den Deutschen Berufsverband für Pflegeberufe - Bundesverband e.V. (DBfK) und den Intensivpflegeverband Deutschland e.V. (IPV) zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.5">
-  <h3>Intensivpflegeverband Deutschland e.V. (IPV) – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung des IPV aufgeführt.</p>
-  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Unterausschuss Veranlasste Leistungen des Gemeinsamen Bundesausschusses […] sowie, den GKV-Spitzenverband, das Zentrum für Qualität in der Pflege (ZQP), den Deutschen Berufsverband für Pflegeberufe - Bundesverband e.V. (DBfK) und den Intensivpflegeverband Deutschland e.V. (IPV) zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
     <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
       ></textarea></label>
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
@@ -409,11 +200,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Projekt SAVENT untersuchte qualitativ die Sicherheit in der Hilfsmittelversorgung (HM) häuslich invasiv und nichtinvasiv beatmeter Patient*innen. Geführt wurden problemzentrierte Interviews mit Patient*innen und Angehörigen (29 Erstinterviews, 10 Nachbefragungen) und zwölf Elterninterviews zu beatmeten Kindern und Jugendlichen. Hinzu kamen episodische Interviews mit Mitarbeiter*innen von HM-Leistungserbringern (11 Interviews, 25 Personen), 20 Experteninterviews mit weiteren Akteur*innen, eine an ein Scoping Review angelehnte Literaturrecherche und eine digitale Abschlussveranstaltung zur diskursiven Validierung. Die HM selbst werden von den Befragten als weitgehend zuverlässig eingeschätzt. Verbesserungsbedarf sieht der Bericht bei ihrer sicheren Anwendung, vor allem bei den Kompetenzen von Patient*innen, Angehörigen und Pflegenden. Weitere Bedarfe nennt er beim gemeinsamen Sicherheitsverständnis, bei sektorenübergreifender Organisation und interprofessioneller Kooperation sowie bei Bedarfsermittlung, Verordnung und Genehmigung. Die meisten Risiken und Fehler sind laut Bericht nicht technisch bedingt und werden vom BfArM-Meldesystem nicht erfasst. Daraus leitete das Projektteam Empfehlungen in acht Themenbereichen ab. Die Aussagekraft hängt an mehreren Umständen: Das Sample erhebt keinen Anspruch auf Repräsentativität. Die pandemiebedingt verzögerte Nachbefragung erbrachte nur 10 Interviews, und für die geplante Längsschnittperspektive kam kein tragfähiger Beitrag zustande. Beobachtungsinterviews wurden durch nicht gleichwertige episodische Interviews ersetzt. Die Antwortrate der Leistungserbringer lag bei rund 23 %.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +218,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die beatmungsspezifischen HM selbst werden als weitgehend zuverlässig befunden. Verbesserungsbedarf besteht bei ihrer sicheren Anwendung, primär bei den Kompetenzen der Anwender*innen (Patient*innen, Angehörige, Pflegende).</p>
+  
   <blockquote>„„dass die HM selbst für weitgehend zuverlässig befunden werden. Bezüglich ihrer sicheren Anwendung sind jedoch Verbesserungsbedarfe erkennbar. Diese betreffen primär die Kompetenzen der HM -Anwender*innen (Patient*innen, Angehörige und Pflegende ).“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +237,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht bedarf es eines gemeinsamen Sicherheitsverständnisses für die komplexe häusliche Versorgung. Als sicherheitsrelevant erweisen sich Defizite in der sektorenübergreifenden Versorgungsorganisation und der interprofessionellen Kooperation.</p>
+  
   <blockquote>„„bedarf es der Erarbeitung eines nicht selbstverständlichen, gemeinsamen Sicherheitsverständnisses für die komplexe häusliche Gesundheitsversorgung. Als sicherheitsrelevant erweist es sich des weiteren Defizite in der sektorenübergreifenden Versorgungsorganisation und in der interprofessionellen Kooperation konsequent zu adressieren.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,31 +256,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die meisten Risiken, Fehler und (Beinahe-)Schäden in der Anwendung beatmungsspezifischer HM sind nicht auf technische Aspekte zurückzuführen. Sie werden daher vom BfArM-Meldesystem nicht bearbeitet; der Bericht spricht von einer „beachtlichen Leerstelle“.</p>
+  
   <blockquote>„„Die meisten Risiken, Fehler und (Beinahe-)Schäden in der Anwendung der beatmungsspezifischen HM sind allerdings nicht auf die technischen Aspekte selbst zurückzuführen. Sie werden deshalb von dem etablierten Meldesystem [...] beim Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) bislang nicht bearbeitet. [...] existiert hier eine beachtliche Leerstelle“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.4">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Aus den Ergebnissen wurden Empfehlungen in acht Themen- bzw. Anforderungsbereichen für eine bedarfsgerechte HM-Versorgung häuslich beatmeter Personen abgeleitet.</p>
-  <blockquote>„„Aus den Ergebnissen wurden forschungsgestützte Empfehlungen in acht Themenbereichen abgeleitet.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +275,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Nachbefragung war pandemiebedingt erst nach rund 15 bis 18 statt nach sechs bis neun Monaten möglich. Statt der 29 Erstbefragten konnten nur noch 10 Interviews realisiert werden.</p>
+  
   <blockquote>„„Diese Interviews sollten nach sechs bis neun Monaten durch eine Nachbefragung ergänzt werden. Aufgrund der Kontaktbeschränkungen während der COVID- 19-Pandemie waren die Nachbefragungen erst nach rund 15 bis 18 Monaten möglich, wobei nur noch 10 Interviews realisiert werden konnten.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +294,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zur geplanten Längsschnittperspektive in Teilstudie 1 konnte pandemiebedingt und wegen gesundheitlicher Beeinträchtigungen der Teilnehmenden kein tragfähiger Beitrag erarbeitet werden.</p>
+  
   <blockquote>„„Pandemiebedingt und aufgrund erheblicher gesundheitlicher Beeinträchtigungen der Studienteilnehmer*innen konnte hierzu leider auch in SAVENT kein tragfähiger Beitrag erarbeitet werden“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,50 +313,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das zielgerichtete Sample (mindestens 25 Befragte, große Variationsbreite) erhebt keinen Anspruch auf Repräsentativität und zielt nicht auf Datensättigung.</p>
+  
   <blockquote>„„Das nach theoretischen, aber auch forschungspragmatischen Gesichtspunkten festgelegte zielgerichtete Sample sollte mind. 25 Befragte umfassen und eine große Variationsbreite aufweisen – ohne einen Anspruch auf Repräsentativität oder das Ziel der Datensättigung anzulegen“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.4">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Statt der geplanten, pandemiebedingt nicht umsetzbaren Beobachtungsinterviews wurden episodische Interviews mit Mitarbeiter*innen der HM-Leistungserbringer geführt. Der Bericht hält dieses Vorgehen nicht für gleichwertig; sozial erwünschtes Antwortverhalten ist nicht auszuschließen.</p>
-  <blockquote>„„Dieses alternative methodische Vorgehen ist nicht als gleichwertig mit einem beobachtenden Verfahren zu verstehen. Nicht auszuschließen ist bspw. sozial erwünschtes (Antwort-)Verhalten“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.5">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Das Sample der Leistungserbringer repräsentiert laut Bericht vermutlich nicht deren typische Merkmale. Die Antwortrate lag bei rund 23 %; anzunehmen ist, dass vor allem interessierte und engagierte Mitarbeiter*innen teilnahmen.</p>
-  <blockquote>„„dass das realisierte Sample nicht die typischen Merkmale von Leistungserbringern in der beatmungsspezifischen HM -Versorgung repräsentiert. Die Antwortrate auf Interviewanfragen war mit rund 23% vergleichsweise gering. Anzunehmen ist, dass v. a. interessierte, informierte und engagierte Mitarbeiter*innen/Leistungserbringer zur Teilnahme bereit waren.“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -599,11 +333,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 11 heißt es, mit der Laufzeitverlängerung sei es möglich gewesen, „alle geplanten Arbeitspakete zu bearbeiten und die gesetzten Projektziele zu erreichen“, und die Anpassungen hätten „keine grundsätzlichen inhaltlichen Auswirkungen“ gehabt. S. 40 heißt es dagegen, zur geplanten Längsschnittperspektive habe „kein tragfähiger Beitrag erarbeitet werden“ können. Zudem seien die episodischen Interviews „nicht als gleichwertig“ mit dem geplanten beobachtenden Verfahren zu verstehen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -618,11 +352,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 40 hält der Bericht fest, das Leistungserbringer-Sample repräsentiere vermutlich nicht die typischen Merkmale (Antwortrate rund 23 %, Selektion engagierter Teilnehmender). S. 41 geht er trotzdem „von relevanten und gültigen Erkenntnissen“ aus. Der Bericht begründet dies mit konsistenten Themen; beide Aussagen stehen nebeneinander.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -637,11 +371,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 40 beurteilt der Bericht die Online-Interviews als „forschungspragmatisch akzeptabel“ und vermutet teils sogar ausführlichere Aussagen als vor Ort. Im selben Zusammenhang nennt er als Einschränkung, dass ohne Beobachtungen vor Ort die Informationen „weitgehend auf die verbale und nonverbale Kommunikation“ beschränkt blieben.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -651,16 +385,301 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>52 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>67 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss leitet die Ergebnisse von SAVENT zur Information weiter: an den Unterausschuss Veranlasste Leistungen des G-BA, insbesondere mit Blick auf die Weiterentwicklung der Hilfsmittel-Richtlinie, sowie an den GKV-Spitzenverband, das ZQP, den DBfK und den IPV. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit. Er hält fest, dass die Empfehlungen eine wichtige Grundlage für künftige Weiterentwicklungen des Versorgungsprozesses sein können. Außerdem richten sie sich an Leistungserbringer, Leistungsträger, Aufsichtsbehörden, Politik, Bildung, Beratungsstellen und Forschung.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Vertiefte Einblicke in die Praxis der beatmungsspezifischen Hilfsmittelversorgung und Herausarbeitung edukativer und sicherheitsbezogener Anforderungen</p>
+  
+  <blockquote>„Das Projekt SAVENT konnte erfolgreich vertiefte Einblicke in die Praxis der beatmungsspezifischen Hilfsmittelversorgung nach § 33 SGB V häuslich beatmeter Personen in Deutschland gewinnen und edukative und sicherheitsbezogene Anforderungen im Versorgungsprozess herausarbeiten." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Empfehlungen in acht Anforderungsbereichen zu Hilfsmitteln, Versorgungsprozess und personenbezogenen Aspekten</p>
+  
+  <blockquote>„Die daraus abgeleiteten Empfehlungen, welche acht Anforderungsbereichen zugeordnet werden, lassen erkennen, dass sie einerseits auf die Beschaffenheit der Hilfsmittel selbst bezogen sind, andererseits vor allem aber auch auf Versorgungsprozess‐ und personenbezogene Aspekte." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Methoden grundsätzlich geeignet</p>
+  
+  <blockquote>„Die Methoden waren grundsätzlich geeignet, um die Fragestellungen zu beantworten." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erfassung der Sichtweisen beatmeter Personen als enormer Mehrwert für die Forschung</p>
+  
+  <blockquote>„Der Innovationsausschuss beim Gemeinsamen Bundesauschuss teilt die Auffassung des Projekts, dass die Erfassung der Sichtweisen dieser Zielgruppe, für die Versorgungs‐ und Patientensicherheitsforschung einen enormen Mehrwert darstellt." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.4">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Empfehlungen als mögliche Grundlage für die Weiterentwicklung des Versorgungsprozesses</p>
+  
+  <blockquote>„Die im Projekt SAVENT entwickelten Empfehlungen können eine wichtige Grundlage für zukünftige Weiterentwicklungen und Verbesserung des Versorgungsprozesses darstellen." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.1">
+  <h3>Gemeinsamer Bundesausschuss – Unterausschuss Veranlasste Leistungen (UA VL) – eingestuft als „in Bearbeitung“</h3>
+  <p class="unser">Der UA VL hat sich in der Sitzung am 17. Oktober 2023 befasst und die AG HilfsM-RL mit der Sichtung beauftragt. Die Ergebnisse sollen im Rahmen laufender und zukünftiger Änderungsbedarfe der Richtlinie betrachtet werden; ob und wie sie Anwendung finden, ist noch nicht absehbar.</p>
+  
+  <blockquote>„Inwieweit die Empfehlungen konkret Anwendungen finden, ist zum jetzigen Zeitpunkt jedoch nicht absehbar. Wir werden die Ergebnisse des Projektes SAVENT im Rahmen laufender und zukünftiger Änderungsbedarfe der Richtlinie mit betrachten." <span class="s">S. 5</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.1" value="ok" checked hidden>
+    <input type="radio" name="uadressat.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.2">
+  <h3>GKV-Spitzenverband – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung des GKV-Spitzenverbands aufgeführt.</p>
+  
+  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Unterausschuss Veranlasste Leistungen des Gemeinsamen Bundesausschusses […] sowie, den GKV-Spitzenverband, das Zentrum für Qualität in der Pflege (ZQP), den Deutschen Berufsverband für Pflegeberufe - Bundesverband e.V. (DBfK) und den Intensivpflegeverband Deutschland e.V. (IPV) zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.2" value="ok" checked hidden>
+    <input type="radio" name="uadressat.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.3">
+  <h3>Zentrum für Qualität in der Pflege (ZQP) – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung des ZQP aufgeführt.</p>
+  
+  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Unterausschuss Veranlasste Leistungen des Gemeinsamen Bundesausschusses […] sowie, den GKV-Spitzenverband, das Zentrum für Qualität in der Pflege (ZQP), den Deutschen Berufsverband für Pflegeberufe - Bundesverband e.V. (DBfK) und den Intensivpflegeverband Deutschland e.V. (IPV) zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.3" value="ok" checked hidden>
+    <input type="radio" name="uadressat.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.4">
+  <h3>Deutscher Berufsverband für Pflegeberufe - Bundesverband e.V. (DBfK) – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung des DBfK aufgeführt.</p>
+  
+  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Unterausschuss Veranlasste Leistungen des Gemeinsamen Bundesausschusses […] sowie, den GKV-Spitzenverband, das Zentrum für Qualität in der Pflege (ZQP), den Deutschen Berufsverband für Pflegeberufe - Bundesverband e.V. (DBfK) und den Intensivpflegeverband Deutschland e.V. (IPV) zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.4" value="ok" checked hidden>
+    <input type="radio" name="uadressat.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.5">
+  <h3>Intensivpflegeverband Deutschland e.V. (IPV) – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung des IPV aufgeführt.</p>
+  
+  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Unterausschuss Veranlasste Leistungen des Gemeinsamen Bundesausschusses […] sowie, den GKV-Spitzenverband, das Zentrum für Qualität in der Pflege (ZQP), den Deutschen Berufsverband für Pflegeberufe - Bundesverband e.V. (DBfK) und den Intensivpflegeverband Deutschland e.V. (IPV) zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.5" value="ok" checked hidden>
+    <input type="radio" name="uadressat.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.4">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Aus den Ergebnissen wurden Empfehlungen in acht Themen- bzw. Anforderungsbereichen für eine bedarfsgerechte HM-Versorgung häuslich beatmeter Personen abgeleitet.</p>
+  
+  <blockquote>„„Aus den Ergebnissen wurden forschungsgestützte Empfehlungen in acht Themenbereichen abgeleitet.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.4">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Statt der geplanten, pandemiebedingt nicht umsetzbaren Beobachtungsinterviews wurden episodische Interviews mit Mitarbeiter*innen der HM-Leistungserbringer geführt. Der Bericht hält dieses Vorgehen nicht für gleichwertig; sozial erwünschtes Antwortverhalten ist nicht auszuschließen.</p>
+  
+  <blockquote>„„Dieses alternative methodische Vorgehen ist nicht als gleichwertig mit einem beobachtenden Verfahren zu verstehen. Nicht auszuschließen ist bspw. sozial erwünschtes (Antwort-)Verhalten“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.5">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Das Sample der Leistungserbringer repräsentiert laut Bericht vermutlich nicht deren typische Merkmale. Die Antwortrate lag bei rund 23 %; anzunehmen ist, dass vor allem interessierte und engagierte Mitarbeiter*innen teilnahmen.</p>
+  
+  <blockquote>„„dass das realisierte Sample nicht die typischen Merkmale von Leistungserbringern in der beatmungsspezifischen HM -Versorgung repräsentiert. Die Antwortrate auf Interviewanfragen war mit rund 23% vergleichsweise gering. Anzunehmen ist, dass v. a. interessierte, informierte und engagierte Mitarbeiter*innen/Leistungserbringer zur Teilnahme bereit waren.“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Optimierungsbedarf zeigt sich bei den HM-bezogenen Wissensgrundlagen, der Bedarfsermittlung, der Auswahl sowie den Verordnungs- und Genehmigungsprozessen.</p>
+  
   <blockquote>„„Optimierungsbedarfe zeigen sich ferner bei den HM -bezogenen Wissensgrundlagen, der Bedarfsermittlung, der Auswahl sowie den Verordnungs - und Genehmigungsprozessen.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +693,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Anforderungen, Herausforderungen und Verbesserungsbedarfe wurden in allen Schritten des HM-Versorgungsprozesses deutlich.</p>
+  
   <blockquote>„„Dabei sind Anforderungen bzw. zugleich Herausforderungen und Verbesserungsbedarfe in allen Schritten des HM-Versorgungsprozesses deutlich geworden“ – Bericht, S. 38" <span class="s">S. 38</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +712,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Herausforderungen und Verbesserungsbedarfe liegen auf allen drei Ebenen der Gesundheitsversorgung (Mikro-, Meso-, Makroebene).</p>
+  
   <blockquote>„„An- bzw. Herausforderungen und Verbesserungsbedarfe auf allen drei Ebenen der Gesundheitsversorgung (Mikro-, Meso-, Makroebene liegen“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +731,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut weiteren Akteur*innen gibt es in diesem Versorgungsbereich kein zuverlässiges System, um Risiken, Fehler und (Beinahe-)Schäden zu erfassen und für Lernzwecke zu nutzen. Das BfArM-Meldesystem erfasst nur gerätebezogene Ereignisse.</p>
+  
   <blockquote>„„Zudem sei in diesem Versorgungsbereich bislang kein zuverlässiges System etabliert, mit dem auftretende Risiken, Fehler und (Beinahe -)Schäden erfasst und für Lernzwecke nutzbar gemacht werden könnten .“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +750,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Fehlfunktionen und Defekte der Geräte und des Zubehörs selbst wurden von Interviewteilnehmer*innen aller Akteursgruppen eher selten erwähnt. Die technische Qualität der HM wurde nur in Ausnahmefällen in Frage gestellt.</p>
+  
   <blockquote>„„Fehlfunktionen und Defekte, die auf die Geräte und das Zubehör selbst zurückzuführen sind, wurden durch die Interviewteilnehmer*innen aller Akteursgruppen in SAVENT eher selten erwähnt. Auch die technische Qualität der HM wurde nur in Ausnahmefällen in Frage gestellt.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +769,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die HM und ihre Alarmfunktionen werden mit der Zeit für sicher und zuverlässig befunden. Dennoch sehen die Befragten Verbesserungsbedarf bei technischen Eigenschaften, Design und Bedienungsfreundlichkeit.</p>
+  
   <blockquote>„„Die verwendeten beatmungsspezifischen HM und ihre Alarmfunktionen als solche werden mit der Zeit allgemein für sicher und zuverlässig befunden. [...] trotz dieser Einschätzung werden aus Sicht der Befragten Verbesserungsbedarfe in Details der technischen Eigenschaften, des Designs und der Bedienungsfreundlichkeit der HM deutlich.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +788,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Viele Patient*innen und Angehörige entwickeln nach einer Eingewöhnungszeit Vertrauen in Funktion und Zuverlässigkeit der Geräte.</p>
+  
   <blockquote>„„Viele Patient*innen und Angehörige entwickeln nach einer gewissen Eingewöhnungszeit Vertrauen in die Funktion und Zuverlässigkeit der benötigten Geräte.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +807,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Anwender*innen wünschen sich gelegentlich einfachere, intuitiver bedienbare und auf ihre Einschränkungen zugeschnittene HM. Wiederholt wurde von Materialermüdung berichtet und mehr Tragekomfort gewünscht, etwa bei Masken und Trachealkanülen.</p>
+  
   <blockquote>„„dass sich die Anwender*innen gelegentlich etwas einfachere, intuitiver zu bedienende und weniger komplexe HM wünschen [...] Zudem wurde wiederholt auch von Materialermüdung berichtet und der Wunsch nach mehr Tragekomfort geäußert, z. B. in Bezug auf Beatmungsmasken und Trachealkanülen“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +826,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Zugang zu geeigneteren und komfortableren Geräten und Zubehör scheint trotz ihrer Verfügbarkeit nicht immer gegeben.</p>
+  
   <blockquote>„„Der Zugang zu geeigneteren und komfortableren Geräten und Zubehör scheint jedoch trotz ihrer Verfügbarkeit nicht immer gegebe n zu sein.“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +845,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Aus den Interviews mit erwachsenen Patient*innen und Angehörigen wurden Hauptkategorien gebildet. Sie blieben nach Auswertung der Nachbefragung bestehen, und auch die Elterninterviews ließen sich in sie einordnen.</p>
+  
   <blockquote>„„Die gebildeten Hauptkategorien blieben auch nach der Auswertung der Nachbefragung bestehen und die Ergebnisse aus den Interviews mit den Eltern beatmeter Kinder und Jugendlicher ließen sich ebenso in diese Kategorien einordnen.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +864,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für einzelne Patient*innen war der Beatmungsbeginn mit verbesserten Symptomen und mehr Lebensqualität verbunden. Die meisten Patient*innen und Angehörigen beschrieben ihn als tiefgreifende Zäsur und existenzielle Krise.</p>
+  
   <blockquote>„„Für einzelne Patient*innen kam der Beatmungsbeginn einem „Aufatmen” gleich [...] Die meisten Patient*innen, aber auch Angehörigen, beschrieben die Einleitung der Beatm ung jedoch als eine tief greifende Zäsur und existenzielle Krise .“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +883,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zahlreiche Befragte konnten sich nicht an Einweisungen in der Klinik erinnern, die wenigsten an deren Inhalte. Diese Bemühungen hatten häufig wenig nachhaltige Wirkung und mussten wiederholt werden.</p>
+  
   <blockquote>„„Auch an die Inhalte der Einweisungen und weiterführenden Schulungen hatten die wenigsten Befragten konkrete Erinnerungen. In der Folge hatten di ese Bemühungen häufig wenig nachhaltige Wirkung und mussten wiederholt werden.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +902,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine systematische, bedarfs- und bedürfnisgerechte Vorbereitung auf die häusliche Versorgung war nicht selbstverständlich. Patient*innen und Angehörige fühlten sich vielfach nicht hinreichend vorbereitet.</p>
+  
   <blockquote>„„dass e ine systematische, bedarfs- und bedürfnisgerechte Vorbereitung auf die häusliche Versorgung nicht selbstverständlich ist. Patient*innen wie Angehörige fühl ten sich dann vielfach nicht hinreichend auf die häusliche Beatmungstherapie vorbereitet“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +921,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei Einweisungen standen häufig technische Elemente im Mittelpunkt. Übungssequenzen und Rückversicherungen, ob Handlungsabläufe umgesetzt werden können, scheinen kein selbstverständliches Element zu sein.</p>
+  
   <blockquote>„„Häufig standen technische Elemente im Mittelpunkt. Übungssequenzen oder Rückversicherungen, inwiefern die Erklärungen verinnerlicht und notwendige Handlungsabläufe adäquat umgesetzt werden können, scheinen kein selbstverständliches Element der Einweisung zu sein.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +940,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Angaben der Interviewpartner*innen kam es in der ersten häuslichen Zeit zu häufigen Anwendungsfehlern, etwa beim Einordnen von Gerätealarmen. Das machte häufige Kontakte zu HM-Leistungserbringern nötig, auch wenn Pflegedienstmitarbeiter*innen anwesend waren.</p>
+  
   <blockquote>„„kam es zu häufigen Anwendungsfehlern. Oft konnten bspw. Gerätealarme noch nicht richtig eingeordnet und angemessen beantwortet werden. Dies machte häufige Kontaktaufnahmen zu HM-Leistungserbringern notwendig, und zwar auch dann, wenn Mitarbeiter*innen der Pflegedienste zugegen waren“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +959,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Betroffene verlängern die Nutzungsdauer von Verbrauchsmaterialien, verwenden Einmalprodukte wieder oder reparieren provisorisch. Der Bericht sieht darin teils erhebliche Sicherheitsrisiken; einige Befragte berichteten von Unfällen und Infektionen.</p>
+  
   <blockquote>„„So versuchen sie etwa die Nutzungsdauer von Verbrauchsmaterialien zu verlängern, Einmalprodukte wiederzuverwenden oder defekte elektronische Kontakte mit Pflastern zu reparieren. Hier gehen sie [...] mitunter erhebliche Sicherheitsrisiken ein. So berichteten einige Befragte auch von Unfällen und Infektionen.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +978,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auch in den Schilderungen von Befragten, die sich sicher fühlten, fanden sich Hinweise auf erhebliche Risiken und vermeidbare sicherheitsrelevante Ereignisse.</p>
+  
   <blockquote>„„Dabei finden sich aber auch in den Schilderungen sich sicher fühlender Interviewpartner*innen Hinweise auf erhebliche Risiken und vermeidbare sicherheitsrelevante Ereignisse .“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +997,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Patient*innen und Angehörige erbringen teilweise ein sehr hohes Maß an eigenen Versorgungsleistungen, auch bei HM-Umgang, Koordinierung und Überwachung, und zwar auch dann, wenn Pflegedienste vor Ort unterstützen.</p>
+  
   <blockquote>„„ein teilweise sehr hohes Maß an eigene n Versorgungsleistungen ihrerseits deutlich, auch im Umgang mit den HM sowie an Koordinierung und Überwachung der Versorgungsabläufe. Das trifft auch dann zu, wenn Pflegedienste die Versorgung vor Ort unterstützen.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1016,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mitarbeiter*innen von HM-Leistungserbringern verbinden Patientensicherheit vor allem mit zuverlässiger Gerätefunktion einschließlich Alarmen und mit bedienungsfreundlichem Design.</p>
+  
   <blockquote>„„verbinden mit der Gewährleistung von (Patienten-)Sicherheit v. a. die zuverlässige Funktion technischer Geräte (einschließlich ihrer Alarmfunktionen) sowie die Bedienungsfreundlichkeit ihres Designs, der Benutzeroberflächen und Menüführungen.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1035,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut den HM-Leistungserbringern entstehen Anwendungsrisiken vor allem durch Mangel an fachlich qualifiziertem und erfahrenem Personal in der häuslichen (Intensiv-)Pflege und Beatmung.</p>
+  
   <blockquote>„„Risiken im Zusammenhang mit der HM -Anwendung entstehen laut den Erfahrungsberichten der Interviewpartner*innen v. a. durch den Mangel an Personal mit hinreichender fachlicher Qualifizierung und Erfahrung in der häuslichen (Intensiv-)Pflege und Beatmung.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1054,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bemängelt wurde auch die unzureichende Fachexpertise vieler Mitarbeiter*innen bei HM-Leistungserbringern; Einweisungen könnten Personen ohne Gesundheitsberufsausbildung vornehmen. Standardisierungen und Qualitätsanforderungen seien kaum vorhanden.</p>
+  
   <blockquote>„„Beklagt wurde zudem auch die unzureichende einschlägige Fachexpertise vieler Mitarbeiter*innen bei den HM-Leistungserbringern selbst. [...] Standardisierungen und Qualitätsanforderungen in der HM -Leistungserbringung seien überdies kaum vorhanden.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1073,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die gesetzlich vorgeschriebene Ersteinweisung gilt den HM-Leistungserbringern als wichtigste Sicherheitsmaßnahme. Nach ihrer Wahrnehmung reicht sie längst nicht aus, um Sicherheit in der häuslichen Anwendung zu gewährleisten.</p>
+  
   <blockquote>„„Die wichtigste sicherheitsrelevante Maßnahme ist aus Sicht der hier Befragten die gesetzlich vorgeschriebene Ersteinweisung . [...] Die Erfüllung dieses gesetzlichen Auftrags reicht jedoch in der Wahrnehmung der Befragten längst nicht aus“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1092,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Koordinationsleistungen über ihren Auftrag hinaus wenden Mitarbeiter*innen von HM-Leistungserbringern schnell einen Großteil ihrer Arbeitszeit auf. Diese Leistungen sind in den Vergütungspauschalen nicht abgebildet.</p>
+  
   <blockquote>„„Hierfür wird schnell ein Großt eil ihrer Arbeitszeit aufgewendet. Dabei sind die erbrachten Leistungen nicht in den Vergütungspauschalen abgebildet.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1111,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Weitere Akteur*innen schätzten die Versorgung zunächst positiv ein. Auf Nachfrage ergab sich in allen Interviews ein differenzierteres, kritischeres Bild zu Bedarfsgerechtigkeit und Sicherheit.</p>
+  
   <blockquote>„„Auf Nachfragen hin ergab sich nach dieser positiven initialen Einschätzung in allen Interviews ein differe nzierteres, kritischeres Bild zur Bedarfsgerechtigkeit und Sicherheit in der beatmungsspezifischen HM-Versorgung.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1130,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als Gründe für Mängel nennen die weiteren Akteur*innen geringe Standardisierung, Fragmentierung und unklare Verantwortlichkeiten. Bedarfsgerechte Versorgung hänge vielfach vom Engagement Einzelner und günstigen Fügungen ab.</p>
+  
   <blockquote>„„Als zentrale Gründe hierfür zeichnen sich ein geringer Standardisierungsgrad und Fragmentierung im HM -Versorgungsprozess sowie unklare Aufgaben - und Verantwortungszuschreibungen [...] ab. So sei eine bedarfs- und bedürfnisgerechte Versorgung [...] vielfach vom besonderen Engagement einze lner Akteur*innen und von günstigen Fügungen abhängig.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1149,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht erfolgt die Kommunikation zwischen verordnenden Ärzt*innen, HM-Leistungserbringern, Patient*innen, Angehörigen und Pflegediensten vielfach nicht ausreichend. Gemeinsam abgestimmte Verbesserungsmaßnahmen finden kaum statt.</p>
+  
   <blockquote>„„Die Ergebnisse des SAVENT-Projekts zeigen, dass dabei u. a. die Kommunikation zwischen verordnenden Ärzt*innen, HM-Leistungserbringern, Patient*innen und Angehörigen sowie Pflegediensten vielfach nicht in ausreichendem Maße erfolgt. Gemeinsam abgestimmte Maßnahmen [...] finden kaum statt“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1168,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht fehlt häufig das Bewusstsein, dass eine Einweisung das Training im Alltag nicht ersetzt.</p>
+  
   <blockquote>„„Die erarbeiteten Ergebnisse zeigen jedoch , dass es gerade an einem solchen Bewusstsein häufig fehlt.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1187,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Befragungen enthalten Zweifel und Beispiele dafür, dass HM-Leistungserbringer ihrer Edukationsaufgabe nicht in jedem Fall angemessen nachkommen. Auch weitere Gesundheitsdienstleister*innen erfüllen edukative Aufgaben oft nicht hinreichend.</p>
+  
   <blockquote>„„In den Befragungsergebnissen werden aber deutliche Zweifel und auch Beispiele dafür angeführt, dass dieser Aufgabe derzeit nicht in jedem Fall angemessen nachgekommen wird. Zudem wurde verdeutlicht, dass auch weitere Gesundheitsdienstleister*innen edukative Aufgaben erfüllen müss(t)en – was aber ebenso oft nicht hinreichend geschieht.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1206,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In SAVENT bestätigte sich, dass Patientensicherheit in der häuslichen technikintensiven Versorgung noch nicht den notwendigen Stellenwert hat.</p>
+  
   <blockquote>„„In SAVENT bestätigte sich der Befund, dass dem Thema Patientensicherheit in der häuslichen technikintensiven Versorgung noch nicht der notwendige Stellenwert zukommt“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1225,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eltern beatmeter Kinder berichteten von fehlenden kompetenten Anlaufstellen mit beatmungsspezifischer Expertise für Bedarfsermittlung, Auswahl und Verordnung.</p>
+  
   <blockquote>„„In Bezug auf die Bedarfsermittlung, Auswahl und ärztliche Verordnung von HM berichteten sie von fehlenden kompetenten Anlaufstellen mit beatmungsspezifischer Expertise für ihre häufig komplex erkrankten Kinder.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1244,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In allen drei Befragtengruppen wurde beklagt, dass das Verordnungsformular „Muster 16“ oft nicht ausreicht, um die für sachgerechte Kassenentscheidungen nötigen Informationen zu dokumentieren.</p>
+  
   <blockquote>„„Beklagt wurde zudem in allen drei Befragtengruppen, dass die gängigen Re zepte („Muster 16“) zur HM-Verordnung oft nicht ausreichen, um Informationen in geeigneter Weise zu dokumentieren“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1263,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Teilnehmer*innen der Abschlussveranstaltung bestätigten die Ergebnisse der Teiluntersuchungen 1 und 2.</p>
+  
   <blockquote>„„Die aus der Perspektive der verschiedenen Akteursgruppen in den Teiluntersuchungen 1 und 2 erarbeiteten Ergebnisse wurden von den Teilnehmer*innen an der Abschlussveranstaltung bestätigt und untermauert.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1282,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.36">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zwischen Juli 2019 und März 2020 wurden 29 Erstinterviews in Berlin, Brandenburg, Mecklenburg-Vorpommern, Niedersachsen und Hamburg geführt. Die Sampling-Kriterien wurden realisiert, mit Ausnahme von Eltern beatmeter Kinder und Jugendlicher.</p>
+  
   <blockquote>„„Zwischen Juli 2019 und dem Beginn des ersten pandemiebedingten Lockdowns im März 2020 wurden insgesamt 29 Interviews [...] geführt. [...] Erkennbar ist, dass die o. g. Sampling-Kriterien realisiert werden – mit Ausnahme von Eltern beatmet er Kinder und Jugendlicher.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1301,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zwischen Mai und August 2021 wurden in einem separaten Teilsample zwölf Elterninterviews zu häuslich beatmeten Kindern und Jugendlichen geführt.</p>
+  
   <blockquote>„„konnten in einem separaten (Teil-)Sample zwischen Mai und August 2021 zwölf Elterninterviews geführt werden.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1320,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Aus 47 Interviewanfragen an HM-Leistungserbringer kamen zwischen Juli und Dezember 2020 11 Interviews mit insgesamt 25 Personen zustande.</p>
+  
   <blockquote>„„Zwischen Juli und Dezember 2020 konnten aus insgesamt 47 Interviewanfragen schließlich 11 Interviews mit insgesamt 25 Personen realisiert werden.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1339,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Aus 39 Anfragen an weitere Akteur*innen kamen 20 Interviews mit 22 Personen zustande, ohne Incentivierung.</p>
+  
   <blockquote>„„Aus insgesamt 39 Anfragen konnten 20 Interviews mit 22 Personen (ohne Incentivierung) realisiert werden (vgl. Tabelle 7).“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1358,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.40">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die 20 Interviews mit weiteren Akteur*innen umfassten: Krankenkassen/Verbände/Medizinische Dienste (4), Aufsichtsbehörden (2), Ärzt*innen (3), Logopäd*innen/Sprachtherapeut*innen (3), Pflege (4), Fachgesellschaften (2), Verband der HM-Leistungserbringer (1) und Patient*innen-/Angehörigenverbände (1).</p>
+  
   <blockquote>„„Personen aus Krankenkassen, ihren Verbänden und den Medizinischen Diensten (4), Personen aus Aufsichtsbehörden (2) ; Ärzt*innen (3), Logopäd*innen/Sprachtherapeut*innen (3), [...] (Langzeit -)Pflege (4), [...] Fachgesellschaften (2) , Verbandsvertreter*innen der HM-Leistungserbringer (1) sowie Vertreter*innen von Verbänden der Patient*innen und Angehörigen (1).“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.40" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.40" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.40" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.40" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1377,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Hauptgrund für die geringe Zahl an Nachbefragungen war das Versterben der vielfach multimorbiden, schwer kranken Patient*innen. Andere fühlten sich wegen fortgeschrittener Erkrankung oder belastender Situation nicht in der Lage.</p>
+  
   <blockquote>„„Der wesentliche Grund liegt im Versterben der vielfach multimorbid en und schwer kranken Patient*innen. Andere Interviewpartner*innen fühlten sich nicht in der Lage zu einem weiteren Gespräch“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1396,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Es fehlten interviewbegleitende Beobachtungen in den häuslichen Settings. Die Informationen blieben daher weitgehend auf die Kommunikation der Gesprächspartner*innen beschränkt; unerkannte sicherheitsrelevante Situationen könnten fehlen.</p>
+  
   <blockquote>„„dass interviewbegleitende Beobachtungen, etwa vor Ort in den häuslichen Versorgungssettings, womöglich ergänzende Informationen hätte hervorbringen können, etwa hinsichtlich bislang unerkannter sicherheitsrelevanter Situationen [...] So aber blieben die Informationen weitgehend auf die verbale und nonverbale Kommunikation der Gesprächspartner*innen beschränkt.“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1415,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Informationen über beatmete Kinder und Jugendliche wurden nur über die Eltern gewonnen, nicht von den Kindern und Jugendlichen selbst.</p>
+  
   <blockquote>„„dass durch die Befragung der Eltern Informationen über die Kinder und Jugendlichen und ihre (HM-)Versorgung gewonnen wurden, nicht aber von ihnen selbst als „Expert*innen ihrer Lebenswelt““ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1434,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei der gezielt heterogen zusammengesetzten Gruppe weiterer Akteur*innen ist eine Über- oder Untererfassung einzelner Perspektiven nicht auszuschließen.</p>
+  
   <blockquote>„„kann eine Über- oder Untererfassung einzelner Perspektiven nicht ausgeschlossen werden.“ – Bericht, S. 41" <span class="s">S. 41</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1453,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Schilderungen der weiteren Akteur*innen verharrten stark im eigenen Referenzrahmen. Die Perspektive beatmeter Personen und ihrer Angehöriger wurde nur vereinzelt angesprochen.</p>
+  
   <blockquote>„„Die von den Interviewpartner*innen geschilderten Herausforderungen und Problembereiche verharren dabei stark i n ihrem individuellen Referenzrahmen. Die Perspektiven der beatmeten Personen und ihrer Angehörigen selbst werden nur vereinzelt angesprochen .“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1472,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Schilderungen der Befragten waren meist durch den Erfahrungshintergrund ihres Tätigkeitsbereichs und ihr individuelles Sicherheitsverständnis geprägt.</p>
+  
   <blockquote>„„Die Schilderungen der Befragten waren dabei meist deutlich durch den Erfahrungshintergrund ihres jeweiligen Tätigkeitsbereichs [...] sowie durch ihr je individuelles Verständnis von Sicherheit und guter Versorgung geprägt.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1491,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die HM-Leistungserbringer hatten bei ihren Einschätzungen vor allem Pflegedienstpersonal im Blick, weniger Patient*innen und Angehörige als Anwender*innen.</p>
+  
   <blockquote>„„Sie haben dabei v. a. Personal von Pflegediensten im Blick, weniger Patient*innen und Angehörige als Anwender*innen beatmungsbezogener HM.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1510,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Verantwortung für die Ableitung der Empfehlungen lag beim Projektteam.</p>
+  
   <blockquote>„„Dabei lag die Verantwortung für die Ableitung der Empfehlungen beim Projektteam.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1529,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Abschlussveranstaltung fand pandemiebedingt digital statt. Nicht auszuschließen ist, dass eine Präsenzveranstaltung differenziertere Einblicke ermöglicht hätte.</p>
+  
   <blockquote>„„Gleichwohl ist nicht auszuschließen, dass ein persönlicher Austausch im Rahmen einer Präsenzveranstaltung differenziertere Einblicke in die Perspektive der Teilnehmer*innen ermöglicht hätte.“ – Bericht, S. 41" <span class="s">S. 41</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1548,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Elterninterviews wurden pandemiebedingt per Videokonferenz (Microsoft Teams) oder telefonisch geführt.</p>
+  
   <blockquote>„„Aufgrund der weiterhin bestehenden pandemischen Lage wurden die Interviews als Webmeeting (Video-Konferenz) mit Microsoft Teams oder telefonisch geführt.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1567,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Von den 20 Interviews mit weiteren Akteur*innen fanden 17 als Webmeeting und 3 am Arbeitsort statt. Aufgezeichnet wurden 19.</p>
+  
   <blockquote>„„teils am Arbeitsort der Befragten (n=3) und teils als Webmeeting (n=17) durchgeführt. Sie wurden bei Zustimmung der Befragten audiotechnisch aufgezeichnet (n=19).“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1586,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Laufzeit musste verlängert werden, auch wegen langfristiger krankheitsbedingter Personalausfälle, die nur teilweise kompensiert werden konnten.</p>
+  
   <blockquote>„„weil die Projektbearbeitung von erheblichen, langfristigen krankheitsbedingten Personalausfällen betroffen war, die personell nur teilweise kompensiert werden konnten.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1605,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen zwischenzeitlicher Planabweichungen bei der Fallzahl wurden die Feldkontakte über Berlin und Brandenburg hinaus auf angrenzende Bundesländer ausgedehnt.</p>
+  
   <blockquote>„„Zur Behebung der zwischenzeitlich bestehenden Planabweichungen bei der Fallzahlerreichung der Interviews wurden die Feldkontakte [...] intensiviert und über Berlin und Brandenburg hinaus in angrenzende Bundesländer aufgenommen.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1624,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wie geplant Personen zu gewinnen, die erst seit vier bis acht Wochen beatmet zu Hause lebten, erwies sich als schwierig.</p>
+  
   <blockquote>„„Schwierig erwies es sich zudem, Patient*innen und/oder ihre Angehörigen zu gewinnen, die (wie ursprünglich geplant) erst seit vier bis acht Wochen mit einer Beatmung in der Häuslichkeit lebten.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1643,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ein öffentlich zugängliches Verzeichnis zugelassener HM-Leistungserbringer fehlt. Die Rekrutierung erfolgte über Internetrecherche in Suchportalen der Krankenkassen und über informelle Feldkontakte.</p>
+  
   <blockquote>„„aufgrund des Fehlens eines öffentlich zugänglichen Inventars zugelassener Unternehmen mittels umfänglicher Internetrecherche in frei zugänglichen Suchportalen von Krankenkassen und über (informelle) Feldkontakte ermittelt.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1674,28 +1693,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 232, "akronym": "SAVENT", "kennung": "GD8_fpihHDS2", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Ergebnisse von SAVENT zur Information weiter: an den Unterausschuss Veranlasste Leistungen des G-BA, insbesondere mit Blick auf die Weiterentwicklung der Hilfsmittel-Richtlinie, sowie an den GKV-Spitzenverband, das ZQP, den DBfK und den IPV. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Nach Auffassung des Ausschusses hat das Projekt vertiefte Einblicke in die beatmungsspezifische Hilfsmittelversorgung häuslich beatmeter Personen gewonnen. Es hat edukative und sicherheitsbezogene Anforderungen im Versorgungsprozess herausgearbeitet. Grundlage waren qualitative Interviews mit Betroffenen, Angehörigen und professionellen Akteuren; daraus wurden in Workshops Empfehlungen in acht Anforderungsbereichen abgeleitet. Die Methoden hält der Ausschuss grundsätzlich für geeignet. Einschränkend nennt er, dass die geplante Längsschnitterhebung wegen der Corona-Pandemie entfiel und die Empfehlungen ohne systematische Konsentierung abgeleitet wurden. Die Erfassung der Sichtweisen beatmeter Personen sieht er als enormen Mehrwert, und die Empfehlungen können eine wichtige Grundlage für Weiterentwicklungen sein. Daher werden die Erkenntnisse zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "qualitative Studie"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit. Er hält fest, dass die Empfehlungen eine wichtige Grundlage für künftige Weiterentwicklungen des Versorgungsprozesses sein können. Außerdem richten sie sich an Leistungserbringer, Leistungsträger, Aufsichtsbehörden, Politik, Bildung, Beratungsstellen und Forschung."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die geplante längsschnittliche Erfassung in Teilprojekt 1 entfiel wegen der Corona-Pandemie"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Die Empfehlungen wurden ohne systematische Konsentierung abgeleitet"}, {"stelle": "befund.0", "art": "befund", "unser": "Vertiefte Einblicke in die Praxis der beatmungsspezifischen Hilfsmittelversorgung und Herausarbeitung edukativer und sicherheitsbezogener Anforderungen"}, {"stelle": "befund.1", "art": "befund", "unser": "Empfehlungen in acht Anforderungsbereichen zu Hilfsmitteln, Versorgungsprozess und personenbezogenen Aspekten"}, {"stelle": "befund.2", "art": "befund", "unser": "Methoden grundsätzlich geeignet"}, {"stelle": "befund.3", "art": "befund", "unser": "Erfassung der Sichtweisen beatmeter Personen als enormer Mehrwert für die Forschung"}, {"stelle": "befund.4", "art": "befund", "unser": "Empfehlungen als mögliche Grundlage für die Weiterentwicklung des Versorgungsprozesses"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Der UA VL hat sich in der Sitzung am 17. Oktober 2023 befasst und die AG HilfsM-RL mit der Sichtung beauftragt. Die Ergebnisse sollen im Rahmen laufender und zukünftiger Änderungsbedarfe der Richtlinie betrachtet werden; ob und wie sie Anwendung finden, ist noch nicht absehbar."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des GKV-Spitzenverbands aufgeführt."}, {"stelle": "adressat.3", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des ZQP aufgeführt."}, {"stelle": "adressat.4", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des DBfK aufgeführt."}, {"stelle": "adressat.5", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des IPV aufgeführt."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Projekt SAVENT untersuchte qualitativ die Sicherheit in der Hilfsmittelversorgung (HM) häuslich invasiv und nichtinvasiv beatmeter Patient*innen. Geführt wurden problemzentrierte Interviews mit Patient*innen und Angehörigen (29 Erstinterviews, 10 Nachbefragungen) und zwölf Elterninterviews zu beatmeten Kindern und Jugendlichen. Hinzu kamen episodische Interviews mit Mitarbeiter*innen von HM-Leistungserbringern (11 Interviews, 25 Personen), 20 Experteninterviews mit weiteren Akteur*innen, eine an ein Scoping Review angelehnte Literaturrecherche und eine digitale Abschlussveranstaltung zur diskursiven Validierung. Die HM selbst werden von den Befragten als weitgehend zuverlässig eingeschätzt. Verbesserungsbedarf sieht der Bericht bei ihrer sicheren Anwendung, vor allem bei den Kompetenzen von Patient*innen, Angehörigen und Pflegenden. Weitere Bedarfe nennt er beim gemeinsamen Sicherheitsverständnis, bei sektorenübergreifender Organisation und interprofessioneller Kooperation sowie bei Bedarfsermittlung, Verordnung und Genehmigung. Die meisten Risiken und Fehler sind laut Bericht nicht technisch bedingt und werden vom BfArM-Meldesystem nicht erfasst. Daraus leitete das Projektteam Empfehlungen in acht Themenbereichen ab. Die Aussagekraft hängt an mehreren Umständen: Das Sample erhebt keinen Anspruch auf Repräsentativität. Die pandemiebedingt verzögerte Nachbefragung erbrachte nur 10 Interviews, und für die geplante Längsschnittperspektive kam kein tragfähiger Beitrag zustande. Beobachtungsinterviews wurden durch nicht gleichwertige episodische Interviews ersetzt. Die Antwortrate der Leistungserbringer lag bei rund 23 %."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die beatmungsspezifischen HM selbst werden als weitgehend zuverlässig befunden. Verbesserungsbedarf besteht bei ihrer sicheren Anwendung, primär bei den Kompetenzen der Anwender*innen (Patient*innen, Angehörige, Pflegende)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Laut Bericht bedarf es eines gemeinsamen Sicherheitsverständnisses für die komplexe häusliche Versorgung. Als sicherheitsrelevant erweisen sich Defizite in der sektorenübergreifenden Versorgungsorganisation und der interprofessionellen Kooperation."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Die meisten Risiken, Fehler und (Beinahe-)Schäden in der Anwendung beatmungsspezifischer HM sind nicht auf technische Aspekte zurückzuführen. Sie werden daher vom BfArM-Meldesystem nicht bearbeitet; der Bericht spricht von einer „beachtlichen Leerstelle“."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Aus den Ergebnissen wurden Empfehlungen in acht Themen- bzw. Anforderungsbereichen für eine bedarfsgerechte HM-Versorgung häuslich beatmeter Personen abgeleitet."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Nachbefragung war pandemiebedingt erst nach rund 15 bis 18 statt nach sechs bis neun Monaten möglich. Statt der 29 Erstbefragten konnten nur noch 10 Interviews realisiert werden."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Zur geplanten Längsschnittperspektive in Teilstudie 1 konnte pandemiebedingt und wegen gesundheitlicher Beeinträchtigungen der Teilnehmenden kein tragfähiger Beitrag erarbeitet werden."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Das zielgerichtete Sample (mindestens 25 Befragte, große Variationsbreite) erhebt keinen Anspruch auf Repräsentativität und zielt nicht auf Datensättigung."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Statt der geplanten, pandemiebedingt nicht umsetzbaren Beobachtungsinterviews wurden episodische Interviews mit Mitarbeiter*innen der HM-Leistungserbringer geführt. Der Bericht hält dieses Vorgehen nicht für gleichwertig; sozial erwünschtes Antwortverhalten ist nicht auszuschließen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Das Sample der Leistungserbringer repräsentiert laut Bericht vermutlich nicht deren typische Merkmale. Die Antwortrate lag bei rund 23 %; anzunehmen ist, dass vor allem interessierte und engagierte Mitarbeiter*innen teilnahmen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "S. 11 heißt es, mit der Laufzeitverlängerung sei es möglich gewesen, „alle geplanten Arbeitspakete zu bearbeiten und die gesetzten Projektziele zu erreichen“, und die Anpassungen hätten „keine grundsätzlichen inhaltlichen Auswirkungen“ gehabt. S. 40 heißt es dagegen, zur geplanten Längsschnittperspektive habe „kein tragfähiger Beitrag erarbeitet werden“ können. Zudem seien die episodischen Interviews „nicht als gleichwertig“ mit dem geplanten beobachtenden Verfahren zu verstehen."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "S. 40 hält der Bericht fest, das Leistungserbringer-Sample repräsentiere vermutlich nicht die typischen Merkmale (Antwortrate rund 23 %, Selektion engagierter Teilnehmender). S. 41 geht er trotzdem „von relevanten und gültigen Erkenntnissen“ aus. Der Bericht begründet dies mit konsistenten Themen; beide Aussagen stehen nebeneinander."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "S. 40 beurteilt der Bericht die Online-Interviews als „forschungspragmatisch akzeptabel“ und vermutet teils sogar ausführlichere Aussagen als vor Ort. Im selben Zusammenhang nennt er als Einschränkung, dass ohne Beobachtungen vor Ort die Informationen „weitgehend auf die verbale und nonverbale Kommunikation“ beschränkt blieben."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Optimierungsbedarf zeigt sich bei den HM-bezogenen Wissensgrundlagen, der Bedarfsermittlung, der Auswahl sowie den Verordnungs- und Genehmigungsprozessen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Anforderungen, Herausforderungen und Verbesserungsbedarfe wurden in allen Schritten des HM-Versorgungsprozesses deutlich."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Herausforderungen und Verbesserungsbedarfe liegen auf allen drei Ebenen der Gesundheitsversorgung (Mikro-, Meso-, Makroebene)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Laut weiteren Akteur*innen gibt es in diesem Versorgungsbereich kein zuverlässiges System, um Risiken, Fehler und (Beinahe-)Schäden zu erfassen und für Lernzwecke zu nutzen. Das BfArM-Meldesystem erfasst nur gerätebezogene Ereignisse."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Fehlfunktionen und Defekte der Geräte und des Zubehörs selbst wurden von Interviewteilnehmer*innen aller Akteursgruppen eher selten erwähnt. Die technische Qualität der HM wurde nur in Ausnahmefällen in Frage gestellt."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die HM und ihre Alarmfunktionen werden mit der Zeit für sicher und zuverlässig befunden. Dennoch sehen die Befragten Verbesserungsbedarf bei technischen Eigenschaften, Design und Bedienungsfreundlichkeit."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Viele Patient*innen und Angehörige entwickeln nach einer Eingewöhnungszeit Vertrauen in Funktion und Zuverlässigkeit der Geräte."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Anwender*innen wünschen sich gelegentlich einfachere, intuitiver bedienbare und auf ihre Einschränkungen zugeschnittene HM. Wiederholt wurde von Materialermüdung berichtet und mehr Tragekomfort gewünscht, etwa bei Masken und Trachealkanülen."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Der Zugang zu geeigneteren und komfortableren Geräten und Zubehör scheint trotz ihrer Verfügbarkeit nicht immer gegeben."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Aus den Interviews mit erwachsenen Patient*innen und Angehörigen wurden Hauptkategorien gebildet. Sie blieben nach Auswertung der Nachbefragung bestehen, und auch die Elterninterviews ließen sich in sie einordnen."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Für einzelne Patient*innen war der Beatmungsbeginn mit verbesserten Symptomen und mehr Lebensqualität verbunden. Die meisten Patient*innen und Angehörigen beschrieben ihn als tiefgreifende Zäsur und existenzielle Krise."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Zahlreiche Befragte konnten sich nicht an Einweisungen in der Klinik erinnern, die wenigsten an deren Inhalte. Diese Bemühungen hatten häufig wenig nachhaltige Wirkung und mussten wiederholt werden."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Eine systematische, bedarfs- und bedürfnisgerechte Vorbereitung auf die häusliche Versorgung war nicht selbstverständlich. Patient*innen und Angehörige fühlten sich vielfach nicht hinreichend vorbereitet."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Bei Einweisungen standen häufig technische Elemente im Mittelpunkt. Übungssequenzen und Rückversicherungen, ob Handlungsabläufe umgesetzt werden können, scheinen kein selbstverständliches Element zu sein."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Nach Angaben der Interviewpartner*innen kam es in der ersten häuslichen Zeit zu häufigen Anwendungsfehlern, etwa beim Einordnen von Gerätealarmen. Das machte häufige Kontakte zu HM-Leistungserbringern nötig, auch wenn Pflegedienstmitarbeiter*innen anwesend waren."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Betroffene verlängern die Nutzungsdauer von Verbrauchsmaterialien, verwenden Einmalprodukte wieder oder reparieren provisorisch. Der Bericht sieht darin teils erhebliche Sicherheitsrisiken; einige Befragte berichteten von Unfällen und Infektionen."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Auch in den Schilderungen von Befragten, die sich sicher fühlten, fanden sich Hinweise auf erhebliche Risiken und vermeidbare sicherheitsrelevante Ereignisse."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Patient*innen und Angehörige erbringen teilweise ein sehr hohes Maß an eigenen Versorgungsleistungen, auch bei HM-Umgang, Koordinierung und Überwachung, und zwar auch dann, wenn Pflegedienste vor Ort unterstützen."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Mitarbeiter*innen von HM-Leistungserbringern verbinden Patientensicherheit vor allem mit zuverlässiger Gerätefunktion einschließlich Alarmen und mit bedienungsfreundlichem Design."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Laut den HM-Leistungserbringern entstehen Anwendungsrisiken vor allem durch Mangel an fachlich qualifiziertem und erfahrenem Personal in der häuslichen (Intensiv-)Pflege und Beatmung."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Bemängelt wurde auch die unzureichende Fachexpertise vieler Mitarbeiter*innen bei HM-Leistungserbringern; Einweisungen könnten Personen ohne Gesundheitsberufsausbildung vornehmen. Standardisierungen und Qualitätsanforderungen seien kaum vorhanden."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Die gesetzlich vorgeschriebene Ersteinweisung gilt den HM-Leistungserbringern als wichtigste Sicherheitsmaßnahme. Nach ihrer Wahrnehmung reicht sie längst nicht aus, um Sicherheit in der häuslichen Anwendung zu gewährleisten."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Für Koordinationsleistungen über ihren Auftrag hinaus wenden Mitarbeiter*innen von HM-Leistungserbringern schnell einen Großteil ihrer Arbeitszeit auf. Diese Leistungen sind in den Vergütungspauschalen nicht abgebildet."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Weitere Akteur*innen schätzten die Versorgung zunächst positiv ein. Auf Nachfrage ergab sich in allen Interviews ein differenzierteres, kritischeres Bild zu Bedarfsgerechtigkeit und Sicherheit."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Als Gründe für Mängel nennen die weiteren Akteur*innen geringe Standardisierung, Fragmentierung und unklare Verantwortlichkeiten. Bedarfsgerechte Versorgung hänge vielfach vom Engagement Einzelner und günstigen Fügungen ab."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Laut Bericht erfolgt die Kommunikation zwischen verordnenden Ärzt*innen, HM-Leistungserbringern, Patient*innen, Angehörigen und Pflegediensten vielfach nicht ausreichend. Gemeinsam abgestimmte Verbesserungsmaßnahmen finden kaum statt."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Laut Bericht fehlt häufig das Bewusstsein, dass eine Einweisung das Training im Alltag nicht ersetzt."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Die Befragungen enthalten Zweifel und Beispiele dafür, dass HM-Leistungserbringer ihrer Edukationsaufgabe nicht in jedem Fall angemessen nachkommen. Auch weitere Gesundheitsdienstleister*innen erfüllen edukative Aufgaben oft nicht hinreichend."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "In SAVENT bestätigte sich, dass Patientensicherheit in der häuslichen technikintensiven Versorgung noch nicht den notwendigen Stellenwert hat."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Eltern beatmeter Kinder berichteten von fehlenden kompetenten Anlaufstellen mit beatmungsspezifischer Expertise für Bedarfsermittlung, Auswahl und Verordnung."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "In allen drei Befragtengruppen wurde beklagt, dass das Verordnungsformular „Muster 16“ oft nicht ausreicht, um die für sachgerechte Kassenentscheidungen nötigen Informationen zu dokumentieren."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Die Teilnehmer*innen der Abschlussveranstaltung bestätigten die Ergebnisse der Teiluntersuchungen 1 und 2."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Zwischen Juli 2019 und März 2020 wurden 29 Erstinterviews in Berlin, Brandenburg, Mecklenburg-Vorpommern, Niedersachsen und Hamburg geführt. Die Sampling-Kriterien wurden realisiert, mit Ausnahme von Eltern beatmeter Kinder und Jugendlicher."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Zwischen Mai und August 2021 wurden in einem separaten Teilsample zwölf Elterninterviews zu häuslich beatmeten Kindern und Jugendlichen geführt."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Aus 47 Interviewanfragen an HM-Leistungserbringer kamen zwischen Juli und Dezember 2020 11 Interviews mit insgesamt 25 Personen zustande."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Aus 39 Anfragen an weitere Akteur*innen kamen 20 Interviews mit 22 Personen zustande, ohne Incentivierung."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Die 20 Interviews mit weiteren Akteur*innen umfassten: Krankenkassen/Verbände/Medizinische Dienste (4), Aufsichtsbehörden (2), Ärzt*innen (3), Logopäd*innen/Sprachtherapeut*innen (3), Pflege (4), Fachgesellschaften (2), Verband der HM-Leistungserbringer (1) und Patient*innen-/Angehörigenverbände (1)."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Hauptgrund für die geringe Zahl an Nachbefragungen war das Versterben der vielfach multimorbiden, schwer kranken Patient*innen. Andere fühlten sich wegen fortgeschrittener Erkrankung oder belastender Situation nicht in der Lage."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Es fehlten interviewbegleitende Beobachtungen in den häuslichen Settings. Die Informationen blieben daher weitgehend auf die Kommunikation der Gesprächspartner*innen beschränkt; unerkannte sicherheitsrelevante Situationen könnten fehlen."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Informationen über beatmete Kinder und Jugendliche wurden nur über die Eltern gewonnen, nicht von den Kindern und Jugendlichen selbst."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Bei der gezielt heterogen zusammengesetzten Gruppe weiterer Akteur*innen ist eine Über- oder Untererfassung einzelner Perspektiven nicht auszuschließen."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Schilderungen der weiteren Akteur*innen verharrten stark im eigenen Referenzrahmen. Die Perspektive beatmeter Personen und ihrer Angehöriger wurde nur vereinzelt angesprochen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Schilderungen der Befragten waren meist durch den Erfahrungshintergrund ihres Tätigkeitsbereichs und ihr individuelles Sicherheitsverständnis geprägt."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die HM-Leistungserbringer hatten bei ihren Einschätzungen vor allem Pflegedienstpersonal im Blick, weniger Patient*innen und Angehörige als Anwender*innen."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Verantwortung für die Ableitung der Empfehlungen lag beim Projektteam."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Abschlussveranstaltung fand pandemiebedingt digital statt. Nicht auszuschließen ist, dass eine Präsenzveranstaltung differenziertere Einblicke ermöglicht hätte."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Elterninterviews wurden pandemiebedingt per Videokonferenz (Microsoft Teams) oder telefonisch geführt."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Von den 20 Interviews mit weiteren Akteur*innen fanden 17 als Webmeeting und 3 am Arbeitsort statt. Aufgezeichnet wurden 19."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Die Laufzeit musste verlängert werden, auch wegen langfristiger krankheitsbedingter Personalausfälle, die nur teilweise kompensiert werden konnten."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Wegen zwischenzeitlicher Planabweichungen bei der Fallzahl wurden die Feldkontakte über Berlin und Brandenburg hinaus auf angrenzende Bundesländer ausgedehnt."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Wie geplant Personen zu gewinnen, die erst seit vier bis acht Wochen beatmet zu Hause lebten, erwies sich als schwierig."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Ein öffentlich zugängliches Verzeichnis zugelassener HM-Leistungserbringer fehlt. Die Rekrutierung erfolgte über Internetrecherche in Suchportalen der Krankenkassen und über informelle Feldkontakte."}]};
+const D = {"projekt_id": 232, "akronym": "SAVENT", "kennung": "GD8_fpihHDS2", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Nach Auffassung des Ausschusses hat das Projekt vertiefte Einblicke in die beatmungsspezifische Hilfsmittelversorgung häuslich beatmeter Personen gewonnen. Es hat edukative und sicherheitsbezogene Anforderungen im Versorgungsprozess herausgearbeitet. Grundlage waren qualitative Interviews mit Betroffenen, Angehörigen und professionellen Akteuren; daraus wurden in Workshops Empfehlungen in acht Anforderungsbereichen abgeleitet. Die Methoden hält der Ausschuss grundsätzlich für geeignet. Einschränkend nennt er, dass die geplante Längsschnitterhebung wegen der Corona-Pandemie entfiel und die Empfehlungen ohne systematische Konsentierung abgeleitet wurden. Die Erfassung der Sichtweisen beatmeter Personen sieht er als enormen Mehrwert, und die Empfehlungen können eine wichtige Grundlage für Weiterentwicklungen sein. Daher werden die Erkenntnisse zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "qualitative Studie"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die geplante längsschnittliche Erfassung in Teilprojekt 1 entfiel wegen der Corona-Pandemie"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Die Empfehlungen wurden angemessen, jedoch ohne systematische Konsentierung abgeleitet"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Projekt SAVENT untersuchte qualitativ die Sicherheit in der Hilfsmittelversorgung (HM) häuslich invasiv und nichtinvasiv beatmeter Patient*innen. Geführt wurden problemzentrierte Interviews mit Patient*innen und Angehörigen (29 Erstinterviews, 10 Nachbefragungen) und zwölf Elterninterviews zu beatmeten Kindern und Jugendlichen. Hinzu kamen episodische Interviews mit Mitarbeiter*innen von HM-Leistungserbringern (11 Interviews, 25 Personen), 20 Experteninterviews mit weiteren Akteur*innen, eine an ein Scoping Review angelehnte Literaturrecherche und eine digitale Abschlussveranstaltung zur diskursiven Validierung. Die HM selbst werden von den Befragten als weitgehend zuverlässig eingeschätzt. Verbesserungsbedarf sieht der Bericht bei ihrer sicheren Anwendung, vor allem bei den Kompetenzen von Patient*innen, Angehörigen und Pflegenden. Weitere Bedarfe nennt er beim gemeinsamen Sicherheitsverständnis, bei sektorenübergreifender Organisation und interprofessioneller Kooperation sowie bei Bedarfsermittlung, Verordnung und Genehmigung. Die meisten Risiken und Fehler sind laut Bericht nicht technisch bedingt und werden vom BfArM-Meldesystem nicht erfasst. Daraus leitete das Projektteam Empfehlungen in acht Themenbereichen ab. Die Aussagekraft hängt an mehreren Umständen: Das Sample erhebt keinen Anspruch auf Repräsentativität. Die pandemiebedingt verzögerte Nachbefragung erbrachte nur 10 Interviews, und für die geplante Längsschnittperspektive kam kein tragfähiger Beitrag zustande. Beobachtungsinterviews wurden durch nicht gleichwertige episodische Interviews ersetzt. Die Antwortrate der Leistungserbringer lag bei rund 23 %."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die beatmungsspezifischen HM selbst werden als weitgehend zuverlässig befunden. Verbesserungsbedarf besteht bei ihrer sicheren Anwendung, primär bei den Kompetenzen der Anwender*innen (Patient*innen, Angehörige, Pflegende)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Laut Bericht bedarf es eines gemeinsamen Sicherheitsverständnisses für die komplexe häusliche Versorgung. Als sicherheitsrelevant erweisen sich Defizite in der sektorenübergreifenden Versorgungsorganisation und der interprofessionellen Kooperation."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Die meisten Risiken, Fehler und (Beinahe-)Schäden in der Anwendung beatmungsspezifischer HM sind nicht auf technische Aspekte zurückzuführen. Sie werden daher vom BfArM-Meldesystem nicht bearbeitet; der Bericht spricht von einer „beachtlichen Leerstelle“."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Nachbefragung war pandemiebedingt erst nach rund 15 bis 18 statt nach sechs bis neun Monaten möglich. Statt der 29 Erstbefragten konnten nur noch 10 Interviews realisiert werden."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Zur geplanten Längsschnittperspektive in Teilstudie 1 konnte pandemiebedingt und wegen gesundheitlicher Beeinträchtigungen der Teilnehmenden kein tragfähiger Beitrag erarbeitet werden."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Das zielgerichtete Sample (mindestens 25 Befragte, große Variationsbreite) erhebt keinen Anspruch auf Repräsentativität und zielt nicht auf Datensättigung."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "S. 11 heißt es, mit der Laufzeitverlängerung sei es möglich gewesen, „alle geplanten Arbeitspakete zu bearbeiten und die gesetzten Projektziele zu erreichen“, und die Anpassungen hätten „keine grundsätzlichen inhaltlichen Auswirkungen“ gehabt. S. 40 heißt es dagegen, zur geplanten Längsschnittperspektive habe „kein tragfähiger Beitrag erarbeitet werden“ können. Zudem seien die episodischen Interviews „nicht als gleichwertig“ mit dem geplanten beobachtenden Verfahren zu verstehen."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "S. 40 hält der Bericht fest, das Leistungserbringer-Sample repräsentiere vermutlich nicht die typischen Merkmale (Antwortrate rund 23 %, Selektion engagierter Teilnehmender). S. 41 geht er trotzdem „von relevanten und gültigen Erkenntnissen“ aus. Der Bericht begründet dies mit konsistenten Themen; beide Aussagen stehen nebeneinander."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "S. 40 beurteilt der Bericht die Online-Interviews als „forschungspragmatisch akzeptabel“ und vermutet teils sogar ausführlichere Aussagen als vor Ort. Im selben Zusammenhang nennt er als Einschränkung, dass ohne Beobachtungen vor Ort die Informationen „weitgehend auf die verbale und nonverbale Kommunikation“ beschränkt blieben."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Ergebnisse von SAVENT zur Information weiter: an den Unterausschuss Veranlasste Leistungen des G-BA, insbesondere mit Blick auf die Weiterentwicklung der Hilfsmittel-Richtlinie, sowie an den GKV-Spitzenverband, das ZQP, den DBfK und den IPV. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit. Er hält fest, dass die Empfehlungen eine wichtige Grundlage für künftige Weiterentwicklungen des Versorgungsprozesses sein können. Außerdem richten sie sich an Leistungserbringer, Leistungsträger, Aufsichtsbehörden, Politik, Bildung, Beratungsstellen und Forschung."}, {"stelle": "befund.0", "art": "befund", "unser": "Vertiefte Einblicke in die Praxis der beatmungsspezifischen Hilfsmittelversorgung und Herausarbeitung edukativer und sicherheitsbezogener Anforderungen"}, {"stelle": "befund.1", "art": "befund", "unser": "Empfehlungen in acht Anforderungsbereichen zu Hilfsmitteln, Versorgungsprozess und personenbezogenen Aspekten"}, {"stelle": "befund.2", "art": "befund", "unser": "Methoden grundsätzlich geeignet"}, {"stelle": "befund.3", "art": "befund", "unser": "Erfassung der Sichtweisen beatmeter Personen als enormer Mehrwert für die Forschung"}, {"stelle": "befund.4", "art": "befund", "unser": "Empfehlungen als mögliche Grundlage für die Weiterentwicklung des Versorgungsprozesses"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Der UA VL hat sich in der Sitzung am 17. Oktober 2023 befasst und die AG HilfsM-RL mit der Sichtung beauftragt. Die Ergebnisse sollen im Rahmen laufender und zukünftiger Änderungsbedarfe der Richtlinie betrachtet werden; ob und wie sie Anwendung finden, ist noch nicht absehbar."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des GKV-Spitzenverbands aufgeführt."}, {"stelle": "adressat.3", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des ZQP aufgeführt."}, {"stelle": "adressat.4", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des DBfK aufgeführt."}, {"stelle": "adressat.5", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des IPV aufgeführt."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Aus den Ergebnissen wurden Empfehlungen in acht Themen- bzw. Anforderungsbereichen für eine bedarfsgerechte HM-Versorgung häuslich beatmeter Personen abgeleitet."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Statt der geplanten, pandemiebedingt nicht umsetzbaren Beobachtungsinterviews wurden episodische Interviews mit Mitarbeiter*innen der HM-Leistungserbringer geführt. Der Bericht hält dieses Vorgehen nicht für gleichwertig; sozial erwünschtes Antwortverhalten ist nicht auszuschließen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Das Sample der Leistungserbringer repräsentiert laut Bericht vermutlich nicht deren typische Merkmale. Die Antwortrate lag bei rund 23 %; anzunehmen ist, dass vor allem interessierte und engagierte Mitarbeiter*innen teilnahmen."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Optimierungsbedarf zeigt sich bei den HM-bezogenen Wissensgrundlagen, der Bedarfsermittlung, der Auswahl sowie den Verordnungs- und Genehmigungsprozessen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Anforderungen, Herausforderungen und Verbesserungsbedarfe wurden in allen Schritten des HM-Versorgungsprozesses deutlich."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Herausforderungen und Verbesserungsbedarfe liegen auf allen drei Ebenen der Gesundheitsversorgung (Mikro-, Meso-, Makroebene)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Laut weiteren Akteur*innen gibt es in diesem Versorgungsbereich kein zuverlässiges System, um Risiken, Fehler und (Beinahe-)Schäden zu erfassen und für Lernzwecke zu nutzen. Das BfArM-Meldesystem erfasst nur gerätebezogene Ereignisse."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Fehlfunktionen und Defekte der Geräte und des Zubehörs selbst wurden von Interviewteilnehmer*innen aller Akteursgruppen eher selten erwähnt. Die technische Qualität der HM wurde nur in Ausnahmefällen in Frage gestellt."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die HM und ihre Alarmfunktionen werden mit der Zeit für sicher und zuverlässig befunden. Dennoch sehen die Befragten Verbesserungsbedarf bei technischen Eigenschaften, Design und Bedienungsfreundlichkeit."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Viele Patient*innen und Angehörige entwickeln nach einer Eingewöhnungszeit Vertrauen in Funktion und Zuverlässigkeit der Geräte."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Anwender*innen wünschen sich gelegentlich einfachere, intuitiver bedienbare und auf ihre Einschränkungen zugeschnittene HM. Wiederholt wurde von Materialermüdung berichtet und mehr Tragekomfort gewünscht, etwa bei Masken und Trachealkanülen."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Der Zugang zu geeigneteren und komfortableren Geräten und Zubehör scheint trotz ihrer Verfügbarkeit nicht immer gegeben."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Aus den Interviews mit erwachsenen Patient*innen und Angehörigen wurden Hauptkategorien gebildet. Sie blieben nach Auswertung der Nachbefragung bestehen, und auch die Elterninterviews ließen sich in sie einordnen."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Für einzelne Patient*innen war der Beatmungsbeginn mit verbesserten Symptomen und mehr Lebensqualität verbunden. Die meisten Patient*innen und Angehörigen beschrieben ihn als tiefgreifende Zäsur und existenzielle Krise."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Zahlreiche Befragte konnten sich nicht an Einweisungen in der Klinik erinnern, die wenigsten an deren Inhalte. Diese Bemühungen hatten häufig wenig nachhaltige Wirkung und mussten wiederholt werden."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Eine systematische, bedarfs- und bedürfnisgerechte Vorbereitung auf die häusliche Versorgung war nicht selbstverständlich. Patient*innen und Angehörige fühlten sich vielfach nicht hinreichend vorbereitet."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Bei Einweisungen standen häufig technische Elemente im Mittelpunkt. Übungssequenzen und Rückversicherungen, ob Handlungsabläufe umgesetzt werden können, scheinen kein selbstverständliches Element zu sein."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Nach Angaben der Interviewpartner*innen kam es in der ersten häuslichen Zeit zu häufigen Anwendungsfehlern, etwa beim Einordnen von Gerätealarmen. Das machte häufige Kontakte zu HM-Leistungserbringern nötig, auch wenn Pflegedienstmitarbeiter*innen anwesend waren."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Betroffene verlängern die Nutzungsdauer von Verbrauchsmaterialien, verwenden Einmalprodukte wieder oder reparieren provisorisch. Der Bericht sieht darin teils erhebliche Sicherheitsrisiken; einige Befragte berichteten von Unfällen und Infektionen."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Auch in den Schilderungen von Befragten, die sich sicher fühlten, fanden sich Hinweise auf erhebliche Risiken und vermeidbare sicherheitsrelevante Ereignisse."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Patient*innen und Angehörige erbringen teilweise ein sehr hohes Maß an eigenen Versorgungsleistungen, auch bei HM-Umgang, Koordinierung und Überwachung, und zwar auch dann, wenn Pflegedienste vor Ort unterstützen."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Mitarbeiter*innen von HM-Leistungserbringern verbinden Patientensicherheit vor allem mit zuverlässiger Gerätefunktion einschließlich Alarmen und mit bedienungsfreundlichem Design."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Laut den HM-Leistungserbringern entstehen Anwendungsrisiken vor allem durch Mangel an fachlich qualifiziertem und erfahrenem Personal in der häuslichen (Intensiv-)Pflege und Beatmung."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Bemängelt wurde auch die unzureichende Fachexpertise vieler Mitarbeiter*innen bei HM-Leistungserbringern; Einweisungen könnten Personen ohne Gesundheitsberufsausbildung vornehmen. Standardisierungen und Qualitätsanforderungen seien kaum vorhanden."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Die gesetzlich vorgeschriebene Ersteinweisung gilt den HM-Leistungserbringern als wichtigste Sicherheitsmaßnahme. Nach ihrer Wahrnehmung reicht sie längst nicht aus, um Sicherheit in der häuslichen Anwendung zu gewährleisten."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Für Koordinationsleistungen über ihren Auftrag hinaus wenden Mitarbeiter*innen von HM-Leistungserbringern schnell einen Großteil ihrer Arbeitszeit auf. Diese Leistungen sind in den Vergütungspauschalen nicht abgebildet."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Weitere Akteur*innen schätzten die Versorgung zunächst positiv ein. Auf Nachfrage ergab sich in allen Interviews ein differenzierteres, kritischeres Bild zu Bedarfsgerechtigkeit und Sicherheit."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Als Gründe für Mängel nennen die weiteren Akteur*innen geringe Standardisierung, Fragmentierung und unklare Verantwortlichkeiten. Bedarfsgerechte Versorgung hänge vielfach vom Engagement Einzelner und günstigen Fügungen ab."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Laut Bericht erfolgt die Kommunikation zwischen verordnenden Ärzt*innen, HM-Leistungserbringern, Patient*innen, Angehörigen und Pflegediensten vielfach nicht ausreichend. Gemeinsam abgestimmte Verbesserungsmaßnahmen finden kaum statt."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Laut Bericht fehlt häufig das Bewusstsein, dass eine Einweisung das Training im Alltag nicht ersetzt."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Die Befragungen enthalten Zweifel und Beispiele dafür, dass HM-Leistungserbringer ihrer Edukationsaufgabe nicht in jedem Fall angemessen nachkommen. Auch weitere Gesundheitsdienstleister*innen erfüllen edukative Aufgaben oft nicht hinreichend."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "In SAVENT bestätigte sich, dass Patientensicherheit in der häuslichen technikintensiven Versorgung noch nicht den notwendigen Stellenwert hat."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Eltern beatmeter Kinder berichteten von fehlenden kompetenten Anlaufstellen mit beatmungsspezifischer Expertise für Bedarfsermittlung, Auswahl und Verordnung."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "In allen drei Befragtengruppen wurde beklagt, dass das Verordnungsformular „Muster 16“ oft nicht ausreicht, um die für sachgerechte Kassenentscheidungen nötigen Informationen zu dokumentieren."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Die Teilnehmer*innen der Abschlussveranstaltung bestätigten die Ergebnisse der Teiluntersuchungen 1 und 2."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Zwischen Juli 2019 und März 2020 wurden 29 Erstinterviews in Berlin, Brandenburg, Mecklenburg-Vorpommern, Niedersachsen und Hamburg geführt. Die Sampling-Kriterien wurden realisiert, mit Ausnahme von Eltern beatmeter Kinder und Jugendlicher."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Zwischen Mai und August 2021 wurden in einem separaten Teilsample zwölf Elterninterviews zu häuslich beatmeten Kindern und Jugendlichen geführt."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Aus 47 Interviewanfragen an HM-Leistungserbringer kamen zwischen Juli und Dezember 2020 11 Interviews mit insgesamt 25 Personen zustande."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Aus 39 Anfragen an weitere Akteur*innen kamen 20 Interviews mit 22 Personen zustande, ohne Incentivierung."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Die 20 Interviews mit weiteren Akteur*innen umfassten: Krankenkassen/Verbände/Medizinische Dienste (4), Aufsichtsbehörden (2), Ärzt*innen (3), Logopäd*innen/Sprachtherapeut*innen (3), Pflege (4), Fachgesellschaften (2), Verband der HM-Leistungserbringer (1) und Patient*innen-/Angehörigenverbände (1)."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Hauptgrund für die geringe Zahl an Nachbefragungen war das Versterben der vielfach multimorbiden, schwer kranken Patient*innen. Andere fühlten sich wegen fortgeschrittener Erkrankung oder belastender Situation nicht in der Lage."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Es fehlten interviewbegleitende Beobachtungen in den häuslichen Settings. Die Informationen blieben daher weitgehend auf die Kommunikation der Gesprächspartner*innen beschränkt; unerkannte sicherheitsrelevante Situationen könnten fehlen."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Informationen über beatmete Kinder und Jugendliche wurden nur über die Eltern gewonnen, nicht von den Kindern und Jugendlichen selbst."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Bei der gezielt heterogen zusammengesetzten Gruppe weiterer Akteur*innen ist eine Über- oder Untererfassung einzelner Perspektiven nicht auszuschließen."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Schilderungen der weiteren Akteur*innen verharrten stark im eigenen Referenzrahmen. Die Perspektive beatmeter Personen und ihrer Angehöriger wurde nur vereinzelt angesprochen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Schilderungen der Befragten waren meist durch den Erfahrungshintergrund ihres Tätigkeitsbereichs und ihr individuelles Sicherheitsverständnis geprägt."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die HM-Leistungserbringer hatten bei ihren Einschätzungen vor allem Pflegedienstpersonal im Blick, weniger Patient*innen und Angehörige als Anwender*innen."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Verantwortung für die Ableitung der Empfehlungen lag beim Projektteam."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Abschlussveranstaltung fand pandemiebedingt digital statt. Nicht auszuschließen ist, dass eine Präsenzveranstaltung differenziertere Einblicke ermöglicht hätte."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Elterninterviews wurden pandemiebedingt per Videokonferenz (Microsoft Teams) oder telefonisch geführt."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Von den 20 Interviews mit weiteren Akteur*innen fanden 17 als Webmeeting und 3 am Arbeitsort statt. Aufgezeichnet wurden 19."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Die Laufzeit musste verlängert werden, auch wegen langfristiger krankheitsbedingter Personalausfälle, die nur teilweise kompensiert werden konnten."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Wegen zwischenzeitlicher Planabweichungen bei der Fallzahl wurden die Feldkontakte über Berlin und Brandenburg hinaus auf angrenzende Bundesländer ausgedehnt."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Wie geplant Personen zu gewinnen, die erst seit vier bis acht Wochen beatmet zu Hause lebten, erwies sich als schwierig."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Ein öffentlich zugängliches Verzeichnis zugelassener HM-Leistungserbringer fehlt. Die Rekrutierung erfolgte über Internetrecherche in Suchportalen der Krankenkassen und über informelle Feldkontakte."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

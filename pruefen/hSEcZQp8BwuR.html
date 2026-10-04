@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF21009</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>9 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 36 Aussagen. Die übrigen
+27 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die im Projekt BEEK neu entwickelte S3-Leitlinie zum Blasenekstrophie-Epispadie Komplex der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Im Projekt wurde die erste evidenz- und konsensbasierte S3-Leitlinie zu Epidemiologie, Diagnostik, Therapie und Nachsorge des Blasenekstrophie-Epispadie Komplex erstellt, einer seltenen kongenitalen Fehlbildung des Urogenitaltraktes. Die Leitlinie soll Ärztinnen und Ärzte bei der Behandlung unterstützen und Entscheidungs- und Handlungsoptionen aufzeigen. Zusätzlich wurde eine Patientenleitlinie erstellt, die Betroffenen erstmals evidenzbasierte Informationen bietet. Nach Auffassung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,91 +141,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
     
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erste evidenz- und konsensbasierte S3-Leitlinie zum Blasenekstrophie-Epispadie Komplex erstellt</p>
-  <blockquote>„Im Rahmen des Projekts wurde die erste evidenz- und konsensbasierte S3 -Leitlinie zu Epidemiologie, Diagnostik, Therapie und Nachsorge zum Blasenekstrophie-Epispadie Komplex erstellt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Patientenleitlinie mit erstmals evidenzbasierten Patienteninformationen erstellt</p>
-  <blockquote>„Die miterstellte Patientenleitlinie stellt für Betroffene erstmalig evidenzbasierte Patienteninformationen zur Verfügung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
-  <blockquote>„Die neu entwickelte Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.1">
-  <h3>Arbeitsgemeinschaft der Wissenschaftlichen Medizinischen Fachgesellschaften e.V. (AWMF) – eingestuft als „umgesetzt“</h3>
-  <p class="unser">Die AWMF gibt an, dass die Leitlinie über das Leitlinienregister der AWMF publiziert ist (AWMF-Reg. Nr. 043-058). Ergebnisbericht und Transferempfehlung hat sie an die beteiligten Fachgesellschaften, die Koordination und das Leitliniensekretariat weitergeleitet.</p>
-  <blockquote>„für Ihre im Rahmen der Förderung durch den G-BA fertiggestellte und über das Leitlinienregister der AWMF publizierte Leitlinie weiterleiten zu können: S3-Leitlinie Epidemiologie, Diagnostik, Therapie und Nachsorge des Blasenekstrophie-Epispadie Komplex (BEEK) AWMF-Reg. Nr. 043-058" <span class="s">S. 3</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
     <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
       ></textarea></label>
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
@@ -238,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben hat eine S3-Leitlinie zum Blasenekstrophie-Epispadie-Komplex (BEEK) zu Epidemiologie, Diagnostik, Therapie und Nachsorge erstellt, dazu eine Patientenleitlinie. Laut Bericht ist es weltweit die erste Leitlinie zum BEEK. Beim Kick-off wurden 28 Schlüsselfragen festgelegt: 20 sollten per De-novo-Recherche, acht per Expertenkonsens beantwortet werden. Die Recherche ergab 15 systematische Reviews und 16 relevante Trials. Die Arbeitsgruppen formulierten 134 Empfehlungen und Statements; 132 davon wurden konsentiert, 67 sind evidenzbasiert. Es entstanden sechs Dokumente: medizinische Leitlinie, Patientenleitlinie, Evidenztabellendokument und Methodenreporte. Für die Patientenleitlinie wurde eine Online-Bedarfsanalyse mit Fachkräften und Betroffenen durchgeführt. Die Aussagekraft hängt an der Evidenzlage: Alle evidenzbasierten Empfehlungen haben das Evidenzlevel 3 oder 4, zu einer Schlüsselfrage fand sich keine Literatur, und prospektive Studien gelten wegen der Seltenheit als nicht durchführbar. Zu Wirkungen der Leitlinie auf die Versorgung äußert der Bericht Erwartungen, legt dazu aber keine Daten vor.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von 134 vorbereiteten Empfehlungen und Statements wurden 132 konsentiert.</p>
+  
   <blockquote>„„Letztlich wurden von den 134 vorbereiteten Empfehlungen und Statement 132 konsentiert.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von den 132 konsentierten Empfehlungen und Statements sind 67 evidenzbasiert.</p>
+  
   <blockquote>„„132 Empfehlungen und Statements (davon 67 evidenzbasierte)“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Projekt entstanden sechs Dokumente: eine medizinische Leitlinie, eine Patientenleitlinie, ein Evidenztabellendokument und Methodenreporte für beide Leitlinien.</p>
+  
   <blockquote>„„Insgesamt konnten sechs umfangreiche Dokumente zu diesem Projekt erstellt werden: E ine medizinische Leitlinie, eine Patientenleitlinie, ein Evidenztabellendokument und zwei Methodenreporte“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Alle evidenzbasierten Empfehlungen haben das Evidenzlevel 3 oder 4, das der Bericht als niedrig bezeichnet.</p>
+  
   <blockquote>„„Alle evidenzbasierten Empfehlungen haben daher ein niedriges E videnzlevel (3 oder 4).“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der Seltenheit der Anomalie gelten prospektive Studien mit hoher Evidenz als nicht durchführbar; meist stehen nur retrospektive, monozentrische, kleine Fallserien zur Verfügung.</p>
+  
   <blockquote>„„Prospektive Studien zur Generierung von hoher Evidenz sind aufgrund der Seltenheit der Anomalie nicht durchführbar. Meist muss man auf retrospektive monozentrische kleine Fallserien zurückgreifen.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für Therapiefragen konnten nur vergleichende Studien herangezogen werden, andere Themenbereiche stützten sich auf Fallserien. Zur Schlüsselfrage nach postnatalen Untersuchungen fand sich keine Literatur.</p>
+  
   <blockquote>„„Für Fragestellung en zur Therapie konnten lediglich vergleichende Studien herangezogen w erden. Andere Themenbereiche mussten durch Sichtungen von Fallserien bearbeitet werden. Für eine Sch lüsselfrage zu postnatalen Untersuchungen konnte sogar keine Literatur identifiziert werden.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -366,16 +288,111 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>22 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>27 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die im Projekt BEEK neu entwickelte S3-Leitlinie zum Blasenekstrophie-Epispadie Komplex der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erste evidenz- und konsensbasierte S3-Leitlinie zum Blasenekstrophie-Epispadie Komplex erstellt</p>
+  
+  <blockquote>„Im Rahmen des Projekts wurde die erste evidenz- und konsensbasierte S3 -Leitlinie zu Epidemiologie, Diagnostik, Therapie und Nachsorge zum Blasenekstrophie-Epispadie Komplex erstellt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Patientenleitlinie mit erstmals evidenzbasierten Patienteninformationen erstellt</p>
+  
+  <blockquote>„Die miterstellte Patientenleitlinie stellt für Betroffene erstmalig evidenzbasierte Patienteninformationen zur Verfügung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
+  
+  <blockquote>„Die neu entwickelte Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.1">
+  <h3>Arbeitsgemeinschaft der Wissenschaftlichen Medizinischen Fachgesellschaften e.V. (AWMF) – eingestuft als „umgesetzt“</h3>
+  <p class="unser">Die AWMF gibt an, dass die Leitlinie über das Leitlinienregister der AWMF publiziert ist (AWMF-Reg. Nr. 043-058). Ergebnisbericht und Transferempfehlung hat sie an die beteiligten Fachgesellschaften, die Koordination und das Leitliniensekretariat weitergeleitet.</p>
+  
+  <blockquote>„für Ihre im Rahmen der Förderung durch den G-BA fertiggestellte und über das Leitlinienregister der AWMF publizierte Leitlinie weiterleiten zu können: S3-Leitlinie Epidemiologie, Diagnostik, Therapie und Nachsorge des Blasenekstrophie-Epispadie Komplex (BEEK) AWMF-Reg. Nr. 043-058" <span class="s">S. 3</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.1" value="ok" checked hidden>
+    <input type="radio" name="uadressat.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die 132 Empfehlungen und Statements decken Epidemiologie, Diagnostik, Therapie und Nachsorge ab. Grundlage war laut Bericht ein systematisches Vorgehen bei vergleichsweise niedrigem Evidenzlevel.</p>
+  
   <blockquote>„„Wenngleich das Evidenzlevel der identifizierten Literatur vergleichsweise niedrig ist, konnten durch ein systematisches Vorgehen und eine konsequente Bewertung der Literatur 132 Empfehlungen und Statements zu den Themen E pidemiologie, Diagnostik, Therapie und Nachsorge formuliert werden .“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -389,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Beim Kick-off wurden 28 Schlüsselfragen festgelegt. 20 davon sollten per De-novo-Recherche und acht per Expertenkonsens beantwortet werden.</p>
+  
   <blockquote>„„28 Schlüsselfragen von denen 20 per de novo -Recherche und acht durch Expertenkonsens beantwortet werden sollten“ – Bericht, S. 7" <span class="s">S. 7</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -408,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Suche nach aggregierter Evidenz umfasste deutsch- und englischsprachige Publikationen ab 1969 und ergab 15 systematische Reviews.</p>
+  
   <blockquote>„„Der Zeitraum der Suche schloss alle Publikationen in deutscher und englischer Sprache ab 1969 ein. Insgesamt konnten 15 systematische Reviews identifiziert werden.“ – Bericht, S. 7" <span class="s">S. 7</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Suche in klinischen Studienregistern ergab 16 relevante Trials.</p>
+  
   <blockquote>„„Insgesamt konnten 16 relevante Trials identifiziert werden.“ – Bericht, S. 7" <span class="s">S. 7</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">93 der 134 Empfehlungen und Statements wurden in einem zweiphasigen Verfahren vorab strukturiert abgestimmt.</p>
+  
   <blockquote>„„Insgesamt wurden von den AGs 134 Empfehlungen und Statements formuliert. 93 Empfehlungen und Statements wurden in einem zweiphasigen Abstimmungsvorgang strukturiert konsentiert.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Vorlagen mit einem Konsens von höchstens 95 % wurden zusammen mit den 41 nicht vorabgestimmten in der Konsensuskonferenz am 05./06. Mai 2023 erneut diskutiert und final abgestimmt. Moderiert hat die AWMF.</p>
+  
   <blockquote>„„Erreichten die Empfehlungen und Statements einen ≤95 %-igen Konsens, so wurden diese mit den 41 nicht-vorabgestimmten Empfehlungen und Statements in der zweitägigen Konsensuskonferenz am 05. und 06. Mai 2023 erneut diskutiert und final abgestimmt.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei der Prüfung der Interessenkonflikte hatten zwei Personen je einen geringen und einen moderaten Interessenkonflikt; alle übrigen Mandatierten hatten keine.</p>
+  
   <blockquote>„„Hierbei wurden bei zwei Personen je ein geringer und ein moderater Interessenkonflikt identifiziert. Alle weiteren Mandatierten hatten keine Interessenkonflikte.“ – Bericht, S. 7" <span class="s">S. 7</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">An der Online-Bedarfsanalyse nahmen 16 Ärzte, 20 Urotherapeuten und drei Pflegefachkräfte teil. Außerdem antworteten 90 Betroffene, darunter 49 Zugehörige von Personen mit BEEK.</p>
+  
   <blockquote>„„nahmen 16 Ärzte, 20 Urotherapeuten und drei Pflegefachkräfte teil. Zudem wurden Antworten von 90 Betroffenen, davon 49 Zugehörigen von Personen mit BEEK erfasst.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Themen, die in der Bedarfsanalyse als relevant identifiziert wurden, etwa sozialmedizinische Aspekte, wurden zusätzlich zur medizinischen Leitlinie in die Patientenleitlinie aufgenommen.</p>
+  
   <blockquote>„„wurden beispielsweise sozialmedizinische Aspekte , die in der Bedarfsanalyse als relevant identifiziert wurden, in der Patientenleitlinie zielgruppenspezifisch aufgearbeitet und dargestellt.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht wurden die Themen der medizinischen Leitlinie durch die vorgeschaltete Bedarfsanalyse in laienverständliche Sprache übersetzt und zielgruppengerecht aufgearbeitet.</p>
+  
   <blockquote>„„konnten die Themen der medizinischen Leitlinie nicht nur in laienverständliche Sprache übersetzt, so ndern auch zielgruppengerecht aufgearbeitet werden.“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die AG Patientenleitlinie bestand aus Patientenvertretern und medizinischen Fachexperten. Ihre Mitglieder hatten keine relevanten Interessenkonflikte.</p>
+  
   <blockquote>„„Die Mitglieder der AG Patientenleitlinie wiesen keine relevante n Interessenkonflikte auf.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +596,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren erwarten, dass die Leitlinie in Klinik und Ambulanz breit anerkannt und angewendet wird und dass sie Morbidität und Komplikationen langfristig reduziert. Daten dazu legt der Bericht nicht vor.</p>
+  
   <blockquote>„„Es ist zu erwarten, dass die neue Leitlin ie breite Anerkennung und Anwendung in Klinik und Ambulanz bei der Behandlung von Mens chen mit BEEK finden wird.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +615,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Forschungsbedarf sehen die Autoren in der Grundlagenforschung, beim Langzeitoutcome (Genitalwahrnehmung, Kontinenzkonzepte, Alterungsprozesse), bei innovativen Interventionsstudien und bei einer patientenorientierten Themenwahl.</p>
+  
   <blockquote>„„Ein erhöhter Bedarf konnte im Bereich der Grundlagenforschung sowie des Langzeitoutcomes in Hinblick auf die Genitalwahrnehmung, Kontinenzkonzepte und Alterungsprozesse festgestellt werden. Weiterhin fehlen größtenteils innovative Interventionsstudien.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +634,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der geringen Fallzahlen liegen meist keine randomisierten kontrollierten Studien vor.</p>
+  
   <blockquote>„„Aufgrund der geringen Fallzahlen bei seltenen Erkrankungen liegen zumeist keine randomisierten kontrollierten Studien vor.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Datenextraktion in die Evidenztabellen erfolgte durch nur eine Person.</p>
+  
   <blockquote>„„Die Extraktion der Daten in Evidenztabellen erfolgte durch eine Person.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +672,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Da es weltweit die erste Leitlinie zum BEEK ist, fehlen vergleichbare wissenschaftliche Publikationen.</p>
+  
   <blockquote>„„Dadurch, dass es sich weltweit um die erste Leitlinie zum BEEK handelt, fehlt es an vergleichbaren wissenschaftlichen Publikationen.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +691,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Viele der in der Leitlinie analysierten Fragestellungen müssen laut Autoren künftig erneut strukturiert bearbeitet werden. Für eine bessere Datenbasis halten sie nationale und internationale Konsortien für notwendig.</p>
+  
   <blockquote>„„Selbstverständlich müssen viele der in der Leitlinie analysierten Fragestellungen in Zukunft erneut strukturiert bearbeitet werden.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zwei der 134 vorbereiteten Empfehlungen und Statements wurden nicht konsentiert.</p>
+  
   <blockquote>„„Letztlich wurden von den 134 vorbereiteten Empfehlungen und Statement 132 konsentiert.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +729,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Finalisierung war aufwendiger als geplant. Dadurch verzögerte sich die medizinische Leitlinie, und die Konsultationsphase lief erst vom 12.02. bis 12.03.2024.</p>
+  
   <blockquote>„„Die Finalisierung der Leitlinie gestaltete sich aufwendiger als ursprünglich geplant, sodass sich die Fertigstellung der medizinischen Leitlinie verzögerte. Die Konsultationsphase konnte somit erst am 12.02.2024 starten und endete am 12.03.2024.“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +748,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Patientenleitlinie konnte erst nach der öffentlichen Konsultation der ärztlichen Leitlinie fertiggestellt werden, weil sich dabei noch Änderungen an der medizinischen Leitlinie ergaben.</p>
+  
   <blockquote>„„Erst nach der öffentlichen Konsulta tion der ärztlichen Leitlinie konnte die Patientenleitlinie fertiggestellt werde n, da es im Zuge der Konsultation noch zu Änderungen in der medizinischen Leitlinie kam“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +767,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Arbeitsgruppen wurden schrittweise mit Evidenz beliefert; die zuletzt belieferten konnten erst ab Januar 2023 mit der Texterstellung beginnen.</p>
+  
   <blockquote>„„Die zuletzt belieferten Arbeitsgruppen konnten je doch erst ab Januar 2023 mit der Texterstellung beginnen.“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +786,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Weil ein Mandatsträger kurzfristig fehlte, wurde eine Empfehlung zurückgestellt und erst im Oktober/November 2023 online final konsentiert.</p>
+  
   <blockquote>„„Da ein Mandatsträger an der Konsensuskonferenz kurzfristig nicht teilnehmen konnte, wurde eine Empfehlung zurückgestellt. Diese wurde überarbeitet und im Oktober/November 2023 online final konsentiert.“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -819,28 +836,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 479, "akronym": "BEEK", "kennung": "hSEcZQp8BwuR", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt BEEK neu entwickelte S3-Leitlinie zum Blasenekstrophie-Epispadie Komplex der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Im Projekt wurde die erste evidenz- und konsensbasierte S3-Leitlinie zu Epidemiologie, Diagnostik, Therapie und Nachsorge des Blasenekstrophie-Epispadie Komplex erstellt, einer seltenen kongenitalen Fehlbildung des Urogenitaltraktes. Die Leitlinie soll Ärztinnen und Ärzte bei der Behandlung unterstützen und Entscheidungs- und Handlungsoptionen aufzeigen. Zusätzlich wurde eine Patientenleitlinie erstellt, die Betroffenen erstmals evidenzbasierte Informationen bietet. Nach Auffassung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "befund.0", "art": "befund", "unser": "Erste evidenz- und konsensbasierte S3-Leitlinie zum Blasenekstrophie-Epispadie Komplex erstellt"}, {"stelle": "befund.1", "art": "befund", "unser": "Patientenleitlinie mit erstmals evidenzbasierten Patienteninformationen erstellt"}, {"stelle": "befund.2", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Die AWMF gibt an, dass die Leitlinie über das Leitlinienregister der AWMF publiziert ist (AWMF-Reg. Nr. 043-058). Ergebnisbericht und Transferempfehlung hat sie an die beteiligten Fachgesellschaften, die Koordination und das Leitliniensekretariat weitergeleitet."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat eine S3-Leitlinie zum Blasenekstrophie-Epispadie-Komplex (BEEK) zu Epidemiologie, Diagnostik, Therapie und Nachsorge erstellt, dazu eine Patientenleitlinie. Laut Bericht ist es weltweit die erste Leitlinie zum BEEK. Beim Kick-off wurden 28 Schlüsselfragen festgelegt: 20 sollten per De-novo-Recherche, acht per Expertenkonsens beantwortet werden. Die Recherche ergab 15 systematische Reviews und 16 relevante Trials. Die Arbeitsgruppen formulierten 134 Empfehlungen und Statements; 132 davon wurden konsentiert, 67 sind evidenzbasiert. Es entstanden sechs Dokumente: medizinische Leitlinie, Patientenleitlinie, Evidenztabellendokument und Methodenreporte. Für die Patientenleitlinie wurde eine Online-Bedarfsanalyse mit Fachkräften und Betroffenen durchgeführt. Die Aussagekraft hängt an der Evidenzlage: Alle evidenzbasierten Empfehlungen haben das Evidenzlevel 3 oder 4, zu einer Schlüsselfrage fand sich keine Literatur, und prospektive Studien gelten wegen der Seltenheit als nicht durchführbar. Zu Wirkungen der Leitlinie auf die Versorgung äußert der Bericht Erwartungen, legt dazu aber keine Daten vor."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Von 134 vorbereiteten Empfehlungen und Statements wurden 132 konsentiert."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Von den 132 konsentierten Empfehlungen und Statements sind 67 evidenzbasiert."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Im Projekt entstanden sechs Dokumente: eine medizinische Leitlinie, eine Patientenleitlinie, ein Evidenztabellendokument und Methodenreporte für beide Leitlinien."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Alle evidenzbasierten Empfehlungen haben das Evidenzlevel 3 oder 4, das der Bericht als niedrig bezeichnet."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Wegen der Seltenheit der Anomalie gelten prospektive Studien mit hoher Evidenz als nicht durchführbar; meist stehen nur retrospektive, monozentrische, kleine Fallserien zur Verfügung."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Für Therapiefragen konnten nur vergleichende Studien herangezogen werden, andere Themenbereiche stützten sich auf Fallserien. Zur Schlüsselfrage nach postnatalen Untersuchungen fand sich keine Literatur."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die 132 Empfehlungen und Statements decken Epidemiologie, Diagnostik, Therapie und Nachsorge ab. Grundlage war laut Bericht ein systematisches Vorgehen bei vergleichsweise niedrigem Evidenzlevel."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Beim Kick-off wurden 28 Schlüsselfragen festgelegt. 20 davon sollten per De-novo-Recherche und acht per Expertenkonsens beantwortet werden."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die Suche nach aggregierter Evidenz umfasste deutsch- und englischsprachige Publikationen ab 1969 und ergab 15 systematische Reviews."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die Suche in klinischen Studienregistern ergab 16 relevante Trials."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "93 der 134 Empfehlungen und Statements wurden in einem zweiphasigen Verfahren vorab strukturiert abgestimmt."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Vorlagen mit einem Konsens von höchstens 95 % wurden zusammen mit den 41 nicht vorabgestimmten in der Konsensuskonferenz am 05./06. Mai 2023 erneut diskutiert und final abgestimmt. Moderiert hat die AWMF."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Bei der Prüfung der Interessenkonflikte hatten zwei Personen je einen geringen und einen moderaten Interessenkonflikt; alle übrigen Mandatierten hatten keine."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "An der Online-Bedarfsanalyse nahmen 16 Ärzte, 20 Urotherapeuten und drei Pflegefachkräfte teil. Außerdem antworteten 90 Betroffene, darunter 49 Zugehörige von Personen mit BEEK."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Themen, die in der Bedarfsanalyse als relevant identifiziert wurden, etwa sozialmedizinische Aspekte, wurden zusätzlich zur medizinischen Leitlinie in die Patientenleitlinie aufgenommen."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Laut Bericht wurden die Themen der medizinischen Leitlinie durch die vorgeschaltete Bedarfsanalyse in laienverständliche Sprache übersetzt und zielgruppengerecht aufgearbeitet."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Die AG Patientenleitlinie bestand aus Patientenvertretern und medizinischen Fachexperten. Ihre Mitglieder hatten keine relevanten Interessenkonflikte."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Die Autoren erwarten, dass die Leitlinie in Klinik und Ambulanz breit anerkannt und angewendet wird und dass sie Morbidität und Komplikationen langfristig reduziert. Daten dazu legt der Bericht nicht vor."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Forschungsbedarf sehen die Autoren in der Grundlagenforschung, beim Langzeitoutcome (Genitalwahrnehmung, Kontinenzkonzepte, Alterungsprozesse), bei innovativen Interventionsstudien und bei einer patientenorientierten Themenwahl."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Wegen der geringen Fallzahlen liegen meist keine randomisierten kontrollierten Studien vor."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Datenextraktion in die Evidenztabellen erfolgte durch nur eine Person."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Da es weltweit die erste Leitlinie zum BEEK ist, fehlen vergleichbare wissenschaftliche Publikationen."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Viele der in der Leitlinie analysierten Fragestellungen müssen laut Autoren künftig erneut strukturiert bearbeitet werden. Für eine bessere Datenbasis halten sie nationale und internationale Konsortien für notwendig."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Zwei der 134 vorbereiteten Empfehlungen und Statements wurden nicht konsentiert."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Finalisierung war aufwendiger als geplant. Dadurch verzögerte sich die medizinische Leitlinie, und die Konsultationsphase lief erst vom 12.02. bis 12.03.2024."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Patientenleitlinie konnte erst nach der öffentlichen Konsultation der ärztlichen Leitlinie fertiggestellt werden, weil sich dabei noch Änderungen an der medizinischen Leitlinie ergaben."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Arbeitsgruppen wurden schrittweise mit Evidenz beliefert; die zuletzt belieferten konnten erst ab Januar 2023 mit der Texterstellung beginnen."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Weil ein Mandatsträger kurzfristig fehlte, wurde eine Empfehlung zurückgestellt und erst im Oktober/November 2023 online final konsentiert."}]};
+const D = {"projekt_id": 479, "akronym": "BEEK", "kennung": "hSEcZQp8BwuR", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Im Projekt wurde die erste evidenz- und konsensbasierte S3-Leitlinie zu Epidemiologie, Diagnostik, Therapie und Nachsorge des Blasenekstrophie-Epispadie Komplex erstellt, einer seltenen kongenitalen Fehlbildung des Urogenitaltraktes. Die Leitlinie soll Ärztinnen und Ärzte bei der Behandlung unterstützen und Entscheidungs- und Handlungsoptionen aufzeigen. Zusätzlich wurde eine Patientenleitlinie erstellt, die Betroffenen erstmals evidenzbasierte Informationen bietet. Nach Auffassung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat eine S3-Leitlinie zum Blasenekstrophie-Epispadie-Komplex (BEEK) zu Epidemiologie, Diagnostik, Therapie und Nachsorge erstellt, dazu eine Patientenleitlinie. Laut Bericht ist es weltweit die erste Leitlinie zum BEEK. Beim Kick-off wurden 28 Schlüsselfragen festgelegt: 20 sollten per De-novo-Recherche, acht per Expertenkonsens beantwortet werden. Die Recherche ergab 15 systematische Reviews und 16 relevante Trials. Die Arbeitsgruppen formulierten 134 Empfehlungen und Statements; 132 davon wurden konsentiert, 67 sind evidenzbasiert. Es entstanden sechs Dokumente: medizinische Leitlinie, Patientenleitlinie, Evidenztabellendokument und Methodenreporte. Für die Patientenleitlinie wurde eine Online-Bedarfsanalyse mit Fachkräften und Betroffenen durchgeführt. Die Aussagekraft hängt an der Evidenzlage: Alle evidenzbasierten Empfehlungen haben das Evidenzlevel 3 oder 4, zu einer Schlüsselfrage fand sich keine Literatur, und prospektive Studien gelten wegen der Seltenheit als nicht durchführbar. Zu Wirkungen der Leitlinie auf die Versorgung äußert der Bericht Erwartungen, legt dazu aber keine Daten vor."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Von 134 vorbereiteten Empfehlungen und Statements wurden 132 konsentiert."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Von den 132 konsentierten Empfehlungen und Statements sind 67 evidenzbasiert."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Im Projekt entstanden sechs Dokumente: eine medizinische Leitlinie, eine Patientenleitlinie, ein Evidenztabellendokument und Methodenreporte für beide Leitlinien."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Alle evidenzbasierten Empfehlungen haben das Evidenzlevel 3 oder 4, das der Bericht als niedrig bezeichnet."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Wegen der Seltenheit der Anomalie gelten prospektive Studien mit hoher Evidenz als nicht durchführbar; meist stehen nur retrospektive, monozentrische, kleine Fallserien zur Verfügung."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Für Therapiefragen konnten nur vergleichende Studien herangezogen werden, andere Themenbereiche stützten sich auf Fallserien. Zur Schlüsselfrage nach postnatalen Untersuchungen fand sich keine Literatur."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt BEEK neu entwickelte S3-Leitlinie zum Blasenekstrophie-Epispadie Komplex der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "befund.0", "art": "befund", "unser": "Erste evidenz- und konsensbasierte S3-Leitlinie zum Blasenekstrophie-Epispadie Komplex erstellt"}, {"stelle": "befund.1", "art": "befund", "unser": "Patientenleitlinie mit erstmals evidenzbasierten Patienteninformationen erstellt"}, {"stelle": "befund.2", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Die AWMF gibt an, dass die Leitlinie über das Leitlinienregister der AWMF publiziert ist (AWMF-Reg. Nr. 043-058). Ergebnisbericht und Transferempfehlung hat sie an die beteiligten Fachgesellschaften, die Koordination und das Leitliniensekretariat weitergeleitet."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die 132 Empfehlungen und Statements decken Epidemiologie, Diagnostik, Therapie und Nachsorge ab. Grundlage war laut Bericht ein systematisches Vorgehen bei vergleichsweise niedrigem Evidenzlevel."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Beim Kick-off wurden 28 Schlüsselfragen festgelegt. 20 davon sollten per De-novo-Recherche und acht per Expertenkonsens beantwortet werden."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die Suche nach aggregierter Evidenz umfasste deutsch- und englischsprachige Publikationen ab 1969 und ergab 15 systematische Reviews."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die Suche in klinischen Studienregistern ergab 16 relevante Trials."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "93 der 134 Empfehlungen und Statements wurden in einem zweiphasigen Verfahren vorab strukturiert abgestimmt."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Vorlagen mit einem Konsens von höchstens 95 % wurden zusammen mit den 41 nicht vorabgestimmten in der Konsensuskonferenz am 05./06. Mai 2023 erneut diskutiert und final abgestimmt. Moderiert hat die AWMF."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Bei der Prüfung der Interessenkonflikte hatten zwei Personen je einen geringen und einen moderaten Interessenkonflikt; alle übrigen Mandatierten hatten keine."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "An der Online-Bedarfsanalyse nahmen 16 Ärzte, 20 Urotherapeuten und drei Pflegefachkräfte teil. Außerdem antworteten 90 Betroffene, darunter 49 Zugehörige von Personen mit BEEK."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Themen, die in der Bedarfsanalyse als relevant identifiziert wurden, etwa sozialmedizinische Aspekte, wurden zusätzlich zur medizinischen Leitlinie in die Patientenleitlinie aufgenommen."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Laut Bericht wurden die Themen der medizinischen Leitlinie durch die vorgeschaltete Bedarfsanalyse in laienverständliche Sprache übersetzt und zielgruppengerecht aufgearbeitet."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Die AG Patientenleitlinie bestand aus Patientenvertretern und medizinischen Fachexperten. Ihre Mitglieder hatten keine relevanten Interessenkonflikte."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Die Autoren erwarten, dass die Leitlinie in Klinik und Ambulanz breit anerkannt und angewendet wird und dass sie Morbidität und Komplikationen langfristig reduziert. Daten dazu legt der Bericht nicht vor."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Forschungsbedarf sehen die Autoren in der Grundlagenforschung, beim Langzeitoutcome (Genitalwahrnehmung, Kontinenzkonzepte, Alterungsprozesse), bei innovativen Interventionsstudien und bei einer patientenorientierten Themenwahl."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Wegen der geringen Fallzahlen liegen meist keine randomisierten kontrollierten Studien vor."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Datenextraktion in die Evidenztabellen erfolgte durch nur eine Person."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Da es weltweit die erste Leitlinie zum BEEK ist, fehlen vergleichbare wissenschaftliche Publikationen."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Viele der in der Leitlinie analysierten Fragestellungen müssen laut Autoren künftig erneut strukturiert bearbeitet werden. Für eine bessere Datenbasis halten sie nationale und internationale Konsortien für notwendig."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Zwei der 134 vorbereiteten Empfehlungen und Statements wurden nicht konsentiert."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Finalisierung war aufwendiger als geplant. Dadurch verzögerte sich die medizinische Leitlinie, und die Konsultationsphase lief erst vom 12.02. bis 12.03.2024."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Patientenleitlinie konnte erst nach der öffentlichen Konsultation der ärztlichen Leitlinie fertiggestellt werden, weil sich dabei noch Änderungen an der medizinischen Leitlinie ergaben."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Arbeitsgruppen wurden schrittweise mit Evidenz beliefert; die zuletzt belieferten konnten erst ab Januar 2023 mit der Texterstellung beginnen."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Weil ein Mandatsträger kurzfristig fehlte, wurde eine Empfehlung zurückgestellt und erst im Oktober/November 2023 online final konsentiert."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

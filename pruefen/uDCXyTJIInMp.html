@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF21013</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>10 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 41 Aussagen. Die übrigen
+31 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die im Projekt neu entwickelte S3-Leitlinie der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, und die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Ziel des Projekts war die Entwicklung einer S3-Leitlinie für Menschen mit schwerer Beeinträchtigung der Persönlichkeitsfunktionen, die einen komplexen, sektorenübergreifenden Versorgungsbedarf haben. Es wurden Empfehlungen zu Diagnostik, Behandlung und Versorgung erarbeitet. Im Mittelpunkt stand dabei die koordinierende Zusammenarbeit verschiedener Gesundheitsberufe und Versorgungseinrichtungen. Zusätzlich entstand eine Patientenleitlinie als evidenzbasierte Patienteninformation. Nach Feststellung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,68 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">S3-Leitlinie erfüllt die Kriterien des AWMF-Regelwerks</p>
-  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF -Regelwerks für S3-Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Empfehlungen für Diagnostik, Behandlung und Versorgung erarbeitet</p>
-  <blockquote>„Im Rahmen des Projekts wurden in Form einer S3 -Leitlinie Empfehlungen für die Diagnostik, Behandlung und Versorgung dieser Personengruppe erarbeitet." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Patientenleitlinie als evidenzbasierte Patienteninformation erstellt</p>
-  <blockquote>„Die miterstellte Patientenleitlinie stellt für Betroffene und ihnen nahestehende Personen eine evidenzbasierte Patienteninformation zur Verfügung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -219,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben hat eine S3-Leitlinie (LL-SBPF) zu Diagnostik, Therapie und Rehabilitation erwachsener Patient:innen mit schwerer Beeinträchtigung der Persönlichkeitsfunktionen (SBPF) nach dem dimensionalen Konzept der ICD-11 entwickelt. Grundlage waren systematische Literaturrecherchen zu mehreren Schlüsselfragen mit Evidenzbewertung nach GRADE, ein Leitlinien-Mapping aus 17 AWMF-Leitlinien mit 1531 übernommenen Empfehlungen und eine Expertenumfrage, in der 346 Fachleute 1403 Patient:innen anhand der LPFS beschrieben. Aus der Umfrage wurden je ICD-Diagnosekategorie die Anteile von Personen mit SBPF geschätzt; sie reichen von 4 % (leichte depressive Episode) bis 100 % (Dissoziale PS). Formuliert wurden 23 evidenzbasierte und 26 konsensbasierte Empfehlungen sowie 5 evidenzbasierte und 2 konsensbasierte Statements, bei einer Konsensstärke von 87 % bis 100 %. Die Evidenzqualität lag für die meisten Schlüsselfragen und Endpunkte zwischen sehr gering und moderat. Bei der Schlüsselfrage zur Diagnostik wurde sie für Validität und Reliabilität mit moderat bis hoch bewertet, bei einer weiteren Schlüsselfrage für zwei Erfahrungsendpunkte mit hoch. Einige Schlüsselfragen wurden ohne systematische Recherche auf Basis von Expertenwissen beantwortet. Die Aussagekraft wird nach Angabe des Berichts dadurch begrenzt, dass Interventionsstudien überwiegend kategorial diagnostizieren und daher eine „Übersetzung“ in die dimensionale Sichtweise nötig war. Zudem gilt die Leitlinie nur für Erwachsene. Einen primären Endpunkt nennt der Bericht nicht.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Leitlinie wurden 23 evidenzbasierte Empfehlungen, 5 evidenzbasierte Statements, 26 konsensbasierte Empfehlungen und 2 konsensbasierte Statements formuliert; die Konsensstärke reichte von 87 % bis 100 %.</p>
+  
   <blockquote>„„Insgesamt wurden in der LL 23 evidenzbasierte Empfehlungen, 5 evidenzbasierte Statements, 26 konsensbasierte Empfehlungen und 2 konsensbasierte Statements formuliert. Die Konsen sstärke reichte von 87% bis 100%.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Expertenumfrage beschrieben 346 praktisch tätige Fachleute verschiedener Berufsgruppen insgesamt 1403 Patient:innen hinsichtlich der Beeinträchtigung ihrer Persönlichkeitsfunktionen. Daraus wurden Verteilungen des Funktionsniveaus je ICD-Diagnosekategorie geschätzt.</p>
+  
   <blockquote>„„346 praktisch tätige Exper t:innen verschiedener Berufsgruppen [...] beschrieben insgesamt 1403 Patient:innen hinsichtlich der Beeinträchtigung von Persönlichkeitsfunktionen. Dies ermöglicht die Schätzung von Populationsverteilungen vom Funktionsniveau der Persönlichkeit innerhalb von Diagnosekategorien“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,50 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als schwere Beeinträchtigung gilt ein LPFS-Wert über 2,5. Nach Angabe des Berichts ist für die einbezogenen Diagnosekategorien im Durchschnitt ein großer Anteil von Patient:innen mit SBPF zu erwarten.</p>
+  
   <blockquote>„„Als schwere Beeinträchtigung gilt ein LP FS-Wert [...] von &gt;2,5. Aus den Daten lässt sich erkennen, dass für die einbezogenen Diagnosekategorien im Durchschnitt ein großer Anteil von Patient:innen mit SBPF erwartet werden kann.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.10">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Schlüsselfrage 1 (ambulante Psychotherapie): Die Recherche ergab 12 Metaanalysen und 1 Cochrane Review. Die Evidenzqualität war sehr gering bis gering für Funktionsfähigkeit, sehr gering bis moderat für störungsspezifische Symptome und gering für die Inanspruchnahme des Gesundheitssystems.</p>
-  <blockquote>„„ergab 12 Metaanalysen sowie 1 Cochrane Review. Das Ergebnis der Evidenzbewertung ergab eine sehr geringe bis geringe Qualität der Evidenz für den Endpunkt „Funktionsfähigkeit“, eine sehr geringe bis moderate Qualität [...] „Störungsspezifische Symptome“ sowie geringe Qualität [...] „Inanspruchnahme Gesundheitssystem“.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.17">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Schlüsselfrage 11 (dimensionale vs. nicht-dimensionale Diagnostik): Die Recherche ergab 2 Primärstudien, 3 Metaanalysen und 5 narrative Reviews. Die Evidenzqualität war moderat bis hoch für Validität und Reliabilität und gering für klinische Nützlichkeit.</p>
-  <blockquote>„„ergab 2 Primärstudien, 3 Metaanalysen und 5 Narrative Reviews. Das Ergebnis der Evidenzbewertung ergab eine moderate bis hohe Qualität der Evidenz für den End punkt „Validität“, eine moderate bis hohe Qualität [...] „Reliabilität“ sowie geringe Qualität [...] „Klinische Nützlichkeit“.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Weil die vorliegende Interventionsliteratur überwiegend das kategoriale System nutzt, bestehen nach Angabe des Berichts Unsicherheiten bei der Übertragbarkeit der Evidenz auf die Empfehlungen.</p>
+  
   <blockquote>„„Die Neuartigkeit des dimensionalen Konzepts bringt jedoch a uch Unsicherheiten hinsichtlich der Übertragbarkeit von der Evidenzgrundlage hin zu den Empfehlungen, da sich die vorliegende Literatur aus Interventionsstudien noch zu weiten Teilen des kategorialen Systems bedient.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Es gibt bisher wenige Primärstudien, die Patient:innen über ihre Persönlichkeitsfunktionen definieren. Deshalb mussten kategoriale Diagnosen in die dimensionale Sichtweise „übersetzt“ werden.</p>
+  
   <blockquote>„„Ein limitierender Faktor ist jedoch, dass es aktuell noch wenig Primärstudien gibt, die Patient:innen anhand von deren Persönlichkeitsfunktionen definiert und daher eine „Übersetzung“ der bisherigen kategorialen Diagnosekategorien in dimensionale Sichtweise notwendig ist.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,31 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ein Teil der Schlüsselfragen (laut Auswertung fünf) wurde ohne systematische Literaturrecherche auf Basis von Expertenwissen und Literaturkenntnissen der Mandatstragenden beantwortet.</p>
+  
   <blockquote>„„Die folgenden Schlüsselfragen wurden ohne systematische Literaturrecherche, sondern auf Basis von Expertenwissen sowie Literaturkenntnissen der Mandatstragenden beantwortet.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Die Leitlinie adressiert nur erwachsene Patient:innen; für Kinder und Jugendliche müsste eine eigene Leitlinie erstellt werden.</p>
-  <blockquote>„„Eine weitere Limitation besteht darin, dass die Leitlinie nur erwachsene Patient:innen adressiert. Eine entsprechende Leitlinie für Kinder und Jugendliche müsste separat erstellt werden.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -409,11 +293,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zur Zahl der Schlüsselfragen: Die Auswertung der Seiten 2 und 21 spricht von 12 Schlüsselfragen, auf Seite 11 ist dagegen von „den 14 Schlüsselfragen der LL-SBPF“ die Rede.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -423,16 +307,149 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>24 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>31 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die im Projekt neu entwickelte S3-Leitlinie der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, und die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">S3-Leitlinie erfüllt die Kriterien des AWMF-Regelwerks</p>
+  
+  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF -Regelwerks für S3-Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Empfehlungen für Diagnostik, Behandlung und Versorgung erarbeitet</p>
+  
+  <blockquote>„Im Rahmen des Projekts wurden in Form einer S3 -Leitlinie Empfehlungen für die Diagnostik, Behandlung und Versorgung dieser Personengruppe erarbeitet." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Patientenleitlinie als evidenzbasierte Patienteninformation erstellt</p>
+  
+  <blockquote>„Die miterstellte Patientenleitlinie stellt für Betroffene und ihnen nahestehende Personen eine evidenzbasierte Patienteninformation zur Verfügung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.10">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Schlüsselfrage 1 (ambulante Psychotherapie): Die Recherche ergab 12 Metaanalysen und 1 Cochrane Review. Die Evidenzqualität war sehr gering bis gering für Funktionsfähigkeit, sehr gering bis moderat für störungsspezifische Symptome und gering für die Inanspruchnahme des Gesundheitssystems.</p>
+  
+  <blockquote>„„ergab 12 Metaanalysen sowie 1 Cochrane Review. Das Ergebnis der Evidenzbewertung ergab eine sehr geringe bis geringe Qualität der Evidenz für den Endpunkt „Funktionsfähigkeit“, eine sehr geringe bis moderate Qualität [...] „Störungsspezifische Symptome“ sowie geringe Qualität [...] „Inanspruchnahme Gesundheitssystem“.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.17">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Schlüsselfrage 11 (dimensionale vs. nicht-dimensionale Diagnostik): Die Recherche ergab 2 Primärstudien, 3 Metaanalysen und 5 narrative Reviews. Die Evidenzqualität war moderat bis hoch für Validität und Reliabilität und gering für klinische Nützlichkeit.</p>
+  
+  <blockquote>„„ergab 2 Primärstudien, 3 Metaanalysen und 5 Narrative Reviews. Das Ergebnis der Evidenzbewertung ergab eine moderate bis hohe Qualität der Evidenz für den End punkt „Validität“, eine moderate bis hohe Qualität [...] „Reliabilität“ sowie geringe Qualität [...] „Klinische Nützlichkeit“.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Leitlinie adressiert nur erwachsene Patient:innen; für Kinder und Jugendliche müsste eine eigene Leitlinie erstellt werden.</p>
+  
+  <blockquote>„„Eine weitere Limitation besteht darin, dass die Leitlinie nur erwachsene Patient:innen adressiert. Eine entsprechende Leitlinie für Kinder und Jugendliche müsste separat erstellt werden.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Angabe des Berichts stützen die Ergebnisse der Expertenumfrage weitgehend die Auswahl der Populationen für die Literaturrecherche.</p>
+  
   <blockquote>„„Die Ergebnisse stützen weitgehend die von den Beteiligten der LL-SBPF getroffene Auswahl der Populationen für die Literaturrecherche.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Dissoziale Persönlichkeitsstörung (F60.2) wurde ein Anteil von 100 % mit mindestens eher schweren Beeinträchtigungen geschätzt (LPFS-Mittelwert 3,11 [2,92; 3,31]).</p>
+  
   <blockquote>„„F60.2 Dissoziale PS 100% 3.11 [2.92; 3.31]“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die schwere depressive Episode mit psychotischen Symptomen (F32.3) wurde ein Anteil von 99 % [91 %; 100 %] geschätzt (LPFS-Mittelwert 3,15 [2,94; 3,35]).</p>
+  
   <blockquote>„„F32.3 Schw. depr. Ep. mit psychot. Symptomen 99% [91%; 100%] 3.15 [2.94 3.35]“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die hebephrene Schizophrenie (F20.1) wurde ein Anteil von 96 % [84 %; 99 %] geschätzt (LPFS-Mittelwert 3,22 [2,97; 3,48]).</p>
+  
   <blockquote>„„F20.1 Hebephrene Schizophrenie 96% [84%; 99%] 3.22 [2.97 3.48]“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Anpassungsstörung (F43.2) wurde ein Anteil von 18 % [9 %; 33 %] geschätzt (LPFS-Mittelwert 1,56 [1,37; 1,75]).</p>
+  
   <blockquote>„„F43.2 Anpassungsstörung 18% [9%; 33%] 1.56 [1.37 1.75]“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die leichte depressive Episode (F32.0) wurde ein Anteil von 4 % [1 %; 11 %] geschätzt (LPFS-Mittelwert 1,49 [1,31; 1,68]). Die Klammerwerte sind bayesianische 95%-Vertrauensintervalle.</p>
+  
   <blockquote>„„F32.0 Leichte depressive Episode 4% [1%; 11%] 1.49 [1.31 1.68] [...] In eckigen Klammern stehen die bayesianischen 95%-Vertrauensintervalle.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für das Leitlinien-Mapping wurden 17 themenverwandte AWMF-Leitlinien identifiziert und 1531 Empfehlungen im Wortlaut übernommen. Das Mapping ist seit Mai 2024 unter einer permanenten DOI öffentlich zugänglich.</p>
+  
   <blockquote>„„Es wurden insgesamt 17 themenverwandte AWMF- Leitlinien identifiziert und daraus 1531 Empfehlungen im Wortlaut in da s Leitlinien Mapping übernommen. [...] Seit Mai 2024 ist es [...] unter einer permanenten DOI öffentlich zugänglich“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Schlüsselfrage 2 (Online-Interventionen): Die Recherche ergab 2 randomisierte und 1 clusterrandomisierte Studie. Die Evidenzqualität war sehr gering für Funktionsfähigkeit, sehr gering bis gering für störungsspezifische Symptome und gering für gesundheitsbezogene Lebensqualität.</p>
+  
   <blockquote>„„ergab 2 randomisierte sowie 1 clusterrandomisierte Studie. Das Ergebnis der Evidenzbewertung ergab eine sehr geringe Qualität der Evidenz für den Endpunkt „Funktionsfähigkeit“, eine sehr geringe bis geringe Qualität [...] sowie geringe Qualität der Evidenz für den Endpunkt „Gesundheitsbezogene Lebensqualität“.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +596,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Schlüsselfrage 3 (abgestimmte ambulante und stationäre Versorgung): Die Recherche ergab 1 quasi-experimentelle Längsschnittstudie mit sehr geringer Evidenzqualität für alle Endpunkte.</p>
+  
   <blockquote>„„Die systematische Literaturrecherche für die Schlüsselfrage 3 ergab 1 quasi- experimentelle Längsschnittstudie. Das Ergebnis der Evidenzbewertung ergab ein e sehr geringe Qualität der Evidenz für alle Endpunkte.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +615,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Schlüsselfrage 4 (besondere Wohnformen): Die Recherche ergab 2 Publikationen einer prospektiven Kohortenstudie mit sehr geringer Evidenzqualität für alle Endpunkte.</p>
+  
   <blockquote>„„Die systematische Literaturrecherche für die Schlüsselfrage 4 erg ab 2 Publikationen einer prospektiven Kohortenstudie. Das Ergebnis der Evidenzbewertung ergab eine sehr geringe Qualität der Evidenz für alle Endpunkte.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +634,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Schlüsselfrage 5 (ambulante koordinierte Versorgung): Die Recherche ergab 1 Metaanalyse und 1 Cochrane-Review. Die Evidenzqualität war sehr gering bis moderat für Funktionsfähigkeit sowie gering für psychische Lebensqualität und Erwerbsstatus.</p>
+  
   <blockquote>„„ergab 1 Metaanalyse sowie 1 Cochrane-Review. Das Ergebnis der Evidenzbewertung ergab eine sehr geringe bis moderate Qualität der Evidenz für den Endpunkt „Funkt ionsfähigkeit“, eine geringe Qualität [...] „Psychische Lebensqualität“ sowie geringe Qualität [...] „Erwerbsstatus“.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Schlüsselfrage 9 (fester Bezugs-Mental-Health-Care-Professional): Die Recherche ergab 17 systematische Reviews bzw. Metaanalysen. Für Erfahrungen von Patient:innen und Angehörigen mit frühen Interventionsangeboten sowie für Erfahrungen mit Psychotherapie bei Selbstverletzungen wurde die Evidenzqualität als hoch bewertet.</p>
+  
   <blockquote>„„ergab 17 Systematische Reviews bzw. Metaanalysen. [...] • hohe Qualität für Endpunkt „Erfahrungen von Patient:innen und Angehörigen mit frühen Interventionsangeboten“ • hohe Qualität für Endpunkt „Erfahrungen von Patient:innen mit Psychotherapie bei Selbstverletzungen““ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +672,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Schlüsselfrage 9: Moderate Evidenzqualität ergab sich für Erfahrungen von Kliniker:innen, für den Effekt von Shared Decision Making auf die therapeutische Beziehung und für interpersonelle Dynamiken. Sehr geringe Qualität ergab sich unter anderem für Selbst-Enthüllung/Unmittelbarkeit und den Wirkfaktor Zielkonsens und Kooperation.</p>
+  
   <blockquote>„„• moderate Qualität für Endpunkt „Effekt von Shared Decision Making auf Therapeutische Beziehung“ • moderate Qualität für Endpunkt „Interpersone lle Dynamiken und therapeutische Beziehung“ • sehr geringe Qualität für Endpunkt „Selbst-Enthüllung und Unmittelbarkeit““ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +691,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">33 Fachgesellschaften verschiedener Disziplinen benannten Mandatstragende für die Leitlinie, darunter zwei Patienten- und ein Angehörigenvertreter.</p>
+  
   <blockquote>„„Insgesamt 33 Fachgesellschaften verschiedener Disziplinen benannten Mandatstragende für die Mitarbeit an der LL, darunter auch zwei Patienten- sowie ein Angehörigenvertreter.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Steuerungsgruppe bestand aus 12 Mitgliedern, die verschiedene Professionen bzw. leitlinienrelevante Themen vertraten.</p>
+  
   <blockquote>„„Die Steuerungsgruppe bestand aus insgesamt 12 Mitgliedern, die verschiedene Professionen bzw. leitlinienrelevante Themen vertraten:“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +729,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Übersetzung kategorialer Evidenz in die dimensionale Sichtweise wurde eine Methodik bzw. ein Algorithmus entworfen und erprobt. Nach Angabe des Berichts sollte sie in künftigen Studien weiterentwickelt werden.</p>
+  
   <blockquote>„„Im Rahmen des Projektes wurde dafür ein e Methodik entworfen und erprobt, die in zukünftigen Studien weiterentwickelt werden sollte.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +748,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die in der Konsultationsphase eingegangenen Änderungsvorschläge wurden implementiert.</p>
+  
   <blockquote>„„Die im Rahmen der Konsultationsphase eingegangenen Änderungsvorschläge wurden implementiert.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +767,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht gab es keine relevanten Abweichungen vom ursprünglichen Arbeitsplan.</p>
+  
   <blockquote>„„Beim Ablauf des Projekts waren keine relevanten Abweichungen vom ursprünglichen Arbeitsplan zu verzeichnen.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +786,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Den Beitrag zur Versorgung sehen die Projektnehmer darin, dass nun eine Leitlinie existiert, die den Standards der ICD-11 entspricht.</p>
+  
   <blockquote>„„Der Beitrag des Projekts zur Versorgung besteht darin, dass nun eine Leitlinie existiert, die den neuen Standards der ICD -11 entspricht.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +805,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Als Limitationen nennt der Bericht die Neuartigkeit des Konzepts der Persönlichkeitsfunktionen und damit verbundene Unsicherheiten der Evidenzgrundlage.</p>
+  
   <blockquote>„„Limitationen der Leitlinie betreffen die Neua rtigkeit des Konzepts der Persönlichkeitsfunktionen und damit verbundene Unsicherheiten bezüglich der Evidenzgrundlage.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ob sich die Empfehlungen regional in gleicher Weise umsetzen lassen, hängt laut Bericht von der vorhandenen Versorgungsinfrastruktur ab, etwa Wohneinrichtungen und Kapazitäten für ambulante Psychotherapie.</p>
+  
   <blockquote>„„Inwiefern sich die Empfehlungen regional in gleicher Weise umsetzen lassen, hängt maßgeblich davon ab, ob die e ntsprechende Versorgungsinfrastruktur (z.B. Wohneinrichtungen, Kapazitäten für ambulante Psychotherapie) vorhanden sind“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für Schlüsselfrage 2 waren nach Volltextsichtung zu viele Studien nicht eligibel, sodass zusätzlich nach Primärstudien recherchiert wurde.</p>
+  
   <blockquote>„„Für Schlüsselfrage 2 zeigte sich aber nach Durchsicht der Volltexte, dass zu viele dieser Studien nicht eligibel waren, sodass zusätzlich noch eine Recherche nach Primärstudien durchgeführt wurde.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +862,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die thematischen Berührungspunkte im Leitlinien-Mapping bewertete ein einzelner Projektmitarbeiter, wobei überinklusiv vorgegangen wurde.</p>
+  
   <blockquote>„„Thematische Berührungspunkte zwischen den Empfehlungen aus den identifizierten AWMF - Leitlinien und den 14 Schlüsselfragen der LL-SBPF wurden von einem Projektmitarbeiter (LW) bewertet. Dabei wurde überinklusiv vorgegangen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +881,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Beim Arbeitspaket zur konzeptionellen Arbeit kam es zu personell bedingten Verzögerungen (Elternzeit), die laut Bericht zügig aufgeholt wurden.</p>
+  
   <blockquote>„„Personell bedingte Verzögerungen (Elternzeit) bei diesem Arbeitspaket konnten zügig aufgeholt werden.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -914,28 +931,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 483, "akronym": "LL-SBPF", "kennung": "uDCXyTJIInMp", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt neu entwickelte S3-Leitlinie der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, und die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Ziel des Projekts war die Entwicklung einer S3-Leitlinie für Menschen mit schwerer Beeinträchtigung der Persönlichkeitsfunktionen, die einen komplexen, sektorenübergreifenden Versorgungsbedarf haben. Es wurden Empfehlungen zu Diagnostik, Behandlung und Versorgung erarbeitet. Im Mittelpunkt stand dabei die koordinierende Zusammenarbeit verschiedener Gesundheitsberufe und Versorgungseinrichtungen. Zusätzlich entstand eine Patientenleitlinie als evidenzbasierte Patienteninformation. Nach Feststellung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "befund.0", "art": "befund", "unser": "S3-Leitlinie erfüllt die Kriterien des AWMF-Regelwerks"}, {"stelle": "befund.1", "art": "befund", "unser": "Empfehlungen für Diagnostik, Behandlung und Versorgung erarbeitet"}, {"stelle": "befund.2", "art": "befund", "unser": "Patientenleitlinie als evidenzbasierte Patienteninformation erstellt"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat eine S3-Leitlinie (LL-SBPF) zu Diagnostik, Therapie und Rehabilitation erwachsener Patient:innen mit schwerer Beeinträchtigung der Persönlichkeitsfunktionen (SBPF) nach dem dimensionalen Konzept der ICD-11 entwickelt. Grundlage waren systematische Literaturrecherchen zu mehreren Schlüsselfragen mit Evidenzbewertung nach GRADE, ein Leitlinien-Mapping aus 17 AWMF-Leitlinien mit 1531 übernommenen Empfehlungen und eine Expertenumfrage, in der 346 Fachleute 1403 Patient:innen anhand der LPFS beschrieben. Aus der Umfrage wurden je ICD-Diagnosekategorie die Anteile von Personen mit SBPF geschätzt; sie reichen von 4 % (leichte depressive Episode) bis 100 % (Dissoziale PS). Formuliert wurden 23 evidenzbasierte und 26 konsensbasierte Empfehlungen sowie 5 evidenzbasierte und 2 konsensbasierte Statements, bei einer Konsensstärke von 87 % bis 100 %. Die Evidenzqualität lag für die meisten Schlüsselfragen und Endpunkte zwischen sehr gering und moderat. Bei der Schlüsselfrage zur Diagnostik wurde sie für Validität und Reliabilität mit moderat bis hoch bewertet, bei einer weiteren Schlüsselfrage für zwei Erfahrungsendpunkte mit hoch. Einige Schlüsselfragen wurden ohne systematische Recherche auf Basis von Expertenwissen beantwortet. Die Aussagekraft wird nach Angabe des Berichts dadurch begrenzt, dass Interventionsstudien überwiegend kategorial diagnostizieren und daher eine „Übersetzung“ in die dimensionale Sichtweise nötig war. Zudem gilt die Leitlinie nur für Erwachsene. Einen primären Endpunkt nennt der Bericht nicht."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "In der Leitlinie wurden 23 evidenzbasierte Empfehlungen, 5 evidenzbasierte Statements, 26 konsensbasierte Empfehlungen und 2 konsensbasierte Statements formuliert; die Konsensstärke reichte von 87 % bis 100 %."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "In der Expertenumfrage beschrieben 346 praktisch tätige Fachleute verschiedener Berufsgruppen insgesamt 1403 Patient:innen hinsichtlich der Beeinträchtigung ihrer Persönlichkeitsfunktionen. Daraus wurden Verteilungen des Funktionsniveaus je ICD-Diagnosekategorie geschätzt."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Als schwere Beeinträchtigung gilt ein LPFS-Wert über 2,5. Nach Angabe des Berichts ist für die einbezogenen Diagnosekategorien im Durchschnitt ein großer Anteil von Patient:innen mit SBPF zu erwarten."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Schlüsselfrage 1 (ambulante Psychotherapie): Die Recherche ergab 12 Metaanalysen und 1 Cochrane Review. Die Evidenzqualität war sehr gering bis gering für Funktionsfähigkeit, sehr gering bis moderat für störungsspezifische Symptome und gering für die Inanspruchnahme des Gesundheitssystems."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Schlüsselfrage 11 (dimensionale vs. nicht-dimensionale Diagnostik): Die Recherche ergab 2 Primärstudien, 3 Metaanalysen und 5 narrative Reviews. Die Evidenzqualität war moderat bis hoch für Validität und Reliabilität und gering für klinische Nützlichkeit."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Weil die vorliegende Interventionsliteratur überwiegend das kategoriale System nutzt, bestehen nach Angabe des Berichts Unsicherheiten bei der Übertragbarkeit der Evidenz auf die Empfehlungen."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Es gibt bisher wenige Primärstudien, die Patient:innen über ihre Persönlichkeitsfunktionen definieren. Deshalb mussten kategoriale Diagnosen in die dimensionale Sichtweise „übersetzt“ werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Ein Teil der Schlüsselfragen (laut Auswertung fünf) wurde ohne systematische Literaturrecherche auf Basis von Expertenwissen und Literaturkenntnissen der Mandatstragenden beantwortet."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Leitlinie adressiert nur erwachsene Patient:innen; für Kinder und Jugendliche müsste eine eigene Leitlinie erstellt werden."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zur Zahl der Schlüsselfragen: Die Auswertung der Seiten 2 und 21 spricht von 12 Schlüsselfragen, auf Seite 11 ist dagegen von „den 14 Schlüsselfragen der LL-SBPF“ die Rede."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Nach Angabe des Berichts stützen die Ergebnisse der Expertenumfrage weitgehend die Auswahl der Populationen für die Literaturrecherche."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Für die Dissoziale Persönlichkeitsstörung (F60.2) wurde ein Anteil von 100 % mit mindestens eher schweren Beeinträchtigungen geschätzt (LPFS-Mittelwert 3,11 [2,92; 3,31])."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Für die schwere depressive Episode mit psychotischen Symptomen (F32.3) wurde ein Anteil von 99 % [91 %; 100 %] geschätzt (LPFS-Mittelwert 3,15 [2,94; 3,35])."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Für die hebephrene Schizophrenie (F20.1) wurde ein Anteil von 96 % [84 %; 99 %] geschätzt (LPFS-Mittelwert 3,22 [2,97; 3,48])."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Für die Anpassungsstörung (F43.2) wurde ein Anteil von 18 % [9 %; 33 %] geschätzt (LPFS-Mittelwert 1,56 [1,37; 1,75])."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Für die leichte depressive Episode (F32.0) wurde ein Anteil von 4 % [1 %; 11 %] geschätzt (LPFS-Mittelwert 1,49 [1,31; 1,68]). Die Klammerwerte sind bayesianische 95%-Vertrauensintervalle."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Für das Leitlinien-Mapping wurden 17 themenverwandte AWMF-Leitlinien identifiziert und 1531 Empfehlungen im Wortlaut übernommen. Das Mapping ist seit Mai 2024 unter einer permanenten DOI öffentlich zugänglich."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Schlüsselfrage 2 (Online-Interventionen): Die Recherche ergab 2 randomisierte und 1 clusterrandomisierte Studie. Die Evidenzqualität war sehr gering für Funktionsfähigkeit, sehr gering bis gering für störungsspezifische Symptome und gering für gesundheitsbezogene Lebensqualität."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Schlüsselfrage 3 (abgestimmte ambulante und stationäre Versorgung): Die Recherche ergab 1 quasi-experimentelle Längsschnittstudie mit sehr geringer Evidenzqualität für alle Endpunkte."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Schlüsselfrage 4 (besondere Wohnformen): Die Recherche ergab 2 Publikationen einer prospektiven Kohortenstudie mit sehr geringer Evidenzqualität für alle Endpunkte."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Schlüsselfrage 5 (ambulante koordinierte Versorgung): Die Recherche ergab 1 Metaanalyse und 1 Cochrane-Review. Die Evidenzqualität war sehr gering bis moderat für Funktionsfähigkeit sowie gering für psychische Lebensqualität und Erwerbsstatus."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Schlüsselfrage 9 (fester Bezugs-Mental-Health-Care-Professional): Die Recherche ergab 17 systematische Reviews bzw. Metaanalysen. Für Erfahrungen von Patient:innen und Angehörigen mit frühen Interventionsangeboten sowie für Erfahrungen mit Psychotherapie bei Selbstverletzungen wurde die Evidenzqualität als hoch bewertet."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Schlüsselfrage 9: Moderate Evidenzqualität ergab sich für Erfahrungen von Kliniker:innen, für den Effekt von Shared Decision Making auf die therapeutische Beziehung und für interpersonelle Dynamiken. Sehr geringe Qualität ergab sich unter anderem für Selbst-Enthüllung/Unmittelbarkeit und den Wirkfaktor Zielkonsens und Kooperation."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "33 Fachgesellschaften verschiedener Disziplinen benannten Mandatstragende für die Leitlinie, darunter zwei Patienten- und ein Angehörigenvertreter."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Die Steuerungsgruppe bestand aus 12 Mitgliedern, die verschiedene Professionen bzw. leitlinienrelevante Themen vertraten."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Für die Übersetzung kategorialer Evidenz in die dimensionale Sichtweise wurde eine Methodik bzw. ein Algorithmus entworfen und erprobt. Nach Angabe des Berichts sollte sie in künftigen Studien weiterentwickelt werden."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Die in der Konsultationsphase eingegangenen Änderungsvorschläge wurden implementiert."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Laut Bericht gab es keine relevanten Abweichungen vom ursprünglichen Arbeitsplan."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Den Beitrag zur Versorgung sehen die Projektnehmer darin, dass nun eine Leitlinie existiert, die den Standards der ICD-11 entspricht."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Als Limitationen nennt der Bericht die Neuartigkeit des Konzepts der Persönlichkeitsfunktionen und damit verbundene Unsicherheiten der Evidenzgrundlage."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Ob sich die Empfehlungen regional in gleicher Weise umsetzen lassen, hängt laut Bericht von der vorhandenen Versorgungsinfrastruktur ab, etwa Wohneinrichtungen und Kapazitäten für ambulante Psychotherapie."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Für Schlüsselfrage 2 waren nach Volltextsichtung zu viele Studien nicht eligibel, sodass zusätzlich nach Primärstudien recherchiert wurde."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die thematischen Berührungspunkte im Leitlinien-Mapping bewertete ein einzelner Projektmitarbeiter, wobei überinklusiv vorgegangen wurde."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Beim Arbeitspaket zur konzeptionellen Arbeit kam es zu personell bedingten Verzögerungen (Elternzeit), die laut Bericht zügig aufgeholt wurden."}]};
+const D = {"projekt_id": 483, "akronym": "LL-SBPF", "kennung": "uDCXyTJIInMp", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Ziel des Projekts war die Entwicklung einer S3-Leitlinie für Menschen mit schwerer Beeinträchtigung der Persönlichkeitsfunktionen, die einen komplexen, sektorenübergreifenden Versorgungsbedarf haben. Es wurden Empfehlungen zu Diagnostik, Behandlung und Versorgung erarbeitet. Im Mittelpunkt stand dabei die koordinierende Zusammenarbeit verschiedener Gesundheitsberufe und Versorgungseinrichtungen. Zusätzlich entstand eine Patientenleitlinie als evidenzbasierte Patienteninformation. Nach Feststellung des Ausschusses erfüllt die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat eine S3-Leitlinie (LL-SBPF) zu Diagnostik, Therapie und Rehabilitation erwachsener Patient:innen mit schwerer Beeinträchtigung der Persönlichkeitsfunktionen (SBPF) nach dem dimensionalen Konzept der ICD-11 entwickelt. Grundlage waren systematische Literaturrecherchen zu mehreren Schlüsselfragen mit Evidenzbewertung nach GRADE, ein Leitlinien-Mapping aus 17 AWMF-Leitlinien mit 1531 übernommenen Empfehlungen und eine Expertenumfrage, in der 346 Fachleute 1403 Patient:innen anhand der LPFS beschrieben. Aus der Umfrage wurden je ICD-Diagnosekategorie die Anteile von Personen mit SBPF geschätzt; sie reichen von 4 % (leichte depressive Episode) bis 100 % (Dissoziale PS). Formuliert wurden 23 evidenzbasierte und 26 konsensbasierte Empfehlungen sowie 5 evidenzbasierte und 2 konsensbasierte Statements, bei einer Konsensstärke von 87 % bis 100 %. Die Evidenzqualität lag für die meisten Schlüsselfragen und Endpunkte zwischen sehr gering und moderat. Bei der Schlüsselfrage zur Diagnostik wurde sie für Validität und Reliabilität mit moderat bis hoch bewertet, bei einer weiteren Schlüsselfrage für zwei Erfahrungsendpunkte mit hoch. Einige Schlüsselfragen wurden ohne systematische Recherche auf Basis von Expertenwissen beantwortet. Die Aussagekraft wird nach Angabe des Berichts dadurch begrenzt, dass Interventionsstudien überwiegend kategorial diagnostizieren und daher eine „Übersetzung“ in die dimensionale Sichtweise nötig war. Zudem gilt die Leitlinie nur für Erwachsene. Einen primären Endpunkt nennt der Bericht nicht."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "In der Leitlinie wurden 23 evidenzbasierte Empfehlungen, 5 evidenzbasierte Statements, 26 konsensbasierte Empfehlungen und 2 konsensbasierte Statements formuliert; die Konsensstärke reichte von 87 % bis 100 %."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "In der Expertenumfrage beschrieben 346 praktisch tätige Fachleute verschiedener Berufsgruppen insgesamt 1403 Patient:innen hinsichtlich der Beeinträchtigung ihrer Persönlichkeitsfunktionen. Daraus wurden Verteilungen des Funktionsniveaus je ICD-Diagnosekategorie geschätzt."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Als schwere Beeinträchtigung gilt ein LPFS-Wert über 2,5. Nach Angabe des Berichts ist für die einbezogenen Diagnosekategorien im Durchschnitt ein großer Anteil von Patient:innen mit SBPF zu erwarten."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Weil die vorliegende Interventionsliteratur überwiegend das kategoriale System nutzt, bestehen nach Angabe des Berichts Unsicherheiten bei der Übertragbarkeit der Evidenz auf die Empfehlungen."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Es gibt bisher wenige Primärstudien, die Patient:innen über ihre Persönlichkeitsfunktionen definieren. Deshalb mussten kategoriale Diagnosen in die dimensionale Sichtweise „übersetzt“ werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Ein Teil der Schlüsselfragen (laut Auswertung fünf) wurde ohne systematische Literaturrecherche auf Basis von Expertenwissen und Literaturkenntnissen der Mandatstragenden beantwortet."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zur Zahl der Schlüsselfragen: Die Auswertung der Seiten 2 und 21 spricht von 12 Schlüsselfragen, auf Seite 11 ist dagegen von „den 14 Schlüsselfragen der LL-SBPF“ die Rede."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt neu entwickelte S3-Leitlinie der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, und die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "befund.0", "art": "befund", "unser": "S3-Leitlinie erfüllt die Kriterien des AWMF-Regelwerks"}, {"stelle": "befund.1", "art": "befund", "unser": "Empfehlungen für Diagnostik, Behandlung und Versorgung erarbeitet"}, {"stelle": "befund.2", "art": "befund", "unser": "Patientenleitlinie als evidenzbasierte Patienteninformation erstellt"}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Schlüsselfrage 1 (ambulante Psychotherapie): Die Recherche ergab 12 Metaanalysen und 1 Cochrane Review. Die Evidenzqualität war sehr gering bis gering für Funktionsfähigkeit, sehr gering bis moderat für störungsspezifische Symptome und gering für die Inanspruchnahme des Gesundheitssystems."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Schlüsselfrage 11 (dimensionale vs. nicht-dimensionale Diagnostik): Die Recherche ergab 2 Primärstudien, 3 Metaanalysen und 5 narrative Reviews. Die Evidenzqualität war moderat bis hoch für Validität und Reliabilität und gering für klinische Nützlichkeit."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Leitlinie adressiert nur erwachsene Patient:innen; für Kinder und Jugendliche müsste eine eigene Leitlinie erstellt werden."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Nach Angabe des Berichts stützen die Ergebnisse der Expertenumfrage weitgehend die Auswahl der Populationen für die Literaturrecherche."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Für die Dissoziale Persönlichkeitsstörung (F60.2) wurde ein Anteil von 100 % mit mindestens eher schweren Beeinträchtigungen geschätzt (LPFS-Mittelwert 3,11 [2,92; 3,31])."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Für die schwere depressive Episode mit psychotischen Symptomen (F32.3) wurde ein Anteil von 99 % [91 %; 100 %] geschätzt (LPFS-Mittelwert 3,15 [2,94; 3,35])."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Für die hebephrene Schizophrenie (F20.1) wurde ein Anteil von 96 % [84 %; 99 %] geschätzt (LPFS-Mittelwert 3,22 [2,97; 3,48])."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Für die Anpassungsstörung (F43.2) wurde ein Anteil von 18 % [9 %; 33 %] geschätzt (LPFS-Mittelwert 1,56 [1,37; 1,75])."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Für die leichte depressive Episode (F32.0) wurde ein Anteil von 4 % [1 %; 11 %] geschätzt (LPFS-Mittelwert 1,49 [1,31; 1,68]). Die Klammerwerte sind bayesianische 95%-Vertrauensintervalle."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Für das Leitlinien-Mapping wurden 17 themenverwandte AWMF-Leitlinien identifiziert und 1531 Empfehlungen im Wortlaut übernommen. Das Mapping ist seit Mai 2024 unter einer permanenten DOI öffentlich zugänglich."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Schlüsselfrage 2 (Online-Interventionen): Die Recherche ergab 2 randomisierte und 1 clusterrandomisierte Studie. Die Evidenzqualität war sehr gering für Funktionsfähigkeit, sehr gering bis gering für störungsspezifische Symptome und gering für gesundheitsbezogene Lebensqualität."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Schlüsselfrage 3 (abgestimmte ambulante und stationäre Versorgung): Die Recherche ergab 1 quasi-experimentelle Längsschnittstudie mit sehr geringer Evidenzqualität für alle Endpunkte."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Schlüsselfrage 4 (besondere Wohnformen): Die Recherche ergab 2 Publikationen einer prospektiven Kohortenstudie mit sehr geringer Evidenzqualität für alle Endpunkte."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Schlüsselfrage 5 (ambulante koordinierte Versorgung): Die Recherche ergab 1 Metaanalyse und 1 Cochrane-Review. Die Evidenzqualität war sehr gering bis moderat für Funktionsfähigkeit sowie gering für psychische Lebensqualität und Erwerbsstatus."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Schlüsselfrage 9 (fester Bezugs-Mental-Health-Care-Professional): Die Recherche ergab 17 systematische Reviews bzw. Metaanalysen. Für Erfahrungen von Patient:innen und Angehörigen mit frühen Interventionsangeboten sowie für Erfahrungen mit Psychotherapie bei Selbstverletzungen wurde die Evidenzqualität als hoch bewertet."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Schlüsselfrage 9: Moderate Evidenzqualität ergab sich für Erfahrungen von Kliniker:innen, für den Effekt von Shared Decision Making auf die therapeutische Beziehung und für interpersonelle Dynamiken. Sehr geringe Qualität ergab sich unter anderem für Selbst-Enthüllung/Unmittelbarkeit und den Wirkfaktor Zielkonsens und Kooperation."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "33 Fachgesellschaften verschiedener Disziplinen benannten Mandatstragende für die Leitlinie, darunter zwei Patienten- und ein Angehörigenvertreter."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Die Steuerungsgruppe bestand aus 12 Mitgliedern, die verschiedene Professionen bzw. leitlinienrelevante Themen vertraten."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Für die Übersetzung kategorialer Evidenz in die dimensionale Sichtweise wurde eine Methodik bzw. ein Algorithmus entworfen und erprobt. Nach Angabe des Berichts sollte sie in künftigen Studien weiterentwickelt werden."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Die in der Konsultationsphase eingegangenen Änderungsvorschläge wurden implementiert."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Laut Bericht gab es keine relevanten Abweichungen vom ursprünglichen Arbeitsplan."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Den Beitrag zur Versorgung sehen die Projektnehmer darin, dass nun eine Leitlinie existiert, die den Standards der ICD-11 entspricht."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Als Limitationen nennt der Bericht die Neuartigkeit des Konzepts der Persönlichkeitsfunktionen und damit verbundene Unsicherheiten der Evidenzgrundlage."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Ob sich die Empfehlungen regional in gleicher Weise umsetzen lassen, hängt laut Bericht von der vorhandenen Versorgungsinfrastruktur ab, etwa Wohneinrichtungen und Kapazitäten für ambulante Psychotherapie."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Für Schlüsselfrage 2 waren nach Volltextsichtung zu viele Studien nicht eligibel, sodass zusätzlich nach Primärstudien recherchiert wurde."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die thematischen Berührungspunkte im Leitlinien-Mapping bewertete ein einzelner Projektmitarbeiter, wobei überinklusiv vorgegangen wurde."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Beim Arbeitspaket zur konzeptionellen Arbeit kam es zu personell bedingten Verzögerungen (Elternzeit), die laut Bericht zügig aufgeholt wurden."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

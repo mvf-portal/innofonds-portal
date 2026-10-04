@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF17024</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>18 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 23 Aussagen. Die übrigen
+5 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss spricht für das Projekt Pepe Kids keine Empfehlung aus. Die entwickelten Präventionsmaterialien (Broschüre und Websitemodule) sollen dennoch mit dem Hinweis auf die fehlende Validierung an NACOA, die Deutsche Hauptstelle für Suchtfragen und die Deutsche Gesellschaft für Suchtforschung und Suchttherapie weitergeleitet werden. Mit der Weiterleitung ist die Geschäftsstelle beauftragt.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt hat psychoedukative Präventionsmaterialien für Kinder und Jugendliche von Eltern in Entzugsbehandlung partizipativ entwickelt. Die geplante Evaluation mit betroffenen Kindern und Jugendlichen konnte unter anderem wegen pandemiebedingter Zugangsschwierigkeiten nicht durchgeführt werden. Ersatzweise bewerteten unbelastete Kinder und Jugendliche sowie Fachkräfte die Materialien, und zwar positiv. Der Ausschuss hält die Aussagekraft dieser Ergebnisse jedoch für eingeschränkt. Die Frage der Akzeptanz durch die eigentliche Zielgruppe könne dadurch nicht beantwortet werden. Der Ausschuss hält das Thema für hoch relevant und sieht weiteren Forschungsbedarf.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,11 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Sonstiges</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -161,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: COVID-19-Pandemie</h3>
   <p class="unser">Die Evaluation mit betroffenen Kindern und Jugendlichen konnte wegen pandemiebedingter Zugangsschwierigkeiten nicht durchgeführt werden.</p>
+  
   <blockquote>„Eine Evaluation der Materialien konnte jedoch unter anderem aufgrund der pandemiebedingten Zugangsschwierigkeiten zu betroffenen Kindern und Jugendlichen nicht durchgeführt werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,88 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.1">
   <h3>Hindernis laut Beschluss: Studienanlage <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Die Ersatzbewertung durch unbelastete Kinder und Fachkräfte hat eingeschränkte Aussagekraft. Sie ersetzt nicht die Prüfung der Akzeptanz in der Zielgruppe.</p>
+  
   <blockquote>„Die Aussagekraft dieser Ergebnisse ist jedoch eingeschränkt und die Frage über die Akzeptanz durch Kinder und Jugendliche, deren Eltern sich in der suchtmedizinischen Entzugsbehandlung befinden, kann hierdurch nicht ersetzt werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Psychoedukative Präventionsmaterialien (Printbroschüre und Websitemodule) wurden partizipativ entwickelt</p>
-  <blockquote>„Das Projekt Pepe Kids hat erfolgreich psychoedukative Präventionsmaßnahmen für Kinder und Jugendliche von Eltern in (qualifizierter) Entzugsbehandlung in Form der Printbroschüre Pepe’s Tipps sowie Websitemodulen auf der Homepage www.kidkit.de partizipativ entwickelt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Positive Bewertung von Gestaltung und Verständlichkeit durch alle Befragten</p>
-  <blockquote>„Die Bewertung fiel in diesem Rahmen hinsichtlich der Gestaltung und Verständlichkeit des Inhalts von allen Befragten positiv aus." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Fachkräfte halten die Materialien für geeignet und kennen keine vergleichbaren</p>
-  <blockquote>„Die Fachkräfte betrachteten die Präventionsmaterialien als geeignet für die Zielgruppe und berichteten, keine vergleichbaren Materialien zu kennen." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Broschüre und Website bleiben nach Projektende verfügbar</p>
-  <blockquote>„Insofern ist es zu begrüßen, dass sowohl die Broschüre als auch die Inhalte der Website auch nach Projektende durch das Projekt weiter zur Verfügung gestellt werden." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Machbarkeit, Akzeptanz und Nutzung“</h3>
   <p class="unser">Erreichbarkeit der Zielgruppe / Durchführbarkeit der Maßnahme im klinischen Setting (Zielgröße gemäß Abschnitt 5.4)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -294,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Machbarkeit, Akzeptanz und Nutzung“</h3>
   <p class="unser">Akzeptanz und subjektiv erlebter Nutzen der Broschüre „Pepe&#x27;s Tipps“ (Materialevaluation durch Kinder)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -313,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Machbarkeit, Akzeptanz und Nutzung“</h3>
   <p class="unser">Akzeptanz und subjektiv erlebter Nutzen der Website-Module (Materialevaluation durch Jugendliche)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -332,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Machbarkeit, Akzeptanz und Nutzung“</h3>
   <p class="unser">Akzeptanz, Nützlichkeit und Einsatzmöglichkeiten der Broschüre im beruflichen Kontext (Evaluation durch Fachkräfte)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Machbarkeit, Akzeptanz und Nutzung“</h3>
   <p class="unser">Akzeptanz, Nützlichkeit und Einsatzmöglichkeiten der Website im beruflichen Kontext (Evaluation durch Fachkräfte)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Psychosoziale Probleme der Kinder – Gesamtproblemwert (Elternrating)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Emotionale Probleme der Kinder (Elternrating)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Verhaltensauffälligkeiten, Hyperaktivität, Probleme mit Gleichaltrigen, prosoziales Verhalten (Elternrating)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Lebensqualität“</h3>
   <p class="unser">Gesundheitsbezogene Lebensqualität der Kinder (Elternrating)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.10">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Stresserleben und Stressbewältigung des Kindes (Elternrating)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.10" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.11">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Psychosoziale Ressourcen, Emotionsregulation und Lebensqualität der Kinder/Jugendlichen (Selbsturteil)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.11" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.12">
   <h3>Gemessen wurde – eingeordnet als „Sonstiges“</h3>
   <p class="unser">Familien- und Lebenssituation sowie Erfahrungen mit dem Hilfesystem der Eltern</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.12" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -504,11 +426,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Projekt Pepe-Kids hat eine psychoedukative Präventionsmaßnahme für Kinder und Jugendliche von Eltern in suchtmedizinischer Entzugsbehandlung partizipativ entwickelt: die Broschüre „Pepe&#x27;s Tipps“ und Website-Module auf kidkit.de. Geplant war eine Phase-I-Machbarkeitsstudie mit einer Gruppe, einem Messzeitpunkt und ohne Kontrollgruppe. Primäre Forschungsfrage war, ob die Maßnahme im klinischen Setting umsetzbar ist. Die Feldphase begann unmittelbar vor dem ersten Corona-Lockdown. In den Kliniken wurden nur 5 Eltern befragt, Materialien gingen an 10 Kinder bzw. Jugendliche, und von diesen kamen keine Fragebögen zurück. Die angestrebte Stichprobe wurde nach Angabe des Berichts nicht erreicht. Ersatzweise bewerteten 30 Fachkräfte (quantitativ), 4 Fachkräfte (Interviews), 11 unbelastete Kinder und 51 unbelastete Jugendliche die Materialien auf 5-Punkt-Skalen; die Mittelwerte lagen zwischen 3,41 und 4,55. Die Auswertung blieb rein deskriptiv. Der Bericht hält fest, dass die alternativen Evaluationswege die Prüfung der Akzeptanz durch Kinder von Eltern in Entzugsbehandlung nicht ersetzen und dass sich aus dem Design keine Aussagen zur Wirksamkeit ableiten lassen. Die Projektnehmer bezeichnen die Datengrundlage von N=101 dennoch als zufriedenstellend und die Evaluation insgesamt als äußerst positiv.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +444,31 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht fiel die Evaluation der Präventionsmaterialien insgesamt äußerst positiv aus. Die Materialien scheinen danach für die jeweiligen Zielgruppen eher geeignet, ansprechend gestaltet und inhaltlich relevant.</p>
+  
   <blockquote>„„Die Evaluation der entwickelten Präventionsmaterialien ist insgesamt äußerst positiv ausgefallen. Die Materialien scheinen somit eher geeignet für die jeweiligen Zielgruppen: zum einen ansprechend gestaltet und zum anderen inhaltlich relevant.“ – Bericht, S. 38" <span class="s">S. 38</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>5 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss spricht für das Projekt Pepe Kids keine Empfehlung aus. Die entwickelten Präventionsmaterialien (Broschüre und Websitemodule) sollen dennoch mit dem Hinweis auf die fehlende Validierung an NACOA, die Deutsche Hauptstelle für Suchtfragen und die Deutsche Gesellschaft für Suchtforschung und Suchttherapie weitergeleitet werden. Mit der Weiterleitung ist die Geschäftsstelle beauftragt.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -538,6 +479,82 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
       ></textarea></label>
   </div>
 </section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Psychoedukative Präventionsmaterialien (Printbroschüre und Websitemodule) wurden partizipativ entwickelt</p>
+  
+  <blockquote>„Das Projekt Pepe Kids hat erfolgreich psychoedukative Präventionsmaßnahmen für Kinder und Jugendliche von Eltern in (qualifizierter) Entzugsbehandlung in Form der Printbroschüre Pepe’s Tipps sowie Websitemodulen auf der Homepage www.kidkit.de partizipativ entwickelt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Positive Bewertung von Gestaltung und Verständlichkeit durch alle Befragten</p>
+  
+  <blockquote>„Die Bewertung fiel in diesem Rahmen hinsichtlich der Gestaltung und Verständlichkeit des Inhalts von allen Befragten positiv aus." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Fachkräfte halten die Materialien für geeignet und kennen keine vergleichbaren</p>
+  
+  <blockquote>„Die Fachkräfte betrachteten die Präventionsmaterialien als geeignet für die Zielgruppe und berichteten, keine vergleichbaren Materialien zu kennen." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Broschüre und Website bleiben nach Projektende verfügbar</p>
+  
+  <blockquote>„Insofern ist es zu begrüßen, dass sowohl die Broschüre als auch die Inhalte der Website auch nach Projektende durch das Projekt weiter zur Verfügung gestellt werden." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section></details>
 
 <h2>Und das, was aus den Erkenntnissen wurde</h2>
 <div class="p danach">
@@ -572,28 +589,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 141, "akronym": "Pepe-Kids", "kennung": "RyctL6ERcz30", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt Pepe Kids keine Empfehlung aus. Die entwickelten Präventionsmaterialien (Broschüre und Websitemodule) sollen dennoch mit dem Hinweis auf die fehlende Validierung an NACOA, die Deutsche Hauptstelle für Suchtfragen und die Deutsche Gesellschaft für Suchtforschung und Suchttherapie weitergeleitet werden. Mit der Weiterleitung ist die Geschäftsstelle beauftragt."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat psychoedukative Präventionsmaterialien für Kinder und Jugendliche von Eltern in Entzugsbehandlung partizipativ entwickelt. Die geplante Evaluation mit betroffenen Kindern und Jugendlichen konnte unter anderem wegen pandemiebedingter Zugangsschwierigkeiten nicht durchgeführt werden. Ersatzweise bewerteten unbelastete Kinder und Jugendliche sowie Fachkräfte die Materialien, und zwar positiv. Der Ausschuss hält die Aussagekraft dieser Ergebnisse jedoch für eingeschränkt. Die Frage der Akzeptanz durch die eigentliche Zielgruppe könne dadurch nicht beantwortet werden. Der Ausschuss hält das Thema für hoch relevant und sieht weiteren Forschungsbedarf."}, {"stelle": "studiendesign", "art": "text", "unser": "Sonstiges"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Evaluation mit betroffenen Kindern und Jugendlichen konnte wegen pandemiebedingter Zugangsschwierigkeiten nicht durchgeführt werden."}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Die Ersatzbewertung durch unbelastete Kinder und Fachkräfte hat eingeschränkte Aussagekraft. Sie ersetzt nicht die Prüfung der Akzeptanz in der Zielgruppe."}, {"stelle": "befund.0", "art": "befund", "unser": "Psychoedukative Präventionsmaterialien (Printbroschüre und Websitemodule) wurden partizipativ entwickelt"}, {"stelle": "befund.1", "art": "befund", "unser": "Positive Bewertung von Gestaltung und Verständlichkeit durch alle Befragten"}, {"stelle": "befund.2", "art": "befund", "unser": "Fachkräfte halten die Materialien für geeignet und kennen keine vergleichbaren"}, {"stelle": "befund.3", "art": "befund", "unser": "Broschüre und Website bleiben nach Projektende verfügbar"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Erreichbarkeit der Zielgruppe / Durchführbarkeit der Maßnahme im klinischen Setting (Zielgröße gemäß Abschnitt 5.4)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Akzeptanz und subjektiv erlebter Nutzen der Broschüre „Pepe's Tipps“ (Materialevaluation durch Kinder)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Akzeptanz und subjektiv erlebter Nutzen der Website-Module (Materialevaluation durch Jugendliche)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Akzeptanz, Nützlichkeit und Einsatzmöglichkeiten der Broschüre im beruflichen Kontext (Evaluation durch Fachkräfte)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Akzeptanz, Nützlichkeit und Einsatzmöglichkeiten der Website im beruflichen Kontext (Evaluation durch Fachkräfte)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Psychosoziale Probleme der Kinder – Gesamtproblemwert (Elternrating)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Emotionale Probleme der Kinder (Elternrating)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Verhaltensauffälligkeiten, Hyperaktivität, Probleme mit Gleichaltrigen, prosoziales Verhalten (Elternrating)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität der Kinder (Elternrating)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Stresserleben und Stressbewältigung des Kindes (Elternrating)"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Psychosoziale Ressourcen, Emotionsregulation und Lebensqualität der Kinder/Jugendlichen (Selbsturteil)"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Familien- und Lebenssituation sowie Erfahrungen mit dem Hilfesystem der Eltern"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Projekt Pepe-Kids hat eine psychoedukative Präventionsmaßnahme für Kinder und Jugendliche von Eltern in suchtmedizinischer Entzugsbehandlung partizipativ entwickelt: die Broschüre „Pepe's Tipps“ und Website-Module auf kidkit.de. Geplant war eine Phase-I-Machbarkeitsstudie mit einer Gruppe, einem Messzeitpunkt und ohne Kontrollgruppe. Primäre Forschungsfrage war, ob die Maßnahme im klinischen Setting umsetzbar ist. Die Feldphase begann unmittelbar vor dem ersten Corona-Lockdown. In den Kliniken wurden nur 5 Eltern befragt, Materialien gingen an 10 Kinder bzw. Jugendliche, und von diesen kamen keine Fragebögen zurück. Die angestrebte Stichprobe wurde nach Angabe des Berichts nicht erreicht. Ersatzweise bewerteten 30 Fachkräfte (quantitativ), 4 Fachkräfte (Interviews), 11 unbelastete Kinder und 51 unbelastete Jugendliche die Materialien auf 5-Punkt-Skalen; die Mittelwerte lagen zwischen 3,41 und 4,55. Die Auswertung blieb rein deskriptiv. Der Bericht hält fest, dass die alternativen Evaluationswege die Prüfung der Akzeptanz durch Kinder von Eltern in Entzugsbehandlung nicht ersetzen und dass sich aus dem Design keine Aussagen zur Wirksamkeit ableiten lassen. Die Projektnehmer bezeichnen die Datengrundlage von N=101 dennoch als zufriedenstellend und die Evaluation insgesamt als äußerst positiv."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Laut Bericht fiel die Evaluation der Präventionsmaterialien insgesamt äußerst positiv aus. Die Materialien scheinen danach für die jeweiligen Zielgruppen eher geeignet, ansprechend gestaltet und inhaltlich relevant."}]};
+const D = {"projekt_id": 141, "akronym": "Pepe-Kids", "kennung": "RyctL6ERcz30", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat psychoedukative Präventionsmaterialien für Kinder und Jugendliche von Eltern in Entzugsbehandlung partizipativ entwickelt. Die geplante Evaluation mit betroffenen Kindern und Jugendlichen konnte unter anderem wegen pandemiebedingter Zugangsschwierigkeiten nicht durchgeführt werden. Ersatzweise bewerteten unbelastete Kinder und Jugendliche sowie Fachkräfte die Materialien, und zwar positiv. Der Ausschuss hält die Aussagekraft dieser Ergebnisse jedoch für eingeschränkt. Die Frage der Akzeptanz durch die eigentliche Zielgruppe könne dadurch nicht beantwortet werden. Der Ausschuss hält das Thema für hoch relevant und sieht weiteren Forschungsbedarf."}, {"stelle": "studiendesign", "art": "text", "unser": "Sonstiges"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Evaluation mit betroffenen Kindern und Jugendlichen konnte wegen pandemiebedingter Zugangsschwierigkeiten nicht durchgeführt werden."}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Die Ersatzbewertung durch unbelastete Kinder und Fachkräfte hat eingeschränkte Aussagekraft. Sie ersetzt nicht die Prüfung der Akzeptanz in der Zielgruppe."}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Erreichbarkeit der Zielgruppe / Durchführbarkeit der Maßnahme im klinischen Setting (Zielgröße gemäß Abschnitt 5.4)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Akzeptanz und subjektiv erlebter Nutzen der Broschüre „Pepe's Tipps“ (Materialevaluation durch Kinder)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Akzeptanz und subjektiv erlebter Nutzen der Website-Module (Materialevaluation durch Jugendliche)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Akzeptanz, Nützlichkeit und Einsatzmöglichkeiten der Broschüre im beruflichen Kontext (Evaluation durch Fachkräfte)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Akzeptanz, Nützlichkeit und Einsatzmöglichkeiten der Website im beruflichen Kontext (Evaluation durch Fachkräfte)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Psychosoziale Probleme der Kinder – Gesamtproblemwert (Elternrating)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Emotionale Probleme der Kinder (Elternrating)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Verhaltensauffälligkeiten, Hyperaktivität, Probleme mit Gleichaltrigen, prosoziales Verhalten (Elternrating)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität der Kinder (Elternrating)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Stresserleben und Stressbewältigung des Kindes (Elternrating)"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Psychosoziale Ressourcen, Emotionsregulation und Lebensqualität der Kinder/Jugendlichen (Selbsturteil)"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Familien- und Lebenssituation sowie Erfahrungen mit dem Hilfesystem der Eltern"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Projekt Pepe-Kids hat eine psychoedukative Präventionsmaßnahme für Kinder und Jugendliche von Eltern in suchtmedizinischer Entzugsbehandlung partizipativ entwickelt: die Broschüre „Pepe's Tipps“ und Website-Module auf kidkit.de. Geplant war eine Phase-I-Machbarkeitsstudie mit einer Gruppe, einem Messzeitpunkt und ohne Kontrollgruppe. Primäre Forschungsfrage war, ob die Maßnahme im klinischen Setting umsetzbar ist. Die Feldphase begann unmittelbar vor dem ersten Corona-Lockdown. In den Kliniken wurden nur 5 Eltern befragt, Materialien gingen an 10 Kinder bzw. Jugendliche, und von diesen kamen keine Fragebögen zurück. Die angestrebte Stichprobe wurde nach Angabe des Berichts nicht erreicht. Ersatzweise bewerteten 30 Fachkräfte (quantitativ), 4 Fachkräfte (Interviews), 11 unbelastete Kinder und 51 unbelastete Jugendliche die Materialien auf 5-Punkt-Skalen; die Mittelwerte lagen zwischen 3,41 und 4,55. Die Auswertung blieb rein deskriptiv. Der Bericht hält fest, dass die alternativen Evaluationswege die Prüfung der Akzeptanz durch Kinder von Eltern in Entzugsbehandlung nicht ersetzen und dass sich aus dem Design keine Aussagen zur Wirksamkeit ableiten lassen. Die Projektnehmer bezeichnen die Datengrundlage von N=101 dennoch als zufriedenstellend und die Evaluation insgesamt als äußerst positiv."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Laut Bericht fiel die Evaluation der Präventionsmaterialien insgesamt äußerst positiv aus. Die Materialien scheinen danach für die jeweiligen Zielgruppen eher geeignet, ansprechend gestaltet und inhaltlich relevant."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt Pepe Kids keine Empfehlung aus. Die entwickelten Präventionsmaterialien (Broschüre und Websitemodule) sollen dennoch mit dem Hinweis auf die fehlende Validierung an NACOA, die Deutsche Hauptstelle für Suchtfragen und die Deutsche Gesellschaft für Suchtforschung und Suchttherapie weitergeleitet werden. Mit der Weiterleitung ist die Geschäftsstelle beauftragt."}, {"stelle": "befund.0", "art": "befund", "unser": "Psychoedukative Präventionsmaterialien (Printbroschüre und Websitemodule) wurden partizipativ entwickelt"}, {"stelle": "befund.1", "art": "befund", "unser": "Positive Bewertung von Gestaltung und Verständlichkeit durch alle Befragten"}, {"stelle": "befund.2", "art": "befund", "unser": "Fachkräfte halten die Materialien für geeignet und kennen keine vergleichbaren"}, {"stelle": "befund.3", "art": "befund", "unser": "Broschüre und Website bleiben nach Projektende verfügbar"}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

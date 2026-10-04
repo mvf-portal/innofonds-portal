@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF19022</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>26 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 93 Aussagen. Die übrigen
+67 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss spricht für das Projekt EVENT keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Der Ausschuss hält gegebenenfalls weitere Forschung zu geeigneten Vorgehensweisen der gemeinsamen Entscheidungsfindung in diesem Versorgungssetting für nötig.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt entwickelte eine digitale Entscheidungshilfe (SDMA) zur gemeinsamen Auswahl von Antipsychotika. Diese wurde in einer cluster-randomisierten kontrollierten Studie evaluiert. Weder beim primären Endpunkt (wahrgenommene Beteiligung aus Patientensicht) noch bei den sekundären Endpunkten zeigte sich ein statistisch signifikanter Vorteil der Interventionsgruppe. Die Methodik hält der Ausschuss für geeignet. Die Aussagekraft sieht er jedoch durch den hohen Drop-out von T0 zu T2 eingeschränkt. Hinzu kommen Verzerrungspotenziale, weil die App nicht auf allen Interventionsstationen wie gewünscht eingesetzt werden konnte. Auf Basis aller Ergebnisse und dieser Limitationen spricht der Ausschuss keine Empfehlung aus.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">cluster-randomisiert</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit. Er hält gegebenenfalls weitere Forschung zu geeigneten Vorgehensweisen zur Stärkung der gemeinsamen Entscheidungsfindung in diesem anspruchsvollen Versorgungssetting für erforderlich.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -178,14 +157,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Kein statistisch signifikanter Unterschied beim primären Endpunkt (Patientensicht) und beim ärztlichen sekundären Endpunkt</p>
+  
   <blockquote>„Sowohl aus Sicht der Patientinnen und Patienten (primärer Endpunkt) als auch aus Perspektive der Ärztinnen und Ärzte (sekundärer Endpunkt) zeigten die Ergebnisse keine statistisch signifikant bessere Wahrnehmung der gemeinsamen Entscheidungsfindung in der IG." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,14 +176,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Auch bei den weiteren sekundären Endpunkten zu keinem Zeitpunkt ein signifikanter Unterschied zugunsten der IG</p>
+  
   <blockquote>„Hinsichtlich der weiteren sekundären Endpunkte konnte ebenfalls zu keinem Zeitpunkt ein statistisch signifikanter Unterschied zugunsten der IG festgestellt werden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -218,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.2">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Hoher Drop-out der Patientinnen und Patienten von T0 zu T2 schränkt die Aussagekraft ein</p>
+  
   <blockquote>„Die Aussagekraft der Ergebnisse ist jedoch eingeschränkt, insbesondere aufgrund des hohen Drop-outs bei den Patientinnen und Patienten von T0 zu T2." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -235,14 +214,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.3">
-  <h3>Hindernis laut Beschluss: Intervention nicht wie geplant umgesetzt</h3>
+  <h3>Hindernis laut Beschluss: Umsetzung der Intervention</h3>
   <p class="unser">Die Entscheidungshilfe kam nicht auf allen Interventionsstationen wie gewünscht zum Einsatz, was Verzerrungspotenziale erzeugt</p>
+  
   <blockquote>„Zudem ergeben sich Verzerrungspotentiale, da die digitale Entscheidungshilfe nicht auf allen Interventionsstationen wie gewünscht zum Einsatz kommen konnte." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -254,52 +233,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.4">
-  <h3>Hindernis laut Beschluss: Intervention nicht wie geplant umgesetzt</h3>
+  <h3>Hindernis laut Beschluss: Umsetzung der Intervention</h3>
   <p class="unser">Die App wurde selten vor der Medikamentenauswahl genutzt, weil bereits Antipsychotika gegeben wurden oder akute Notfälle dies verhinderten</p>
+  
   <blockquote>„Es ging hervor, dass die App während des stationären Aufenthalts eher selten vor Medikamentenauswahl verwendet wurde, da Patientinnen und Patienten beispielsweise bereits Antipsychotika erhielten oder akute Notfälle die vorgelagerte Verwendung der App verhinderten." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Patientinnen und Patienten erlebten die visualisierten und strukturierten SDMA-Inhalte im Arztgespräch als unterstützend und fühlten sich über Nebenwirkungen besser aufgeklärt (qualitative Interviews).</p>
-  <blockquote>„Nichtsdestotrotz berichteten Patientinnen und Patienten, dass insbesondere die visualisierten und strukturierten SDMA -Inhalte im Gespräch mit den Ärztinnen und Ärzten unterstützend wirkten und sie sich gegenüber Nebenwirkungen aufgeklärter fühlten." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Die qualitativen Ergebnisse verdeutlichen die Bedeutung der gemeinsamen Entscheidungsfindung bei der Auswahl von Antipsychotika.</p>
-  <blockquote>„Die Bedeutung der gemeinsamen Entscheidungsfindung bei der Auswahl von Antipsychotika für stationär behandelte Patientinnen und Patienten mit Schizophrenie lässt sich insbesondere anhand der gewonnenen qualitativen Ergebnisse verdeutlichen ." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Zufriedenheit und Versorgungserfahrung“</h3>
   <p class="unser">Von den Patienten wahrgenommene Beteiligung am Entscheidungsprozess (Summenwert SDM-Q-9 aus Patientensicht kurz vor Entlassung, T1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -332,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Zufriedenheit und Versorgungserfahrung“</h3>
   <p class="unser">Wahrgenommene Beteiligung aus Ärztesicht (T1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Symptomschwere (Arzteinschätzung, Schweregrad, T1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Symptomschwere (PANSS-6, T1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Funktion, Mobilität und Alltag“</h3>
   <p class="unser">Funktionsniveau (T1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Zufriedenheit und Versorgungserfahrung“</h3>
   <p class="unser">Behandlungszufriedenheit (T1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Therapietreue / Einstellung zu Medikamenten (T1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Zufriedenheit und Versorgungserfahrung“</h3>
   <p class="unser">Zufriedenheit mit der Medikation (T1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Rehospitalisierung (Anzahl stationärer Wiederaufnahmen, T2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -485,11 +426,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben entwickelte eine Tablet-basierte, evidenzbasierte Entscheidungshilfe (SDMA) zur Auswahl von Antipsychotika für stationär behandelte Patienten mit Schizophrenie. In Fokusgruppen (Phase 1; 8 Patienten, 10 Psychiater) sahen beide Gruppen Bedarf an einer verständlichen, zuverlässigen Informationsquelle. In einer clusterrandomisierten Studie (Phase 2) wurden 153 Patienten eingeschlossen (79 Kontrolle, 74 Intervention). Beim primären Endpunkt, der von Patienten wahrgenommenen Beteiligung (SDM-Q-9) bei Entlassung, lag der Mittelwert bei 26,14 (Intervention) gegenüber 24,58 (Kontrolle); der Unterschied war laut Bericht nicht signifikant (p = 0,40). Auch bei den sekundären Parametern berichtet das Vorhaben keine signifikanten Gruppenunterschiede. Qualitativ wurde die App nur in wenigen Fällen tatsächlich vor der Medikamentenwahl genutzt; genannt werden bereits festgelegte Medikation, akute Notfälle und hierarchische Klinikstrukturen. Für die Einordnung bedeutsam sind der Wechsel des primären Endpunkts von DAI zu SDM-Q-9 per Amendment im April 2023 während laufender Rekrutierung, die Reduktion der Fallzahl von 248 auf 148, der Ausschluss von 27 randomisierten Interventionspatienten aus der Primäranalyse (Per-Protocol, keine Imputation), die fehlende Verblindung sowie die vollständige Befragung von nur 35 Patienten beim 3-Monats-Follow-up.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Primärer Endpunkt: Der patientenberichtete SDM-Q-9 bei Entlassung (T1) lag in der Interventionsgruppe bei 26,14 (SD 7,83) und in der Kontrollgruppe bei 24,58 (SD 9,92); laut Bericht nicht signifikant (ME 1,56; 95%-KI −2,10 bis 5,22; p = 0,40).</p>
+  
   <blockquote>„„Der mittlere, von den Patienten selbst gerate te, SDMQ-9 Score in der Interventionsgruppe war M = 26,14 (SD= 7,83), der in der Kontrollgruppe mit 24,58 (SD= 9,92) etwas niedriger, der Unterschied war aber nicht signifikant (ME = 1,56; 95 % CI : -2,10 bis 5,22; p = 0,40).“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Zusammenfassung ergaben sich in der Cluster-RCT mit 153 Patienten keine signifikanten Gruppenunterschiede in der wahrgenommenen Beteiligung (SDM-Q-9) oder bei sekundären Parametern.</p>
+  
   <blockquote>„„In Phase 2 (Cluster RCT) wurden 153 Patienten einschlossen. Es ergaben sich keine signifikanten Gruppenunterschiede in der wahrgenommenen Beteiligung (SDMQ -9) oder bei sekundären Parametern.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Qualitativ verbesserte die App laut Bericht nur selten die wahrgenommene Einbeziehung aus Patientensicht und wurde wegen Umsetzungshindernissen im Stationsalltag nur in wenigen Fällen tatsächlich vor der Medikamentenwahl genutzt.</p>
+  
   <blockquote>„„die App nur selten die wahrgenommene Einbeziehung in die medikamentöse Entscheidungsfindung aus Patientensicht verbesserte. Verschiedene Hindernisse bei der Umsetzung im Stationsalltag führten dazu, dass die App nur in wenigen Fällen tatsächlich vor der Medikamentenwahl genutzt wurde“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der primäre Endpunkt wurde per Amendment 3 (Änderungsbescheid vom 21.04.2023), also während der von März 2022 bis Oktober 2023 laufenden Rekrutierung, von DAI auf SDM-Q-9 gewechselt; begründet wird dies mit der vom Stationsteam kontrollierten Medikamenteneinnahme, die die Aussagekraft der Adhärenzmessung reduziere.</p>
+  
   <blockquote>„„Amendment 3 (Wechsel des primären Endpunkts von DAI zu SDMQ -9 und weiteren sekundären Ergebnisparametern, Änderungsbescheid vom 21.April 2023)“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">27 randomisierte Interventionspatienten, die vor der Intervention entlassen wurden oder sich selbst entließen, wurden aus der Primäranalyse ausgeschlossen (Per-Protocol statt ITT); fehlende Werte wurden nicht imputiert.</p>
+  
   <blockquote>„„Personen, die zwar randomisiert der Interventionsgruppe zugewiesen worden waren, jedoch vor Durchführung der I ntervention frühzeitig entlassen wurden bzw. sich selbst entlassen haben (N = 27). [...] Es wurden keine fehlenden Werte imputiert.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,50 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen langsamer Rekrutierung (Pandemie, Personalausfälle) wurde ein zusätzliches Zentrum (Augsburg) aufgenommen und die Fallzahl von 248 auf 148 reduziert; die Power-Berechnung nahm nun 15 % statt zuvor 25 % Dropout und einen ICC von 0,02 an.</p>
+  
   <blockquote>„„wurde beantragt, ein zusätzliches Studienzentrum (Klinik für Psychiatrie und Psychotherapie der Universität Augsburg) hinzuzunehmen und g leichzeitig eine Anpassung der Fallzahl von ursprünglich N=248 auch N=148 vorzunehmen (Projektplanänderung 1).“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Die vollständige Befragung beim 3-Monats-Follow-up (T2) durchliefen nur 35 Patienten.</p>
-  <blockquote>„„Die vollständige Befragung (Fragebögen und Telefoninterview) bei T2 durchliefen allerdings nur 35 Patienten (Tabelle 8, Anlagen 6, 14 und 15).“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.4">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Als Gründe für die geringe Patientenbeteiligung mittels App nennt der Bericht vor allem organisatorische Herausforderungen: Die Medikation war häufig bereits festgelegt, bevor die App genutzt werden konnte, oder akute Situationen erforderten rasches Handeln.</p>
-  <blockquote>„„Gründe hierfür lagen vor allem in organisatorischen Herausforderungen: Häufig war die Medikation bereits festgelegt, bevor die App genutzt werden konnte, oder akute Situationen erforderten rasches Handeln ohne die Möglichkeit eines strukturierten Entscheidungsprozesses.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -656,11 +559,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Wiederaufnahmen bei T2: Im Text wird das 95%-KI mit −0,81 bis −0,54 angegeben (schließt den Schätzer ME = −0,23 nicht ein und passt nicht zu p = 0,18), laut Auswertung weist Tabelle 8 −0,59 bis 0,13 aus (S. 31).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -675,11 +578,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Therapietreue (DAI) bei T2: Der Text nennt 4,81 für die Interventions- und 3,8 für die Kontrollgruppe, Tabelle 8 weist die Werte laut Auswertung umgekehrt zu; zudem passt das Vorzeichen des Schätzers (ME = −1,01) nicht zur Textaussage einer höheren Therapietreue in der Interventionsgruppe (S. 31).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -694,11 +597,125 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Selbsteingeschätzter CGI bei T1: Das angegebene 95%-KI „−0,76 bis −0,68“ schließt den Schätzer ME = −0,04 nicht ein (S. 29).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>67 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss spricht für das Projekt EVENT keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Der Ausschuss hält gegebenenfalls weitere Forschung zu geeigneten Vorgehensweisen der gemeinsamen Entscheidungsfindung in diesem Versorgungssetting für nötig.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit. Er hält gegebenenfalls weitere Forschung zu geeigneten Vorgehensweisen zur Stärkung der gemeinsamen Entscheidungsfindung in diesem anspruchsvollen Versorgungssetting für erforderlich.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Patientinnen und Patienten erlebten die visualisierten und strukturierten SDMA-Inhalte im Arztgespräch als unterstützend und fühlten sich über Nebenwirkungen besser aufgeklärt (qualitative Interviews).</p>
+  
+  <blockquote>„Nichtsdestotrotz berichteten Patientinnen und Patienten, dass insbesondere die visualisierten und strukturierten SDMA -Inhalte im Gespräch mit den Ärztinnen und Ärzten unterstützend wirkten und sie sich gegenüber Nebenwirkungen aufgeklärter fühlten." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Die qualitativen Ergebnisse verdeutlichen die Bedeutung der gemeinsamen Entscheidungsfindung bei der Auswahl von Antipsychotika.</p>
+  
+  <blockquote>„Die Bedeutung der gemeinsamen Entscheidungsfindung bei der Auswahl von Antipsychotika für stationär behandelte Patientinnen und Patienten mit Schizophrenie lässt sich insbesondere anhand der gewonnenen qualitativen Ergebnisse verdeutlichen ." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die vollständige Befragung beim 3-Monats-Follow-up (T2) durchliefen nur 35 Patienten.</p>
+  
+  <blockquote>„„Die vollständige Befragung (Fragebögen und Telefoninterview) bei T2 durchliefen allerdings nur 35 Patienten (Tabelle 8, Anlagen 6, 14 und 15).“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.4">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Als Gründe für die geringe Patientenbeteiligung mittels App nennt der Bericht vor allem organisatorische Herausforderungen: Die Medikation war häufig bereits festgelegt, bevor die App genutzt werden konnte, oder akute Situationen erforderten rasches Handeln.</p>
+  
+  <blockquote>„„Gründe hierfür lagen vor allem in organisatorischen Herausforderungen: Häufig war die Medikation bereits festgelegt, bevor die App genutzt werden konnte, oder akute Situationen erforderten rasches Handeln ohne die Möglichkeit eines strukturierten Entscheidungsprozesses.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -713,11 +730,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Fallzahl: Nach Projektplanänderung 1 wurde die Fallzahl auf N = 148 reduziert (S. 12), an anderer Stelle heißt es, die Studie sei „mit der abschließend geplanten Fallzahl von 153 Teilnehmern“ abgeschlossen worden (S. 34). Aus den Abschnitten geht zudem nicht hervor, ob die 27 aus der Primäranalyse ausgeschlossenen Interventionspatienten in den 74 eingeschlossenen Interventionspatienten enthalten sind.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -732,11 +749,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Der Bericht spricht von einer Besserung der Wahrnehmung, an Therapieentscheidungen beteiligt zu werden, „im Verlauf der Behandlung“ in der SDMA-Gruppe (S. 32), obwohl der SDM-Q-9 nur zu T1 und nicht zu T0 oder T2 erhoben wurde (S. 13).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -751,11 +768,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Qualitative Bewertung: Die App habe die Einbindung „nur bedingt“ (S. 2), „nur selten“ (S. 32) bzw. „nur teilweise“ (S. 36) gefördert und sei nur in wenigen Fällen vor der Medikamentenwahl genutzt worden; zugleich heißt es, die Arbeitshypothese eines Einflusses des SDMA auf die Kommunikation sei bestätigt und das Therapieschema habe „aktiv [...] positiv beeinflusst werden“ können (S. 33).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -770,11 +787,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Subgruppe Technikaffinität: Der Satz „weder für die erste Frage [...] noch für die zweite Frage [...] nicht signifikant“ enthält eine doppelte Verneinung; laut Auswertung sind die p-Werte (0,94 bzw. 0,31) jedoch als nicht signifikant ausgewiesen (S. 29).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -784,16 +801,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>57 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In die clusterrandomisierte Studie wurden 153 Patienten eingeschlossen, 79 in der Kontroll- und 74 in der Interventionsgruppe.</p>
+  
   <blockquote>„„153 Patienten wurden in die Studie eingeschlossen, davon 79 in der Kontrollgruppe und 74 in der Interventionsgruppe.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der ärztlich eingeschätzte SDM-Q-9 bei T1 lag bei 36,34 (Intervention) gegenüber 36,54 (Kontrolle), laut Bericht nicht signifikant (ME −0,76; 95%-KI −5,16 bis 3,64; p = 0,71); Ärzte schätzten den Einbezug mitunter um zehn Punkte besser ein als die Patienten.</p>
+  
   <blockquote>„„Die Ärzte schätzten den Einbezug der Patienten in die Behandlung mitunter um zehn Punkte besser ein als die Patienten. In der Interventionsgruppe war der mittlere Score M = 36,34 (SD = 5,02), in der Kontrollgruppe M = 36,54 (SD = 6,41). Auch hier war der Unterschied [...] nicht signifikant (ME = -0,76; 95% CI: -5,16 bis 3,64; p = 0,71).“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei den sekundären Wirksamkeitsparametern zu T1 fanden sich laut Bericht keine signifikanten Gruppenunterschiede.</p>
+  
   <blockquote>„„Auch hinsichtlich der sekundären Ergebnisparameter in Bezug auf Wirksamkeit gaben sich keine signifikanten Unterschiede zwischen den Gruppen (Tabelle 7 und Anlage 12/13).“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +862,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Ärztlicher CGI-Schweregrad bei T1: 4,33 (Intervention) gegenüber 4,03 (Kontrolle); ME 0,30 (95%-KI −0,17 bis 0,77; p = 0,21).</p>
+  
   <blockquote>„„Der Schweregrad nach CGI in der Arzteinschätzung lag bei T1 bei M = 4,33 (SD= 0,98) in der Interventionsgruppe und bei M = 4,03 (SD = 0,91) in der Kontrollgruppe. Die Modellschätzung ergab einen Wert von ME = 0,30 (95% CI: -0,17 bis 0,77; p = =0,21)“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +881,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">PANSS-6 bei T1: 15,62 (Intervention) gegenüber 15,57 (Kontrolle); ME 1,16 (95%-KI −4,49 bis 6,82; p = 0,65).</p>
+  
   <blockquote>„„Auch die mittleren PANSS -6 Werte waren in beiden Gruppen etwa gleich mit M = 15,62 (SD= 6,13) in der Interventionsgruppe und M = 15,57 (SD = 4,80) in der Kontrollgruppe, die Modellschätzung ergab einen Wert von ME = 1,16 (95% CI -4,49 bis 6,82; p = 0,65).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +900,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Selbsteingeschätzter CGI bei T1: 3,30 (Intervention) gegenüber 3,34 (Kontrolle); ME −0,04 (KI im Bericht „−0,76 bis −0,68“; p = 0,92), laut Bericht kein signifikanter Gruppenunterschied.</p>
+  
   <blockquote>„„M = 3,30 (SD= 1,67) in der Interventionsgruppe und M = 3,34 (SD = 1,85) in der Kontrollgruppe. Die Modellschätzung ergab einen Wert von ME = -0,04 (95% CI : -0,76 bis -0,68; p = 0,92 ) weshalb es auch hier keinen signifikante Gruppenunterschiede gab.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +919,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">SOFAS-Funktionsniveau bei T1: 49,14 (Intervention) gegenüber 55,82 (Kontrolle); ME −6,68 (95%-KI −13,84 bis 0,48; p = 0,07).</p>
+  
   <blockquote>„„Das Funktionsniveau laut SOFAS lag bei T1 bei M = 49,14 (SD= 12,60) in der Interventionsgruppe und auf M = 55,82 (SD = 15,10) in der Kontrollgruppe. Die Modellschätzung ergab einen Wert von ME = -6,68 (95% CI : -13,84 bis 0,48; p = 0,07 ).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +938,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Behandlungszufriedenheit (ZUF-8) bei T1: 20,12 (Intervention) gegenüber 19,72 (Kontrolle); ME 0,39 (95%-KI −0,59 bis 1,83; p = 0,43), laut Bericht keine signifikanten Gruppenunterschiede.</p>
+  
   <blockquote>„„nach ZUF-8 die Zufriedenheit bei M = 20,12 (SD= 1,71) in der Interventionsgruppe und auf M = 19,72 (SD = 2,86) in der Kontrollgruppe lag. Die Modellschätzung ergab einen Wert von ME = 0,39 (95% CI: -0,59 bis 1,83; p = 0,43). Es fanden sich keine signifikanten Gruppenunterschiede.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +957,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Therapietreue (DAI) bei T1: 4,53 (Intervention) gegenüber 5,17 (Kontrolle); ME −0,79 (95%-KI −2,49 bis 0,92; p = 0,34).</p>
+  
   <blockquote>„„Die mit dem DAI erfasste Therapietreue lag bei M = 4,53 (SD = 2,75) in der Interventionsgruppe und bei M = 5,17 (SD = 3,51) in der Kontrollgruppe; die Modellschätzung ergab einen Wert von ME = -0,79 (95% CI: -2,49 bis 0,92; p = 0,34).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +976,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die ärztlich bewertete Compliance bei T1 lag bei 1,61 (Intervention) gegenüber 1,67 (Kontrolle); ein Test wird im Zitat nicht genannt.</p>
+  
   <blockquote>„„Die Compliance bewerteten die Ärzte in der Interventionsgruppe mit M = 1,61 (SD = 0,79) und in der Kontrollgruppe mit M = 1,67 (SD = 0,86).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +995,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zufriedenheit mit der Medikation (MSQ) bei T1: 4,86 (Intervention) gegenüber 4,54 (Kontrolle); ME 0,37 (95%-KI −0,54 bis 1,28; p = 0,40), laut Bericht keine signifikanten Gruppenunterschiede.</p>
+  
   <blockquote>„„Die mit dem MSQ gemessene Zufriedenheit mit der Medikation lag bei M = 4,86 (SD = 1,61) in der Interventionsgruppe und bei M = 4,54 (SD = 1,98) in der Kontrollgruppe, die Modellschätzung ergab einen Wert von ME = 0,37 (95% CI: -0,54 bis 1,28; p = 0,40 ).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1014,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei den Nebenwirkungen (UKU) fanden sich laut Bericht keine relevanten Unterschiede zwischen den Gruppen.</p>
+  
   <blockquote>„„Die Nebenwirkungen nach UKU werden in Anlage 13 dargestellt. Es fanden sich keine relevanten Unterschiede zwischen den Gruppen.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1033,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Subgruppenanalyse Technikaffinität: Technikaffine Patienten fühlten sich nach SDM-Q-9 tendenziell besser einbezogen; der Unterschied wird für beide Affinitätsfragen als nicht signifikant berichtet (Formulierung mit doppelter Verneinung).</p>
+  
   <blockquote>„„Patienten, die sich als technikaffin bezeichneten, fühlten sich nach SDMQ-9 tendenziell besser in die Entscheidung integriert als die nicht -technikaffinen Patienten. Dieser Unterschied war aber weder für die erste Frage [...] (TechAff1) noch für die zweite Frage [...] (TEchAff2) nicht signifikant (Tabelle 6).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1052,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der ICC für den primären Endpunkt wurde im verwendeten Modell auf 0 geschätzt.</p>
+  
   <blockquote>„„Für den primären Endpunkt wurde der beobachtete Intraklassenkorrelationskoeffizient (ICC) im verwendeten Modell auf 0 geschätzt (Tabelle 7 und 8, Anlagen 12 und 14).“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1071,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Wiederaufnahmen drei Monate nach Entlassung (T2): im Mittel 0,13 (Intervention) gegenüber 0,36 (Kontrolle); laut Bericht nicht signifikant (ME −0,23; p = 0,18; zum KI siehe Widersprüche).</p>
+  
   <blockquote>„„Im Mittel wurden die Patienten der Interventionsgruppe M = 0,13 -mal (SD = 0,35) wieder aufgenommen, in der Kontrollgruppe M = 0,36 -mal (SD = 0,49). Dieser Unterschied war aber nicht signifikant (ME = -0,23; 95 % CI : -0,81 bis -0,54; p = 0,18).“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1090,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Selbsteingeschätzte Symptomschwere (CGI) bei T2: 3,17 (Intervention) gegenüber 2,90 (Kontrolle), laut Bericht nicht signifikant (ME 0,26; 95%-KI −0,65 bis 1,17; p = 0,56).</p>
+  
   <blockquote>„„Der Unterschied zwischen den Gruppen war allerdings nicht signifikant (MIntervention = 3,17 (SD = 1,81), MKontrolle = 2,90 (SD = 1,56), ME = 0,26, 95% CI: -0,65 bis 1,17; p = 0, 56).“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1109,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Ärztlich eingeschätzte Symptomschwere (CGI) bei T2: 4,59 (Intervention) gegenüber 4,42 (Kontrolle), laut Bericht nicht signifikant (ME 0,17; 95%-KI −0,49 bis 0,83; p = 0,60).</p>
+  
   <blockquote>„„Die Symptomschwere nach Ärzteeinschätzung unterschied sich ebenfalls nicht signifikant zwischen den Gruppen und lag bei mäßig schwer ( MIntervention = 4,59 (SD = 0,88), MKontrolle = 4,42 (SD = 1,10), ME = 0,17, 95% CI: -0,49 bis 0,83; p = 0,60).“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1128,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Medikamentöse Therapietreue (DAI) bei T2 laut Text 4,81 (Intervention) gegenüber 3,8 (Kontrolle), laut Bericht nicht signifikant (ME −1,01; 95%-KI −2,75 bis 0,74; p = 0,25); die Tabelle weist die Werte umgekehrt zu.</p>
+  
   <blockquote>„„Patienten der Interventionsgruppe hatten im Mittel 3 Monate nach der Entlassung eine bessere Medikamentöse Therapietreue (M = 4,81; SD = 3,70) als die Kontrollgruppe (M = 3,8; SD = 2 ,55). Dieser Unterschied war allerdings nicht signifikant (ME = -1,01; 95% CI : -2,75 – 0,74; p = 0.25).“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Lebensqualität (EUROHIS-QOL) bei T2: 18,96 (Intervention) gegenüber 21,03 (Kontrolle); ME −2,07 (95%-KI −5,06 bis 0,92; p = 0,17).</p>
+  
   <blockquote>„„Die Lebensqualität gemessen mit EuroHisQol lag bei M = 18,96 (SD = 6,46) in der Interventionsgruppe und bei M = 21,03 (SD = 4,70) in der Kontrollgruppe (ME = -2,07; 95 % CI: -5,06 bis 0,92; p = 0,17).“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Soziale Funktionsfähigkeit (SOFAS) bei T2: 48,56 (Intervention) gegenüber 48,50 (Kontrolle), von den Ärzten in beiden Gruppen als ungefähr gleich erheblich beeinträchtigt eingeschätzt (ME −0,06; 95%-KI −9,50 bis 9,38; p = 0,99).</p>
+  
   <blockquote>„„Die Ärzte schätzen die soziale Funktionsfähigkeit in beiden Gruppen ungefähr gleich erheblich beeinträchtigt (MIntervention = 48,56 (SD = 16,45), MKontrolle = 48,50 (SD = 10,92), ME = -0.06, 95% CI: -9,50 bis 9,38; p = 0,99).“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1185,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die mittlere Hospitalisierungsdauer (T0–T1) lag bei ca. 22 Tagen in der Kontroll- und ca. 30 Tagen in der Interventionsgruppe; ein Test wird nicht genannt.</p>
+  
   <blockquote>„„Grundsätzlich lag die mittlere Hospitalisierungsdauer (T0 -T1) bei ca. 22 Tagen (0.74 Monate) in der Kontrollgruppe und ca. 30 Tagen (1.01 Monate) in der Interventionsgruppe (Tabelle 5).“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1204,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Verbesserungen von Beteiligungserleben, Symptomschwere, Funktionsfähigkeit, Einsicht und Zufriedenheit traten laut Bericht in beiden Gruppen ähnlich auf und können daher nicht kausal dem SDMA zugeschrieben werden.</p>
+  
   <blockquote>„„Allerdings fand eine ähnlich starke Besserung in diesen Bereichen auch in der Kontrollgruppe statt, so dass diese nicht kausal mit der Verwendung des SDMA in Verbindung gebracht werden kann.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1223,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Baseline: mittlerer PANSS-6 etwa 19, ärztlicher CGI-Schweregrad etwa 5 („deutlich krank“), Selbsteinschätzung etwa 4 („mäßig krank“).</p>
+  
   <blockquote>„„Der mittlere PANSS-6 score lag bei etwa 19 Punkten und der vom Arzt bestimmte mittlere CGI Schweregrad bei etwa 5, was deutlich krank bedeutet. Die Patienten selbst schätzten ihren Schweregrad mit etwa 4 (mäßig krank) etwas geringer ein.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1242,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Baseline: Ein mittlerer SOFAS von 44 bedeutet laut Bericht eine schwere Beeinträchtigung des Funktionsniveaus der Teilnehmenden.</p>
+  
   <blockquote>„„Ein mittlerer SOFAS von 44 bedeutet eine schwere Beeinträchtigung des Funktionsniveaus der Studienteilnehmer.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1261,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Baseline: Die Krankheitseinsicht nach Birchwood Insight Scale (mittlerer Score ca. 3) war laut Bericht gering.</p>
+  
   <blockquote>„„Laut Birchwood Insight Scale (mittlerer Score ~ 3) war die Einsichtsfähigkeit in die eigene Erkrankung gering.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1280,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Patienten erlebten in den Interviews vor allem die Visualisierung der Studienergebnisse als hilfreich, um Inhalte des Arztgesprächs aufzunehmen.</p>
+  
   <blockquote>„„Patienten erlebten insbesondere die Visualisierung der Studienergebnisse hilfreich, um Inhalte des Arztgesprächs besser aufnehmen zu können.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1299,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Zusammenfassung zeigten sich trotz fehlenden signifikanten Effekts auf das Beteiligungserleben qualitative Hinweise auf Nutzen in der Informationsvermittlung.</p>
+  
   <blockquote>„„Obwohl kein signifikanter Effekt auf das subjektive Erleben der Beteiligung festgestellt wurde, zeigten sich qualitative Hinweise auf Nutzen in der Informationsvermittlung.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1318,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der abschließenden Fokusgruppe wurde das SDMA-Tool insgesamt als gut verständlich bewertet; die Forest Plots wurden positiv hervorgehoben.</p>
+  
   <blockquote>„„Das SDMA-Tool wurde insgesamt als gut verständlich bewertet. Besonders die Darstellung der Forest Plots zur Veranschaulichung des Vergleichs unterschiedlicher Antipsychotika wurde positiv hervorgehoben“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1337,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht wurde eine aus Sicht von Betroffenen und Behandlern sehr ansprechende Tablet-App für partizipative Entscheidungsfindung entwickelt.</p>
+  
   <blockquote>„„Es konnte eine aus Sicht der Betroffenen und Behandlern sehr ansprechende Tablet -basierte Applikation für die partizipative Entscheidungsfindung bei stationär behandelten Patienten mit Schizophrenie entwickelt werden (Anlage 2).“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1356,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Phase 1: An fünf Fokusgruppen nahmen 8 stationär behandelte Patienten und 10 Psychiater teil; die thematische Analyse ergab sechs Hauptthemen.</p>
+  
   <blockquote>„„An den fünf durchgeführten Fokusgruppen nahmen insgesamt N = 8 stationär behandelte Patienten sowie n = 10 Psychiater teil.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1375,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Phase 1: Beide Gruppen äußerten grundsätzliche Offenheit gegenüber einer Entscheidungshilfe und Bedarf an einer zuverlässigen, verständlichen und transparenten Informationsquelle zu Antipsychotika als Alternative zu Packungsbeilagen und Internetrecherchen.</p>
+  
   <blockquote>„„Insgesamt äußerten beide Gruppen eine grundsätzliche Offenheit gegenüber dem Konzept einer Entscheidungshilfe und betonten den Bedarf an einer zuverlässigen, verständlichen und transparenten Informationsquelle zu Antipsychotika.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1394,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Phase 1: Gewünscht wurde überwiegend ein digitales, modulares, an kognitive und emotionale Bedürfnisse anpassbares Format, zusätzlich eine Papierversion etwa für ältere oder akut psychotische Patienten.</p>
+  
   <blockquote>„„wünschten sich beide Gruppen überwiegend ein digitales Format (z. B. in F orm einer App), das modular aufgebaut ist [...]. Zusätzlich wurde auch der Wunsch nach einer analogen (papierbasierten) Version geäußert“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1413,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Phase 1: Patienten berichteten belastende Nebenwirkungen und wünschten alternative Behandlungsmöglichkeiten; einige befürworteten Entscheidungsunterstützung, wollten die finale Entscheidung aber dem Arzt überlassen.</p>
+  
   <blockquote>„„Patienten berichteten von belastenden Nebenwirkungen und äußerten den Wuns ch nach alternativen Behandlungsmöglichkeiten. Einige sprachen sich für eine Entscheidungsunterstützung aus, wollten jedoch die fina le Entscheidung dem Arzt überlassen.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1432,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.36">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Phase 1: Ärzte nannten als potenzielle Hürden kognitive Einschränkungen, Misstrauen gegenüber Technik und mangelnde digitale Kompetenz bestimmter Patientengruppen.</p>
+  
   <blockquote>„„Als potenzielle Hürden nannten Ärzte unter anderem kognitive Einschränkungen, Misstr auen gegenüber Technik sowie eine mangelnde digitale Kompetenz bei bestimmten Patientengruppen.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1451,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Genehmigung einer Aufwandsentschädigung von 5 € pro Studientermin und von Studienflyern im März 2023 waren laut Bericht 50 % der angestrebten Teilnehmerzahl bis 31.03.2023 und 75 % bis 31.05.2023 rekrutiert.</p>
+  
   <blockquote>„„wurde i m März 2023 eine Aufwandsentschädigung i.H.v. 5€ pro Studientermin und der Einsatz von Studienflyern beantragt und schließlich auch genehmigt (Projektplanänderung 2). Dadurch wurden 50 % der angestrebten Teilnehmerzahl bis zum 31. März 2023, und 75% bis zum 31.05.2023 erfolgreich rekrutiert.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1470,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Rekrutierung wurde am 31.10.2023 mit 153 Patienten abgeschlossen; die letzten Follow-up-Erhebungen fanden am 15.04.2024 statt.</p>
+  
   <blockquote>„„Die Rekrutierung wurde schließlich am 31. Oktober 2023 mit insgesamt 153 Patienten abgeschlossen. Die Follow -up-Erhebungen für den letzten Patienten fanden am 15.04.2024 statt“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1489,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Qualitative Begleitforschung Phase 2: Von 22 gewonnenen Teilnehmenden wurden 21 Interviews (6 Psychiater, 15 Patienten) aus dem Zeitraum Januar bis September 2023 ausgewertet.</p>
+  
   <blockquote>„„Insgesamt wurden somit Interviews mit n=6 Psychiater sowie n=15 Patient en geführt und ausgewertet, die im Zeitraum von Januar 2023 bis September 2023 stattfanden.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1508,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eine Verblindung von Studienteilnehmern, Behandlungsteams und Ratern erfolgte nicht.</p>
+  
   <blockquote>„„Eine Verblindung von Studienteilnehmern, Behandlungsteams und Ratern erfolgte nicht.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1527,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der primäre Endpunkt SDM-Q-9 wurde nur zu T1 erhoben, nicht zu T0 oder T2; begründet wird dies mit fehlender Entscheidung zu Baseline und angenommener Gleichverteilung durch Randomisierung.</p>
+  
   <blockquote>„„Darüber hinaus wurde entschieden , den primären Endpunkt (SDMQ -9) nur zu T1, nicht aber zu T0 oder T2 zu erheben.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1546,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen eines Rekrutierungsrückstands vor allem bei Interventionspatienten wurden einige Kontrollstationen nachträglich zu Interventionsstationen umgewidmet.</p>
+  
   <blockquote>„„Im Laufe der Rekrutierungsphase entstand einen R ekrutierungsrückstand, vor allem in der Gruppe der Interventionspatienten. [...] wurde in Rücksprache mit dem Methodik -Spezialisten entschieden, einige Kontrollstationen zu Interventionsstationen umzuwidmen.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1565,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht kam es zu erheblichen Dropout-Raten; zudem beeinträchtigte die Corona-Pandemie die Studie, und eine Station musste wegen Personalmangels geschlossen und ersetzt werden.</p>
+  
   <blockquote>„„Es kam doch zu erheblichen Dropout Raten. Auch die Corona Pandemie war für unsere Untersuchung nicht zuträglich. Schließlich musste eine unserer Stationen während der Studie aufgrund von Personalmangel geschlossen werden“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1584,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die ICC-Schätzungen sind laut Bericht wegen geringer Fallzahlen und limitierter Varianzstruktur mit Vorsicht zu interpretieren; da der SDM-Q-9 nur einmal erhoben wurde, liegt kein klassischer within-subject-ICC vor.</p>
+  
   <blockquote>„„die ICC -Schätzungen aufgrund der geringen Fallzahlen und der limitierten Varianzstruktur mit Vorsicht zu interpretieren sind und keine robuste Schätzung erlauben.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1603,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Hierarchisch-strukturelle Ungleichheiten zwischen Patienten und Ärzten im akuten Setting erschwerten laut Bericht die gemeinsame Entscheidungsfindung deutlich.</p>
+  
   <blockquote>„„auch hierarchisch -strukturelle Ungleichheiten zwischen Patienten und Ärzten im akuten Behandlungssetting eine große Rolle spielen, die die angestrebte “gemeinsame Entscheidungsfindung” auf Augenhöhe grundsätzlich deutlich erschweren.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1622,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren führen ihre Ergebnisse wahrscheinlich auch auf die Durchführung überwiegend auf geschützten Stationen mit sehr schwer kranken Patienten zurück.</p>
+  
   <blockquote>„„Unsere Ergebnis se hängen wahrscheinlich ebenfalls mit der Durchführung der Studie in größtenteils geschützten Stationen mit sehr schwer kranken Patienten mit Schizophrenie zusammen.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1641,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Studienteilnehmer starteten nicht unbedingt unbehandelt; in beiden Gruppen bestanden bereits bei Aufnahme Nebenwirkungen.</p>
+  
   <blockquote>„„In beiden Gruppen hatten die Studienteilnehmer bereits bei Aufnahme Nebenwirkungen. Hierbei ist zu beachten, dass die Studienteilnehmer nicht unbedingt unbehandelt in die Studie starteten.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1660,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Nutzung der App in Akutsituationen wurde als zu verwirrend empfunden; zudem fehlten Informationen zu sexuellen und psychischen Nebenwirkungen.</p>
+  
   <blockquote>„„Die Teilnehmer empfanden die Nutzung der App in Akutsituationen als zu verwirrend und sprachen sich dafür aus, sie eher in stabileren Phasen der Behandlung einzusetzen. Zudem fehlten wichtige Informationen zu Nebenwirkungen, insbesondere zu sexuellen und psychischen Auswirkungen“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1679,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Anleitung der App wurde als zu lang und komplex empfunden; ein kurzes Video-Tutorial wurde als hilfreich erachtet.</p>
+  
   <blockquote>„„Die derzeitige Anleitung wurde als zu lang und komplex empfunden, weshalb ein kurzes Video -Tutorial am Anfang als hilfreich erachtet wurde, um den Einstieg zu erleichtern.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1698,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die App wurde laut Rückmeldung eher außerhalb von Visiten oder Patiententerminen zur Selbstinformation der Ärzte verwendet.</p>
+  
   <blockquote>„„Es wurde angemerkt, dass die App eher außerhalb von Visiten oder Patiententerminen verwendet werde, um sich als Arzt selbst zu informiere n.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1717,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für die Interviews konnten nur 6 Ärzte rekrutiert werden; die Vielfalt ärztlicher Nutzer war geringer als erwartet (begründet mit vorzeitig erreichter theoretischer Sättigung).</p>
+  
   <blockquote>„„Letztendlich konnten nur N=6 Ärzte für die Interviews rekrutiert werden.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1736,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In den Fokusgruppen der Phase 1 konnten pandemiebedingt auf Patientenseite jeweils nur vier Probanden pro Gruppe befragt werden; bei den Psychiatern wurde die Zielzahl erreicht.</p>
+  
   <blockquote>„„wohingegen bei den Nutzern auf Patientenseite aufgrund der Corona -Pandemie und den damit verbundenen Einschränkungen in den Abläufen auf Station jeweils nur vier Probanden pro Gruppendiskussion befragt werden konnten.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1755,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Studienphase 2 begann nach pandemiebedingter Verzögerung am 31.03.2022.</p>
+  
   <blockquote>„„Die Studienphase 2 begann am 31. März 2022 nach einer pandemiebedingten Verzögerung mit der Aufnahme des ersten Patienten an einer Kontrollstation des Klinikums rechts der Isar.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1774,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Vor Beginn der RCT wurde auf die Erhebung objektiver sekundärer Endpunkte wie EKG und Prolaktinspiegel verzichtet.</p>
+  
   <blockquote>„„haben wir uns vor Beginn der Datenerhebung im Rahmen der randomisiert-kontrollierten Studie gegen die Erhebung von sekundären Endpunkten wie EKGs und Messungen des Prolaktin -Spiegels entschieden.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1793,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Angaben zur Hospitalisierungsdauer sind Approximationen, da genaue Werte nicht immer vorlagen.</p>
+  
   <blockquote>„„Die Daten sind Approximationen, weil die genauen Werte nicht immer vorlagen.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1795,12 +1812,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.21">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die abschließende Fokusgruppe wurde nur handschriftlich protokolliert und ohne offiziellen Leitfaden anhand von PowerPoint-Folien durchgeführt.</p>
+  
   <blockquote>„„Die Fokusgruppe wurde daher lediglich handschriftlich protokolliert und ohne offiziellen Leitfaden, sondern anhand von Power-Point Slides mit den Visualisierungen des SDMA durchgeführt (Anlage 8).“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1814,12 +1831,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.22">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ein Interview wurde wegen zu geringer Deutschkenntnisse von der Auswertung ausgeschlossen.</p>
+  
   <blockquote>„„Insgesamt wurden von den ursprünglich N=22 Interviews nur N=21 ausgewertet, da ein Interview aufgrund mangelnder Deutschkenntnisse ausgeschlossen wurde.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1833,12 +1850,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.23">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Datenschutzanforderungen, die mit den Datenschutzbeauftragten der Kliniken abgestimmt werden mussten, führten zu Verzögerungen.</p>
+  
   <blockquote>„„Eine wichtige Hürde war beispielsweise der Datenschutz, der intensiv mit den entsprechenden Datenschutzbeauftragten der teilnehmenden Kliniken besprochen werden musste. Hierbei galt es zahlreiche Regelungen einzuhalten, was zu Verzögerungen führte.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1852,12 +1869,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.24">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Hauptpublikation ist noch in Bearbeitung.</p>
+  
   <blockquote>„„Die Hauptpublikation ist in Bearbeitung.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1902,28 +1919,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 313, "akronym": "EVENT", "kennung": "mss553X0L1sJ", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt EVENT keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Der Ausschuss hält gegebenenfalls weitere Forschung zu geeigneten Vorgehensweisen der gemeinsamen Entscheidungsfindung in diesem Versorgungssetting für nötig."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt entwickelte eine digitale Entscheidungshilfe (SDMA) zur gemeinsamen Auswahl von Antipsychotika. Diese wurde in einer cluster-randomisierten kontrollierten Studie evaluiert. Weder beim primären Endpunkt (wahrgenommene Beteiligung aus Patientensicht) noch bei den sekundären Endpunkten zeigte sich ein statistisch signifikanter Vorteil der Interventionsgruppe. Die Methodik hält der Ausschuss für geeignet. Die Aussagekraft sieht er jedoch durch den hohen Drop-out von T0 zu T2 eingeschränkt. Hinzu kommen Verzerrungspotenziale, weil die App nicht auf allen Interventionsstationen wie gewünscht eingesetzt werden konnte. Auf Basis aller Ergebnisse und dieser Limitationen spricht der Ausschuss keine Empfehlung aus."}, {"stelle": "studiendesign", "art": "text", "unser": "cluster-randomisiert"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit. Er hält gegebenenfalls weitere Forschung zu geeigneten Vorgehensweisen zur Stärkung der gemeinsamen Entscheidungsfindung in diesem anspruchsvollen Versorgungssetting für erforderlich."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Kein statistisch signifikanter Unterschied beim primären Endpunkt (Patientensicht) und beim ärztlichen sekundären Endpunkt"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Auch bei den weiteren sekundären Endpunkten zu keinem Zeitpunkt ein signifikanter Unterschied zugunsten der IG"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Hoher Drop-out der Patientinnen und Patienten von T0 zu T2 schränkt die Aussagekraft ein"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Die Entscheidungshilfe kam nicht auf allen Interventionsstationen wie gewünscht zum Einsatz, was Verzerrungspotenziale erzeugt"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Die App wurde selten vor der Medikamentenauswahl genutzt, weil bereits Antipsychotika gegeben wurden oder akute Notfälle dies verhinderten"}, {"stelle": "befund.0", "art": "befund", "unser": "Patientinnen und Patienten erlebten die visualisierten und strukturierten SDMA-Inhalte im Arztgespräch als unterstützend und fühlten sich über Nebenwirkungen besser aufgeklärt (qualitative Interviews)."}, {"stelle": "befund.1", "art": "befund", "unser": "Die qualitativen Ergebnisse verdeutlichen die Bedeutung der gemeinsamen Entscheidungsfindung bei der Auswahl von Antipsychotika."}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Von den Patienten wahrgenommene Beteiligung am Entscheidungsprozess (Summenwert SDM-Q-9 aus Patientensicht kurz vor Entlassung, T1)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Wahrgenommene Beteiligung aus Ärztesicht (T1)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Symptomschwere (Arzteinschätzung, Schweregrad, T1)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Symptomschwere (PANSS-6, T1)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Funktionsniveau (T1)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Behandlungszufriedenheit (T1)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Therapietreue / Einstellung zu Medikamenten (T1)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Zufriedenheit mit der Medikation (T1)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Rehospitalisierung (Anzahl stationärer Wiederaufnahmen, T2)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben entwickelte eine Tablet-basierte, evidenzbasierte Entscheidungshilfe (SDMA) zur Auswahl von Antipsychotika für stationär behandelte Patienten mit Schizophrenie. In Fokusgruppen (Phase 1; 8 Patienten, 10 Psychiater) sahen beide Gruppen Bedarf an einer verständlichen, zuverlässigen Informationsquelle. In einer clusterrandomisierten Studie (Phase 2) wurden 153 Patienten eingeschlossen (79 Kontrolle, 74 Intervention). Beim primären Endpunkt, der von Patienten wahrgenommenen Beteiligung (SDM-Q-9) bei Entlassung, lag der Mittelwert bei 26,14 (Intervention) gegenüber 24,58 (Kontrolle); der Unterschied war laut Bericht nicht signifikant (p = 0,40). Auch bei den sekundären Parametern berichtet das Vorhaben keine signifikanten Gruppenunterschiede. Qualitativ wurde die App nur in wenigen Fällen tatsächlich vor der Medikamentenwahl genutzt; genannt werden bereits festgelegte Medikation, akute Notfälle und hierarchische Klinikstrukturen. Für die Einordnung bedeutsam sind der Wechsel des primären Endpunkts von DAI zu SDM-Q-9 per Amendment im April 2023 während laufender Rekrutierung, die Reduktion der Fallzahl von 248 auf 148, der Ausschluss von 27 randomisierten Interventionspatienten aus der Primäranalyse (Per-Protocol, keine Imputation), die fehlende Verblindung sowie die vollständige Befragung von nur 35 Patienten beim 3-Monats-Follow-up."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Primärer Endpunkt: Der patientenberichtete SDM-Q-9 bei Entlassung (T1) lag in der Interventionsgruppe bei 26,14 (SD 7,83) und in der Kontrollgruppe bei 24,58 (SD 9,92); laut Bericht nicht signifikant (ME 1,56; 95%-KI −2,10 bis 5,22; p = 0,40)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Laut Zusammenfassung ergaben sich in der Cluster-RCT mit 153 Patienten keine signifikanten Gruppenunterschiede in der wahrgenommenen Beteiligung (SDM-Q-9) oder bei sekundären Parametern."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Qualitativ verbesserte die App laut Bericht nur selten die wahrgenommene Einbeziehung aus Patientensicht und wurde wegen Umsetzungshindernissen im Stationsalltag nur in wenigen Fällen tatsächlich vor der Medikamentenwahl genutzt."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Der primäre Endpunkt wurde per Amendment 3 (Änderungsbescheid vom 21.04.2023), also während der von März 2022 bis Oktober 2023 laufenden Rekrutierung, von DAI auf SDM-Q-9 gewechselt; begründet wird dies mit der vom Stationsteam kontrollierten Medikamenteneinnahme, die die Aussagekraft der Adhärenzmessung reduziere."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "27 randomisierte Interventionspatienten, die vor der Intervention entlassen wurden oder sich selbst entließen, wurden aus der Primäranalyse ausgeschlossen (Per-Protocol statt ITT); fehlende Werte wurden nicht imputiert."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Wegen langsamer Rekrutierung (Pandemie, Personalausfälle) wurde ein zusätzliches Zentrum (Augsburg) aufgenommen und die Fallzahl von 248 auf 148 reduziert; die Power-Berechnung nahm nun 15 % statt zuvor 25 % Dropout und einen ICC von 0,02 an."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die vollständige Befragung beim 3-Monats-Follow-up (T2) durchliefen nur 35 Patienten."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Als Gründe für die geringe Patientenbeteiligung mittels App nennt der Bericht vor allem organisatorische Herausforderungen: Die Medikation war häufig bereits festgelegt, bevor die App genutzt werden konnte, oder akute Situationen erforderten rasches Handeln."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Wiederaufnahmen bei T2: Im Text wird das 95%-KI mit −0,81 bis −0,54 angegeben (schließt den Schätzer ME = −0,23 nicht ein und passt nicht zu p = 0,18), laut Auswertung weist Tabelle 8 −0,59 bis 0,13 aus (S. 31)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Therapietreue (DAI) bei T2: Der Text nennt 4,81 für die Interventions- und 3,8 für die Kontrollgruppe, Tabelle 8 weist die Werte laut Auswertung umgekehrt zu; zudem passt das Vorzeichen des Schätzers (ME = −1,01) nicht zur Textaussage einer höheren Therapietreue in der Interventionsgruppe (S. 31)."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Selbsteingeschätzter CGI bei T1: Das angegebene 95%-KI „−0,76 bis −0,68“ schließt den Schätzer ME = −0,04 nicht ein (S. 29)."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Fallzahl: Nach Projektplanänderung 1 wurde die Fallzahl auf N = 148 reduziert (S. 12), an anderer Stelle heißt es, die Studie sei „mit der abschließend geplanten Fallzahl von 153 Teilnehmern“ abgeschlossen worden (S. 34). Aus den Abschnitten geht zudem nicht hervor, ob die 27 aus der Primäranalyse ausgeschlossenen Interventionspatienten in den 74 eingeschlossenen Interventionspatienten enthalten sind."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Der Bericht spricht von einer Besserung der Wahrnehmung, an Therapieentscheidungen beteiligt zu werden, „im Verlauf der Behandlung“ in der SDMA-Gruppe (S. 32), obwohl der SDM-Q-9 nur zu T1 und nicht zu T0 oder T2 erhoben wurde (S. 13)."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Qualitative Bewertung: Die App habe die Einbindung „nur bedingt“ (S. 2), „nur selten“ (S. 32) bzw. „nur teilweise“ (S. 36) gefördert und sei nur in wenigen Fällen vor der Medikamentenwahl genutzt worden; zugleich heißt es, die Arbeitshypothese eines Einflusses des SDMA auf die Kommunikation sei bestätigt und das Therapieschema habe „aktiv [...] positiv beeinflusst werden“ können (S. 33)."}, {"stelle": "bericht_unstimmig.6", "art": "aussage", "unser": "Subgruppe Technikaffinität: Der Satz „weder für die erste Frage [...] noch für die zweite Frage [...] nicht signifikant“ enthält eine doppelte Verneinung; laut Auswertung sind die p-Werte (0,94 bzw. 0,31) jedoch als nicht signifikant ausgewiesen (S. 29)."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "In die clusterrandomisierte Studie wurden 153 Patienten eingeschlossen, 79 in der Kontroll- und 74 in der Interventionsgruppe."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Der ärztlich eingeschätzte SDM-Q-9 bei T1 lag bei 36,34 (Intervention) gegenüber 36,54 (Kontrolle), laut Bericht nicht signifikant (ME −0,76; 95%-KI −5,16 bis 3,64; p = 0,71); Ärzte schätzten den Einbezug mitunter um zehn Punkte besser ein als die Patienten."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Bei den sekundären Wirksamkeitsparametern zu T1 fanden sich laut Bericht keine signifikanten Gruppenunterschiede."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Ärztlicher CGI-Schweregrad bei T1: 4,33 (Intervention) gegenüber 4,03 (Kontrolle); ME 0,30 (95%-KI −0,17 bis 0,77; p = 0,21)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "PANSS-6 bei T1: 15,62 (Intervention) gegenüber 15,57 (Kontrolle); ME 1,16 (95%-KI −4,49 bis 6,82; p = 0,65)."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Selbsteingeschätzter CGI bei T1: 3,30 (Intervention) gegenüber 3,34 (Kontrolle); ME −0,04 (KI im Bericht „−0,76 bis −0,68“; p = 0,92), laut Bericht kein signifikanter Gruppenunterschied."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "SOFAS-Funktionsniveau bei T1: 49,14 (Intervention) gegenüber 55,82 (Kontrolle); ME −6,68 (95%-KI −13,84 bis 0,48; p = 0,07)."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Behandlungszufriedenheit (ZUF-8) bei T1: 20,12 (Intervention) gegenüber 19,72 (Kontrolle); ME 0,39 (95%-KI −0,59 bis 1,83; p = 0,43), laut Bericht keine signifikanten Gruppenunterschiede."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Therapietreue (DAI) bei T1: 4,53 (Intervention) gegenüber 5,17 (Kontrolle); ME −0,79 (95%-KI −2,49 bis 0,92; p = 0,34)."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die ärztlich bewertete Compliance bei T1 lag bei 1,61 (Intervention) gegenüber 1,67 (Kontrolle); ein Test wird im Zitat nicht genannt."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Zufriedenheit mit der Medikation (MSQ) bei T1: 4,86 (Intervention) gegenüber 4,54 (Kontrolle); ME 0,37 (95%-KI −0,54 bis 1,28; p = 0,40), laut Bericht keine signifikanten Gruppenunterschiede."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Bei den Nebenwirkungen (UKU) fanden sich laut Bericht keine relevanten Unterschiede zwischen den Gruppen."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Subgruppenanalyse Technikaffinität: Technikaffine Patienten fühlten sich nach SDM-Q-9 tendenziell besser einbezogen; der Unterschied wird für beide Affinitätsfragen als nicht signifikant berichtet (Formulierung mit doppelter Verneinung)."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Der ICC für den primären Endpunkt wurde im verwendeten Modell auf 0 geschätzt."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Wiederaufnahmen drei Monate nach Entlassung (T2): im Mittel 0,13 (Intervention) gegenüber 0,36 (Kontrolle); laut Bericht nicht signifikant (ME −0,23; p = 0,18; zum KI siehe Widersprüche)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Selbsteingeschätzte Symptomschwere (CGI) bei T2: 3,17 (Intervention) gegenüber 2,90 (Kontrolle), laut Bericht nicht signifikant (ME 0,26; 95%-KI −0,65 bis 1,17; p = 0,56)."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Ärztlich eingeschätzte Symptomschwere (CGI) bei T2: 4,59 (Intervention) gegenüber 4,42 (Kontrolle), laut Bericht nicht signifikant (ME 0,17; 95%-KI −0,49 bis 0,83; p = 0,60)."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Medikamentöse Therapietreue (DAI) bei T2 laut Text 4,81 (Intervention) gegenüber 3,8 (Kontrolle), laut Bericht nicht signifikant (ME −1,01; 95%-KI −2,75 bis 0,74; p = 0,25); die Tabelle weist die Werte umgekehrt zu."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Lebensqualität (EUROHIS-QOL) bei T2: 18,96 (Intervention) gegenüber 21,03 (Kontrolle); ME −2,07 (95%-KI −5,06 bis 0,92; p = 0,17)."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Soziale Funktionsfähigkeit (SOFAS) bei T2: 48,56 (Intervention) gegenüber 48,50 (Kontrolle), von den Ärzten in beiden Gruppen als ungefähr gleich erheblich beeinträchtigt eingeschätzt (ME −0,06; 95%-KI −9,50 bis 9,38; p = 0,99)."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Die mittlere Hospitalisierungsdauer (T0–T1) lag bei ca. 22 Tagen in der Kontroll- und ca. 30 Tagen in der Interventionsgruppe; ein Test wird nicht genannt."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Verbesserungen von Beteiligungserleben, Symptomschwere, Funktionsfähigkeit, Einsicht und Zufriedenheit traten laut Bericht in beiden Gruppen ähnlich auf und können daher nicht kausal dem SDMA zugeschrieben werden."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Baseline: mittlerer PANSS-6 etwa 19, ärztlicher CGI-Schweregrad etwa 5 („deutlich krank“), Selbsteinschätzung etwa 4 („mäßig krank“)."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Baseline: Ein mittlerer SOFAS von 44 bedeutet laut Bericht eine schwere Beeinträchtigung des Funktionsniveaus der Teilnehmenden."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Baseline: Die Krankheitseinsicht nach Birchwood Insight Scale (mittlerer Score ca. 3) war laut Bericht gering."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Patienten erlebten in den Interviews vor allem die Visualisierung der Studienergebnisse als hilfreich, um Inhalte des Arztgesprächs aufzunehmen."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Laut Zusammenfassung zeigten sich trotz fehlenden signifikanten Effekts auf das Beteiligungserleben qualitative Hinweise auf Nutzen in der Informationsvermittlung."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "In der abschließenden Fokusgruppe wurde das SDMA-Tool insgesamt als gut verständlich bewertet; die Forest Plots wurden positiv hervorgehoben."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Laut Bericht wurde eine aus Sicht von Betroffenen und Behandlern sehr ansprechende Tablet-App für partizipative Entscheidungsfindung entwickelt."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Phase 1: An fünf Fokusgruppen nahmen 8 stationär behandelte Patienten und 10 Psychiater teil; die thematische Analyse ergab sechs Hauptthemen."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Phase 1: Beide Gruppen äußerten grundsätzliche Offenheit gegenüber einer Entscheidungshilfe und Bedarf an einer zuverlässigen, verständlichen und transparenten Informationsquelle zu Antipsychotika als Alternative zu Packungsbeilagen und Internetrecherchen."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Phase 1: Gewünscht wurde überwiegend ein digitales, modulares, an kognitive und emotionale Bedürfnisse anpassbares Format, zusätzlich eine Papierversion etwa für ältere oder akut psychotische Patienten."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Phase 1: Patienten berichteten belastende Nebenwirkungen und wünschten alternative Behandlungsmöglichkeiten; einige befürworteten Entscheidungsunterstützung, wollten die finale Entscheidung aber dem Arzt überlassen."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Phase 1: Ärzte nannten als potenzielle Hürden kognitive Einschränkungen, Misstrauen gegenüber Technik und mangelnde digitale Kompetenz bestimmter Patientengruppen."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Nach Genehmigung einer Aufwandsentschädigung von 5 € pro Studientermin und von Studienflyern im März 2023 waren laut Bericht 50 % der angestrebten Teilnehmerzahl bis 31.03.2023 und 75 % bis 31.05.2023 rekrutiert."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Die Rekrutierung wurde am 31.10.2023 mit 153 Patienten abgeschlossen; die letzten Follow-up-Erhebungen fanden am 15.04.2024 statt."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Qualitative Begleitforschung Phase 2: Von 22 gewonnenen Teilnehmenden wurden 21 Interviews (6 Psychiater, 15 Patienten) aus dem Zeitraum Januar bis September 2023 ausgewertet."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Eine Verblindung von Studienteilnehmern, Behandlungsteams und Ratern erfolgte nicht."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Der primäre Endpunkt SDM-Q-9 wurde nur zu T1 erhoben, nicht zu T0 oder T2; begründet wird dies mit fehlender Entscheidung zu Baseline und angenommener Gleichverteilung durch Randomisierung."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Wegen eines Rekrutierungsrückstands vor allem bei Interventionspatienten wurden einige Kontrollstationen nachträglich zu Interventionsstationen umgewidmet."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Laut Bericht kam es zu erheblichen Dropout-Raten; zudem beeinträchtigte die Corona-Pandemie die Studie, und eine Station musste wegen Personalmangels geschlossen und ersetzt werden."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die ICC-Schätzungen sind laut Bericht wegen geringer Fallzahlen und limitierter Varianzstruktur mit Vorsicht zu interpretieren; da der SDM-Q-9 nur einmal erhoben wurde, liegt kein klassischer within-subject-ICC vor."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Hierarchisch-strukturelle Ungleichheiten zwischen Patienten und Ärzten im akuten Setting erschwerten laut Bericht die gemeinsame Entscheidungsfindung deutlich."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die Autoren führen ihre Ergebnisse wahrscheinlich auch auf die Durchführung überwiegend auf geschützten Stationen mit sehr schwer kranken Patienten zurück."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Studienteilnehmer starteten nicht unbedingt unbehandelt; in beiden Gruppen bestanden bereits bei Aufnahme Nebenwirkungen."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Nutzung der App in Akutsituationen wurde als zu verwirrend empfunden; zudem fehlten Informationen zu sexuellen und psychischen Nebenwirkungen."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Anleitung der App wurde als zu lang und komplex empfunden; ein kurzes Video-Tutorial wurde als hilfreich erachtet."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die App wurde laut Rückmeldung eher außerhalb von Visiten oder Patiententerminen zur Selbstinformation der Ärzte verwendet."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Für die Interviews konnten nur 6 Ärzte rekrutiert werden; die Vielfalt ärztlicher Nutzer war geringer als erwartet (begründet mit vorzeitig erreichter theoretischer Sättigung)."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "In den Fokusgruppen der Phase 1 konnten pandemiebedingt auf Patientenseite jeweils nur vier Probanden pro Gruppe befragt werden; bei den Psychiatern wurde die Zielzahl erreicht."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Studienphase 2 begann nach pandemiebedingter Verzögerung am 31.03.2022."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Vor Beginn der RCT wurde auf die Erhebung objektiver sekundärer Endpunkte wie EKG und Prolaktinspiegel verzichtet."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Die Angaben zur Hospitalisierungsdauer sind Approximationen, da genaue Werte nicht immer vorlagen."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Die abschließende Fokusgruppe wurde nur handschriftlich protokolliert und ohne offiziellen Leitfaden anhand von PowerPoint-Folien durchgeführt."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Ein Interview wurde wegen zu geringer Deutschkenntnisse von der Auswertung ausgeschlossen."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Datenschutzanforderungen, die mit den Datenschutzbeauftragten der Kliniken abgestimmt werden mussten, führten zu Verzögerungen."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Die Hauptpublikation ist noch in Bearbeitung."}]};
+const D = {"projekt_id": 313, "akronym": "EVENT", "kennung": "mss553X0L1sJ", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt entwickelte eine digitale Entscheidungshilfe (SDMA) zur gemeinsamen Auswahl von Antipsychotika. Diese wurde in einer cluster-randomisierten kontrollierten Studie evaluiert. Weder beim primären Endpunkt (wahrgenommene Beteiligung aus Patientensicht) noch bei den sekundären Endpunkten zeigte sich ein statistisch signifikanter Vorteil der Interventionsgruppe. Die Methodik hält der Ausschuss für geeignet. Die Aussagekraft sieht er jedoch durch den hohen Drop-out von T0 zu T2 eingeschränkt. Hinzu kommen Verzerrungspotenziale, weil die App nicht auf allen Interventionsstationen wie gewünscht eingesetzt werden konnte. Auf Basis aller Ergebnisse und dieser Limitationen spricht der Ausschuss keine Empfehlung aus."}, {"stelle": "studiendesign", "art": "text", "unser": "cluster-randomisiert"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Kein statistisch signifikanter Unterschied beim primären Endpunkt (Patientensicht) und beim ärztlichen sekundären Endpunkt"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Auch bei den weiteren sekundären Endpunkten zu keinem Zeitpunkt ein signifikanter Unterschied zugunsten der IG"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Hoher Drop-out der Patientinnen und Patienten von T0 zu T2 schränkt die Aussagekraft ein"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Die Entscheidungshilfe kam nicht auf allen Interventionsstationen wie gewünscht zum Einsatz, was Verzerrungspotenziale erzeugt"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Die App wurde selten vor der Medikamentenauswahl genutzt, weil bereits Antipsychotika gegeben wurden oder akute Notfälle dies verhinderten"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Von den Patienten wahrgenommene Beteiligung am Entscheidungsprozess (Summenwert SDM-Q-9 aus Patientensicht kurz vor Entlassung, T1)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Wahrgenommene Beteiligung aus Ärztesicht (T1)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Symptomschwere (Arzteinschätzung, Schweregrad, T1)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Symptomschwere (PANSS-6, T1)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Funktionsniveau (T1)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Behandlungszufriedenheit (T1)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Therapietreue / Einstellung zu Medikamenten (T1)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Zufriedenheit mit der Medikation (T1)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Rehospitalisierung (Anzahl stationärer Wiederaufnahmen, T2)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben entwickelte eine Tablet-basierte, evidenzbasierte Entscheidungshilfe (SDMA) zur Auswahl von Antipsychotika für stationär behandelte Patienten mit Schizophrenie. In Fokusgruppen (Phase 1; 8 Patienten, 10 Psychiater) sahen beide Gruppen Bedarf an einer verständlichen, zuverlässigen Informationsquelle. In einer clusterrandomisierten Studie (Phase 2) wurden 153 Patienten eingeschlossen (79 Kontrolle, 74 Intervention). Beim primären Endpunkt, der von Patienten wahrgenommenen Beteiligung (SDM-Q-9) bei Entlassung, lag der Mittelwert bei 26,14 (Intervention) gegenüber 24,58 (Kontrolle); der Unterschied war laut Bericht nicht signifikant (p = 0,40). Auch bei den sekundären Parametern berichtet das Vorhaben keine signifikanten Gruppenunterschiede. Qualitativ wurde die App nur in wenigen Fällen tatsächlich vor der Medikamentenwahl genutzt; genannt werden bereits festgelegte Medikation, akute Notfälle und hierarchische Klinikstrukturen. Für die Einordnung bedeutsam sind der Wechsel des primären Endpunkts von DAI zu SDM-Q-9 per Amendment im April 2023 während laufender Rekrutierung, die Reduktion der Fallzahl von 248 auf 148, der Ausschluss von 27 randomisierten Interventionspatienten aus der Primäranalyse (Per-Protocol, keine Imputation), die fehlende Verblindung sowie die vollständige Befragung von nur 35 Patienten beim 3-Monats-Follow-up."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Primärer Endpunkt: Der patientenberichtete SDM-Q-9 bei Entlassung (T1) lag in der Interventionsgruppe bei 26,14 (SD 7,83) und in der Kontrollgruppe bei 24,58 (SD 9,92); laut Bericht nicht signifikant (ME 1,56; 95%-KI −2,10 bis 5,22; p = 0,40)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Laut Zusammenfassung ergaben sich in der Cluster-RCT mit 153 Patienten keine signifikanten Gruppenunterschiede in der wahrgenommenen Beteiligung (SDM-Q-9) oder bei sekundären Parametern."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Qualitativ verbesserte die App laut Bericht nur selten die wahrgenommene Einbeziehung aus Patientensicht und wurde wegen Umsetzungshindernissen im Stationsalltag nur in wenigen Fällen tatsächlich vor der Medikamentenwahl genutzt."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Der primäre Endpunkt wurde per Amendment 3 (Änderungsbescheid vom 21.04.2023), also während der von März 2022 bis Oktober 2023 laufenden Rekrutierung, von DAI auf SDM-Q-9 gewechselt; begründet wird dies mit der vom Stationsteam kontrollierten Medikamenteneinnahme, die die Aussagekraft der Adhärenzmessung reduziere."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "27 randomisierte Interventionspatienten, die vor der Intervention entlassen wurden oder sich selbst entließen, wurden aus der Primäranalyse ausgeschlossen (Per-Protocol statt ITT); fehlende Werte wurden nicht imputiert."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Wegen langsamer Rekrutierung (Pandemie, Personalausfälle) wurde ein zusätzliches Zentrum (Augsburg) aufgenommen und die Fallzahl von 248 auf 148 reduziert; die Power-Berechnung nahm nun 15 % statt zuvor 25 % Dropout und einen ICC von 0,02 an."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Wiederaufnahmen bei T2: Im Text wird das 95%-KI mit −0,81 bis −0,54 angegeben (schließt den Schätzer ME = −0,23 nicht ein und passt nicht zu p = 0,18), laut Auswertung weist Tabelle 8 −0,59 bis 0,13 aus (S. 31)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Therapietreue (DAI) bei T2: Der Text nennt 4,81 für die Interventions- und 3,8 für die Kontrollgruppe, Tabelle 8 weist die Werte laut Auswertung umgekehrt zu; zudem passt das Vorzeichen des Schätzers (ME = −1,01) nicht zur Textaussage einer höheren Therapietreue in der Interventionsgruppe (S. 31)."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Selbsteingeschätzter CGI bei T1: Das angegebene 95%-KI „−0,76 bis −0,68“ schließt den Schätzer ME = −0,04 nicht ein (S. 29)."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt EVENT keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Der Ausschuss hält gegebenenfalls weitere Forschung zu geeigneten Vorgehensweisen der gemeinsamen Entscheidungsfindung in diesem Versorgungssetting für nötig."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss äußert sich nicht ausdrücklich zur Übertragbarkeit. Er hält gegebenenfalls weitere Forschung zu geeigneten Vorgehensweisen zur Stärkung der gemeinsamen Entscheidungsfindung in diesem anspruchsvollen Versorgungssetting für erforderlich."}, {"stelle": "befund.0", "art": "befund", "unser": "Patientinnen und Patienten erlebten die visualisierten und strukturierten SDMA-Inhalte im Arztgespräch als unterstützend und fühlten sich über Nebenwirkungen besser aufgeklärt (qualitative Interviews)."}, {"stelle": "befund.1", "art": "befund", "unser": "Die qualitativen Ergebnisse verdeutlichen die Bedeutung der gemeinsamen Entscheidungsfindung bei der Auswahl von Antipsychotika."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die vollständige Befragung beim 3-Monats-Follow-up (T2) durchliefen nur 35 Patienten."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Als Gründe für die geringe Patientenbeteiligung mittels App nennt der Bericht vor allem organisatorische Herausforderungen: Die Medikation war häufig bereits festgelegt, bevor die App genutzt werden konnte, oder akute Situationen erforderten rasches Handeln."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Fallzahl: Nach Projektplanänderung 1 wurde die Fallzahl auf N = 148 reduziert (S. 12), an anderer Stelle heißt es, die Studie sei „mit der abschließend geplanten Fallzahl von 153 Teilnehmern“ abgeschlossen worden (S. 34). Aus den Abschnitten geht zudem nicht hervor, ob die 27 aus der Primäranalyse ausgeschlossenen Interventionspatienten in den 74 eingeschlossenen Interventionspatienten enthalten sind."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Der Bericht spricht von einer Besserung der Wahrnehmung, an Therapieentscheidungen beteiligt zu werden, „im Verlauf der Behandlung“ in der SDMA-Gruppe (S. 32), obwohl der SDM-Q-9 nur zu T1 und nicht zu T0 oder T2 erhoben wurde (S. 13)."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Qualitative Bewertung: Die App habe die Einbindung „nur bedingt“ (S. 2), „nur selten“ (S. 32) bzw. „nur teilweise“ (S. 36) gefördert und sei nur in wenigen Fällen vor der Medikamentenwahl genutzt worden; zugleich heißt es, die Arbeitshypothese eines Einflusses des SDMA auf die Kommunikation sei bestätigt und das Therapieschema habe „aktiv [...] positiv beeinflusst werden“ können (S. 33)."}, {"stelle": "bericht_unstimmig.6", "art": "aussage", "unser": "Subgruppe Technikaffinität: Der Satz „weder für die erste Frage [...] noch für die zweite Frage [...] nicht signifikant“ enthält eine doppelte Verneinung; laut Auswertung sind die p-Werte (0,94 bzw. 0,31) jedoch als nicht signifikant ausgewiesen (S. 29)."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "In die clusterrandomisierte Studie wurden 153 Patienten eingeschlossen, 79 in der Kontroll- und 74 in der Interventionsgruppe."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Der ärztlich eingeschätzte SDM-Q-9 bei T1 lag bei 36,34 (Intervention) gegenüber 36,54 (Kontrolle), laut Bericht nicht signifikant (ME −0,76; 95%-KI −5,16 bis 3,64; p = 0,71); Ärzte schätzten den Einbezug mitunter um zehn Punkte besser ein als die Patienten."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Bei den sekundären Wirksamkeitsparametern zu T1 fanden sich laut Bericht keine signifikanten Gruppenunterschiede."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Ärztlicher CGI-Schweregrad bei T1: 4,33 (Intervention) gegenüber 4,03 (Kontrolle); ME 0,30 (95%-KI −0,17 bis 0,77; p = 0,21)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "PANSS-6 bei T1: 15,62 (Intervention) gegenüber 15,57 (Kontrolle); ME 1,16 (95%-KI −4,49 bis 6,82; p = 0,65)."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Selbsteingeschätzter CGI bei T1: 3,30 (Intervention) gegenüber 3,34 (Kontrolle); ME −0,04 (KI im Bericht „−0,76 bis −0,68“; p = 0,92), laut Bericht kein signifikanter Gruppenunterschied."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "SOFAS-Funktionsniveau bei T1: 49,14 (Intervention) gegenüber 55,82 (Kontrolle); ME −6,68 (95%-KI −13,84 bis 0,48; p = 0,07)."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Behandlungszufriedenheit (ZUF-8) bei T1: 20,12 (Intervention) gegenüber 19,72 (Kontrolle); ME 0,39 (95%-KI −0,59 bis 1,83; p = 0,43), laut Bericht keine signifikanten Gruppenunterschiede."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Therapietreue (DAI) bei T1: 4,53 (Intervention) gegenüber 5,17 (Kontrolle); ME −0,79 (95%-KI −2,49 bis 0,92; p = 0,34)."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die ärztlich bewertete Compliance bei T1 lag bei 1,61 (Intervention) gegenüber 1,67 (Kontrolle); ein Test wird im Zitat nicht genannt."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Zufriedenheit mit der Medikation (MSQ) bei T1: 4,86 (Intervention) gegenüber 4,54 (Kontrolle); ME 0,37 (95%-KI −0,54 bis 1,28; p = 0,40), laut Bericht keine signifikanten Gruppenunterschiede."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Bei den Nebenwirkungen (UKU) fanden sich laut Bericht keine relevanten Unterschiede zwischen den Gruppen."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Subgruppenanalyse Technikaffinität: Technikaffine Patienten fühlten sich nach SDM-Q-9 tendenziell besser einbezogen; der Unterschied wird für beide Affinitätsfragen als nicht signifikant berichtet (Formulierung mit doppelter Verneinung)."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Der ICC für den primären Endpunkt wurde im verwendeten Modell auf 0 geschätzt."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Wiederaufnahmen drei Monate nach Entlassung (T2): im Mittel 0,13 (Intervention) gegenüber 0,36 (Kontrolle); laut Bericht nicht signifikant (ME −0,23; p = 0,18; zum KI siehe Widersprüche)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Selbsteingeschätzte Symptomschwere (CGI) bei T2: 3,17 (Intervention) gegenüber 2,90 (Kontrolle), laut Bericht nicht signifikant (ME 0,26; 95%-KI −0,65 bis 1,17; p = 0,56)."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Ärztlich eingeschätzte Symptomschwere (CGI) bei T2: 4,59 (Intervention) gegenüber 4,42 (Kontrolle), laut Bericht nicht signifikant (ME 0,17; 95%-KI −0,49 bis 0,83; p = 0,60)."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Medikamentöse Therapietreue (DAI) bei T2 laut Text 4,81 (Intervention) gegenüber 3,8 (Kontrolle), laut Bericht nicht signifikant (ME −1,01; 95%-KI −2,75 bis 0,74; p = 0,25); die Tabelle weist die Werte umgekehrt zu."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Lebensqualität (EUROHIS-QOL) bei T2: 18,96 (Intervention) gegenüber 21,03 (Kontrolle); ME −2,07 (95%-KI −5,06 bis 0,92; p = 0,17)."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Soziale Funktionsfähigkeit (SOFAS) bei T2: 48,56 (Intervention) gegenüber 48,50 (Kontrolle), von den Ärzten in beiden Gruppen als ungefähr gleich erheblich beeinträchtigt eingeschätzt (ME −0,06; 95%-KI −9,50 bis 9,38; p = 0,99)."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Die mittlere Hospitalisierungsdauer (T0–T1) lag bei ca. 22 Tagen in der Kontroll- und ca. 30 Tagen in der Interventionsgruppe; ein Test wird nicht genannt."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Verbesserungen von Beteiligungserleben, Symptomschwere, Funktionsfähigkeit, Einsicht und Zufriedenheit traten laut Bericht in beiden Gruppen ähnlich auf und können daher nicht kausal dem SDMA zugeschrieben werden."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Baseline: mittlerer PANSS-6 etwa 19, ärztlicher CGI-Schweregrad etwa 5 („deutlich krank“), Selbsteinschätzung etwa 4 („mäßig krank“)."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Baseline: Ein mittlerer SOFAS von 44 bedeutet laut Bericht eine schwere Beeinträchtigung des Funktionsniveaus der Teilnehmenden."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Baseline: Die Krankheitseinsicht nach Birchwood Insight Scale (mittlerer Score ca. 3) war laut Bericht gering."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Patienten erlebten in den Interviews vor allem die Visualisierung der Studienergebnisse als hilfreich, um Inhalte des Arztgesprächs aufzunehmen."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Laut Zusammenfassung zeigten sich trotz fehlenden signifikanten Effekts auf das Beteiligungserleben qualitative Hinweise auf Nutzen in der Informationsvermittlung."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "In der abschließenden Fokusgruppe wurde das SDMA-Tool insgesamt als gut verständlich bewertet; die Forest Plots wurden positiv hervorgehoben."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Laut Bericht wurde eine aus Sicht von Betroffenen und Behandlern sehr ansprechende Tablet-App für partizipative Entscheidungsfindung entwickelt."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Phase 1: An fünf Fokusgruppen nahmen 8 stationär behandelte Patienten und 10 Psychiater teil; die thematische Analyse ergab sechs Hauptthemen."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Phase 1: Beide Gruppen äußerten grundsätzliche Offenheit gegenüber einer Entscheidungshilfe und Bedarf an einer zuverlässigen, verständlichen und transparenten Informationsquelle zu Antipsychotika als Alternative zu Packungsbeilagen und Internetrecherchen."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Phase 1: Gewünscht wurde überwiegend ein digitales, modulares, an kognitive und emotionale Bedürfnisse anpassbares Format, zusätzlich eine Papierversion etwa für ältere oder akut psychotische Patienten."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Phase 1: Patienten berichteten belastende Nebenwirkungen und wünschten alternative Behandlungsmöglichkeiten; einige befürworteten Entscheidungsunterstützung, wollten die finale Entscheidung aber dem Arzt überlassen."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Phase 1: Ärzte nannten als potenzielle Hürden kognitive Einschränkungen, Misstrauen gegenüber Technik und mangelnde digitale Kompetenz bestimmter Patientengruppen."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Nach Genehmigung einer Aufwandsentschädigung von 5 € pro Studientermin und von Studienflyern im März 2023 waren laut Bericht 50 % der angestrebten Teilnehmerzahl bis 31.03.2023 und 75 % bis 31.05.2023 rekrutiert."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Die Rekrutierung wurde am 31.10.2023 mit 153 Patienten abgeschlossen; die letzten Follow-up-Erhebungen fanden am 15.04.2024 statt."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Qualitative Begleitforschung Phase 2: Von 22 gewonnenen Teilnehmenden wurden 21 Interviews (6 Psychiater, 15 Patienten) aus dem Zeitraum Januar bis September 2023 ausgewertet."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Eine Verblindung von Studienteilnehmern, Behandlungsteams und Ratern erfolgte nicht."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Der primäre Endpunkt SDM-Q-9 wurde nur zu T1 erhoben, nicht zu T0 oder T2; begründet wird dies mit fehlender Entscheidung zu Baseline und angenommener Gleichverteilung durch Randomisierung."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Wegen eines Rekrutierungsrückstands vor allem bei Interventionspatienten wurden einige Kontrollstationen nachträglich zu Interventionsstationen umgewidmet."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Laut Bericht kam es zu erheblichen Dropout-Raten; zudem beeinträchtigte die Corona-Pandemie die Studie, und eine Station musste wegen Personalmangels geschlossen und ersetzt werden."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die ICC-Schätzungen sind laut Bericht wegen geringer Fallzahlen und limitierter Varianzstruktur mit Vorsicht zu interpretieren; da der SDM-Q-9 nur einmal erhoben wurde, liegt kein klassischer within-subject-ICC vor."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Hierarchisch-strukturelle Ungleichheiten zwischen Patienten und Ärzten im akuten Setting erschwerten laut Bericht die gemeinsame Entscheidungsfindung deutlich."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die Autoren führen ihre Ergebnisse wahrscheinlich auch auf die Durchführung überwiegend auf geschützten Stationen mit sehr schwer kranken Patienten zurück."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Studienteilnehmer starteten nicht unbedingt unbehandelt; in beiden Gruppen bestanden bereits bei Aufnahme Nebenwirkungen."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Nutzung der App in Akutsituationen wurde als zu verwirrend empfunden; zudem fehlten Informationen zu sexuellen und psychischen Nebenwirkungen."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Anleitung der App wurde als zu lang und komplex empfunden; ein kurzes Video-Tutorial wurde als hilfreich erachtet."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die App wurde laut Rückmeldung eher außerhalb von Visiten oder Patiententerminen zur Selbstinformation der Ärzte verwendet."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Für die Interviews konnten nur 6 Ärzte rekrutiert werden; die Vielfalt ärztlicher Nutzer war geringer als erwartet (begründet mit vorzeitig erreichter theoretischer Sättigung)."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "In den Fokusgruppen der Phase 1 konnten pandemiebedingt auf Patientenseite jeweils nur vier Probanden pro Gruppe befragt werden; bei den Psychiatern wurde die Zielzahl erreicht."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Studienphase 2 begann nach pandemiebedingter Verzögerung am 31.03.2022."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Vor Beginn der RCT wurde auf die Erhebung objektiver sekundärer Endpunkte wie EKG und Prolaktinspiegel verzichtet."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Die Angaben zur Hospitalisierungsdauer sind Approximationen, da genaue Werte nicht immer vorlagen."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Die abschließende Fokusgruppe wurde nur handschriftlich protokolliert und ohne offiziellen Leitfaden anhand von PowerPoint-Folien durchgeführt."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Ein Interview wurde wegen zu geringer Deutschkenntnisse von der Auswertung ausgeschlossen."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Datenschutzanforderungen, die mit den Datenschutzbeauftragten der Kliniken abgestimmt werden mussten, führten zu Verzögerungen."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Die Hauptpublikation ist noch in Bearbeitung."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

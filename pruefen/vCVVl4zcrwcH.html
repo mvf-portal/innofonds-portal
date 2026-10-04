@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF17041</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>20 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 56 Aussagen. Die übrigen
+36 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss leitet die Projektergebnisse zur frühzeitigen Identifikation von HIV-Infektionen zur Information an die Deutsche Gesellschaft für Allgemeinmedizin und Familienmedizin weiter. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Im Projekt wurde auf Basis einer arztgestützten Fragebogenerhebung bei circa 700 neudiagnostizierten Personen in 40 Zentren, Fokusgruppen mit Experten und Literaturrecherchen ein Scoringinstrument zur früheren Erkennung von HIV-Infektionen entwickelt. Die Ergebnisse bestätigen bekannte Erkenntnisse, etwa den hohen Anteil an Late Presentern. Als Limitation nennt der Ausschuss, dass das Instrument hinsichtlich seiner Fähigkeit zur früheren Identifikation nicht überprüft und nicht in relevanten Gruppen oder Settings eingesetzt wurde. Da die Teilnehmenden vor der Erstdiagnose am häufigsten Kontakt zu Hausärztinnen und Hausärzten hatten, werden die Ergebnisse an die DEGAM zur Information weitergeleitet. Zudem verweist der Ausschuss auf das laufende Projekt HeLP zum selben Thema.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Beschluss hält fest, dass das Scoringinstrument nicht in relevanten Gruppen bzw. Settings eingesetzt wurde. Aussagen zur Übertragbarkeit in die Regelversorgung macht er darüber hinaus nicht.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,69 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Das entwickelte Scoringinstrument wurde hinsichtlich seiner Fähigkeit zur früheren Identifikation nicht überprüft und nicht in relevanten Gruppen oder Settings eingesetzt.</p>
+  
   <blockquote>„Limitierend ist, dass das entwickelte Scoringinstrument hinsichtlich seiner Fähigkeit HIV - Infizierte früher zu identifizieren, nicht überprüft und nicht in relevanten Gruppen bzw. Settings eingesetzt wurde." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Nachweis eines hohen Anteils später HIV-Diagnosen in Deutschland</p>
-  <blockquote>„Insgesamt konnte das Projekt unter Einbezug von Primärdaten, systematischer Literaturrecherchen und Experteneinschätzungen zeigen, dass der Anteil von Personen deren HIV Diagnose erst in einem späten Stadium gestellt wird, in Deutschland hoch ist." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Hinweis auf eine zentrale Rolle der Hausärztinnen und Hausärzte vor der HIV-Erstdiagnose</p>
-  <blockquote>„Die Ergebnisse verweisen auch auf eine zentrale Rolle von Hausärztinnen und Hausärzten bzw. Fachärztinnen und Fachärzten für Allgemeinmedizin: Teilnehmende gaben an, vor ihrer HIV -Erstdiagnose mit dieser Profession am häufigsten in Kontakt gewesen zu sein." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Bestätigung vorhandener Erkenntnisse zu Transmissionswegen und zum Anteil der Late Presenter</p>
-  <blockquote>„Die Ergebnisse des Projekts bestätigen bereits vorhandene Erkenntnisse aus vorherigen Studien: der am häufigsten genannte HIV-Transmissionsweg war bei knapp Dreiviertel der Personen Sex zwischen Männern, etwas mehr als die Hälfte der Teilnehmenden waren Late Presenter (LP) und ein Fünftel der Teilnehmenden bzw. ein Drittel der LP befanden sich bereits im Krankheitsstadium Aids." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Anteil Late Presenter (LP; AIDS-definierende Erkrankung oder CD4-Zellzahl &lt;350/µl)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -275,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Anteil Studienteilnehmer im Stadium AIDS (CDC-Stadium C)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -294,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Anteil Late Presenter, die sich bereits im Stadium AIDS befanden</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -313,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Mit Late Presentation assoziierte Faktoren (Alter pro Lebensjahr, Partnerschaftsstatus &quot;verheiratet&quot;, heterosexuelle bzw. bisexuelle Kontakte als Transmissionsweg, geringeres Wissen zu HIV-relevanten Themen)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -332,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Nicht mit Late Presentation assoziierte Faktoren (Ethnizität, Bildungsstatus, Beruf, Persönlichkeitsmerkmale gemäß BFI-S)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Häufigstes Symptom/Erkrankung als verpasste Chance zu einer früheren HIV-Diagnose: Gewichtsverlust</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Ort der erfolgten HIV-Erstdiagnose: niedergelassener Hausarzt</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Verpasste Chancen zur früheren HIV-Erstdiagnose: Anteil beim niedergelassenen Hausarzt</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -409,11 +331,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Die FindHIV-Studie untersuchte, welche Patientenmerkmale mit einer späten HIV-Diagnose (Late Presentation, LP: CD4-Zellzahl &lt;350/μl und/oder Aids-definierende Erkrankung bei Erstvorstellung) zusammenhängen und bei welchen Kontakten zum Gesundheitswesen eine frühere Diagnose möglich gewesen wäre. Daraus wurde ein Scoringinstrument entwickelt. Von Januar 2019 bis Mitte Mai 2020 wurden 706 Personen mit auswertbaren Datensätzen in 40 Studienzentren eingeschlossen. 55 % waren Late Presenter, 20 % waren bei Erstdiagnose im Stadium Aids. In Regressionsmodellen waren nach dem Bericht vor allem höheres Alter, der Partnerschaftsstatus „verheiratet“, hetero- bzw. bisexuelle Kontakte und geringeres HIV-Wissen signifikant mit LP assoziiert. Ethnizität, Bildung, Beruf und Persönlichkeitsmerkmale waren es nicht. Als häufigste verpasste Chance werteten die Studienärzte Gewichtsverlust. Beim Hausarzt erfolgten 40 % der Erstdiagnosen, und dort lagen 57 % der verpassten Chancen. Das Scoringinstrument stützt sich ausschließlich auf Symptome und Erkrankungen und wurde in Fokusgruppen und einer Konsentierungsrunde abgestimmt. Seine Güte ließ sich an der Kohorte nicht prüfen, weil keine HIV-negativen Personen eingeschlossen waren. Die Angaben zur Zeit vor der Diagnose wurden retrospektiv erhoben.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">55 % der Teilnehmenden waren Late Presenter, 20 % befanden sich bei Erstdiagnose im Stadium Aids.</p>
+  
   <blockquote>„„55 % der Studienteilnehmer sind LP, 20 % lasen sich dem Stadium Aids zuordnen“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In univariaten und multivariablen Modellen waren nach dem Bericht insbesondere höheres Alter (bei LP etwa jeder Dritte über 50 Jahre, bei non-LP etwa jeder Fünfte), der Partnerschaftsstatus „verheiratet“, hetero- bzw. bisexuelle Kontakte als möglicher Übertragungsweg und geringeres Wissen zu HIV-relevanten Themen signifikant mit Late Presentation assoziiert.</p>
+  
   <blockquote>„„insbesonders höheres Alter (bei den LP war ca. jeder Dritte &gt;50 Jahre, bei den non-LP ca. jeder F ünfte), der Partnerschaftsstatus „verheiratet“, heterosexuelle bzw. bisexuelle Kontakte als möglicher Transmissionsweg sowie geringeres Wissen zu HIV-relevanten Themen (...) signifikant mit Late Presentation assoziiert.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,50 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der häufigste Kontaktanlass, den die Studienärzte als Chance einer früheren HIV-Diagnose werteten, war Gewichtsverlust (52 Chancen bei 50 Teilnehmenden). Es folgten Indikator-/HIV-assoziierte Erkrankungen (41 bei 38), Fieber und Nachtschweiß (34 bei 34), sonstige Erkrankungen (30 bei 30) und sexuell übertragbare Erkrankungen (29 bei 27).</p>
+  
   <blockquote>„„Gewichtsverlust, da dies als häufigster Grund für einen Kontakt zum Gesundheitssystem, der von dem Studienarzt als eine Chance zu einer früheren HIV -Diagnose gesehen wurde, genannt wurde (52 Chancen bei 50 Studienteilnehmern).“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.6">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Beim niedergelassenen Hausarzt erfolgte der größte Anteil der HIV-Erstdiagnosen (40 %), und dort wurden auch die meisten verpassten Chancen einer früheren Erstdiagnose gesehen (57 %).</p>
-  <blockquote>„„der n iedergelassene Hausarzt (...) der Ort ist , mit dem größten Anteil an erfolgten HIV -Erstdiagnosen (40 %), aber gleichzeitig auch an dieser Stelle die meisten verpassten Chancen zu einer früheren HIV -Erstdiagnose gesehen werden (57 %)“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.7">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Das Scoringsystem stützt sich ausschließlich auf Symptome und Erkrankungen, nicht auf soziodemographische Merkmale oder Verhaltensweisen.</p>
-  <blockquote>„„wurde entschieden, im Scoringsyst em ausschließlich auf Symptome und Erkrankungen zu fokussieren, anstatt auf soziodemographische Patientencharakteristika oder Verhaltensweise“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Güte des Scoringinstruments lässt sich an der Kohorte nicht prüfen. Da keine HIV-negativen Personen eingeschlossen sind, sind weder die Rate falsch-positiver Testempfehlungen noch die Leistung in der Allgemeinbevölkerung quantitativ bestimmbar. Der Bericht empfiehlt eine Validierungsstudie.</p>
+  
   <blockquote>„„Kritisch ist anzumerken, dass es nicht möglich ist, anhand der FindHIV -Kohorte die Güte des Scoringinstruments zu prüfen. So sind keine HIV -negativen Personen eingeschlossen“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Angaben zum Zeitraum vor der Erstdiagnose wurden retrospektiv erhoben und können einem Recall Bias unterliegen. Um ihn zu verringern, wurden nur Personen mit höchstens sechs Monate alter Erstdiagnose eingeschlossen.</p>
+  
   <blockquote>„„die Angaben, die sich auf den Zeitraum vor der HIV-Erstdiagnose beziehen, retrospektiv erhoben wurden und somit eine m Recall Bias unterliegen könnten.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -561,11 +445,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Wissensbereich: Die Ergebnisse (S. 12) nennen geringeres Wissen zu HIV-relevanten Themen allgemein (Behandlungsoptionen, Übertragungsrisiko, Testangebote) als signifikant assoziiert. Die Tabelle des Eliminationsmodells (S. 13) weist nur das Wissen über HIV-Testangebote aus. Die Diskussion (S. 17) nennt dagegen geringeres Wissen zu Behandlungsoptionen als unabhängig assoziiert.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -580,11 +464,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Übertragungsweg: Die Ergebnisse (S. 12) nennen heterosexuelle bzw. bisexuelle Kontakte als signifikant assoziiert. In der Tabelle (S. 13) und in der Diskussion (S. 17) erscheinen nur bisexuelle Kontakte.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -599,11 +483,144 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Unabhängigkeit der Faktoren: Die Diskussion (S. 17) bezeichnet Alter, „verheiratet“, bisexuelle Kontakte und geringes Wissen als unabhängig voneinander assoziiert. Im vollständig spezifizierten Modell (S. 13) hatten jedoch nur Alter und bisexuelle Kontakte p &lt;0,05; die übrigen Faktoren erscheinen nur im Eliminationsmodell.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>36 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss leitet die Projektergebnisse zur frühzeitigen Identifikation von HIV-Infektionen zur Information an die Deutsche Gesellschaft für Allgemeinmedizin und Familienmedizin weiter. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Beschluss hält fest, dass das Scoringinstrument nicht in relevanten Gruppen bzw. Settings eingesetzt wurde. Aussagen zur Übertragbarkeit in die Regelversorgung macht er darüber hinaus nicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Nachweis eines hohen Anteils später HIV-Diagnosen in Deutschland</p>
+  
+  <blockquote>„Insgesamt konnte das Projekt unter Einbezug von Primärdaten, systematischer Literaturrecherchen und Experteneinschätzungen zeigen, dass der Anteil von Personen deren HIV Diagnose erst in einem späten Stadium gestellt wird, in Deutschland hoch ist." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Hinweis auf eine zentrale Rolle der Hausärztinnen und Hausärzte vor der HIV-Erstdiagnose</p>
+  
+  <blockquote>„Die Ergebnisse verweisen auch auf eine zentrale Rolle von Hausärztinnen und Hausärzten bzw. Fachärztinnen und Fachärzten für Allgemeinmedizin: Teilnehmende gaben an, vor ihrer HIV -Erstdiagnose mit dieser Profession am häufigsten in Kontakt gewesen zu sein." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Bestätigung vorhandener Erkenntnisse zu Transmissionswegen und zum Anteil der Late Presenter</p>
+  
+  <blockquote>„Die Ergebnisse des Projekts bestätigen bereits vorhandene Erkenntnisse aus vorherigen Studien: der am häufigsten genannte HIV-Transmissionsweg war bei knapp Dreiviertel der Personen Sex zwischen Männern, etwas mehr als die Hälfte der Teilnehmenden waren Late Presenter (LP) und ein Fünftel der Teilnehmenden bzw. ein Drittel der LP befanden sich bereits im Krankheitsstadium Aids." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.6">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Beim niedergelassenen Hausarzt erfolgte der größte Anteil der HIV-Erstdiagnosen (40 %), und dort wurden auch die meisten verpassten Chancen einer früheren Erstdiagnose gesehen (57 %).</p>
+  
+  <blockquote>„„der n iedergelassene Hausarzt (...) der Ort ist , mit dem größten Anteil an erfolgten HIV -Erstdiagnosen (40 %), aber gleichzeitig auch an dieser Stelle die meisten verpassten Chancen zu einer früheren HIV -Erstdiagnose gesehen werden (57 %)“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.7">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Das Scoringsystem stützt sich ausschließlich auf Symptome und Erkrankungen, nicht auf soziodemographische Merkmale oder Verhaltensweisen.</p>
+  
+  <blockquote>„„wurde entschieden, im Scoringsyst em ausschließlich auf Symptome und Erkrankungen zu fokussieren, anstatt auf soziodemographische Patientencharakteristika oder Verhaltensweise“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -618,11 +635,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">BFI-S: Die Instrumentbeschreibung (S. 9) nennt vier Merkmale (Neurotizismus, Offenheit, Gewissenhaftigkeit, Verträglichkeit) mit 15 Items. Reliabilitätsangaben (S. 9) und Ergebnisse (S. 12) beziehen Extraversion als fünftes Merkmal ein.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -637,11 +654,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Tabelle 3 (S. 13) gibt für die bisexuellen Kontakte als Referenz „alleinstehend“ an, eine Kategorie des Partnerschaftsstatus und nicht des Übertragungswegs.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -656,11 +673,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Repräsentativität: Die Projektnehmer bezeichnen die Stichprobe als weitgehend repräsentativ (S. 16, S. 18). Zugleich halten sie fest, dass nicht-deutschsprachige Personen möglicherweise unterrepräsentiert sind (S. 16) und die Zahl der Nicht-Eingeschlossenen nicht erfasst wurde (S. 9).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -670,16 +687,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>26 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Ethnizität, Bildungsstatus, Beruf und die Persönlichkeitsmerkmale des BFI-S waren nach dem Bericht nicht signifikant mit einer verzögerten Diagnose assoziiert.</p>
+  
   <blockquote>„„Im Studienkollektiv nicht signifikant mit einer verzögerten Diagnose assoziiert waren Ethnizität, soziodemographische Variablen wie Bildungsstatus oder Beruf, ebenso wie spezifische Persönlichkeitsmerkmale gemäß dem validierten Fragebogen Big Five Inventory -SOEP (BFI-S)“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im vollständig spezifizierten Modell (FSM) hatten laut Tabelle nur Alter (pro Lebensjahr) und bisexuelle Kontakte einen p-Wert &lt;0,05 (jeweils OR &gt; 1). Konkrete OR-Werte werden nicht genannt.</p>
+  
   <blockquote>„„Variablen mit p-Wert &lt;0,05 in den FSM-Modellen Alter (pro Lebensjahr) OR &gt; 1 Transmissionsroute bisexuelle Kontakte OR &gt; 1“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +729,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Eliminationsmodell (BSM) hatten Alter, Partnerschaftsstatus „verheiratet“, bisexuelle Kontakte sowie kein bzw. wenig Wissen über HIV-Testangebote einen p-Wert &lt;0,05 (jeweils OR &gt; 1).</p>
+  
   <blockquote>„„Variablen mit p-Wert &lt;0,05 in den BMS-Modellen Alter (pro Lebensjahr) OR &gt; 1 Partnerschaftsstatus verheiratet (Referenz: alleinstehend) OR &gt; 1 Transmissionsroute bisexuelle Kontakte (...) OR &gt; 1 Weniger Wissen zu HIV (...) über HIV-Testangebot – kein Wissen OR &gt; 1, wenig Wissen OR &gt; 1“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +748,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Projektnehmer begründen diese Beschränkung damit, dass ein Fokus auf Personengruppen oder Verhaltensweisen gerade die spät Diagnostizierten systematisch ausblenden würde.</p>
+  
   <blockquote>„„Bei einem Fok us auf bestimmte Personengruppen oder Verhaltensweisen würden also systematisch jene ausgeblendet werden, die nicht in die „Schablone“ passen.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +767,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von Januar 2019 bis Mitte Mai 2020 wurden 706 Teilnehmende mit auswertbaren Datensätzen in 40 bundesweit verteilten Studienzentren rekrutiert.</p>
+  
   <blockquote>„„Von Januar 2019 bis Mitte Mai 2020 wurden 706 Studienteilnehmer mit auswertbaren Datensätzen in 40 bundesweit verteilten Studienzentren rekrutiert“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +786,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Teilnehmenden waren im Mittel 40,3 Jahre alt (SD 12,8) und zu 92 % männlich. Der am häufigsten genannte mutmaßliche Übertragungsweg war Sex zwischen Männern (MSM, 72 %).</p>
+  
   <blockquote>„„Diese sind durchschnittlich 40,3 Jahre alt (Standardabweichung (SD)=12,8) und zu 92 % männlich. MSM ist mit 72 % der am häufigsten genannte mutmaßliche Transmissionsweg.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +805,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Late Presenter (davon 36,6 % im Stadium Aids) und non-Late Presenter unterschieden sich nach dem Bericht signifikant, etwa im mittleren Alter und in der Selbsteinschätzung des Infektionsrisikos vor der Erstdiagnose. In der Gesamtpopulation hatten 3 % mit einer Infektion gerechnet, 15 % ihr Risiko als hoch, 50 % als niedrig und 32 % als nicht vorhanden eingeschätzt.</p>
+  
   <blockquote>„„signifikante Unterschiede zwischen Late Presentern, von denen sich bereits 36,6% im Stadium Aids befanden, und non-Late Presentern (...) „Mit Infektion gerechnet“: 3%, „Hohes Risiko“: 15%, „Niedriges Risiko“: 50%, „Kein Risiko“: 32%“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Signifikante Unterschiede zwischen LP und non-LP berichtet der Bericht auch beim angenommenen Übertragungsweg, bei der Art der Beziehung bei Sexualkontakten und beim Wissen zu HIV-bezogenen Themen.</p>
+  
   <blockquote>„„Auch hinsichtlich des angenommenen Transmissionswegs, der Art der Beziehung bei Sexualkontakten und dem Wissen zu HIV -verwandte Themen waren signifikante Unterschiede zu beobachten.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei Geschlecht und ethnischer Zugehörigkeit gab es keine statistisch auffälligen Unterschiede zwischen LP und non-LP. Der LP-Anteil lag bei schwarzen Menschen bei 68 % und bei schwarzen Frauen bei 88 %; die Fallzahlen dieser Untergruppen lagen unter 30 bzw. unter 10.</p>
+  
   <blockquote>„„keine statistisch auffälligen Unterschiede zwischen LP und N on-LP in der Verteilung von Geschlecht oder ethnischer Zugehörigkeit. Allerdings war der Anteil an LP bei schwarzen Menschen (68 %) und insbesondere bei schwarzen Frauen (88 %) höher“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +862,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Knapp ein Drittel der Teilnehmenden hatte einen Migrationshintergrund (23 % selbst eingewandert), ohne signifikanten Unterschied zwischen LP und non-LP.</p>
+  
   <blockquote>„„Ein knappes Drittel der Teilnehmer hatte einen Migrationshintergrund (selbst eingewandert 23 %) - ohne signifikante Unterschiede zwischen LP und non-LP.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +881,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mehr als 50 % hatten Hochschulzugangsberechtigung oder Hochschulabschluss. 45 % waren Facharbeiter/Angestellte, 13 % leitende Angestellte und 14 % arbeitslos oder erwerbsunfähig. Auch hier gab es keine signifikanten Unterschiede zwischen LP und non-LP.</p>
+  
   <blockquote>„„Mehr als 50 % hatten entweder die Hochschulzugangsberechtigung oder einen Universitäts-/Fachhochschulabschluss; (...) Facharbeiter/Angestellte (45 %) und le itende Angestellte (13 %); 14 % gaben an, arbeitslos oder erwerbsunfähig zu sein. Auch hier gab es keine auffälligen und keine signifikanten Unterschiede“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +900,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auch der Partnerschaftsstatus (47 % alleinstehend, 31 % feste Partnerschaft, 21 % verheiratet/eingetragene Lebenspartnerschaft) und die fünf BFI-S-Persönlichkeitsmerkmale wurden zwischen LP und non-LP verglichen.</p>
+  
   <blockquote>„„Ebenso verhält es sich beim Partnerschaftsstatus (47% alleinstehend, 31% feste Partnerschaft, 21% verheiratet/eingetragene Lebenspartnerschaft, 1% keine Angabe) und den Persönlichkeitsmerkmalen Offenheit (...) und Neurotizismus.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +919,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei einer Zwischenauswertung (n=475) wurde eine LP-Rate von 54 % beobachtet, die der Bericht als deutlich höher bezeichnet. Daraufhin wurde eine Fallzahlreduktion auf 600 vollauswertbare Datensätze beantragt und genehmigt.</p>
+  
   <blockquote>„„Da bei einer Zwischenauswertung (n=475) eine deutlich höhere LP-Rate (54 %) beobachtet wurde, wurde eine Fallzahlreduktion auf 600 Studienteilnehmer n mit vollauswertbaren Datensätzen beantragt und genehmigt.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +938,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Trotz der Reduktion wurden über 700 Teilnehmende eingeschlossen. Der Bericht führt das auf den Zeitverzug bei Genehmigung und Kommunikation sowie auf die hohe Rate vollauswertbarer Fälle zurück.</p>
+  
   <blockquote>„„Aufgrund des Zeitverzugs bis zur Genehmigung und Kommunikation der Fallzahlreduktion in die S tudienzentren hinein sowie der hohen Rate an vollauswertbaren Fällen, wurde trotz der Reduktion eine Fallzahl von über 700 Studienteilnehmern erreicht.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +957,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Literaturrecherche wurden 12 Publikationen näher betrachtet. Fast alle publizierten Scoringinstrumente richten sich an spezifische Kollektive; nur eines richtet sich an alle Personen ab 13 Jahren.</p>
+  
   <blockquote>„„Dabei wurden 12 recherchierte Publikationen näher betrachtet [ 22-33]. Es ko nnte beobachtet werden, dass fast alle aktuell publizierte Scoringinstrumente auf ein spezifisches Kollektiv fokussieren (...) Lediglich ein Instrument richtet sich an alle Personen ab dem Alter von 13 Jahren“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +976,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Scoringinstrument und Handlungsempfehlungen wurden in drei Fokusgruppen und einer anschließenden Konsentierungsrunde in Formulierungen, Beispielerkrankungen und Aufbau geändert. Der Prozess wurde laut Bericht am 30.11.2021 erfolgreich abgeschlossen.</p>
+  
   <blockquote>„„In den drei Fokusgruppen und der anschließenden Konsentierungsrunde kam es also zu Änderungen in Formulierungen, in der Auswahl und Darstellung von Beispielerkrankungen und im Aufbau der Datei (...) Dieser Prozess konnte erfolgreich am 30.11.2021 abgeschlossen werden.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +995,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Summenzeile des Instruments wurde ergänzt, dass eine geringere Punktzahl eine Indikation zur Testung nicht ausschließt.</p>
+  
   <blockquote>„„Ergänzung in der Summenzeile des Scoringinstruments: „Eine geringere Punktzahl schließt eine Indikation zur Testung nicht aus.““ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1014,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Handlungsempfehlungen enthalten einen Hinweis zur Abrechenbarkeit von HIV-Tests. Er wurde aufgenommen, weil Unkenntnis der Abrechnungsmöglichkeiten nach Expertenmeinung ein Auslöser für unterlassene Tests sein könnte.</p>
+  
   <blockquote>„„eine Fußnote mit einem Hinweis zur Abrechenbarkeit von HIV-Tests, um dem Umstand zu begegnen, dass laut Expertenmeinung Unwissenheit zu Abrechnungsmöglichkeiten potentiell ein Auslöser für unterlassene HIV-Tests sein könnte.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1033,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Projektnehmer schließen, dass in Deutschland weiterhin eine hohe LP-Rate besteht, eine frühere Diagnose durch ein gezieltes Testangebot aber oft möglich wäre. Die Stichprobe bezeichnen sie als mutmaßlich weitgehend repräsentativ.</p>
+  
   <blockquote>„„innerhalb eines großen und mutmaßlich weitgehend repräsentativen Patientenkollektivs gezeigt werden, dass in Deutschland noch immer eine hohe LP -Rate vorhanden ist, oft aber eine frühere Diagnose durch ein gezieltes HIV-Testangebot möglich wäre.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1052,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zu Partnerschaftsstatus und HIV-Wissen als Faktoren einer späten Diagnose findet sich nach dem Bericht bisher nichts in der Literatur. Andere Kohorten nannten zusätzlich Migrationsstatus und Herkunftsland.</p>
+  
   <blockquote>„„Im Gegensatz dazu findet man in der Literatur bish er nichts zum Partnerschaftsstaus oder zum Wissen zu den wichtigsten Aspekten zu HIV/Aids.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1071,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der Einschlusskriterien sind nicht-deutschsprachige Personen in der Stichprobe möglicherweise unterrepräsentiert.</p>
+  
   <blockquote>„„Denkbar erscheint allerdings, dass aufgrund der Einschluss kriterien der Studie nicht- deutschsprachige Personen in der Stichprobe unterrepräsentiert sind.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1090,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wie viele Patienten nicht eingeschlossen wurden, etwa mangels Einverständnis, wurde in den Studienzentren nicht erfasst.</p>
+  
   <blockquote>„„Es wurde in den Studienzentren nicht erfasst, wie viele Patienten nicht eingeschlossen wurden (beispielsweise aufgrund eines fehlenden Einverständnisses).“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1109,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Untergruppen schwarzer Menschen (&lt;30) bzw. schwarzer Frauen (&lt;10) waren nach dem Bericht zu klein, um größere Schlüsse zu ziehen.</p>
+  
   <blockquote>„„Die absoluten Fallzahlen in den genannten Subgruppen waren jedoch zu klein ( &lt;30 bzw. &lt;10) um größere Schlüsse daraus ziehen zu können.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1128,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Laut den Verfassern des BFI-S sind die Skalen Verträglichkeit (α=0,53), Neurotizismus (α=0,57) und Extraversion (α=0,62) nicht hinreichend intern konsistent. Für Offenheit (α=0,74) und Gewissenhaftigkeit (α=0,72) gilt das nach dem üblichen Verständnis als gegeben.</p>
+  
   <blockquote>„„gelten laut de r Verfasser die Skalen Offenheit (Cro nbachsches Alpha ( α)=0,74) und Gewissenhaftigkeit (α=0,72) (...) als hinreichend intern konsistent, nicht jedoch die Items zur Erfassung von Verträglichkeit (α=0,53), Neurotizismus (α=0,57) und Extraversion (α=0,62)“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Einziges validiertes Instrument der Primärdatenerhebung war der BFI-S; alle übrigen Fragebogenteile wurden selbst erarbeitet.</p>
+  
   <blockquote>„„Als validiertes Instrument wurde im Rahmen der Primärdatenerhebung lediglich der BFI-S eingesetzt. Alle anderen Fragebogenteile wurden selbst erarbeitet.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Auswertung und Dokumentation der Literaturrecherche beschränkten sich auf qualitative Auswertungen.</p>
+  
   <blockquote>„„beschränkten sich die Auswertungen und die Dokumentation der Literaturrecherche auf die hier dargestellten qualitativen Auswertungen.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1199,28 +1216,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 158, "akronym": "FindHIV", "kennung": "vCVVl4zcrwcH", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Projektergebnisse zur frühzeitigen Identifikation von HIV-Infektionen zur Information an die Deutsche Gesellschaft für Allgemeinmedizin und Familienmedizin weiter. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Im Projekt wurde auf Basis einer arztgestützten Fragebogenerhebung bei circa 700 neudiagnostizierten Personen in 40 Zentren, Fokusgruppen mit Experten und Literaturrecherchen ein Scoringinstrument zur früheren Erkennung von HIV-Infektionen entwickelt. Die Ergebnisse bestätigen bekannte Erkenntnisse, etwa den hohen Anteil an Late Presentern. Als Limitation nennt der Ausschuss, dass das Instrument hinsichtlich seiner Fähigkeit zur früheren Identifikation nicht überprüft und nicht in relevanten Gruppen oder Settings eingesetzt wurde. Da die Teilnehmenden vor der Erstdiagnose am häufigsten Kontakt zu Hausärztinnen und Hausärzten hatten, werden die Ergebnisse an die DEGAM zur Information weitergeleitet. Zudem verweist der Ausschuss auf das laufende Projekt HeLP zum selben Thema."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss hält fest, dass das Scoringinstrument nicht in relevanten Gruppen bzw. Settings eingesetzt wurde. Aussagen zur Übertragbarkeit in die Regelversorgung macht er darüber hinaus nicht."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Das entwickelte Scoringinstrument wurde hinsichtlich seiner Fähigkeit zur früheren Identifikation nicht überprüft und nicht in relevanten Gruppen oder Settings eingesetzt."}, {"stelle": "befund.0", "art": "befund", "unser": "Nachweis eines hohen Anteils später HIV-Diagnosen in Deutschland"}, {"stelle": "befund.1", "art": "befund", "unser": "Hinweis auf eine zentrale Rolle der Hausärztinnen und Hausärzte vor der HIV-Erstdiagnose"}, {"stelle": "befund.2", "art": "befund", "unser": "Bestätigung vorhandener Erkenntnisse zu Transmissionswegen und zum Anteil der Late Presenter"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Anteil Late Presenter (LP; AIDS-definierende Erkrankung oder CD4-Zellzahl <350/µl)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Anteil Studienteilnehmer im Stadium AIDS (CDC-Stadium C)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Anteil Late Presenter, die sich bereits im Stadium AIDS befanden"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Mit Late Presentation assoziierte Faktoren (Alter pro Lebensjahr, Partnerschaftsstatus \"verheiratet\", heterosexuelle bzw. bisexuelle Kontakte als Transmissionsweg, geringeres Wissen zu HIV-relevanten Themen)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Nicht mit Late Presentation assoziierte Faktoren (Ethnizität, Bildungsstatus, Beruf, Persönlichkeitsmerkmale gemäß BFI-S)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Häufigstes Symptom/Erkrankung als verpasste Chance zu einer früheren HIV-Diagnose: Gewichtsverlust"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Ort der erfolgten HIV-Erstdiagnose: niedergelassener Hausarzt"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Verpasste Chancen zur früheren HIV-Erstdiagnose: Anteil beim niedergelassenen Hausarzt"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Die FindHIV-Studie untersuchte, welche Patientenmerkmale mit einer späten HIV-Diagnose (Late Presentation, LP: CD4-Zellzahl <350/μl und/oder Aids-definierende Erkrankung bei Erstvorstellung) zusammenhängen und bei welchen Kontakten zum Gesundheitswesen eine frühere Diagnose möglich gewesen wäre. Daraus wurde ein Scoringinstrument entwickelt. Von Januar 2019 bis Mitte Mai 2020 wurden 706 Personen mit auswertbaren Datensätzen in 40 Studienzentren eingeschlossen. 55 % waren Late Presenter, 20 % waren bei Erstdiagnose im Stadium Aids. In Regressionsmodellen waren nach dem Bericht vor allem höheres Alter, der Partnerschaftsstatus „verheiratet“, hetero- bzw. bisexuelle Kontakte und geringeres HIV-Wissen signifikant mit LP assoziiert. Ethnizität, Bildung, Beruf und Persönlichkeitsmerkmale waren es nicht. Als häufigste verpasste Chance werteten die Studienärzte Gewichtsverlust. Beim Hausarzt erfolgten 40 % der Erstdiagnosen, und dort lagen 57 % der verpassten Chancen. Das Scoringinstrument stützt sich ausschließlich auf Symptome und Erkrankungen und wurde in Fokusgruppen und einer Konsentierungsrunde abgestimmt. Seine Güte ließ sich an der Kohorte nicht prüfen, weil keine HIV-negativen Personen eingeschlossen waren. Die Angaben zur Zeit vor der Diagnose wurden retrospektiv erhoben."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "55 % der Teilnehmenden waren Late Presenter, 20 % befanden sich bei Erstdiagnose im Stadium Aids."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "In univariaten und multivariablen Modellen waren nach dem Bericht insbesondere höheres Alter (bei LP etwa jeder Dritte über 50 Jahre, bei non-LP etwa jeder Fünfte), der Partnerschaftsstatus „verheiratet“, hetero- bzw. bisexuelle Kontakte als möglicher Übertragungsweg und geringeres Wissen zu HIV-relevanten Themen signifikant mit Late Presentation assoziiert."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Der häufigste Kontaktanlass, den die Studienärzte als Chance einer früheren HIV-Diagnose werteten, war Gewichtsverlust (52 Chancen bei 50 Teilnehmenden). Es folgten Indikator-/HIV-assoziierte Erkrankungen (41 bei 38), Fieber und Nachtschweiß (34 bei 34), sonstige Erkrankungen (30 bei 30) und sexuell übertragbare Erkrankungen (29 bei 27)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Beim niedergelassenen Hausarzt erfolgte der größte Anteil der HIV-Erstdiagnosen (40 %), und dort wurden auch die meisten verpassten Chancen einer früheren Erstdiagnose gesehen (57 %)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Das Scoringsystem stützt sich ausschließlich auf Symptome und Erkrankungen, nicht auf soziodemographische Merkmale oder Verhaltensweisen."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Güte des Scoringinstruments lässt sich an der Kohorte nicht prüfen. Da keine HIV-negativen Personen eingeschlossen sind, sind weder die Rate falsch-positiver Testempfehlungen noch die Leistung in der Allgemeinbevölkerung quantitativ bestimmbar. Der Bericht empfiehlt eine Validierungsstudie."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Angaben zum Zeitraum vor der Erstdiagnose wurden retrospektiv erhoben und können einem Recall Bias unterliegen. Um ihn zu verringern, wurden nur Personen mit höchstens sechs Monate alter Erstdiagnose eingeschlossen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Wissensbereich: Die Ergebnisse (S. 12) nennen geringeres Wissen zu HIV-relevanten Themen allgemein (Behandlungsoptionen, Übertragungsrisiko, Testangebote) als signifikant assoziiert. Die Tabelle des Eliminationsmodells (S. 13) weist nur das Wissen über HIV-Testangebote aus. Die Diskussion (S. 17) nennt dagegen geringeres Wissen zu Behandlungsoptionen als unabhängig assoziiert."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Übertragungsweg: Die Ergebnisse (S. 12) nennen heterosexuelle bzw. bisexuelle Kontakte als signifikant assoziiert. In der Tabelle (S. 13) und in der Diskussion (S. 17) erscheinen nur bisexuelle Kontakte."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Unabhängigkeit der Faktoren: Die Diskussion (S. 17) bezeichnet Alter, „verheiratet“, bisexuelle Kontakte und geringes Wissen als unabhängig voneinander assoziiert. Im vollständig spezifizierten Modell (S. 13) hatten jedoch nur Alter und bisexuelle Kontakte p <0,05; die übrigen Faktoren erscheinen nur im Eliminationsmodell."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "BFI-S: Die Instrumentbeschreibung (S. 9) nennt vier Merkmale (Neurotizismus, Offenheit, Gewissenhaftigkeit, Verträglichkeit) mit 15 Items. Reliabilitätsangaben (S. 9) und Ergebnisse (S. 12) beziehen Extraversion als fünftes Merkmal ein."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Tabelle 3 (S. 13) gibt für die bisexuellen Kontakte als Referenz „alleinstehend“ an, eine Kategorie des Partnerschaftsstatus und nicht des Übertragungswegs."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Repräsentativität: Die Projektnehmer bezeichnen die Stichprobe als weitgehend repräsentativ (S. 16, S. 18). Zugleich halten sie fest, dass nicht-deutschsprachige Personen möglicherweise unterrepräsentiert sind (S. 16) und die Zahl der Nicht-Eingeschlossenen nicht erfasst wurde (S. 9)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Ethnizität, Bildungsstatus, Beruf und die Persönlichkeitsmerkmale des BFI-S waren nach dem Bericht nicht signifikant mit einer verzögerten Diagnose assoziiert."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Im vollständig spezifizierten Modell (FSM) hatten laut Tabelle nur Alter (pro Lebensjahr) und bisexuelle Kontakte einen p-Wert <0,05 (jeweils OR > 1). Konkrete OR-Werte werden nicht genannt."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Im Eliminationsmodell (BSM) hatten Alter, Partnerschaftsstatus „verheiratet“, bisexuelle Kontakte sowie kein bzw. wenig Wissen über HIV-Testangebote einen p-Wert <0,05 (jeweils OR > 1)."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die Projektnehmer begründen diese Beschränkung damit, dass ein Fokus auf Personengruppen oder Verhaltensweisen gerade die spät Diagnostizierten systematisch ausblenden würde."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Von Januar 2019 bis Mitte Mai 2020 wurden 706 Teilnehmende mit auswertbaren Datensätzen in 40 bundesweit verteilten Studienzentren rekrutiert."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Teilnehmenden waren im Mittel 40,3 Jahre alt (SD 12,8) und zu 92 % männlich. Der am häufigsten genannte mutmaßliche Übertragungsweg war Sex zwischen Männern (MSM, 72 %)."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Late Presenter (davon 36,6 % im Stadium Aids) und non-Late Presenter unterschieden sich nach dem Bericht signifikant, etwa im mittleren Alter und in der Selbsteinschätzung des Infektionsrisikos vor der Erstdiagnose. In der Gesamtpopulation hatten 3 % mit einer Infektion gerechnet, 15 % ihr Risiko als hoch, 50 % als niedrig und 32 % als nicht vorhanden eingeschätzt."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Signifikante Unterschiede zwischen LP und non-LP berichtet der Bericht auch beim angenommenen Übertragungsweg, bei der Art der Beziehung bei Sexualkontakten und beim Wissen zu HIV-bezogenen Themen."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Bei Geschlecht und ethnischer Zugehörigkeit gab es keine statistisch auffälligen Unterschiede zwischen LP und non-LP. Der LP-Anteil lag bei schwarzen Menschen bei 68 % und bei schwarzen Frauen bei 88 %; die Fallzahlen dieser Untergruppen lagen unter 30 bzw. unter 10."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Knapp ein Drittel der Teilnehmenden hatte einen Migrationshintergrund (23 % selbst eingewandert), ohne signifikanten Unterschied zwischen LP und non-LP."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Mehr als 50 % hatten Hochschulzugangsberechtigung oder Hochschulabschluss. 45 % waren Facharbeiter/Angestellte, 13 % leitende Angestellte und 14 % arbeitslos oder erwerbsunfähig. Auch hier gab es keine signifikanten Unterschiede zwischen LP und non-LP."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Auch der Partnerschaftsstatus (47 % alleinstehend, 31 % feste Partnerschaft, 21 % verheiratet/eingetragene Lebenspartnerschaft) und die fünf BFI-S-Persönlichkeitsmerkmale wurden zwischen LP und non-LP verglichen."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Bei einer Zwischenauswertung (n=475) wurde eine LP-Rate von 54 % beobachtet, die der Bericht als deutlich höher bezeichnet. Daraufhin wurde eine Fallzahlreduktion auf 600 vollauswertbare Datensätze beantragt und genehmigt."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Trotz der Reduktion wurden über 700 Teilnehmende eingeschlossen. Der Bericht führt das auf den Zeitverzug bei Genehmigung und Kommunikation sowie auf die hohe Rate vollauswertbarer Fälle zurück."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "In der Literaturrecherche wurden 12 Publikationen näher betrachtet. Fast alle publizierten Scoringinstrumente richten sich an spezifische Kollektive; nur eines richtet sich an alle Personen ab 13 Jahren."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Scoringinstrument und Handlungsempfehlungen wurden in drei Fokusgruppen und einer anschließenden Konsentierungsrunde in Formulierungen, Beispielerkrankungen und Aufbau geändert. Der Prozess wurde laut Bericht am 30.11.2021 erfolgreich abgeschlossen."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "In der Summenzeile des Instruments wurde ergänzt, dass eine geringere Punktzahl eine Indikation zur Testung nicht ausschließt."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Die Handlungsempfehlungen enthalten einen Hinweis zur Abrechenbarkeit von HIV-Tests. Er wurde aufgenommen, weil Unkenntnis der Abrechnungsmöglichkeiten nach Expertenmeinung ein Auslöser für unterlassene Tests sein könnte."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Die Projektnehmer schließen, dass in Deutschland weiterhin eine hohe LP-Rate besteht, eine frühere Diagnose durch ein gezieltes Testangebot aber oft möglich wäre. Die Stichprobe bezeichnen sie als mutmaßlich weitgehend repräsentativ."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Zu Partnerschaftsstatus und HIV-Wissen als Faktoren einer späten Diagnose findet sich nach dem Bericht bisher nichts in der Literatur. Andere Kohorten nannten zusätzlich Migrationsstatus und Herkunftsland."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Wegen der Einschlusskriterien sind nicht-deutschsprachige Personen in der Stichprobe möglicherweise unterrepräsentiert."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Wie viele Patienten nicht eingeschlossen wurden, etwa mangels Einverständnis, wurde in den Studienzentren nicht erfasst."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Untergruppen schwarzer Menschen (<30) bzw. schwarzer Frauen (<10) waren nach dem Bericht zu klein, um größere Schlüsse zu ziehen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Laut den Verfassern des BFI-S sind die Skalen Verträglichkeit (α=0,53), Neurotizismus (α=0,57) und Extraversion (α=0,62) nicht hinreichend intern konsistent. Für Offenheit (α=0,74) und Gewissenhaftigkeit (α=0,72) gilt das nach dem üblichen Verständnis als gegeben."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Einziges validiertes Instrument der Primärdatenerhebung war der BFI-S; alle übrigen Fragebogenteile wurden selbst erarbeitet."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Auswertung und Dokumentation der Literaturrecherche beschränkten sich auf qualitative Auswertungen."}]};
+const D = {"projekt_id": 158, "akronym": "FindHIV", "kennung": "vCVVl4zcrwcH", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Im Projekt wurde auf Basis einer arztgestützten Fragebogenerhebung bei circa 700 neudiagnostizierten Personen in 40 Zentren, Fokusgruppen mit Experten und Literaturrecherchen ein Scoringinstrument zur früheren Erkennung von HIV-Infektionen entwickelt. Die Ergebnisse bestätigen bekannte Erkenntnisse, etwa den hohen Anteil an Late Presentern. Als Limitation nennt der Ausschuss, dass das Instrument hinsichtlich seiner Fähigkeit zur früheren Identifikation nicht überprüft und nicht in relevanten Gruppen oder Settings eingesetzt wurde. Da die Teilnehmenden vor der Erstdiagnose am häufigsten Kontakt zu Hausärztinnen und Hausärzten hatten, werden die Ergebnisse an die DEGAM zur Information weitergeleitet. Zudem verweist der Ausschuss auf das laufende Projekt HeLP zum selben Thema."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Das entwickelte Scoringinstrument wurde hinsichtlich seiner Fähigkeit zur früheren Identifikation nicht überprüft und nicht in relevanten Gruppen oder Settings eingesetzt."}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Anteil Late Presenter (LP; AIDS-definierende Erkrankung oder CD4-Zellzahl <350/µl)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Anteil Studienteilnehmer im Stadium AIDS (CDC-Stadium C)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Anteil Late Presenter, die sich bereits im Stadium AIDS befanden"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Mit Late Presentation assoziierte Faktoren (Alter pro Lebensjahr, Partnerschaftsstatus \"verheiratet\", heterosexuelle bzw. bisexuelle Kontakte als Transmissionsweg, geringeres Wissen zu HIV-relevanten Themen)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Nicht mit Late Presentation assoziierte Faktoren (Ethnizität, Bildungsstatus, Beruf, Persönlichkeitsmerkmale gemäß BFI-S)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Häufigstes Symptom/Erkrankung als verpasste Chance zu einer früheren HIV-Diagnose: Gewichtsverlust"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Ort der erfolgten HIV-Erstdiagnose: niedergelassener Hausarzt"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Verpasste Chancen zur früheren HIV-Erstdiagnose: Anteil beim niedergelassenen Hausarzt"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Die FindHIV-Studie untersuchte, welche Patientenmerkmale mit einer späten HIV-Diagnose (Late Presentation, LP: CD4-Zellzahl <350/μl und/oder Aids-definierende Erkrankung bei Erstvorstellung) zusammenhängen und bei welchen Kontakten zum Gesundheitswesen eine frühere Diagnose möglich gewesen wäre. Daraus wurde ein Scoringinstrument entwickelt. Von Januar 2019 bis Mitte Mai 2020 wurden 706 Personen mit auswertbaren Datensätzen in 40 Studienzentren eingeschlossen. 55 % waren Late Presenter, 20 % waren bei Erstdiagnose im Stadium Aids. In Regressionsmodellen waren nach dem Bericht vor allem höheres Alter, der Partnerschaftsstatus „verheiratet“, hetero- bzw. bisexuelle Kontakte und geringeres HIV-Wissen signifikant mit LP assoziiert. Ethnizität, Bildung, Beruf und Persönlichkeitsmerkmale waren es nicht. Als häufigste verpasste Chance werteten die Studienärzte Gewichtsverlust. Beim Hausarzt erfolgten 40 % der Erstdiagnosen, und dort lagen 57 % der verpassten Chancen. Das Scoringinstrument stützt sich ausschließlich auf Symptome und Erkrankungen und wurde in Fokusgruppen und einer Konsentierungsrunde abgestimmt. Seine Güte ließ sich an der Kohorte nicht prüfen, weil keine HIV-negativen Personen eingeschlossen waren. Die Angaben zur Zeit vor der Diagnose wurden retrospektiv erhoben."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "55 % der Teilnehmenden waren Late Presenter, 20 % befanden sich bei Erstdiagnose im Stadium Aids."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "In univariaten und multivariablen Modellen waren nach dem Bericht insbesondere höheres Alter (bei LP etwa jeder Dritte über 50 Jahre, bei non-LP etwa jeder Fünfte), der Partnerschaftsstatus „verheiratet“, hetero- bzw. bisexuelle Kontakte als möglicher Übertragungsweg und geringeres Wissen zu HIV-relevanten Themen signifikant mit Late Presentation assoziiert."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Der häufigste Kontaktanlass, den die Studienärzte als Chance einer früheren HIV-Diagnose werteten, war Gewichtsverlust (52 Chancen bei 50 Teilnehmenden). Es folgten Indikator-/HIV-assoziierte Erkrankungen (41 bei 38), Fieber und Nachtschweiß (34 bei 34), sonstige Erkrankungen (30 bei 30) und sexuell übertragbare Erkrankungen (29 bei 27)."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Güte des Scoringinstruments lässt sich an der Kohorte nicht prüfen. Da keine HIV-negativen Personen eingeschlossen sind, sind weder die Rate falsch-positiver Testempfehlungen noch die Leistung in der Allgemeinbevölkerung quantitativ bestimmbar. Der Bericht empfiehlt eine Validierungsstudie."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Angaben zum Zeitraum vor der Erstdiagnose wurden retrospektiv erhoben und können einem Recall Bias unterliegen. Um ihn zu verringern, wurden nur Personen mit höchstens sechs Monate alter Erstdiagnose eingeschlossen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Wissensbereich: Die Ergebnisse (S. 12) nennen geringeres Wissen zu HIV-relevanten Themen allgemein (Behandlungsoptionen, Übertragungsrisiko, Testangebote) als signifikant assoziiert. Die Tabelle des Eliminationsmodells (S. 13) weist nur das Wissen über HIV-Testangebote aus. Die Diskussion (S. 17) nennt dagegen geringeres Wissen zu Behandlungsoptionen als unabhängig assoziiert."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Übertragungsweg: Die Ergebnisse (S. 12) nennen heterosexuelle bzw. bisexuelle Kontakte als signifikant assoziiert. In der Tabelle (S. 13) und in der Diskussion (S. 17) erscheinen nur bisexuelle Kontakte."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Unabhängigkeit der Faktoren: Die Diskussion (S. 17) bezeichnet Alter, „verheiratet“, bisexuelle Kontakte und geringes Wissen als unabhängig voneinander assoziiert. Im vollständig spezifizierten Modell (S. 13) hatten jedoch nur Alter und bisexuelle Kontakte p <0,05; die übrigen Faktoren erscheinen nur im Eliminationsmodell."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Projektergebnisse zur frühzeitigen Identifikation von HIV-Infektionen zur Information an die Deutsche Gesellschaft für Allgemeinmedizin und Familienmedizin weiter. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss hält fest, dass das Scoringinstrument nicht in relevanten Gruppen bzw. Settings eingesetzt wurde. Aussagen zur Übertragbarkeit in die Regelversorgung macht er darüber hinaus nicht."}, {"stelle": "befund.0", "art": "befund", "unser": "Nachweis eines hohen Anteils später HIV-Diagnosen in Deutschland"}, {"stelle": "befund.1", "art": "befund", "unser": "Hinweis auf eine zentrale Rolle der Hausärztinnen und Hausärzte vor der HIV-Erstdiagnose"}, {"stelle": "befund.2", "art": "befund", "unser": "Bestätigung vorhandener Erkenntnisse zu Transmissionswegen und zum Anteil der Late Presenter"}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Beim niedergelassenen Hausarzt erfolgte der größte Anteil der HIV-Erstdiagnosen (40 %), und dort wurden auch die meisten verpassten Chancen einer früheren Erstdiagnose gesehen (57 %)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Das Scoringsystem stützt sich ausschließlich auf Symptome und Erkrankungen, nicht auf soziodemographische Merkmale oder Verhaltensweisen."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "BFI-S: Die Instrumentbeschreibung (S. 9) nennt vier Merkmale (Neurotizismus, Offenheit, Gewissenhaftigkeit, Verträglichkeit) mit 15 Items. Reliabilitätsangaben (S. 9) und Ergebnisse (S. 12) beziehen Extraversion als fünftes Merkmal ein."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Tabelle 3 (S. 13) gibt für die bisexuellen Kontakte als Referenz „alleinstehend“ an, eine Kategorie des Partnerschaftsstatus und nicht des Übertragungswegs."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Repräsentativität: Die Projektnehmer bezeichnen die Stichprobe als weitgehend repräsentativ (S. 16, S. 18). Zugleich halten sie fest, dass nicht-deutschsprachige Personen möglicherweise unterrepräsentiert sind (S. 16) und die Zahl der Nicht-Eingeschlossenen nicht erfasst wurde (S. 9)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Ethnizität, Bildungsstatus, Beruf und die Persönlichkeitsmerkmale des BFI-S waren nach dem Bericht nicht signifikant mit einer verzögerten Diagnose assoziiert."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Im vollständig spezifizierten Modell (FSM) hatten laut Tabelle nur Alter (pro Lebensjahr) und bisexuelle Kontakte einen p-Wert <0,05 (jeweils OR > 1). Konkrete OR-Werte werden nicht genannt."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Im Eliminationsmodell (BSM) hatten Alter, Partnerschaftsstatus „verheiratet“, bisexuelle Kontakte sowie kein bzw. wenig Wissen über HIV-Testangebote einen p-Wert <0,05 (jeweils OR > 1)."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die Projektnehmer begründen diese Beschränkung damit, dass ein Fokus auf Personengruppen oder Verhaltensweisen gerade die spät Diagnostizierten systematisch ausblenden würde."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Von Januar 2019 bis Mitte Mai 2020 wurden 706 Teilnehmende mit auswertbaren Datensätzen in 40 bundesweit verteilten Studienzentren rekrutiert."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Teilnehmenden waren im Mittel 40,3 Jahre alt (SD 12,8) und zu 92 % männlich. Der am häufigsten genannte mutmaßliche Übertragungsweg war Sex zwischen Männern (MSM, 72 %)."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Late Presenter (davon 36,6 % im Stadium Aids) und non-Late Presenter unterschieden sich nach dem Bericht signifikant, etwa im mittleren Alter und in der Selbsteinschätzung des Infektionsrisikos vor der Erstdiagnose. In der Gesamtpopulation hatten 3 % mit einer Infektion gerechnet, 15 % ihr Risiko als hoch, 50 % als niedrig und 32 % als nicht vorhanden eingeschätzt."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Signifikante Unterschiede zwischen LP und non-LP berichtet der Bericht auch beim angenommenen Übertragungsweg, bei der Art der Beziehung bei Sexualkontakten und beim Wissen zu HIV-bezogenen Themen."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Bei Geschlecht und ethnischer Zugehörigkeit gab es keine statistisch auffälligen Unterschiede zwischen LP und non-LP. Der LP-Anteil lag bei schwarzen Menschen bei 68 % und bei schwarzen Frauen bei 88 %; die Fallzahlen dieser Untergruppen lagen unter 30 bzw. unter 10."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Knapp ein Drittel der Teilnehmenden hatte einen Migrationshintergrund (23 % selbst eingewandert), ohne signifikanten Unterschied zwischen LP und non-LP."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Mehr als 50 % hatten Hochschulzugangsberechtigung oder Hochschulabschluss. 45 % waren Facharbeiter/Angestellte, 13 % leitende Angestellte und 14 % arbeitslos oder erwerbsunfähig. Auch hier gab es keine signifikanten Unterschiede zwischen LP und non-LP."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Auch der Partnerschaftsstatus (47 % alleinstehend, 31 % feste Partnerschaft, 21 % verheiratet/eingetragene Lebenspartnerschaft) und die fünf BFI-S-Persönlichkeitsmerkmale wurden zwischen LP und non-LP verglichen."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Bei einer Zwischenauswertung (n=475) wurde eine LP-Rate von 54 % beobachtet, die der Bericht als deutlich höher bezeichnet. Daraufhin wurde eine Fallzahlreduktion auf 600 vollauswertbare Datensätze beantragt und genehmigt."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Trotz der Reduktion wurden über 700 Teilnehmende eingeschlossen. Der Bericht führt das auf den Zeitverzug bei Genehmigung und Kommunikation sowie auf die hohe Rate vollauswertbarer Fälle zurück."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "In der Literaturrecherche wurden 12 Publikationen näher betrachtet. Fast alle publizierten Scoringinstrumente richten sich an spezifische Kollektive; nur eines richtet sich an alle Personen ab 13 Jahren."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Scoringinstrument und Handlungsempfehlungen wurden in drei Fokusgruppen und einer anschließenden Konsentierungsrunde in Formulierungen, Beispielerkrankungen und Aufbau geändert. Der Prozess wurde laut Bericht am 30.11.2021 erfolgreich abgeschlossen."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "In der Summenzeile des Instruments wurde ergänzt, dass eine geringere Punktzahl eine Indikation zur Testung nicht ausschließt."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Die Handlungsempfehlungen enthalten einen Hinweis zur Abrechenbarkeit von HIV-Tests. Er wurde aufgenommen, weil Unkenntnis der Abrechnungsmöglichkeiten nach Expertenmeinung ein Auslöser für unterlassene Tests sein könnte."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Die Projektnehmer schließen, dass in Deutschland weiterhin eine hohe LP-Rate besteht, eine frühere Diagnose durch ein gezieltes Testangebot aber oft möglich wäre. Die Stichprobe bezeichnen sie als mutmaßlich weitgehend repräsentativ."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Zu Partnerschaftsstatus und HIV-Wissen als Faktoren einer späten Diagnose findet sich nach dem Bericht bisher nichts in der Literatur. Andere Kohorten nannten zusätzlich Migrationsstatus und Herkunftsland."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Wegen der Einschlusskriterien sind nicht-deutschsprachige Personen in der Stichprobe möglicherweise unterrepräsentiert."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Wie viele Patienten nicht eingeschlossen wurden, etwa mangels Einverständnis, wurde in den Studienzentren nicht erfasst."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Untergruppen schwarzer Menschen (<30) bzw. schwarzer Frauen (<10) waren nach dem Bericht zu klein, um größere Schlüsse zu ziehen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Laut den Verfassern des BFI-S sind die Skalen Verträglichkeit (α=0,53), Neurotizismus (α=0,57) und Extraversion (α=0,62) nicht hinreichend intern konsistent. Für Offenheit (α=0,74) und Gewissenhaftigkeit (α=0,72) gilt das nach dem üblichen Verständnis als gegeben."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Einziges validiertes Instrument der Primärdatenerhebung war der BFI-S; alle übrigen Fragebogenteile wurden selbst erarbeitet."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Auswertung und Dokumentation der Literaturrecherche beschränkten sich auf qualitative Auswertungen."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

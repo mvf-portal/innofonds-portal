@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF21010</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>9 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 28 Aussagen. Die übrigen
+19 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die im Projekt neu entwickelte S3-Leitlinie zu Glomerulonephritiden der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Der Ausschuss verweist auf die hohe Bedeutung immunologisch bedingter glomerulärer Erkrankungen, die für etwa 20–25 % der Fälle dialysepflichtigen Nierenversagens verantwortlich sind und überwiegend zu den seltenen Erkrankungen gehören. Im Projekt wurde die internationale KDIGO-Leitlinie &quot;Glomerular Diseases&quot; adaptiert und daraus erstmals eine deutsche S3-Leitlinie mit auf das deutsche Gesundheitswesen zugeschnittenen Empfehlungen erstellt. Zusätzlich wurde eine evidenzbasierte Patienteninformation erarbeitet. Die Leitlinie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,87 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Beschluss hält fest, dass die Leitlinie auf das deutsche Gesundheitswesen zugeschnittene Empfehlungen enthält und durch Erfüllung der AWMF-Kriterien die Voraussetzung hat, ihr Potential zur Verbesserung der Versorgung auszuschöpfen. Weitere Aussagen zur Übertragbarkeit enthält er nicht.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erstmals deutsche S3-Leitlinie zu glomerulären Erkrankungen mit auf das deutsche Gesundheitswesen zugeschnittenen Empfehlungen erstellt</p>
-  <blockquote>„Ausgehend von dieser internationalen Leitlinie wurde erstmals eine deutsche S3 -Leitlinie mit auf das deutsche Gesundheitswesen zugeschnittenen Empfehlungen zur Diagnose und Versorgung von Patientinnen und Patienten mit glomerulären Erkrankungen erstellt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Evidenzbasierte Patienteninformation für Betroffene miterstellt</p>
-  <blockquote>„Zudem stellt die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene zur Verfügung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
-  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 -Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -238,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben hat eine S3-Leitlinie zur Diagnose und Therapie der Glomerulonephritiden auf Grundlage der KDIGO-Leitlinie „Glomerular disease“ erarbeitet. Konsentiert wurden 131 Empfehlungen: 31 neue, 32 modifizierte und 68 unverändert übernommene; neun Empfehlungen sollen entfallen. Die Leitlinie umfasst 12 Kapitel, dazu kommen 11 Kurzversionen und eine Patientenleitlinie bzw. Patienteninformation. Der Konsens wurde in vier virtuellen, von der AWMF moderierten Treffen 2023 und 2024 gefunden. Nur 23 % der Empfehlungen beruhen auf Evidenz hoher Qualität; alle übrigen sind Expertenkonsens. Als zentrales methodisches Problem nennt der Bericht die viele Evidenz niedriger Qualität. Zu zwei Entitäten erschienen nach Abschluss von Recherche und Konsensfindung neue randomisiert-kontrollierte Studien, die nicht mehr berücksichtigt wurden. Die Implementierung beginnt erst nach der finalen Verabschiedung; die erwarteten Verbesserungen von Versorgung und Langzeitergebnis sind nicht gemessen, und Endpunkte im Sinne von Zielgrößen gibt der Bericht nicht an.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In die S3-Leitlinie wurden 131 Empfehlungen aufgenommen und konsentiert: 31 neue, 32 gegenüber der KDIGO-Leitlinie modifizierte und 68 unverändert übernommene.</p>
+  
   <blockquote>„„wurden insgesamt 131 Empfehlungen konsentiert. Hiervon sind 31 neue Empfehlungen, 32 modifizierte Empfehlungen und 68 wurden unverändert aus der KDIGO Leitlinie &quot;Glomerular disease&quot; übernommen.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">23 % der Empfehlungen beruhen auf Evidenz hoher Qualität; alle übrigen sind Expertenkonsens, weil die Evidenz aus der Literaturrecherche nur moderat oder niedrig war.</p>
+  
   <blockquote>„„Lediglich 23 % der Empfehlungen basieren auf Evidenz von hoher Qualität, bei allen anderen Empfehlungen reichte es nur zum Expertenkonsens aufgrund der nur moderaten und häufig eher niedrigen Evidenz“ – Bericht, S. 41" <span class="s">S. 41</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Als zentrales methodisches Problem nennt der Bericht die hohe Anzahl verfügbarer Evidenz niedriger Qualität zu Diagnostik und Therapie glomerulärer Erkrankungen.</p>
+  
   <blockquote>„„Ein zentrales methodisch es Problem dieser Leitlinie war die hohe Anzahl an verfügbarer Evidenz von niedriger Qualität im Bereich der Glomerulären Erkrankungen in Diagnostik und Therapie.“ – Bericht, S. 41" <span class="s">S. 41</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -312,13 +234,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Zu zwei Entitäten erschienen nach Abschluss von Literaturrecherche und Konsensfindung neue randomisiert-kontrollierte Studien; sie sollen erst in ein Update einbezogen werden.</p>
+  <p class="unser">Zu zwei Entitäten erschienen nach Abschluss von Literaturrecherche und Konsensfindung neue randomisiert-kontrollierte Studien; sie sollen zeitnah in ein Update einbezogen werden.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Zusammenfassung enthielt eine Wertung, die im Bericht nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Zu zwei Entitäten erschienen nach Abschluss von Literaturrecherche und Konsensfindung neue randomisiert-kontrollierte Studien; sie sollen erst in ein Update einbezogen werden.“</i></p>
   <blockquote>„„während der Erstellung nach abgeschlossener Literaturrechreche und Konsensus findung bereits bei zwei Entitäten neue randomisiert-kontrollierte Studien publiziert wurden, die somit zeitnah in einem Update der Leitlinie einbezogen werden sollten.“ – Bericht, S. 41" <span class="s">S. 41</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +256,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Implementierung beginnt erst nach der finalen Verabschiedung der Leitlinie; Ergebnisse zur Umsetzung liegen nicht vor.</p>
+  
   <blockquote>„„Die Implementierungsmaßnahmen finden erst nach finaler Verabschiedung der Leitlinie statt.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -352,11 +276,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Auf Seite 2 heißt es, es seien insgesamt 12 Kapitel erstellt worden; auf Seite 12 ist von 11 Kurzversionen „pro Kapitel“ die Rede. Der Bericht erklärt nicht, warum eine Kurzversion weniger als Kapitel vorliegt.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -366,16 +290,111 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>14 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>19 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die im Projekt neu entwickelte S3-Leitlinie zu Glomerulonephritiden der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Beschluss hält fest, dass die Leitlinie auf das deutsche Gesundheitswesen zugeschnittene Empfehlungen enthält und durch Erfüllung der AWMF-Kriterien die Voraussetzung hat, ihr Potential zur Verbesserung der Versorgung auszuschöpfen. Weitere Aussagen zur Übertragbarkeit enthält er nicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erstmals deutsche S3-Leitlinie zu glomerulären Erkrankungen mit auf das deutsche Gesundheitswesen zugeschnittenen Empfehlungen erstellt</p>
+  
+  <blockquote>„Ausgehend von dieser internationalen Leitlinie wurde erstmals eine deutsche S3 -Leitlinie mit auf das deutsche Gesundheitswesen zugeschnittenen Empfehlungen zur Diagnose und Versorgung von Patientinnen und Patienten mit glomerulären Erkrankungen erstellt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Evidenzbasierte Patienteninformation für Betroffene miterstellt</p>
+  
+  <blockquote>„Zudem stellt die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene zur Verfügung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
+  
+  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 -Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Konsensusprozess wurde beschlossen, neun Empfehlungen der Quellleitlinie zu streichen.</p>
+  
   <blockquote>„„Das Ergebnis der Diskussion der einzelnen Empfehlungen war, dass ne un Empfehlungen entfallen sollen“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -389,12 +408,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinie umfasst 12 Kapitel: allgemeine Kapitel zu Diagnostik und Vorgehen bei glomerulären Erkrankungen sowie Kapitel zu den einzelnen Glomerulonephritis-Entitäten.</p>
+  
   <blockquote>„„Es wurden insgesamt 12 Kapitel erstellt. Hierzu zählten die allgemeinen Kap itel zur Diagnostik und Vorgehensweise bei Vorliegen glomerulärer Erkrankungen, sowie dann Kapitel zu den jeweiligen Glomerulonephritis Entitäten.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -408,12 +427,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Kapitel 1 der KDIGO-Leitlinie wurde in zwei Kapitel aufgeteilt, und jedes Kapitel erhielt einen Abschnitt zu zukünftigen Forschungsfragen.</p>
+  
   <blockquote>„„D as Kapitel 1 der KDIGO Leitlinie &quot;Glomerular disease&quot; wurde zur besseren Übersicht und Verständlichkeit in Kapitel 1 und 2 aufgeteilt. Zudem wurde jedes Kapitel um einen Bereich zu zukünftigen Forschungsfragen neu ergänzt.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +446,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Neben der Langversion entstanden 11 Kurzversionen („Das Wichtigste auf einen Blick“ pro Kapitel) und eine Patientenleitlinie bzw. Patienteninformation.</p>
+  
   <blockquote>„„Neben einer Langversion wurden auch 11 Kurzversionen (das Wichtigste auf einen Blick pro Kapitel) und eine Patientenleitlinie/Information erstellt.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +465,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Patientenleitlinie enthält Grafiken zum Verständnis glomerulärer Erkrankungen.</p>
+  
   <blockquote>„„Zudem wurde auch eine Patientenleitlinie/Information mit Graphiken zum besseren Verständnis glomerulärer Erkrankungen erstellt.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +484,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Konsens wurde in vier virtuellen Treffen 2023 und 2024 gefunden, beginnend im Mai 2023; jedes Treffen moderierte ein AWMF-Moderator.</p>
+  
   <blockquote>„„Die Auftaktveranstaltung (1. Konsensuskonferenz) wurde im Vorfeld vorbereitet und fand im Mai 2023 virtuell statt, ebenso wie die weiteren drei Konsensustreffen 2023 und 2024. Die Veranstaltungen wurden jeweils von einem AWMF Moderator moderiert.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +503,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der AGREE-II-Bewertung der KDIGO-Quellleitlinie erhielt die Domäne „Methodologische Strenge“ die Bewertung „Hoch“, begründet mit systematischen Literaturrecherchen und transparenten Auswahlkriterien.</p>
+  
   <blockquote>„„3. Methodologische Strenge • Bewertung: Hoch • Begründung: Die KDIGO-Leitlinie basiert auf systematischen Literaturrecherchen und verwendet transparente Kriterien für die Auswahl der Evidenz.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +522,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinie ist so aufgebaut, dass jedes Kapitel für sich steht und einzeln aktualisiert werden kann.</p>
+  
   <blockquote>„„haben wir die Leitlinie bereits so erstellt, dass jedes Kapitel für sich alleine stehen kann und so mit auch sequentiell einem Update unterzogen werden kann“ – Bericht, S. 41" <span class="s">S. 41</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +541,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Während der Leitlinienarbeit festgestellter Forschungsbedarf wurde in den einzelnen Kapiteln formuliert.</p>
+  
   <blockquote>„„wurde während der Leitlinienarbeit weiterer Forschungsbedarf entdeckt und bereits in den einzelnen Kapiteln auch formuliert“ – Bericht, S. 42" <span class="s">S. 42</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +560,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In der KDIGO-Quellleitlinie ist die Einbindung von Patienten nicht im Detail dokumentiert, was laut AGREE-II-Bewertung die Domäne der Beteiligung von Interessengruppen einschränkt.</p>
+  
   <blockquote>„„Die Einbindung von Patienten oder deren Perspektive wird nicht im Detail dokumentiert, was die Bewertung in dieser Domäne leicht einschränkt.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +579,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zur Anwendbarkeit der Quellleitlinie hält die AGREE-II-Bewertung fest, dass konkrete Hinweise zur praktischen Umsetzung und zur Evaluation in verschiedenen Versorgungssystemen begrenzt sind.</p>
+  
   <blockquote>„„Konkrete Hinweise zur praktischen Umsetzung oder zur Evaluation der Anwendung in verschiedenen Versorgungssystemen sind jedoch eher begrenzt.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +598,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der Seltenheit der Erkrankungen betreuen die einzelnen Versorger jeweils nur wenige Patienten, was laut Bericht ein einheitliches therapeutisches Vorgehen erschwert.</p>
+  
   <blockquote>„„Die Seltenheit der Erkrankung führt dazu, dass selbst bei niedergelassenen Nephrologen neben Internisten, Rheumatologen, Pädiatern, Hausärzten und Hochschulambulanzen nur jeweils wenige Patienten direkt betreuen, was ein einheitliches therapeutisches Vorgehen erschwert .“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +617,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für AAV-Patienten mit stark reduzierter oder schnell abnehmender GFR (Serumkreatinin &gt;4 mg/dl) gibt es nur wenige Daten, die Rituximab und Glukokortikoide stützen.</p>
+  
   <blockquote>„„Bei Patienten mit stark reduzierter oder schnell abnehmender GFR (Serumkreatinin [SCr] &gt;4 mg/dl) gibt es nur wenige Daten, die Rituximab und Glukokortikoide unterstützen.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +636,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zu Glukokortikoiden als Zusatztherapie bei HIVAN sind die langfristigen Risiken und Vorteile nicht bekannt; ihr Einsatz soll individuell erwogen werden.</p>
+  
   <blockquote>„„Der Einsatz von Glukokortikoiden als Zusatztherapie bei HIVAN sollte individuell erwogen werden, da die langfristigen Risiken und Vorteile nicht bekannt sind.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -667,28 +686,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 480, "akronym": "S3-GN", "kennung": "fZBnWMIAD-Ca", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt neu entwickelte S3-Leitlinie zu Glomerulonephritiden der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss verweist auf die hohe Bedeutung immunologisch bedingter glomerulärer Erkrankungen, die für etwa 20–25 % der Fälle dialysepflichtigen Nierenversagens verantwortlich sind und überwiegend zu den seltenen Erkrankungen gehören. Im Projekt wurde die internationale KDIGO-Leitlinie \"Glomerular Diseases\" adaptiert und daraus erstmals eine deutsche S3-Leitlinie mit auf das deutsche Gesundheitswesen zugeschnittenen Empfehlungen erstellt. Zusätzlich wurde eine evidenzbasierte Patienteninformation erarbeitet. Die Leitlinie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss hält fest, dass die Leitlinie auf das deutsche Gesundheitswesen zugeschnittene Empfehlungen enthält und durch Erfüllung der AWMF-Kriterien die Voraussetzung hat, ihr Potential zur Verbesserung der Versorgung auszuschöpfen. Weitere Aussagen zur Übertragbarkeit enthält er nicht."}, {"stelle": "befund.0", "art": "befund", "unser": "Erstmals deutsche S3-Leitlinie zu glomerulären Erkrankungen mit auf das deutsche Gesundheitswesen zugeschnittenen Empfehlungen erstellt"}, {"stelle": "befund.1", "art": "befund", "unser": "Evidenzbasierte Patienteninformation für Betroffene miterstellt"}, {"stelle": "befund.2", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat eine S3-Leitlinie zur Diagnose und Therapie der Glomerulonephritiden auf Grundlage der KDIGO-Leitlinie „Glomerular disease“ erarbeitet. Konsentiert wurden 131 Empfehlungen: 31 neue, 32 modifizierte und 68 unverändert übernommene; neun Empfehlungen sollen entfallen. Die Leitlinie umfasst 12 Kapitel, dazu kommen 11 Kurzversionen und eine Patientenleitlinie bzw. Patienteninformation. Der Konsens wurde in vier virtuellen, von der AWMF moderierten Treffen 2023 und 2024 gefunden. Nur 23 % der Empfehlungen beruhen auf Evidenz hoher Qualität; alle übrigen sind Expertenkonsens. Als zentrales methodisches Problem nennt der Bericht die viele Evidenz niedriger Qualität. Zu zwei Entitäten erschienen nach Abschluss von Recherche und Konsensfindung neue randomisiert-kontrollierte Studien, die nicht mehr berücksichtigt wurden. Die Implementierung beginnt erst nach der finalen Verabschiedung; die erwarteten Verbesserungen von Versorgung und Langzeitergebnis sind nicht gemessen, und Endpunkte im Sinne von Zielgrößen gibt der Bericht nicht an."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "In die S3-Leitlinie wurden 131 Empfehlungen aufgenommen und konsentiert: 31 neue, 32 gegenüber der KDIGO-Leitlinie modifizierte und 68 unverändert übernommene."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "23 % der Empfehlungen beruhen auf Evidenz hoher Qualität; alle übrigen sind Expertenkonsens, weil die Evidenz aus der Literaturrecherche nur moderat oder niedrig war."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Als zentrales methodisches Problem nennt der Bericht die hohe Anzahl verfügbarer Evidenz niedriger Qualität zu Diagnostik und Therapie glomerulärer Erkrankungen."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Zu zwei Entitäten erschienen nach Abschluss von Literaturrecherche und Konsensfindung neue randomisiert-kontrollierte Studien; sie sollen erst in ein Update einbezogen werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die Implementierung beginnt erst nach der finalen Verabschiedung der Leitlinie; Ergebnisse zur Umsetzung liegen nicht vor."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Auf Seite 2 heißt es, es seien insgesamt 12 Kapitel erstellt worden; auf Seite 12 ist von 11 Kurzversionen „pro Kapitel“ die Rede. Der Bericht erklärt nicht, warum eine Kurzversion weniger als Kapitel vorliegt."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Im Konsensusprozess wurde beschlossen, neun Empfehlungen der Quellleitlinie zu streichen."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die Leitlinie umfasst 12 Kapitel: allgemeine Kapitel zu Diagnostik und Vorgehen bei glomerulären Erkrankungen sowie Kapitel zu den einzelnen Glomerulonephritis-Entitäten."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Kapitel 1 der KDIGO-Leitlinie wurde in zwei Kapitel aufgeteilt, und jedes Kapitel erhielt einen Abschnitt zu zukünftigen Forschungsfragen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Neben der Langversion entstanden 11 Kurzversionen („Das Wichtigste auf einen Blick“ pro Kapitel) und eine Patientenleitlinie bzw. Patienteninformation."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die Patientenleitlinie enthält Grafiken zum Verständnis glomerulärer Erkrankungen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Der Konsens wurde in vier virtuellen Treffen 2023 und 2024 gefunden, beginnend im Mai 2023; jedes Treffen moderierte ein AWMF-Moderator."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "In der AGREE-II-Bewertung der KDIGO-Quellleitlinie erhielt die Domäne „Methodologische Strenge“ die Bewertung „Hoch“, begründet mit systematischen Literaturrecherchen und transparenten Auswahlkriterien."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Leitlinie ist so aufgebaut, dass jedes Kapitel für sich steht und einzeln aktualisiert werden kann."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Während der Leitlinienarbeit festgestellter Forschungsbedarf wurde in den einzelnen Kapiteln formuliert."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "In der KDIGO-Quellleitlinie ist die Einbindung von Patienten nicht im Detail dokumentiert, was laut AGREE-II-Bewertung die Domäne der Beteiligung von Interessengruppen einschränkt."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Zur Anwendbarkeit der Quellleitlinie hält die AGREE-II-Bewertung fest, dass konkrete Hinweise zur praktischen Umsetzung und zur Evaluation in verschiedenen Versorgungssystemen begrenzt sind."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Wegen der Seltenheit der Erkrankungen betreuen die einzelnen Versorger jeweils nur wenige Patienten, was laut Bericht ein einheitliches therapeutisches Vorgehen erschwert."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Für AAV-Patienten mit stark reduzierter oder schnell abnehmender GFR (Serumkreatinin >4 mg/dl) gibt es nur wenige Daten, die Rituximab und Glukokortikoide stützen."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Zu Glukokortikoiden als Zusatztherapie bei HIVAN sind die langfristigen Risiken und Vorteile nicht bekannt; ihr Einsatz soll individuell erwogen werden."}]};
+const D = {"projekt_id": 480, "akronym": "S3-GN", "kennung": "fZBnWMIAD-Ca", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss verweist auf die hohe Bedeutung immunologisch bedingter glomerulärer Erkrankungen, die für etwa 20–25 % der Fälle dialysepflichtigen Nierenversagens verantwortlich sind und überwiegend zu den seltenen Erkrankungen gehören. Im Projekt wurde die internationale KDIGO-Leitlinie \"Glomerular Diseases\" adaptiert und daraus erstmals eine deutsche S3-Leitlinie mit auf das deutsche Gesundheitswesen zugeschnittenen Empfehlungen erstellt. Zusätzlich wurde eine evidenzbasierte Patienteninformation erarbeitet. Die Leitlinie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat eine S3-Leitlinie zur Diagnose und Therapie der Glomerulonephritiden auf Grundlage der KDIGO-Leitlinie „Glomerular disease“ erarbeitet. Konsentiert wurden 131 Empfehlungen: 31 neue, 32 modifizierte und 68 unverändert übernommene; neun Empfehlungen sollen entfallen. Die Leitlinie umfasst 12 Kapitel, dazu kommen 11 Kurzversionen und eine Patientenleitlinie bzw. Patienteninformation. Der Konsens wurde in vier virtuellen, von der AWMF moderierten Treffen 2023 und 2024 gefunden. Nur 23 % der Empfehlungen beruhen auf Evidenz hoher Qualität; alle übrigen sind Expertenkonsens. Als zentrales methodisches Problem nennt der Bericht die viele Evidenz niedriger Qualität. Zu zwei Entitäten erschienen nach Abschluss von Recherche und Konsensfindung neue randomisiert-kontrollierte Studien, die nicht mehr berücksichtigt wurden. Die Implementierung beginnt erst nach der finalen Verabschiedung; die erwarteten Verbesserungen von Versorgung und Langzeitergebnis sind nicht gemessen, und Endpunkte im Sinne von Zielgrößen gibt der Bericht nicht an."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "In die S3-Leitlinie wurden 131 Empfehlungen aufgenommen und konsentiert: 31 neue, 32 gegenüber der KDIGO-Leitlinie modifizierte und 68 unverändert übernommene."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "23 % der Empfehlungen beruhen auf Evidenz hoher Qualität; alle übrigen sind Expertenkonsens, weil die Evidenz aus der Literaturrecherche nur moderat oder niedrig war."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Als zentrales methodisches Problem nennt der Bericht die hohe Anzahl verfügbarer Evidenz niedriger Qualität zu Diagnostik und Therapie glomerulärer Erkrankungen."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Zu zwei Entitäten erschienen nach Abschluss von Literaturrecherche und Konsensfindung neue randomisiert-kontrollierte Studien; sie sollen zeitnah in ein Update einbezogen werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die Implementierung beginnt erst nach der finalen Verabschiedung der Leitlinie; Ergebnisse zur Umsetzung liegen nicht vor."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Auf Seite 2 heißt es, es seien insgesamt 12 Kapitel erstellt worden; auf Seite 12 ist von 11 Kurzversionen „pro Kapitel“ die Rede. Der Bericht erklärt nicht, warum eine Kurzversion weniger als Kapitel vorliegt."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt neu entwickelte S3-Leitlinie zu Glomerulonephritiden der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss hält fest, dass die Leitlinie auf das deutsche Gesundheitswesen zugeschnittene Empfehlungen enthält und durch Erfüllung der AWMF-Kriterien die Voraussetzung hat, ihr Potential zur Verbesserung der Versorgung auszuschöpfen. Weitere Aussagen zur Übertragbarkeit enthält er nicht."}, {"stelle": "befund.0", "art": "befund", "unser": "Erstmals deutsche S3-Leitlinie zu glomerulären Erkrankungen mit auf das deutsche Gesundheitswesen zugeschnittenen Empfehlungen erstellt"}, {"stelle": "befund.1", "art": "befund", "unser": "Evidenzbasierte Patienteninformation für Betroffene miterstellt"}, {"stelle": "befund.2", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Im Konsensusprozess wurde beschlossen, neun Empfehlungen der Quellleitlinie zu streichen."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die Leitlinie umfasst 12 Kapitel: allgemeine Kapitel zu Diagnostik und Vorgehen bei glomerulären Erkrankungen sowie Kapitel zu den einzelnen Glomerulonephritis-Entitäten."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Kapitel 1 der KDIGO-Leitlinie wurde in zwei Kapitel aufgeteilt, und jedes Kapitel erhielt einen Abschnitt zu zukünftigen Forschungsfragen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Neben der Langversion entstanden 11 Kurzversionen („Das Wichtigste auf einen Blick“ pro Kapitel) und eine Patientenleitlinie bzw. Patienteninformation."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die Patientenleitlinie enthält Grafiken zum Verständnis glomerulärer Erkrankungen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Der Konsens wurde in vier virtuellen Treffen 2023 und 2024 gefunden, beginnend im Mai 2023; jedes Treffen moderierte ein AWMF-Moderator."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "In der AGREE-II-Bewertung der KDIGO-Quellleitlinie erhielt die Domäne „Methodologische Strenge“ die Bewertung „Hoch“, begründet mit systematischen Literaturrecherchen und transparenten Auswahlkriterien."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Leitlinie ist so aufgebaut, dass jedes Kapitel für sich steht und einzeln aktualisiert werden kann."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Während der Leitlinienarbeit festgestellter Forschungsbedarf wurde in den einzelnen Kapiteln formuliert."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "In der KDIGO-Quellleitlinie ist die Einbindung von Patienten nicht im Detail dokumentiert, was laut AGREE-II-Bewertung die Domäne der Beteiligung von Interessengruppen einschränkt."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Zur Anwendbarkeit der Quellleitlinie hält die AGREE-II-Bewertung fest, dass konkrete Hinweise zur praktischen Umsetzung und zur Evaluation in verschiedenen Versorgungssystemen begrenzt sind."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Wegen der Seltenheit der Erkrankungen betreuen die einzelnen Versorger jeweils nur wenige Patienten, was laut Bericht ein einheitliches therapeutisches Vorgehen erschwert."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Für AAV-Patienten mit stark reduzierter oder schnell abnehmender GFR (Serumkreatinin >4 mg/dl) gibt es nur wenige Daten, die Rituximab und Glukokortikoide stützen."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Zu Glukokortikoiden als Zusatztherapie bei HIVAN sind die langfristigen Risiken und Vorteile nicht bekannt; ihr Einsatz soll individuell erwogen werden."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

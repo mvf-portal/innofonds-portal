@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF16032</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>30 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 92 Aussagen. Die übrigen
+62 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss spricht für das Projekt PrimA-QuO keine Empfehlung aus. Eine Überführung des Gesundheitscoachings aus dem Selektivvertrag „STARKE KIDS“ in die Regelversorgung kann auf Basis der vorliegenden Ergebnisse nicht empfohlen werden. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Anhand der Studiendaten konnte nicht gezeigt werden, dass das Gesundheitscoaching die gesundheitsbezogene Lebensqualität (primärer Endpunkt) oder das Ausmaß psychischer Auffälligkeiten beeinflusst hat. Das Gesundheitscoaching bestand aus einer zweifachen Schulung der Kinder- und Jugendärztinnen und -ärzte mit Checklisten und Handlungsempfehlungen. Auch die Diagnosehäufigkeit stieg nicht an. Die Behandlungspfade veränderten sich laut Routinedatenanalyse nur geringfügig. Die Wirtschaftlichkeitsanalyse fiel neutral aus. Die qualitative Evaluation ergab eine offenbar hohe Akzeptanz sowie Ansatzpunkte zur Weiterentwicklung. Die Aussagekraft ist durch mehrere Limitationen eingeschränkt: geringe Stichprobe, niedrige Rücklaufquoten, Selektionsbias, fehlende Confounder-Kontrolle und nicht-randomisierte Teilnahme.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Mixed Methods</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Eine Empfehlung zur Überführung in die Regelversorgung kann auf Basis der vorliegenden Ergebnisse nicht ausgesprochen werden.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -178,14 +157,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
-  <p class="unser">Kein Effekt auf die gesundheitsbezogene Lebensqualität (primärer Endpunkt) und auf das Ausmaß psychischer Auffälligkeiten</p>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
+  <p class="unser">Kein Effekt nachgewiesen auf die gesundheitsbezogene Lebensqualität (primärer Endpunkt) und auf das Ausmaß psychischer Auffälligkeiten</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung enthielt eine Wertung, die im Beschluss nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Kein Effekt auf die gesundheitsbezogene Lebensqualität (primärer Endpunkt) und auf das Ausmaß psychischer Auffälligkeiten“</i></p>
   <blockquote>„Insgesamt konnte anhand der Studiendaten nicht gezeigt werden, dass die Einführung des GCs in Form einer 2 -fachen Schulung für Kinder - und Jugendärzte/innen (KJÄ), einschließlich der Ausgabe von Checklisten und Handlungsempfehlungen, Auswirkungen auf die gesundheitsbezogene Lebensqualität (primärer Endpunkt) oder das Ausmaß psychischer Auffälligkeiten der Kinder gehabt hätte." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,14 +178,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Kein Anstieg der Diagnosehäufigkeit psychischer Auffälligkeiten und Störungen</p>
+  
   <blockquote>„Auch konnte kein Anstieg der Diagnosehäufigkeit von psychischen Auffälligkeiten und Störungen durch die Einführung des GCs beob achtet werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -216,14 +197,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.2">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Nur geringfügige Auswirkungen auf die Behandlungspfade</p>
+  
   <blockquote>„Eine Routinedatenanalyse zeigte, dass der Einsatz des Handlungsleitfadens nur geringfügige Auswirkungen auf die Behandlungspfade hatte." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +218,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.3">
   <h3>Hindernis laut Beschluss: Kosten und Wirtschaftlichkeit</h3>
   <p class="unser">Kein Kostenunterschied, Wirtschaftlichkeit neutral</p>
+  
   <blockquote>„Die Durchführung einer GC -Sprechstunde führte somit insgesamt zu keinem Kostenunterschied." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -254,14 +235,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.4">
-  <h3>Hindernis laut Beschluss: Fallzahl zu klein für die Auswertung</h3>
+  <h3>Hindernis laut Beschluss: Fallzahl in der Auswertung</h3>
   <p class="unser">Geringe Stichprobengröße schränkt die Aussagekraft ein</p>
+  
   <blockquote>„Die Aussagekraft der Ergebnisse ist jedoch durch verschiedene Limitationen eingeschränkt. Dazu gehören beispielsweise die geringe Stichprobengröße, die niedrigen Rücklaufquoten bei den Befragungen und Anzeichen für einen Selektionsbias, die fehlende Kontrolle wichtiger Confounder wie die Krankheitsschwere, die nicht- randomisierte Teilnahme der KJÄ am GC-Programm und der Umstand, dass sich die tatsächliche Anwendung der Schulungsinhalte nicht aus Abrechnungsdaten ableiten lässt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +256,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.5">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Niedrige Rücklaufquoten bei den Befragungen</p>
+  
   <blockquote>„Die Aussagekraft der Ergebnisse ist jedoch durch verschiedene Limitationen eingeschränkt. Dazu gehören beispielsweise die geringe Stichprobengröße, die niedrigen Rücklaufquoten bei den Befragungen und Anzeichen für einen Selektionsbias, die fehlende Kontrolle wichtiger Confounder wie die Krankheitsschwere, die nicht- randomisierte Teilnahme der KJÄ am GC-Programm und der Umstand, dass sich die tatsächliche Anwendung der Schulungsinhalte nicht aus Abrechnungsdaten ableiten lässt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.5" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +275,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.6">
   <h3>Hindernis laut Beschluss: Studienanlage</h3>
   <p class="unser">Anzeichen für Selektionsbias und nicht-randomisierte Teilnahme der Kinder- und Jugendärzte</p>
+  
   <blockquote>„Die Aussagekraft der Ergebnisse ist jedoch durch verschiedene Limitationen eingeschränkt. Dazu gehören beispielsweise die geringe Stichprobengröße, die niedrigen Rücklaufquoten bei den Befragungen und Anzeichen für einen Selektionsbias, die fehlende Kontrolle wichtiger Confounder wie die Krankheitsschwere, die nicht- randomisierte Teilnahme der KJÄ am GC-Programm und der Umstand, dass sich die tatsächliche Anwendung der Schulungsinhalte nicht aus Abrechnungsdaten ableiten lässt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.6" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +294,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.7">
   <h3>Hindernis laut Beschluss: Auswertung und Statistik</h3>
   <p class="unser">Fehlende Kontrolle wichtiger Confounder wie der Krankheitsschwere</p>
+  
   <blockquote>„Die Aussagekraft der Ergebnisse ist jedoch durch verschiedene Limitationen eingeschränkt. Dazu gehören beispielsweise die geringe Stichprobengröße, die niedrigen Rücklaufquoten bei den Befragungen und Anzeichen für einen Selektionsbias, die fehlende Kontrolle wichtiger Confounder wie die Krankheitsschwere, die nicht- randomisierte Teilnahme der KJÄ am GC-Programm und der Umstand, dass sich die tatsächliche Anwendung der Schulungsinhalte nicht aus Abrechnungsdaten ableiten lässt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.7" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,69 +313,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.8">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Tatsächliche Anwendung der Schulungsinhalte ist aus Abrechnungsdaten nicht ableitbar</p>
+  
   <blockquote>„Die Aussagekraft der Ergebnisse ist jedoch durch verschiedene Limitationen eingeschränkt. Dazu gehören beispielsweise die geringe Stichprobengröße, die niedrigen Rücklaufquoten bei den Befragungen und Anzeichen für einen Selektionsbias, die fehlende Kontrolle wichtiger Confounder wie die Krankheitsschwere, die nicht- randomisierte Teilnahme der KJÄ am GC-Programm und der Umstand, dass sich die tatsächliche Anwendung der Schulungsinhalte nicht aus Abrechnungsdaten ableiten lässt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.8" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Hohe Akzeptanz des Programms bei Familien und Kinder- und Jugendärzten</p>
-  <blockquote>„Insgesamt scheint die Akzeptanz des Programms bei den Familien und KJÄ hoch zu sein." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Ansatzpunkte zur Weiterentwicklung des Programms ermittelt</p>
-  <blockquote>„Zudem wurden Ansatzpunkte zur Weiterentwicklung des Programms - wie z. B. eine stärkere Fokussierung auf vulnerable Gruppen wie Kinder und Jugendliche aus schwierigen familiären Verhältnissen - ermittelt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Fragestellungen weitgehend beantwortet</p>
-  <blockquote>„Die Fragestellungen wurden weitgehend beantwortet." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.8" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -408,12 +332,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Lebensqualität“</h3>
   <p class="unser">Gesundheitsbezogene Lebensqualität der Kinder und Jugendlichen</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +351,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Ausmaß psychischer Auffälligkeiten der Kinder und Jugendlichen</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +370,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Lebensqualität“</h3>
   <p class="unser">Gesundheitsbezogene Lebensqualität der Eltern</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +389,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Ambulante Inanspruchnahme“</h3>
   <p class="unser">Inanspruchnahme spezialisierter Leistungen (AP 1.3, Gesamtpopulation)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +408,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Kodierverhalten: Diagnosehäufigkeit GC-Indikationen insgesamt (AP 2.1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +427,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Kodierverhalten: Kodiergenauigkeit GC-Indikationen insgesamt (AP 2.1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -522,12 +446,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Ambulante Inanspruchnahme“</h3>
   <p class="unser">Anzahl Kontakte sozialpädiatrische GC- oder GKV-Sprechstunde im ersten Jahr nach Erstdiagnose (AP 2.2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -541,12 +465,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Ambulante Inanspruchnahme“</h3>
   <p class="unser">Quartale mit Verordnungen für Ergotherapeut:innen im ersten Jahr nach Erstdiagnose (AP 2.2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -560,12 +484,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Ambulante Inanspruchnahme“</h3>
   <p class="unser">Besuch eines Sozialpädiatrischen Zentrums (SPZ) im ersten Jahr nach Erstdiagnose (AP 2.2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -580,11 +504,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Untersucht wurde das Gesundheitscoaching (GC) im bayerischen Selektivvertrag STARKE KIDS. Es besteht aus einer zweifachen Schulung für Kinder- und Jugendärzt:innen (KJÄ) mit Checklisten und Handlungsempfehlungen zur Versorgung psychischer Auffälligkeiten und Störungen (PAS). Die Evaluation umfasste drei Teile: Interviews mit Entwicklern, KJÄ, Eltern und Jugendlichen; eine nicht randomisierte Kohortenstudie mit Befragung (1.161 Teilnehmende zu Baseline, 653 nach einem Jahr); Routinedatenanalysen zu Kodierverhalten, Behandlungsverläufen und Kosten. Auf den primären Endpunkt, die gesundheitsbezogene Lebensqualität (KINDL-R), zeigte sich kein Einfluss der Intervention, ebenso nicht auf die psychischen Auffälligkeiten (SDQ). Auch Diagnosehäufigkeit, Kodiergenauigkeit, spezialisierte Inanspruchnahme und Gesamtkosten unterschieden sich nicht signifikant zwischen den Gruppen. In GC-Praxen gab es mehr Kontakte mit sozialpädiatrischer Sprechstunde, weniger Quartale mit Ergotherapie-Verordnungen und um 10 € höhere KJÄ-Kosten. In den Interviews berichteten KJÄ und Familien hohe Zufriedenheit, nannten aber auch Barrieren wie Zeitmangel und die schlechte Erreichbarkeit von Familien mit schwierigen Strukturen. Die Aussagekraft wird durch mehrere Faktoren begrenzt: fehlende Randomisierung, mögliche Kontamination der Kontrollgruppe, die zeitgleich eingeführte, sehr ähnliche GKV-Sprechstunde, mögliche Selbstselektion der Befragten und fehlende Information darüber, ob die Schulungsinhalte tatsächlich angewendet wurden. Die Projektnehmer werten das Programm als zumindest kostenneutral und als Wegbereiter einer patient:innenorientierteren Versorgung.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +522,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auf den primären Endpunkt, die gesundheitsbezogene Lebensqualität (KINDL-R), zeigte sich über 12 Monate kein Einfluss der Intervention. Im linearen gemischten Modell (n=1.053) betrug der Gruppenterm 0,85 (KI −0,65 bis 2,36; p=0,267), die Interaktion Zeit × Gruppe −0,81 (KI −2,47 bis 0,85; p=0,339).</p>
+  
   <blockquote>„„Ein Einfluss der Intervention auf die Veränderung der gesundheitsbezogenen Lebensqualität über 12 Monate konnte ebenfalls nicht gezeigt werden.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +541,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Insgesamt zeigte das GC keine Effekte auf patientenbezogene Outcomes.</p>
+  
   <blockquote>„„Es konnten keine Effekte des GC auf patientenbezogene Outcomes gezeigt werden.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,50 +560,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In den Kosten für spezialisierte Versorgung, für die krankheitsspezifische Gesamtversorgung und für die Gesamtversorgung unterschieden sich die Gruppen nicht signifikant (Gamma Exp(β) 1,04, p=0,806; 0,98, p=0,845; 0,91, p=0,447). Laut Bericht waren die Kosten in der Interventionsgruppe tendenziell geringer.</p>
+  
   <blockquote>„„Die Kosten waren zwar in der Interventionsgruppe tendenziell geringer, es ergaben jedoch keine signifikanten Unterschiede.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.11">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Im Difference-in-differences-Modell (482 SK-Praxen) stieg der Anteil der GC-Indikationen in GC-Praxen im Jahr nach der Schulung um 0,76 Prozentpunkte weniger als in Praxen ohne GC [−4,46; 2,94]. Der Unterschied war nicht signifikant (p=0,686); laut Bericht hatte die Intervention keinen Effekt auf die Diagnosehäufigkeit.</p>
-  <blockquote>„„es in GC-Praxen im Jahr nach Schulungsteilnahme zu keiner signifikanten Veränderung der GC -Indikationen im Vergleich zu Praxen ohne GC kam (p=0,686). Somit hatte die Intervention keinen Effekt auf die Diagnosehäufigkeit einer GC-Indikation insgesamt.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.36">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">In den Interviews äußerten KJÄ und Familien hohe Akzeptanz bzw. Zufriedenheit. KJÄ sahen die Strukturierung als besonderen Vorteil; Eltern schätzten die Nähe zu den KJÄ, deren wertschätzendes Vorgehen und die pragmatische, situationsorientierte Vorgehensweise.</p>
-  <blockquote>„„In den Interviews konnten eine hohe Akzeptanz bzw. Zufriedenheit von Seiten der KJÄ und der involvierten Familien festgestellt werden. [...] Die Strukturierung wurde von KJÄ als besonderer Vorteil gesehen. Eltern sahen die Nähe zu den KJÄ und das wertschätzende Vorgehen der KJÄ als Vorteil an“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +579,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Behandlungsgruppen wurden nicht randomisiert; eingesetzt wurden stattdessen Matchingverfahren und multivariate Modelle. Wichtige Größen wie der Schweregrad der Erkrankung konnten mit Krankenkassendaten nicht berücksichtigt werden, und die Abrechnungsdaten lassen laut Bericht kaum Rückschlüsse auf die Schwere zu.</p>
+  
   <blockquote>„„Eine Limitation der Studie besteht darin, dass keine Randomisierung der Behandlungsgruppen vorgenommen werden konnte [...] Dennoch gibt es wichtige Größen, z.B. der Schweregrad der Erkrankung, die aufgrund der verwendeten Krankenkassendaten nicht berücksichtigen werden konnten.“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +598,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Kontrollgruppe kann kontaminiert sein: Ihre KJÄ hatten möglicherweise die GC-Ausbildung absolviert, ohne die Leistung abzurechnen. Die Projektnehmer halten das für akzeptabel, da es theoretisch zu einem konservativeren Ergebnis führe.</p>
+  
   <blockquote>„„Es ist daher denkbar, dass KJÄ der Kontrollgruppe die GC -Ausbildung absolviert hatten, aber die Leistung nicht abrechneten. In diesem Fall könnte die Ausbildung das Verhalten der KJÄ verändern.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,69 +617,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ein halbes Jahr nach Etablierung des Schulungskonzepts wurde eine sozialpädiatrische GKV-Sprechstunde (EBM 04355) mit sehr ähnlichen Indikationen eingeführt. Sie konnte ohne Schulung abgerechnet werden und kann die Gruppenunterschiede überlagern.</p>
+  
   <blockquote>„„wurde ein halbes Jahr nach Etablierung des Schulungskonzepts eine sozialpädiatrische GKV -Sprechstunde (EBM- Ziffer 04355) eingeführt, deren Indikationen denen des GC-Programms sehr ähnlich sind und die daher ebenfalls zu einem stärkeren Bewusstsein für die Indikationen geführt haben könnte.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Ob und inwieweit die Ärzt:innen die Schulungsinhalte bzw. Checklisten einsetzten, lässt sich aus den Abrechnungsdaten nicht ableiten.</p>
-  <blockquote>„„Inwieweit Ärzte die Schulungsinhalte einsetzten, lässt sich aus den Abrechnungsdaten nicht ableiten.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.4">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Die Befragungsstichprobe hatte eine stabil hohe Lebensqualität. Das kann laut Bericht auf positive Selbstselektion zurückgehen (Freiwilligen-Bias, hoher Bildungsstand der Eltern); möglicherweise war die Stichprobe zu homogen, um Effekte zu zeigen.</p>
-  <blockquote>„„Dies kann potenziell mit einer positiven Selbstselektion der Stichprobe (Freiwilligen- Bias, hoher Bildungsstand der Eltern) erklärt werden. Obwohl plausible Subgruppenunterschiede gezeigt werden konnten, war möglicherweise die Stichprobe zu homogen, um Effekte zu zeigen.“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.5">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Die Fallzahl in der gesundheitsökonomischen Analyse reichte laut Bericht nicht aus, um einen signifikanten Gruppenunterschied bei der Inanspruchnahme zu erkennen.</p>
-  <blockquote>„„In diesem Zusammenhang sollte aber auch die geringe Fallzahl beachtet werden, die nicht ausreicht um hier einen signifikanten Unterschied zwischen den Gruppen zu erkennen.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -808,11 +637,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Für den KINDL-R-Gesamtscore zu Baseline nennt die Tabelle auf S. 21 79,9 (Gesamt und beide Gruppen), der Text auf S. 23 dagegen 78,7 Punkte zu Baseline. Auf welche Stichprobe sich die beiden Werte jeweils beziehen, geht aus den Abschnitten nicht hervor.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -827,11 +656,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Der Fließtext auf S. 37 sagt, die geschätzten Kosten unterschieden sich &#x27;lediglich hinsichtlich der Kosten der KJÄ&#x27;. Tabelle 14 auf derselben Seite weist für weitere Kategorien Differenzen aus, deren Konfidenzintervalle die Null nicht einschließen: krankheitsspezifische Heilmittel −13 € [−22; −4], Arzneimittel −3 € [−5; −1], ambulante Gesamtkosten +17 € [2; 33], Heilmittel gesamt −10 € [−19; −2].</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -846,11 +675,203 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zur Wirtschaftlichkeit heißt es auf S. 26 &#x27;keine Kosteneinsparungen, jedoch auch keine Kostensteigerungen&#x27; und auf S. 39 &#x27;zumindest kostenneutral&#x27;. Auf S. 40 wird das Schulungsprogramm dagegen als &#x27;kostengünstig bis kostenneutral&#x27; bezeichnet.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>62 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss spricht für das Projekt PrimA-QuO keine Empfehlung aus. Eine Überführung des Gesundheitscoachings aus dem Selektivvertrag „STARKE KIDS“ in die Regelversorgung kann auf Basis der vorliegenden Ergebnisse nicht empfohlen werden. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Eine Empfehlung zur Überführung in die Regelversorgung kann auf Basis der vorliegenden Ergebnisse nicht ausgesprochen werden.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Akzeptanz des Programms bei Familien und Kinder- und Jugendärzten scheint hoch</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung enthielt eine Wertung, die im Beschluss nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Hohe Akzeptanz des Programms bei Familien und Kinder- und Jugendärzten“</i></p>
+  <blockquote>„Insgesamt scheint die Akzeptanz des Programms bei den Familien und KJÄ hoch zu sein." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Ansatzpunkte zur Weiterentwicklung des Programms ermittelt</p>
+  
+  <blockquote>„Zudem wurden Ansatzpunkte zur Weiterentwicklung des Programms - wie z. B. eine stärkere Fokussierung auf vulnerable Gruppen wie Kinder und Jugendliche aus schwierigen familiären Verhältnissen - ermittelt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Fragestellungen weitgehend beantwortet</p>
+  
+  <blockquote>„Die Fragestellungen wurden weitgehend beantwortet." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.11">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Im Difference-in-differences-Modell (482 SK-Praxen) stieg der Anteil der GC-Indikationen in GC-Praxen im Jahr nach der Schulung um 0,76 Prozentpunkte weniger als in Praxen ohne GC [−4,46; 2,94]. Der Unterschied war nicht signifikant (p=0,686); laut Bericht hatte die Intervention keinen Effekt auf die Diagnosehäufigkeit.</p>
+  
+  <blockquote>„„es in GC-Praxen im Jahr nach Schulungsteilnahme zu keiner signifikanten Veränderung der GC -Indikationen im Vergleich zu Praxen ohne GC kam (p=0,686). Somit hatte die Intervention keinen Effekt auf die Diagnosehäufigkeit einer GC-Indikation insgesamt.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.36">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">In den Interviews äußerten KJÄ und Familien hohe Akzeptanz bzw. Zufriedenheit. KJÄ sahen die Strukturierung als besonderen Vorteil; Eltern schätzten die Nähe zu den KJÄ, deren wertschätzendes Vorgehen und die pragmatische, situationsorientierte Vorgehensweise.</p>
+  
+  <blockquote>„„In den Interviews konnten eine hohe Akzeptanz bzw. Zufriedenheit von Seiten der KJÄ und der involvierten Familien festgestellt werden. [...] Die Strukturierung wurde von KJÄ als besonderer Vorteil gesehen. Eltern sahen die Nähe zu den KJÄ und das wertschätzende Vorgehen der KJÄ als Vorteil an“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Ob und inwieweit die Ärzt:innen die Schulungsinhalte bzw. Checklisten einsetzten, lässt sich aus den Abrechnungsdaten nicht ableiten.</p>
+  
+  <blockquote>„„Inwieweit Ärzte die Schulungsinhalte einsetzten, lässt sich aus den Abrechnungsdaten nicht ableiten.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.4">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Befragungsstichprobe hatte eine stabil hohe Lebensqualität. Das kann laut Bericht auf positive Selbstselektion zurückgehen (Freiwilligen-Bias, hoher Bildungsstand der Eltern); möglicherweise war die Stichprobe zu homogen, um Effekte zu zeigen.</p>
+  
+  <blockquote>„„Dies kann potenziell mit einer positiven Selbstselektion der Stichprobe (Freiwilligen- Bias, hoher Bildungsstand der Eltern) erklärt werden. Obwohl plausible Subgruppenunterschiede gezeigt werden konnten, war möglicherweise die Stichprobe zu homogen, um Effekte zu zeigen.“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.5">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Fallzahl in der gesundheitsökonomischen Analyse reichte laut Bericht nicht aus, um einen signifikanten Gruppenunterschied bei der Inanspruchnahme zu erkennen.</p>
+  
+  <blockquote>„„In diesem Zusammenhang sollte aber auch die geringe Fallzahl beachtet werden, die nicht ausreicht um hier einen signifikanten Unterschied zwischen den Gruppen zu erkennen.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -865,11 +886,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Laut S. 40 wurde &#x27;bei weitgehender Kostenneutralität [...] das Ziel einer Stärkung der Primärversorgung durch KJÄ durch das Programm erreicht&#x27;. Demgegenüber stehen S. 2 und S. 24, wonach keine Effekte des GC auf patientenbezogene Outcomes gezeigt werden konnten, sowie S. 28, wonach die Intervention keinen Effekt auf die Diagnosehäufigkeit hatte.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -879,16 +900,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>51 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für den sekundären Endpunkt SDQ (Elternversion) zeigte sich kein Interventionseffekt. Der Score lag zu Baseline und Follow-up bei 8,4 Punkten; adjustiert verbesserte er sich über 12 Monate signifikant um 0,4 Punkte. Männliches Geschlecht (1,8 Punkte) und höheres Alter (0,15 Punkte pro Jahr) waren signifikante Indikatoren für höhere Scores.</p>
+  
   <blockquote>„„Kontrolliert für Kovariablen verbesserte sich der Score im Verlauf von 12 Monaten signifikant um 0,4 Punkte. [...] Ein Einfluss der Intervention auf die Veränderung der psychischen Auffälligkeiten über 12 Monate konnte nicht gezeigt werden.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +923,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der mittlere Lebensqualitäts-Score lag bei 78,7 Punkten zu Baseline und 78,3 Punkten nach einem Jahr; die Differenz war nicht signifikant. Die Subskala körperliches Wohlbefinden verbesserte sich signifikant um 0,6 Punkte, die Subskala Familie verschlechterte sich signifikant um 1,3 Punkte.</p>
+  
   <blockquote>„„78,7 (Standardabweichung SD 11,8) Punkte zu Baseline und 78,3 (SD 11,1) Punkte nach einem Jahr (Differenz nicht signifikant). Die Subskala körperliches Wohlbefinden verbesserte sich signifikant um 0,6 Punkte, die Subskala Familie verschlechterte sich signifikant um 1,3 Punkte.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +942,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Kontrolliert für Kovariablen war die Lebensqualität pro Altersjahr um rund 0,7 Punkte schlechter. Eine Veränderung des Gesamtscores über die Zeit wurde nicht gezeigt.</p>
+  
   <blockquote>„„Kontrolliert für Kovariablen war die gesundheitsbezogene Lebensqualität bei Kindern pro steigendem Altersjahr um rund 0,7 Punkte schlechter. Eine Veränderung des Gesamtscores über die Zeit konnte nicht gezeigt werden.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +961,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zu Baseline lag der von den Eltern beurteilte KINDL-R-Gesamtscore in beiden Gruppen bei 79,9 (p=0,990).</p>
+  
   <blockquote>„„KINDL-R total 79,9 (10,7) 79,9 (10,6) 79,9 (11,1) 0,990“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +980,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zu Baseline unterschied sich die Diagnoseverteilung zwischen Kontroll- und GC-Gruppe: Sprachentwicklungsstörungen 58 % vs. 41 % (p&lt;0,001), soziale Verhaltensstörung 22 % vs. 30 % (p=0,003), Enuresis/Enkopresis 5 % vs. 18 % (p&lt;0,001).</p>
+  
   <blockquote>„„Sprachentwicklungssörun gen 582 (52%) 443 (58%) 139 (41%) &lt;0,001 Soziale Verhaltensstörung 272 (25%) 168 (22%) 104 (30%) 0,003 Enuresis/Enkopresis 96 (9%) 36 (5%) 60 (18%) &lt;0,001“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +999,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">An der Kohortenstudie nahmen 1.161 Personen an der Baseline-Befragung und 653 an der Follow-up-Befragung nach einem Jahr teil. Inanspruchnahmedaten aus Sekundärdaten lagen für 1.117 Teilnehmende vor, davon 343 in der GC-Gruppe.</p>
+  
   <blockquote>„„Insgesamt 1.161 Personen nahmen an der Baseline-Befragung und 653 an der Follow -Up Befragung nach einem Jahr teil.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1018,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Wahrscheinlichkeit, spezialisierte Leistungen in Anspruch zu nehmen, war in der Interventionsgruppe niedriger, aber nicht signifikant (Basismodell OR 0,94 [0,60–1,48], p=0,780; adjustiert OR 0,76 [0,54–1,09], p=0,134).</p>
+  
   <blockquote>„„Die Wahrscheinlichkeit der Inanspruchnahme war in der Interventionsgruppe sowohl im Basismodell als auch im adjustierten Modell niedriger. Jedoch waren die Ergebnisse nicht signifikant.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1037,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Signifikant mit der Inanspruchnahme spezialisierter Versorgung verbunden waren höheres Alter (OR 1,08), männliches Geschlecht (OR 1,67), die GKV-Sprechstunde (OR 1,58) und psychiatrische Komorbidität (OR 6,08 [4,30–8,60], p&lt;0,001).</p>
+  
   <blockquote>„„Höheres Alter, männliches Geschlecht, die GKV -Sprechstunde und vor allem psychiatrische Komorbiditäten hatten hingegen einen signifikanten Einfluss auf die Wahrscheinlichkeit einer Inanspruchnahme der spezialisierten Versorgung.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1056,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auf die Kodiergenauigkeit insgesamt (Anteil gesicherter Diagnosen) wurde kein Effekt des GC festgestellt (β −0,84, p=0,609).</p>
+  
   <blockquote>„„Ebenso konnte hier kein Effekt auf den Anteil gesicherter Diagnosen (Kodiergenauigkeit) festgestellt werden (p=0,609).“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1075,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Sprachentwicklungsstörungen wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,494) noch auf die Kodiergenauigkeit (p=0,197).</p>
+  
   <blockquote>„„Sprachentwicklungsstörungen (p=0,494 bzw. p=0,197)“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1094,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Enuresis/Enkopresis wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,648) noch auf die Kodiergenauigkeit (p=0,502).</p>
+  
   <blockquote>„„Enuresis/Enkopresis (p=0,648 bzw. 0,502)“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1113,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für soziale Verhaltensstörungen wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,993) noch auf die Kodiergenauigkeit (p=0,368).</p>
+  
   <blockquote>„„Soziale Verhaltensstörungen (p=0,993 bzw. 0,368)“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1132,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Bauch- und Kopfschmerzen psychosomatischen Ursprungs wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,311) noch auf die Kodiergenauigkeit (p=0,805).</p>
+  
   <blockquote>„„Bauch- und Kopfschmerzen psychosomatischen Ursprungs (p=0,311 bzw. 0,805)“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1151,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Schon vor der Intervention war der Anteil der Patient:innen mit GC-Indikation in GC-Praxen höher als in Praxen ohne GC (21,5 % vs. 18,67 %, p=0,034).</p>
+  
   <blockquote>„„Der Anteil an Patient:innen mit einer GC -Indikation lag bereits vor der Intervention in GC -Praxen über dem entsprechenden Anteil in Praxen ohne GC.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1170,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Kodiergenauigkeit, gemessen als Anteil gesicherter an gesicherten plus Verdachtsdiagnosen, lag im Beobachtungszeitraum in beiden Praxisgruppen bei rund 90 %.</p>
+  
   <blockquote>„„sowohl in GC-Praxen als auch in Praxen ohne GC auf einem Niveau von rund 90%.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1189,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Unabhängig vom GC erhielt von 2012 bis 2016 ein zunehmender Anteil der BKK-Versicherten in Kinder- und Jugendarztpraxen eine sozialpädiatrische Diagnose aus den GC-Indikationen.</p>
+  
   <blockquote>„„in den Jahren 2012 bis 2016 unabhängig vom Gesundheitscoaching ein zunehmender Anteil der BKK -Versicherten in Kinder - und Jugendarztpraxen eine sozialpädiatrische Diagnose erhielten, auf die sich das GC bezog.“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1208,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In die Analyse der Behandlungsverläufe gingen für das erste Jahr nach Erstdiagnose 58.440 Versicherte ein (IG 44.500, KG 13.940), für die zweijährige Nachbeobachtung 38.623.</p>
+  
   <blockquote>„„Es wurden 58.440 Versicherte in die Analyse der Behandlungsverläufe im ersten Jahr nach Erstdiagnose einbezogen, während die Stichprobe bei erweiterter Nachbeobachtungszeit von zwei Jahren [...] aus 38.623 Patient:i nnen bestand.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1227,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Patient:innen in GC-Praxen hatten im ersten Jahr nach Erstdiagnose 16 % mehr ärztliche Kontakte mit sozialpädiatrischer Sprechstunde (eβ 1,157, p&lt;0,001), in den ersten beiden Jahren 10 % mehr (eβ 1,103, p&lt;0,001).</p>
+  
   <blockquote>„„Zudem hatten Patient:innen in GC -Praxen im ersten Jahr nach der Erstdiagnose 16% und in den ersten beiden Jahren 10% mehr ärztliche Kontakte, in denen eine sozialpädiatrische Sprechs tunde durchgeführt wurde“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1246,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In den adjustierten ZIP-Modellen war nur der Unterschied bei der Ergotherapie auf dem 1 %-Niveau signifikant, im ersten Jahr wie in den ersten beiden Jahren. Patient:innen in GC-Praxen hatten durchschnittlich 12 % weniger Quartale mit Ergotherapie-Verordnungen.</p>
+  
   <blockquote>„„zeigten sich lediglich in Bezug auf die Ergotherapie sowohl im ersten als auch in den ersten beiden Jahren nach der Erstdiagnose statistisch signifikante Unterschiede auf dem 1% -Niveau. So lag für Patient:innen in GC - Praxen die Zahl der Quartale mit Verordnungen für Ergotherapeut:innen durchschnittlich 12% niedriger.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1265,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Patient:innen in GC-Praxen hatten häufiger spezialisierte Versorgungsinstitutionen in ihrem Wohnkreis und meist eine höhere Versorgungsdichte spezialisierter Fachärzt:innen. Im Quartal der Erstdiagnose wurde bei ihnen häufiger die GKV-Sprechstunde Sondercoaching 1 abgerechnet (16,2 % vs. 7,9 %).</p>
+  
   <blockquote>„„Patient:innen in GC -Praxen hatten zudem häufiger Institutionen der spezialisierten Versorgung in ihrem Wohnkreis und auch die durchschnittliche Versorgungsdichte spezialisierter Fachärzt:innen war für Patient:innen in GC -Praxen meist erhöht.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1284,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zwei Jahre nach Erstdiagnose lag der Anteil ohne Inanspruchnahme je nach Leistung zwischen 69 % (HNO/Audiologe) und 100 % (Allgemeine Psychiatrie). Eine sozialpädiatrische GC- oder GKV-Sprechstunde erhielten innerhalb von zwei Jahren 47,7 %.</p>
+  
   <blockquote>„„lag je nach Leistung aber immer noch zwischen 69% (HNO/Audiologe) und 100% (Allgemeine Psychiatrie). Eine sozialpädiatrische GC - oder GKV -Sprechstunde erhielten innerhalb von zwei Jahren nach Erstdiagnose 47,7% der Patient:innen.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1303,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei einem Radius von 30 km um die SPZ hatten bayerische Patient:innen keinen landesweit flächendeckenden Zugang zu einem SPZ. Der Anteil mit SPZ-Besuch im ersten Jahr nach Erstdiagnose lag je Kreis zwischen 0 % und 15 %.</p>
+  
   <blockquote>„„Unter dieser Entfernungsvorgabe gab es für bayerische Patient:innen keinen landesweiten flächendeckenden Zugang zu einem SPZ.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1322,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Patient:innen in GC-Praxen ergab sich im ersten Jahr nach Erstdiagnose eine höhere, aber nicht signifikante Wahrscheinlichkeit für einen SPZ-Besuch (OR 1,078 [0,940; 1,236], p=0,285). Höher lag die Wahrscheinlichkeit in hoch deprivierten Regionen (1,5-fach), bei weiterer psychischer oder Verhaltensstörung (2,3-fach) und bei einem SPZ im Wohnkreis (2,9-fach).</p>
+  
   <blockquote>„„ergab sich für Patient:innen in GC-Praxen für das erste Jahr nach Erstdiagnose zwar eine höhere Wahrscheinlichkeit für einen SPZ- Besuch, doch war der Effekt nicht statistisch signifikant.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1341,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Sondercoaching 1 (EBM 04355/04356) im Quartal der Erstdiagnose ging mit einer 1,7-fach höheren Wahrscheinlichkeit eines SPZ-Besuchs einher, Sondercoaching 2 (EBM 35100/88895) mit einer niedrigeren. Über zwei Jahre waren die Befunde ähnlich; ein SPZ im Wohnkreis hatte dann eine OR von 3,1.</p>
+  
   <blockquote>„„die dem GC sehr ähnliche GKV -Sprechstunde Sondercoaching 1 (EBM -Ziffern 04355/04356) führte zu einer 1,7-fach erhöhten Wahrscheinlichkeit, während das Sondercoaching 2 (EBM- Ziffern 35100/88895) mit einer niedrigeren Wahrscheinlichkeit einherging.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1360,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die durchschnittliche Sprechzeit in sozialpädiatrischen Sprechstunden betrug in GC-Praxen 29,7 Minuten [29,4; 30,1] und in Praxen ohne GC 28,1 Minuten [27,4; 28,7]. Der Unterschied war statistisch signifikant; die absolute Differenz von 1,6 Minuten bezeichnet der Bericht als geringfügig.</p>
+  
   <blockquote>„„In Praxen ohne GC -Schulung war die Dauer mit 28,1 Minuten [95% -KI: 27,4; 28,7] zwar statistisch signifikant kürzer, doch lag die absolute Differenz mit 1,6 Minuten nur geringfügig niedriger.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1379,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Sequenzanalyse von 14.572 Patient:innen mit Sprachentwicklungsstörung war bei Fachärzt:innen und verordneten Therapeut:innen kein Gruppenunterschied erkennbar. Sozialpädiatrische Sprechstunden traten in GC-Praxen vor allem im Quartal der Erstdiagnose häufiger auf.</p>
+  
   <blockquote>„„Zwischen den Studiengruppen war für die Fachärzt:innen und die verordneten Therapeut:innen kein Gruppenunter schied erkennbar, während sozialpädiatrische GC - oder GKV -Sprechstunden vor allem im Quartal der Erstdiagnose für Patient:innen in GC -Praxen häufiger zu sehen waren.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1398,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Fließtext unterschieden sich die geschätzten Kosten nur bei den KJÄ-Kosten zwischen den Gruppen: In der Interventionsgruppe lagen sie um 10 € höher (Matching Weights; 295 € vs. 285 €, [5; 14]) bzw. um 4 % (Gamma-Regression). Der Bericht nennt die Differenz gering.</p>
+  
   <blockquote>„„Die geschätzten absoluten Kosten und Kostendifferenzen unterschieden sich lediglich hinsichtlich der Kosten der KJÄ zwischen der Kontroll - und der Interventionsgruppe. Hier wurde eine geringe Kostendifferenz von 10€ im Matching -Weights-Ansatz oder 4% in den Gamma-Regressionsmodellen beobachtet.“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1417,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Gesamtkosten im ersten Jahr nach Erstdiagnose betrugen 1.324 € in der Kontroll- und 1.312 € in der Interventionsgruppe (Differenz −12 € [−96; 71]). Die krankheitsspezifischen Gesamtkosten lagen bei 465 € bzw. 448 € (Differenz −17 € [−61; 27]).</p>
+  
   <blockquote>„„Gesamtkosten 1.324 [1.259; 1.394] 1.312 [1.264; 1.364] -12 [-96; 71]“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1436,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Tabelle 14 weist für die Interventionsgruppe folgende Differenzen aus: krankheitsspezifische Heilmittelkosten −13 € [−22; −4], krankheitsspezifische Arzneimittelkosten −3 € [−5; −1], gesamte ambulante Kosten +17 € [2; 33] und gesamte Heilmittelkosten −10 € [−19; −2].</p>
+  
   <blockquote>„„Heilmittel 106 [100; 113] 93 [89; 98] -13 [-22; -4]“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1455,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Spezialisierte Kosten fielen bei 17 % der Patient:innen an und machten rund 17 % der Gesamtkosten aus, ohne Unterschied zwischen GC-Praxen und Praxen ohne GC. Spezialisierte stationäre Leistungen kamen bei 0,3 % vor und hatten in beiden Gruppen die höchsten Durchschnittskosten.</p>
+  
   <blockquote>„„Deskriptive Analysen zeigten, dass spezialisierte Kosten bei 17% der behandelten Patient:innen auftraten und im Vergleich zu den Gesamtkosten auch ca. 17% der Kosten verursachten. Dabei unterschieden sich Patient:innen, die in einer GC -Praxis behandelt wurden, nicht von Patient:innen in einer Praxis ohne GC.“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1474,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Nebenanalyse zur Durchführung der GC-Sprechstunde nahmen Patient:innen danach weniger spezialisierte Leistungen in Anspruch als Patient:innen ohne GC-Sprechstunde, vor allem bei SPZ. Laut Bericht ergaben sich in diesem Bereich signifikante Kostenunterschiede, während die KJÄ-Kosten signifikant anstiegen.</p>
+  
   <blockquote>„„konnte eine verminderte Inanspruchnahme spezialisierter Leistungen nach der Durchführung der GC-Sprechstunde im Vergleich zu Patient:innen ohne GC-Sprechstunde beobachtet werden. Dies war vor allem auf Sozialpädiatrische Zentren zurückzuführen [...] Im Gegensatz dazu stiegen die Kosten der KJÄ signifikant an.“ – Bericht, S. 38" <span class="s">S. 38</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1493,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In derselben Nebenanalyse unterschieden sich Patient:innen mit und ohne GC-Sprechstunde nicht in den krankheitsspezifischen Gesamtkosten.</p>
+  
   <blockquote>„„Insgesamt betrachtet unterschieden sich die beiden Gruppen bezogen auf die krankheitsspezifischen Gesamtkosten nicht voneinander.“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1512,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht unterstützt das GC-Programm nach Interviewlage die Rolle der KJÄ als Berater:innen und verbesserte ihre diagnostischen Möglichkeiten.</p>
+  
   <blockquote>„„Das GC-Programm unterstützt die wichtige Rolle der KJÄ als Berater:innen und verbesserte ihre diagnostischen Möglichkeiten.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1531,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als wichtigsten Erfolgsfaktor nannten die Programmentwickler die Praxisnähe.</p>
+  
   <blockquote>„„Als wichtigster Erfolgsfaktor wurde von den Entwicklern die Praxisnähe gesehen.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1550,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von November 2017 bis November 2018 wurden für die qualitative Studie 3 Programmentwickler, 14 KJÄ mit GC-Ausbildung, 22 Elternteile (19 Mütter, 3 Väter) und 4 Jugendliche ab 14 Jahren interviewt.</p>
+  
   <blockquote>„„Von November 2017 bis November 2018 wurden insgesamt drei Programmentwickler, 14 KJÄ mit GC -Ausbildung, 22 Elternteile (19 Mütter, 3 Väter) und vier Jugendliche (ab 14 Jahre) interviewt.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1569,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die gewünschte Fallzahl von 100 Teilnehmenden pro Indikation wurde für Enuresis und Kopf-/Bauchschmerzen (somatoform) nicht erreicht, insbesondere nicht in der GC-Gruppe.</p>
+  
   <blockquote>„„Die gewünschte Fallzahl von 100 Teilnehmer:innen pro Indikation konnte – insbesondere in der GC-Gruppe – für die Diagnosen Enuresis und Kopf - /Bauchschmerzen (som atoform) nicht erreicht werden.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1588,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Auch in der Kontrollgruppe gab es GC-Sprechstunden, weil eine Übergangsregelung die Abrechnung ohne Schulungsteilnahme erlaubte.</p>
+  
   <blockquote>„„GC-Sprechstunden in der KG erklären sich durch die Übergangsregelung der Abrechnungsvoraussetzung, bei der die GC-Sprechstunde auch ohne Schulungsteilnahme abgerechnet werden konnte.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1607,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Kontrollgruppe der Kohortenstudie umfasste Kinder mit und ohne Einschreibung in den SK-Vertrag. Das kann einen Selektionsbias erzeugen, dessen Richtung unklar ist.</p>
+  
   <blockquote>„„Die Einschreibung in den SK-Vertrag kann als Selektionsbias für KJ aber auch für KJÄ wirken, dessen Richtung die Ergebnisse in verschiedene Richtungen verzerren kann.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1626,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Regionale Unterschiede der Versorgungsdichte, von denen mögliche GC-Effekte abhängen könnten, wurden in der Analyse nicht berücksichtigt.</p>
+  
   <blockquote>„„potenzielle Effekte des GC möglicherweise stark regional abhängig von der Versorgungsdichte variieren, diese Unterschiede aber in unserer Analyse nicht berücksichtigt werden konnten.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1645,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die geplante Rekrutierung über die Arztpraxen erwies sich früh als schwierig. Familien wurden stattdessen postalisch über die Krankenkassen angeschrieben.</p>
+  
   <blockquote>„„Die geplante Rekrutierung über die Arztpraxen hatte sich im frühen Verlauf der Studie als schwierig erwiesen, sodass diese alternative Rekrutierungsstrategie entwickelt worden war.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1664,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der regen Schulungsteilnahme blieb die Kontrollgruppe der Praxisanalyse klein (52 von 482 Praxen); Selektionseffekte und Einflüsse des SK-Vertrags sind möglich.</p>
+  
   <blockquote>„„Durch die rege Schulungsteilnahme fiel die Kontrollgruppe insgesamt klein aus. Damit einhergehende Selektionseffekte und Einflüsse seitens des SK-Vertrags sind möglich, waren jedoch nicht Ziel der Studie.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1683,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zwischen den Praxisgruppen bestand schon vor Einführung der Schulungen ein Unterschied in der relativen Diagnosehäufigkeit.</p>
+  
   <blockquote>„„zwischen den Studiengruppen sowohl vor als auch nach Einführung der GC-Schulungen ein Unterschied in der relativen Diagnosehäufigkeit bestand.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1702,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Beschränkung auf SK-Praxen kann einen Selektionsbias erzeugen. Hinzu kommen regionale Schwerpunkte der Versichertenklientel und die nicht randomisierte, zwischen den Kreisen teils stark unterschiedliche Teilnahme der KJÄ am GC.</p>
+  
   <blockquote>„„Durch diese Einschränkung der Praxen ist ein Selektionsbias möglich [...] Regionale S chwerpunkte der Versichertenklientel und die nicht randomisierte Teilnahme der KJÄ am GC, die sich teilweise stark zwischen den Kreisen unterschied, sind ebenso zu diskutieren.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1721,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen des verkürzten Rekrutierungszeitraums war die Stichprobe für die zweijährige Nachbeobachtung kleiner (38.623 statt 58.440).</p>
+  
   <blockquote>„„während die Stichprobe bei erweiterter Nachbeobachtungszeit von zwei Jahren aufgrund des verkürzten Rekrutierungszeitraums aus 38.623 Patient:i nnen bestand.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1740,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Kostenanalyse nahm nur die Perspektive der Krankenkasse ein. Kosten für verschreibungsfreie Arzneimittel und alternative Behandlungen außerhalb der GKV blieben unberücksichtigt.</p>
+  
   <blockquote>„„Bei der Anal yse der Inanspruchnahme und der Kosten wurde die Perspektive der Krankenkasse eingenommen. Es wurden somit keine Kosten von verschreibungsfreien Arzneimitteln sowie von alternativen Behandlungen berücksichtigt“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1759,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Gegenläufige Tendenzen, also seltenere Weitervermittlung bei zugleich besser erkanntem Bedarf, lassen sich mit Abrechnungsdaten nicht valide untersuchen.</p>
+  
   <blockquote>„„Allerdings lassen sich derartige gegenläufige Tendenzen mit Abrechnungsdaten nicht valide untersuchen.“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1778,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ob die Wirtschaftlichkeitsbeurteilung auf die Anwendung der Schulungsinhalte zurückgeht, lässt sich aus Routinedaten allein nicht ermitteln.</p>
+  
   <blockquote>„„Erneut kann aus den Routinedaten allein nicht ermittelt werden, inwieweit diese positive Wirtschaftlichkeitsbeurteilung auf die Anwendung von Schulungsinhalten zurückzuführen ist.“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1797,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Laut KJÄ ließ sich das Programm in der Praxis nicht immer wie gewünscht umsetzen. Patient:innen mit schwierigen familiären Strukturen wurden nicht im gewünschten Maß erreicht, und die KJÄ berichteten trotz gesonderter Vergütung von Zeitmangel.</p>
+  
   <blockquote>„„Insbesondere Patient:innen mit schwierigen familiären Strukturen werden bisher durch das Programm nicht im gewünschten Maß erreicht. [...] berichteten KJÄ über Zeitmangel im Praxisalltag, obwohl durch die gesonderte Vergütung mehr Raum für sprechende Medizin geschaffen werden sollte.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1795,12 +1816,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Anwender:innen nannten als Barrieren den Zeitbedarf für psychosoziale Aspekte, der über das im Programm Vorgesehene hinausgehe, sowie die stringent vorformulierten Checklisten und Leitfäden.</p>
+  
   <blockquote>„„die Einbeziehung psychosozialer oder emotionaler Bedingungen stets mehr Zeit in Anspruch nehme, als durch das Programm vorgesehen sei. Auch die stringente Vorformulierung der Checklisten und Leitfäden wurde von Anwender:innen als Barriere genannt.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1814,12 +1835,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei den Jugendlichen (n=4) wurde in den Interviews keine Informationssättigung erreicht.</p>
+  
   <blockquote>„„Informationssättigung konnte bei KJÄ und Eltern, aber nicht bei der Gruppe der Jugendlichen erzielt werden.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1833,12 +1854,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.21">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ein gewünschter Austausch mit weiteren Expert:innen und eine Ausweitung des Programms über Bayern hinaus waren zum Zeitpunkt des Interviews (Juli 2017) nicht realisiert.</p>
+  
   <blockquote>„„Austausch mit weiteren Expert:innen und eine Ausweitung des Programms über Bayern hinaus wurde gewünscht, konnte aber zum Zeitpunkt des Interviews (Juli 2017) noch nicht r ealisiert werden.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1883,28 +1904,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 31, "akronym": "PrimA-QuO", "kennung": "hsngnQMqUlbF", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt PrimA-QuO keine Empfehlung aus. Eine Überführung des Gesundheitscoachings aus dem Selektivvertrag „STARKE KIDS“ in die Regelversorgung kann auf Basis der vorliegenden Ergebnisse nicht empfohlen werden. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Anhand der Studiendaten konnte nicht gezeigt werden, dass das Gesundheitscoaching die gesundheitsbezogene Lebensqualität (primärer Endpunkt) oder das Ausmaß psychischer Auffälligkeiten beeinflusst hat. Das Gesundheitscoaching bestand aus einer zweifachen Schulung der Kinder- und Jugendärztinnen und -ärzte mit Checklisten und Handlungsempfehlungen. Auch die Diagnosehäufigkeit stieg nicht an. Die Behandlungspfade veränderten sich laut Routinedatenanalyse nur geringfügig. Die Wirtschaftlichkeitsanalyse fiel neutral aus. Die qualitative Evaluation ergab eine offenbar hohe Akzeptanz sowie Ansatzpunkte zur Weiterentwicklung. Die Aussagekraft ist durch mehrere Limitationen eingeschränkt: geringe Stichprobe, niedrige Rücklaufquoten, Selektionsbias, fehlende Confounder-Kontrolle und nicht-randomisierte Teilnahme."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine Empfehlung zur Überführung in die Regelversorgung kann auf Basis der vorliegenden Ergebnisse nicht ausgesprochen werden."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Kein Effekt auf die gesundheitsbezogene Lebensqualität (primärer Endpunkt) und auf das Ausmaß psychischer Auffälligkeiten"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Kein Anstieg der Diagnosehäufigkeit psychischer Auffälligkeiten und Störungen"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Nur geringfügige Auswirkungen auf die Behandlungspfade"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Kein Kostenunterschied, Wirtschaftlichkeit neutral"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Geringe Stichprobengröße schränkt die Aussagekraft ein"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Niedrige Rücklaufquoten bei den Befragungen"}, {"stelle": "hindernis.6", "art": "hindernis", "unser": "Anzeichen für Selektionsbias und nicht-randomisierte Teilnahme der Kinder- und Jugendärzte"}, {"stelle": "hindernis.7", "art": "hindernis", "unser": "Fehlende Kontrolle wichtiger Confounder wie der Krankheitsschwere"}, {"stelle": "hindernis.8", "art": "hindernis", "unser": "Tatsächliche Anwendung der Schulungsinhalte ist aus Abrechnungsdaten nicht ableitbar"}, {"stelle": "befund.0", "art": "befund", "unser": "Hohe Akzeptanz des Programms bei Familien und Kinder- und Jugendärzten"}, {"stelle": "befund.1", "art": "befund", "unser": "Ansatzpunkte zur Weiterentwicklung des Programms ermittelt"}, {"stelle": "befund.2", "art": "befund", "unser": "Fragestellungen weitgehend beantwortet"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität der Kinder und Jugendlichen"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Ausmaß psychischer Auffälligkeiten der Kinder und Jugendlichen"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität der Eltern"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Inanspruchnahme spezialisierter Leistungen (AP 1.3, Gesamtpopulation)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Kodierverhalten: Diagnosehäufigkeit GC-Indikationen insgesamt (AP 2.1)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Kodierverhalten: Kodiergenauigkeit GC-Indikationen insgesamt (AP 2.1)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Anzahl Kontakte sozialpädiatrische GC- oder GKV-Sprechstunde im ersten Jahr nach Erstdiagnose (AP 2.2)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Quartale mit Verordnungen für Ergotherapeut:innen im ersten Jahr nach Erstdiagnose (AP 2.2)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Besuch eines Sozialpädiatrischen Zentrums (SPZ) im ersten Jahr nach Erstdiagnose (AP 2.2)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Untersucht wurde das Gesundheitscoaching (GC) im bayerischen Selektivvertrag STARKE KIDS. Es besteht aus einer zweifachen Schulung für Kinder- und Jugendärzt:innen (KJÄ) mit Checklisten und Handlungsempfehlungen zur Versorgung psychischer Auffälligkeiten und Störungen (PAS). Die Evaluation umfasste drei Teile: Interviews mit Entwicklern, KJÄ, Eltern und Jugendlichen; eine nicht randomisierte Kohortenstudie mit Befragung (1.161 Teilnehmende zu Baseline, 653 nach einem Jahr); Routinedatenanalysen zu Kodierverhalten, Behandlungsverläufen und Kosten. Auf den primären Endpunkt, die gesundheitsbezogene Lebensqualität (KINDL-R), zeigte sich kein Einfluss der Intervention, ebenso nicht auf die psychischen Auffälligkeiten (SDQ). Auch Diagnosehäufigkeit, Kodiergenauigkeit, spezialisierte Inanspruchnahme und Gesamtkosten unterschieden sich nicht signifikant zwischen den Gruppen. In GC-Praxen gab es mehr Kontakte mit sozialpädiatrischer Sprechstunde, weniger Quartale mit Ergotherapie-Verordnungen und um 10 € höhere KJÄ-Kosten. In den Interviews berichteten KJÄ und Familien hohe Zufriedenheit, nannten aber auch Barrieren wie Zeitmangel und die schlechte Erreichbarkeit von Familien mit schwierigen Strukturen. Die Aussagekraft wird durch mehrere Faktoren begrenzt: fehlende Randomisierung, mögliche Kontamination der Kontrollgruppe, die zeitgleich eingeführte, sehr ähnliche GKV-Sprechstunde, mögliche Selbstselektion der Befragten und fehlende Information darüber, ob die Schulungsinhalte tatsächlich angewendet wurden. Die Projektnehmer werten das Programm als zumindest kostenneutral und als Wegbereiter einer patient:innenorientierteren Versorgung."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Auf den primären Endpunkt, die gesundheitsbezogene Lebensqualität (KINDL-R), zeigte sich über 12 Monate kein Einfluss der Intervention. Im linearen gemischten Modell (n=1.053) betrug der Gruppenterm 0,85 (KI −0,65 bis 2,36; p=0,267), die Interaktion Zeit × Gruppe −0,81 (KI −2,47 bis 0,85; p=0,339)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Insgesamt zeigte das GC keine Effekte auf patientenbezogene Outcomes."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "In den Kosten für spezialisierte Versorgung, für die krankheitsspezifische Gesamtversorgung und für die Gesamtversorgung unterschieden sich die Gruppen nicht signifikant (Gamma Exp(β) 1,04, p=0,806; 0,98, p=0,845; 0,91, p=0,447). Laut Bericht waren die Kosten in der Interventionsgruppe tendenziell geringer."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Im Difference-in-differences-Modell (482 SK-Praxen) stieg der Anteil der GC-Indikationen in GC-Praxen im Jahr nach der Schulung um 0,76 Prozentpunkte weniger als in Praxen ohne GC [−4,46; 2,94]. Der Unterschied war nicht signifikant (p=0,686); laut Bericht hatte die Intervention keinen Effekt auf die Diagnosehäufigkeit."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "In den Interviews äußerten KJÄ und Familien hohe Akzeptanz bzw. Zufriedenheit. KJÄ sahen die Strukturierung als besonderen Vorteil; Eltern schätzten die Nähe zu den KJÄ, deren wertschätzendes Vorgehen und die pragmatische, situationsorientierte Vorgehensweise."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Behandlungsgruppen wurden nicht randomisiert; eingesetzt wurden stattdessen Matchingverfahren und multivariate Modelle. Wichtige Größen wie der Schweregrad der Erkrankung konnten mit Krankenkassendaten nicht berücksichtigt werden, und die Abrechnungsdaten lassen laut Bericht kaum Rückschlüsse auf die Schwere zu."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Kontrollgruppe kann kontaminiert sein: Ihre KJÄ hatten möglicherweise die GC-Ausbildung absolviert, ohne die Leistung abzurechnen. Die Projektnehmer halten das für akzeptabel, da es theoretisch zu einem konservativeren Ergebnis führe."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Ein halbes Jahr nach Etablierung des Schulungskonzepts wurde eine sozialpädiatrische GKV-Sprechstunde (EBM 04355) mit sehr ähnlichen Indikationen eingeführt. Sie konnte ohne Schulung abgerechnet werden und kann die Gruppenunterschiede überlagern."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Ob und inwieweit die Ärzt:innen die Schulungsinhalte bzw. Checklisten einsetzten, lässt sich aus den Abrechnungsdaten nicht ableiten."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Befragungsstichprobe hatte eine stabil hohe Lebensqualität. Das kann laut Bericht auf positive Selbstselektion zurückgehen (Freiwilligen-Bias, hoher Bildungsstand der Eltern); möglicherweise war die Stichprobe zu homogen, um Effekte zu zeigen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Fallzahl in der gesundheitsökonomischen Analyse reichte laut Bericht nicht aus, um einen signifikanten Gruppenunterschied bei der Inanspruchnahme zu erkennen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Für den KINDL-R-Gesamtscore zu Baseline nennt die Tabelle auf S. 21 79,9 (Gesamt und beide Gruppen), der Text auf S. 23 dagegen 78,7 Punkte zu Baseline. Auf welche Stichprobe sich die beiden Werte jeweils beziehen, geht aus den Abschnitten nicht hervor."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Der Fließtext auf S. 37 sagt, die geschätzten Kosten unterschieden sich 'lediglich hinsichtlich der Kosten der KJÄ'. Tabelle 14 auf derselben Seite weist für weitere Kategorien Differenzen aus, deren Konfidenzintervalle die Null nicht einschließen: krankheitsspezifische Heilmittel −13 € [−22; −4], Arzneimittel −3 € [−5; −1], ambulante Gesamtkosten +17 € [2; 33], Heilmittel gesamt −10 € [−19; −2]."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Zur Wirtschaftlichkeit heißt es auf S. 26 'keine Kosteneinsparungen, jedoch auch keine Kostensteigerungen' und auf S. 39 'zumindest kostenneutral'. Auf S. 40 wird das Schulungsprogramm dagegen als 'kostengünstig bis kostenneutral' bezeichnet."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Laut S. 40 wurde 'bei weitgehender Kostenneutralität [...] das Ziel einer Stärkung der Primärversorgung durch KJÄ durch das Programm erreicht'. Demgegenüber stehen S. 2 und S. 24, wonach keine Effekte des GC auf patientenbezogene Outcomes gezeigt werden konnten, sowie S. 28, wonach die Intervention keinen Effekt auf die Diagnosehäufigkeit hatte."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Für den sekundären Endpunkt SDQ (Elternversion) zeigte sich kein Interventionseffekt. Der Score lag zu Baseline und Follow-up bei 8,4 Punkten; adjustiert verbesserte er sich über 12 Monate signifikant um 0,4 Punkte. Männliches Geschlecht (1,8 Punkte) und höheres Alter (0,15 Punkte pro Jahr) waren signifikante Indikatoren für höhere Scores."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Der mittlere Lebensqualitäts-Score lag bei 78,7 Punkten zu Baseline und 78,3 Punkten nach einem Jahr; die Differenz war nicht signifikant. Die Subskala körperliches Wohlbefinden verbesserte sich signifikant um 0,6 Punkte, die Subskala Familie verschlechterte sich signifikant um 1,3 Punkte."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Kontrolliert für Kovariablen war die Lebensqualität pro Altersjahr um rund 0,7 Punkte schlechter. Eine Veränderung des Gesamtscores über die Zeit wurde nicht gezeigt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Zu Baseline lag der von den Eltern beurteilte KINDL-R-Gesamtscore in beiden Gruppen bei 79,9 (p=0,990)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Zu Baseline unterschied sich die Diagnoseverteilung zwischen Kontroll- und GC-Gruppe: Sprachentwicklungsstörungen 58 % vs. 41 % (p<0,001), soziale Verhaltensstörung 22 % vs. 30 % (p=0,003), Enuresis/Enkopresis 5 % vs. 18 % (p<0,001)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "An der Kohortenstudie nahmen 1.161 Personen an der Baseline-Befragung und 653 an der Follow-up-Befragung nach einem Jahr teil. Inanspruchnahmedaten aus Sekundärdaten lagen für 1.117 Teilnehmende vor, davon 343 in der GC-Gruppe."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Wahrscheinlichkeit, spezialisierte Leistungen in Anspruch zu nehmen, war in der Interventionsgruppe niedriger, aber nicht signifikant (Basismodell OR 0,94 [0,60–1,48], p=0,780; adjustiert OR 0,76 [0,54–1,09], p=0,134)."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Signifikant mit der Inanspruchnahme spezialisierter Versorgung verbunden waren höheres Alter (OR 1,08), männliches Geschlecht (OR 1,67), die GKV-Sprechstunde (OR 1,58) und psychiatrische Komorbidität (OR 6,08 [4,30–8,60], p<0,001)."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Auf die Kodiergenauigkeit insgesamt (Anteil gesicherter Diagnosen) wurde kein Effekt des GC festgestellt (β −0,84, p=0,609)."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Für Sprachentwicklungsstörungen wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,494) noch auf die Kodiergenauigkeit (p=0,197)."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Für Enuresis/Enkopresis wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,648) noch auf die Kodiergenauigkeit (p=0,502)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Für soziale Verhaltensstörungen wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,993) noch auf die Kodiergenauigkeit (p=0,368)."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Für Bauch- und Kopfschmerzen psychosomatischen Ursprungs wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,311) noch auf die Kodiergenauigkeit (p=0,805)."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Schon vor der Intervention war der Anteil der Patient:innen mit GC-Indikation in GC-Praxen höher als in Praxen ohne GC (21,5 % vs. 18,67 %, p=0,034)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Die Kodiergenauigkeit, gemessen als Anteil gesicherter an gesicherten plus Verdachtsdiagnosen, lag im Beobachtungszeitraum in beiden Praxisgruppen bei rund 90 %."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Unabhängig vom GC erhielt von 2012 bis 2016 ein zunehmender Anteil der BKK-Versicherten in Kinder- und Jugendarztpraxen eine sozialpädiatrische Diagnose aus den GC-Indikationen."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "In die Analyse der Behandlungsverläufe gingen für das erste Jahr nach Erstdiagnose 58.440 Versicherte ein (IG 44.500, KG 13.940), für die zweijährige Nachbeobachtung 38.623."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Patient:innen in GC-Praxen hatten im ersten Jahr nach Erstdiagnose 16 % mehr ärztliche Kontakte mit sozialpädiatrischer Sprechstunde (eβ 1,157, p<0,001), in den ersten beiden Jahren 10 % mehr (eβ 1,103, p<0,001)."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "In den adjustierten ZIP-Modellen war nur der Unterschied bei der Ergotherapie auf dem 1 %-Niveau signifikant, im ersten Jahr wie in den ersten beiden Jahren. Patient:innen in GC-Praxen hatten durchschnittlich 12 % weniger Quartale mit Ergotherapie-Verordnungen."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Patient:innen in GC-Praxen hatten häufiger spezialisierte Versorgungsinstitutionen in ihrem Wohnkreis und meist eine höhere Versorgungsdichte spezialisierter Fachärzt:innen. Im Quartal der Erstdiagnose wurde bei ihnen häufiger die GKV-Sprechstunde Sondercoaching 1 abgerechnet (16,2 % vs. 7,9 %)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Zwei Jahre nach Erstdiagnose lag der Anteil ohne Inanspruchnahme je nach Leistung zwischen 69 % (HNO/Audiologe) und 100 % (Allgemeine Psychiatrie). Eine sozialpädiatrische GC- oder GKV-Sprechstunde erhielten innerhalb von zwei Jahren 47,7 %."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Bei einem Radius von 30 km um die SPZ hatten bayerische Patient:innen keinen landesweit flächendeckenden Zugang zu einem SPZ. Der Anteil mit SPZ-Besuch im ersten Jahr nach Erstdiagnose lag je Kreis zwischen 0 % und 15 %."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Für Patient:innen in GC-Praxen ergab sich im ersten Jahr nach Erstdiagnose eine höhere, aber nicht signifikante Wahrscheinlichkeit für einen SPZ-Besuch (OR 1,078 [0,940; 1,236], p=0,285). Höher lag die Wahrscheinlichkeit in hoch deprivierten Regionen (1,5-fach), bei weiterer psychischer oder Verhaltensstörung (2,3-fach) und bei einem SPZ im Wohnkreis (2,9-fach)."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Sondercoaching 1 (EBM 04355/04356) im Quartal der Erstdiagnose ging mit einer 1,7-fach höheren Wahrscheinlichkeit eines SPZ-Besuchs einher, Sondercoaching 2 (EBM 35100/88895) mit einer niedrigeren. Über zwei Jahre waren die Befunde ähnlich; ein SPZ im Wohnkreis hatte dann eine OR von 3,1."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Die durchschnittliche Sprechzeit in sozialpädiatrischen Sprechstunden betrug in GC-Praxen 29,7 Minuten [29,4; 30,1] und in Praxen ohne GC 28,1 Minuten [27,4; 28,7]. Der Unterschied war statistisch signifikant; die absolute Differenz von 1,6 Minuten bezeichnet der Bericht als geringfügig."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "In der Sequenzanalyse von 14.572 Patient:innen mit Sprachentwicklungsstörung war bei Fachärzt:innen und verordneten Therapeut:innen kein Gruppenunterschied erkennbar. Sozialpädiatrische Sprechstunden traten in GC-Praxen vor allem im Quartal der Erstdiagnose häufiger auf."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Laut Fließtext unterschieden sich die geschätzten Kosten nur bei den KJÄ-Kosten zwischen den Gruppen: In der Interventionsgruppe lagen sie um 10 € höher (Matching Weights; 295 € vs. 285 €, [5; 14]) bzw. um 4 % (Gamma-Regression). Der Bericht nennt die Differenz gering."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Die Gesamtkosten im ersten Jahr nach Erstdiagnose betrugen 1.324 € in der Kontroll- und 1.312 € in der Interventionsgruppe (Differenz −12 € [−96; 71]). Die krankheitsspezifischen Gesamtkosten lagen bei 465 € bzw. 448 € (Differenz −17 € [−61; 27])."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Tabelle 14 weist für die Interventionsgruppe folgende Differenzen aus: krankheitsspezifische Heilmittelkosten −13 € [−22; −4], krankheitsspezifische Arzneimittelkosten −3 € [−5; −1], gesamte ambulante Kosten +17 € [2; 33] und gesamte Heilmittelkosten −10 € [−19; −2]."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Spezialisierte Kosten fielen bei 17 % der Patient:innen an und machten rund 17 % der Gesamtkosten aus, ohne Unterschied zwischen GC-Praxen und Praxen ohne GC. Spezialisierte stationäre Leistungen kamen bei 0,3 % vor und hatten in beiden Gruppen die höchsten Durchschnittskosten."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "In der Nebenanalyse zur Durchführung der GC-Sprechstunde nahmen Patient:innen danach weniger spezialisierte Leistungen in Anspruch als Patient:innen ohne GC-Sprechstunde, vor allem bei SPZ. Laut Bericht ergaben sich in diesem Bereich signifikante Kostenunterschiede, während die KJÄ-Kosten signifikant anstiegen."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "In derselben Nebenanalyse unterschieden sich Patient:innen mit und ohne GC-Sprechstunde nicht in den krankheitsspezifischen Gesamtkosten."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Laut Bericht unterstützt das GC-Programm nach Interviewlage die Rolle der KJÄ als Berater:innen und verbesserte ihre diagnostischen Möglichkeiten."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Als wichtigsten Erfolgsfaktor nannten die Programmentwickler die Praxisnähe."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Von November 2017 bis November 2018 wurden für die qualitative Studie 3 Programmentwickler, 14 KJÄ mit GC-Ausbildung, 22 Elternteile (19 Mütter, 3 Väter) und 4 Jugendliche ab 14 Jahren interviewt."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die gewünschte Fallzahl von 100 Teilnehmenden pro Indikation wurde für Enuresis und Kopf-/Bauchschmerzen (somatoform) nicht erreicht, insbesondere nicht in der GC-Gruppe."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Auch in der Kontrollgruppe gab es GC-Sprechstunden, weil eine Übergangsregelung die Abrechnung ohne Schulungsteilnahme erlaubte."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Kontrollgruppe der Kohortenstudie umfasste Kinder mit und ohne Einschreibung in den SK-Vertrag. Das kann einen Selektionsbias erzeugen, dessen Richtung unklar ist."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Regionale Unterschiede der Versorgungsdichte, von denen mögliche GC-Effekte abhängen könnten, wurden in der Analyse nicht berücksichtigt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die geplante Rekrutierung über die Arztpraxen erwies sich früh als schwierig. Familien wurden stattdessen postalisch über die Krankenkassen angeschrieben."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Wegen der regen Schulungsteilnahme blieb die Kontrollgruppe der Praxisanalyse klein (52 von 482 Praxen); Selektionseffekte und Einflüsse des SK-Vertrags sind möglich."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Zwischen den Praxisgruppen bestand schon vor Einführung der Schulungen ein Unterschied in der relativen Diagnosehäufigkeit."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Beschränkung auf SK-Praxen kann einen Selektionsbias erzeugen. Hinzu kommen regionale Schwerpunkte der Versichertenklientel und die nicht randomisierte, zwischen den Kreisen teils stark unterschiedliche Teilnahme der KJÄ am GC."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Wegen des verkürzten Rekrutierungszeitraums war die Stichprobe für die zweijährige Nachbeobachtung kleiner (38.623 statt 58.440)."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die Kostenanalyse nahm nur die Perspektive der Krankenkasse ein. Kosten für verschreibungsfreie Arzneimittel und alternative Behandlungen außerhalb der GKV blieben unberücksichtigt."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Gegenläufige Tendenzen, also seltenere Weitervermittlung bei zugleich besser erkanntem Bedarf, lassen sich mit Abrechnungsdaten nicht valide untersuchen."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Ob die Wirtschaftlichkeitsbeurteilung auf die Anwendung der Schulungsinhalte zurückgeht, lässt sich aus Routinedaten allein nicht ermitteln."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Laut KJÄ ließ sich das Programm in der Praxis nicht immer wie gewünscht umsetzen. Patient:innen mit schwierigen familiären Strukturen wurden nicht im gewünschten Maß erreicht, und die KJÄ berichteten trotz gesonderter Vergütung von Zeitmangel."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Anwender:innen nannten als Barrieren den Zeitbedarf für psychosoziale Aspekte, der über das im Programm Vorgesehene hinausgehe, sowie die stringent vorformulierten Checklisten und Leitfäden."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Bei den Jugendlichen (n=4) wurde in den Interviews keine Informationssättigung erreicht."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Ein gewünschter Austausch mit weiteren Expert:innen und eine Ausweitung des Programms über Bayern hinaus waren zum Zeitpunkt des Interviews (Juli 2017) nicht realisiert."}]};
+const D = {"projekt_id": 31, "akronym": "PrimA-QuO", "kennung": "hsngnQMqUlbF", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Anhand der Studiendaten konnte nicht gezeigt werden, dass das Gesundheitscoaching die gesundheitsbezogene Lebensqualität (primärer Endpunkt) oder das Ausmaß psychischer Auffälligkeiten beeinflusst hat. Das Gesundheitscoaching bestand aus einer zweifachen Schulung der Kinder- und Jugendärztinnen und -ärzte mit Checklisten und Handlungsempfehlungen. Auch die Diagnosehäufigkeit stieg nicht an. Die Behandlungspfade veränderten sich laut Routinedatenanalyse nur geringfügig. Die Wirtschaftlichkeitsanalyse fiel neutral aus. Die qualitative Evaluation ergab eine offenbar hohe Akzeptanz sowie Ansatzpunkte zur Weiterentwicklung. Die Aussagekraft ist durch mehrere Limitationen eingeschränkt: geringe Stichprobe, niedrige Rücklaufquoten, Selektionsbias, fehlende Confounder-Kontrolle und nicht-randomisierte Teilnahme."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Kein Effekt nachgewiesen auf die gesundheitsbezogene Lebensqualität (primärer Endpunkt) und auf das Ausmaß psychischer Auffälligkeiten"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Kein Anstieg der Diagnosehäufigkeit psychischer Auffälligkeiten und Störungen"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Nur geringfügige Auswirkungen auf die Behandlungspfade"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Kein Kostenunterschied, Wirtschaftlichkeit neutral"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Geringe Stichprobengröße schränkt die Aussagekraft ein"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Niedrige Rücklaufquoten bei den Befragungen"}, {"stelle": "hindernis.6", "art": "hindernis", "unser": "Anzeichen für Selektionsbias und nicht-randomisierte Teilnahme der Kinder- und Jugendärzte"}, {"stelle": "hindernis.7", "art": "hindernis", "unser": "Fehlende Kontrolle wichtiger Confounder wie der Krankheitsschwere"}, {"stelle": "hindernis.8", "art": "hindernis", "unser": "Tatsächliche Anwendung der Schulungsinhalte ist aus Abrechnungsdaten nicht ableitbar"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität der Kinder und Jugendlichen"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Ausmaß psychischer Auffälligkeiten der Kinder und Jugendlichen"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität der Eltern"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Inanspruchnahme spezialisierter Leistungen (AP 1.3, Gesamtpopulation)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Kodierverhalten: Diagnosehäufigkeit GC-Indikationen insgesamt (AP 2.1)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Kodierverhalten: Kodiergenauigkeit GC-Indikationen insgesamt (AP 2.1)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Anzahl Kontakte sozialpädiatrische GC- oder GKV-Sprechstunde im ersten Jahr nach Erstdiagnose (AP 2.2)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Quartale mit Verordnungen für Ergotherapeut:innen im ersten Jahr nach Erstdiagnose (AP 2.2)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Besuch eines Sozialpädiatrischen Zentrums (SPZ) im ersten Jahr nach Erstdiagnose (AP 2.2)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Untersucht wurde das Gesundheitscoaching (GC) im bayerischen Selektivvertrag STARKE KIDS. Es besteht aus einer zweifachen Schulung für Kinder- und Jugendärzt:innen (KJÄ) mit Checklisten und Handlungsempfehlungen zur Versorgung psychischer Auffälligkeiten und Störungen (PAS). Die Evaluation umfasste drei Teile: Interviews mit Entwicklern, KJÄ, Eltern und Jugendlichen; eine nicht randomisierte Kohortenstudie mit Befragung (1.161 Teilnehmende zu Baseline, 653 nach einem Jahr); Routinedatenanalysen zu Kodierverhalten, Behandlungsverläufen und Kosten. Auf den primären Endpunkt, die gesundheitsbezogene Lebensqualität (KINDL-R), zeigte sich kein Einfluss der Intervention, ebenso nicht auf die psychischen Auffälligkeiten (SDQ). Auch Diagnosehäufigkeit, Kodiergenauigkeit, spezialisierte Inanspruchnahme und Gesamtkosten unterschieden sich nicht signifikant zwischen den Gruppen. In GC-Praxen gab es mehr Kontakte mit sozialpädiatrischer Sprechstunde, weniger Quartale mit Ergotherapie-Verordnungen und um 10 € höhere KJÄ-Kosten. In den Interviews berichteten KJÄ und Familien hohe Zufriedenheit, nannten aber auch Barrieren wie Zeitmangel und die schlechte Erreichbarkeit von Familien mit schwierigen Strukturen. Die Aussagekraft wird durch mehrere Faktoren begrenzt: fehlende Randomisierung, mögliche Kontamination der Kontrollgruppe, die zeitgleich eingeführte, sehr ähnliche GKV-Sprechstunde, mögliche Selbstselektion der Befragten und fehlende Information darüber, ob die Schulungsinhalte tatsächlich angewendet wurden. Die Projektnehmer werten das Programm als zumindest kostenneutral und als Wegbereiter einer patient:innenorientierteren Versorgung."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Auf den primären Endpunkt, die gesundheitsbezogene Lebensqualität (KINDL-R), zeigte sich über 12 Monate kein Einfluss der Intervention. Im linearen gemischten Modell (n=1.053) betrug der Gruppenterm 0,85 (KI −0,65 bis 2,36; p=0,267), die Interaktion Zeit × Gruppe −0,81 (KI −2,47 bis 0,85; p=0,339)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Insgesamt zeigte das GC keine Effekte auf patientenbezogene Outcomes."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "In den Kosten für spezialisierte Versorgung, für die krankheitsspezifische Gesamtversorgung und für die Gesamtversorgung unterschieden sich die Gruppen nicht signifikant (Gamma Exp(β) 1,04, p=0,806; 0,98, p=0,845; 0,91, p=0,447). Laut Bericht waren die Kosten in der Interventionsgruppe tendenziell geringer."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Behandlungsgruppen wurden nicht randomisiert; eingesetzt wurden stattdessen Matchingverfahren und multivariate Modelle. Wichtige Größen wie der Schweregrad der Erkrankung konnten mit Krankenkassendaten nicht berücksichtigt werden, und die Abrechnungsdaten lassen laut Bericht kaum Rückschlüsse auf die Schwere zu."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Kontrollgruppe kann kontaminiert sein: Ihre KJÄ hatten möglicherweise die GC-Ausbildung absolviert, ohne die Leistung abzurechnen. Die Projektnehmer halten das für akzeptabel, da es theoretisch zu einem konservativeren Ergebnis führe."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Ein halbes Jahr nach Etablierung des Schulungskonzepts wurde eine sozialpädiatrische GKV-Sprechstunde (EBM 04355) mit sehr ähnlichen Indikationen eingeführt. Sie konnte ohne Schulung abgerechnet werden und kann die Gruppenunterschiede überlagern."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Für den KINDL-R-Gesamtscore zu Baseline nennt die Tabelle auf S. 21 79,9 (Gesamt und beide Gruppen), der Text auf S. 23 dagegen 78,7 Punkte zu Baseline. Auf welche Stichprobe sich die beiden Werte jeweils beziehen, geht aus den Abschnitten nicht hervor."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Der Fließtext auf S. 37 sagt, die geschätzten Kosten unterschieden sich 'lediglich hinsichtlich der Kosten der KJÄ'. Tabelle 14 auf derselben Seite weist für weitere Kategorien Differenzen aus, deren Konfidenzintervalle die Null nicht einschließen: krankheitsspezifische Heilmittel −13 € [−22; −4], Arzneimittel −3 € [−5; −1], ambulante Gesamtkosten +17 € [2; 33], Heilmittel gesamt −10 € [−19; −2]."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Zur Wirtschaftlichkeit heißt es auf S. 26 'keine Kosteneinsparungen, jedoch auch keine Kostensteigerungen' und auf S. 39 'zumindest kostenneutral'. Auf S. 40 wird das Schulungsprogramm dagegen als 'kostengünstig bis kostenneutral' bezeichnet."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt PrimA-QuO keine Empfehlung aus. Eine Überführung des Gesundheitscoachings aus dem Selektivvertrag „STARKE KIDS“ in die Regelversorgung kann auf Basis der vorliegenden Ergebnisse nicht empfohlen werden. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine Empfehlung zur Überführung in die Regelversorgung kann auf Basis der vorliegenden Ergebnisse nicht ausgesprochen werden."}, {"stelle": "befund.0", "art": "befund", "unser": "Akzeptanz des Programms bei Familien und Kinder- und Jugendärzten scheint hoch"}, {"stelle": "befund.1", "art": "befund", "unser": "Ansatzpunkte zur Weiterentwicklung des Programms ermittelt"}, {"stelle": "befund.2", "art": "befund", "unser": "Fragestellungen weitgehend beantwortet"}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Im Difference-in-differences-Modell (482 SK-Praxen) stieg der Anteil der GC-Indikationen in GC-Praxen im Jahr nach der Schulung um 0,76 Prozentpunkte weniger als in Praxen ohne GC [−4,46; 2,94]. Der Unterschied war nicht signifikant (p=0,686); laut Bericht hatte die Intervention keinen Effekt auf die Diagnosehäufigkeit."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "In den Interviews äußerten KJÄ und Familien hohe Akzeptanz bzw. Zufriedenheit. KJÄ sahen die Strukturierung als besonderen Vorteil; Eltern schätzten die Nähe zu den KJÄ, deren wertschätzendes Vorgehen und die pragmatische, situationsorientierte Vorgehensweise."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Ob und inwieweit die Ärzt:innen die Schulungsinhalte bzw. Checklisten einsetzten, lässt sich aus den Abrechnungsdaten nicht ableiten."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Befragungsstichprobe hatte eine stabil hohe Lebensqualität. Das kann laut Bericht auf positive Selbstselektion zurückgehen (Freiwilligen-Bias, hoher Bildungsstand der Eltern); möglicherweise war die Stichprobe zu homogen, um Effekte zu zeigen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Fallzahl in der gesundheitsökonomischen Analyse reichte laut Bericht nicht aus, um einen signifikanten Gruppenunterschied bei der Inanspruchnahme zu erkennen."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Laut S. 40 wurde 'bei weitgehender Kostenneutralität [...] das Ziel einer Stärkung der Primärversorgung durch KJÄ durch das Programm erreicht'. Demgegenüber stehen S. 2 und S. 24, wonach keine Effekte des GC auf patientenbezogene Outcomes gezeigt werden konnten, sowie S. 28, wonach die Intervention keinen Effekt auf die Diagnosehäufigkeit hatte."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Für den sekundären Endpunkt SDQ (Elternversion) zeigte sich kein Interventionseffekt. Der Score lag zu Baseline und Follow-up bei 8,4 Punkten; adjustiert verbesserte er sich über 12 Monate signifikant um 0,4 Punkte. Männliches Geschlecht (1,8 Punkte) und höheres Alter (0,15 Punkte pro Jahr) waren signifikante Indikatoren für höhere Scores."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Der mittlere Lebensqualitäts-Score lag bei 78,7 Punkten zu Baseline und 78,3 Punkten nach einem Jahr; die Differenz war nicht signifikant. Die Subskala körperliches Wohlbefinden verbesserte sich signifikant um 0,6 Punkte, die Subskala Familie verschlechterte sich signifikant um 1,3 Punkte."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Kontrolliert für Kovariablen war die Lebensqualität pro Altersjahr um rund 0,7 Punkte schlechter. Eine Veränderung des Gesamtscores über die Zeit wurde nicht gezeigt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Zu Baseline lag der von den Eltern beurteilte KINDL-R-Gesamtscore in beiden Gruppen bei 79,9 (p=0,990)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Zu Baseline unterschied sich die Diagnoseverteilung zwischen Kontroll- und GC-Gruppe: Sprachentwicklungsstörungen 58 % vs. 41 % (p<0,001), soziale Verhaltensstörung 22 % vs. 30 % (p=0,003), Enuresis/Enkopresis 5 % vs. 18 % (p<0,001)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "An der Kohortenstudie nahmen 1.161 Personen an der Baseline-Befragung und 653 an der Follow-up-Befragung nach einem Jahr teil. Inanspruchnahmedaten aus Sekundärdaten lagen für 1.117 Teilnehmende vor, davon 343 in der GC-Gruppe."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Wahrscheinlichkeit, spezialisierte Leistungen in Anspruch zu nehmen, war in der Interventionsgruppe niedriger, aber nicht signifikant (Basismodell OR 0,94 [0,60–1,48], p=0,780; adjustiert OR 0,76 [0,54–1,09], p=0,134)."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Signifikant mit der Inanspruchnahme spezialisierter Versorgung verbunden waren höheres Alter (OR 1,08), männliches Geschlecht (OR 1,67), die GKV-Sprechstunde (OR 1,58) und psychiatrische Komorbidität (OR 6,08 [4,30–8,60], p<0,001)."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Auf die Kodiergenauigkeit insgesamt (Anteil gesicherter Diagnosen) wurde kein Effekt des GC festgestellt (β −0,84, p=0,609)."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Für Sprachentwicklungsstörungen wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,494) noch auf die Kodiergenauigkeit (p=0,197)."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Für Enuresis/Enkopresis wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,648) noch auf die Kodiergenauigkeit (p=0,502)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Für soziale Verhaltensstörungen wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,993) noch auf die Kodiergenauigkeit (p=0,368)."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Für Bauch- und Kopfschmerzen psychosomatischen Ursprungs wurde kein Effekt des GC festgestellt, weder auf die Diagnosehäufigkeit (p=0,311) noch auf die Kodiergenauigkeit (p=0,805)."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Schon vor der Intervention war der Anteil der Patient:innen mit GC-Indikation in GC-Praxen höher als in Praxen ohne GC (21,5 % vs. 18,67 %, p=0,034)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Die Kodiergenauigkeit, gemessen als Anteil gesicherter an gesicherten plus Verdachtsdiagnosen, lag im Beobachtungszeitraum in beiden Praxisgruppen bei rund 90 %."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Unabhängig vom GC erhielt von 2012 bis 2016 ein zunehmender Anteil der BKK-Versicherten in Kinder- und Jugendarztpraxen eine sozialpädiatrische Diagnose aus den GC-Indikationen."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "In die Analyse der Behandlungsverläufe gingen für das erste Jahr nach Erstdiagnose 58.440 Versicherte ein (IG 44.500, KG 13.940), für die zweijährige Nachbeobachtung 38.623."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Patient:innen in GC-Praxen hatten im ersten Jahr nach Erstdiagnose 16 % mehr ärztliche Kontakte mit sozialpädiatrischer Sprechstunde (eβ 1,157, p<0,001), in den ersten beiden Jahren 10 % mehr (eβ 1,103, p<0,001)."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "In den adjustierten ZIP-Modellen war nur der Unterschied bei der Ergotherapie auf dem 1 %-Niveau signifikant, im ersten Jahr wie in den ersten beiden Jahren. Patient:innen in GC-Praxen hatten durchschnittlich 12 % weniger Quartale mit Ergotherapie-Verordnungen."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Patient:innen in GC-Praxen hatten häufiger spezialisierte Versorgungsinstitutionen in ihrem Wohnkreis und meist eine höhere Versorgungsdichte spezialisierter Fachärzt:innen. Im Quartal der Erstdiagnose wurde bei ihnen häufiger die GKV-Sprechstunde Sondercoaching 1 abgerechnet (16,2 % vs. 7,9 %)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Zwei Jahre nach Erstdiagnose lag der Anteil ohne Inanspruchnahme je nach Leistung zwischen 69 % (HNO/Audiologe) und 100 % (Allgemeine Psychiatrie). Eine sozialpädiatrische GC- oder GKV-Sprechstunde erhielten innerhalb von zwei Jahren 47,7 %."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Bei einem Radius von 30 km um die SPZ hatten bayerische Patient:innen keinen landesweit flächendeckenden Zugang zu einem SPZ. Der Anteil mit SPZ-Besuch im ersten Jahr nach Erstdiagnose lag je Kreis zwischen 0 % und 15 %."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Für Patient:innen in GC-Praxen ergab sich im ersten Jahr nach Erstdiagnose eine höhere, aber nicht signifikante Wahrscheinlichkeit für einen SPZ-Besuch (OR 1,078 [0,940; 1,236], p=0,285). Höher lag die Wahrscheinlichkeit in hoch deprivierten Regionen (1,5-fach), bei weiterer psychischer oder Verhaltensstörung (2,3-fach) und bei einem SPZ im Wohnkreis (2,9-fach)."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Sondercoaching 1 (EBM 04355/04356) im Quartal der Erstdiagnose ging mit einer 1,7-fach höheren Wahrscheinlichkeit eines SPZ-Besuchs einher, Sondercoaching 2 (EBM 35100/88895) mit einer niedrigeren. Über zwei Jahre waren die Befunde ähnlich; ein SPZ im Wohnkreis hatte dann eine OR von 3,1."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Die durchschnittliche Sprechzeit in sozialpädiatrischen Sprechstunden betrug in GC-Praxen 29,7 Minuten [29,4; 30,1] und in Praxen ohne GC 28,1 Minuten [27,4; 28,7]. Der Unterschied war statistisch signifikant; die absolute Differenz von 1,6 Minuten bezeichnet der Bericht als geringfügig."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "In der Sequenzanalyse von 14.572 Patient:innen mit Sprachentwicklungsstörung war bei Fachärzt:innen und verordneten Therapeut:innen kein Gruppenunterschied erkennbar. Sozialpädiatrische Sprechstunden traten in GC-Praxen vor allem im Quartal der Erstdiagnose häufiger auf."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Laut Fließtext unterschieden sich die geschätzten Kosten nur bei den KJÄ-Kosten zwischen den Gruppen: In der Interventionsgruppe lagen sie um 10 € höher (Matching Weights; 295 € vs. 285 €, [5; 14]) bzw. um 4 % (Gamma-Regression). Der Bericht nennt die Differenz gering."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Die Gesamtkosten im ersten Jahr nach Erstdiagnose betrugen 1.324 € in der Kontroll- und 1.312 € in der Interventionsgruppe (Differenz −12 € [−96; 71]). Die krankheitsspezifischen Gesamtkosten lagen bei 465 € bzw. 448 € (Differenz −17 € [−61; 27])."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Tabelle 14 weist für die Interventionsgruppe folgende Differenzen aus: krankheitsspezifische Heilmittelkosten −13 € [−22; −4], krankheitsspezifische Arzneimittelkosten −3 € [−5; −1], gesamte ambulante Kosten +17 € [2; 33] und gesamte Heilmittelkosten −10 € [−19; −2]."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Spezialisierte Kosten fielen bei 17 % der Patient:innen an und machten rund 17 % der Gesamtkosten aus, ohne Unterschied zwischen GC-Praxen und Praxen ohne GC. Spezialisierte stationäre Leistungen kamen bei 0,3 % vor und hatten in beiden Gruppen die höchsten Durchschnittskosten."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "In der Nebenanalyse zur Durchführung der GC-Sprechstunde nahmen Patient:innen danach weniger spezialisierte Leistungen in Anspruch als Patient:innen ohne GC-Sprechstunde, vor allem bei SPZ. Laut Bericht ergaben sich in diesem Bereich signifikante Kostenunterschiede, während die KJÄ-Kosten signifikant anstiegen."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "In derselben Nebenanalyse unterschieden sich Patient:innen mit und ohne GC-Sprechstunde nicht in den krankheitsspezifischen Gesamtkosten."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Laut Bericht unterstützt das GC-Programm nach Interviewlage die Rolle der KJÄ als Berater:innen und verbesserte ihre diagnostischen Möglichkeiten."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Als wichtigsten Erfolgsfaktor nannten die Programmentwickler die Praxisnähe."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Von November 2017 bis November 2018 wurden für die qualitative Studie 3 Programmentwickler, 14 KJÄ mit GC-Ausbildung, 22 Elternteile (19 Mütter, 3 Väter) und 4 Jugendliche ab 14 Jahren interviewt."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die gewünschte Fallzahl von 100 Teilnehmenden pro Indikation wurde für Enuresis und Kopf-/Bauchschmerzen (somatoform) nicht erreicht, insbesondere nicht in der GC-Gruppe."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Auch in der Kontrollgruppe gab es GC-Sprechstunden, weil eine Übergangsregelung die Abrechnung ohne Schulungsteilnahme erlaubte."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Kontrollgruppe der Kohortenstudie umfasste Kinder mit und ohne Einschreibung in den SK-Vertrag. Das kann einen Selektionsbias erzeugen, dessen Richtung unklar ist."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Regionale Unterschiede der Versorgungsdichte, von denen mögliche GC-Effekte abhängen könnten, wurden in der Analyse nicht berücksichtigt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die geplante Rekrutierung über die Arztpraxen erwies sich früh als schwierig. Familien wurden stattdessen postalisch über die Krankenkassen angeschrieben."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Wegen der regen Schulungsteilnahme blieb die Kontrollgruppe der Praxisanalyse klein (52 von 482 Praxen); Selektionseffekte und Einflüsse des SK-Vertrags sind möglich."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Zwischen den Praxisgruppen bestand schon vor Einführung der Schulungen ein Unterschied in der relativen Diagnosehäufigkeit."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Beschränkung auf SK-Praxen kann einen Selektionsbias erzeugen. Hinzu kommen regionale Schwerpunkte der Versichertenklientel und die nicht randomisierte, zwischen den Kreisen teils stark unterschiedliche Teilnahme der KJÄ am GC."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Wegen des verkürzten Rekrutierungszeitraums war die Stichprobe für die zweijährige Nachbeobachtung kleiner (38.623 statt 58.440)."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die Kostenanalyse nahm nur die Perspektive der Krankenkasse ein. Kosten für verschreibungsfreie Arzneimittel und alternative Behandlungen außerhalb der GKV blieben unberücksichtigt."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Gegenläufige Tendenzen, also seltenere Weitervermittlung bei zugleich besser erkanntem Bedarf, lassen sich mit Abrechnungsdaten nicht valide untersuchen."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Ob die Wirtschaftlichkeitsbeurteilung auf die Anwendung der Schulungsinhalte zurückgeht, lässt sich aus Routinedaten allein nicht ermitteln."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Laut KJÄ ließ sich das Programm in der Praxis nicht immer wie gewünscht umsetzen. Patient:innen mit schwierigen familiären Strukturen wurden nicht im gewünschten Maß erreicht, und die KJÄ berichteten trotz gesonderter Vergütung von Zeitmangel."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Anwender:innen nannten als Barrieren den Zeitbedarf für psychosoziale Aspekte, der über das im Programm Vorgesehene hinausgehe, sowie die stringent vorformulierten Checklisten und Leitfäden."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Bei den Jugendlichen (n=4) wurde in den Interviews keine Informationssättigung erreicht."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Ein gewünschter Austausch mit weiteren Expert:innen und eine Ausweitung des Programms über Bayern hinaus waren zum Zeitpunkt des Interviews (Juli 2017) nicht realisiert."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF18025</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>28 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 95 Aussagen. Die übrigen
+67 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss spricht für das Projekt PsoGero keine Empfehlung zur Überführung in die Regelversorgung aus. Er regt jedoch an, die Erkenntnisse bei der Konzeption künftiger Studien und bei der Weiterentwicklung von Versorgungsansätzen für die fachärztliche, insbesondere dermatologische Versorgung im Pflegeheim zu berücksichtigen. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Der Ausschuss hält das Studiendesign für angemessen. Die Aussagekraft der quantitativen Routinedatenanalyse sieht er jedoch als eingeschränkt an, unter anderem weil klinische Parameter fehlen. Wegen des weit zurückliegenden Beobachtungszeitraums 2011 bis 2014 sind die Ergebnisse möglicherweise nicht auf die heutige Versorgung übertragbar. Weitere Einschränkungen sieht er im kleinen Anteil von Personen mit Psoriasis und im sehr geringen Anteil mittelschwerer bis schwerer Fälle sowie in einer möglicherweise nicht adäquaten Kodierung. Bei der qualitativen Analyse bleibt teilweise unklar, wie die Handlungsempfehlungen abgeleitet wurden. Zudem verweist der Ausschuss auf andere geförderte Projekte zur Pflegeheimversorgung und zur Teledermatologie.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Mixed Methods</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Ausschuss hält die Erkenntnisse möglicherweise nicht für auf die aktuelle Versorgungssituation übertragbar, da der Beobachtungszeitraum (2011 bis 2014) weit zurückliegt. Eine Empfehlung zur Überführung in die Regelversorgung spricht er nicht aus.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Eingeschränkte Aussagekraft wegen der Limitationen von Routinedaten, insbesondere fehlender klinischer Parameter</p>
+  
   <blockquote>„Allerdings ist die Aussagekraft der Ergebnisse der quantitativen Analyse aufgrund der Limitationen von Routinedaten, wie u. a. die fehlende Abbildung von klinischen Parametern, eingeschränkt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,14 +176,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Übertragbarkeit unklar</h3>
+  <h3>Hindernis laut Beschluss: Übertragbarkeit</h3>
   <p class="unser">Möglicherweise fehlende Übertragbarkeit auf die aktuelle Versorgung wegen des alten Beobachtungszeitraums 2011 bis 2014</p>
+  
   <blockquote>„Zudem sind die Erkenntnisse möglicherweise nicht auf die aktuelle Versorgungssituation übertragbar, auch in Hinblick auf den mittlerweile weit zurückliegenden Beobachtungszeitraum von 2011 bis 2014." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -216,14 +195,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.2">
-  <h3>Hindernis laut Beschluss: Fallzahl zu klein für die Auswertung</h3>
+  <h3>Hindernis laut Beschluss: Fallzahl in der Auswertung</h3>
   <p class="unser">Kleiner Anteil von Personen mit Psoriasis und sehr geringer Anteil mindestens mittelschwerer Fälle</p>
+  
   <blockquote>„Weitere Beschränkungen der Aussagekraft der Studie liegen in dem vergleichsweisen kleinen Anteil an Personen mit Psoriasis an der Zielpopulation sowie in dem mit 3,3 % vor bzw. 2,6 % nach Heimeintritt sehr niedrigen Anteil unter den in die Studie eingeschlossenen Personen mit einer mindestens mittelschweren Form der Psoriasis." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.3">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Mögliche Beeinträchtigung der Datenqualität durch nicht adäquate Kodierung der Indikation</p>
+  
   <blockquote>„Eine Beeinträchtigung der Datenqualität durch eine teilweise nicht adäquate Kodierung der Indikation durch die Ärztinnen und Ärzte kann ebenfalls nicht ausgeschlossen werden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.4">
   <h3>Hindernis laut Beschluss: Auswertung und Statistik</h3>
   <p class="unser">Unklare Ableitung der Handlungsempfehlungen aus der qualitativen Analyse</p>
+  
   <blockquote>„Bezüglich der qualitativen Analyse bleibt teilweise unklar, wie die Handlungsempfehlungen, insbesondere zum Einsatz von Teledermatologie, abgeleitet wurden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -273,33 +252,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.5">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Keine signifikanten Unterschiede vor und nach Heimeintritt bei vielen untersuchten Endpunkten</p>
+  
   <blockquote>„Bei einer Vielzahl der weiteren untersuchten Endpunkte konnten keine signifikanten Unterschiede im Vergleich vor bzw. nach E intritt in ein Pflegeheim festgestellt werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Studiendesign vom Ausschuss als angemessen bewertet</p>
-  <blockquote>„Das Studiendesign zur Untersuchung der aufgestellten Fragestellungen war angemessen." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.5" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -311,33 +271,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde <span class="ampel gelb">hier sind wir unsicher</span></h3>
+  <h3>Was der Beschluss positiv vermerkt <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Signifikanter Rückgang dermatologischer Kontakte nach Heimeintritt nachgewiesen</p>
+  
   <blockquote>„Dagegen konnte ein signifikanter Rückgang des Kontakts mit einem Dermatologen/einer Dermatologin nach Eintritt in ein Pflegeheim verzeichnet werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Optimierungsmöglichkeiten für die dermatologische Versorgung im Pflegeheim abgeleitet</p>
-  <blockquote>„Zu den abgeleiteten Optimierungsmöglichkeiten gehörten u. a. die Aufrechterhaltung der fachärztlichen Versorgung durch teledermatologische Konsultationen sowie die stärkere Einbeziehung von Leitlinienevidenz in die pflegerische Versorgung, ebenfalls mittels digitaler T echnologie sowie unter Nutzung der Weiterbildungskanäle der Pflege." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -349,14 +290,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde <span class="ampel gelb">hier sind wir unsicher</span></h3>
+  <h3>Was der Beschluss positiv vermerkt <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Erkenntnisse sollen bei künftigen Studien und Versorgungsansätzen berücksichtigt werden</p>
+  
   <blockquote>„Bei der Konzipierung zukünftiger Studien und der (Weiter -)Entwicklung von Versorgungsansätzen zur Verbesserung der fachärztlichen und insbesondere der dermatologischen Versorgung im Pflegeheim sollten jedoch die Erkenntnisse des vorliegenden Projekts berücksichtigt werden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Ambulante Inanspruchnahme“</h3>
   <p class="unser">Mindestens ein dermatologischer Kontakt jedweder Art</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Ambulante Inanspruchnahme“</h3>
   <p class="unser">Mindestens ein internistischer Kontakt jedweder Art</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Ambulante Inanspruchnahme“</h3>
   <p class="unser">Mindestens ein hausärztlicher Kontakt jedweder Art</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Mindestens eine Verordnung für eine Psoriasis-relevante Therapie</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Verordnungsprävalenz biologischer/nichtbiologischer Systemtherapeutika</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Verordnungsprävalenz systemischer Steroide</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Verordnungsprävalenz topischer Kortikoide jedweder Art</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Ambulante Inanspruchnahme“</h3>
   <p class="unser">Prädiktor für dermatologischen Kontakt nach Heimeintritt: dermatologischer Kontakt vor Heimeintritt</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -523,11 +464,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben untersuchte die ärztliche und medikamentöse Versorgung von Menschen mit Psoriasis über 65 Jahre je ein Jahr vor und nach Eintritt in ein Pflegeheim. Grundlage waren Routinedaten der DAK-Gesundheit sowie ein qualitativer Teil mit Einzelinterviews und Fokusgruppen. Analysiert wurden 718 Versicherte, die 2011–2014 neu ins Heim kamen und das Jahr danach überlebten. Ein primärer Endpunkt ist nicht angegeben. Der Anteil mit mindestens einem dermatologischen Kontakt sank von 44,6 % auf 40,1 % (McNemar, p=0,035). Nach Heimeintritt erhielten noch 63,8 % die Psoriasis-Diagnose, die überwiegend Hausärzte stellten. Der Anteil mit mindestens einer Psoriasis-relevanten Therapie lag vor und nach Heimeintritt bei rund 53 %; Systemtherapeutika erhielten rund 3 % bzw. 2 %. Als Prädiktoren für einen dermatologischen Kontakt nach Heimeintritt erwiesen sich nur der dermatologische Kontakt vor Heimeintritt und reine topische Steroide; das Modell erklärt 13,4 % der Varianz. Die befragten Versorger benannten Verbesserungsbedarf auf ärztlicher und pflegerischer Ebene. Die Aussagekraft ist begrenzt: Die Ergebnisse gelten nur für Bewohner, die das erste Jahr überlebten; die Routinedaten enthalten keine klinischen Parameter und nur Versicherte mit Leistungsinanspruchnahme; die vom Studienteam entwickelten Qualitätsindikatoren sind nur eingeschränkt abbildbar. Der qualitative Teil erreichte pandemiebedingt nicht die geplante Teilnehmerzahl, schloss keine echten Angehörigen ein und beschränkte sich auf die Metropolregion Hamburg.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Anteil mit mindestens einem dermatologischen Kontakt pro Jahr sank von 44,6 % (n=320) im Jahr vor auf 40,1 % (n=288) im Jahr nach Heimeintritt (McNemar-Test, p=0,035).</p>
+  
   <blockquote>„„Dermatologie 320 (44,6) 288 (40,1) 0,035“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von den 718 Personen mit Psoriasis-Diagnose vor Heimeintritt erhielten nach Heimeintritt 458 (63,8 %) erneut die Diagnose; von diesen erhielten 69,2 % (n=317) sie in allen vier Quartalen.</p>
+  
   <blockquote>„„Von allen 718 Personen mit der Diagnose Psoriasis bei Heimeintritt erhielten nach Heimeintritt 458 (63,8 %) Heimbewohner ebenso die Diagnos e Psoriasis. Auch hier war der Anteil derjenigen mit einer Diagnose Psoriasis in allen Quartalen mit 69,2 % (n=317) am höchsten.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,69 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der logistischen Regression hatten nur der dermatologische Kontakt vor Heimeintritt (höchstes Odds Ratio) und die Verordnung reiner topischer Steroide vor Heimeintritt einen signifikanten Einfluss auf eine dermatologische Versorgung nach Heimeintritt. Andere Arzneimittelgruppen zeigten keinen statistisch signifikanten Einfluss; Alter, Geschlecht, Pflegestufe und Komorbidität hatten laut Bericht keinen relevanten Einfluss.</p>
+  
   <blockquote>„„Einen signifikanten Einfluss auf eine dermatologische Versorgung nach Heimeintritt zeigte ausschließlich der dermatologische Kontakt vor Heimeitritt und die Anwendung topischer Steroide (rein) vor Heimeintritt, wobei das Odds Ratio für den dermatologischen Kontakt vor Heim am höchsten war.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Der Anteil mit mindestens einer Verordnung einer Psoriasis-relevanten Therapie lag vor und nach Heimeintritt bei rund 53 %; die Stratifizierung nach Alter, Geschlecht und Pflegestufe ergab laut Bericht keine besonderen Erkenntnisse.</p>
-  <blockquote>„„Die Verordnungen für mindestens eine Psoriasis-relevante Therapie blieb mit rund 53 % auf einem vergleichbaren Niveau. Auch die stratifizierte Analyse nach Alter, Geschlecht und Pflegestufe wies keine besonderen Erkenntnisse auf“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.4">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Nach den Qualitätsindikatoren fanden sich laut Bericht bei einem relevanten Teil der Personen Hinweise auf eine nicht hinreichende Versorgungsqualität. Genannt werden die Abnahme des dermatologischen Kontakts (45 % vs. 41 %), eine längerfristige Calcipotriol-Monotherapie und fehlende Anpassungen mit topischen Steroiden bei reduzierten Systemtherapeutika.</p>
-  <blockquote>„„Unter Zugrundelegung dieser Indikatoren fand sich bei einem relevanten Teil der Personen mit Psoriasis Hinweise für eine nicht hinreichende Ver sorgungsqualität.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.5">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Im qualitativen Teil wurde für die Versorgung von Menschen mit Hauterkrankungen, insbesondere Psoriasis, in Pflegeeinrichtungen vielfach Verbesserungsbedarf benannt, auf ärztlicher wie pflegerischer Ebene.</p>
-  <blockquote>„„w urde für die Versorgungsqualität von Menschen mit Hautkrankheiten, insbesondere Psoriasis, in Pflegeinrichtungen vielfach ein Verbesserungsbedarf benannt. Dieser zeigt sich sowohl auf ärztlicher als auch auf pflegerischer Ebene.“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Geplant war der Einschluss aller Bewohner bis zum Tod; analysiert wurden nur die 718, die das Nachbeobachtungsjahr überlebten. Die Ergebnisse gelten daher nur für diese Gruppe; 430 Verstorbene wurden nur separat betrachtet.</p>
+  
   <blockquote>„„Die Ergebnisse sind folglich nur auf Psoriasis erkrankte Heimbewohner zu beziehen, die Nachbeobachtungszeit von einem Jahr überleben.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Abrechnungsdaten enthalten keine klinischen Parameter wie Schweregrad, PASI, Blutwerte oder Kontraindikationen. Leitlinienbasierte Qualitätsindikatoren ließen sich daher nicht uneingeschränkt abbilden.</p>
+  
   <blockquote>„„Leitlinienbasierte Qualitätsindikatoren der Versorgung von Menschen mi t Psoriasis konnten daher nicht uneingeschränkt auf der Grundlage von Krankenkassendaten dargestellt werden.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,31 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Analysiert wurden nur Versicherte, die Leistungen in Anspruch genommen haben. Ob ältere Menschen mit Psoriasis unterversorgt sind, lässt sich daraus laut Bericht nur schwer ableiten.</p>
+  
   <blockquote>„„Zu berücksichtigen ist auch, dass wir nur Versicherte analysiert haben, die Leistungen in Anspruch genommen haben. Ob Menschen mit Psoriasis im fortgeschrittenen Alter unterversorgt sind, lässt sich daher aus unserer Datenbasis nur schwer ableiten.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Wegen der Covid-Pandemie wurde im qualitativen Teil die geplante Teilnehmerzahl nicht erreicht, insbesondere bei Pflegedienstleitungen und Angehörigen; ein Änderungsantrag wurde gestellt und bewilligt.</p>
-  <blockquote>„„Durch die Einschränkungen in den Kontakten und dem verminderten Feldzugang durch die Covid-Pandemie konnte die zunächst geplante Anzahl an Studienteilnehmern nicht erfüllt werden“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -732,11 +597,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Frauenanteil der Kohorte: S. 5 nennt 75 % weiblich, S. 25 „rund zwei Drittel weiblichen Geschlechts“.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -751,11 +616,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Demenz: Laut S. 19 stieg die Prävalenz von über 50 % vor auf über 60 % nach Heimeintritt; laut S. 25 hatten „rund 50 % in beiden Untersuchungsjahren mindestens eine Demenz-Diagnose“.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -770,11 +635,163 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Dermatologischer Kontakt nach Heimeintritt: S. 20 nennt 40,1 % (S. 27: 40 %), S. 31 dagegen „45 % vs. 41 %“.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>67 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss spricht für das Projekt PsoGero keine Empfehlung zur Überführung in die Regelversorgung aus. Er regt jedoch an, die Erkenntnisse bei der Konzeption künftiger Studien und bei der Weiterentwicklung von Versorgungsansätzen für die fachärztliche, insbesondere dermatologische Versorgung im Pflegeheim zu berücksichtigen. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Ausschuss hält die Erkenntnisse möglicherweise nicht für auf die aktuelle Versorgungssituation übertragbar, da der Beobachtungszeitraum (2011 bis 2014) weit zurückliegt. Eine Empfehlung zur Überführung in die Regelversorgung spricht er nicht aus.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Studiendesign vom Ausschuss als angemessen bewertet</p>
+  
+  <blockquote>„Das Studiendesign zur Untersuchung der aufgestellten Fragestellungen war angemessen." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Optimierungsmöglichkeiten für die dermatologische Versorgung im Pflegeheim abgeleitet</p>
+  
+  <blockquote>„Zu den abgeleiteten Optimierungsmöglichkeiten gehörten u. a. die Aufrechterhaltung der fachärztlichen Versorgung durch teledermatologische Konsultationen sowie die stärkere Einbeziehung von Leitlinienevidenz in die pflegerische Versorgung, ebenfalls mittels digitaler T echnologie sowie unter Nutzung der Weiterbildungskanäle der Pflege." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Der Anteil mit mindestens einer Verordnung einer Psoriasis-relevanten Therapie lag vor und nach Heimeintritt bei rund 53 %; die Stratifizierung nach Alter, Geschlecht und Pflegestufe ergab laut Bericht keine besonderen Erkenntnisse.</p>
+  
+  <blockquote>„„Die Verordnungen für mindestens eine Psoriasis-relevante Therapie blieb mit rund 53 % auf einem vergleichbaren Niveau. Auch die stratifizierte Analyse nach Alter, Geschlecht und Pflegestufe wies keine besonderen Erkenntnisse auf“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.4">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Nach den Qualitätsindikatoren fanden sich laut Bericht bei einem relevanten Teil der Personen Hinweise auf eine nicht hinreichende Versorgungsqualität. Genannt werden die Abnahme des dermatologischen Kontakts (45 % vs. 41 %), eine längerfristige Calcipotriol-Monotherapie und fehlende Anpassungen mit topischen Steroiden bei reduzierten Systemtherapeutika.</p>
+  
+  <blockquote>„„Unter Zugrundelegung dieser Indikatoren fand sich bei einem relevanten Teil der Personen mit Psoriasis Hinweise für eine nicht hinreichende Ver sorgungsqualität.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.5">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Im qualitativen Teil wurde für die Versorgung von Menschen mit Hauterkrankungen, insbesondere Psoriasis, in Pflegeeinrichtungen vielfach Verbesserungsbedarf benannt, auf ärztlicher wie pflegerischer Ebene.</p>
+  
+  <blockquote>„„w urde für die Versorgungsqualität von Menschen mit Hautkrankheiten, insbesondere Psoriasis, in Pflegeinrichtungen vielfach ein Verbesserungsbedarf benannt. Dieser zeigt sich sowohl auf ärztlicher als auch auf pflegerischer Ebene.“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Wegen der Covid-Pandemie wurde im qualitativen Teil die geplante Teilnehmerzahl nicht erreicht, insbesondere bei Pflegedienstleitungen und Angehörigen; ein Änderungsantrag wurde gestellt und bewilligt.</p>
+  
+  <blockquote>„„Durch die Einschränkungen in den Kontakten und dem verminderten Feldzugang durch die Covid-Pandemie konnte die zunächst geplante Anzahl an Studienteilnehmern nicht erfüllt werden“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -789,11 +806,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Reduktion der Systemtherapie: Laut S. 22 betraf sie „weniger als 10 Psoriasis-Erkrankte“, an derselben Stelle heißt es aber, bei 12 von ca. 20 Personen mit Systemtherapie habe sich die Verordnungsmenge reduziert.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -808,11 +825,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Neuverschreibungen nach reduzierter Systemtherapie: Laut S. 22 erhielt „keine Person eine neue Steroidverschreibung“, im nächsten Absatz erfolgte „eine Neuverschreibung eines topischen Steroids bei zwei Personen“.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -827,11 +844,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Topische Steroide: S. 21 nennt eine konstante Verordnungsprävalenz von ca. 40 %, S. 30 nennt für reine topische Steroide je ein Drittel; ob es sich um unterschiedliche Abgrenzungen handelt, geht aus den Angaben nicht eindeutig hervor.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -846,11 +863,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Arzneimittelversorgung: S. 5 und S. 30 beschreiben sie als auf vergleichbarem Niveau bzw. ohne klaren Einschnitt; S. 21 berichtet einen signifikanten Rückgang systemischer Steroide (rund 17 % auf ca. 14 %) und eine signifikante Zunahme der Verordnungsmenge insgesamt.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -860,16 +877,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>55 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Altersgruppe ab 85 Jahren sank der Anteil mit dermatologischem Kontakt von 46,6 % (n=167) auf 39,7 % (n=142), p=0,021.</p>
+  
   <blockquote>„„85+ 167 (46,6) 142 (39,7) 0,021“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +900,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die nach Alter, Geschlecht und Pflegestufe stratifizierte Analyse der Codierung durch Dermatologen zeigte laut Bericht keine signifikanten Unterschiede.</p>
+  
   <blockquote>„„Die stratifizierte Analyse der Codierung durch Dermatologen zeigte keine signifikanten Unterschiede nach Alter, Geschlecht und Pflegestufe.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +919,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht sank neben dem dermatologischen auch der internistische Kontakt signifikant; nur bei Neurologie/Psychiatrie war der Anteil nach Heimeintritt leicht erhöht.</p>
+  
   <blockquote>„„Dies reduzierte sich signifikant, wie auch der internist ische Kontakt. Lediglich die Fachärzte der Neurologie/Psychiatrie zeigten einen leicht erhöhten Anteil nach Heimeintritt.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +938,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nahezu alle Bewohner hatten mindestens einmal Kontakt zu einem Hausarzt, vor wie nach Heimeintritt auf gleichem Niveau.</p>
+  
   <blockquote>„„nahezu alle Bewohner hatten mindestens einmal Kontakt zu einem Hausarzt. Dies blieb vor wie nach Heimeintritt auf einem gleichen Niveau.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +957,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Rund 55 % vor und 60 % nach Heimeintritt erhielten keine Betreuung durch einen Dermatologen; das entspricht dem Qualitätsindikator „weniger als ein dermatologischer Kontakt pro Jahr“.</p>
+  
   <blockquote>„„Rund 55 % bzw. 60 % erhalten demnach keine Betreuung durch einen Dermatologen (siehe Tabelle 15).“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +976,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Jahr vor Heimeintritt erhielten 53,8 % (n=386) der 718 Personen die Psoriasis-Diagnose in allen vier Quartalen, 24 % (n=172) in nur einem Quartal.</p>
+  
   <blockquote>„„erhielten 53,8 % (n=386) in allen vier Quartalen die Diagnose Psoriasis. Bei 24 % (n=172) wurde diese in einem Quartal gestellt.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +995,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Psoriasis-Diagnose wurde im Jahr vor Heimeintritt überwiegend von Hausärzten und zu etwa 30 % von Dermatologen kodiert; nach Heimeintritt blieb dieses Verhältnis bestehen.</p>
+  
   <blockquote>„„Die Diagnose der Psoriasis wird im Jahr vor Heimeintritt überwiegend von Hausärzten und in etwa zu 30 % von Dermatologen kodiert. Auch nach Heimeintritt bleibt dieses Verhältnis bestehen“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1014,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das Regressionsmodell erklärt 13,4 % der Varianz (Nagelkerke R² = 0,134). Den Hosmer-Lemeshow-Test (p=0,359; Chi-Quadrat 8,804; 8 Freiheitsgrade) bewertet der Bericht als sehr gute Anpassungsgüte.</p>
+  
   <blockquote>„„Hosmer-Lemeshow-Test (p -Wert: 0,359; Chi -Square: 8,804; Frei heitsgrade: 8) berechnet, der eine sehr gute Anpassungsgüte angibt.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1033,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Systemtherapeutika erhielten rund 3 % vor und 2 % nach Heimeintritt, biologische Systemtherapeutika nur eine geringe Anzahl.</p>
+  
   <blockquote>„„rund 3 % bzw. 2 % der Studienpopulation vor bzw. nach Heimeintritt Systemtherapeutika erhielten. Vor allem biologische Systemtherapeutika erhielten eine geringe Anzahl an Erkrankten“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1052,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Verordnungsprävalenz systemischer Steroide ging laut Bericht signifikant von rund 17 % auf ca. 14 % zurück.</p>
+  
   <blockquote>„„Die Verordnungsprävalenzen für die systemischen Steroide reduzierten sich signifikant von rund 17 % auf ca. 14 %.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1071,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Verordnungsprävalenz topischer Steroide lag vor und nach Heimeintritt konstant bei ca. 40 %.</p>
+  
   <blockquote>„„zeigte konstante Verordnungsprävalenzen für topische Steroide bei ca. 40 %“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1090,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Reine topische Steroide wurden vor wie nach Heimeintritt von je einem Drittel angewendet, Vitamin-D3-Analoga von knapp unter 10 %.</p>
+  
   <blockquote>„„wurden vor allem die reinen topischen Steroide z u je ein Drittel vor wie nach Heimeintritt angewendet. Nur die Vitamin -D3-Analoga zeig ten mit knapp unter 10 % eine höhere Bedeutung“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1109,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Den höchsten Anteil der Tagesdosen (DDD) der untersuchten Mittel verordneten nahezu ausschließlich Hausärzte. Dermatologen verordneten vor allem höherklassige topische Steroide (Gruppe III und IV); systemische Steroide kamen nahezu ausschließlich von Hausärzten und anderen Facharztgruppen.</p>
+  
   <blockquote>„„Der höchste Anteil der DDDs für die untersuchten Mittel wurde nahezu ausschließlich durch die Hausärzte verordnet. Die Dermatologen spielten vornehmlich eine Rolle in der Verordnung der höherklassigen topischen Steroide“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1128,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nahezu alle Bewohner erhielten mindestens eine Arzneimittelverordnung, laut Bericht stieg die Verordnungsmenge signifikant. Im Mittel erhielten sie rund 14 unterschiedliche Wirkstoffe vor und 13 nach Heimeintritt.</p>
+  
   <blockquote>„„nahezu alle Bewohner mindestens eine Verordnung für ein Arzneimittel jedweder Art erhielten und sich die Menge an Verordnungen signifikant erhöhte. Sie erhielten durchschnittlich rund 14 bzw. 13 unterschiedliche Wirkstoffe vor bzw. nach Heimeintritt.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Metamizol war vor und nach Heimeintritt das am häufigsten verordnete Mittel. Die weiteren häufigen Wirkstoffe betrafen kardiovaskuläre Erkrankungen oder den Magenschutz (Pantoprazol).</p>
+  
   <blockquote>„„Metamizol natrium, ein zu den Pyrazolonen zählendes Analgetikum und Antipyretikum, vor und nach Heimeintritt das am häufigsten verordneten Mittel war.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Qualitätsindikator Systemtherapie: Eine Reduktion biologischer und nicht-biologischer Systemtherapeutika nach Heimeintritt betraf weniger als 10 Erkrankte; keiner von ihnen erhielt eine neue Steroidverschreibung.</p>
+  
   <blockquote>„„betraf eine Reduktion von biologischen und nicht- biologischen Systemtherapeutika nach dem Eintritt in ein Pflegeheim weniger als 10 Psoriasis-Erkrankte. Von diesen Erkrankten Heimbewohnern erhielt keine Person eine neue Steroidverschreibung“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1185,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von ca. 20 Personen mit systemischer Therapie vor Heimeintritt sank bei 12 die Verordnungsmenge. Bei über 83 % dieser Gruppe wurde die Therapie nach Heimeintritt nicht angepasst; zwei Personen erhielten neu ein topisches Steroid.</p>
+  
   <blockquote>„„Von den ca. 20 Personen mit Verschreibung für ein systemisches Therapeutikum vor Heimeintritt, bei 12 Personen reduzierte sich die Verordnungsmenge . Bei über 83 % dieser Personengruppe wurde die Therapie nach Heimeintritt nicht angepasst.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1204,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von 63 Versicherten mit Calcipotriol-Verordnung erhielten rund ein Drittel ausschließlich das Monopräparat und knapp 60 % Kombinationspräparate. Monopräparate in aufeinanderfolgenden Quartalen erhielten vor Heimeintritt rund ein Viertel (n=7) der Monopräparat-Empfänger, nach Heimeintritt 36 % (n=9).</p>
+  
   <blockquote>„„Von den versicherten Patienten mit Calcipotriol- Verordnungen (n=63) erhielten rund ein Drittel ausschließlich eine Monopräparat -Verordnung. Knapp 60 % erhielten Kombinationspräparate.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1223,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von 45 Personen mit Psoriasis-Arthritis erhielten vor Heimeintritt rund die Hälfte mindestens eine Systemtherapie-Verordnung, danach rund 40 %.</p>
+  
   <blockquote>„„Von den Psoriasis -Erkrankten mit einer PsA- Diagnose (n=45) erhielten rund die Hälfte mindestens eine Verordnung für ein Systemtherapeutikum“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1242,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mindestens eine Betablocker-Verordnung (ATC C07A) erhielt etwa die Hälfte, nach Heimeintritt rund 47 %.</p>
+  
   <blockquote>„„erhielt etwa die Hälfte der Menschen mit Psoriasis mindestens eine Verordnung für einen Betablocker (ATC: C07A) mit einer Reduzierung auf rund 47 % nach Heimeintritt.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1261,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eingeschlossen wurden 718 Menschen mit Psoriasis (75 % weiblich, im Mittel 83 Jahre), beobachtet durchgängig von einem Jahr vor bis einem Jahr nach Heimeintritt.</p>
+  
   <blockquote>„„In die Routinedatenanalyse wurden 718 Menschen mit Psori asis eingeschlossen (75 % weiblich; Ø 83 Jahre)“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1280,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Unter rund 2,3 Mio. DAK-Versicherten wurden 41.667 Personen über 65 Jahre in den Jahren 2011 bis 2014 neu in ein Pflegeheim aufgenommen. Davon erfüllten 718 die Einschlusskriterien, u. a. eine gesicherte Psoriasis-Diagnose im Jahr vor Heimeintritt und ein Jahr Nachbeobachtung.</p>
+  
   <blockquote>„„wurden 41.667 über 65 Jahre in den Jahren 2011 bis 2014 neu in ein Pflegeheim aufgenommen. Davon erfüllten 718 Versicherte die oben benannten Einschlusskriterien“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1299,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Über 60 % der Kohorte hatten die niedrigste Pflegestufe. Eine mindestens mittelschwere Psoriasis hatten 3,3 % vor und 2,6 % nach Heimeintritt.</p>
+  
   <blockquote>„„Über 60 % der Studienpopulation sind der niedrigsten Pflegestufe zuzuordnen. Eine mindestens mittelschwere Form der Psoriasis weisen im Jahr vor Heimeintritt 3,3 % und nach Heimeintritt 2,6 % auf.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1318,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine Kassendatenanalyse zu Psoriasis aller Altersgruppen mit vergleichbarem Schweregradansatz nannte einen Anteil mindestens mittelschwerer Psoriasis von rund 20 %; der Bericht bezeichnet die rund 3 % in der eigenen Kohorte als sehr geringes Niveau.</p>
+  
   <blockquote>„„la g mit rund 3 % vor wie auch nach Heimeintritt auf einem sehr geringen Niveau. Eine aktuelle Krankenkassendatenanalyse ... gab ... eine mindestens mittelschwere Form mit einem Anteil von rund 20 % an“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1337,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Häufigste Psoriasis-relevante Begleitdiagnose war Hypertonie (rund 80 %), gefolgt von Depression und Diabetes mellitus; laut Bericht nahmen alle diese Diagnosen nach Heimeintritt deutlich ab. Die Demenz-Prävalenz stieg von über 50 % auf über 60 %.</p>
+  
   <blockquote>„„Allen Diagnosen ist gemein, dass sie sich nach Pflegeheimeintritt deutlich reduzieren. Die Demenz ... zeigte eine bedeutende und steigende Prävalenz von über 50 % vor auf über 60 % nach Heimeintritt.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1356,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Mittel wies ein Bewohner mit Psoriasis drei geriatrische Merkmalskomplexe auf; rund 50 % hatten mindestens eine der definierten Hauterkrankungen.</p>
+  
   <blockquote>„„Im Mittel zeigte ein Pflegeheimbewohner mit Psoriasis drei Merkmalskomplexe auf. Rund 50 % der Bewohner hatten mindestens eine Diagnose der definierten Hauterkrankungen.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1375,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von den 430 im Nachbeobachtungsjahr verstorbenen Bewohnern starben 151 im Quartal des Heimeintritts und 140 im ersten Quartal danach, zusammen 291 (67,7 %).</p>
+  
   <blockquote>„„im Quartal des Heimeintritts bzw. im ersten Quartal nach Heimeintritt bereits 151 bzw. 140 Personen verstarben. Dies bedeutet, dass 291 Personen (67,7 %) nicht länger als ein Quartal nach Heimeintritt beobachtet werden können.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1394,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Verstorbenen waren laut Bericht deutlich kränker bzw. pflegebedürftiger: Sie erhielten im Mittel 16,2 (SD ±7,4) Wirkstoffe und waren zu 44,6 % in der niedrigsten Pflegestufe, zu 40,9 % in Stufe 2 und zu 14,4 % in Stufe 3.</p>
+  
   <blockquote>„„Wie zu erwarten waren diese Versicherten deutlich kränker bzw. pflegebedürftiger. Dies zeigte sich wie folgt: Sie erhielten im Mittel 16,2 ( SD ±7,4) unterschiedliche Wirkstoffe.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1413,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In einer deutschen Kassendatenstudie zur allgemeinen Pflegeheimpopulation hatten 16 % vor und 18 % nach Heimeintritt dermatologische Betreuung; der Bericht nennt den eigenen Anteil im Vergleich deutlich höher.</p>
+  
   <blockquote>„„ist der Anteil an Erkrankten mit dermatologischem Kontakt in unserer Analyse der Menschen mit Psoriasis deutlich höher. Nur 16 % vs. 18 % nach Heimeintritt erhielten eine dermatologische Betreuung in der genannten Untersuchung“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1432,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Gesamtprävalenz der Psoriasis in der DAK-G war ähnlich wie bei anderen Krankenkassen, auch bei über 65-Jährigen.</p>
+  
   <blockquote>„„Hier zeigte sich im Vergleich der Gesamt-Prävalenz der Psoriasis in der DAK -G zu anderen Krankenkassen – auch in der Altersgruppe der älteren Bevölkerung über 65 Jahre – ein ähnliches Ergebnis.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1451,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.36">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im qualitativen Teil wurden von Oktober 2020 bis Januar 2021 12 Einzelinterviews geführt (je drei Dermatologinnen, Allgemeinmediziner und Pflegekräfte, eine Pflegedienstleitung, zwei Angehörigen-Proxys), dazu zwei Fokusgruppen.</p>
+  
   <blockquote>„„in der Zeit von Oktober 2020 bis Januar 2021 insgesamt 12 Einzelinterviews ... und zwei Fokusgruppen ... geführt.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1470,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Einzelinterviews ergaben über 250 Aussagen in 8 Hauptkategorien. Die meisten betrafen Verbesserungsmöglichkeiten, vor allem digitale Versorgung, Kooperation der Fachärzte und dermatologische Schulungen für Pflegekräfte und Hausärzte.</p>
+  
   <blockquote>„„Die meisten Aussagen konnten der Hauptkategorie „Möglichkeiten zur Verbesserung der Versorgung“ zugeordnet werden und thematisieren insbesondere den Ausbau der digitalen Versorgung, eine engere Kooperation zwischen den Fachärzten sowie dermatologische Schulungsprogramme“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1489,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Alle Teilnehmer befürworteten diese Themen und nannten zugleich Grenzen der digitalen Versorgung bei Datenschutz und Bildqualität.</p>
+  
   <blockquote>„„Alle Teilnehmer befürworte ten die zuvor genannten Themen, benannten jedoch auch hiermit verbundene Herausforderungen und Limitationen, wie beispielsweise Grenzen der digitalen Versorgung in Hinblick auf Datenschutz und Qualität der verfügbaren Bilder“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1508,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Etwa die Hälfte der Interviewten bestätigte eine Abnahme der dermatologischen Versorgung und eine unzureichende fachärztliche Versorgung; alle bestätigten, dass Betroffene primär hausärztlich versorgt werden.</p>
+  
   <blockquote>„„etwa die Hälfte der Befragten eine Abnahme der dermatologischen Versorgung bestätigte und eine damit einhergehende unzureichende Versorgung durch entsprechende Fachärzte. Alle Teilnehmer bestätigten, dass Betroffene primär hausärztlich versorgt werden.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1527,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.40">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Allgemeinmediziner hielten sich für fähig, Psoriasis zu diagnostizieren; Dermatologen sahen die hausärztliche Diagnose eher kritisch.</p>
+  
   <blockquote>„„Während Allgemeinmediziner, der Meinung waren, Psoriasis gut diagnostizieren zu können , sahen Dermatologen die Diagnose durch Hausärzte eher kritisch.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.40" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.40" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.40" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.40" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1546,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.41">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In den Fokusgruppen sprachen sich die Teilnehmer einheitlich für mehr digitale Versorgung aus. Datenschutz und technische Voraussetzungen wie Internetverbindungen hielten sie für derzeit nicht ausreichend gegeben.</p>
+  
   <blockquote>„„Ungeachtet der jeweiligen Disziplin sprachen die Teilnehmer sich einheitlich für eine verstärkte digitale Versorgung aus. Einig waren sich die Teilnehmer auch in puncto Datenschutz, der aktuell nicht ausreichend gewährleistet wird“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.41" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.41" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.41" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.41" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1565,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.42">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Ob Unterversorgung vorliegt, wurde je nach Ort bzw. Pflegeeinrichtung unterschiedlich eingeschätzt. Die Mehrheit gab an, dass systemische Therapien bei der Zielgruppe ihrer Erfahrung nach keine Rolle mehr spielen.</p>
+  
   <blockquote>„„Ob eine Unterversorgung nach Einschätzung der medizinischen Versorger vorliegt, scheint lokal bzw. je nach Pflegeeinrichtung sehr unterschiedlich zu sein. ... die Mehrheit der Befragten, dass ihrer Erfahrung nach systemischen Therapien bei der Zielgruppe keine Rolle mehr spielen.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.42" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.42" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.42" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.42" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1584,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.43">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Aussagen zur Arzneimitteltherapie waren laut Bericht sehr heterogen: Eine Mehrheit klassifizierte Psoriasis als unterversorgt, stufte sie zugleich aber als nicht therapierelevant ein.</p>
+  
   <blockquote>„„Einerseits spricht sich eine Mehrheit der Teilnehmer dafür aus, die Psoriasis als unterversorgt zu klassifizieren. Gleichzeitig stufen die Teilnehmer die Erkrankung als nicht therapierelevant ein.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.43" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.43" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.43" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.43" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1603,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.44">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zur Krankheitsschwere äußerten sich die Teilnehmer unterschiedlich; mehrheitlich war ihnen nichts über einen grundsätzlich milderen Verlauf im höheren Lebensalter bekannt.</p>
+  
   <blockquote>„„Mehrheitlich nannten die Studienteilnehmer, dass ihnen nichts über einen grundsätzlichen milderen Verlauf der Krankheit im höheren Lebensalter bekannt sei.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.44" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.44" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.44" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.44" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1622,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.45">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Teilnehmer stimmten einer Abnahme der dermatologischen Versorgung nach Heimeintritt zu. Sie berichteten von Schwierigkeiten, niedergelassene Dermatologen für Besuche im Pflegeheim zu finden.</p>
+  
   <blockquote>„„Insgesamt stimmten die Studienteilnehmer einer Abnahme der dermatologischen Versorgung nach Heimeintritt zu. Sie berichteten von strukturellen Schwierigkeiten, niedergelassene Dermatologen zu finden, die auch bereit wären, Arztbesuche im Pflegeheim vorzunehmen.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.45" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.45" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.45" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.45" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1641,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.46">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Dass der dermatologische Kontakt vor Heimeintritt der stärkste Prädiktor für einen Kontakt danach ist, bestätigten auch die Teilnehmer des qualitativen Teils.</p>
+  
   <blockquote>„„der stärkste Prädiktor für einen dermatologischen Kontakt nach Aufnahme in Pflegeheim, der dermatologische Kontakt vor Pflegeheimeintritt. Dies bestätigten auch die Studienteilnehmer des qualitativen Forschungsteils.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.46" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.46" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.46" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.46" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1660,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Echte Angehörige nahmen nicht teil, was der Bericht als Limitation nennt. Die Patientensicht vertraten zwei institutseigene Pflegefachkräfte als Proxy.</p>
+  
   <blockquote>„„Um die Patientensichtweise in den Einzelinterviews berücksichtigen zu können, wurden zwei Proxy-Personen (institutseigene Pflegefachkräfte mit Erfahrung in der Versorgung von Menschen mit Psoriasis) gebeten, diese Sichtweise einzunehmen.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1679,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Alle befragten Experten sind in der Metropolregion Hamburg tätig.</p>
+  
   <blockquote>„„Alle befragten Experten sind in der Metropolregion Hamburg tätig.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1698,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die angestrebte Vielfalt der Befragten nach Geschlecht, Alter und Berufserfahrung konnte wegen der erschwerten Rekrutierung nicht gewährleistet werden.</p>
+  
   <blockquote>„„als nachrangiges Auswahlkriterium sollte die Heterogenität hinsichtlich des Geschlechtes, Alters und Berufserfahrung maximiert werden. Letzteres konnte aufgrund der ohnehin erschwerten Rekrutierung nicht gewährleistet werden.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1717,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Alle Interviews und Fokusgruppen fanden pandemiebedingt online bzw. telefonisch statt. In den Fokusgruppen könnte das laut Bericht die freie Diskussion eingeschränkt haben.</p>
+  
   <blockquote>„„wurden alle Interviews und Fokusgruppen online durchgeführt. In den Fokusgruppen könnte dies zu einem Verlust an freien Diskussionen zwischen den Studienteilnehmern führen.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1736,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Rekrutierung für den qualitativen Teil wurde pandemiebedingt von geplant Juli bis September 2020 bis Ende Januar 2021 verlängert.</p>
+  
   <blockquote>„„Der Beginn der Teilnehmer -Akquise war für den Zeitraum von Juli bis September 2020 geplant und wurde aufgrund der COVID- Pandemie bis Ende Janua r 2021 verlängert.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1755,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ambulant tätige Pflegekräfte wurden nicht einbezogen; das begrenzt den Einblick in die Zeit vor Heimeintritt.</p>
+  
   <blockquote>„„Auch der Einschluss ambulant- tätiger Pflegekräfte hätte einen weiteren Mehrwert in der Betrachtung der Routinedatenanalyse geben können, um einen tieferen Einblick in die Zeit vor Pflegeheimeintritt zu erhalten.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1774,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Qualitätsindikatoren zur Versorgungsqualität wurden vom Studienteam selbst entwickelt.</p>
+  
   <blockquote>„„Das Studienteam hat daher die folgenden Indikatoren zur Einschätzung der Versorgungsqualität entwickelt.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1793,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Schweregrad wurde über die Inanspruchnahme systemischer Therapien bestimmt. Dieser Ansatz eignet sich laut Bericht nicht uneingeschränkt zur Identifikation von Unterversorgung, weil nur verordnete Mittel erfasst werden und der Bedarf nicht ermittelbar ist.</p>
+  
   <blockquote>„„eignet sich nicht uneingeschränkt zur Identifikation einer Unterversorgung, da ausschließlich verordnete Mittel berücksichtigt werden – der eigentliche Bedarf lässt sich somit nicht ermitteln.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1795,12 +1812,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der geringen Verordnungsprävalenz biologischer und nicht-biologischer Systemtherapeutika war dazu keine hinreichende Qualitätseinschätzung möglich.</p>
+  
   <blockquote>„„konnte aufgrund der geringen Verordnungsprävalenz für biologische und nich tbiologische Systemtherapeutika keine hinreichende Einschätzung erfolgen.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1814,12 +1831,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Rezeptfreie (OTC) Präparate und Magistralrezepturen fehlen in den GKV-Daten. Laut Bericht wird der Einsatz von Basistherapeutika daher sehr wahrscheinlich unterschätzt.</p>
+  
   <blockquote>„„Eine Unterschätzung des eingesetzten Aufkommens an Basistherapeutika aufgrund der GKV -Daten ist somit sehr wahrscheinlich, zumal auch Magistralrezepturen kein Bestandteil des GKV-Arzneimitteldatensatzes waren.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1833,12 +1850,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ambulante Diagnosen liegen nur quartalsweise vor; das Quartal des Heimeintritts musste dem Jahr vor oder nach Heimeintritt zugeordnet werden.</p>
+  
   <blockquote>„„Aufgrund der Datenstruktur der ambulanten ärztlichen Versorgung sind die Diagnosen nur quartalsweise verfügbar. Das Quartal des Heimeintritts muss daher in das Jahr vor oder das Jahr nach Heimeintritt einbezogen werden.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1852,12 +1869,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Krankenkassen versichern keine Zufallsstichproben der Wohnbevölkerung, sondern historisch gewachsene Populationen.</p>
+  
   <blockquote>„„Weiterhin muss berücksichtigt werden, dass Krankenkassen keine Zufallsstichproben der deutschen Wohnbevölkerung sind, sondern historisch gewachsene Populationen versichern.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1871,12 +1888,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Fallzahl an Personen mit Psoriasis in der Zielpopulation war laut Bericht vergleichsweise klein, weshalb die Aussagekraft zu prüfen war.</p>
+  
   <blockquote>„„Angesichts der vergleichsweise kleinen Fallzahl an Personen mit Psoriasis in der Zielpopulation war ferner die Aussagekräftigkeit der Studie zu prüfen.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1890,12 +1907,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Prädiktorenmodell für einen dermatologischen Kontakt nach Heimeintritt erklärt 13,4 % der Varianz.</p>
+  
   <blockquote>„„Das Modell klärt somit eine Varianz von 13,4 % auf.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1940,28 +1957,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 222, "akronym": "PsoGero", "kennung": "kLyRH0PyeoHc", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt PsoGero keine Empfehlung zur Überführung in die Regelversorgung aus. Er regt jedoch an, die Erkenntnisse bei der Konzeption künftiger Studien und bei der Weiterentwicklung von Versorgungsansätzen für die fachärztliche, insbesondere dermatologische Versorgung im Pflegeheim zu berücksichtigen. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss hält das Studiendesign für angemessen. Die Aussagekraft der quantitativen Routinedatenanalyse sieht er jedoch als eingeschränkt an, unter anderem weil klinische Parameter fehlen. Wegen des weit zurückliegenden Beobachtungszeitraums 2011 bis 2014 sind die Ergebnisse möglicherweise nicht auf die heutige Versorgung übertragbar. Weitere Einschränkungen sieht er im kleinen Anteil von Personen mit Psoriasis und im sehr geringen Anteil mittelschwerer bis schwerer Fälle sowie in einer möglicherweise nicht adäquaten Kodierung. Bei der qualitativen Analyse bleibt teilweise unklar, wie die Handlungsempfehlungen abgeleitet wurden. Zudem verweist der Ausschuss auf andere geförderte Projekte zur Pflegeheimversorgung und zur Teledermatologie."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Ausschuss hält die Erkenntnisse möglicherweise nicht für auf die aktuelle Versorgungssituation übertragbar, da der Beobachtungszeitraum (2011 bis 2014) weit zurückliegt. Eine Empfehlung zur Überführung in die Regelversorgung spricht er nicht aus."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Eingeschränkte Aussagekraft wegen der Limitationen von Routinedaten, insbesondere fehlender klinischer Parameter"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Möglicherweise fehlende Übertragbarkeit auf die aktuelle Versorgung wegen des alten Beobachtungszeitraums 2011 bis 2014"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Kleiner Anteil von Personen mit Psoriasis und sehr geringer Anteil mindestens mittelschwerer Fälle"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Mögliche Beeinträchtigung der Datenqualität durch nicht adäquate Kodierung der Indikation"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Unklare Ableitung der Handlungsempfehlungen aus der qualitativen Analyse"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Keine signifikanten Unterschiede vor und nach Heimeintritt bei vielen untersuchten Endpunkten"}, {"stelle": "befund.0", "art": "befund", "unser": "Studiendesign vom Ausschuss als angemessen bewertet"}, {"stelle": "befund.1", "art": "befund", "unser": "Signifikanter Rückgang dermatologischer Kontakte nach Heimeintritt nachgewiesen"}, {"stelle": "befund.2", "art": "befund", "unser": "Optimierungsmöglichkeiten für die dermatologische Versorgung im Pflegeheim abgeleitet"}, {"stelle": "befund.3", "art": "befund", "unser": "Erkenntnisse sollen bei künftigen Studien und Versorgungsansätzen berücksichtigt werden"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Mindestens ein dermatologischer Kontakt jedweder Art"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Mindestens ein internistischer Kontakt jedweder Art"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Mindestens ein hausärztlicher Kontakt jedweder Art"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Mindestens eine Verordnung für eine Psoriasis-relevante Therapie"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Verordnungsprävalenz biologischer/nichtbiologischer Systemtherapeutika"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Verordnungsprävalenz systemischer Steroide"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Verordnungsprävalenz topischer Kortikoide jedweder Art"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Prädiktor für dermatologischen Kontakt nach Heimeintritt: dermatologischer Kontakt vor Heimeintritt"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte die ärztliche und medikamentöse Versorgung von Menschen mit Psoriasis über 65 Jahre je ein Jahr vor und nach Eintritt in ein Pflegeheim. Grundlage waren Routinedaten der DAK-Gesundheit sowie ein qualitativer Teil mit Einzelinterviews und Fokusgruppen. Analysiert wurden 718 Versicherte, die 2011–2014 neu ins Heim kamen und das Jahr danach überlebten. Ein primärer Endpunkt ist nicht angegeben. Der Anteil mit mindestens einem dermatologischen Kontakt sank von 44,6 % auf 40,1 % (McNemar, p=0,035). Nach Heimeintritt erhielten noch 63,8 % die Psoriasis-Diagnose, die überwiegend Hausärzte stellten. Der Anteil mit mindestens einer Psoriasis-relevanten Therapie lag vor und nach Heimeintritt bei rund 53 %; Systemtherapeutika erhielten rund 3 % bzw. 2 %. Als Prädiktoren für einen dermatologischen Kontakt nach Heimeintritt erwiesen sich nur der dermatologische Kontakt vor Heimeintritt und reine topische Steroide; das Modell erklärt 13,4 % der Varianz. Die befragten Versorger benannten Verbesserungsbedarf auf ärztlicher und pflegerischer Ebene. Die Aussagekraft ist begrenzt: Die Ergebnisse gelten nur für Bewohner, die das erste Jahr überlebten; die Routinedaten enthalten keine klinischen Parameter und nur Versicherte mit Leistungsinanspruchnahme; die vom Studienteam entwickelten Qualitätsindikatoren sind nur eingeschränkt abbildbar. Der qualitative Teil erreichte pandemiebedingt nicht die geplante Teilnehmerzahl, schloss keine echten Angehörigen ein und beschränkte sich auf die Metropolregion Hamburg."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Der Anteil mit mindestens einem dermatologischen Kontakt pro Jahr sank von 44,6 % (n=320) im Jahr vor auf 40,1 % (n=288) im Jahr nach Heimeintritt (McNemar-Test, p=0,035)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Von den 718 Personen mit Psoriasis-Diagnose vor Heimeintritt erhielten nach Heimeintritt 458 (63,8 %) erneut die Diagnose; von diesen erhielten 69,2 % (n=317) sie in allen vier Quartalen."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "In der logistischen Regression hatten nur der dermatologische Kontakt vor Heimeintritt (höchstes Odds Ratio) und die Verordnung reiner topischer Steroide vor Heimeintritt einen signifikanten Einfluss auf eine dermatologische Versorgung nach Heimeintritt. Andere Arzneimittelgruppen zeigten keinen statistisch signifikanten Einfluss; Alter, Geschlecht, Pflegestufe und Komorbidität hatten laut Bericht keinen relevanten Einfluss."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Der Anteil mit mindestens einer Verordnung einer Psoriasis-relevanten Therapie lag vor und nach Heimeintritt bei rund 53 %; die Stratifizierung nach Alter, Geschlecht und Pflegestufe ergab laut Bericht keine besonderen Erkenntnisse."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Nach den Qualitätsindikatoren fanden sich laut Bericht bei einem relevanten Teil der Personen Hinweise auf eine nicht hinreichende Versorgungsqualität. Genannt werden die Abnahme des dermatologischen Kontakts (45 % vs. 41 %), eine längerfristige Calcipotriol-Monotherapie und fehlende Anpassungen mit topischen Steroiden bei reduzierten Systemtherapeutika."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Im qualitativen Teil wurde für die Versorgung von Menschen mit Hauterkrankungen, insbesondere Psoriasis, in Pflegeeinrichtungen vielfach Verbesserungsbedarf benannt, auf ärztlicher wie pflegerischer Ebene."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Geplant war der Einschluss aller Bewohner bis zum Tod; analysiert wurden nur die 718, die das Nachbeobachtungsjahr überlebten. Die Ergebnisse gelten daher nur für diese Gruppe; 430 Verstorbene wurden nur separat betrachtet."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Abrechnungsdaten enthalten keine klinischen Parameter wie Schweregrad, PASI, Blutwerte oder Kontraindikationen. Leitlinienbasierte Qualitätsindikatoren ließen sich daher nicht uneingeschränkt abbilden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Analysiert wurden nur Versicherte, die Leistungen in Anspruch genommen haben. Ob ältere Menschen mit Psoriasis unterversorgt sind, lässt sich daraus laut Bericht nur schwer ableiten."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Wegen der Covid-Pandemie wurde im qualitativen Teil die geplante Teilnehmerzahl nicht erreicht, insbesondere bei Pflegedienstleitungen und Angehörigen; ein Änderungsantrag wurde gestellt und bewilligt."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Frauenanteil der Kohorte: S. 5 nennt 75 % weiblich, S. 25 „rund zwei Drittel weiblichen Geschlechts“."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Demenz: Laut S. 19 stieg die Prävalenz von über 50 % vor auf über 60 % nach Heimeintritt; laut S. 25 hatten „rund 50 % in beiden Untersuchungsjahren mindestens eine Demenz-Diagnose“."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Dermatologischer Kontakt nach Heimeintritt: S. 20 nennt 40,1 % (S. 27: 40 %), S. 31 dagegen „45 % vs. 41 %“."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Reduktion der Systemtherapie: Laut S. 22 betraf sie „weniger als 10 Psoriasis-Erkrankte“, an derselben Stelle heißt es aber, bei 12 von ca. 20 Personen mit Systemtherapie habe sich die Verordnungsmenge reduziert."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Neuverschreibungen nach reduzierter Systemtherapie: Laut S. 22 erhielt „keine Person eine neue Steroidverschreibung“, im nächsten Absatz erfolgte „eine Neuverschreibung eines topischen Steroids bei zwei Personen“."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Topische Steroide: S. 21 nennt eine konstante Verordnungsprävalenz von ca. 40 %, S. 30 nennt für reine topische Steroide je ein Drittel; ob es sich um unterschiedliche Abgrenzungen handelt, geht aus den Angaben nicht eindeutig hervor."}, {"stelle": "bericht_unstimmig.6", "art": "aussage", "unser": "Arzneimittelversorgung: S. 5 und S. 30 beschreiben sie als auf vergleichbarem Niveau bzw. ohne klaren Einschnitt; S. 21 berichtet einen signifikanten Rückgang systemischer Steroide (rund 17 % auf ca. 14 %) und eine signifikante Zunahme der Verordnungsmenge insgesamt."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "In der Altersgruppe ab 85 Jahren sank der Anteil mit dermatologischem Kontakt von 46,6 % (n=167) auf 39,7 % (n=142), p=0,021."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die nach Alter, Geschlecht und Pflegestufe stratifizierte Analyse der Codierung durch Dermatologen zeigte laut Bericht keine signifikanten Unterschiede."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Laut Bericht sank neben dem dermatologischen auch der internistische Kontakt signifikant; nur bei Neurologie/Psychiatrie war der Anteil nach Heimeintritt leicht erhöht."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Nahezu alle Bewohner hatten mindestens einmal Kontakt zu einem Hausarzt, vor wie nach Heimeintritt auf gleichem Niveau."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Rund 55 % vor und 60 % nach Heimeintritt erhielten keine Betreuung durch einen Dermatologen; das entspricht dem Qualitätsindikator „weniger als ein dermatologischer Kontakt pro Jahr“."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Im Jahr vor Heimeintritt erhielten 53,8 % (n=386) der 718 Personen die Psoriasis-Diagnose in allen vier Quartalen, 24 % (n=172) in nur einem Quartal."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die Psoriasis-Diagnose wurde im Jahr vor Heimeintritt überwiegend von Hausärzten und zu etwa 30 % von Dermatologen kodiert; nach Heimeintritt blieb dieses Verhältnis bestehen."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Das Regressionsmodell erklärt 13,4 % der Varianz (Nagelkerke R² = 0,134). Den Hosmer-Lemeshow-Test (p=0,359; Chi-Quadrat 8,804; 8 Freiheitsgrade) bewertet der Bericht als sehr gute Anpassungsgüte."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Systemtherapeutika erhielten rund 3 % vor und 2 % nach Heimeintritt, biologische Systemtherapeutika nur eine geringe Anzahl."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Die Verordnungsprävalenz systemischer Steroide ging laut Bericht signifikant von rund 17 % auf ca. 14 % zurück."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Die Verordnungsprävalenz topischer Steroide lag vor und nach Heimeintritt konstant bei ca. 40 %."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Reine topische Steroide wurden vor wie nach Heimeintritt von je einem Drittel angewendet, Vitamin-D3-Analoga von knapp unter 10 %."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Den höchsten Anteil der Tagesdosen (DDD) der untersuchten Mittel verordneten nahezu ausschließlich Hausärzte. Dermatologen verordneten vor allem höherklassige topische Steroide (Gruppe III und IV); systemische Steroide kamen nahezu ausschließlich von Hausärzten und anderen Facharztgruppen."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Nahezu alle Bewohner erhielten mindestens eine Arzneimittelverordnung, laut Bericht stieg die Verordnungsmenge signifikant. Im Mittel erhielten sie rund 14 unterschiedliche Wirkstoffe vor und 13 nach Heimeintritt."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Metamizol war vor und nach Heimeintritt das am häufigsten verordnete Mittel. Die weiteren häufigen Wirkstoffe betrafen kardiovaskuläre Erkrankungen oder den Magenschutz (Pantoprazol)."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Qualitätsindikator Systemtherapie: Eine Reduktion biologischer und nicht-biologischer Systemtherapeutika nach Heimeintritt betraf weniger als 10 Erkrankte; keiner von ihnen erhielt eine neue Steroidverschreibung."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Von ca. 20 Personen mit systemischer Therapie vor Heimeintritt sank bei 12 die Verordnungsmenge. Bei über 83 % dieser Gruppe wurde die Therapie nach Heimeintritt nicht angepasst; zwei Personen erhielten neu ein topisches Steroid."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Von 63 Versicherten mit Calcipotriol-Verordnung erhielten rund ein Drittel ausschließlich das Monopräparat und knapp 60 % Kombinationspräparate. Monopräparate in aufeinanderfolgenden Quartalen erhielten vor Heimeintritt rund ein Viertel (n=7) der Monopräparat-Empfänger, nach Heimeintritt 36 % (n=9)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Von 45 Personen mit Psoriasis-Arthritis erhielten vor Heimeintritt rund die Hälfte mindestens eine Systemtherapie-Verordnung, danach rund 40 %."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Mindestens eine Betablocker-Verordnung (ATC C07A) erhielt etwa die Hälfte, nach Heimeintritt rund 47 %."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Eingeschlossen wurden 718 Menschen mit Psoriasis (75 % weiblich, im Mittel 83 Jahre), beobachtet durchgängig von einem Jahr vor bis einem Jahr nach Heimeintritt."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Unter rund 2,3 Mio. DAK-Versicherten wurden 41.667 Personen über 65 Jahre in den Jahren 2011 bis 2014 neu in ein Pflegeheim aufgenommen. Davon erfüllten 718 die Einschlusskriterien, u. a. eine gesicherte Psoriasis-Diagnose im Jahr vor Heimeintritt und ein Jahr Nachbeobachtung."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Über 60 % der Kohorte hatten die niedrigste Pflegestufe. Eine mindestens mittelschwere Psoriasis hatten 3,3 % vor und 2,6 % nach Heimeintritt."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Eine Kassendatenanalyse zu Psoriasis aller Altersgruppen mit vergleichbarem Schweregradansatz nannte einen Anteil mindestens mittelschwerer Psoriasis von rund 20 %; der Bericht bezeichnet die rund 3 % in der eigenen Kohorte als sehr geringes Niveau."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Häufigste Psoriasis-relevante Begleitdiagnose war Hypertonie (rund 80 %), gefolgt von Depression und Diabetes mellitus; laut Bericht nahmen alle diese Diagnosen nach Heimeintritt deutlich ab. Die Demenz-Prävalenz stieg von über 50 % auf über 60 %."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Im Mittel wies ein Bewohner mit Psoriasis drei geriatrische Merkmalskomplexe auf; rund 50 % hatten mindestens eine der definierten Hauterkrankungen."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Von den 430 im Nachbeobachtungsjahr verstorbenen Bewohnern starben 151 im Quartal des Heimeintritts und 140 im ersten Quartal danach, zusammen 291 (67,7 %)."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Die Verstorbenen waren laut Bericht deutlich kränker bzw. pflegebedürftiger: Sie erhielten im Mittel 16,2 (SD ±7,4) Wirkstoffe und waren zu 44,6 % in der niedrigsten Pflegestufe, zu 40,9 % in Stufe 2 und zu 14,4 % in Stufe 3."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "In einer deutschen Kassendatenstudie zur allgemeinen Pflegeheimpopulation hatten 16 % vor und 18 % nach Heimeintritt dermatologische Betreuung; der Bericht nennt den eigenen Anteil im Vergleich deutlich höher."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Die Gesamtprävalenz der Psoriasis in der DAK-G war ähnlich wie bei anderen Krankenkassen, auch bei über 65-Jährigen."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Im qualitativen Teil wurden von Oktober 2020 bis Januar 2021 12 Einzelinterviews geführt (je drei Dermatologinnen, Allgemeinmediziner und Pflegekräfte, eine Pflegedienstleitung, zwei Angehörigen-Proxys), dazu zwei Fokusgruppen."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Die Einzelinterviews ergaben über 250 Aussagen in 8 Hauptkategorien. Die meisten betrafen Verbesserungsmöglichkeiten, vor allem digitale Versorgung, Kooperation der Fachärzte und dermatologische Schulungen für Pflegekräfte und Hausärzte."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Alle Teilnehmer befürworteten diese Themen und nannten zugleich Grenzen der digitalen Versorgung bei Datenschutz und Bildqualität."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Etwa die Hälfte der Interviewten bestätigte eine Abnahme der dermatologischen Versorgung und eine unzureichende fachärztliche Versorgung; alle bestätigten, dass Betroffene primär hausärztlich versorgt werden."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Allgemeinmediziner hielten sich für fähig, Psoriasis zu diagnostizieren; Dermatologen sahen die hausärztliche Diagnose eher kritisch."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "In den Fokusgruppen sprachen sich die Teilnehmer einheitlich für mehr digitale Versorgung aus. Datenschutz und technische Voraussetzungen wie Internetverbindungen hielten sie für derzeit nicht ausreichend gegeben."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Ob Unterversorgung vorliegt, wurde je nach Ort bzw. Pflegeeinrichtung unterschiedlich eingeschätzt. Die Mehrheit gab an, dass systemische Therapien bei der Zielgruppe ihrer Erfahrung nach keine Rolle mehr spielen."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Die Aussagen zur Arzneimitteltherapie waren laut Bericht sehr heterogen: Eine Mehrheit klassifizierte Psoriasis als unterversorgt, stufte sie zugleich aber als nicht therapierelevant ein."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "Zur Krankheitsschwere äußerten sich die Teilnehmer unterschiedlich; mehrheitlich war ihnen nichts über einen grundsätzlich milderen Verlauf im höheren Lebensalter bekannt."}, {"stelle": "bericht_befund.45", "art": "aussage", "unser": "Die Teilnehmer stimmten einer Abnahme der dermatologischen Versorgung nach Heimeintritt zu. Sie berichteten von Schwierigkeiten, niedergelassene Dermatologen für Besuche im Pflegeheim zu finden."}, {"stelle": "bericht_befund.46", "art": "aussage", "unser": "Dass der dermatologische Kontakt vor Heimeintritt der stärkste Prädiktor für einen Kontakt danach ist, bestätigten auch die Teilnehmer des qualitativen Teils."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Echte Angehörige nahmen nicht teil, was der Bericht als Limitation nennt. Die Patientensicht vertraten zwei institutseigene Pflegefachkräfte als Proxy."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Alle befragten Experten sind in der Metropolregion Hamburg tätig."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die angestrebte Vielfalt der Befragten nach Geschlecht, Alter und Berufserfahrung konnte wegen der erschwerten Rekrutierung nicht gewährleistet werden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Alle Interviews und Fokusgruppen fanden pandemiebedingt online bzw. telefonisch statt. In den Fokusgruppen könnte das laut Bericht die freie Diskussion eingeschränkt haben."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Rekrutierung für den qualitativen Teil wurde pandemiebedingt von geplant Juli bis September 2020 bis Ende Januar 2021 verlängert."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Ambulant tätige Pflegekräfte wurden nicht einbezogen; das begrenzt den Einblick in die Zeit vor Heimeintritt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Qualitätsindikatoren zur Versorgungsqualität wurden vom Studienteam selbst entwickelt."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Der Schweregrad wurde über die Inanspruchnahme systemischer Therapien bestimmt. Dieser Ansatz eignet sich laut Bericht nicht uneingeschränkt zur Identifikation von Unterversorgung, weil nur verordnete Mittel erfasst werden und der Bedarf nicht ermittelbar ist."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Wegen der geringen Verordnungsprävalenz biologischer und nicht-biologischer Systemtherapeutika war dazu keine hinreichende Qualitätseinschätzung möglich."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Rezeptfreie (OTC) Präparate und Magistralrezepturen fehlen in den GKV-Daten. Laut Bericht wird der Einsatz von Basistherapeutika daher sehr wahrscheinlich unterschätzt."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Ambulante Diagnosen liegen nur quartalsweise vor; das Quartal des Heimeintritts musste dem Jahr vor oder nach Heimeintritt zugeordnet werden."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Krankenkassen versichern keine Zufallsstichproben der Wohnbevölkerung, sondern historisch gewachsene Populationen."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Die Fallzahl an Personen mit Psoriasis in der Zielpopulation war laut Bericht vergleichsweise klein, weshalb die Aussagekraft zu prüfen war."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Das Prädiktorenmodell für einen dermatologischen Kontakt nach Heimeintritt erklärt 13,4 % der Varianz."}]};
+const D = {"projekt_id": 222, "akronym": "PsoGero", "kennung": "kLyRH0PyeoHc", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss hält das Studiendesign für angemessen. Die Aussagekraft der quantitativen Routinedatenanalyse sieht er jedoch als eingeschränkt an, unter anderem weil klinische Parameter fehlen. Wegen des weit zurückliegenden Beobachtungszeitraums 2011 bis 2014 sind die Ergebnisse möglicherweise nicht auf die heutige Versorgung übertragbar. Weitere Einschränkungen sieht er im kleinen Anteil von Personen mit Psoriasis und im sehr geringen Anteil mittelschwerer bis schwerer Fälle sowie in einer möglicherweise nicht adäquaten Kodierung. Bei der qualitativen Analyse bleibt teilweise unklar, wie die Handlungsempfehlungen abgeleitet wurden. Zudem verweist der Ausschuss auf andere geförderte Projekte zur Pflegeheimversorgung und zur Teledermatologie."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Eingeschränkte Aussagekraft wegen der Limitationen von Routinedaten, insbesondere fehlender klinischer Parameter"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Möglicherweise fehlende Übertragbarkeit auf die aktuelle Versorgung wegen des alten Beobachtungszeitraums 2011 bis 2014"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Kleiner Anteil von Personen mit Psoriasis und sehr geringer Anteil mindestens mittelschwerer Fälle"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Mögliche Beeinträchtigung der Datenqualität durch nicht adäquate Kodierung der Indikation"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Unklare Ableitung der Handlungsempfehlungen aus der qualitativen Analyse"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Keine signifikanten Unterschiede vor und nach Heimeintritt bei vielen untersuchten Endpunkten"}, {"stelle": "befund.1", "art": "befund", "unser": "Signifikanter Rückgang dermatologischer Kontakte nach Heimeintritt nachgewiesen"}, {"stelle": "befund.3", "art": "befund", "unser": "Erkenntnisse sollen bei künftigen Studien und Versorgungsansätzen berücksichtigt werden"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Mindestens ein dermatologischer Kontakt jedweder Art"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Mindestens ein internistischer Kontakt jedweder Art"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Mindestens ein hausärztlicher Kontakt jedweder Art"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Mindestens eine Verordnung für eine Psoriasis-relevante Therapie"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Verordnungsprävalenz biologischer/nichtbiologischer Systemtherapeutika"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Verordnungsprävalenz systemischer Steroide"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Verordnungsprävalenz topischer Kortikoide jedweder Art"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Prädiktor für dermatologischen Kontakt nach Heimeintritt: dermatologischer Kontakt vor Heimeintritt"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte die ärztliche und medikamentöse Versorgung von Menschen mit Psoriasis über 65 Jahre je ein Jahr vor und nach Eintritt in ein Pflegeheim. Grundlage waren Routinedaten der DAK-Gesundheit sowie ein qualitativer Teil mit Einzelinterviews und Fokusgruppen. Analysiert wurden 718 Versicherte, die 2011–2014 neu ins Heim kamen und das Jahr danach überlebten. Ein primärer Endpunkt ist nicht angegeben. Der Anteil mit mindestens einem dermatologischen Kontakt sank von 44,6 % auf 40,1 % (McNemar, p=0,035). Nach Heimeintritt erhielten noch 63,8 % die Psoriasis-Diagnose, die überwiegend Hausärzte stellten. Der Anteil mit mindestens einer Psoriasis-relevanten Therapie lag vor und nach Heimeintritt bei rund 53 %; Systemtherapeutika erhielten rund 3 % bzw. 2 %. Als Prädiktoren für einen dermatologischen Kontakt nach Heimeintritt erwiesen sich nur der dermatologische Kontakt vor Heimeintritt und reine topische Steroide; das Modell erklärt 13,4 % der Varianz. Die befragten Versorger benannten Verbesserungsbedarf auf ärztlicher und pflegerischer Ebene. Die Aussagekraft ist begrenzt: Die Ergebnisse gelten nur für Bewohner, die das erste Jahr überlebten; die Routinedaten enthalten keine klinischen Parameter und nur Versicherte mit Leistungsinanspruchnahme; die vom Studienteam entwickelten Qualitätsindikatoren sind nur eingeschränkt abbildbar. Der qualitative Teil erreichte pandemiebedingt nicht die geplante Teilnehmerzahl, schloss keine echten Angehörigen ein und beschränkte sich auf die Metropolregion Hamburg."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Der Anteil mit mindestens einem dermatologischen Kontakt pro Jahr sank von 44,6 % (n=320) im Jahr vor auf 40,1 % (n=288) im Jahr nach Heimeintritt (McNemar-Test, p=0,035)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Von den 718 Personen mit Psoriasis-Diagnose vor Heimeintritt erhielten nach Heimeintritt 458 (63,8 %) erneut die Diagnose; von diesen erhielten 69,2 % (n=317) sie in allen vier Quartalen."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "In der logistischen Regression hatten nur der dermatologische Kontakt vor Heimeintritt (höchstes Odds Ratio) und die Verordnung reiner topischer Steroide vor Heimeintritt einen signifikanten Einfluss auf eine dermatologische Versorgung nach Heimeintritt. Andere Arzneimittelgruppen zeigten keinen statistisch signifikanten Einfluss; Alter, Geschlecht, Pflegestufe und Komorbidität hatten laut Bericht keinen relevanten Einfluss."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Geplant war der Einschluss aller Bewohner bis zum Tod; analysiert wurden nur die 718, die das Nachbeobachtungsjahr überlebten. Die Ergebnisse gelten daher nur für diese Gruppe; 430 Verstorbene wurden nur separat betrachtet."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Abrechnungsdaten enthalten keine klinischen Parameter wie Schweregrad, PASI, Blutwerte oder Kontraindikationen. Leitlinienbasierte Qualitätsindikatoren ließen sich daher nicht uneingeschränkt abbilden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Analysiert wurden nur Versicherte, die Leistungen in Anspruch genommen haben. Ob ältere Menschen mit Psoriasis unterversorgt sind, lässt sich daraus laut Bericht nur schwer ableiten."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Frauenanteil der Kohorte: S. 5 nennt 75 % weiblich, S. 25 „rund zwei Drittel weiblichen Geschlechts“."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Demenz: Laut S. 19 stieg die Prävalenz von über 50 % vor auf über 60 % nach Heimeintritt; laut S. 25 hatten „rund 50 % in beiden Untersuchungsjahren mindestens eine Demenz-Diagnose“."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Dermatologischer Kontakt nach Heimeintritt: S. 20 nennt 40,1 % (S. 27: 40 %), S. 31 dagegen „45 % vs. 41 %“."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt PsoGero keine Empfehlung zur Überführung in die Regelversorgung aus. Er regt jedoch an, die Erkenntnisse bei der Konzeption künftiger Studien und bei der Weiterentwicklung von Versorgungsansätzen für die fachärztliche, insbesondere dermatologische Versorgung im Pflegeheim zu berücksichtigen. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Ausschuss hält die Erkenntnisse möglicherweise nicht für auf die aktuelle Versorgungssituation übertragbar, da der Beobachtungszeitraum (2011 bis 2014) weit zurückliegt. Eine Empfehlung zur Überführung in die Regelversorgung spricht er nicht aus."}, {"stelle": "befund.0", "art": "befund", "unser": "Studiendesign vom Ausschuss als angemessen bewertet"}, {"stelle": "befund.2", "art": "befund", "unser": "Optimierungsmöglichkeiten für die dermatologische Versorgung im Pflegeheim abgeleitet"}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Der Anteil mit mindestens einer Verordnung einer Psoriasis-relevanten Therapie lag vor und nach Heimeintritt bei rund 53 %; die Stratifizierung nach Alter, Geschlecht und Pflegestufe ergab laut Bericht keine besonderen Erkenntnisse."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Nach den Qualitätsindikatoren fanden sich laut Bericht bei einem relevanten Teil der Personen Hinweise auf eine nicht hinreichende Versorgungsqualität. Genannt werden die Abnahme des dermatologischen Kontakts (45 % vs. 41 %), eine längerfristige Calcipotriol-Monotherapie und fehlende Anpassungen mit topischen Steroiden bei reduzierten Systemtherapeutika."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Im qualitativen Teil wurde für die Versorgung von Menschen mit Hauterkrankungen, insbesondere Psoriasis, in Pflegeeinrichtungen vielfach Verbesserungsbedarf benannt, auf ärztlicher wie pflegerischer Ebene."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Wegen der Covid-Pandemie wurde im qualitativen Teil die geplante Teilnehmerzahl nicht erreicht, insbesondere bei Pflegedienstleitungen und Angehörigen; ein Änderungsantrag wurde gestellt und bewilligt."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Reduktion der Systemtherapie: Laut S. 22 betraf sie „weniger als 10 Psoriasis-Erkrankte“, an derselben Stelle heißt es aber, bei 12 von ca. 20 Personen mit Systemtherapie habe sich die Verordnungsmenge reduziert."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Neuverschreibungen nach reduzierter Systemtherapie: Laut S. 22 erhielt „keine Person eine neue Steroidverschreibung“, im nächsten Absatz erfolgte „eine Neuverschreibung eines topischen Steroids bei zwei Personen“."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Topische Steroide: S. 21 nennt eine konstante Verordnungsprävalenz von ca. 40 %, S. 30 nennt für reine topische Steroide je ein Drittel; ob es sich um unterschiedliche Abgrenzungen handelt, geht aus den Angaben nicht eindeutig hervor."}, {"stelle": "bericht_unstimmig.6", "art": "aussage", "unser": "Arzneimittelversorgung: S. 5 und S. 30 beschreiben sie als auf vergleichbarem Niveau bzw. ohne klaren Einschnitt; S. 21 berichtet einen signifikanten Rückgang systemischer Steroide (rund 17 % auf ca. 14 %) und eine signifikante Zunahme der Verordnungsmenge insgesamt."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "In der Altersgruppe ab 85 Jahren sank der Anteil mit dermatologischem Kontakt von 46,6 % (n=167) auf 39,7 % (n=142), p=0,021."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die nach Alter, Geschlecht und Pflegestufe stratifizierte Analyse der Codierung durch Dermatologen zeigte laut Bericht keine signifikanten Unterschiede."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Laut Bericht sank neben dem dermatologischen auch der internistische Kontakt signifikant; nur bei Neurologie/Psychiatrie war der Anteil nach Heimeintritt leicht erhöht."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Nahezu alle Bewohner hatten mindestens einmal Kontakt zu einem Hausarzt, vor wie nach Heimeintritt auf gleichem Niveau."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Rund 55 % vor und 60 % nach Heimeintritt erhielten keine Betreuung durch einen Dermatologen; das entspricht dem Qualitätsindikator „weniger als ein dermatologischer Kontakt pro Jahr“."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Im Jahr vor Heimeintritt erhielten 53,8 % (n=386) der 718 Personen die Psoriasis-Diagnose in allen vier Quartalen, 24 % (n=172) in nur einem Quartal."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die Psoriasis-Diagnose wurde im Jahr vor Heimeintritt überwiegend von Hausärzten und zu etwa 30 % von Dermatologen kodiert; nach Heimeintritt blieb dieses Verhältnis bestehen."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Das Regressionsmodell erklärt 13,4 % der Varianz (Nagelkerke R² = 0,134). Den Hosmer-Lemeshow-Test (p=0,359; Chi-Quadrat 8,804; 8 Freiheitsgrade) bewertet der Bericht als sehr gute Anpassungsgüte."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Systemtherapeutika erhielten rund 3 % vor und 2 % nach Heimeintritt, biologische Systemtherapeutika nur eine geringe Anzahl."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Die Verordnungsprävalenz systemischer Steroide ging laut Bericht signifikant von rund 17 % auf ca. 14 % zurück."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Die Verordnungsprävalenz topischer Steroide lag vor und nach Heimeintritt konstant bei ca. 40 %."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Reine topische Steroide wurden vor wie nach Heimeintritt von je einem Drittel angewendet, Vitamin-D3-Analoga von knapp unter 10 %."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Den höchsten Anteil der Tagesdosen (DDD) der untersuchten Mittel verordneten nahezu ausschließlich Hausärzte. Dermatologen verordneten vor allem höherklassige topische Steroide (Gruppe III und IV); systemische Steroide kamen nahezu ausschließlich von Hausärzten und anderen Facharztgruppen."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Nahezu alle Bewohner erhielten mindestens eine Arzneimittelverordnung, laut Bericht stieg die Verordnungsmenge signifikant. Im Mittel erhielten sie rund 14 unterschiedliche Wirkstoffe vor und 13 nach Heimeintritt."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Metamizol war vor und nach Heimeintritt das am häufigsten verordnete Mittel. Die weiteren häufigen Wirkstoffe betrafen kardiovaskuläre Erkrankungen oder den Magenschutz (Pantoprazol)."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Qualitätsindikator Systemtherapie: Eine Reduktion biologischer und nicht-biologischer Systemtherapeutika nach Heimeintritt betraf weniger als 10 Erkrankte; keiner von ihnen erhielt eine neue Steroidverschreibung."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Von ca. 20 Personen mit systemischer Therapie vor Heimeintritt sank bei 12 die Verordnungsmenge. Bei über 83 % dieser Gruppe wurde die Therapie nach Heimeintritt nicht angepasst; zwei Personen erhielten neu ein topisches Steroid."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Von 63 Versicherten mit Calcipotriol-Verordnung erhielten rund ein Drittel ausschließlich das Monopräparat und knapp 60 % Kombinationspräparate. Monopräparate in aufeinanderfolgenden Quartalen erhielten vor Heimeintritt rund ein Viertel (n=7) der Monopräparat-Empfänger, nach Heimeintritt 36 % (n=9)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Von 45 Personen mit Psoriasis-Arthritis erhielten vor Heimeintritt rund die Hälfte mindestens eine Systemtherapie-Verordnung, danach rund 40 %."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Mindestens eine Betablocker-Verordnung (ATC C07A) erhielt etwa die Hälfte, nach Heimeintritt rund 47 %."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Eingeschlossen wurden 718 Menschen mit Psoriasis (75 % weiblich, im Mittel 83 Jahre), beobachtet durchgängig von einem Jahr vor bis einem Jahr nach Heimeintritt."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Unter rund 2,3 Mio. DAK-Versicherten wurden 41.667 Personen über 65 Jahre in den Jahren 2011 bis 2014 neu in ein Pflegeheim aufgenommen. Davon erfüllten 718 die Einschlusskriterien, u. a. eine gesicherte Psoriasis-Diagnose im Jahr vor Heimeintritt und ein Jahr Nachbeobachtung."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Über 60 % der Kohorte hatten die niedrigste Pflegestufe. Eine mindestens mittelschwere Psoriasis hatten 3,3 % vor und 2,6 % nach Heimeintritt."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Eine Kassendatenanalyse zu Psoriasis aller Altersgruppen mit vergleichbarem Schweregradansatz nannte einen Anteil mindestens mittelschwerer Psoriasis von rund 20 %; der Bericht bezeichnet die rund 3 % in der eigenen Kohorte als sehr geringes Niveau."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Häufigste Psoriasis-relevante Begleitdiagnose war Hypertonie (rund 80 %), gefolgt von Depression und Diabetes mellitus; laut Bericht nahmen alle diese Diagnosen nach Heimeintritt deutlich ab. Die Demenz-Prävalenz stieg von über 50 % auf über 60 %."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Im Mittel wies ein Bewohner mit Psoriasis drei geriatrische Merkmalskomplexe auf; rund 50 % hatten mindestens eine der definierten Hauterkrankungen."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Von den 430 im Nachbeobachtungsjahr verstorbenen Bewohnern starben 151 im Quartal des Heimeintritts und 140 im ersten Quartal danach, zusammen 291 (67,7 %)."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Die Verstorbenen waren laut Bericht deutlich kränker bzw. pflegebedürftiger: Sie erhielten im Mittel 16,2 (SD ±7,4) Wirkstoffe und waren zu 44,6 % in der niedrigsten Pflegestufe, zu 40,9 % in Stufe 2 und zu 14,4 % in Stufe 3."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "In einer deutschen Kassendatenstudie zur allgemeinen Pflegeheimpopulation hatten 16 % vor und 18 % nach Heimeintritt dermatologische Betreuung; der Bericht nennt den eigenen Anteil im Vergleich deutlich höher."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Die Gesamtprävalenz der Psoriasis in der DAK-G war ähnlich wie bei anderen Krankenkassen, auch bei über 65-Jährigen."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Im qualitativen Teil wurden von Oktober 2020 bis Januar 2021 12 Einzelinterviews geführt (je drei Dermatologinnen, Allgemeinmediziner und Pflegekräfte, eine Pflegedienstleitung, zwei Angehörigen-Proxys), dazu zwei Fokusgruppen."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Die Einzelinterviews ergaben über 250 Aussagen in 8 Hauptkategorien. Die meisten betrafen Verbesserungsmöglichkeiten, vor allem digitale Versorgung, Kooperation der Fachärzte und dermatologische Schulungen für Pflegekräfte und Hausärzte."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Alle Teilnehmer befürworteten diese Themen und nannten zugleich Grenzen der digitalen Versorgung bei Datenschutz und Bildqualität."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Etwa die Hälfte der Interviewten bestätigte eine Abnahme der dermatologischen Versorgung und eine unzureichende fachärztliche Versorgung; alle bestätigten, dass Betroffene primär hausärztlich versorgt werden."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Allgemeinmediziner hielten sich für fähig, Psoriasis zu diagnostizieren; Dermatologen sahen die hausärztliche Diagnose eher kritisch."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "In den Fokusgruppen sprachen sich die Teilnehmer einheitlich für mehr digitale Versorgung aus. Datenschutz und technische Voraussetzungen wie Internetverbindungen hielten sie für derzeit nicht ausreichend gegeben."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Ob Unterversorgung vorliegt, wurde je nach Ort bzw. Pflegeeinrichtung unterschiedlich eingeschätzt. Die Mehrheit gab an, dass systemische Therapien bei der Zielgruppe ihrer Erfahrung nach keine Rolle mehr spielen."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Die Aussagen zur Arzneimitteltherapie waren laut Bericht sehr heterogen: Eine Mehrheit klassifizierte Psoriasis als unterversorgt, stufte sie zugleich aber als nicht therapierelevant ein."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "Zur Krankheitsschwere äußerten sich die Teilnehmer unterschiedlich; mehrheitlich war ihnen nichts über einen grundsätzlich milderen Verlauf im höheren Lebensalter bekannt."}, {"stelle": "bericht_befund.45", "art": "aussage", "unser": "Die Teilnehmer stimmten einer Abnahme der dermatologischen Versorgung nach Heimeintritt zu. Sie berichteten von Schwierigkeiten, niedergelassene Dermatologen für Besuche im Pflegeheim zu finden."}, {"stelle": "bericht_befund.46", "art": "aussage", "unser": "Dass der dermatologische Kontakt vor Heimeintritt der stärkste Prädiktor für einen Kontakt danach ist, bestätigten auch die Teilnehmer des qualitativen Teils."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Echte Angehörige nahmen nicht teil, was der Bericht als Limitation nennt. Die Patientensicht vertraten zwei institutseigene Pflegefachkräfte als Proxy."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Alle befragten Experten sind in der Metropolregion Hamburg tätig."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die angestrebte Vielfalt der Befragten nach Geschlecht, Alter und Berufserfahrung konnte wegen der erschwerten Rekrutierung nicht gewährleistet werden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Alle Interviews und Fokusgruppen fanden pandemiebedingt online bzw. telefonisch statt. In den Fokusgruppen könnte das laut Bericht die freie Diskussion eingeschränkt haben."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Rekrutierung für den qualitativen Teil wurde pandemiebedingt von geplant Juli bis September 2020 bis Ende Januar 2021 verlängert."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Ambulant tätige Pflegekräfte wurden nicht einbezogen; das begrenzt den Einblick in die Zeit vor Heimeintritt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Qualitätsindikatoren zur Versorgungsqualität wurden vom Studienteam selbst entwickelt."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Der Schweregrad wurde über die Inanspruchnahme systemischer Therapien bestimmt. Dieser Ansatz eignet sich laut Bericht nicht uneingeschränkt zur Identifikation von Unterversorgung, weil nur verordnete Mittel erfasst werden und der Bedarf nicht ermittelbar ist."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Wegen der geringen Verordnungsprävalenz biologischer und nicht-biologischer Systemtherapeutika war dazu keine hinreichende Qualitätseinschätzung möglich."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Rezeptfreie (OTC) Präparate und Magistralrezepturen fehlen in den GKV-Daten. Laut Bericht wird der Einsatz von Basistherapeutika daher sehr wahrscheinlich unterschätzt."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Ambulante Diagnosen liegen nur quartalsweise vor; das Quartal des Heimeintritts musste dem Jahr vor oder nach Heimeintritt zugeordnet werden."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Krankenkassen versichern keine Zufallsstichproben der Wohnbevölkerung, sondern historisch gewachsene Populationen."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Die Fallzahl an Personen mit Psoriasis in der Zielpopulation war laut Bericht vergleichsweise klein, weshalb die Aussagekraft zu prüfen war."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Das Prädiktorenmodell für einen dermatologischen Kontakt nach Heimeintritt erklärt 13,4 % der Varianz."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

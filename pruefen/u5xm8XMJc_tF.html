@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF17039</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>27 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 89 Aussagen. Die übrigen
+62 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss hat im schriftlichen Verfahren am 14. Juli 2022 beschlossen, für das Projekt DemTab keine Empfehlung auszusprechen. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt hat eine tabletgestützte Intervention mit drei Hauptkomponenten entwickelt und in einem Cluster-RCT gegen Routineversorgung geprüft. Das Studiendesign bewertet der Ausschuss als grundsätzlich angemessen. Die geplanten Rekrutierungsziele wurden jedoch nicht erreicht. Die Intervention verbesserte die Leitlinienadhärenz als primären Endpunkt nicht signifikant, und auch bei den sekundären Endpunkten zeigten sich keine signifikanten Gruppeneffekte. Hinzu kommen Unterschiede zwischen Interventions- und Kontrollgruppe bei Stichprobengröße und Baseline-Charakteristika sowie ein nicht validiertes Instrument für den primären Endpunkt. Wegen der mangelnden Ergebnisse sieht der Ausschuss keine Empfehlung für die Regelversorgung und weiteren Forschungsbedarf.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">cluster-randomisiert</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Aufgrund der mangelnden Ergebnisse können keine Empfehlungen für die Regelversorgung abgeleitet werden. Es besteht weiterer Forschungsbedarf. Die vom Projekt benannten Empfehlungen sollten bei weiteren Forschungsvorhaben berücksichtigt werden.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -178,14 +157,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Fallzahl nicht erreicht</h3>
+  <h3>Hindernis laut Beschluss: Fallzahl bei der Rekrutierung</h3>
   <p class="unser">Geplante Rekrutierungsziele nicht erreicht</p>
+  
   <blockquote>„Die Studie hat die geplanten Rekrutierungsziele nicht erreicht." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,14 +176,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Keine signifikante Verbesserung der Leitlinienadhärenz (primärer Endpunkt)</p>
+  
   <blockquote>„Die Intervention hat zu keiner signifikanten Verbesserung der Leitlinienadhärenz in der Interventionsgruppe geführt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -218,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.2">
   <h3>Hindernis laut Beschluss: Kontrollgruppe und Vergleichbarkeit</h3>
   <p class="unser">Interventions- und Kontrollgruppe unterschieden sich in Stichprobengröße und Baseline-Charakteristika</p>
+  
   <blockquote>„Zudem unterschieden sich die Interventions- und Kontrollgruppe hinsichtlich Stichprobengrößen und Baseline-Charakteristika." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.3">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Instrument für den primären Endpunkt nicht validiert</p>
+  
   <blockquote>„Zusätzlich ist das Instrument für den primären Endpunkt nicht validiert." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -254,71 +233,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.4">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Keine signifikanten Gruppeneffekte bei den sekundären Endpunkten</p>
+  
   <blockquote>„Auch bei den sekundären Endpunkten für Menschen mit Demenz und deren Angehörige wurden keine signifikanten Gruppeneffekte gefunden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erfolgreiche Entwicklung einer tabletgestützten Intervention für die ambulante Demenzversorgung</p>
-  <blockquote>„Das Projekt hat erfolgreich eine Tablet -gestützte Intervention entwickelt, die helfen soll, die ambulante Versorgung von Menschen mit Demenz nachhaltig zu verbessern." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Studiendesign der drei Teilprojekte grundsätzlich angemessen</p>
-  <blockquote>„Das Studiendesign der drei Teilprojekte war grundsätzlich angemessen." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Quantitative Erhebungen mit hoher Rücklaufquote lieferten Hinweise zur Verbesserung der App</p>
-  <blockquote>„Insbesondere die quantitativen Erhebungen, die eine hohe Rücklaufquote verzeichneten, lieferten Hinweise zur Verbesserung der App." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Leitlinienadhärenz (Einschätzung durch Hausärzt:innen)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Leitlinienadhärenz (Einschätzung durch Angehörige)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Lebensqualität“</h3>
   <p class="unser">Lebensqualität MmD (QOL-AD)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Lebensqualität“</h3>
   <p class="unser">Lebensqualität/subjektive Gesundheit MmD (EQ-5D-5L)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Depressivität MmD (DIA-S)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Funktion, Mobilität und Alltag“</h3>
   <p class="unser">Funktioneller Status MmD (Barthel Index)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Neuropsychiatrische Symptome MmD (NPI)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Belastung von Angehörigen“</h3>
   <p class="unser">Lebensqualität Angehörige, körperliche Skala (SF-36k)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Belastung von Angehörigen“</h3>
   <p class="unser">Depressivität Angehörige (GDS)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.10">
   <h3>Gemessen wurde – eingeordnet als „Belastung von Angehörigen“</h3>
   <p class="unser">Belastung durch Pflege, Angehörige (HPS)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.10" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -523,11 +445,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben DemTab prüfte in einer clusterrandomisierten kontrollierten Studie mit 28 Berliner Hausarztpraxen (15 Interventions-, 13 Kontrollpraxen), ob eine tabletbasierte Anwendung für Hausärzt:innen, Menschen mit Demenz (MmD) und Angehörige die leitliniengerechte Versorgung nach der S3-Leitlinie Demenzen verbessert. In der Interventionsgruppe waren 56 MmD, in der Kontrollgruppe 35 MmD. Primärer Endpunkt war die Leitlinienadhärenz nach 9 Monaten. Gemessen wurde sie mit einer eigens entwickelten Checkliste aus Sicht der Hausärzt:innen und der Angehörigen. Weder beim primären Endpunkt (Hausärzt:innen B = −0,75, p = .525; Angehörige B = 0,12, p = .903) noch bei den sekundären Endpunkten fand der Bericht signifikante Gruppeneffekte, die primäre Hypothese wurde verworfen. Zu Studienbeginn lag die selbst eingeschätzte Adhärenz der Hausärzt:innen bei 21,2 Punkten, die von Angehörigen berichtete bei 6,8 Punkten. Die App wurde über die gesamte Laufzeit genutzt: 524 Logins von Ärzt:innen, 2512 von MmD und Angehörigen. Die Mehrzahl der Praxen gab an, sie gern genutzt zu haben, die Nutzung unterschied sich zwischen den Praxen aber stark. Die Aussagekraft begrenzen laut Bericht die nicht erreichte Fallzahl (geplant 204, angepasst 140) mit geminderter Power, das nicht validierte Messinstrument, ungleiche Gruppengrößen und heterogene Cluster, ein nicht auszuschließender Selektionsbias und die bewusst in Kauf genommene geringe interne Validität. Ein Großteil der Laufzeit fiel in die COVID-19-Pandemie.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Primärer Endpunkt: Nach 9 Monaten fand sich kein Gruppeneffekt auf die Leitlinienadhärenz, weder auf Ebene der Hausärzt:innen (B = −0,75; p = .525) noch auf Ebene der Angehörigen (B = 0,12; p = .903). Laut Bericht gab es keine signifikante Verbesserung, und die primäre Hypothese wurde verworfen.</p>
+  
   <blockquote>„„musste verworfen werden, da weder ein Gruppeneffekt auf Ebene der Hausärzt:innen (B = - .75, KI: 1.57 - .52, p = .525) noch auf Ebene der Angehörigen (B = .12, KI: 2.09 - .90, p = .903) gefunden wurde. Die Intervention hat zu keiner signifikanten Verbesserung der Leitlinienadhärenz in der Interventionsgruppe, verglichen mit der Kontrollgruppe, geführt.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Auch bei den sekundären Endpunkten fand der Bericht keine signifikanten Gruppeneffekte.</p>
+  
   <blockquote>„„Auch bei den sekundären Endpunkten wurden keine signifikanten Gruppeneffekte gefunden.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,31 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zu Studienbeginn (T0) lag die Leitlinienadhärenz in der Selbsteinschätzung der Hausärzt:innen bei M = 21,2 Punkten (SD 5,4; Spanne 7–28). In der Einschätzung der Angehörigen lag sie bei M = 6,8 Punkten (SD 5,5; Spanne 0–19).</p>
+  
   <blockquote>„„Die Leitlinienadhärenz lag zu T0 bei M = 21. 2 Punkten (SD = 5.4, range: 7 - 28) in der Einschätzung durch Hausärzt:innen selbst und bei M = 6.8 Punkten (SD = 5.5, range: 0 - 19) in der Einschätzung durch die Angehörigen.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Der Bericht kommt zu dem Schluss: Die App wurde aktiv verwendet und weitgehend positiv bewertet, das Versorgungskonzept hat sich aber gemessen an den nicht erreichten Zielkriterien nicht in der Praxis bewährt.</p>
-  <blockquote>„„Auch wenn die in der Intervention eingesetzte Tablet-Anwendung [...] aktiv verwendet wurde sowie auch weitgehend positiv bewertet wurde, hat sich das Versorgungskonzept nicht in der Praxis bewährt, gemessen an den vom Forschungsteam vorgegebenen Zielkriteri en, die nicht erreicht wurden.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die ursprünglich geplante Stichprobengröße von N = 204 wurde wegen Rekrutierungsproblemen nicht erreicht. Laut Bericht minderte das die statistische Power.</p>
+  
   <blockquote>„„Eine weitere Limitation besteht in der nicht erreichten Fallzahl und der daraus resultierenden Minderung der statistischen Power . [...] dass die ursprünglich geplante Stichprobengröße von N = 204 nicht erreicht werden konnte.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der primäre Endpunkt Leitlinienadhärenz wurde mit einem selbst entwickelten, nicht validierten Instrument bei Hausärzt:innen und Angehörigen gemessen. Ein standardisiertes Instrument existiert laut Bericht nicht.</p>
+  
   <blockquote>„„Die Leitlinienadhärenz wurde mit Hilfe von einen selbst entwickelten, nicht validierten Messinstruments bei Hausärzt:innen und Angehörigen gemessen. Da aktuell kein standardisiertes Messinstrument zur Messung der Leitlinienadhärenz in der Versorgung der Demenz existiert“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,50 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Zahl der MmD pro Praxis schwankte stark, die Cluster waren daher unterschiedlicher als bei der Planung angenommen. In der Interventionsgruppe nahmen mehr Personen teil als in der Kontrollgruppe. Laut Bericht ist beides der Aussagekraft der Gruppenvergleiche abträglich.</p>
+  
   <blockquote>„„dass durch die stark variierende Anzahl an MmD pro Praxis die einzelnen Cluster unterschiedlicher sind, als bei Planung der Studie anzunehmen war. In der Interventionsgruppe nahmen zudem auch mehr Personen teil als in der Kontrollgruppe, was wiederum der Aussagekraft von Gruppenvergleichen abträglich ist.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.6">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Ein Selektionsbias bei Rekrutierung und Studienteilnahme ist nicht auszuschließen. Wegen der zeitlichen Verzögerung waren nicht alle Hausärzt:innen bei der Rekrutierung ihrer Patient:innen verblindet.</p>
-  <blockquote>„„Ein Selektionsbias bei der Rekrutierung und Studienteilnahme von Patient:innen und Angehörigen kann nicht ausgeschlossen werden, da aufgrund der Rekrutierungsproblematik und der damit einhergehenden zeitlichen Verzögerung des Projektes nicht alle HA bei der Rekrutierung ihrer Patient:innen verblindet waren.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.7">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Zugunsten der externen Validität verzichtete das Team bewusst auf harte Nutzungskriterien. Es griff auch dann nicht ein, wenn die Nutzung trotz Nachfrage nicht stieg, was der Bericht selbst als geringe interne Validität bezeichnet.</p>
-  <blockquote>„„hat sich das Projektteam bewusst gegen harte Einschlusskriterien (beispielsweise tägliche Nutzung der Anwendung als Einschlusskriterium) entschieden und auch in Situationen, in denen ersichtlich wurde, dass die Nutzung trotz Nachfrage nicht gestiegen ist, nicht weiter eingegriffen (geringe interne Validität).“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -713,11 +578,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Die Kontrollgruppe wird auf S. 4 als „keine Intervention“ beschrieben. Laut S. 10 erhielt sie jedoch Informationsmaterialien, die nach Angabe der Projektnehmer „in vielen Fällen über die Standardversorgung hinaus“ gehen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -732,11 +597,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Eingeschlossen wurden laut S. 13 N = 102 Personen. In die Gruppen verteilt (S. 4) und zu Baseline erhoben (S. 16) sind 91 MmD (56 + 35). Der Bericht erläutert die Differenz in den vorliegenden Abschnitten nicht.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -751,11 +616,163 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 23 beschreibt ein „konstantes Interesse an der Anwendung über den gesamten Studienverlauf“ und ein „großes Engagement“. S. 31 berichtet, dass manche Praxen die Anwendung „über mehrere Wochen gar nicht genutzt“ haben, und S. 33, dass die digitale Unterstützung von den Praxen „nicht in der Form angenommen wie erwartet“ wurde.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>62 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss hat im schriftlichen Verfahren am 14. Juli 2022 beschlossen, für das Projekt DemTab keine Empfehlung auszusprechen. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Aufgrund der mangelnden Ergebnisse können keine Empfehlungen für die Regelversorgung abgeleitet werden. Es besteht weiterer Forschungsbedarf. Die vom Projekt benannten Empfehlungen sollten bei weiteren Forschungsvorhaben berücksichtigt werden.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erfolgreiche Entwicklung einer tabletgestützten Intervention für die ambulante Demenzversorgung</p>
+  
+  <blockquote>„Das Projekt hat erfolgreich eine Tablet -gestützte Intervention entwickelt, die helfen soll, die ambulante Versorgung von Menschen mit Demenz nachhaltig zu verbessern." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Studiendesign der drei Teilprojekte grundsätzlich angemessen</p>
+  
+  <blockquote>„Das Studiendesign der drei Teilprojekte war grundsätzlich angemessen." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Quantitative Erhebungen mit hoher Rücklaufquote lieferten Hinweise zur Verbesserung der App</p>
+  
+  <blockquote>„Insbesondere die quantitativen Erhebungen, die eine hohe Rücklaufquote verzeichneten, lieferten Hinweise zur Verbesserung der App." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Der Bericht kommt zu dem Schluss: Die App wurde aktiv verwendet und weitgehend positiv bewertet, das Versorgungskonzept hat sich aber gemessen an den nicht erreichten Zielkriterien nicht in der Praxis bewährt.</p>
+  
+  <blockquote>„„Auch wenn die in der Intervention eingesetzte Tablet-Anwendung [...] aktiv verwendet wurde sowie auch weitgehend positiv bewertet wurde, hat sich das Versorgungskonzept nicht in der Praxis bewährt, gemessen an den vom Forschungsteam vorgegebenen Zielkriteri en, die nicht erreicht wurden.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.6">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Ein Selektionsbias bei Rekrutierung und Studienteilnahme ist nicht auszuschließen. Wegen der zeitlichen Verzögerung waren nicht alle Hausärzt:innen bei der Rekrutierung ihrer Patient:innen verblindet.</p>
+  
+  <blockquote>„„Ein Selektionsbias bei der Rekrutierung und Studienteilnahme von Patient:innen und Angehörigen kann nicht ausgeschlossen werden, da aufgrund der Rekrutierungsproblematik und der damit einhergehenden zeitlichen Verzögerung des Projektes nicht alle HA bei der Rekrutierung ihrer Patient:innen verblindet waren.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.7">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Zugunsten der externen Validität verzichtete das Team bewusst auf harte Nutzungskriterien. Es griff auch dann nicht ein, wenn die Nutzung trotz Nachfrage nicht stieg, was der Bericht selbst als geringe interne Validität bezeichnet.</p>
+  
+  <blockquote>„„hat sich das Projektteam bewusst gegen harte Einschlusskriterien (beispielsweise tägliche Nutzung der Anwendung als Einschlusskriterium) entschieden und auch in Situationen, in denen ersichtlich wurde, dass die Nutzung trotz Nachfrage nicht gestiegen ist, nicht weiter eingegriffen (geringe interne Validität).“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -770,11 +787,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 33 spricht von einer „weitgehend positiv“ bewerteten App. In der Befragung der MmD bzw. Angehörigen (S. 27) fanden 44,2 % die App gut oder sehr gut, 23,3 % schlecht oder sehr schlecht, und 63,4 % sahen kaum oder keinen Mehrwert für die MmD.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -789,11 +806,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 15 bewertet die Umstellung auf telefonische Befragungen als „unproblematisch“. Im selben Abschnitt steht, dass der MMST telefonisch nicht erhoben werden konnte und T1 vollständig telefonisch stattfand.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -803,16 +820,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>52 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die hohe selbst angegebene Leitlinienadhärenz der Hausärzt:innen zu Studienbeginn hatte das Forschungsteam nicht erwartet, da frühere Studien anderes berichtet hatten. Angehörige schätzten die Adhärenz geringer ein als die behandelnden Praxen.</p>
+  
   <blockquote>„„Dieses Ergebnis hat das Forschungsteam nicht erwarten, da frühere Studienergebnisse anderes berichtet haben (Vickrey et al., 2006) . [...] Angehörige schätzten diese deutlich geringer ein als die behandelnden HP.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Design: clusterrandomisierte kontrollierte Studie mit einer Interventionsgruppe (tabletbasierte Intervention, 56 MmD) und einer Kontrollgruppe (keine Intervention, 35 MmD). Randomisiert wurde auf Ebene von 28 Hausärzt:innen.</p>
+  
   <blockquote>„„Hierfür wurde eine cluster -randomisierte kontrollierte Studie mit einer Interventionsgruppe (tablet-basierte Intervention, n = 56 MmD ) und einer Kontrollgruppe (keine Intervention, n = 35 MmD) durchgeführt. Die Studienteilnehmer:innen wurden auf der Ebene der Hausärzt:innen (N = 28) randomisiert.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +862,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die 28 Praxen wurden unter anderem nach Region (Stadt vs. Land) stratifiziert und zufällig zugeteilt: 15 Praxen der Interventions-, 13 der Kontrollgruppe.</p>
+  
   <blockquote>„„der Demenzpatient:innen und Region (Stadt vs. Land) stratifiziert und jeweils zufällig der Interventionsgruppe (n = 15) und der Kontrollgruppe (n = 13) zugewiesen.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +881,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Praxisrekrutierung (Juni 2018 bis März 2020) wurde unter anderem eine Zufallsstichprobe von 486 Praxen aus der Datenbank der KV Berlin telefonisch kontaktiert. 116 Praxen wurden persönlich aufgesucht, 28 Praxen wurden eingeschlossen.</p>
+  
   <blockquote>„„eine Zufallsstichprobe von hausärz tlichen Praxen (n = 486) aus einer Datenbank der Kassenärztlichen Vereinigung Berlin [...] Insgesamt wurden n = 116 HP in Berlin persönlich vom Studienteam aufgesucht. [...] Insgesamt konnten N = 28 HP in die Studie einbezogen werden.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +900,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die 28 Praxen gaben Kontaktdaten von 194 potenziellen Teilnehmenden weiter, 102 davon wurden eingeschlossen. Pro Praxis wurden im Mittel 7 MmD vermittelt (Spanne 1–17) und 4 eingeschlossen (Spanne 1–11).</p>
+  
   <blockquote>„„wurden insgesamt n = 194 Kontaktdaten von potenziellen Teilnehmenden an das Studienteam weitergegeben. Von diesen Personen wurden schließlich N = 102 in die Studie eingeschlossen. Der Mittelwert der pro Praxis vermittelten MmD lag bei 7 (range: 1 -17 [...]) pro Praxis lag der Mittelwert der erfolgreich eingeschlossenen MmD bei 4 (range: 1 -11“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +919,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Baseline-Erhebungen gab es mit 91 MmD und 88 Angehörigen. Das Follow-up neun Monate nach Interventionsbeginn umfasste 76 MmD und 69 Angehörige.</p>
+  
   <blockquote>„„Insgesamt wurden n = 91 Baseline-Datenerhebungen mit teilnehmenden MmD und n = 88 mit pflegenden und Angehörigen [...] Die Follow-up Befragung wurde neun Monate nach Beginn der Intervention mit n = 76 MmD und n = 69 Angehörigen durchgeführt.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +938,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zum Umgang mit der Tablet-Anwendung wurden 56 Patient:innen und 15 Hausärzt:innen geschult.</p>
+  
   <blockquote>„„Insgesamt wurden Schulungen mit N = 56 Patient:innen und n = 15 Hausärzt:innen durchgeführt.“ – Bericht, S. 7" <span class="s">S. 7</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +957,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Stichprobe der Hausärzt:innen: im Mittel 49,9 Jahre alt, knapp 61 % weiblich, 11,8 Jahre Berufserfahrung. Stichprobe der MmD: 59 % weiblich, im Mittel 80,5 Jahre alt, mittlerer MMST 18,9 (laut Bericht mittelschwere Demenz), 65 % mit Pflegegrad.</p>
+  
   <blockquote>„„Teilnehmende Hausärzt:innen waren im Durchschnitt M = 49.9 Jahre alt [...] Knapp 61% [...] weiblich [...] M = 11.8 Jahre Berufserfahrung [...] MmD waren 54 weiblich (59%), und das Durchschnittsalter lag bei M = 80.5 Jahren [...] mittlere MMST-Wert bei M = 18.9 (SD = 7.8), was einer mittelschweren Demenz entspricht. [...] (65%) hatte einen Pflegegrad.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +976,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die pflegenden Angehörigen waren im Mittel 69,5 Jahre alt und zu 69,2 % weiblich. Sie betreuten im Mittel seit 55,2 Monaten, 55,2 % waren (Ehe-)Partner:innen und 39,7 % Kinder.</p>
+  
   <blockquote>„„Pflegende Angehörige waren im Durchschnitt M = 69.5 Jahre alt (SD = 11.28) und die Mehrheit (69.2%) weiblich. Im Durchschnitt betreuten pflegende Angehörige seit M = 55.2 Monaten [...] Bei 55.2% [...] Partner:innen/Eheparter:innen und bei 39.7% um Kinder.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +995,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei über der Hälfte der Studienteilnehmer:innen hatten Fachärzt:innen die Demenzdiagnose gestellt.</p>
+  
   <blockquote>„„Beispielsweise wurde bei über der Hälfte der Studienteilnehmer:innen im DemTab Projekt die Demenzdiagnose von Fachärzt:innen gestellt.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1014,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die interne Konsistenz der Checklisten zur Leitlinienadhärenz betrug α = .876 (Hausärzt:innen) und α = .90 (Angehörige).</p>
+  
   <blockquote>„„Die interne Konsistenz (Cronbach’s Alpha) der Checklisten betrug für Hausärzt:innen α = .876 und für Angehörige α = .90.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1033,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für den Summenscore der Checkliste wurden fünf Varianten zum Umgang mit der Kategorie „nicht zutreffend“ berechnet. Laut Bericht zeigten sich keine wesentlichen Unterschiede zwischen ihnen.</p>
+  
   <blockquote>„„Es wurden fünf Scoring-Varianten berechnet und verglichen, insgesamt zeigten sich keine wesentlichen Unterschiede zwischen den einzelnen Berechnungsarten“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1052,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Sekundäre Endpunkte der MmD, Koeffizient für die Gruppenzugehörigkeit (Kontrollgruppe): QOL-AD 0,97 (−1,46 bis 3,40; p = .432). Laut Tabelle außerdem EQ-5D-5L −1,66 (p = .087), DIA-S −0,02 (p = .961), Barthel-Index 2,60 (p = .500) und NPI 1,92 (p = .509).</p>
+  
   <blockquote>„„Lebensqualität (QOL-AD) Konstante 11.69 4.54 18.83 .001 Gruppenzugehörigkeit (KG) .97 -1.46 3.40 .432“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1071,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Sekundäre Endpunkte der Angehörigen, Koeffizient für die Gruppenzugehörigkeit (Kontrollgruppe): HPS −1,00 (−5,26 bis 3,27; p = .640). Laut Tabelle außerdem SF-36 körperlich 1,04 (p = .611), SF-36 psychisch −2,02 (p = .327) und GDS −0,09 (p = .918).</p>
+  
   <blockquote>„„Belastung durch Pflege (HPS) Konstante 16.19 5.16 27.21 .004 Gruppenzugehörigkeit (KG) -1.00 -5.26 3.27 .640“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1090,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Über die gesamte Projektlaufzeit loggten sich die Ärzt:innen 524-mal ein, im Mittel 1,42 Minuten pro Sitzung. MmD und Angehörige nutzten die App 2512-mal, im Mittel 49,46 Minuten pro Sitzung.</p>
+  
   <blockquote>„„Die Ärzt:innen besuchten die DemTab- App insgesamt 524 -mal [...] im Mittel 1.42 Minuten pro Sitzung. Demgegenüber verwendeten die MmD und Angehörigen die Anwendu ng insgesamt 2512-mal bei einer mittleren Nutzungsdauer von 49.46 Minuten pro Sitzung.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1109,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht war das Interesse an der App in den ersten Wochen deutlich gesteigert, danach blieb es über den gesamten Studienverlauf konstant.</p>
+  
   <blockquote>„„Es zeigt sich ein deutlich gesteigertes Interesse an der Anwendung in den ersten Wochen der Benutzung. Dies ist erwartbar. Darüber hinaus zeigt sich jedoch auch ein konstantes Interesse an der Anwendung über den gesamten Studienverlauf.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1128,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Checklisten-Funktion nutzten einige Praxen regelmäßig und konstant, andere weniger stringent.</p>
+  
   <blockquote>„„Es zeigt sich deutlich, wie einige Praxen sich regelmäßig und konstant mit der Anwendung auseinandergesetzt haben, wohingegen andere den Gebrauch weniger stringent wiederholten.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Nachrichtenfunktion nutzten einige wenige Accounts regelmäßig und mit vielen Nachrichten, andere kaum, sporadisch oder gar nicht.</p>
+  
   <blockquote>„„Während einige wenig e sich regelmäßig dieses Werkzeuges bedienten und häufig und viele Nachrichten verschickten, verwendeten andere die Funktion kaum, sporadisch oder gar nicht.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Funktion zur Unterstützung der Antidementiva-Verordnung wurde im Interventionszeitraum 70-mal geöffnet. Sie wurde dabei nie bis zur Festlegung einer (Neu-)Verordnung durchlaufen.</p>
+  
   <blockquote>„„Diese Funktion wurde von den teilnehmenden HP im Interventionszeitraum insgesamt 70mal geöffnet. Allerdings wurde die Funktion dabei nicht komplett angewendet, nämlich bis zur Festlegung einer (Neu -)Verordnung von Antidementiva.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1185,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">14 der 15 Praxen der Interventionsgruppe bewerteten die App nach neun Monaten. Sie schätzten sie überwiegend als schnell erlernbar, einfach zu verwenden und ohne Handbuch benutzbar ein.</p>
+  
   <blockquote>„„Von 15 hausärztlichen Praxen, die in der Interventionsgruppe teilgenommen haben, reichten 14 Praxen ihre Bewertung [...] ein [...] überwiegend als schnell erlernbar, einfach zu verwenden und auch ohne Handbuch benutzbar ein.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1204,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zwei Drittel der Hausärzt:innen gaben an, die App gern zu verwenden, und sahen ihre Erwartungen erfüllt. Über 40 % fühlten sich bei der leitliniengerechten Behandlung unterstützt, und die Aussage, die App unterstütze den Arbeitsalltag, wurde gemischt bewertet.</p>
+  
   <blockquote>„„Zwei Drittel gaben an, die App gerne zu verwenden und dass sie ihren Erwartungen entsprach. Über 40% fühlten sich unterstützt bei der leitliniengerechten Behandlung [...] Weitere Aussagen wie „Die DemTab -App unterstützt meinen Arbeitsalltag“ wurden eher gemischt bewertet.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1223,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Praxen (N = 14) bewerteten diese Funktionen mit gut oder sehr gut: Nachrichten an Patient:innen 84 %, Checkliste zur S3-Leitlinie 78 %, Leitlinien-Volltext 85 %, Unterstützung der Antidementiva-Verordnung 78 %, Vereinbarungen mit Patient:innen 71,4 %.</p>
+  
   <blockquote>„„Nachrichten an Patient:innen zu verfassen, von 84% mit gut oder sehr gut angegeben. Auch die Checkliste zur S3 -Leitlinie Demenzen empfanden 78% [...] 85% nannten aber auch das Volltext- Angebot [...] Antidementiva -Verordnung [...] 78% [...] Vereinbarungen mit Patient:innen [...] (71,4%).“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1242,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">43 MmD bzw. Angehörige bewerteten die App. 44,2 % fanden sie insgesamt gut oder sehr gut, 23,3 % schlecht oder sehr schlecht und 32,6 % gaben eine mittlere Bewertung ab.</p>
+  
   <blockquote>„„Davon gaben 19 Personen (44.2%) 1 an, dass sie die App insgesamt sehr gut oder gut fanden, hingegen bewerteten n = 10 Personen (23.3%) die App als schlecht oder sehr schlecht. Etwa ein Drittel (n = 14 Personen; 32.6%) gaben eine mittlere Bewertung ab.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1261,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Einen großen oder sehr großen Mehrwert der App für die MmD sahen 36,5 % der Befragten, 63,4 % sahen kaum oder keinen. Für sich selbst sahen 52,4 % einen großen oder sehr großen Mehrwert, 47,6 % kaum oder keinen.</p>
+  
   <blockquote>„„gaben n = 15 Personen (36.5%) an, dass der Mehrwert groß oder sehr groß gewesen sei. Hingegen gaben n = 26 Personen (63.4%) an, kaum oder gar keinen Mehrwert der App gesehen zu haben. [...] n = 22 (52.4%) [...] Mehrwert für sich selbst [...] n = 20 (47.6%) Personen sahen kaum oder gar keinen Mehrwert.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1280,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">46,3 % der Befragten gaben an, als pflegende Angehörige im Alltag sehr oder etwas durch die App unterstützt worden zu sein. Eine Entlastung der MmD sahen 48,8 %, 51,2 % sahen kaum oder keine.</p>
+  
   <blockquote>„„gaben n = 19 Personen (46.3%) an, sehr oder etwas durch die App unterstützt worden zu sein. [...] n = 20 Personen (48.8%) gaben an, durch die App se hr oder etwas entlastet worden zu sein, n = 21 Personen (51.2%) sagten sie seien kaum oder gar nicht entlastet worden.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1299,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Spiele-Anwendung wurde am häufigsten als Lieblingsfunktion genannt (41,9 %). In der COVID-19-Pandemie fanden 30 % die App sehr oder etwas hilfreich, und 84,6 % gaben an, ihre Nutzung habe sich nicht geändert.</p>
+  
   <blockquote>„„Die Spiele -Anwendung wurde insgesamt am häufigsten als Favorit genannt ( n = 18 Nennungen, 41.9%). [...] n = 12 Personen (30%) an die App sei sehr oder etwas hilfreich gewesen. Insgesamt gaben jedoch fast alle Befragten an (n = 33, 84.6%), die Nutzung habe sich während der Pandemie nicht geändert.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1318,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Nachrichtenfunktion zwischen Praxis und Patient:in bzw. Angehörigen spielte laut Bericht in der Nutzung eine wichtige Rolle. Den Nutzungsschwerpunkt sieht der Bericht jeweils zu Beginn der Intervention.</p>
+  
   <blockquote>„„wobei ein Nutzungsschwerpunkt jeweils zu Beginn der Intervention zu verzeichnen war. [...] Insbesondere die Nachrichtenfunktion zwischen HP und Patient:in/Angehörigen spielte in der Nutzung eine wichtige Rolle.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1337,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Qualitative Interviews, Kategorie A: Für die häusliche Pflege werden kollegialer Austausch und Zusammenarbeit mit Angehörigen als notwendig beschrieben. Die Vermittlung an demenzspezifische Beratungs- und Unterstützungseinrichtungen sollte häufiger erfolgen.</p>
+  
   <blockquote>„„Der kollegiale Austausch mit Fachleuten und die Zusammenarbeit mit Angehörigen sind notwendig, um die komplexe häusliche Pflege zu gewährleisten. Dennoch sollte die Kontaktaufnahme und Vermittlung zu demenzspezifischen Beratungs - und Unterstützungseinrichtungen häufiger erfolgen.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1356,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Qualitative Interviews, Kategorie B (Technik): Hausärzt:innen befürchteten, dass Angehörige die Kommunikationsfunktion übermäßig nutzen und sie damit zusätzlich belasten.</p>
+  
   <blockquote>„„Darüber hinaus wurde eine übermäßige Anwendung der Kommunikationsfunktion durch pflegenden Angehörige befürchtet, die die Hausärzt:innen zusätzlich belasten könnte.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1375,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die erste App-Version war am 15.05.2019 fertig. Es folgten sieben Aktualisierungen, die letzte (Version 1.4.1) am 13.12.2019.</p>
+  
   <blockquote>„„Insgesamt gab es sieben Aktualisierungen der Anwendung, die letzte Version trug die Nummer 1.4.1 und erschien am 13.12.2019“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1394,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Checklisten-Anwendung wurde als eigenständige App ausgegliedert und ist kostenlos im iOS AppStore verfügbar.</p>
+  
   <blockquote>„„Die App ist aktuell im iOS AppStore kostenlos verfügbar und soll auch langfristig dort platziert bleiben [...] Inhaltlich stellt sie eine Ausgliederung der Checklist-Anwendung dar, eines der Primärziele des Projekts.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1413,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Kontrollgruppe erhielt Informationsmaterialien von BMFSFJ bzw. Zentrum für Qualität in der Pflege. Laut Projektnehmern gehen diese in vielen Fällen über die Standardversorgung hinaus.</p>
+  
   <blockquote>„„Die v om BMFSFJ bzw. vom Zentrum für Qualität in der Pflege entwickelten Materialien stellen eine weiterführende Informationsmöglichkeit für Demenzpatient:innen und deren Angehörige dar [...] und gehen somit in vielen Fällen über die Standardversorgung hinaus.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1432,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen Rekrutierungsschwierigkeiten vor und während der COVID-19-Pandemie wurde die Fallzahl auf N = 140 neu berechnet (20 Praxen, ICC 0,03, Drop-out 18 %). Auch diese angepasste Stichprobengröße wurde nicht erreicht.</p>
+  
   <blockquote>„„Rekrutierungsschwierigkeiten vor und insbesondere während der COVID- 19 Pandemie führten dazu, dass die im Projektantrag vorgelegte Fallzahlberechnung im Projektverlauf angepasst werden musste. [...] ergibt sich eine Stichprobengröße von N = 140. Diese Stichprobengröße konnte leider nicht erreicht werden.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1451,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Checkliste wurde in keiner anderen Studie eingesetzt. Die Antwortkategorie „nicht zutreffend“ wurde uneinheitlich verwendet, was den Summenscore eventuell verzerren könnte.</p>
+  
   <blockquote>„„Die Checkliste ist im Rahmen der Studie entwickelt worden und wurde bislang in keiner weiteren Studie eingesetzt. [...] dass die Verwendung der Kategorie „nicht zutreffend“ nicht einheitlich war und somit bei der Berechnung des Summenscores eventuell zu Verzerrungen führen könnte.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1470,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Über Cronbach&#x27;s Alpha hinaus wurden für die Checklisten keine Testgütekriterien geprüft.</p>
+  
   <blockquote>„„Es wurden keine weiteren Testgütekriterien überprüft.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1489,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Hausärzt:innen unterschieden sich stark in Häufigkeit und Intensität der Tabletnutzung. Manche Praxen nutzten die Anwendung über mehrere Wochen gar nicht.</p>
+  
   <blockquote>„„dass sich vor allem Hausärzt:innen in der Häufigkeit und Intensität der Tabletnutzung stark unterschieden haben. So lässt sich ebenfalls aus den Daten entnehmen, dass manche HP die Anwendung über mehrere Wochen gar nicht genutzt haben.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1508,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Hausärzt:innen hatten in der vorgeschalteten Machbarkeitsstudie digitale Unterstützung gewünscht. In der Studie nahmen die beteiligten Praxen sie nicht in der erwarteten Form an.</p>
+  
   <blockquote>„„In den Expertenbefragungen der vorgeschalteten Machbarkeitsstudie wurde seitens der Hausärzt:innen zwar der Wunsch nach digitaler Unterstützung geäußert, diese wurde aber von den an der Studie beteiligten HP nicht in der Form angenommen wie erwartet.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1527,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die App war nicht mit der Praxissoftware verknüpft und lief auf einem separaten Gerät, alle Stamm- und aktuellen Daten mussten doppelt dokumentiert werden. Laut Bericht schränkte das die Nutzung ein.</p>
+  
   <blockquote>„„musste die App stets auf einem separaten Gerät bedient werden, Informationen aus der App w aren nicht in die Praxissoftware übertragbar (und umgekehrt), somit mussten sämtliche Stammdaten und aktuelle Informationen doppelt dokumentiert werden. [...] stellte eine Hürde im Arbeitsalltag der teilnehmenden HAs dar un d schränkte die Nutzung ein.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1546,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Rekrutierung war schon vor der Pandemie schwierig. Das Einschlusskriterium von mindestens sieben einschließbaren MmD pro Praxis wurde gestrichen, und auch danach konnte nur ein Teil eingeschlossen werden. Die Pandemie verschärfte die Lage, und stärkere Unterstützung durch den Hausärzteverband wäre laut Bericht wünschenswert gewesen.</p>
+  
   <blockquote>„„während zunächst mindestens sieben potentiell einschließbare MmD pro Praxis geplant waren, wurde dieses Kriterium gestrichen [...] Von diesen konnte dann weiterhin nur ein Teil eingeschlossen werden. Die COVID-19-Pandemie hat diese Lage nochmals sehr verschärft. Insgesamt wäre eine stärkere Unterstützung durch den Kooperationspartner Hausärzteverband e.V. [...] wünschenswert gewesen.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1565,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Studie lief überwiegend unter den Bedingungen der COVID-19-Pandemie. Laut Bericht führte das zu deutlichen Umsetzungsschwierigkeiten.</p>
+  
   <blockquote>„„Die Studiendurchführung fand in der überwiegenden Laufzeit unter den besonderen Bedingungen der COVID- 19-Pandemie statt [...] Dies führte zu deutlichen Umsetzungsschwierigkeiten des DemTab -Projekts.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1584,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der Rekrutierungsprobleme wurden neben pflegenden Angehörigen auch professionelle Bezugspflegende zugelassen.</p>
+  
   <blockquote>„„aufgrund der Rekrutierungsprobleme wurde auch professionelle Bezugspflegende zugelassen“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1603,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Verblindung ließ sich wegen der Tablets nicht aufrechterhalten, und die Datenerheber:innen waren beim Follow-up nicht verblindet. Die konkreten Forschungshypothesen kannten alle Beteiligten nicht.</p>
+  
   <blockquote>„„Naturgemäß konnte die Verblindung im Verlauf der Studie aufgrund der benötigten Tablets in der Interventionsgruppe nicht aufrechterhalten werden und die Datenerheber:innen waren zur Follow-up Befragung nicht verblindet. Alle beteiligten Personen waren jedoch in Unkenntnis der konkreten Forschungshypothesen.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1622,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ab März 2020 wurden die Erhebungen telefonisch geführt: zu T0 bei 12 MmD, zu T1 bei allen Teilnehmenden. Der MMST konnte telefonisch nicht erhoben werden.</p>
+  
   <blockquote>„„musste die Datenerhebungen ab März 2020 telefonisch durchgeführt werden. Dies betraf zum ersten Messzeitp unkt 12 MmD. [...] Mit Ausnahme des MMST konnten sonst alle Daten erhoben werden. Die Befragung zum zweiten Messzeitpunkt w urde für alle Teilnehmenden telefonisch durchgeführt.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1641,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Mit der COVID-19-Pandemie wurde die Patient:innen-Schulung auf ein telefonisches Format umgestellt.</p>
+  
   <blockquote>„„Mit dem Aufkommen der COVID- 19 Pandemie wurde das Schulungskonzept für Patient:innen auf eine telefonische Schulung umgestellt“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1660,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Fehlende Werte wurden unter der Annahme Missing at Random mit zehn Wiederholungen multipel imputiert.</p>
+  
   <blockquote>„„Fehlende Werte in der vorliegenden Studie wurden mit multipler Imputation in 10 Wiederholungen ersetzt unter der Annahme, dass der Mechanismus der fehlenden Werte Missing at Random (MAR) sei.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1679,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Anreize waren gering: Nur die Praxen erhielten eine geringfügige Aufwandsentschädigung, für Patient:innen und Angehörige gab es lediglich eine Verlosung von Studientablets.</p>
+  
   <blockquote>„„im vorliegenden Projekt erhielten nur die HP eine geringfügige Aufwandsentschädigung, für Patient:innen und Angehörige gab es eine lediglich Verlosung von Studientablets“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1698,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Fach- und Hausärzt:innen gemeinsam in die Intervention einzubeziehen, war im dreijährigen Projektzeitraum logistisch nicht möglich.</p>
+  
   <blockquote>„„die Möglichkeit, beide Leistungserbringer mit in eine solche Intervention einzubeziehen – was angesichts der logistischen Herausforderungen im dreijährigen Projektzeitraum nicht möglich war.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1717,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Beim Expertenworkshop sagte eine von drei eingeladenen Hausärztinnen kurzfristig ab.</p>
+  
   <blockquote>„„Insgesamt wurden drei Hausärztinnen eingeladen, eine Hausärztin musste leider kurzfristig absagen.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1736,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.21">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Nach einer bestimmten Kombination von Aktivitäten in der App konnten sich Nutzer:innen nicht mehr einloggen. Laut Bericht wurde der Fehler schnell behoben.</p>
+  
   <blockquote>„„dass sich Personen nicht mehr in die Anwendung einloggen konnten, wenn zuvor eine bestimmte Kombination von Aktivitäten innerhalb der App getätigt wurden. Dieses Problem konnten schnell und unkompliziert behoben werden.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1755,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.22">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Code kann nicht vollständig Open Source angeboten werden, weil für bestimmte Inhalte nur projektbezogene Nutzungsrechte bestehen.</p>
+  
   <blockquote>„„Vollständig Open Source kann der Code nicht angeboten werden, da wir in der Applikation Inhalte anbieten oder bereitstellen, für die wir nur im Rahmen des DemTab Projekts Nutzungsrechte erhalten haben.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1774,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.23">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eine Hauptkomponente der Anwendung (Python 2.7) wird nicht mehr gepflegt, ein reibungsloser Betrieb ist daher nicht garantiert. Ein Offline-Betrieb ohne Server war nicht vorgesehen und wurde nicht implementiert.</p>
+  
   <blockquote>„„dass eine Hauptkomponente auf der die Anwendung basiert (Python 2.7) inzwischen nicht weiter gepflegt oder entwickelt wird. Durch diese Abhängigkeit kann ein reibungsloser Betrieb nicht garantiert w erden. [...] Ein Offline-Betrieb, der die Benutzung der App ohne Server ermöglicht, war nicht vorgesehen und wurde nicht implementiert.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1793,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.24">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Weiterbetrieb beruht auf dem Engagement Einzelner. Ohne weitere Förderung, die zum Berichtszeitpunkt nicht beantragt war, ist eine sinnvolle Nutzung der DemTab-App nach Projektende nicht möglich.</p>
+  
   <blockquote>„„Allerdings basiert dies lediglich auf dem Engagement einzelner, wodurch der Betrieb über längere Zeit hinaus nicht gewährleistet werden kann. Insofern keine weitere Förderung gewährt wird (zum jetzigen Zeitpunkt ist keine weitere Förderung beantragt), ist die Nutzung der DemTab- App nach Ende der Projektlaufzeit nicht (sinnvoll) möglich“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1826,28 +1843,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 156, "akronym": "DemTab", "kennung": "u5xm8XMJc_tF", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss hat im schriftlichen Verfahren am 14. Juli 2022 beschlossen, für das Projekt DemTab keine Empfehlung auszusprechen. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat eine tabletgestützte Intervention mit drei Hauptkomponenten entwickelt und in einem Cluster-RCT gegen Routineversorgung geprüft. Das Studiendesign bewertet der Ausschuss als grundsätzlich angemessen. Die geplanten Rekrutierungsziele wurden jedoch nicht erreicht. Die Intervention verbesserte die Leitlinienadhärenz als primären Endpunkt nicht signifikant, und auch bei den sekundären Endpunkten zeigten sich keine signifikanten Gruppeneffekte. Hinzu kommen Unterschiede zwischen Interventions- und Kontrollgruppe bei Stichprobengröße und Baseline-Charakteristika sowie ein nicht validiertes Instrument für den primären Endpunkt. Wegen der mangelnden Ergebnisse sieht der Ausschuss keine Empfehlung für die Regelversorgung und weiteren Forschungsbedarf."}, {"stelle": "studiendesign", "art": "text", "unser": "cluster-randomisiert"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Aufgrund der mangelnden Ergebnisse können keine Empfehlungen für die Regelversorgung abgeleitet werden. Es besteht weiterer Forschungsbedarf. Die vom Projekt benannten Empfehlungen sollten bei weiteren Forschungsvorhaben berücksichtigt werden."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Geplante Rekrutierungsziele nicht erreicht"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Keine signifikante Verbesserung der Leitlinienadhärenz (primärer Endpunkt)"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Interventions- und Kontrollgruppe unterschieden sich in Stichprobengröße und Baseline-Charakteristika"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Instrument für den primären Endpunkt nicht validiert"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Keine signifikanten Gruppeneffekte bei den sekundären Endpunkten"}, {"stelle": "befund.0", "art": "befund", "unser": "Erfolgreiche Entwicklung einer tabletgestützten Intervention für die ambulante Demenzversorgung"}, {"stelle": "befund.1", "art": "befund", "unser": "Studiendesign der drei Teilprojekte grundsätzlich angemessen"}, {"stelle": "befund.2", "art": "befund", "unser": "Quantitative Erhebungen mit hoher Rücklaufquote lieferten Hinweise zur Verbesserung der App"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Leitlinienadhärenz (Einschätzung durch Hausärzt:innen)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Leitlinienadhärenz (Einschätzung durch Angehörige)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Lebensqualität MmD (QOL-AD)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Lebensqualität/subjektive Gesundheit MmD (EQ-5D-5L)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Depressivität MmD (DIA-S)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Funktioneller Status MmD (Barthel Index)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Neuropsychiatrische Symptome MmD (NPI)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Lebensqualität Angehörige, körperliche Skala (SF-36k)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Depressivität Angehörige (GDS)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Belastung durch Pflege, Angehörige (HPS)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben DemTab prüfte in einer clusterrandomisierten kontrollierten Studie mit 28 Berliner Hausarztpraxen (15 Interventions-, 13 Kontrollpraxen), ob eine tabletbasierte Anwendung für Hausärzt:innen, Menschen mit Demenz (MmD) und Angehörige die leitliniengerechte Versorgung nach der S3-Leitlinie Demenzen verbessert. In der Interventionsgruppe waren 56 MmD, in der Kontrollgruppe 35 MmD. Primärer Endpunkt war die Leitlinienadhärenz nach 9 Monaten. Gemessen wurde sie mit einer eigens entwickelten Checkliste aus Sicht der Hausärzt:innen und der Angehörigen. Weder beim primären Endpunkt (Hausärzt:innen B = −0,75, p = .525; Angehörige B = 0,12, p = .903) noch bei den sekundären Endpunkten fand der Bericht signifikante Gruppeneffekte, die primäre Hypothese wurde verworfen. Zu Studienbeginn lag die selbst eingeschätzte Adhärenz der Hausärzt:innen bei 21,2 Punkten, die von Angehörigen berichtete bei 6,8 Punkten. Die App wurde über die gesamte Laufzeit genutzt: 524 Logins von Ärzt:innen, 2512 von MmD und Angehörigen. Die Mehrzahl der Praxen gab an, sie gern genutzt zu haben, die Nutzung unterschied sich zwischen den Praxen aber stark. Die Aussagekraft begrenzen laut Bericht die nicht erreichte Fallzahl (geplant 204, angepasst 140) mit geminderter Power, das nicht validierte Messinstrument, ungleiche Gruppengrößen und heterogene Cluster, ein nicht auszuschließender Selektionsbias und die bewusst in Kauf genommene geringe interne Validität. Ein Großteil der Laufzeit fiel in die COVID-19-Pandemie."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Primärer Endpunkt: Nach 9 Monaten fand sich kein Gruppeneffekt auf die Leitlinienadhärenz, weder auf Ebene der Hausärzt:innen (B = −0,75; p = .525) noch auf Ebene der Angehörigen (B = 0,12; p = .903). Laut Bericht gab es keine signifikante Verbesserung, und die primäre Hypothese wurde verworfen."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Auch bei den sekundären Endpunkten fand der Bericht keine signifikanten Gruppeneffekte."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Zu Studienbeginn (T0) lag die Leitlinienadhärenz in der Selbsteinschätzung der Hausärzt:innen bei M = 21,2 Punkten (SD 5,4; Spanne 7–28). In der Einschätzung der Angehörigen lag sie bei M = 6,8 Punkten (SD 5,5; Spanne 0–19)."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Der Bericht kommt zu dem Schluss: Die App wurde aktiv verwendet und weitgehend positiv bewertet, das Versorgungskonzept hat sich aber gemessen an den nicht erreichten Zielkriterien nicht in der Praxis bewährt."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die ursprünglich geplante Stichprobengröße von N = 204 wurde wegen Rekrutierungsproblemen nicht erreicht. Laut Bericht minderte das die statistische Power."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Der primäre Endpunkt Leitlinienadhärenz wurde mit einem selbst entwickelten, nicht validierten Instrument bei Hausärzt:innen und Angehörigen gemessen. Ein standardisiertes Instrument existiert laut Bericht nicht."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Zahl der MmD pro Praxis schwankte stark, die Cluster waren daher unterschiedlicher als bei der Planung angenommen. In der Interventionsgruppe nahmen mehr Personen teil als in der Kontrollgruppe. Laut Bericht ist beides der Aussagekraft der Gruppenvergleiche abträglich."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Ein Selektionsbias bei Rekrutierung und Studienteilnahme ist nicht auszuschließen. Wegen der zeitlichen Verzögerung waren nicht alle Hausärzt:innen bei der Rekrutierung ihrer Patient:innen verblindet."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Zugunsten der externen Validität verzichtete das Team bewusst auf harte Nutzungskriterien. Es griff auch dann nicht ein, wenn die Nutzung trotz Nachfrage nicht stieg, was der Bericht selbst als geringe interne Validität bezeichnet."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Die Kontrollgruppe wird auf S. 4 als „keine Intervention“ beschrieben. Laut S. 10 erhielt sie jedoch Informationsmaterialien, die nach Angabe der Projektnehmer „in vielen Fällen über die Standardversorgung hinaus“ gehen."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Eingeschlossen wurden laut S. 13 N = 102 Personen. In die Gruppen verteilt (S. 4) und zu Baseline erhoben (S. 16) sind 91 MmD (56 + 35). Der Bericht erläutert die Differenz in den vorliegenden Abschnitten nicht."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "S. 23 beschreibt ein „konstantes Interesse an der Anwendung über den gesamten Studienverlauf“ und ein „großes Engagement“. S. 31 berichtet, dass manche Praxen die Anwendung „über mehrere Wochen gar nicht genutzt“ haben, und S. 33, dass die digitale Unterstützung von den Praxen „nicht in der Form angenommen wie erwartet“ wurde."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "S. 33 spricht von einer „weitgehend positiv“ bewerteten App. In der Befragung der MmD bzw. Angehörigen (S. 27) fanden 44,2 % die App gut oder sehr gut, 23,3 % schlecht oder sehr schlecht, und 63,4 % sahen kaum oder keinen Mehrwert für die MmD."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "S. 15 bewertet die Umstellung auf telefonische Befragungen als „unproblematisch“. Im selben Abschnitt steht, dass der MMST telefonisch nicht erhoben werden konnte und T1 vollständig telefonisch stattfand."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Die hohe selbst angegebene Leitlinienadhärenz der Hausärzt:innen zu Studienbeginn hatte das Forschungsteam nicht erwartet, da frühere Studien anderes berichtet hatten. Angehörige schätzten die Adhärenz geringer ein als die behandelnden Praxen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Design: clusterrandomisierte kontrollierte Studie mit einer Interventionsgruppe (tabletbasierte Intervention, 56 MmD) und einer Kontrollgruppe (keine Intervention, 35 MmD). Randomisiert wurde auf Ebene von 28 Hausärzt:innen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die 28 Praxen wurden unter anderem nach Region (Stadt vs. Land) stratifiziert und zufällig zugeteilt: 15 Praxen der Interventions-, 13 der Kontrollgruppe."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Für die Praxisrekrutierung (Juni 2018 bis März 2020) wurde unter anderem eine Zufallsstichprobe von 486 Praxen aus der Datenbank der KV Berlin telefonisch kontaktiert. 116 Praxen wurden persönlich aufgesucht, 28 Praxen wurden eingeschlossen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die 28 Praxen gaben Kontaktdaten von 194 potenziellen Teilnehmenden weiter, 102 davon wurden eingeschlossen. Pro Praxis wurden im Mittel 7 MmD vermittelt (Spanne 1–17) und 4 eingeschlossen (Spanne 1–11)."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Baseline-Erhebungen gab es mit 91 MmD und 88 Angehörigen. Das Follow-up neun Monate nach Interventionsbeginn umfasste 76 MmD und 69 Angehörige."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Zum Umgang mit der Tablet-Anwendung wurden 56 Patient:innen und 15 Hausärzt:innen geschult."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Stichprobe der Hausärzt:innen: im Mittel 49,9 Jahre alt, knapp 61 % weiblich, 11,8 Jahre Berufserfahrung. Stichprobe der MmD: 59 % weiblich, im Mittel 80,5 Jahre alt, mittlerer MMST 18,9 (laut Bericht mittelschwere Demenz), 65 % mit Pflegegrad."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die pflegenden Angehörigen waren im Mittel 69,5 Jahre alt und zu 69,2 % weiblich. Sie betreuten im Mittel seit 55,2 Monaten, 55,2 % waren (Ehe-)Partner:innen und 39,7 % Kinder."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Bei über der Hälfte der Studienteilnehmer:innen hatten Fachärzt:innen die Demenzdiagnose gestellt."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Die interne Konsistenz der Checklisten zur Leitlinienadhärenz betrug α = .876 (Hausärzt:innen) und α = .90 (Angehörige)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Für den Summenscore der Checkliste wurden fünf Varianten zum Umgang mit der Kategorie „nicht zutreffend“ berechnet. Laut Bericht zeigten sich keine wesentlichen Unterschiede zwischen ihnen."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Sekundäre Endpunkte der MmD, Koeffizient für die Gruppenzugehörigkeit (Kontrollgruppe): QOL-AD 0,97 (−1,46 bis 3,40; p = .432). Laut Tabelle außerdem EQ-5D-5L −1,66 (p = .087), DIA-S −0,02 (p = .961), Barthel-Index 2,60 (p = .500) und NPI 1,92 (p = .509)."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Sekundäre Endpunkte der Angehörigen, Koeffizient für die Gruppenzugehörigkeit (Kontrollgruppe): HPS −1,00 (−5,26 bis 3,27; p = .640). Laut Tabelle außerdem SF-36 körperlich 1,04 (p = .611), SF-36 psychisch −2,02 (p = .327) und GDS −0,09 (p = .918)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Über die gesamte Projektlaufzeit loggten sich die Ärzt:innen 524-mal ein, im Mittel 1,42 Minuten pro Sitzung. MmD und Angehörige nutzten die App 2512-mal, im Mittel 49,46 Minuten pro Sitzung."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Laut Bericht war das Interesse an der App in den ersten Wochen deutlich gesteigert, danach blieb es über den gesamten Studienverlauf konstant."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Die Checklisten-Funktion nutzten einige Praxen regelmäßig und konstant, andere weniger stringent."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Die Nachrichtenfunktion nutzten einige wenige Accounts regelmäßig und mit vielen Nachrichten, andere kaum, sporadisch oder gar nicht."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Die Funktion zur Unterstützung der Antidementiva-Verordnung wurde im Interventionszeitraum 70-mal geöffnet. Sie wurde dabei nie bis zur Festlegung einer (Neu-)Verordnung durchlaufen."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "14 der 15 Praxen der Interventionsgruppe bewerteten die App nach neun Monaten. Sie schätzten sie überwiegend als schnell erlernbar, einfach zu verwenden und ohne Handbuch benutzbar ein."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Zwei Drittel der Hausärzt:innen gaben an, die App gern zu verwenden, und sahen ihre Erwartungen erfüllt. Über 40 % fühlten sich bei der leitliniengerechten Behandlung unterstützt, und die Aussage, die App unterstütze den Arbeitsalltag, wurde gemischt bewertet."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Die Praxen (N = 14) bewerteten diese Funktionen mit gut oder sehr gut: Nachrichten an Patient:innen 84 %, Checkliste zur S3-Leitlinie 78 %, Leitlinien-Volltext 85 %, Unterstützung der Antidementiva-Verordnung 78 %, Vereinbarungen mit Patient:innen 71,4 %."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "43 MmD bzw. Angehörige bewerteten die App. 44,2 % fanden sie insgesamt gut oder sehr gut, 23,3 % schlecht oder sehr schlecht und 32,6 % gaben eine mittlere Bewertung ab."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Einen großen oder sehr großen Mehrwert der App für die MmD sahen 36,5 % der Befragten, 63,4 % sahen kaum oder keinen. Für sich selbst sahen 52,4 % einen großen oder sehr großen Mehrwert, 47,6 % kaum oder keinen."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "46,3 % der Befragten gaben an, als pflegende Angehörige im Alltag sehr oder etwas durch die App unterstützt worden zu sein. Eine Entlastung der MmD sahen 48,8 %, 51,2 % sahen kaum oder keine."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Die Spiele-Anwendung wurde am häufigsten als Lieblingsfunktion genannt (41,9 %). In der COVID-19-Pandemie fanden 30 % die App sehr oder etwas hilfreich, und 84,6 % gaben an, ihre Nutzung habe sich nicht geändert."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Die Nachrichtenfunktion zwischen Praxis und Patient:in bzw. Angehörigen spielte laut Bericht in der Nutzung eine wichtige Rolle. Den Nutzungsschwerpunkt sieht der Bericht jeweils zu Beginn der Intervention."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Qualitative Interviews, Kategorie A: Für die häusliche Pflege werden kollegialer Austausch und Zusammenarbeit mit Angehörigen als notwendig beschrieben. Die Vermittlung an demenzspezifische Beratungs- und Unterstützungseinrichtungen sollte häufiger erfolgen."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Qualitative Interviews, Kategorie B (Technik): Hausärzt:innen befürchteten, dass Angehörige die Kommunikationsfunktion übermäßig nutzen und sie damit zusätzlich belasten."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Die erste App-Version war am 15.05.2019 fertig. Es folgten sieben Aktualisierungen, die letzte (Version 1.4.1) am 13.12.2019."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Die Checklisten-Anwendung wurde als eigenständige App ausgegliedert und ist kostenlos im iOS AppStore verfügbar."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Die Kontrollgruppe erhielt Informationsmaterialien von BMFSFJ bzw. Zentrum für Qualität in der Pflege. Laut Projektnehmern gehen diese in vielen Fällen über die Standardversorgung hinaus."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Wegen Rekrutierungsschwierigkeiten vor und während der COVID-19-Pandemie wurde die Fallzahl auf N = 140 neu berechnet (20 Praxen, ICC 0,03, Drop-out 18 %). Auch diese angepasste Stichprobengröße wurde nicht erreicht."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Checkliste wurde in keiner anderen Studie eingesetzt. Die Antwortkategorie „nicht zutreffend“ wurde uneinheitlich verwendet, was den Summenscore eventuell verzerren könnte."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Über Cronbach's Alpha hinaus wurden für die Checklisten keine Testgütekriterien geprüft."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Hausärzt:innen unterschieden sich stark in Häufigkeit und Intensität der Tabletnutzung. Manche Praxen nutzten die Anwendung über mehrere Wochen gar nicht."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Hausärzt:innen hatten in der vorgeschalteten Machbarkeitsstudie digitale Unterstützung gewünscht. In der Studie nahmen die beteiligten Praxen sie nicht in der erwarteten Form an."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die App war nicht mit der Praxissoftware verknüpft und lief auf einem separaten Gerät, alle Stamm- und aktuellen Daten mussten doppelt dokumentiert werden. Laut Bericht schränkte das die Nutzung ein."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die Rekrutierung war schon vor der Pandemie schwierig. Das Einschlusskriterium von mindestens sieben einschließbaren MmD pro Praxis wurde gestrichen, und auch danach konnte nur ein Teil eingeschlossen werden. Die Pandemie verschärfte die Lage, und stärkere Unterstützung durch den Hausärzteverband wäre laut Bericht wünschenswert gewesen."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Studie lief überwiegend unter den Bedingungen der COVID-19-Pandemie. Laut Bericht führte das zu deutlichen Umsetzungsschwierigkeiten."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Wegen der Rekrutierungsprobleme wurden neben pflegenden Angehörigen auch professionelle Bezugspflegende zugelassen."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Verblindung ließ sich wegen der Tablets nicht aufrechterhalten, und die Datenerheber:innen waren beim Follow-up nicht verblindet. Die konkreten Forschungshypothesen kannten alle Beteiligten nicht."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Ab März 2020 wurden die Erhebungen telefonisch geführt: zu T0 bei 12 MmD, zu T1 bei allen Teilnehmenden. Der MMST konnte telefonisch nicht erhoben werden."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Mit der COVID-19-Pandemie wurde die Patient:innen-Schulung auf ein telefonisches Format umgestellt."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Fehlende Werte wurden unter der Annahme Missing at Random mit zehn Wiederholungen multipel imputiert."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Die Anreize waren gering: Nur die Praxen erhielten eine geringfügige Aufwandsentschädigung, für Patient:innen und Angehörige gab es lediglich eine Verlosung von Studientablets."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Fach- und Hausärzt:innen gemeinsam in die Intervention einzubeziehen, war im dreijährigen Projektzeitraum logistisch nicht möglich."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Beim Expertenworkshop sagte eine von drei eingeladenen Hausärztinnen kurzfristig ab."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Nach einer bestimmten Kombination von Aktivitäten in der App konnten sich Nutzer:innen nicht mehr einloggen. Laut Bericht wurde der Fehler schnell behoben."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Der Code kann nicht vollständig Open Source angeboten werden, weil für bestimmte Inhalte nur projektbezogene Nutzungsrechte bestehen."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Eine Hauptkomponente der Anwendung (Python 2.7) wird nicht mehr gepflegt, ein reibungsloser Betrieb ist daher nicht garantiert. Ein Offline-Betrieb ohne Server war nicht vorgesehen und wurde nicht implementiert."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Der Weiterbetrieb beruht auf dem Engagement Einzelner. Ohne weitere Förderung, die zum Berichtszeitpunkt nicht beantragt war, ist eine sinnvolle Nutzung der DemTab-App nach Projektende nicht möglich."}]};
+const D = {"projekt_id": 156, "akronym": "DemTab", "kennung": "u5xm8XMJc_tF", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat eine tabletgestützte Intervention mit drei Hauptkomponenten entwickelt und in einem Cluster-RCT gegen Routineversorgung geprüft. Das Studiendesign bewertet der Ausschuss als grundsätzlich angemessen. Die geplanten Rekrutierungsziele wurden jedoch nicht erreicht. Die Intervention verbesserte die Leitlinienadhärenz als primären Endpunkt nicht signifikant, und auch bei den sekundären Endpunkten zeigten sich keine signifikanten Gruppeneffekte. Hinzu kommen Unterschiede zwischen Interventions- und Kontrollgruppe bei Stichprobengröße und Baseline-Charakteristika sowie ein nicht validiertes Instrument für den primären Endpunkt. Wegen der mangelnden Ergebnisse sieht der Ausschuss keine Empfehlung für die Regelversorgung und weiteren Forschungsbedarf."}, {"stelle": "studiendesign", "art": "text", "unser": "cluster-randomisiert"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Geplante Rekrutierungsziele nicht erreicht"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Keine signifikante Verbesserung der Leitlinienadhärenz (primärer Endpunkt)"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Interventions- und Kontrollgruppe unterschieden sich in Stichprobengröße und Baseline-Charakteristika"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Instrument für den primären Endpunkt nicht validiert"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Keine signifikanten Gruppeneffekte bei den sekundären Endpunkten"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Leitlinienadhärenz (Einschätzung durch Hausärzt:innen)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Leitlinienadhärenz (Einschätzung durch Angehörige)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Lebensqualität MmD (QOL-AD)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Lebensqualität/subjektive Gesundheit MmD (EQ-5D-5L)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Depressivität MmD (DIA-S)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Funktioneller Status MmD (Barthel Index)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Neuropsychiatrische Symptome MmD (NPI)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Lebensqualität Angehörige, körperliche Skala (SF-36k)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Depressivität Angehörige (GDS)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Belastung durch Pflege, Angehörige (HPS)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben DemTab prüfte in einer clusterrandomisierten kontrollierten Studie mit 28 Berliner Hausarztpraxen (15 Interventions-, 13 Kontrollpraxen), ob eine tabletbasierte Anwendung für Hausärzt:innen, Menschen mit Demenz (MmD) und Angehörige die leitliniengerechte Versorgung nach der S3-Leitlinie Demenzen verbessert. In der Interventionsgruppe waren 56 MmD, in der Kontrollgruppe 35 MmD. Primärer Endpunkt war die Leitlinienadhärenz nach 9 Monaten. Gemessen wurde sie mit einer eigens entwickelten Checkliste aus Sicht der Hausärzt:innen und der Angehörigen. Weder beim primären Endpunkt (Hausärzt:innen B = −0,75, p = .525; Angehörige B = 0,12, p = .903) noch bei den sekundären Endpunkten fand der Bericht signifikante Gruppeneffekte, die primäre Hypothese wurde verworfen. Zu Studienbeginn lag die selbst eingeschätzte Adhärenz der Hausärzt:innen bei 21,2 Punkten, die von Angehörigen berichtete bei 6,8 Punkten. Die App wurde über die gesamte Laufzeit genutzt: 524 Logins von Ärzt:innen, 2512 von MmD und Angehörigen. Die Mehrzahl der Praxen gab an, sie gern genutzt zu haben, die Nutzung unterschied sich zwischen den Praxen aber stark. Die Aussagekraft begrenzen laut Bericht die nicht erreichte Fallzahl (geplant 204, angepasst 140) mit geminderter Power, das nicht validierte Messinstrument, ungleiche Gruppengrößen und heterogene Cluster, ein nicht auszuschließender Selektionsbias und die bewusst in Kauf genommene geringe interne Validität. Ein Großteil der Laufzeit fiel in die COVID-19-Pandemie."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Primärer Endpunkt: Nach 9 Monaten fand sich kein Gruppeneffekt auf die Leitlinienadhärenz, weder auf Ebene der Hausärzt:innen (B = −0,75; p = .525) noch auf Ebene der Angehörigen (B = 0,12; p = .903). Laut Bericht gab es keine signifikante Verbesserung, und die primäre Hypothese wurde verworfen."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Auch bei den sekundären Endpunkten fand der Bericht keine signifikanten Gruppeneffekte."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Zu Studienbeginn (T0) lag die Leitlinienadhärenz in der Selbsteinschätzung der Hausärzt:innen bei M = 21,2 Punkten (SD 5,4; Spanne 7–28). In der Einschätzung der Angehörigen lag sie bei M = 6,8 Punkten (SD 5,5; Spanne 0–19)."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die ursprünglich geplante Stichprobengröße von N = 204 wurde wegen Rekrutierungsproblemen nicht erreicht. Laut Bericht minderte das die statistische Power."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Der primäre Endpunkt Leitlinienadhärenz wurde mit einem selbst entwickelten, nicht validierten Instrument bei Hausärzt:innen und Angehörigen gemessen. Ein standardisiertes Instrument existiert laut Bericht nicht."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Zahl der MmD pro Praxis schwankte stark, die Cluster waren daher unterschiedlicher als bei der Planung angenommen. In der Interventionsgruppe nahmen mehr Personen teil als in der Kontrollgruppe. Laut Bericht ist beides der Aussagekraft der Gruppenvergleiche abträglich."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Die Kontrollgruppe wird auf S. 4 als „keine Intervention“ beschrieben. Laut S. 10 erhielt sie jedoch Informationsmaterialien, die nach Angabe der Projektnehmer „in vielen Fällen über die Standardversorgung hinaus“ gehen."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Eingeschlossen wurden laut S. 13 N = 102 Personen. In die Gruppen verteilt (S. 4) und zu Baseline erhoben (S. 16) sind 91 MmD (56 + 35). Der Bericht erläutert die Differenz in den vorliegenden Abschnitten nicht."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "S. 23 beschreibt ein „konstantes Interesse an der Anwendung über den gesamten Studienverlauf“ und ein „großes Engagement“. S. 31 berichtet, dass manche Praxen die Anwendung „über mehrere Wochen gar nicht genutzt“ haben, und S. 33, dass die digitale Unterstützung von den Praxen „nicht in der Form angenommen wie erwartet“ wurde."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss hat im schriftlichen Verfahren am 14. Juli 2022 beschlossen, für das Projekt DemTab keine Empfehlung auszusprechen. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Aufgrund der mangelnden Ergebnisse können keine Empfehlungen für die Regelversorgung abgeleitet werden. Es besteht weiterer Forschungsbedarf. Die vom Projekt benannten Empfehlungen sollten bei weiteren Forschungsvorhaben berücksichtigt werden."}, {"stelle": "befund.0", "art": "befund", "unser": "Erfolgreiche Entwicklung einer tabletgestützten Intervention für die ambulante Demenzversorgung"}, {"stelle": "befund.1", "art": "befund", "unser": "Studiendesign der drei Teilprojekte grundsätzlich angemessen"}, {"stelle": "befund.2", "art": "befund", "unser": "Quantitative Erhebungen mit hoher Rücklaufquote lieferten Hinweise zur Verbesserung der App"}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Der Bericht kommt zu dem Schluss: Die App wurde aktiv verwendet und weitgehend positiv bewertet, das Versorgungskonzept hat sich aber gemessen an den nicht erreichten Zielkriterien nicht in der Praxis bewährt."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Ein Selektionsbias bei Rekrutierung und Studienteilnahme ist nicht auszuschließen. Wegen der zeitlichen Verzögerung waren nicht alle Hausärzt:innen bei der Rekrutierung ihrer Patient:innen verblindet."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Zugunsten der externen Validität verzichtete das Team bewusst auf harte Nutzungskriterien. Es griff auch dann nicht ein, wenn die Nutzung trotz Nachfrage nicht stieg, was der Bericht selbst als geringe interne Validität bezeichnet."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "S. 33 spricht von einer „weitgehend positiv“ bewerteten App. In der Befragung der MmD bzw. Angehörigen (S. 27) fanden 44,2 % die App gut oder sehr gut, 23,3 % schlecht oder sehr schlecht, und 63,4 % sahen kaum oder keinen Mehrwert für die MmD."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "S. 15 bewertet die Umstellung auf telefonische Befragungen als „unproblematisch“. Im selben Abschnitt steht, dass der MMST telefonisch nicht erhoben werden konnte und T1 vollständig telefonisch stattfand."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Die hohe selbst angegebene Leitlinienadhärenz der Hausärzt:innen zu Studienbeginn hatte das Forschungsteam nicht erwartet, da frühere Studien anderes berichtet hatten. Angehörige schätzten die Adhärenz geringer ein als die behandelnden Praxen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Design: clusterrandomisierte kontrollierte Studie mit einer Interventionsgruppe (tabletbasierte Intervention, 56 MmD) und einer Kontrollgruppe (keine Intervention, 35 MmD). Randomisiert wurde auf Ebene von 28 Hausärzt:innen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die 28 Praxen wurden unter anderem nach Region (Stadt vs. Land) stratifiziert und zufällig zugeteilt: 15 Praxen der Interventions-, 13 der Kontrollgruppe."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Für die Praxisrekrutierung (Juni 2018 bis März 2020) wurde unter anderem eine Zufallsstichprobe von 486 Praxen aus der Datenbank der KV Berlin telefonisch kontaktiert. 116 Praxen wurden persönlich aufgesucht, 28 Praxen wurden eingeschlossen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die 28 Praxen gaben Kontaktdaten von 194 potenziellen Teilnehmenden weiter, 102 davon wurden eingeschlossen. Pro Praxis wurden im Mittel 7 MmD vermittelt (Spanne 1–17) und 4 eingeschlossen (Spanne 1–11)."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Baseline-Erhebungen gab es mit 91 MmD und 88 Angehörigen. Das Follow-up neun Monate nach Interventionsbeginn umfasste 76 MmD und 69 Angehörige."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Zum Umgang mit der Tablet-Anwendung wurden 56 Patient:innen und 15 Hausärzt:innen geschult."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Stichprobe der Hausärzt:innen: im Mittel 49,9 Jahre alt, knapp 61 % weiblich, 11,8 Jahre Berufserfahrung. Stichprobe der MmD: 59 % weiblich, im Mittel 80,5 Jahre alt, mittlerer MMST 18,9 (laut Bericht mittelschwere Demenz), 65 % mit Pflegegrad."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die pflegenden Angehörigen waren im Mittel 69,5 Jahre alt und zu 69,2 % weiblich. Sie betreuten im Mittel seit 55,2 Monaten, 55,2 % waren (Ehe-)Partner:innen und 39,7 % Kinder."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Bei über der Hälfte der Studienteilnehmer:innen hatten Fachärzt:innen die Demenzdiagnose gestellt."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Die interne Konsistenz der Checklisten zur Leitlinienadhärenz betrug α = .876 (Hausärzt:innen) und α = .90 (Angehörige)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Für den Summenscore der Checkliste wurden fünf Varianten zum Umgang mit der Kategorie „nicht zutreffend“ berechnet. Laut Bericht zeigten sich keine wesentlichen Unterschiede zwischen ihnen."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Sekundäre Endpunkte der MmD, Koeffizient für die Gruppenzugehörigkeit (Kontrollgruppe): QOL-AD 0,97 (−1,46 bis 3,40; p = .432). Laut Tabelle außerdem EQ-5D-5L −1,66 (p = .087), DIA-S −0,02 (p = .961), Barthel-Index 2,60 (p = .500) und NPI 1,92 (p = .509)."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Sekundäre Endpunkte der Angehörigen, Koeffizient für die Gruppenzugehörigkeit (Kontrollgruppe): HPS −1,00 (−5,26 bis 3,27; p = .640). Laut Tabelle außerdem SF-36 körperlich 1,04 (p = .611), SF-36 psychisch −2,02 (p = .327) und GDS −0,09 (p = .918)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Über die gesamte Projektlaufzeit loggten sich die Ärzt:innen 524-mal ein, im Mittel 1,42 Minuten pro Sitzung. MmD und Angehörige nutzten die App 2512-mal, im Mittel 49,46 Minuten pro Sitzung."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Laut Bericht war das Interesse an der App in den ersten Wochen deutlich gesteigert, danach blieb es über den gesamten Studienverlauf konstant."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Die Checklisten-Funktion nutzten einige Praxen regelmäßig und konstant, andere weniger stringent."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Die Nachrichtenfunktion nutzten einige wenige Accounts regelmäßig und mit vielen Nachrichten, andere kaum, sporadisch oder gar nicht."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Die Funktion zur Unterstützung der Antidementiva-Verordnung wurde im Interventionszeitraum 70-mal geöffnet. Sie wurde dabei nie bis zur Festlegung einer (Neu-)Verordnung durchlaufen."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "14 der 15 Praxen der Interventionsgruppe bewerteten die App nach neun Monaten. Sie schätzten sie überwiegend als schnell erlernbar, einfach zu verwenden und ohne Handbuch benutzbar ein."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Zwei Drittel der Hausärzt:innen gaben an, die App gern zu verwenden, und sahen ihre Erwartungen erfüllt. Über 40 % fühlten sich bei der leitliniengerechten Behandlung unterstützt, und die Aussage, die App unterstütze den Arbeitsalltag, wurde gemischt bewertet."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Die Praxen (N = 14) bewerteten diese Funktionen mit gut oder sehr gut: Nachrichten an Patient:innen 84 %, Checkliste zur S3-Leitlinie 78 %, Leitlinien-Volltext 85 %, Unterstützung der Antidementiva-Verordnung 78 %, Vereinbarungen mit Patient:innen 71,4 %."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "43 MmD bzw. Angehörige bewerteten die App. 44,2 % fanden sie insgesamt gut oder sehr gut, 23,3 % schlecht oder sehr schlecht und 32,6 % gaben eine mittlere Bewertung ab."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Einen großen oder sehr großen Mehrwert der App für die MmD sahen 36,5 % der Befragten, 63,4 % sahen kaum oder keinen. Für sich selbst sahen 52,4 % einen großen oder sehr großen Mehrwert, 47,6 % kaum oder keinen."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "46,3 % der Befragten gaben an, als pflegende Angehörige im Alltag sehr oder etwas durch die App unterstützt worden zu sein. Eine Entlastung der MmD sahen 48,8 %, 51,2 % sahen kaum oder keine."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Die Spiele-Anwendung wurde am häufigsten als Lieblingsfunktion genannt (41,9 %). In der COVID-19-Pandemie fanden 30 % die App sehr oder etwas hilfreich, und 84,6 % gaben an, ihre Nutzung habe sich nicht geändert."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Die Nachrichtenfunktion zwischen Praxis und Patient:in bzw. Angehörigen spielte laut Bericht in der Nutzung eine wichtige Rolle. Den Nutzungsschwerpunkt sieht der Bericht jeweils zu Beginn der Intervention."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Qualitative Interviews, Kategorie A: Für die häusliche Pflege werden kollegialer Austausch und Zusammenarbeit mit Angehörigen als notwendig beschrieben. Die Vermittlung an demenzspezifische Beratungs- und Unterstützungseinrichtungen sollte häufiger erfolgen."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Qualitative Interviews, Kategorie B (Technik): Hausärzt:innen befürchteten, dass Angehörige die Kommunikationsfunktion übermäßig nutzen und sie damit zusätzlich belasten."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Die erste App-Version war am 15.05.2019 fertig. Es folgten sieben Aktualisierungen, die letzte (Version 1.4.1) am 13.12.2019."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Die Checklisten-Anwendung wurde als eigenständige App ausgegliedert und ist kostenlos im iOS AppStore verfügbar."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Die Kontrollgruppe erhielt Informationsmaterialien von BMFSFJ bzw. Zentrum für Qualität in der Pflege. Laut Projektnehmern gehen diese in vielen Fällen über die Standardversorgung hinaus."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Wegen Rekrutierungsschwierigkeiten vor und während der COVID-19-Pandemie wurde die Fallzahl auf N = 140 neu berechnet (20 Praxen, ICC 0,03, Drop-out 18 %). Auch diese angepasste Stichprobengröße wurde nicht erreicht."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Checkliste wurde in keiner anderen Studie eingesetzt. Die Antwortkategorie „nicht zutreffend“ wurde uneinheitlich verwendet, was den Summenscore eventuell verzerren könnte."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Über Cronbach's Alpha hinaus wurden für die Checklisten keine Testgütekriterien geprüft."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Hausärzt:innen unterschieden sich stark in Häufigkeit und Intensität der Tabletnutzung. Manche Praxen nutzten die Anwendung über mehrere Wochen gar nicht."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Hausärzt:innen hatten in der vorgeschalteten Machbarkeitsstudie digitale Unterstützung gewünscht. In der Studie nahmen die beteiligten Praxen sie nicht in der erwarteten Form an."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die App war nicht mit der Praxissoftware verknüpft und lief auf einem separaten Gerät, alle Stamm- und aktuellen Daten mussten doppelt dokumentiert werden. Laut Bericht schränkte das die Nutzung ein."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die Rekrutierung war schon vor der Pandemie schwierig. Das Einschlusskriterium von mindestens sieben einschließbaren MmD pro Praxis wurde gestrichen, und auch danach konnte nur ein Teil eingeschlossen werden. Die Pandemie verschärfte die Lage, und stärkere Unterstützung durch den Hausärzteverband wäre laut Bericht wünschenswert gewesen."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Studie lief überwiegend unter den Bedingungen der COVID-19-Pandemie. Laut Bericht führte das zu deutlichen Umsetzungsschwierigkeiten."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Wegen der Rekrutierungsprobleme wurden neben pflegenden Angehörigen auch professionelle Bezugspflegende zugelassen."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Verblindung ließ sich wegen der Tablets nicht aufrechterhalten, und die Datenerheber:innen waren beim Follow-up nicht verblindet. Die konkreten Forschungshypothesen kannten alle Beteiligten nicht."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Ab März 2020 wurden die Erhebungen telefonisch geführt: zu T0 bei 12 MmD, zu T1 bei allen Teilnehmenden. Der MMST konnte telefonisch nicht erhoben werden."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Mit der COVID-19-Pandemie wurde die Patient:innen-Schulung auf ein telefonisches Format umgestellt."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Fehlende Werte wurden unter der Annahme Missing at Random mit zehn Wiederholungen multipel imputiert."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Die Anreize waren gering: Nur die Praxen erhielten eine geringfügige Aufwandsentschädigung, für Patient:innen und Angehörige gab es lediglich eine Verlosung von Studientablets."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Fach- und Hausärzt:innen gemeinsam in die Intervention einzubeziehen, war im dreijährigen Projektzeitraum logistisch nicht möglich."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Beim Expertenworkshop sagte eine von drei eingeladenen Hausärztinnen kurzfristig ab."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Nach einer bestimmten Kombination von Aktivitäten in der App konnten sich Nutzer:innen nicht mehr einloggen. Laut Bericht wurde der Fehler schnell behoben."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Der Code kann nicht vollständig Open Source angeboten werden, weil für bestimmte Inhalte nur projektbezogene Nutzungsrechte bestehen."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Eine Hauptkomponente der Anwendung (Python 2.7) wird nicht mehr gepflegt, ein reibungsloser Betrieb ist daher nicht garantiert. Ein Offline-Betrieb ohne Server war nicht vorgesehen und wurde nicht implementiert."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Der Weiterbetrieb beruht auf dem Engagement Einzelner. Ohne weitere Förderung, die zum Berichtszeitpunkt nicht beantragt war, ist eine sinnvolle Nutzung der DemTab-App nach Projektende nicht möglich."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

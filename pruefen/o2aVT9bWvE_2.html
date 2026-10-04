@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF16041</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>10 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 53 Aussagen. Die übrigen
+43 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss empfiehlt, das in EMSE entwickelte Prozessmodell zum erweiterten Entlassmanagement mit dem Prognosemodell zu erproben. Die Erprobung erfolgt im Projekt USER (01NVF18010). Die Erkenntnisse werden zudem informatorisch an die Vertragsparteien des Rahmenvertrags Entlassmanagement (GKV-Spitzenverband, KBV, DKG) weitergeleitet.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Prozessmodell legt nach Auffassung des Ausschusses Informationsfluss, Aufgaben und Verantwortlichkeiten von Krankenkasse und Krankenhaus fest und bietet damit eine solide Grundlage für ein strukturiertes Entlassmanagement. Für das Prognosemodell konnten finale Modelle mit ausreichender Vorhersagegüte entwickelt werden, und die gewählte Methodik wird als geeignet bewertet. Das Verwertungspotenzial gilt insgesamt als gut. Offen ist jedoch, ob der idealtypische Prozess im Versorgungsalltag umsetzbar ist und ob die Vorhersagegüte für messbare Versorgungseffekte ausreicht. Deshalb hält der Ausschuss eine Erprobung als neue Versorgungsform für sinnvoll. Die Umsetzung der Empfehlungen zur IT und zum gesetzlichen Anpassungsbedarf hält er dagegen für verfrüht, solange der Nutzen in der Versorgungsrealität nicht nachgewiesen ist.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Das Prozessmodell soll umsetzbar sein und Akzeptanz finden, weil es mit den relevanten Stakeholdern entwickelt wurde. Das Prognosemodell ist unter Beachtung der Erkenntnisse zur IT-Umsetzung und des rechtlichen Rahmens nutzbar. Die Umsetzbarkeit im Versorgungsalltag muss jedoch erst in einer neuen Versorgungsform erprobt werden. Für eine Erprobung ist keine untergesetzliche Anpassung nötig, da § 39 Abs. 1a SGB V mit Einwilligung der Versicherten einen Datenaustausch erlaubt. Nach Abschluss des NVF-Projekts sollen die Empfehlungen erneut geprüft werden.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -178,14 +157,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Übertragbarkeit unklar</h3>
+  <h3>Hindernis laut Beschluss: Übertragbarkeit</h3>
   <p class="unser">Umsetzbarkeit im Versorgungsalltag und Ausreichen der Vorhersagegüte für messbare Effekte noch ungeprüft</p>
+  
   <blockquote>„Es muss nun in der Versorgungsrealität erprobt werden, ob der idealtypische Prozessaufbau im Versorgungsalltag umsetzbar ist, die Prozesse innerhalb der beteiligten Institutionen strukturiert werden können und die Vorhersagegüte ausreichend ist, um messbare Effekte einer verbesserten Versorgung zu ermöglichen." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,128 +176,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Übertragbarkeit unklar</h3>
-  <p class="unser">Umsetzung der IT- und Rechtsanpassungsempfehlungen verfrüht, da der Nutzen in der Versorgungsrealität nicht nachgewiesen ist</p>
+  <h3>Hindernis laut Beschluss: Übertragbarkeit</h3>
+  <p class="unser">Die aufgezeigten IT- und Rechtsanpassungsbedarfe erscheinen plausibel, ihre Umsetzung ist aber verfrüht, da der Nutzen in der Versorgungsrealität nicht nachgewiesen ist.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung gab nur eine Hälfte des Beschlusssatzes wieder; die Neufassung nennt beide. Vorher stand hier:
+    <i>„Umsetzung der IT- und Rechtsanpassungsempfehlungen verfrüht, da der Nutzen in der Versorgungsrealität nicht nachgewiesen ist“</i></p>
   <blockquote>„Eine Umsetzung der Empfehlungen zur IT -Umsetzung sowie zum gesetzlichen Anpassungsbedarf, die das Projekt entwickelt hat, erscheint zum jetzigen Zeitpunkt verfrüht. Die aufgezeigten Änderungsbedarfe, insbesondere die Anpassung des Rahmenvertrags Entlassmanagement, erscheinen plausibel, jedoch sollte der Nutzen der Verwendung von Routinedaten im Rahmen des Entlassmanagements zuvor in Versorgungsrealität nachgewiesen sein." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Prozessmodell als solide Grundlage für strukturiertes Entlassmanagement</p>
-  <blockquote>„Das Prozessmodell ist auf der Ebene der Zusammenarbeit zwischen Krankenkasse und Krankenhaus definiert und liefert eine solide Grundlage für ein strukturiertes Entlassmanagement." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Definierter Informationsfluss sowie definierte Aufgaben und Verantwortlichkeiten als Stärke des Modells</p>
-  <blockquote>„Die Stärke des Modells besteht in dem definierten Informationsfluss sowie den definierten Aufgaben und Verantwortlichkeiten von Krankenkasse und Krankenhaus." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Prognosemodelle mit ausreichender Vorhersagegüte entwickelt</p>
-  <blockquote>„Insgesamt konnten finale Modelle entwickelt werden, die eine ausreichende Vorhersagegüte aufweisen." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Geeignete Methodik für die Entwicklung des Prognosemodells</p>
-  <blockquote>„Die gewählte Methodik war für die Entwicklung des Prognosemodells geeignet." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Verwertungspotenzial insgesamt gut</p>
-  <blockquote>„Das Verwertungspotenzial der Projektergebnisse wird insgesamt als gut bewertet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.5">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Potenzial zur Verbesserung der Versorgung</p>
-  <blockquote>„Grundsätzlich haben die Ergebnisse das Potenzial zur Verbesserung der Versorgung beizutragen." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -333,11 +200,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben entwickelte Methoden, um Routinedaten der Krankenkassen für ein sektorenübergreifendes Entlassmanagement zu nutzen. Kern sind logistische Prognosemodelle für sieben poststationäre Outcomes und einen zusammengesetzten Index. Hinzu kommen ein Prozessmodell für die Kommunikation zwischen Krankenhaus und Krankenkasse, eine IT-Spezifikation und eine rechtliche Prüfung. Die Modelle beruhen auf 366.734 vollstationären Krankenhausaufenthalten mit Entlassung im Jahr 2014 und auf Versorgungsdaten von 2013 bis 2015. Einen primären Endpunkt weist der Bericht nicht aus. Ohne Berücksichtigung des Datenverzugs verfehlte nur das Modell für den ambulanten Notfall eine akzeptable Vorhersagegüte (AUC ≤ 0,7). Die meisten Outcomes erreichten nach Aufnahme der Diagnose-Blöcke AUC-Werte ≥ 0,8, Mortalität und Reha/AHB Werte ≥ 0,9. Mit Datenverzug schwächte sich die Güte laut Bericht „geringfügig“ ab. Der Index zeigt für 19,7 % der Fälle einen generellen Nachsorgebedarf an. Rechtlich besteht für die Datenübermittlung mit Einwilligung kein gesetzlicher, wohl aber teils untergesetzlicher Anpassungsbedarf. Die Aussagekraft hängt daran, dass die Umsetzung in der Praxis noch nicht erprobt ist und in einem Modellprojekt geprüft werden soll. Weitere Grenzen sind der Datenverzug von bis zu acht Monaten und die Beschränkung auf Krankenhaus und Krankenkasse ohne Nachsorger und Patienten.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,12 +218,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Ohne Datenverzug verfehlte nur das Modell für den ambulanten Notfall eine mindestens akzeptable Vorhersagegüte (AUC ≤ 0,7). Für die meisten Outcomes ergaben sich nach Erweiterung um Aufnahme- und Vorerkrankungsdiagnosen AUC-Werte ≥ 0,8 (laut Bericht „ausgezeichnet“), für Mortalität und Reha/AHB AUC-Werte ≥ 0,9 (laut Bericht „hervorragend“).</p>
+  
   <blockquote>„„verfehlte bei den Modellen ohne Datenverzug lediglich das Outcome Ambulanter Notfall mit einem AUC-Wert ≤ 0,7 eine mindestens akzeptable Vorhersagegüte […] ausgezeichnete AUC-Werte ≥ 0,8, für die Outcomes Mortalität und Reha/AHB sogar eine hervorragende Vorhersagegüte mit AUC- Werten ≥ 0,9“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,12 +237,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mit Datenverzug schwächte sich die Vorhersagegüte bei den meisten Modellen laut Bericht geringfügig ab. Die Modelle für Notfallwiederaufnahme, Hilfsmittelbedarf und Index erreichten erst mit den Diagnose-Blöcken eine Güte von AUC ≥ 0,7.</p>
+  
   <blockquote>„„so schwächte sich die Vorhersagegüte bei den meisten Modellen geringfügig ab. Für die Modelle zur Notfallwiederaufnahme, zum Hilfsmittelbedarf und zum Index hatte dies zur Folge, dass erst durch die Erweiterung der Modelle um die Diagnosen (Blöcke II und III) eine mindestens akzeptable Güte (AUC-Wert ≥ 0,7) erreicht werden konnte.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -389,12 +256,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Umsetzung des Instruments in die Praxis von Krankenhäusern und Krankenkassen ist noch nicht erprobt. Sie ist in einem Modellprojekt technisch und organisatorisch zu überprüfen und zu evaluieren.</p>
+  
   <blockquote>„„Die Umsetzung der einzelnen Elemente des Entlassmanagementinstruments in die tägliche Praxis von Krankenhäusern und Krankenkassen ist im Rahmen eines Modellprojekts zu überprüfen und zu evaluieren.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -408,12 +275,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Krankenkassendaten stehen je nach Abrechnungskontext erst mit einer Verzögerung von wenigen Tagen bis zu acht Monaten zur Verfügung, etwa bei ambulanten Leistungen nach § 295 SGB V. Der Bericht nennt den Datenverzug eine relevante Größe bei der Vorhersage.</p>
+  
   <blockquote>„„Dieser Datenverzug kann je nach Abrechnungskontext von wenigen Tagen bis hin zu acht Monaten (z.B. bei ambulanten Leistungen nach § 295 SGB V) betragen“ – Bericht, S. 7" <span class="s">S. 7</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +294,164 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Modell für den ambulanten Notfall erreicht auch unter Berücksichtigung des Datenverzugs keine ausreichende Vorhersagequalität.</p>
+  
   <blockquote>„„Insgesamt ist die Vorhersagequalität der finalen Modelle mit Datenverzug – mit Ausnahme des Outcomes Ambulanter Notfall – als ausreichend zu beurteilen.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>43 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss empfiehlt, das in EMSE entwickelte Prozessmodell zum erweiterten Entlassmanagement mit dem Prognosemodell zu erproben. Die Erprobung erfolgt im Projekt USER (01NVF18010). Die Erkenntnisse werden zudem informatorisch an die Vertragsparteien des Rahmenvertrags Entlassmanagement (GKV-Spitzenverband, KBV, DKG) weitergeleitet.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Das Prozessmodell soll umsetzbar sein und Akzeptanz finden, weil es mit den relevanten Stakeholdern entwickelt wurde. Das Prognosemodell ist unter Beachtung der Erkenntnisse zur IT-Umsetzung und des rechtlichen Rahmens nutzbar. Die Umsetzbarkeit im Versorgungsalltag muss jedoch erst in einer neuen Versorgungsform erprobt werden. Für eine Erprobung ist keine untergesetzliche Anpassung nötig, da § 39 Abs. 1a SGB V mit Einwilligung der Versicherten einen Datenaustausch erlaubt. Nach Abschluss des NVF-Projekts sollen die Empfehlungen erneut geprüft werden.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Prozessmodell als solide Grundlage für strukturiertes Entlassmanagement</p>
+  
+  <blockquote>„Das Prozessmodell ist auf der Ebene der Zusammenarbeit zwischen Krankenkasse und Krankenhaus definiert und liefert eine solide Grundlage für ein strukturiertes Entlassmanagement." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Definierter Informationsfluss sowie definierte Aufgaben und Verantwortlichkeiten als Stärke des Modells</p>
+  
+  <blockquote>„Die Stärke des Modells besteht in dem definierten Informationsfluss sowie den definierten Aufgaben und Verantwortlichkeiten von Krankenkasse und Krankenhaus." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Prognosemodelle mit ausreichender Vorhersagegüte entwickelt</p>
+  
+  <blockquote>„Insgesamt konnten finale Modelle entwickelt werden, die eine ausreichende Vorhersagegüte aufweisen." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Geeignete Methodik für die Entwicklung des Prognosemodells</p>
+  
+  <blockquote>„Die gewählte Methodik war für die Entwicklung des Prognosemodells geeignet." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.4">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Verwertungspotenzial insgesamt gut</p>
+  
+  <blockquote>„Das Verwertungspotenzial der Projektergebnisse wird insgesamt als gut bewertet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.5">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Potenzial zur Verbesserung der Versorgung</p>
+  
+  <blockquote>„Grundsätzlich haben die Ergebnisse das Potenzial zur Verbesserung der Versorgung beizutragen." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.5" value="ok" checked hidden>
+    <input type="radio" name="ubefund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +465,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Abweichend von der ursprünglichen Projektidee bindet das Prozessmodell Nachsorger und Patienten nicht ein. Es beschränkt sich auf die Kommunikation zwischen Krankenhaus und Krankenkasse.</p>
+  
   <blockquote>„„Abweichend von der ursprünglichen Projektidee, ein Instrument zu entwickeln, welches alle am Entlassmanagementprozess Beteiligten einbindet (Krankenhaus, Krankenkasse, Nachsorger und Patient), fokussiert das vorliegende Prozessmodell auf die Kommunikation zwischen Krankenhaus und Krankenkasse.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -461,16 +480,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>34 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Datengrundlage der Prognosemodelle waren 366.734 vollstationäre Krankenhausaufenthalte mit Entlassung im Jahr 2014 sowie deren ambulante und stationäre Leistungen und Diagnosen aus den Jahren 2013 bis 2015.</p>
+  
   <blockquote>„„basierten auf insgesamt 366.734 vollstationären Krankenhausaufenthalten mit einer Entlassung im Jahr 2014 sowie deren ambulante und stationäre Versorgungsleistungen und Diagnosen für den Zeitraum von 2013 bis 2015.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +503,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der finale Index zeigt für 19,7 % der vollstationären Krankenhausfälle einen generellen Nachsorgebedarf an und damit einen potenziellen Bedarf für ein erweitertes Entlassmanagement.</p>
+  
   <blockquote>„„Der finale Index zeigt für 19,7 % der vollstationären Krankenhausfälle einen generellen Nachsorgebedarf und somit einen potentiellen Bedarf für ein erweitertes Entlassmanagement an.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +522,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Hilfsmittelbedarf trat nach Entlassung bei 24,3 % der Fälle auf, die übrigen Outcomes bei 0,9 % bis 7,3 %. Der Hilfsmittelbedarf wurde deshalb aus dem Index ausgeschlossen, weil er dessen Trennschärfe beeinträchtigt hätte.</p>
+  
   <blockquote>„„Von der Indexberechnung ausgeschlossen wurde das Outcome Hilfsmittelbedarf, welches mit einer Eintrittshäufigkeit von 24,3 % im Vergleich zu den anderen Outcomes (0,9 % bis 7,3 %) relativ häufig nach einer Entlassung zu verzeichnen war“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +541,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mit Datenverzug wurden Leistungen unmittelbar vor der Aufnahme nicht adäquat abgebildet. Daraus ergab sich eine abweichende Klassifizierung der Fälle bei Polymedikation (15,7 %), mehrfachen Krankenhausaufenthalten (14,5 %) und Hilfsmittelbedarf (21,1 %).</p>
+  
   <blockquote>„„insbesondere Versorgungsleistungen, die unmittelbar vor der Aufnahme stattfanden, nicht adäquat abgebildet werden konnten. Dies führte vor allem bei den Prädiktoren Polymedikation (15,7 %), mehrfache Krankenhausaufenthalte (14,5 %) und Hilfsmittelbedarf (21,1 %) zu einer abweichenden Klassifizierung der Fälle.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +560,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das finale Index-Modell ohne Datenverzug umfasste 7 Basisprädiktoren, 111 Aufnahmediagnosen und 104 Vorerkrankungsdiagnosen.</p>
+  
   <blockquote>„„Die finale Modellierung des Index (ohne DV) umfasste neben den 7 Basisprädiktoren auch 111 statistisch relevante Aufnahme- und 104 Vorerkrankungsdiagnosen.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +579,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Unter den Basisprädiktoren waren mit dem Index vor allem assoziiert: Alter über 90 Jahre (OR 3,13; 95%-KI 2,95–3,31), mehrfache Krankenhausaufenthalte vor der Aufnahme (OR 2,34; 95%-KI 2,28–2,39) und Pflegestufe 0 (OR 1,69; 95%-KI 1,51–1,90).</p>
+  
   <blockquote>„„über 90 -Jährigen (OR=3,13; 95 %-KI: 2,95-3,31), mehrfache Krankenhausaufenthalte vor der Aufnahme (OR=2,34; 95 %-KI: 2,28 -2,39) sowie die Pflegestufe 0 (OR=1,69; 95 %-KI: 1,51-1,90) mit dem Index assoziiert.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +598,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die höchsten Effektschätzer unter den Aufnahmediagnosen hatten Wochenbettkomplikationen O85–O92 (OR 10,18; 95%-KI 7,47–13,89) und Arthrose M15–M19 (OR 3,44; 95%-KI 3,28–3,61).</p>
+  
   <blockquote>„„O85-O92 „Komplikationen, die vorwiegend im Wochenbett auftreten“ (OR=10,18; 95 %-KI: 7,47-13,89) und M15-M19 „Arthrose“ (OR=3,44; 95 %-KI: 3,28-3,61) die höchsten Effektschätzer auf.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +617,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Effektschätzer der Basisprädiktoren und die selektierten Diagnosen unterschieden sich laut Bericht deutlich zwischen den Modellen.</p>
+  
   <blockquote>„„dass sich sowohl die Effektschätzer der Basisprädiktoren als auch die iterativ selektierten Diagnosen deutlich zwischen den Modellen unterschieden“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +636,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Beim Index-Modell ohne Datenverzug wurden 10,8 % der Fälle der roten und 25,9 % der gelben Ampelkategorie zugewiesen. Über die Modelle ohne Datenverzug lag der Anteil Rot zwischen 4,2 % (ambulanter Notfall) und 12,1 % (Hilfsmittelbedarf), der Anteil Gelb zwischen 14,3 % (Mortalität) und 31,6 % (ambulanter Notfall).</p>
+  
   <blockquote>„„beim Index (Modell ohne DV) 10,8 % der Krankenhausfälle der roten Kategorie und 25,9 % der Fälle der gelben Kategorie zugewiesen. Insgesamt reichte die Spannweite […] von 4,2 % ( Ambulanter Notfall) bis 12,1 % (Hilfsmittelbedarf) und in der gelben Kategorie von 14,3 % (Mortalität) bis 31,6 % (Ambulanter Notfall).“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +655,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mit Datenverzug wurden in allen Modellen vermehrt weniger eindeutige Patienten von der roten in die gelbe Kategorie herabgestuft.</p>
+  
   <blockquote>„„Die Berücksichtigung des Datenverzugs hatte bei allen Modellen zur Folge, dass vermehrt die weniger eindeutigen Patienten von der roten in die gelbe Kategorie herabgestuft worden sind.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +674,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das Prognosemodell ist in den standardisierten Datenaustausch eingebunden. Es berechnet das individuelle Risiko für einzelne Nachsorgebedarfe und für einen generellen Nachsorgebedarf.</p>
+  
   <blockquote>„„Das Prognosemodell ist in den standardisierten Datenaustausch eingebunden und identifiziert Patienten mit einem erweiterten poststationären Versorgungsbedarf. Es errechnet für unterschiedliche Nachsorgebedarfe […] sowie für einen generellen Nachsorgebedarf das individuelle Risiko“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +693,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als wesentliche Probleme nannten die Interviewten die Kommunikation und den Informationsaustausch zwischen Krankenhaus und Dritten, insbesondere fehlende Rückmeldung über die poststationäre Versorgung.</p>
+  
   <blockquote>„„Probleme hinsichtlich einer nahtlosen Kommunikation zwischen Krankenhaus und Dritten und Probleme hinsichtlich eines reibungslosen Informationsaustausches – und hier insbesondere fehlende Rückmeldung über die poststationäre Versorgung, genannt.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +712,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als Ursachen nannten die Befragten mehrheitlich sektorale Grenzen, zum Teil professionelle Asymmetrien sowie ökonomische Zwänge. Nahezu alle direkt Beteiligten nannten eine langsame und wenig flexible Kommunikation mit Kostenträgern und Behörden.</p>
+  
   <blockquote>„„Als ursächlich für die Probleme wurden mehrheitlich die sektoralen Grenzen und z.T. auch die professionellen Asymmetrien […] aber auch ökonomische Zwänge genannt.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +731,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für das Prozessmodell wurden drei strategische Ziele mit insgesamt neun Ergebniszielen definiert.</p>
+  
   <blockquote>„„Im Ergebnis wurden drei strategische Ziele mit insgesamt neun Ergebniszielen definiert.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +750,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Abweichend vom Antrag wurde zusätzlich die Idee eines beschleunigten Genehmigungsverfahrens entwickelt, weil Beteiligte dort Verbesserungspotenzial sahen.</p>
+  
   <blockquote>„„jedoch wurde die zusätzliche Idee eines beschleunigten Genehmigungsverfahrens entwickelt, da der Entlassmanagementprozess laut Aussage von Beteiligten an dieser Stelle Verbesserungspotential aufweist.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +769,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die QS-Spezifikation ist für das Projekt nur bedingt geeignet: Ihr fehlen ein Informationsmodell mit Bezug auf Prozessabläufe und technisch verankerte Vorgaben zur Interoperabilität.</p>
+  
   <blockquote>„„dass die QS-Spezifikation für das vorliegende Projekt nur bedingt geeignet ist: […] jedoch ist weder ein Informationsmodell mit einem Bezug auf Prozessabläufe bzw. Workflows vorhanden noch sind exakte Vorgaben zur Interoperabilität technisch verankert.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +788,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als Spezifikationsgrundlage bietet sich nach dem Bericht der FHIR-Standard an.</p>
+  
   <blockquote>„„Der sich zunehmend etablierende FHIR -Standard bietet sich für das Projekt als Spezifikationsgrundlage an“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +807,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für eine mögliche IT-Umsetzung wurde eine Schnittstelle definiert.</p>
+  
   <blockquote>„„Für eine mögliche IT -Umsetzung wurde eine Schnittstelle definiert.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +826,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Übermittlung von Routinedaten nach dem Konzept besteht kein gesetzlicher Anpassungsbedarf.</p>
+  
   <blockquote>„„Ein gesetzlicher Anpassungsbedarf mit Blick auf die Übermittlung von Routinedaten gemäß vorliegendem Konzept besteht insofern nicht.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +845,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Untergesetzlich wäre für die Übermittlung von Routinedaten der Krankenkasse an das Krankenhaus eine Ergänzung der Anlage 1b oder eine separate Anlage zum Rahmenvertrag erforderlich.</p>
+  
   <blockquote>„„wäre untergesetzlich eine Ergänzung der Anlage 1b oder eine separate Anlage zum Rahmenvertrag ausschließlich zur Übermittlung von Routinedaten erforderlich.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +864,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Datenübermittlung bei einem beschleunigten Genehmigungsverfahren besteht kein zwingender gesetzlicher oder untergesetzlicher Anpassungsbedarf.</p>
+  
   <blockquote>„„besteht hinsichtlich der Datenübermittlung bei einem beschleunigten Genehmigungsverfahren kein zwingender gesetzlicher oder untergesetzlicher Anpassungsbedarf.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +883,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Einschätzung des Berichts liegt das Problem bei Genehmigungen weniger in der Datenübermittlung als im Genehmigungsprozess selbst, etwa in verzögerter Beantragung, Abstimmungsproblemen und langen Bearbeitungszeiten.</p>
+  
   <blockquote>„„Das Problem beschleunigter Genehmigungsverfahren besteht insofern weniger in der schnellen Datenübermittlung als vielmehr in Schwierigkeiten im Genehmigungsprozess“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +902,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Evaluation des Entlassmanagements durch die Krankenkassen nach dem EMSE-Konzept besteht untergesetzlicher Anpassungsbedarf.</p>
+  
   <blockquote>„„Mit Blick auf die Evaluation des Entlassmanagements durch die K rankenkassen gemäß EMSE-Konzept besteht hier insofern untergesetzlicher Anpassungsbedarf.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +921,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zum Qualifikations- oder Kompetenzprofil des Entlassmanagers ist kein zwingender gesetzlicher oder untergesetzlicher Anpassungsbedarf gegeben.</p>
+  
   <blockquote>„„Ein gesetzlicher oder untergesetzlicher Anpassungsbedarf zum Qualifikations- oder Kompetenzprofil des Entlassmanagers ist vor diesem Hintergrund nicht zwingend gegeben.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +940,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Projektnehmer sehen die eingangs definierten Arbeitshypothesen als bestätigt an.</p>
+  
   <blockquote>„„Die eingangs definierten Arbeitshypothesen können bestätigt werden.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +959,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für das Folgeprojekt „USER“ zur Umsetzung in einem Modellprojekt liegt ein positiver Förderbescheid vor.</p>
+  
   <blockquote>„„Ein positiver Förderbescheid des beantragten Projekts „USER“ (Umsetzung eines strukturierten Entlassmanagements mit Routinedaten) liegt bereits vor (Fördernummer: 01NVF18010).“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +978,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Abweichend von der Planung konnte kein Interviewpartner einer Kassenärztlichen Vereinigung gewonnen werden.</p>
+  
   <blockquote>„„Abweichend von der Planung gemäß Antrag konnte kein Interviewpartner einer Kassenärztlichen Vereinigung für ein Interview gewonnen werden.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +997,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die heterogene Versorgungslandschaft ist nach dem Bericht eine große Herausforderung für ein standardisiertes Entlassmanagement.</p>
+  
   <blockquote>„„Die äußerst heterogene Versorgungslandschaft erweist sich als große Herausforderung für ein standardisiertes Entlassmanagement.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1016,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die bestehenden Verfahren decken die informationstechnischen Anforderungen an das Prozessmodell nur unzureichend ab. Für Interoperabilität müssen neue Standards wie FHIR eingesetzt werden.</p>
+  
   <blockquote>„„Die informationstechnischen Anforderungen an das Prozessmodell können mit den bisherigen in der Praxis bestehenden Verfahren nur unzureichend abgedeckt werden. Um Interoperabilität gewährleisten zu können, müssen neue Standards eingesetzt werden (z.B. FHIR).“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1035,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Über den Datenaustausch nach § 301 SGB V ist eine Umsetzung im Modellprojekt nicht möglich, weil Änderungen an den Datensätzen nur über Gremien und mit Wirkung für alle Krankenhäuser möglich sind.</p>
+  
   <blockquote>„„Änderungen an den Datensätzen sind derzeit nur über Gremien und mit gleichzeitiger Wirkung für alle Krankenhäuser möglich. Eine Umsetzung im Rahmen eines Modellprojekts ist somit mit diesem Standard nicht möglich.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1054,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ob der Datenaustausch nach § 301 SGB V in der jetzigen Form für ein elektronisches Genehmigungsverfahren geeignet ist, ist strittig.</p>
+  
   <blockquote>„„Inwieweit der Datenaustausch nach § 301 SGB V in der jetzigen Form für ein elektronisches Genehmigungsverfahren geeignet erscheint, ist strittig.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1073,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für eine FHIR-basierte Kommunikation müssten die beteiligten Primärsysteme (KIS, Krankenkassensystem) die FHIR-Spezifikation erst unterstützen.</p>
+  
   <blockquote>„„müssten die beteiligten Primärsysteme (KIS, Krankenkassensystem) befähigt sein, die FHIR-Spezifikation zu unterstützen.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1092,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für eine rechtssichere Umsetzung in einem Modellprojekt sind Aufklärung und Einverständnis der Patienten essenziell.</p>
+  
   <blockquote>„„Für eine rechtssichere Umsetzung des Vorhabens in ein Modellprojekt sind insbesondere die Aufklärung und das Einverständnis der Patienten essentiell.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1111,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der laut Bericht relativ hohen technischen Anforderungen und des Programmieraufwands beschränkt sich das Folgeprojekt auf eine überschaubare Zahl von Krankenhäusern einer Region und von Krankenkassen.</p>
+  
   <blockquote>„„Da vor allem die technischen Anforderungen an di e Umsetzung relativ hoch sind bzw. der dahinterliegende Programmieraufwand, wurde in dem beantragten Forschungsvorhaben auf eine überschaubare Anzahl an teilnehmenden Krankenhäusern einer Region und Krankenkassen fokussiert.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1142,28 +1161,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 40, "akronym": "EMSE", "kennung": "o2aVT9bWvE_2", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss empfiehlt, das in EMSE entwickelte Prozessmodell zum erweiterten Entlassmanagement mit dem Prognosemodell zu erproben. Die Erprobung erfolgt im Projekt USER (01NVF18010). Die Erkenntnisse werden zudem informatorisch an die Vertragsparteien des Rahmenvertrags Entlassmanagement (GKV-Spitzenverband, KBV, DKG) weitergeleitet."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Prozessmodell legt nach Auffassung des Ausschusses Informationsfluss, Aufgaben und Verantwortlichkeiten von Krankenkasse und Krankenhaus fest und bietet damit eine solide Grundlage für ein strukturiertes Entlassmanagement. Für das Prognosemodell konnten finale Modelle mit ausreichender Vorhersagegüte entwickelt werden, und die gewählte Methodik wird als geeignet bewertet. Das Verwertungspotenzial gilt insgesamt als gut. Offen ist jedoch, ob der idealtypische Prozess im Versorgungsalltag umsetzbar ist und ob die Vorhersagegüte für messbare Versorgungseffekte ausreicht. Deshalb hält der Ausschuss eine Erprobung als neue Versorgungsform für sinnvoll. Die Umsetzung der Empfehlungen zur IT und zum gesetzlichen Anpassungsbedarf hält er dagegen für verfrüht, solange der Nutzen in der Versorgungsrealität nicht nachgewiesen ist."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Das Prozessmodell soll umsetzbar sein und Akzeptanz finden, weil es mit den relevanten Stakeholdern entwickelt wurde. Das Prognosemodell ist unter Beachtung der Erkenntnisse zur IT-Umsetzung und des rechtlichen Rahmens nutzbar. Die Umsetzbarkeit im Versorgungsalltag muss jedoch erst in einer neuen Versorgungsform erprobt werden. Für eine Erprobung ist keine untergesetzliche Anpassung nötig, da § 39 Abs. 1a SGB V mit Einwilligung der Versicherten einen Datenaustausch erlaubt. Nach Abschluss des NVF-Projekts sollen die Empfehlungen erneut geprüft werden."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Umsetzbarkeit im Versorgungsalltag und Ausreichen der Vorhersagegüte für messbare Effekte noch ungeprüft"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Umsetzung der IT- und Rechtsanpassungsempfehlungen verfrüht, da der Nutzen in der Versorgungsrealität nicht nachgewiesen ist"}, {"stelle": "befund.0", "art": "befund", "unser": "Prozessmodell als solide Grundlage für strukturiertes Entlassmanagement"}, {"stelle": "befund.1", "art": "befund", "unser": "Definierter Informationsfluss sowie definierte Aufgaben und Verantwortlichkeiten als Stärke des Modells"}, {"stelle": "befund.2", "art": "befund", "unser": "Prognosemodelle mit ausreichender Vorhersagegüte entwickelt"}, {"stelle": "befund.3", "art": "befund", "unser": "Geeignete Methodik für die Entwicklung des Prognosemodells"}, {"stelle": "befund.4", "art": "befund", "unser": "Verwertungspotenzial insgesamt gut"}, {"stelle": "befund.5", "art": "befund", "unser": "Potenzial zur Verbesserung der Versorgung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben entwickelte Methoden, um Routinedaten der Krankenkassen für ein sektorenübergreifendes Entlassmanagement zu nutzen. Kern sind logistische Prognosemodelle für sieben poststationäre Outcomes und einen zusammengesetzten Index. Hinzu kommen ein Prozessmodell für die Kommunikation zwischen Krankenhaus und Krankenkasse, eine IT-Spezifikation und eine rechtliche Prüfung. Die Modelle beruhen auf 366.734 vollstationären Krankenhausaufenthalten mit Entlassung im Jahr 2014 und auf Versorgungsdaten von 2013 bis 2015. Einen primären Endpunkt weist der Bericht nicht aus. Ohne Berücksichtigung des Datenverzugs verfehlte nur das Modell für den ambulanten Notfall eine akzeptable Vorhersagegüte (AUC ≤ 0,7). Die meisten Outcomes erreichten nach Aufnahme der Diagnose-Blöcke AUC-Werte ≥ 0,8, Mortalität und Reha/AHB Werte ≥ 0,9. Mit Datenverzug schwächte sich die Güte laut Bericht „geringfügig“ ab. Der Index zeigt für 19,7 % der Fälle einen generellen Nachsorgebedarf an. Rechtlich besteht für die Datenübermittlung mit Einwilligung kein gesetzlicher, wohl aber teils untergesetzlicher Anpassungsbedarf. Die Aussagekraft hängt daran, dass die Umsetzung in der Praxis noch nicht erprobt ist und in einem Modellprojekt geprüft werden soll. Weitere Grenzen sind der Datenverzug von bis zu acht Monaten und die Beschränkung auf Krankenhaus und Krankenkasse ohne Nachsorger und Patienten."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Ohne Datenverzug verfehlte nur das Modell für den ambulanten Notfall eine mindestens akzeptable Vorhersagegüte (AUC ≤ 0,7). Für die meisten Outcomes ergaben sich nach Erweiterung um Aufnahme- und Vorerkrankungsdiagnosen AUC-Werte ≥ 0,8 (laut Bericht „ausgezeichnet“), für Mortalität und Reha/AHB AUC-Werte ≥ 0,9 (laut Bericht „hervorragend“)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Mit Datenverzug schwächte sich die Vorhersagegüte bei den meisten Modellen laut Bericht geringfügig ab. Die Modelle für Notfallwiederaufnahme, Hilfsmittelbedarf und Index erreichten erst mit den Diagnose-Blöcken eine Güte von AUC ≥ 0,7."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Umsetzung des Instruments in die Praxis von Krankenhäusern und Krankenkassen ist noch nicht erprobt. Sie ist in einem Modellprojekt technisch und organisatorisch zu überprüfen und zu evaluieren."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Krankenkassendaten stehen je nach Abrechnungskontext erst mit einer Verzögerung von wenigen Tagen bis zu acht Monaten zur Verfügung, etwa bei ambulanten Leistungen nach § 295 SGB V. Der Bericht nennt den Datenverzug eine relevante Größe bei der Vorhersage."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Das Modell für den ambulanten Notfall erreicht auch unter Berücksichtigung des Datenverzugs keine ausreichende Vorhersagequalität."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Abweichend von der ursprünglichen Projektidee bindet das Prozessmodell Nachsorger und Patienten nicht ein. Es beschränkt sich auf die Kommunikation zwischen Krankenhaus und Krankenkasse."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Datengrundlage der Prognosemodelle waren 366.734 vollstationäre Krankenhausaufenthalte mit Entlassung im Jahr 2014 sowie deren ambulante und stationäre Leistungen und Diagnosen aus den Jahren 2013 bis 2015."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Der finale Index zeigt für 19,7 % der vollstationären Krankenhausfälle einen generellen Nachsorgebedarf an und damit einen potenziellen Bedarf für ein erweitertes Entlassmanagement."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Der Hilfsmittelbedarf trat nach Entlassung bei 24,3 % der Fälle auf, die übrigen Outcomes bei 0,9 % bis 7,3 %. Der Hilfsmittelbedarf wurde deshalb aus dem Index ausgeschlossen, weil er dessen Trennschärfe beeinträchtigt hätte."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Mit Datenverzug wurden Leistungen unmittelbar vor der Aufnahme nicht adäquat abgebildet. Daraus ergab sich eine abweichende Klassifizierung der Fälle bei Polymedikation (15,7 %), mehrfachen Krankenhausaufenthalten (14,5 %) und Hilfsmittelbedarf (21,1 %)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Das finale Index-Modell ohne Datenverzug umfasste 7 Basisprädiktoren, 111 Aufnahmediagnosen und 104 Vorerkrankungsdiagnosen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Unter den Basisprädiktoren waren mit dem Index vor allem assoziiert: Alter über 90 Jahre (OR 3,13; 95%-KI 2,95–3,31), mehrfache Krankenhausaufenthalte vor der Aufnahme (OR 2,34; 95%-KI 2,28–2,39) und Pflegestufe 0 (OR 1,69; 95%-KI 1,51–1,90)."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die höchsten Effektschätzer unter den Aufnahmediagnosen hatten Wochenbettkomplikationen O85–O92 (OR 10,18; 95%-KI 7,47–13,89) und Arthrose M15–M19 (OR 3,44; 95%-KI 3,28–3,61)."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Effektschätzer der Basisprädiktoren und die selektierten Diagnosen unterschieden sich laut Bericht deutlich zwischen den Modellen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Beim Index-Modell ohne Datenverzug wurden 10,8 % der Fälle der roten und 25,9 % der gelben Ampelkategorie zugewiesen. Über die Modelle ohne Datenverzug lag der Anteil Rot zwischen 4,2 % (ambulanter Notfall) und 12,1 % (Hilfsmittelbedarf), der Anteil Gelb zwischen 14,3 % (Mortalität) und 31,6 % (ambulanter Notfall)."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Mit Datenverzug wurden in allen Modellen vermehrt weniger eindeutige Patienten von der roten in die gelbe Kategorie herabgestuft."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Das Prognosemodell ist in den standardisierten Datenaustausch eingebunden. Es berechnet das individuelle Risiko für einzelne Nachsorgebedarfe und für einen generellen Nachsorgebedarf."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Als wesentliche Probleme nannten die Interviewten die Kommunikation und den Informationsaustausch zwischen Krankenhaus und Dritten, insbesondere fehlende Rückmeldung über die poststationäre Versorgung."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Als Ursachen nannten die Befragten mehrheitlich sektorale Grenzen, zum Teil professionelle Asymmetrien sowie ökonomische Zwänge. Nahezu alle direkt Beteiligten nannten eine langsame und wenig flexible Kommunikation mit Kostenträgern und Behörden."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Für das Prozessmodell wurden drei strategische Ziele mit insgesamt neun Ergebniszielen definiert."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Abweichend vom Antrag wurde zusätzlich die Idee eines beschleunigten Genehmigungsverfahrens entwickelt, weil Beteiligte dort Verbesserungspotenzial sahen."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Die QS-Spezifikation ist für das Projekt nur bedingt geeignet: Ihr fehlen ein Informationsmodell mit Bezug auf Prozessabläufe und technisch verankerte Vorgaben zur Interoperabilität."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Als Spezifikationsgrundlage bietet sich nach dem Bericht der FHIR-Standard an."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Für eine mögliche IT-Umsetzung wurde eine Schnittstelle definiert."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Für die Übermittlung von Routinedaten nach dem Konzept besteht kein gesetzlicher Anpassungsbedarf."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Untergesetzlich wäre für die Übermittlung von Routinedaten der Krankenkasse an das Krankenhaus eine Ergänzung der Anlage 1b oder eine separate Anlage zum Rahmenvertrag erforderlich."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Für die Datenübermittlung bei einem beschleunigten Genehmigungsverfahren besteht kein zwingender gesetzlicher oder untergesetzlicher Anpassungsbedarf."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Nach Einschätzung des Berichts liegt das Problem bei Genehmigungen weniger in der Datenübermittlung als im Genehmigungsprozess selbst, etwa in verzögerter Beantragung, Abstimmungsproblemen und langen Bearbeitungszeiten."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Für die Evaluation des Entlassmanagements durch die Krankenkassen nach dem EMSE-Konzept besteht untergesetzlicher Anpassungsbedarf."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Zum Qualifikations- oder Kompetenzprofil des Entlassmanagers ist kein zwingender gesetzlicher oder untergesetzlicher Anpassungsbedarf gegeben."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Die Projektnehmer sehen die eingangs definierten Arbeitshypothesen als bestätigt an."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Für das Folgeprojekt „USER“ zur Umsetzung in einem Modellprojekt liegt ein positiver Förderbescheid vor."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Abweichend von der Planung konnte kein Interviewpartner einer Kassenärztlichen Vereinigung gewonnen werden."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die heterogene Versorgungslandschaft ist nach dem Bericht eine große Herausforderung für ein standardisiertes Entlassmanagement."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die bestehenden Verfahren decken die informationstechnischen Anforderungen an das Prozessmodell nur unzureichend ab. Für Interoperabilität müssen neue Standards wie FHIR eingesetzt werden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Über den Datenaustausch nach § 301 SGB V ist eine Umsetzung im Modellprojekt nicht möglich, weil Änderungen an den Datensätzen nur über Gremien und mit Wirkung für alle Krankenhäuser möglich sind."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Ob der Datenaustausch nach § 301 SGB V in der jetzigen Form für ein elektronisches Genehmigungsverfahren geeignet ist, ist strittig."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Für eine FHIR-basierte Kommunikation müssten die beteiligten Primärsysteme (KIS, Krankenkassensystem) die FHIR-Spezifikation erst unterstützen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Für eine rechtssichere Umsetzung in einem Modellprojekt sind Aufklärung und Einverständnis der Patienten essenziell."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Wegen der laut Bericht relativ hohen technischen Anforderungen und des Programmieraufwands beschränkt sich das Folgeprojekt auf eine überschaubare Zahl von Krankenhäusern einer Region und von Krankenkassen."}]};
+const D = {"projekt_id": 40, "akronym": "EMSE", "kennung": "o2aVT9bWvE_2", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Prozessmodell legt nach Auffassung des Ausschusses Informationsfluss, Aufgaben und Verantwortlichkeiten von Krankenkasse und Krankenhaus fest und bietet damit eine solide Grundlage für ein strukturiertes Entlassmanagement. Für das Prognosemodell konnten finale Modelle mit ausreichender Vorhersagegüte entwickelt werden, und die gewählte Methodik wird als geeignet bewertet. Das Verwertungspotenzial gilt insgesamt als gut. Offen ist jedoch, ob der idealtypische Prozess im Versorgungsalltag umsetzbar ist und ob die Vorhersagegüte für messbare Versorgungseffekte ausreicht. Deshalb hält der Ausschuss eine Erprobung als neue Versorgungsform für sinnvoll. Die Umsetzung der Empfehlungen zur IT und zum gesetzlichen Anpassungsbedarf hält er dagegen für verfrüht, solange der Nutzen in der Versorgungsrealität nicht nachgewiesen ist."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Umsetzbarkeit im Versorgungsalltag und Ausreichen der Vorhersagegüte für messbare Effekte noch ungeprüft"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Die aufgezeigten IT- und Rechtsanpassungsbedarfe erscheinen plausibel, ihre Umsetzung ist aber verfrüht, da der Nutzen in der Versorgungsrealität nicht nachgewiesen ist."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben entwickelte Methoden, um Routinedaten der Krankenkassen für ein sektorenübergreifendes Entlassmanagement zu nutzen. Kern sind logistische Prognosemodelle für sieben poststationäre Outcomes und einen zusammengesetzten Index. Hinzu kommen ein Prozessmodell für die Kommunikation zwischen Krankenhaus und Krankenkasse, eine IT-Spezifikation und eine rechtliche Prüfung. Die Modelle beruhen auf 366.734 vollstationären Krankenhausaufenthalten mit Entlassung im Jahr 2014 und auf Versorgungsdaten von 2013 bis 2015. Einen primären Endpunkt weist der Bericht nicht aus. Ohne Berücksichtigung des Datenverzugs verfehlte nur das Modell für den ambulanten Notfall eine akzeptable Vorhersagegüte (AUC ≤ 0,7). Die meisten Outcomes erreichten nach Aufnahme der Diagnose-Blöcke AUC-Werte ≥ 0,8, Mortalität und Reha/AHB Werte ≥ 0,9. Mit Datenverzug schwächte sich die Güte laut Bericht „geringfügig“ ab. Der Index zeigt für 19,7 % der Fälle einen generellen Nachsorgebedarf an. Rechtlich besteht für die Datenübermittlung mit Einwilligung kein gesetzlicher, wohl aber teils untergesetzlicher Anpassungsbedarf. Die Aussagekraft hängt daran, dass die Umsetzung in der Praxis noch nicht erprobt ist und in einem Modellprojekt geprüft werden soll. Weitere Grenzen sind der Datenverzug von bis zu acht Monaten und die Beschränkung auf Krankenhaus und Krankenkasse ohne Nachsorger und Patienten."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Ohne Datenverzug verfehlte nur das Modell für den ambulanten Notfall eine mindestens akzeptable Vorhersagegüte (AUC ≤ 0,7). Für die meisten Outcomes ergaben sich nach Erweiterung um Aufnahme- und Vorerkrankungsdiagnosen AUC-Werte ≥ 0,8 (laut Bericht „ausgezeichnet“), für Mortalität und Reha/AHB AUC-Werte ≥ 0,9 (laut Bericht „hervorragend“)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Mit Datenverzug schwächte sich die Vorhersagegüte bei den meisten Modellen laut Bericht geringfügig ab. Die Modelle für Notfallwiederaufnahme, Hilfsmittelbedarf und Index erreichten erst mit den Diagnose-Blöcken eine Güte von AUC ≥ 0,7."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Umsetzung des Instruments in die Praxis von Krankenhäusern und Krankenkassen ist noch nicht erprobt. Sie ist in einem Modellprojekt technisch und organisatorisch zu überprüfen und zu evaluieren."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Krankenkassendaten stehen je nach Abrechnungskontext erst mit einer Verzögerung von wenigen Tagen bis zu acht Monaten zur Verfügung, etwa bei ambulanten Leistungen nach § 295 SGB V. Der Bericht nennt den Datenverzug eine relevante Größe bei der Vorhersage."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Das Modell für den ambulanten Notfall erreicht auch unter Berücksichtigung des Datenverzugs keine ausreichende Vorhersagequalität."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss empfiehlt, das in EMSE entwickelte Prozessmodell zum erweiterten Entlassmanagement mit dem Prognosemodell zu erproben. Die Erprobung erfolgt im Projekt USER (01NVF18010). Die Erkenntnisse werden zudem informatorisch an die Vertragsparteien des Rahmenvertrags Entlassmanagement (GKV-Spitzenverband, KBV, DKG) weitergeleitet."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Das Prozessmodell soll umsetzbar sein und Akzeptanz finden, weil es mit den relevanten Stakeholdern entwickelt wurde. Das Prognosemodell ist unter Beachtung der Erkenntnisse zur IT-Umsetzung und des rechtlichen Rahmens nutzbar. Die Umsetzbarkeit im Versorgungsalltag muss jedoch erst in einer neuen Versorgungsform erprobt werden. Für eine Erprobung ist keine untergesetzliche Anpassung nötig, da § 39 Abs. 1a SGB V mit Einwilligung der Versicherten einen Datenaustausch erlaubt. Nach Abschluss des NVF-Projekts sollen die Empfehlungen erneut geprüft werden."}, {"stelle": "befund.0", "art": "befund", "unser": "Prozessmodell als solide Grundlage für strukturiertes Entlassmanagement"}, {"stelle": "befund.1", "art": "befund", "unser": "Definierter Informationsfluss sowie definierte Aufgaben und Verantwortlichkeiten als Stärke des Modells"}, {"stelle": "befund.2", "art": "befund", "unser": "Prognosemodelle mit ausreichender Vorhersagegüte entwickelt"}, {"stelle": "befund.3", "art": "befund", "unser": "Geeignete Methodik für die Entwicklung des Prognosemodells"}, {"stelle": "befund.4", "art": "befund", "unser": "Verwertungspotenzial insgesamt gut"}, {"stelle": "befund.5", "art": "befund", "unser": "Potenzial zur Verbesserung der Versorgung"}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Abweichend von der ursprünglichen Projektidee bindet das Prozessmodell Nachsorger und Patienten nicht ein. Es beschränkt sich auf die Kommunikation zwischen Krankenhaus und Krankenkasse."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Datengrundlage der Prognosemodelle waren 366.734 vollstationäre Krankenhausaufenthalte mit Entlassung im Jahr 2014 sowie deren ambulante und stationäre Leistungen und Diagnosen aus den Jahren 2013 bis 2015."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Der finale Index zeigt für 19,7 % der vollstationären Krankenhausfälle einen generellen Nachsorgebedarf an und damit einen potenziellen Bedarf für ein erweitertes Entlassmanagement."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Der Hilfsmittelbedarf trat nach Entlassung bei 24,3 % der Fälle auf, die übrigen Outcomes bei 0,9 % bis 7,3 %. Der Hilfsmittelbedarf wurde deshalb aus dem Index ausgeschlossen, weil er dessen Trennschärfe beeinträchtigt hätte."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Mit Datenverzug wurden Leistungen unmittelbar vor der Aufnahme nicht adäquat abgebildet. Daraus ergab sich eine abweichende Klassifizierung der Fälle bei Polymedikation (15,7 %), mehrfachen Krankenhausaufenthalten (14,5 %) und Hilfsmittelbedarf (21,1 %)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Das finale Index-Modell ohne Datenverzug umfasste 7 Basisprädiktoren, 111 Aufnahmediagnosen und 104 Vorerkrankungsdiagnosen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Unter den Basisprädiktoren waren mit dem Index vor allem assoziiert: Alter über 90 Jahre (OR 3,13; 95%-KI 2,95–3,31), mehrfache Krankenhausaufenthalte vor der Aufnahme (OR 2,34; 95%-KI 2,28–2,39) und Pflegestufe 0 (OR 1,69; 95%-KI 1,51–1,90)."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die höchsten Effektschätzer unter den Aufnahmediagnosen hatten Wochenbettkomplikationen O85–O92 (OR 10,18; 95%-KI 7,47–13,89) und Arthrose M15–M19 (OR 3,44; 95%-KI 3,28–3,61)."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Effektschätzer der Basisprädiktoren und die selektierten Diagnosen unterschieden sich laut Bericht deutlich zwischen den Modellen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Beim Index-Modell ohne Datenverzug wurden 10,8 % der Fälle der roten und 25,9 % der gelben Ampelkategorie zugewiesen. Über die Modelle ohne Datenverzug lag der Anteil Rot zwischen 4,2 % (ambulanter Notfall) und 12,1 % (Hilfsmittelbedarf), der Anteil Gelb zwischen 14,3 % (Mortalität) und 31,6 % (ambulanter Notfall)."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Mit Datenverzug wurden in allen Modellen vermehrt weniger eindeutige Patienten von der roten in die gelbe Kategorie herabgestuft."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Das Prognosemodell ist in den standardisierten Datenaustausch eingebunden. Es berechnet das individuelle Risiko für einzelne Nachsorgebedarfe und für einen generellen Nachsorgebedarf."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Als wesentliche Probleme nannten die Interviewten die Kommunikation und den Informationsaustausch zwischen Krankenhaus und Dritten, insbesondere fehlende Rückmeldung über die poststationäre Versorgung."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Als Ursachen nannten die Befragten mehrheitlich sektorale Grenzen, zum Teil professionelle Asymmetrien sowie ökonomische Zwänge. Nahezu alle direkt Beteiligten nannten eine langsame und wenig flexible Kommunikation mit Kostenträgern und Behörden."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Für das Prozessmodell wurden drei strategische Ziele mit insgesamt neun Ergebniszielen definiert."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Abweichend vom Antrag wurde zusätzlich die Idee eines beschleunigten Genehmigungsverfahrens entwickelt, weil Beteiligte dort Verbesserungspotenzial sahen."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Die QS-Spezifikation ist für das Projekt nur bedingt geeignet: Ihr fehlen ein Informationsmodell mit Bezug auf Prozessabläufe und technisch verankerte Vorgaben zur Interoperabilität."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Als Spezifikationsgrundlage bietet sich nach dem Bericht der FHIR-Standard an."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Für eine mögliche IT-Umsetzung wurde eine Schnittstelle definiert."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Für die Übermittlung von Routinedaten nach dem Konzept besteht kein gesetzlicher Anpassungsbedarf."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Untergesetzlich wäre für die Übermittlung von Routinedaten der Krankenkasse an das Krankenhaus eine Ergänzung der Anlage 1b oder eine separate Anlage zum Rahmenvertrag erforderlich."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Für die Datenübermittlung bei einem beschleunigten Genehmigungsverfahren besteht kein zwingender gesetzlicher oder untergesetzlicher Anpassungsbedarf."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Nach Einschätzung des Berichts liegt das Problem bei Genehmigungen weniger in der Datenübermittlung als im Genehmigungsprozess selbst, etwa in verzögerter Beantragung, Abstimmungsproblemen und langen Bearbeitungszeiten."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Für die Evaluation des Entlassmanagements durch die Krankenkassen nach dem EMSE-Konzept besteht untergesetzlicher Anpassungsbedarf."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Zum Qualifikations- oder Kompetenzprofil des Entlassmanagers ist kein zwingender gesetzlicher oder untergesetzlicher Anpassungsbedarf gegeben."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Die Projektnehmer sehen die eingangs definierten Arbeitshypothesen als bestätigt an."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Für das Folgeprojekt „USER“ zur Umsetzung in einem Modellprojekt liegt ein positiver Förderbescheid vor."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Abweichend von der Planung konnte kein Interviewpartner einer Kassenärztlichen Vereinigung gewonnen werden."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die heterogene Versorgungslandschaft ist nach dem Bericht eine große Herausforderung für ein standardisiertes Entlassmanagement."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die bestehenden Verfahren decken die informationstechnischen Anforderungen an das Prozessmodell nur unzureichend ab. Für Interoperabilität müssen neue Standards wie FHIR eingesetzt werden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Über den Datenaustausch nach § 301 SGB V ist eine Umsetzung im Modellprojekt nicht möglich, weil Änderungen an den Datensätzen nur über Gremien und mit Wirkung für alle Krankenhäuser möglich sind."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Ob der Datenaustausch nach § 301 SGB V in der jetzigen Form für ein elektronisches Genehmigungsverfahren geeignet ist, ist strittig."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Für eine FHIR-basierte Kommunikation müssten die beteiligten Primärsysteme (KIS, Krankenkassensystem) die FHIR-Spezifikation erst unterstützen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Für eine rechtssichere Umsetzung in einem Modellprojekt sind Aufklärung und Einverständnis der Patienten essenziell."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Wegen der laut Bericht relativ hohen technischen Anforderungen und des Programmieraufwands beschränkt sich das Folgeprojekt auf eine überschaubare Zahl von Krankenhäusern einer Region und von Krankenkassen."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

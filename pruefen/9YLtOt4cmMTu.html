@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF19045</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>21 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 85 Aussagen. Die übrigen
+64 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss leitet die Ergebnisse des Projekts ABARO zur Information an mehrere Fachgesellschaften und an eine Selbsthilfeorganisation weiter. Anlass ist die laufende Überarbeitung der S3-Leitlinie Chirurgie der Adipositas und metabolischer Erkrankungen. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt untersuchte Versorgungslücken in der Nachsorge, Risiken, Folgeerkrankungen und Bedarfe von Patientinnen und Patienten nach bariatrischer Operation. Grundlage waren Krankenkassen-Abrechnungsdaten und eine Fragebogenbefragung. Nach Einschätzung des Ausschusses waren die Methoden grundsätzlich geeignet. Die Aussagekraft ist jedoch eingeschränkt, vor allem durch das Verzerrungsrisiko bei der rückblickenden Bewertung von Beschwerden. Dennoch tragen die Erkenntnisse zum Verständnis der Versorgung bei. Sie zeigen neben positiven Effekten der Gewichtsreduktion auch Defizite in der postoperativen Nachsorge und weitreichende Komplikationen. Deshalb werden die Ergebnisse weitergeleitet.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,11 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Retrospektive Kohortenstudie von Personen mit einer bariatrischen OP über einen Beobachtungszeitraum von ca. 15 Jahren anhand von GKV-Abrechnungsdaten der German Pharmacoepidemiological Research Database (GePaRD) mit Linkage von Primärdaten aus einer Fragebogenerhebung</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -161,107 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Eingeschränkte Aussagekraft durch Verzerrungsrisiko bei der retrospektiven Bewertung von Beschwerden (Befragung)</p>
+  
   <blockquote>„Die Aussagekraft der Ergebnisse ist jedoch eingeschränkt aufgrund der Limitationen, insbesondere durch das Verzerrungsrisiko in der retrospektiven Bewertung von Beschwerden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Reduktion häufiger somatischer Komorbiditäten nach der OP (kardiovaskuläre Erkrankungen, Hypertonie, Diabetes mellitus)</p>
-  <blockquote>„Zu den häufigsten somatischen Komorbiditäten, bei denen eine Reduktion zum postoperativen Zeitpunkt erzielt werden konnte, waren kardiovaskulärer Erkrankungen ( -16 %), Hypertonie (- 14 %) und Diabetes mellitus ( -11 %)." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Senkung des mittleren BMI von 51,9 auf 35</p>
-  <blockquote>„Der mittlere präoperative Body Mass Index (BMI) betrug 51,9 und lag postoperativ zum Zeitpunkt der Befragung bei 35." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Verbesserung von Beweglichkeit und Ausdauer bei über drei Vierteln der Versicherten</p>
-  <blockquote>„Die Beweglichkeit und Ausdauer verbesserten sich bei über Dreiviertel der Versicherten." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Überwiegend gute Bewertung der erhaltenen medizinischen Leistungen</p>
-  <blockquote>„Der Großteil der Versicherten beurteilte die erhaltenen medizinischen Leistungen als „sehr gut“ bis „gut“." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Beitrag zum Verständnis der Versorgung nach bariatrischer OP, einschließlich des Aufzeigens von Versorgungsdefiziten in der postoperativen Nachsorge sowie von weitreichenden Komplikationen</p>
-  <blockquote>„Die im Projekt gewonnen Erkenntnisse leisten dennoch einen Beitrag zum Verständnis der Versorgung von Patientinnen und Patienten nach bariatrischer OP und zeigen neben den positiven Effekten durch die Gewichtsreduktion auch Versorgungsdefizite in der postoperativen Nachsorge sowie weitreichende Komplikationen auf." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Body-Mass-Index prä- und postoperativ</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -294,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Medikamentös behandelte somatische Komorbiditäten (kardiovaskuläre Erkrankungen, Hypertonie, Diabetes mellitus)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -313,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Lebensqualität“</h3>
   <p class="unser">Gesundheitsbezogene Lebensqualität</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -332,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Depressive und Angstsymptomatik</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Alkoholkonsumstörungen</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“ <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Zusammenhang zwischen ausgewählten Variablen und mindestens gefährlichem/schädlichem Alkoholkonsum (AUDIT ≥ 8), adjustiert nach Geschlecht</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Qualität der Nachsorge und Anzahl Nachsorgetermine</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Gewichtsverlust und Lebensqualität in Abhängigkeit von der Qualität der Nachsorge</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -428,11 +331,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben (ABARO-Studie) untersuchte Auswirkungen bariatrischer Operationen der Jahre 2007 bis 2018 bei DAK-Versicherten. Dazu wurden GKV-Abrechnungsdaten (N=5.837) mit einer retrospektiven Versichertenbefragung verknüpft (finaler Analysedatensatz N=2.151, korrigierte Response-Rate 46,3 %). Ein primärer Endpunkt ist im Bericht nicht angegeben. Der mittlere BMI lag vor der OP bei 51,9 und zum Befragungszeitpunkt bei 34,8. Zu diesem Zeitpunkt berichteten 22,3 % einen BMI über 40. In den Abrechnungsdaten waren die Anteile medikamentös behandelter Hypertonie und Diabetes nach der OP niedriger als davor. Verordnungen von Protonenpumpeninhibitoren, Opioiden, Analgetika und Anxiolytika waren nach der OP häufiger als davor. Jahre nach der OP berichteten mehr als 40 % Reflux, Müdigkeit und Blähungen. Je nach Störungsgruppe gaben 15,0 % bis 21,8 % mindestens ausgeprägte psychische Symptome an, 9,4 % fielen in problematische AUDIT-Kategorien, und 42 % erhielten weniger als drei Nachsorgetermine. Die Aussagekraft hängt an mehreren Punkten: Die Befragung ist eine einmalige, postoperative Querschnitterhebung ohne Prä-post-Vergleich. Sie unterliegt möglichem Recall Bias bei im Mittel 6,5 Jahren Abstand zur OP. Es wurden nur DAK-Daten verwendet. Für 1.359 von 2.151 Respondern fehlte ein Lebensqualitäts-Gesamtscore. Zudem ist die Auswertung vorwiegend deskriptiv und verzichtet weitgehend auf p-Werte.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der mittlere BMI lag vor der OP bei 51,9 (95%-KI 51,5–52,4) und zum Befragungszeitpunkt bei 34,8 (95%-KI 34,4–35,1).</p>
+  
   <blockquote>„„Der mittlere BMI vor der bariatrischen Operation lag bei 51,9 ( 95% KI: 51,5 —52,4, ). Zum Zeitpunkt der Fragebogenerhebung betrug der mittlere BMI 34,8 (95% KI: 34,4—35,1, SD: 7,5).“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zum Befragungszeitpunkt hatten 22,3 % der Teilnehmenden einen BMI über 40. 12,5 % gaben an, diese Schwelle nach der OP nie unterschritten zu haben.</p>
+  
   <blockquote>„„Zu diesem Zei tpunkt berichteten 22,3% Teilnehmenden einen BMI von &gt;40 und 12,5% aller Teilnehmenden gab an, zu keinem Zeitpunkt nach der bariatrischen Operation jemals einen BMI unterhalb dieser Schwelle erreicht zu haben.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,88 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Abrechnungsdaten sanken die Anteile medikamentös behandelter Erkrankungen von vor bis nach der OP: kardiovaskuläre Erkrankungen von 61,7 % auf 45,3 %, Hypertonie von 56,8 % auf 40,4 % und Diabetes mellitus von 27,0 % auf 15,6 %.</p>
+  
   <blockquote>„„Zu den häufigsten somatischen Komorbiditäten zählte die medikamentöse Behandlung kardiovaskulärer Erkrankungen (prä- OP: 61,7%, post-OP: 45,3%), der Hypertonie (prä-OP: 56,8%, post-OP: 40,4%) und des Diabetes mellitus (prä-OP: 27,0%, post -OP: 15,6%).“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">In den GKV-Daten (N=5.837) nahmen nach der OP die Verordnungen von Insulinen, Biguaniden und Antihypertensiva ab. Die Verordnungen von Protonenpumpeninhibitoren, Opioiden, Analgetika/Antipyretika und Anxiolytika nahmen zu, insbesondere bei der Verschreibungsrate.</p>
-  <blockquote>„„zeigte sich eine Reduzierung der Verordnungen von Wirkstoffgruppen, die mit Adipositas assoziiert sind (Insuline, Biguanide, Antihypertensiva). Eine Zunahme – insbesondere in Bezug auf die Verschreibungsrate – war für Protonen -Pumpeninhibitoren, Opioide, Analgetika/Antipyretika und Anxiolytika festzustellen.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.5">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Laut MINI-SCL berichteten je nach Störungsgruppe zwischen 15,0 % (Angst) und 21,8 % (Somatisierung) mindestens ausgeprägte Symptome. Für depressive Symptome waren es 18,1 %.</p>
-  <blockquote>„„Der Anteil der Patientinnen und Patien ten, der mindestens „ausgeprägte Symptome“ beschrieb, bewegte sich in Abhängigkeit von der Störungsgruppe zwischen 15,0% (Angst) und 21,8% (Somatisierung).“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.6">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Im AUDIT fielen 90,6 % in die Kategorie risikoarmer Konsum, 5,7 % in gefährlichen/schädlichen Konsum und 3,7 % in mittelschwere/schwere Alkoholkonsumstörung. Männer verteilten sich mit 82,7 %, 10,8 % und 6,5 % auf diese Kategorien, Frauen mit 92,7 %, 4,4 % und 2,9 %.</p>
-  <blockquote>„„entfielen 90,6% der Teilnehmenden auf die Kategorie &quot;risikoarmer Konsum&quot;, 5,7% auf die Kategorie „gefährlicher/schädlicher Konsum&quot; und 3,7% auf die Kategorie &quot;mittelschwere/schwere Alkoholkonsumstörung&quot;.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.7">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">42 % der Teilnehmenden gaben an, weniger als 3 Nachsorgetermine erhalten zu haben. Die Qualität der Nachsorge bewerteten 30,8 % als sehr gut, 33,7 % als gut, 18,4 % als ausreichend und 17,1 % als unzureichend.</p>
-  <blockquote>„„Insgesamt 42% der teilnehmenden Patienten und Patientinnen geben an, weniger als 3 Nachsorgetermine erhalten zu haben. Hinsichtlich der Qualität der Nachsorge gaben 30,8% der Patienten und Patientinnen an, dass die Qualität der Nachsorge sehr gut gewesen sei, 33,7% bewerten die Nachsorge als gut, 18,4% als ausreichend und 17,1% als unzureichend.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Fragebogendaten liegen nur für einen Messzeitpunkt nach der OP vor (Querschnittsdaten). Ein Vergleich mit dem präoperativen Zustand ist daher nicht möglich.</p>
+  
   <blockquote>„„Eine weitere wichtige Limitation in den Fragbogendaten ist, dass diese nur für einen Messzeitpunkt und nach der bariatrischen Operation vorliegen und deswegen Querschnittsdaten darstellen. Dadurch ist es nicht möglich, die im Fragebogen erhobenen Informationen mit dem jeweiligen Zustand vor dem chirurgis chen Eingriff zu vergleichen.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die retrospektive Befragung kann einem Recall Bias unterliegen; zwischen OP und Befragung lagen im Mittel 6,5 Jahre. Zudem sind sozial erwünschte Antworten möglich, und die Ausfüllsituation war nicht kontrollierbar.</p>
+  
   <blockquote>„„Bei der Fragebogenerhebung handelt es sich also grundsätzlich um eine retrospektive Patientenbefragung, die einem recall bias unterliegen kann.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,50 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Es konnten nur Daten der DAK-Gesundheit verwendet werden. Kassenspezifische Verzerrungen sind daher nicht auszuschließen.</p>
+  
   <blockquote>„„Daher ist nicht auszuschließen, dass in den Daten kassenspezifische Verzerrungen getreten sind, etwa bedingt durch eine n größeren Anteil bestimmter Personengruppen als bei anderen Krankenkassen.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Für 1.359 der 2.151 Responder konnte wegen unbeantworteter Items kein BQL-Gesamtscore berechnet werden. Am häufigsten fehlte das Item zur Einschränkung bei der Arbeit (1.116 Fehlwerte). Ein Gesamtscore lag nur für 792 Personen vor.</p>
-  <blockquote>„„Von den insgesamt 2.151 Fragebogenrespondern konnte in 1.359 Fällen kein Gesamtscore berechnet werden, da einzelne Items nicht beantwortet wurden.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.4">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Die Auswertung ist vorwiegend deskriptiv. Bei der Darstellung von Gruppenunterschieden wurde weitgehend auf p-Werte verzichtet.</p>
-  <blockquote>„„Aufgrund der Stichprobengröße sowie dem vorwiegend deskriptiven Charakter des Forschungsprojekts wurde bei Darstellung von Gruppenunterschieden in diesen Parametern auf die Berechnung von „p-Werten“ weitgehend verzichtet (28).“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -675,11 +464,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Anteil der Personen mit Alkoholdiagnose, bei denen diese nach, aber nicht vor der OP codiert wurde: Seite 22 nennt „zwischen 40% und 70%“, Seite 34 „zwischen 50% und 70%“.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -694,11 +483,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Häufigste Beschwerden: Laut Seite 18 zählten Erbrechen, Haarausfall und Übelkeit zu beiden Zeitpunkten zu den häufigsten postoperativen Beschwerden. Laut Zusammenfassung (Seite 5) waren zum Befragungszeitpunkt Blähungen (61,0 %), Müdigkeit (53,5 %) und Übelkeit (28,4 %) am häufigsten.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -713,11 +502,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Die Zahl 103 wird verschieden begründet: Seite 11 nennt 103 Datensätze, die wegen fehlender schriftlicher Einwilligung gelöscht wurden. Seite 12 nennt 103 Fragebögen, bei denen aus technischen Gründen kein Linkage zu den GKV-Daten hergestellt werden konnte.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -727,16 +516,246 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>52 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>64 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss leitet die Ergebnisse des Projekts ABARO zur Information an mehrere Fachgesellschaften und an eine Selbsthilfeorganisation weiter. Anlass ist die laufende Überarbeitung der S3-Leitlinie Chirurgie der Adipositas und metabolischer Erkrankungen. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Reduktion häufiger somatischer Komorbiditäten nach der OP (kardiovaskuläre Erkrankungen, Hypertonie, Diabetes mellitus)</p>
+  
+  <blockquote>„Zu den häufigsten somatischen Komorbiditäten, bei denen eine Reduktion zum postoperativen Zeitpunkt erzielt werden konnte, waren kardiovaskulärer Erkrankungen ( -16 %), Hypertonie (- 14 %) und Diabetes mellitus ( -11 %)." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Senkung des mittleren BMI von 51,9 auf 35</p>
+  
+  <blockquote>„Der mittlere präoperative Body Mass Index (BMI) betrug 51,9 und lag postoperativ zum Zeitpunkt der Befragung bei 35." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Verbesserung von Beweglichkeit und Ausdauer bei über drei Vierteln der Versicherten</p>
+  
+  <blockquote>„Die Beweglichkeit und Ausdauer verbesserten sich bei über Dreiviertel der Versicherten." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Überwiegend gute Bewertung der erhaltenen medizinischen Leistungen</p>
+  
+  <blockquote>„Der Großteil der Versicherten beurteilte die erhaltenen medizinischen Leistungen als „sehr gut“ bis „gut“." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.4">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Beitrag zum Verständnis der Versorgung nach bariatrischer OP, einschließlich des Aufzeigens von Versorgungsdefiziten in der postoperativen Nachsorge sowie von weitreichenden Komplikationen</p>
+  
+  <blockquote>„Die im Projekt gewonnen Erkenntnisse leisten dennoch einen Beitrag zum Verständnis der Versorgung von Patientinnen und Patienten nach bariatrischer OP und zeigen neben den positiven Effekten durch die Gewichtsreduktion auch Versorgungsdefizite in der postoperativen Nachsorge sowie weitreichende Komplikationen auf." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">In den GKV-Daten (N=5.837) nahmen nach der OP die Verordnungen von Insulinen, Biguaniden und Antihypertensiva ab. Die Verordnungen von Protonenpumpeninhibitoren, Opioiden, Analgetika/Antipyretika und Anxiolytika nahmen zu, insbesondere bei der Verschreibungsrate.</p>
+  
+  <blockquote>„„zeigte sich eine Reduzierung der Verordnungen von Wirkstoffgruppen, die mit Adipositas assoziiert sind (Insuline, Biguanide, Antihypertensiva). Eine Zunahme – insbesondere in Bezug auf die Verschreibungsrate – war für Protonen -Pumpeninhibitoren, Opioide, Analgetika/Antipyretika und Anxiolytika festzustellen.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.5">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Laut MINI-SCL berichteten je nach Störungsgruppe zwischen 15,0 % (Angst) und 21,8 % (Somatisierung) mindestens ausgeprägte Symptome. Für depressive Symptome waren es 18,1 %.</p>
+  
+  <blockquote>„„Der Anteil der Patientinnen und Patien ten, der mindestens „ausgeprägte Symptome“ beschrieb, bewegte sich in Abhängigkeit von der Störungsgruppe zwischen 15,0% (Angst) und 21,8% (Somatisierung).“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.6">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Im AUDIT fielen 90,6 % in die Kategorie risikoarmer Konsum, 5,7 % in gefährlichen/schädlichen Konsum und 3,7 % in mittelschwere/schwere Alkoholkonsumstörung. Männer verteilten sich mit 82,7 %, 10,8 % und 6,5 % auf diese Kategorien, Frauen mit 92,7 %, 4,4 % und 2,9 %.</p>
+  
+  <blockquote>„„entfielen 90,6% der Teilnehmenden auf die Kategorie &quot;risikoarmer Konsum&quot;, 5,7% auf die Kategorie „gefährlicher/schädlicher Konsum&quot; und 3,7% auf die Kategorie &quot;mittelschwere/schwere Alkoholkonsumstörung&quot;.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.7">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">42 % der Teilnehmenden gaben an, weniger als 3 Nachsorgetermine erhalten zu haben. Die Qualität der Nachsorge bewerteten 30,8 % als sehr gut, 33,7 % als gut, 18,4 % als ausreichend und 17,1 % als unzureichend.</p>
+  
+  <blockquote>„„Insgesamt 42% der teilnehmenden Patienten und Patientinnen geben an, weniger als 3 Nachsorgetermine erhalten zu haben. Hinsichtlich der Qualität der Nachsorge gaben 30,8% der Patienten und Patientinnen an, dass die Qualität der Nachsorge sehr gut gewesen sei, 33,7% bewerten die Nachsorge als gut, 18,4% als ausreichend und 17,1% als unzureichend.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Für 1.359 der 2.151 Responder konnte wegen unbeantworteter Items kein BQL-Gesamtscore berechnet werden. Am häufigsten fehlte das Item zur Einschränkung bei der Arbeit (1.116 Fehlwerte). Ein Gesamtscore lag für 792 Personen vor.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Zusammenfassung enthielt eine Wertung, die im Bericht nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Für 1.359 der 2.151 Responder konnte wegen unbeantworteter Items kein BQL-Gesamtscore berechnet werden. Am häufigsten fehlte das Item zur Einschränkung bei der Arbeit (1.116 Fehlwerte). Ein Gesamtscore lag nur für 792 Personen vor.“</i></p>
+  <blockquote>„„Von den insgesamt 2.151 Fragebogenrespondern konnte in 1.359 Fällen kein Gesamtscore berechnet werden, da einzelne Items nicht beantwortet wurden.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.4">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Auswertung ist vorwiegend deskriptiv. Bei der Darstellung von Gruppenunterschieden wurde weitgehend auf p-Werte verzichtet.</p>
+  
+  <blockquote>„„Aufgrund der Stichprobengröße sowie dem vorwiegend deskriptiven Charakter des Forschungsprojekts wurde bei Darstellung von Gruppenunterschieden in diesen Parametern auf die Berechnung von „p-Werten“ weitgehend verzichtet (28).“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Drei Jahre nach der OP wurden für die Mehrheit der somatischen Komorbiditäten niedrigere Häufigkeiten festgestellt als zum OP-Zeitpunkt, insbesondere für kardiovaskuläre Erkrankungen/Bluthochdruck und Diabetes mellitus.</p>
+  
   <blockquote>„„Für die Mehrheit der somatischen Komorbiditäten konnten im Vergleich zum Operationszeitpunkt drei Jahre später niedrigere Häufigkeiten festgestellt werden.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +769,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Übergewichtsverlust (EWL) betrug zum Befragungszeitpunkt im Mittel 64,1 %. Der höchste seit der OP jemals erzielte EWL lag im Mittel bei 79 %.</p>
+  
   <blockquote>„„Bezogen auf den EWL lag der erzielte Übergewichtsverlust zum Zeitpunkt der Befragung im Mittel bei 64,1% (95% KI: 62,4—65,7, SD: 38,6) bzw. der höchste jemals erzielte Übergewichtsverlust seit der bariatrischen Operation bei 79%“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +788,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die BMI-Reduktion von vor bis nach der OP betrug beim RYGB 17,2 Punkte und bei der Sleeve-Gastrektomie 17,1 Punkte. Beim Magenband waren es 14,6 Punkte und beim Magenballon 11,2 Punkte (95%-KI 0,3–22,0).</p>
+  
   <blockquote>„„Die höchsten prä -/postoperativen BMI - Reduzierungen wurden für die irreversiblen, chirurgischen Verfahren berichtet (RYGB: 17,2, 95%KI: 16,7 —17,6, SD: 6,9 ; Sleeve-Gastrektomie: 17,1, 95% KI: 16,5 —17,7, SD: 8,8 ).“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +807,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zum Befragungszeitpunkt lag der mittlere BMI mehrheitlich im Bereich der Adipositas-Klasse I. Jeder Fünfte lag im Bereich Übergewicht, mehr als 6 % galten als normalgewichtig.</p>
+  
   <blockquote>„„lag der mittlere BMI mehrheitlich im Bereich der Adipositas-Klasse I, jeder fünfte Teilnehmer lag im Bereich „Übergewicht“ und mehr als 6% galten als normalgewichtig nach der WHO.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +826,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">35 % der Befragten sind mit ihrer postoperativen Gewichtsentwicklung nicht zufrieden.</p>
+  
   <blockquote>„„Des Weiteren sind 35 % mit ihrer postoperativen Gewichtsentwicklung nicht zufrieden.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +845,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei 98,5 % bestand die Intervention in einem irreversiblen chirurgischen Eingriff, mehrheitlich Magenbypass oder Schlauchmagen.</p>
+  
   <blockquote>„„Für die Mehrheit (98,5%) der Patientinnen und Patienten bestand die bariatrische Intervention in einem chirurgischen, irreversiblen Eingriff, mehrheitlich dem Magenbypass bzw. Schlauchmagen.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +864,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">15,3 % der Befragten berichteten eine Komplikation nach der OP. Genannt wurden undichte Nahtstellen/Blutungen (7,4 %), postoperative Infektionen (2,6 %) und andere Komplikationen (7,5 %).</p>
+  
   <blockquote>„„Insgesamt berichteten 15,3% aller befragten Patientinnen und Patienten, dass nach der bariatrischen Operation eine Komplikation aufgetreten sei. Mehrheitlich handelte es sich dabei um undichte Nahtstellen/Blutungen (7,4%), postoperative Infektionen (2,6%)“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +883,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mehr als 40 % berichteten auch Jahre nach der OP Reflux, Müdigkeit und Blähungen. Mehr als 20 % nannten Durchfall, Haarverlust oder Erbrechen nach dem Essen, 9 % Zahnausfall. Müdigkeit, Durchfall, Reflux, Blähungen und Zahnausfall wurden laut Bericht als „immer noch“ auftretend „deutlich häufiger“ genannt als unmittelbar postoperativ.</p>
+  
   <blockquote>„„Als deutlich häufiger als „immer noch“ im Vergleich zu „unmittelbar postoperativ“ auftretend wurden Müdigkeit, Durchfall, Reflux, Blähungen und Zahnausfall benannt. Insgesamt mehr als 40% klagen auch Jahre nach der OP („immer noch“) über Reflux, Müdigkeit und Blähungen“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +902,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Zusammenfassung waren Blähungen (61,0 %), Müdigkeit (53,5 %) und Übelkeit (28,4 %) die häufigsten Beschwerden zum Befragungszeitpunkt.</p>
+  
   <blockquote>„„Zu den häufigsten im Survey genannten Beschwerden zum Zeitpunkt der Fragebogenerhebung zählten Blähungen (61,0%), Müdigkeit (53,5%) und Übelkeit (28,4%).“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +921,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Außer bei Kopfschmerzen (Migräne) gaben jeweils mehr als 40 % an, dass ihre Schmerzen seit der OP abgenommen haben, bei Knieschmerzen 56,7 %. Jeweils etwa 20 % berichteten eine Zunahme. Bei Migräne berichteten 14,8 % eine Zunahme und 49,1 % keine Veränderung.</p>
+  
   <blockquote>„„Mit Ausnahme der Schmerzen am Kopf (Migräne) geben die meisten Befragten an, dass sich die Schmerzen seit der OP reduziert haben, dies betrifft jeweils deutlich mehr als 40% . Bei Schmerzen an den Knien sogar 56,7%. Es lässt sich aber auch erkennen, dass jeweils ca. 20% angeben, dass d ie Schmerzen seit der OP zugenommen haben.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +940,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">86,8 % gaben eine verbesserte Beweglichkeit an, 87,3 % eine verbesserte Ausdauer. 74,4 % sahen eine Verbesserung der Schlafapnoe. 55,5 % gaben an, trotz OP weiterhin Bewegungseinschränkungen zu haben.</p>
+  
   <blockquote>„„Hinsichtlich der Beweglichkeit geben 86,8% der Patientinnen und Patienten an, dass sich die Beweglichkeit verbessert hat. Insgesamt 5 5,5% sind der Meinung, dass sie trotz der OP immer noch Bewegungseinschränkungen haben. In Bezug auf die Ausdauer zeigt sich, dass sich bei 87,3% diese seit der OP verbessert hat“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +959,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Mittelwerte der MINI-SCL lagen bei 54,2 (Depression), 53,2 (Angst), 55,4 (Somatisierung) und 54,4 (Global Severity Index).</p>
+  
   <blockquote>„„Hier erzielten Patientinnen und Patienten auf der Subskala „Depression“ einen Mittelwert von 54,2 ( 95% KI: 53,7 —54,6, SD: 10,4 ), auf der Subskala „Angst“ einen Mittelwert von 53,2“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +978,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut GKV-Daten wurden 13 % bis 18 % der Teilnehmenden mit Antidepressiva behandelt.</p>
+  
   <blockquote>„„Diese Befunde des Surveys werden durch die GKV -Daten gestützt, die für 13% bis 18% der Teilnehmenden eine Behandlung mit Antidepressiva zeigten.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +997,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die GKV-Daten zeigen laut Bericht nur einen „leichten Rückgang“ des Anteils mit Antidepressiva-Behandlung von vor bis nach der OP und „nur minimale“ Reduktionen der Verschreibungsrate bzw. -dichte. Die Autoren halten diesen Datenteil für mit großer Vorsicht zu betrachten.</p>
+  
   <blockquote>„„Allerdings zeigen die GKV-Daten nur einen leichten Rückgang der Proportionen an Patientinnen und Patienten mit Antidepressiva -Behandlung vor- und nach der bariatrischen Operation und nur minimale prä-post Reduktionen der Verschreibungsrate bzw. -dichte dieser Präparate.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1016,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für ihre psychische Gesundheit gaben Befragte die Einnahme frei verkäuflicher Mittel an: Baldrian (n=70), Johanniskraut (n=46), Lavendel (n=42) und sonstige Mittel (n=121).</p>
+  
   <blockquote>„„Hier gaben n=70 die Einnahme von Baldrian, n=46 die Einnahme von Johanniskraut, n=42 die Einnahme von Lavendel und n=121 die Einnahme „sonstiger“ Medikamente (ohne nähere Spezifizierung) an.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1035,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Männer hatten gegenüber Frauen eine signifikant höhere Wahrscheinlichkeit für einen AUDIT-Score von 8 oder mehr (OR 2,6; 95%-KI 1,8–3,8).</p>
+  
   <blockquote>„„Die Analysen bestätigen eine signifikant höhere Wahrscheinlichkeit für einen AUDIT-Score von 8 oder mehr bei Männern gegenüber Frauen (OR=2,6; 95%-KI = 1,8 - 3,8)“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1054,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine 8 bis 12 Jahre zurückliegende OP war gegenüber einer 3 bis 4 Jahre zurückliegenden mit einer höheren Wahrscheinlichkeit für einen AUDIT-Score von 8 oder mehr verbunden (OR 1,8; 95%-KI 1,2–2,9).</p>
+  
   <blockquote>„„sowie bei einer zurückliegenden bariatrischen O peration von 8 bis 12 Jahren gegenüber 3 bis 4 Jahren (OR=1,8; 95%-KI = 1,2 - 2,9)“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1073,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Unzufriedenheit mit der Gewichtsabnahme war gegenüber Zufriedenheit mit einer höheren Wahrscheinlichkeit für einen AUDIT-Score von 8 oder mehr verbunden (OR 1,9; 95%-KI 1,3–2,7).</p>
+  
   <blockquote>„„oder bei Unzufriedenheit mit der Gewichtsabnahme gegenüber Teilnehmenden, die sich zufrieden mit dem postoperativen Gewichtsverlauf zeigten (OR=1,9; 95-KI: 1,3 – 2,7).“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1092,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für den BMI zum Befragungszeitpunkt wurde kein signifikanter Zusammenhang mit dem AUDIT-Score gefunden. Ein Total Weightloss über 37,5 % war signifikant mit einem niedrigeren AUDIT-Score assoziiert (OR 0,5; 95%-KI 0,3–0,9).</p>
+  
   <blockquote>„„Keine signifikanten Zusammenhänge wurden für den BMI zu Zeitpunkt des Surveys gefunden und nur ein ausgeprägter TWL (Total Weightloss) von mehr als 37,5% war signifikant mit einem niedrigeren AUDIT-Score assoziiert (OR=0,5; 95%-KI: 0,3 – 0,9).“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1111,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In den GKV-Daten hatten 3 % der Responder mindestens eine codierte Alkoholkonsumstörung (F10); bei Beschränkung auf mindestens eine stationäre Diagnose waren es 2 %. Männer wurden 2,2- bis 3,3-mal häufiger diagnostiziert als Frauen.</p>
+  
   <blockquote>„„hatten 3% der Patientinnen und Patienten mindestens eine codierte Alkohol konsumstörung im Studienzeitraum (bzw. 2%, wenn man nur die Fälle zählt, bei denen mindestens eine Diagnose im stationären Bereich vergeben wurde). Alkoholkonsumstörungen wurden zwischen 2,2- und 3,3mal häufiger bei Männern diagnostiziert als bei Frauen.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1130,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei 40 % bis 70 % der Betroffenen mit codierter Alkoholkonsumstörung wurde diese nach, aber nicht vor der OP codiert.</p>
+  
   <blockquote>„„Für beide Geschlechter lag der Anteil der Teilnehmenden mit einer solchen Störung, bei denen diese irgendwann nach, aber nicht vor der bariatrischen OP codiert wurde, zwischen 40% und 70%.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1149,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der mittlere BQL-Score betrug 46,7, bei Männern 47,0 und bei Frauen 46,5.</p>
+  
   <blockquote>„„Der mittlere erzielte Score auf der BQL -Skala betrug 4 6,7 (95% KI: 45,9 —47,5, SD: 11,3 ), beziehungsweise 47,0 (95% KI 45,2—48,8, SD: 11,8) für Männer und 46,5 (95% KI: 45,6—47,4, SD: 11,2) für Frauen.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1168,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der BQL-Score war mit dem BMI assoziiert: 52,6 bei Normalgewicht, 49,0 bei Adipositas-Klasse I und 38,7 bei Adipositas-Klasse III.</p>
+  
   <blockquote>„„Der BQL-Score war mit dem BMI assoziiert und sank mit zunehmendem BMI ab: während der BQL-Score unter normalgewichtigen Patientinnen und Patienten bei 52,6 (95% KI: 48,9 —56,3, SD: 11,4 ), betrug er 49, 0“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1187,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Normalgewichtige Männer berichteten eine schlechtere Lebensqualität als normalgewichtige Frauen (Median 45 vs. 59). Bei Übergewicht berichteten Frauen eine schlechtere Lebensqualität als Männer (Median 53 vs. 56).</p>
+  
   <blockquote>„„dass Männer mit postoperativen Normalgewicht eine schlechtere Lebensqualität berichteten als Frauen (Median: 45, Q1 -Q3: 41 -49 vs. Median: 5 9, Q1 -Q3: 5 1-62). In der Gruppe der übergewichtigen Teilnehmenden hingegen berichteten Frauen eine schlechtere Lebensqualität al s Männer“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1206,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der mittlere BQL-Score lag bei 48,2, wenn die OP 3–4 Jahre zurücklag, bei 46,7 nach 5–7 Jahren und bei 45,1 nach 8 und mehr Jahren.</p>
+  
   <blockquote>„„Teilnehmende, deren bariatrische Operation 3 -4 Jahre zurücklag, erzielten einen mittleren BQL-Score von 48,2 (95% KI: 46,9—49,5, SD: 10,8), während dieser bei Teilnehmenden 5-7 Jahre nach dem Eingriff bei 46,7“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1225,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei beiden Geschlechtern war ein höherer EWL mit höherer Lebensqualität verbunden. Kurzfristig nach der OP war dieser Zusammenhang bei Frauen stärker (Interaktionseffekt mit Geschlecht). Zum Befragungszeitpunkt war ein solcher Interaktionseffekt nicht nachweisbar.</p>
+  
   <blockquote>„„Sowohl für Männer als auch für Frauen zeigte sich ein positiver Zusammenhang zwischen EWL und BQL“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1244,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Wer die Nachsorge besser bewertete, war laut Bericht eher mit der Gewichtsentwicklung zufrieden.</p>
+  
   <blockquote>„„In Abbildung 14 ist ersichtlich, dass bei höherer Bewertung der Qualität der Nachsorge durch die Patientinnen und Patienten diese eher mitihrer Gewichtsentwicklung zufrieden zu seien.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1263,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Versicherte mit sehr gut bewerteter Nachsorge hatten im Mittel 35,2 % Gewicht verloren, solche mit unzureichend bewerteter Nachsorge 28,4 %.</p>
+  
   <blockquote>„„Es zeigt sich, dass die Versicherten, die die Nachsorge als sehr gut bewerteten mehr Gewicht verloren haben (35,2%) als diejenigen, die die Qualität als unzureichend bewertet haben (28,4%)“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1282,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der mittlere BQL-Score lag je nach Bewertung der Nachsorge bei 50,1 (sehr gut), 47,1 (gut), 44,0 (ausreichend) und 42,6 Punkten (unzureichend).</p>
+  
   <blockquote>„„mit 50,1 Punkten bei Versicherten, die die Nachsorge als sehr gut einschätzen, deutlich höher ist als bei Versichert en, die die Qualität der Nachsorge als unzureichend (42,6 Pkt.), als ausreichend (44,0 Pkt.) oder als gut (47,1 Pkt.) einschätzen.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1301,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.36">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">33,4 % hatten jemals eine psychosomatische Kur oder Reha gemacht (Frauen 35,5 %, Männer 24,7 %). Vor der OP waren es 26,7 %, nach der OP 12,2 %.</p>
+  
   <blockquote>„„Dies geschah mehrheitlich vor der bariatrischen OP (in sgesamt: 26,7%, Männer: 18,8%, Frauen: 28,6%). Eine Inanspruchnahme irgendwann nach der bariatrischen Operation berichteten insgesamt 12,2% der Teilnehmenden“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1320,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach der OP wurden am häufigsten Internisten/Hausärzte (87,9 %), Orthopädie (64,4 %) und Physiotherapie (51,6 %) in Anspruch genommen. Die Qualität wurde jeweils von über 80 % als sehr gut bis gut eingeschätzt, mit Ausnahme der Orthopädie (73,5 %).</p>
+  
   <blockquote>„„Nach Internisten und Internistin nen/Hausärzten und Hausärztinnen (87,9%) waren die am häufigsten genannten Fachrichtungen Orthopädie (64,4%) und Physiotherapie (51,6%).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1339,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Anteil der Bewertungen „schlecht“ oder „sehr schlecht“ lag bei allen Fachrichtungen unter 7 %. Am höchsten war er für Orthopädie (6,8 %), Psychotherapie (6,2 %) und Psychiatrie (6,1 %).</p>
+  
   <blockquote>„„bewegte sich unter 7% und war am höchsten für Orthopädie (6, 8%), Psychotherapie (6,2%), Psychiatrie (6,1%), sowie Viszeralchirurgie und plastische Chirurgie (jeweils 6%).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1358,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mehr Unterstützung wünschten sich die Befragten von Ernährungsberatung (17,1 %), Physiotherapie (17,0 %), Psychologie/Psychotherapie (15,8 %), Ärztinnen/Ärzten (11,6 %) und Selbsthilfegruppen (6,3 %).</p>
+  
   <blockquote>„„Dies wurde jeweils bejaht für: „Ernährungsberater/Ernährungsberaterin“ von 367 Teilnehmenden (17,1%), für „Physiotherapeuten/Physiotherapeutin“ von 366 Teilnehmenden (17,0%)“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1377,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.40">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Survey und/oder GKV-Daten nahmen insgesamt 46,9 % Psychiatrie/Psychotherapie bzw. Richtlinienpsychotherapie in Anspruch: Frauen 50,2 %, Männer 32,7 %, Normalgewichtige 56,8 %, Übergewichtige 44,4 % und Personen mit Adipositas Klasse I–III 47,1 %.</p>
+  
   <blockquote>„„betrug insgesamt 46,9%. Er war bei Frauen höher als bei Männern (50,2% vs. 32,7%). Sowie bei Patientinnen und Patienten mit einem Normalgewicht laut WHO -Klassifikation (56,8%) gegenüber Patientinnen und Patienten mit Übergewicht (44,4%) bzw. Adipositas Klasse I-III (47,1%).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.40" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.40" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.40" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.40" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1396,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.41">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Fragebogen ging an 5.222 Versicherte, von denen 2.521 antworteten (Response-Rate 48,3 %). Nach Löschung von 103 Datensätzen ohne schriftliche Einwilligung ergab sich eine korrigierte Response-Rate von 46,3 %. Der finale Analysedatensatz umfasst 2.151 Responder mit verknüpften Abrechnungs- und Fragebogendaten.</p>
+  
   <blockquote>„„Somit wurde der Fragebogen an 5.222 Versicherte verschickt und von 2.521 Versicherten beantwortet (Re sponse-Rate: 48.3%). Von 103 Versicherten mussten die Daten aufgrund fehlender schriftlicher Einwilligung gelöscht werden (=2.418 Versicherte, korrigierte Response-Rate: 46.3%).“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.41" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.41" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.41" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.41" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1415,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.42">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Responder und Non-Responder wurden anhand der Abrechnungsdaten verglichen; dabei wurden keine substanziellen Unterschiede festgestellt. Der Frauenanteil lag bei 80,7 % (Responder) gegenüber 76,3 % (Non-Responder), das Alter bei OP bei 47,9 gegenüber 44,6 Jahren.</p>
+  
   <blockquote>„„Da für die Versicherten, die nic ht am Survey teilgenommen haben („Non -Responder“), dennoch die DAK -Abrechnungsdaten vorlagen, konnten diese hinsichtlich zentraler soziodemographischer und klinischer Parameter mit den „Respondern“ verglichen werden. Dabei wurden keine substanziellen Unter schiede festgestellt.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.42" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.42" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.42" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.42" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1434,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.43">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von den 2.151 Respondern waren 80,7 % Frauen. Das mittlere Alter bei der Befragung lag bei 54,5 Jahren.</p>
+  
   <blockquote>„„Von den 2.151 Fragebogen-Respondern war die Mehrheit (80.7%) weiblichen Geschlechts. Das mittlere Lebensalter (MW) zum Zeitpunkt der Fragebogenerhebung lag bei 54,5 Jahren“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.43" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.43" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.43" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.43" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1453,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.44">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das mittlere Alter bei der OP lag bei 47,9 Jahren. Zwischen OP und Befragung lagen im Mittel 6,5 Jahre.</p>
+  
   <blockquote>„„Das mittlere Lebensalter der Versicherten zum Zeitpunkt der bariatrischen OP lag bei 47,9 Jahren (95% KI: 47,5—48,4, SD: 10,8). Der mittlere Abstand zwischen der bariatrischen OP und dem Zeitpunkt der Fragebogenerhebung betrug 6,5 Jahre“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.44" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.44" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.44" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.44" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1472,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Personen ohne BQL-Gesamtscore waren älter, häufiger (früh-)berentet und sozial weniger aktiv als Personen mit Gesamtscore.</p>
+  
   <blockquote>„„Personen ohne einen BQL -Gesamtscore waren im Vergleich zu Personen mit Gesamtscore älter, häufiger (früh-)berentet und waren sozial weniger aktiv.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1491,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In Sensitivitätsanalysen wurden fehlende BQL-Werte multipel imputiert. Laut Autoren ergaben sich dabei nur geringe quantitative Unterschiede, sodass sie eine eher geringere Verzerrung durch die Fehlwerte annehmen.</p>
+  
   <blockquote>„„Insgesamt zeigte die Imputation nur geringe quantitative Unterschiede, so dass von einer eher geringeren Verzerrung der Ergebnisse durch die Fehlwerte auf der BQL ausgegangen werden kann.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1510,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Psychische Störungen wurden per MINI-SCL nur einmal und nur postoperativ erfasst. Ein Prä-post-Vergleich ist daher nicht möglich.</p>
+  
   <blockquote>„„da aufgrund des Studiendesigns die Erfassung psychischer Störungen über die MINI -SCL-Skala lediglich einmal und nur postoperativ erfolgte, so dass mit Bezug auf den bariatrischen Eingriff kein prä-post-Vergleich möglich ist.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1529,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Interaktionen zwischen Lebensqualität, Gewichtsverlust, Geschlecht und Dauer seit der OP stammen aus Querschnittsdaten. Laut Bericht sind sie nur mit äußerster Vorsicht zu interpretieren.</p>
+  
   <blockquote>„„müssen jedoch mit äußerster Vorsicht interpretiert werden, da sie aus querschnittlich erhobenen Daten gewonnen wurden und eine längsschnittliche Betrachtung dieser Zusammenhänge nicht möglich war.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1548,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Zusammenhänge zwischen Nachsorgequalität, Gewichtsverlust und Lebensqualität sind Assoziationen aus einer Querschnitterhebung.</p>
+  
   <blockquote>„„Eine unzureichende Qualität war darüber hinaus assoziiert mit einem geringeren Gewichtsverlust und einer schlechteren Lebensqualität. An dieser Stelle sei nochmal darauf hingewiesen, dass die Fragebogenerhebung als Querschnitterhebung zu interpretieren ist.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1567,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Antidepressiva haben breitere Indikationen, etwa chronische Schmerzsyndrome. Ihre Verordnung ist deshalb laut Bericht als Indikator für Depression mit Vorsicht zu interpretieren.</p>
+  
   <blockquote>„„Dieses Teilergebnis ist jedoch angesichts breiterer Indikation sbereiche für diese Medikamentengruppe (auch für Patienten mit chronischen Schmerzsyndromen) mit entsprechender Vorsicht zu interpretieren.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1586,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Zählung von ICD-10-Diagnosen kann Alkoholstörungen überschätzen. Dem wurde begegnet, indem nur Hauptentlassungsdiagnosen oder durch eine weitere gleichlautende Diagnose bestätigte ambulante Diagnosen gezählt wurden.</p>
+  
   <blockquote>„„Dennoch sind diese Ergebnisse mit Vorsicht zu betrachten, d a eine Überschätzung der Erg ebnisse durch Zählung von ICD-10-Diagnosen nicht ausgeschlossen werden kann.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1605,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">GKV-Abrechnungsdaten bilden Lebensstilfaktoren, Laborergebnisse und psychometrische Befunde nicht ab.</p>
+  
   <blockquote>„„Das be trifft beispielsweise die Erfassung von lebensstilbedingten Fak toren ( wie Ernährungs- und Bewegungsverhalten), aber auch die Darstellung der Ergebnisse bestimmter medizinischer Untersuchungen, wie z. B. Labortests oder psychometrische Verfahren.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1624,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das aktuellste verfügbare GKV-Datenjahr war 2018. Für die Zeit bis zur Fragebogenaussendung 2021 liegen daher keine Abrechnungsdaten vor.</p>
+  
   <blockquote>„„Durch diesen Umstand gibt es zwischen der Aussendung der Fragebögen an die Teilnehmenden in 2021 und dem letzten Datenjahr eine entsprechende Lücke, in der keine GKV-Abrechnungsdaten der Teilnehmenden vorliegen.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1643,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Statt der bei Antragstellung angenommenen 8.598 konnten nur 5.222 Versicherte angeschrieben werden. Bei einer angestrebten Response von 40 % reduzierte sich die erwartete Fallzahl damit auf 2.089.</p>
+  
   <blockquote>„„Nach Selektion der betreffenden DAK -Versicherten stellte sich jedoch heraus, dass lediglich 5.222 DAK - Versicherte im Rahmen der Versichertenbefragung angeschrieben werden können. Damit reduziert sich bei einer angestrebten Response von 40% die Fallzahl auf 2.089.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1662,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Genehmigung des Bundesamts für Soziale Sicherung nach § 75 SGB X lag erst mit 5 Monaten Verzögerung vor. Die Datenerhebung konnte daher nicht fristgerecht erfolgen; eine kostenneutrale Laufzeitverlängerung um 6 Monate wurde nötig.</p>
+  
   <blockquote>„„dass die Genehmigung vom Bundesamt für Soziale Sicherung nach § 75 SGB X (Übermittlung von Sozialdaten für die Forschung und Planung) erst mit einer Verzögerung von 5 Monaten vorlag und die Datenerhebung daher nicht fristgerecht durchgeführt werden konnte.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1681,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Von 6.913 potenziell geeigneten Adressaten wurden 1.691 ausgeschlossen, u. a. wegen Kassenwechsels (1.011), Kontaktverbots (214) und Vormundschaft (190).</p>
+  
   <blockquote>„„Von diesen 6.913 potenziell geeigneten Adressaten für den Fragebogen mussten 1.691 Personen aus verschiedenen Gründen ausgeschlossen werden“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1700,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen fehlender dreijähriger Baseline vor der OP wurden 1.076 Versicherte aus den DAK-Daten und 267 Fragebogen-Responder ausgeschlossen.</p>
+  
   <blockquote>„„Sowohl aus den in den DAK -Daten identifizierten Versicherten als auch bei den Fragebogenrespondern mussten daher noch einmal 1.076 bzw. 267 Versicherte ausgeschlossen werden, für die diese Baseline nicht vorlag.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1719,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei 103 von 2.521 zurückgesandten Fragebögen konnte aus technischen Gründen kein Linkage zu den GKV-Daten hergestellt werden.</p>
+  
   <blockquote>„„konnte lediglich in 103 Fällen (von insgesamt 2.521 zurücklaufenden Fragebögen) aus technischen Gründen ein Linkage zu den GKV-Daten nicht mehr hergestellt werden.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1750,28 +1769,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 332, "akronym": "ABARO", "kennung": "9YLtOt4cmMTu", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Ergebnisse des Projekts ABARO zur Information an mehrere Fachgesellschaften und an eine Selbsthilfeorganisation weiter. Anlass ist die laufende Überarbeitung der S3-Leitlinie Chirurgie der Adipositas und metabolischer Erkrankungen. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt untersuchte Versorgungslücken in der Nachsorge, Risiken, Folgeerkrankungen und Bedarfe von Patientinnen und Patienten nach bariatrischer Operation. Grundlage waren Krankenkassen-Abrechnungsdaten und eine Fragebogenbefragung. Nach Einschätzung des Ausschusses waren die Methoden grundsätzlich geeignet. Die Aussagekraft ist jedoch eingeschränkt, vor allem durch das Verzerrungsrisiko bei der rückblickenden Bewertung von Beschwerden. Dennoch tragen die Erkenntnisse zum Verständnis der Versorgung bei. Sie zeigen neben positiven Effekten der Gewichtsreduktion auch Defizite in der postoperativen Nachsorge und weitreichende Komplikationen. Deshalb werden die Ergebnisse weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Retrospektive Kohortenstudie von Personen mit einer bariatrischen OP über einen Beobachtungszeitraum von ca. 15 Jahren anhand von GKV-Abrechnungsdaten der German Pharmacoepidemiological Research Database (GePaRD) mit Linkage von Primärdaten aus einer Fragebogenerhebung"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Eingeschränkte Aussagekraft durch Verzerrungsrisiko bei der retrospektiven Bewertung von Beschwerden (Befragung)"}, {"stelle": "befund.0", "art": "befund", "unser": "Reduktion häufiger somatischer Komorbiditäten nach der OP (kardiovaskuläre Erkrankungen, Hypertonie, Diabetes mellitus)"}, {"stelle": "befund.1", "art": "befund", "unser": "Senkung des mittleren BMI von 51,9 auf 35"}, {"stelle": "befund.2", "art": "befund", "unser": "Verbesserung von Beweglichkeit und Ausdauer bei über drei Vierteln der Versicherten"}, {"stelle": "befund.3", "art": "befund", "unser": "Überwiegend gute Bewertung der erhaltenen medizinischen Leistungen"}, {"stelle": "befund.4", "art": "befund", "unser": "Beitrag zum Verständnis der Versorgung nach bariatrischer OP, einschließlich des Aufzeigens von Versorgungsdefiziten in der postoperativen Nachsorge sowie von weitreichenden Komplikationen"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Body-Mass-Index prä- und postoperativ"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Medikamentös behandelte somatische Komorbiditäten (kardiovaskuläre Erkrankungen, Hypertonie, Diabetes mellitus)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Depressive und Angstsymptomatik"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Alkoholkonsumstörungen"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Zusammenhang zwischen ausgewählten Variablen und mindestens gefährlichem/schädlichem Alkoholkonsum (AUDIT ≥ 8), adjustiert nach Geschlecht"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Qualität der Nachsorge und Anzahl Nachsorgetermine"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Gewichtsverlust und Lebensqualität in Abhängigkeit von der Qualität der Nachsorge"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben (ABARO-Studie) untersuchte Auswirkungen bariatrischer Operationen der Jahre 2007 bis 2018 bei DAK-Versicherten. Dazu wurden GKV-Abrechnungsdaten (N=5.837) mit einer retrospektiven Versichertenbefragung verknüpft (finaler Analysedatensatz N=2.151, korrigierte Response-Rate 46,3 %). Ein primärer Endpunkt ist im Bericht nicht angegeben. Der mittlere BMI lag vor der OP bei 51,9 und zum Befragungszeitpunkt bei 34,8. Zu diesem Zeitpunkt berichteten 22,3 % einen BMI über 40. In den Abrechnungsdaten waren die Anteile medikamentös behandelter Hypertonie und Diabetes nach der OP niedriger als davor. Verordnungen von Protonenpumpeninhibitoren, Opioiden, Analgetika und Anxiolytika waren nach der OP häufiger als davor. Jahre nach der OP berichteten mehr als 40 % Reflux, Müdigkeit und Blähungen. Je nach Störungsgruppe gaben 15,0 % bis 21,8 % mindestens ausgeprägte psychische Symptome an, 9,4 % fielen in problematische AUDIT-Kategorien, und 42 % erhielten weniger als drei Nachsorgetermine. Die Aussagekraft hängt an mehreren Punkten: Die Befragung ist eine einmalige, postoperative Querschnitterhebung ohne Prä-post-Vergleich. Sie unterliegt möglichem Recall Bias bei im Mittel 6,5 Jahren Abstand zur OP. Es wurden nur DAK-Daten verwendet. Für 1.359 von 2.151 Respondern fehlte ein Lebensqualitäts-Gesamtscore. Zudem ist die Auswertung vorwiegend deskriptiv und verzichtet weitgehend auf p-Werte."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Der mittlere BMI lag vor der OP bei 51,9 (95%-KI 51,5–52,4) und zum Befragungszeitpunkt bei 34,8 (95%-KI 34,4–35,1)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Zum Befragungszeitpunkt hatten 22,3 % der Teilnehmenden einen BMI über 40. 12,5 % gaben an, diese Schwelle nach der OP nie unterschritten zu haben."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Laut Abrechnungsdaten sanken die Anteile medikamentös behandelter Erkrankungen von vor bis nach der OP: kardiovaskuläre Erkrankungen von 61,7 % auf 45,3 %, Hypertonie von 56,8 % auf 40,4 % und Diabetes mellitus von 27,0 % auf 15,6 %."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "In den GKV-Daten (N=5.837) nahmen nach der OP die Verordnungen von Insulinen, Biguaniden und Antihypertensiva ab. Die Verordnungen von Protonenpumpeninhibitoren, Opioiden, Analgetika/Antipyretika und Anxiolytika nahmen zu, insbesondere bei der Verschreibungsrate."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Laut MINI-SCL berichteten je nach Störungsgruppe zwischen 15,0 % (Angst) und 21,8 % (Somatisierung) mindestens ausgeprägte Symptome. Für depressive Symptome waren es 18,1 %."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Im AUDIT fielen 90,6 % in die Kategorie risikoarmer Konsum, 5,7 % in gefährlichen/schädlichen Konsum und 3,7 % in mittelschwere/schwere Alkoholkonsumstörung. Männer verteilten sich mit 82,7 %, 10,8 % und 6,5 % auf diese Kategorien, Frauen mit 92,7 %, 4,4 % und 2,9 %."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "42 % der Teilnehmenden gaben an, weniger als 3 Nachsorgetermine erhalten zu haben. Die Qualität der Nachsorge bewerteten 30,8 % als sehr gut, 33,7 % als gut, 18,4 % als ausreichend und 17,1 % als unzureichend."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Fragebogendaten liegen nur für einen Messzeitpunkt nach der OP vor (Querschnittsdaten). Ein Vergleich mit dem präoperativen Zustand ist daher nicht möglich."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die retrospektive Befragung kann einem Recall Bias unterliegen; zwischen OP und Befragung lagen im Mittel 6,5 Jahre. Zudem sind sozial erwünschte Antworten möglich, und die Ausfüllsituation war nicht kontrollierbar."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Es konnten nur Daten der DAK-Gesundheit verwendet werden. Kassenspezifische Verzerrungen sind daher nicht auszuschließen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Für 1.359 der 2.151 Responder konnte wegen unbeantworteter Items kein BQL-Gesamtscore berechnet werden. Am häufigsten fehlte das Item zur Einschränkung bei der Arbeit (1.116 Fehlwerte). Ein Gesamtscore lag nur für 792 Personen vor."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Auswertung ist vorwiegend deskriptiv. Bei der Darstellung von Gruppenunterschieden wurde weitgehend auf p-Werte verzichtet."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Anteil der Personen mit Alkoholdiagnose, bei denen diese nach, aber nicht vor der OP codiert wurde: Seite 22 nennt „zwischen 40% und 70%“, Seite 34 „zwischen 50% und 70%“."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Häufigste Beschwerden: Laut Seite 18 zählten Erbrechen, Haarausfall und Übelkeit zu beiden Zeitpunkten zu den häufigsten postoperativen Beschwerden. Laut Zusammenfassung (Seite 5) waren zum Befragungszeitpunkt Blähungen (61,0 %), Müdigkeit (53,5 %) und Übelkeit (28,4 %) am häufigsten."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Die Zahl 103 wird verschieden begründet: Seite 11 nennt 103 Datensätze, die wegen fehlender schriftlicher Einwilligung gelöscht wurden. Seite 12 nennt 103 Fragebögen, bei denen aus technischen Gründen kein Linkage zu den GKV-Daten hergestellt werden konnte."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Drei Jahre nach der OP wurden für die Mehrheit der somatischen Komorbiditäten niedrigere Häufigkeiten festgestellt als zum OP-Zeitpunkt, insbesondere für kardiovaskuläre Erkrankungen/Bluthochdruck und Diabetes mellitus."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Der Übergewichtsverlust (EWL) betrug zum Befragungszeitpunkt im Mittel 64,1 %. Der höchste seit der OP jemals erzielte EWL lag im Mittel bei 79 %."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die BMI-Reduktion von vor bis nach der OP betrug beim RYGB 17,2 Punkte und bei der Sleeve-Gastrektomie 17,1 Punkte. Beim Magenband waren es 14,6 Punkte und beim Magenballon 11,2 Punkte (95%-KI 0,3–22,0)."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Zum Befragungszeitpunkt lag der mittlere BMI mehrheitlich im Bereich der Adipositas-Klasse I. Jeder Fünfte lag im Bereich Übergewicht, mehr als 6 % galten als normalgewichtig."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "35 % der Befragten sind mit ihrer postoperativen Gewichtsentwicklung nicht zufrieden."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Bei 98,5 % bestand die Intervention in einem irreversiblen chirurgischen Eingriff, mehrheitlich Magenbypass oder Schlauchmagen."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "15,3 % der Befragten berichteten eine Komplikation nach der OP. Genannt wurden undichte Nahtstellen/Blutungen (7,4 %), postoperative Infektionen (2,6 %) und andere Komplikationen (7,5 %)."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Mehr als 40 % berichteten auch Jahre nach der OP Reflux, Müdigkeit und Blähungen. Mehr als 20 % nannten Durchfall, Haarverlust oder Erbrechen nach dem Essen, 9 % Zahnausfall. Müdigkeit, Durchfall, Reflux, Blähungen und Zahnausfall wurden laut Bericht als „immer noch“ auftretend „deutlich häufiger“ genannt als unmittelbar postoperativ."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Laut Zusammenfassung waren Blähungen (61,0 %), Müdigkeit (53,5 %) und Übelkeit (28,4 %) die häufigsten Beschwerden zum Befragungszeitpunkt."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Außer bei Kopfschmerzen (Migräne) gaben jeweils mehr als 40 % an, dass ihre Schmerzen seit der OP abgenommen haben, bei Knieschmerzen 56,7 %. Jeweils etwa 20 % berichteten eine Zunahme. Bei Migräne berichteten 14,8 % eine Zunahme und 49,1 % keine Veränderung."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "86,8 % gaben eine verbesserte Beweglichkeit an, 87,3 % eine verbesserte Ausdauer. 74,4 % sahen eine Verbesserung der Schlafapnoe. 55,5 % gaben an, trotz OP weiterhin Bewegungseinschränkungen zu haben."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Die Mittelwerte der MINI-SCL lagen bei 54,2 (Depression), 53,2 (Angst), 55,4 (Somatisierung) und 54,4 (Global Severity Index)."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Laut GKV-Daten wurden 13 % bis 18 % der Teilnehmenden mit Antidepressiva behandelt."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Die GKV-Daten zeigen laut Bericht nur einen „leichten Rückgang“ des Anteils mit Antidepressiva-Behandlung von vor bis nach der OP und „nur minimale“ Reduktionen der Verschreibungsrate bzw. -dichte. Die Autoren halten diesen Datenteil für mit großer Vorsicht zu betrachten."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Für ihre psychische Gesundheit gaben Befragte die Einnahme frei verkäuflicher Mittel an: Baldrian (n=70), Johanniskraut (n=46), Lavendel (n=42) und sonstige Mittel (n=121)."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Männer hatten gegenüber Frauen eine signifikant höhere Wahrscheinlichkeit für einen AUDIT-Score von 8 oder mehr (OR 2,6; 95%-KI 1,8–3,8)."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Eine 8 bis 12 Jahre zurückliegende OP war gegenüber einer 3 bis 4 Jahre zurückliegenden mit einer höheren Wahrscheinlichkeit für einen AUDIT-Score von 8 oder mehr verbunden (OR 1,8; 95%-KI 1,2–2,9)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Unzufriedenheit mit der Gewichtsabnahme war gegenüber Zufriedenheit mit einer höheren Wahrscheinlichkeit für einen AUDIT-Score von 8 oder mehr verbunden (OR 1,9; 95%-KI 1,3–2,7)."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Für den BMI zum Befragungszeitpunkt wurde kein signifikanter Zusammenhang mit dem AUDIT-Score gefunden. Ein Total Weightloss über 37,5 % war signifikant mit einem niedrigeren AUDIT-Score assoziiert (OR 0,5; 95%-KI 0,3–0,9)."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "In den GKV-Daten hatten 3 % der Responder mindestens eine codierte Alkoholkonsumstörung (F10); bei Beschränkung auf mindestens eine stationäre Diagnose waren es 2 %. Männer wurden 2,2- bis 3,3-mal häufiger diagnostiziert als Frauen."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Bei 40 % bis 70 % der Betroffenen mit codierter Alkoholkonsumstörung wurde diese nach, aber nicht vor der OP codiert."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Der mittlere BQL-Score betrug 46,7, bei Männern 47,0 und bei Frauen 46,5."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Der BQL-Score war mit dem BMI assoziiert: 52,6 bei Normalgewicht, 49,0 bei Adipositas-Klasse I und 38,7 bei Adipositas-Klasse III."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Normalgewichtige Männer berichteten eine schlechtere Lebensqualität als normalgewichtige Frauen (Median 45 vs. 59). Bei Übergewicht berichteten Frauen eine schlechtere Lebensqualität als Männer (Median 53 vs. 56)."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Der mittlere BQL-Score lag bei 48,2, wenn die OP 3–4 Jahre zurücklag, bei 46,7 nach 5–7 Jahren und bei 45,1 nach 8 und mehr Jahren."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Bei beiden Geschlechtern war ein höherer EWL mit höherer Lebensqualität verbunden. Kurzfristig nach der OP war dieser Zusammenhang bei Frauen stärker (Interaktionseffekt mit Geschlecht). Zum Befragungszeitpunkt war ein solcher Interaktionseffekt nicht nachweisbar."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Wer die Nachsorge besser bewertete, war laut Bericht eher mit der Gewichtsentwicklung zufrieden."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Versicherte mit sehr gut bewerteter Nachsorge hatten im Mittel 35,2 % Gewicht verloren, solche mit unzureichend bewerteter Nachsorge 28,4 %."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Der mittlere BQL-Score lag je nach Bewertung der Nachsorge bei 50,1 (sehr gut), 47,1 (gut), 44,0 (ausreichend) und 42,6 Punkten (unzureichend)."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "33,4 % hatten jemals eine psychosomatische Kur oder Reha gemacht (Frauen 35,5 %, Männer 24,7 %). Vor der OP waren es 26,7 %, nach der OP 12,2 %."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Nach der OP wurden am häufigsten Internisten/Hausärzte (87,9 %), Orthopädie (64,4 %) und Physiotherapie (51,6 %) in Anspruch genommen. Die Qualität wurde jeweils von über 80 % als sehr gut bis gut eingeschätzt, mit Ausnahme der Orthopädie (73,5 %)."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Der Anteil der Bewertungen „schlecht“ oder „sehr schlecht“ lag bei allen Fachrichtungen unter 7 %. Am höchsten war er für Orthopädie (6,8 %), Psychotherapie (6,2 %) und Psychiatrie (6,1 %)."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Mehr Unterstützung wünschten sich die Befragten von Ernährungsberatung (17,1 %), Physiotherapie (17,0 %), Psychologie/Psychotherapie (15,8 %), Ärztinnen/Ärzten (11,6 %) und Selbsthilfegruppen (6,3 %)."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Laut Survey und/oder GKV-Daten nahmen insgesamt 46,9 % Psychiatrie/Psychotherapie bzw. Richtlinienpsychotherapie in Anspruch: Frauen 50,2 %, Männer 32,7 %, Normalgewichtige 56,8 %, Übergewichtige 44,4 % und Personen mit Adipositas Klasse I–III 47,1 %."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "Der Fragebogen ging an 5.222 Versicherte, von denen 2.521 antworteten (Response-Rate 48,3 %). Nach Löschung von 103 Datensätzen ohne schriftliche Einwilligung ergab sich eine korrigierte Response-Rate von 46,3 %. Der finale Analysedatensatz umfasst 2.151 Responder mit verknüpften Abrechnungs- und Fragebogendaten."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Responder und Non-Responder wurden anhand der Abrechnungsdaten verglichen; dabei wurden keine substanziellen Unterschiede festgestellt. Der Frauenanteil lag bei 80,7 % (Responder) gegenüber 76,3 % (Non-Responder), das Alter bei OP bei 47,9 gegenüber 44,6 Jahren."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Von den 2.151 Respondern waren 80,7 % Frauen. Das mittlere Alter bei der Befragung lag bei 54,5 Jahren."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "Das mittlere Alter bei der OP lag bei 47,9 Jahren. Zwischen OP und Befragung lagen im Mittel 6,5 Jahre."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Personen ohne BQL-Gesamtscore waren älter, häufiger (früh-)berentet und sozial weniger aktiv als Personen mit Gesamtscore."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "In Sensitivitätsanalysen wurden fehlende BQL-Werte multipel imputiert. Laut Autoren ergaben sich dabei nur geringe quantitative Unterschiede, sodass sie eine eher geringere Verzerrung durch die Fehlwerte annehmen."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Psychische Störungen wurden per MINI-SCL nur einmal und nur postoperativ erfasst. Ein Prä-post-Vergleich ist daher nicht möglich."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Interaktionen zwischen Lebensqualität, Gewichtsverlust, Geschlecht und Dauer seit der OP stammen aus Querschnittsdaten. Laut Bericht sind sie nur mit äußerster Vorsicht zu interpretieren."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Zusammenhänge zwischen Nachsorgequalität, Gewichtsverlust und Lebensqualität sind Assoziationen aus einer Querschnitterhebung."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Antidepressiva haben breitere Indikationen, etwa chronische Schmerzsyndrome. Ihre Verordnung ist deshalb laut Bericht als Indikator für Depression mit Vorsicht zu interpretieren."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die Zählung von ICD-10-Diagnosen kann Alkoholstörungen überschätzen. Dem wurde begegnet, indem nur Hauptentlassungsdiagnosen oder durch eine weitere gleichlautende Diagnose bestätigte ambulante Diagnosen gezählt wurden."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "GKV-Abrechnungsdaten bilden Lebensstilfaktoren, Laborergebnisse und psychometrische Befunde nicht ab."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Das aktuellste verfügbare GKV-Datenjahr war 2018. Für die Zeit bis zur Fragebogenaussendung 2021 liegen daher keine Abrechnungsdaten vor."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Statt der bei Antragstellung angenommenen 8.598 konnten nur 5.222 Versicherte angeschrieben werden. Bei einer angestrebten Response von 40 % reduzierte sich die erwartete Fallzahl damit auf 2.089."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die Genehmigung des Bundesamts für Soziale Sicherung nach § 75 SGB X lag erst mit 5 Monaten Verzögerung vor. Die Datenerhebung konnte daher nicht fristgerecht erfolgen; eine kostenneutrale Laufzeitverlängerung um 6 Monate wurde nötig."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Von 6.913 potenziell geeigneten Adressaten wurden 1.691 ausgeschlossen, u. a. wegen Kassenwechsels (1.011), Kontaktverbots (214) und Vormundschaft (190)."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Wegen fehlender dreijähriger Baseline vor der OP wurden 1.076 Versicherte aus den DAK-Daten und 267 Fragebogen-Responder ausgeschlossen."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Bei 103 von 2.521 zurückgesandten Fragebögen konnte aus technischen Gründen kein Linkage zu den GKV-Daten hergestellt werden."}]};
+const D = {"projekt_id": 332, "akronym": "ABARO", "kennung": "9YLtOt4cmMTu", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt untersuchte Versorgungslücken in der Nachsorge, Risiken, Folgeerkrankungen und Bedarfe von Patientinnen und Patienten nach bariatrischer Operation. Grundlage waren Krankenkassen-Abrechnungsdaten und eine Fragebogenbefragung. Nach Einschätzung des Ausschusses waren die Methoden grundsätzlich geeignet. Die Aussagekraft ist jedoch eingeschränkt, vor allem durch das Verzerrungsrisiko bei der rückblickenden Bewertung von Beschwerden. Dennoch tragen die Erkenntnisse zum Verständnis der Versorgung bei. Sie zeigen neben positiven Effekten der Gewichtsreduktion auch Defizite in der postoperativen Nachsorge und weitreichende Komplikationen. Deshalb werden die Ergebnisse weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Retrospektive Kohortenstudie von Personen mit einer bariatrischen OP über einen Beobachtungszeitraum von ca. 15 Jahren anhand von GKV-Abrechnungsdaten der German Pharmacoepidemiological Research Database (GePaRD) mit Linkage von Primärdaten aus einer Fragebogenerhebung"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Eingeschränkte Aussagekraft durch Verzerrungsrisiko bei der retrospektiven Bewertung von Beschwerden (Befragung)"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Body-Mass-Index prä- und postoperativ"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Medikamentös behandelte somatische Komorbiditäten (kardiovaskuläre Erkrankungen, Hypertonie, Diabetes mellitus)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Gesundheitsbezogene Lebensqualität"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Depressive und Angstsymptomatik"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Alkoholkonsumstörungen"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Zusammenhang zwischen ausgewählten Variablen und mindestens gefährlichem/schädlichem Alkoholkonsum (AUDIT ≥ 8), adjustiert nach Geschlecht"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Qualität der Nachsorge und Anzahl Nachsorgetermine"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Gewichtsverlust und Lebensqualität in Abhängigkeit von der Qualität der Nachsorge"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben (ABARO-Studie) untersuchte Auswirkungen bariatrischer Operationen der Jahre 2007 bis 2018 bei DAK-Versicherten. Dazu wurden GKV-Abrechnungsdaten (N=5.837) mit einer retrospektiven Versichertenbefragung verknüpft (finaler Analysedatensatz N=2.151, korrigierte Response-Rate 46,3 %). Ein primärer Endpunkt ist im Bericht nicht angegeben. Der mittlere BMI lag vor der OP bei 51,9 und zum Befragungszeitpunkt bei 34,8. Zu diesem Zeitpunkt berichteten 22,3 % einen BMI über 40. In den Abrechnungsdaten waren die Anteile medikamentös behandelter Hypertonie und Diabetes nach der OP niedriger als davor. Verordnungen von Protonenpumpeninhibitoren, Opioiden, Analgetika und Anxiolytika waren nach der OP häufiger als davor. Jahre nach der OP berichteten mehr als 40 % Reflux, Müdigkeit und Blähungen. Je nach Störungsgruppe gaben 15,0 % bis 21,8 % mindestens ausgeprägte psychische Symptome an, 9,4 % fielen in problematische AUDIT-Kategorien, und 42 % erhielten weniger als drei Nachsorgetermine. Die Aussagekraft hängt an mehreren Punkten: Die Befragung ist eine einmalige, postoperative Querschnitterhebung ohne Prä-post-Vergleich. Sie unterliegt möglichem Recall Bias bei im Mittel 6,5 Jahren Abstand zur OP. Es wurden nur DAK-Daten verwendet. Für 1.359 von 2.151 Respondern fehlte ein Lebensqualitäts-Gesamtscore. Zudem ist die Auswertung vorwiegend deskriptiv und verzichtet weitgehend auf p-Werte."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Der mittlere BMI lag vor der OP bei 51,9 (95%-KI 51,5–52,4) und zum Befragungszeitpunkt bei 34,8 (95%-KI 34,4–35,1)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Zum Befragungszeitpunkt hatten 22,3 % der Teilnehmenden einen BMI über 40. 12,5 % gaben an, diese Schwelle nach der OP nie unterschritten zu haben."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Laut Abrechnungsdaten sanken die Anteile medikamentös behandelter Erkrankungen von vor bis nach der OP: kardiovaskuläre Erkrankungen von 61,7 % auf 45,3 %, Hypertonie von 56,8 % auf 40,4 % und Diabetes mellitus von 27,0 % auf 15,6 %."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Fragebogendaten liegen nur für einen Messzeitpunkt nach der OP vor (Querschnittsdaten). Ein Vergleich mit dem präoperativen Zustand ist daher nicht möglich."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die retrospektive Befragung kann einem Recall Bias unterliegen; zwischen OP und Befragung lagen im Mittel 6,5 Jahre. Zudem sind sozial erwünschte Antworten möglich, und die Ausfüllsituation war nicht kontrollierbar."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Es konnten nur Daten der DAK-Gesundheit verwendet werden. Kassenspezifische Verzerrungen sind daher nicht auszuschließen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Anteil der Personen mit Alkoholdiagnose, bei denen diese nach, aber nicht vor der OP codiert wurde: Seite 22 nennt „zwischen 40% und 70%“, Seite 34 „zwischen 50% und 70%“."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Häufigste Beschwerden: Laut Seite 18 zählten Erbrechen, Haarausfall und Übelkeit zu beiden Zeitpunkten zu den häufigsten postoperativen Beschwerden. Laut Zusammenfassung (Seite 5) waren zum Befragungszeitpunkt Blähungen (61,0 %), Müdigkeit (53,5 %) und Übelkeit (28,4 %) am häufigsten."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Die Zahl 103 wird verschieden begründet: Seite 11 nennt 103 Datensätze, die wegen fehlender schriftlicher Einwilligung gelöscht wurden. Seite 12 nennt 103 Fragebögen, bei denen aus technischen Gründen kein Linkage zu den GKV-Daten hergestellt werden konnte."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Ergebnisse des Projekts ABARO zur Information an mehrere Fachgesellschaften und an eine Selbsthilfeorganisation weiter. Anlass ist die laufende Überarbeitung der S3-Leitlinie Chirurgie der Adipositas und metabolischer Erkrankungen. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung."}, {"stelle": "befund.0", "art": "befund", "unser": "Reduktion häufiger somatischer Komorbiditäten nach der OP (kardiovaskuläre Erkrankungen, Hypertonie, Diabetes mellitus)"}, {"stelle": "befund.1", "art": "befund", "unser": "Senkung des mittleren BMI von 51,9 auf 35"}, {"stelle": "befund.2", "art": "befund", "unser": "Verbesserung von Beweglichkeit und Ausdauer bei über drei Vierteln der Versicherten"}, {"stelle": "befund.3", "art": "befund", "unser": "Überwiegend gute Bewertung der erhaltenen medizinischen Leistungen"}, {"stelle": "befund.4", "art": "befund", "unser": "Beitrag zum Verständnis der Versorgung nach bariatrischer OP, einschließlich des Aufzeigens von Versorgungsdefiziten in der postoperativen Nachsorge sowie von weitreichenden Komplikationen"}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "In den GKV-Daten (N=5.837) nahmen nach der OP die Verordnungen von Insulinen, Biguaniden und Antihypertensiva ab. Die Verordnungen von Protonenpumpeninhibitoren, Opioiden, Analgetika/Antipyretika und Anxiolytika nahmen zu, insbesondere bei der Verschreibungsrate."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Laut MINI-SCL berichteten je nach Störungsgruppe zwischen 15,0 % (Angst) und 21,8 % (Somatisierung) mindestens ausgeprägte Symptome. Für depressive Symptome waren es 18,1 %."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Im AUDIT fielen 90,6 % in die Kategorie risikoarmer Konsum, 5,7 % in gefährlichen/schädlichen Konsum und 3,7 % in mittelschwere/schwere Alkoholkonsumstörung. Männer verteilten sich mit 82,7 %, 10,8 % und 6,5 % auf diese Kategorien, Frauen mit 92,7 %, 4,4 % und 2,9 %."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "42 % der Teilnehmenden gaben an, weniger als 3 Nachsorgetermine erhalten zu haben. Die Qualität der Nachsorge bewerteten 30,8 % als sehr gut, 33,7 % als gut, 18,4 % als ausreichend und 17,1 % als unzureichend."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Für 1.359 der 2.151 Responder konnte wegen unbeantworteter Items kein BQL-Gesamtscore berechnet werden. Am häufigsten fehlte das Item zur Einschränkung bei der Arbeit (1.116 Fehlwerte). Ein Gesamtscore lag für 792 Personen vor."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Auswertung ist vorwiegend deskriptiv. Bei der Darstellung von Gruppenunterschieden wurde weitgehend auf p-Werte verzichtet."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Drei Jahre nach der OP wurden für die Mehrheit der somatischen Komorbiditäten niedrigere Häufigkeiten festgestellt als zum OP-Zeitpunkt, insbesondere für kardiovaskuläre Erkrankungen/Bluthochdruck und Diabetes mellitus."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Der Übergewichtsverlust (EWL) betrug zum Befragungszeitpunkt im Mittel 64,1 %. Der höchste seit der OP jemals erzielte EWL lag im Mittel bei 79 %."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die BMI-Reduktion von vor bis nach der OP betrug beim RYGB 17,2 Punkte und bei der Sleeve-Gastrektomie 17,1 Punkte. Beim Magenband waren es 14,6 Punkte und beim Magenballon 11,2 Punkte (95%-KI 0,3–22,0)."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Zum Befragungszeitpunkt lag der mittlere BMI mehrheitlich im Bereich der Adipositas-Klasse I. Jeder Fünfte lag im Bereich Übergewicht, mehr als 6 % galten als normalgewichtig."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "35 % der Befragten sind mit ihrer postoperativen Gewichtsentwicklung nicht zufrieden."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Bei 98,5 % bestand die Intervention in einem irreversiblen chirurgischen Eingriff, mehrheitlich Magenbypass oder Schlauchmagen."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "15,3 % der Befragten berichteten eine Komplikation nach der OP. Genannt wurden undichte Nahtstellen/Blutungen (7,4 %), postoperative Infektionen (2,6 %) und andere Komplikationen (7,5 %)."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Mehr als 40 % berichteten auch Jahre nach der OP Reflux, Müdigkeit und Blähungen. Mehr als 20 % nannten Durchfall, Haarverlust oder Erbrechen nach dem Essen, 9 % Zahnausfall. Müdigkeit, Durchfall, Reflux, Blähungen und Zahnausfall wurden laut Bericht als „immer noch“ auftretend „deutlich häufiger“ genannt als unmittelbar postoperativ."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Laut Zusammenfassung waren Blähungen (61,0 %), Müdigkeit (53,5 %) und Übelkeit (28,4 %) die häufigsten Beschwerden zum Befragungszeitpunkt."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Außer bei Kopfschmerzen (Migräne) gaben jeweils mehr als 40 % an, dass ihre Schmerzen seit der OP abgenommen haben, bei Knieschmerzen 56,7 %. Jeweils etwa 20 % berichteten eine Zunahme. Bei Migräne berichteten 14,8 % eine Zunahme und 49,1 % keine Veränderung."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "86,8 % gaben eine verbesserte Beweglichkeit an, 87,3 % eine verbesserte Ausdauer. 74,4 % sahen eine Verbesserung der Schlafapnoe. 55,5 % gaben an, trotz OP weiterhin Bewegungseinschränkungen zu haben."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Die Mittelwerte der MINI-SCL lagen bei 54,2 (Depression), 53,2 (Angst), 55,4 (Somatisierung) und 54,4 (Global Severity Index)."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Laut GKV-Daten wurden 13 % bis 18 % der Teilnehmenden mit Antidepressiva behandelt."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Die GKV-Daten zeigen laut Bericht nur einen „leichten Rückgang“ des Anteils mit Antidepressiva-Behandlung von vor bis nach der OP und „nur minimale“ Reduktionen der Verschreibungsrate bzw. -dichte. Die Autoren halten diesen Datenteil für mit großer Vorsicht zu betrachten."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Für ihre psychische Gesundheit gaben Befragte die Einnahme frei verkäuflicher Mittel an: Baldrian (n=70), Johanniskraut (n=46), Lavendel (n=42) und sonstige Mittel (n=121)."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Männer hatten gegenüber Frauen eine signifikant höhere Wahrscheinlichkeit für einen AUDIT-Score von 8 oder mehr (OR 2,6; 95%-KI 1,8–3,8)."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Eine 8 bis 12 Jahre zurückliegende OP war gegenüber einer 3 bis 4 Jahre zurückliegenden mit einer höheren Wahrscheinlichkeit für einen AUDIT-Score von 8 oder mehr verbunden (OR 1,8; 95%-KI 1,2–2,9)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Unzufriedenheit mit der Gewichtsabnahme war gegenüber Zufriedenheit mit einer höheren Wahrscheinlichkeit für einen AUDIT-Score von 8 oder mehr verbunden (OR 1,9; 95%-KI 1,3–2,7)."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Für den BMI zum Befragungszeitpunkt wurde kein signifikanter Zusammenhang mit dem AUDIT-Score gefunden. Ein Total Weightloss über 37,5 % war signifikant mit einem niedrigeren AUDIT-Score assoziiert (OR 0,5; 95%-KI 0,3–0,9)."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "In den GKV-Daten hatten 3 % der Responder mindestens eine codierte Alkoholkonsumstörung (F10); bei Beschränkung auf mindestens eine stationäre Diagnose waren es 2 %. Männer wurden 2,2- bis 3,3-mal häufiger diagnostiziert als Frauen."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Bei 40 % bis 70 % der Betroffenen mit codierter Alkoholkonsumstörung wurde diese nach, aber nicht vor der OP codiert."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Der mittlere BQL-Score betrug 46,7, bei Männern 47,0 und bei Frauen 46,5."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Der BQL-Score war mit dem BMI assoziiert: 52,6 bei Normalgewicht, 49,0 bei Adipositas-Klasse I und 38,7 bei Adipositas-Klasse III."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Normalgewichtige Männer berichteten eine schlechtere Lebensqualität als normalgewichtige Frauen (Median 45 vs. 59). Bei Übergewicht berichteten Frauen eine schlechtere Lebensqualität als Männer (Median 53 vs. 56)."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Der mittlere BQL-Score lag bei 48,2, wenn die OP 3–4 Jahre zurücklag, bei 46,7 nach 5–7 Jahren und bei 45,1 nach 8 und mehr Jahren."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Bei beiden Geschlechtern war ein höherer EWL mit höherer Lebensqualität verbunden. Kurzfristig nach der OP war dieser Zusammenhang bei Frauen stärker (Interaktionseffekt mit Geschlecht). Zum Befragungszeitpunkt war ein solcher Interaktionseffekt nicht nachweisbar."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Wer die Nachsorge besser bewertete, war laut Bericht eher mit der Gewichtsentwicklung zufrieden."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Versicherte mit sehr gut bewerteter Nachsorge hatten im Mittel 35,2 % Gewicht verloren, solche mit unzureichend bewerteter Nachsorge 28,4 %."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Der mittlere BQL-Score lag je nach Bewertung der Nachsorge bei 50,1 (sehr gut), 47,1 (gut), 44,0 (ausreichend) und 42,6 Punkten (unzureichend)."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "33,4 % hatten jemals eine psychosomatische Kur oder Reha gemacht (Frauen 35,5 %, Männer 24,7 %). Vor der OP waren es 26,7 %, nach der OP 12,2 %."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Nach der OP wurden am häufigsten Internisten/Hausärzte (87,9 %), Orthopädie (64,4 %) und Physiotherapie (51,6 %) in Anspruch genommen. Die Qualität wurde jeweils von über 80 % als sehr gut bis gut eingeschätzt, mit Ausnahme der Orthopädie (73,5 %)."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Der Anteil der Bewertungen „schlecht“ oder „sehr schlecht“ lag bei allen Fachrichtungen unter 7 %. Am höchsten war er für Orthopädie (6,8 %), Psychotherapie (6,2 %) und Psychiatrie (6,1 %)."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Mehr Unterstützung wünschten sich die Befragten von Ernährungsberatung (17,1 %), Physiotherapie (17,0 %), Psychologie/Psychotherapie (15,8 %), Ärztinnen/Ärzten (11,6 %) und Selbsthilfegruppen (6,3 %)."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Laut Survey und/oder GKV-Daten nahmen insgesamt 46,9 % Psychiatrie/Psychotherapie bzw. Richtlinienpsychotherapie in Anspruch: Frauen 50,2 %, Männer 32,7 %, Normalgewichtige 56,8 %, Übergewichtige 44,4 % und Personen mit Adipositas Klasse I–III 47,1 %."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "Der Fragebogen ging an 5.222 Versicherte, von denen 2.521 antworteten (Response-Rate 48,3 %). Nach Löschung von 103 Datensätzen ohne schriftliche Einwilligung ergab sich eine korrigierte Response-Rate von 46,3 %. Der finale Analysedatensatz umfasst 2.151 Responder mit verknüpften Abrechnungs- und Fragebogendaten."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Responder und Non-Responder wurden anhand der Abrechnungsdaten verglichen; dabei wurden keine substanziellen Unterschiede festgestellt. Der Frauenanteil lag bei 80,7 % (Responder) gegenüber 76,3 % (Non-Responder), das Alter bei OP bei 47,9 gegenüber 44,6 Jahren."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Von den 2.151 Respondern waren 80,7 % Frauen. Das mittlere Alter bei der Befragung lag bei 54,5 Jahren."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "Das mittlere Alter bei der OP lag bei 47,9 Jahren. Zwischen OP und Befragung lagen im Mittel 6,5 Jahre."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Personen ohne BQL-Gesamtscore waren älter, häufiger (früh-)berentet und sozial weniger aktiv als Personen mit Gesamtscore."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "In Sensitivitätsanalysen wurden fehlende BQL-Werte multipel imputiert. Laut Autoren ergaben sich dabei nur geringe quantitative Unterschiede, sodass sie eine eher geringere Verzerrung durch die Fehlwerte annehmen."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Psychische Störungen wurden per MINI-SCL nur einmal und nur postoperativ erfasst. Ein Prä-post-Vergleich ist daher nicht möglich."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Interaktionen zwischen Lebensqualität, Gewichtsverlust, Geschlecht und Dauer seit der OP stammen aus Querschnittsdaten. Laut Bericht sind sie nur mit äußerster Vorsicht zu interpretieren."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Zusammenhänge zwischen Nachsorgequalität, Gewichtsverlust und Lebensqualität sind Assoziationen aus einer Querschnitterhebung."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Antidepressiva haben breitere Indikationen, etwa chronische Schmerzsyndrome. Ihre Verordnung ist deshalb laut Bericht als Indikator für Depression mit Vorsicht zu interpretieren."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die Zählung von ICD-10-Diagnosen kann Alkoholstörungen überschätzen. Dem wurde begegnet, indem nur Hauptentlassungsdiagnosen oder durch eine weitere gleichlautende Diagnose bestätigte ambulante Diagnosen gezählt wurden."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "GKV-Abrechnungsdaten bilden Lebensstilfaktoren, Laborergebnisse und psychometrische Befunde nicht ab."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Das aktuellste verfügbare GKV-Datenjahr war 2018. Für die Zeit bis zur Fragebogenaussendung 2021 liegen daher keine Abrechnungsdaten vor."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Statt der bei Antragstellung angenommenen 8.598 konnten nur 5.222 Versicherte angeschrieben werden. Bei einer angestrebten Response von 40 % reduzierte sich die erwartete Fallzahl damit auf 2.089."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die Genehmigung des Bundesamts für Soziale Sicherung nach § 75 SGB X lag erst mit 5 Monaten Verzögerung vor. Die Datenerhebung konnte daher nicht fristgerecht erfolgen; eine kostenneutrale Laufzeitverlängerung um 6 Monate wurde nötig."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Von 6.913 potenziell geeigneten Adressaten wurden 1.691 ausgeschlossen, u. a. wegen Kassenwechsels (1.011), Kontaktverbots (214) und Vormundschaft (190)."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Wegen fehlender dreijähriger Baseline vor der OP wurden 1.076 Versicherte aus den DAK-Daten und 267 Fragebogen-Responder ausgeschlossen."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Bei 103 von 2.521 zurückgesandten Fragebögen konnte aus technischen Gründen kein Linkage zu den GKV-Daten hergestellt werden."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

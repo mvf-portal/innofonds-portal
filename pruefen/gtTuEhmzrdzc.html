@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF17010</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>27 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 85 Aussagen. Die übrigen
+58 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss empfiehlt, die Erkenntnisse aus SEPFROK zur Information an das IQTIG weiterzuleiten. Außerdem gehen sie an die Deutsche Sepsis-Gesellschaft, die Sepsis-Stiftung, die Deutsche Sepsishilfe, SepsisDialog und das Aktionsbündnis Patientensicherheit. Die Geschäftsstelle wird mit der Weiterleitung beauftragt, Beschluss und Ergebnisbericht werden veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt hat nach Auffassung des Ausschusses erfolgreich eine retrospektive Längsschnittstudie mit AOK-Routinedaten der Jahre 2009 bis 2017 durchgeführt. Ergänzend wurde die Versorgungszufriedenheit von Betroffenen und Angehörigen in 400 Telefoninterviews untersucht. Die Ergebnisse liefern populationsbasierte Erkenntnisse zu Epidemiologie, Risikofaktoren, Versorgung und Kosten von Sepsisfolgen. Sie zeigen Informationsdefizite und Versorgungsbedarfe aus Patientensicht auf. Die Methoden hält der Ausschuss für angemessen, verweist aber auf Limitationen der Routinedaten und der Repräsentativität der Befragten. Da die Ergebnisse helfen, das Post-Sepsis-Syndrom und die Versorgungsbedarfe besser zu verstehen, werden sie zur Information an das IQTIG und an Fachgesellschaften und Patientenorganisationen weitergeleitet.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Sekundärdatenanalyse</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Zur Übertragbarkeit auf die Regelversorgung äußert sich der Beschluss nicht ausdrücklich. Er nennt eingeschränkte Repräsentativität der Befragten und verweist darauf, dass weiterführende Fragen zu Versorgungspfaden nach Sepsis im Projekt AVENIR bearbeitet werden.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Mögliche Untererfassung von Sepsis, Vor- und Folgeerkrankungen sowie Risikofaktoren im Routinedatensatz</p>
+  
   <blockquote>„Auf die Limitationen des zugrundeliegenden Routinedatensatzes (mögliche Untererfassung von Sepsis, Vor - und Folgeerkrankungen sowie Risikofaktoren) und Einschränkungen hinsichtlich der Repräsentativität der Befragungsteilnehmenden (mit tendenziell niedrigerer Krankheitslast) wurde hingewiesen." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -199,145 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.1">
   <h3>Hindernis laut Beschluss: Studienanlage</h3>
   <p class="unser">Eingeschränkte Repräsentativität der Befragten, die tendenziell eine niedrigere Krankheitslast hatten (Selektion)</p>
+  
   <blockquote>„Auf die Limitationen des zugrundeliegenden Routinedatensatzes (mögliche Untererfassung von Sepsis, Vor - und Folgeerkrankungen sowie Risikofaktoren) und Einschränkungen hinsichtlich der Repräsentativität der Befragungsteilnehmenden (mit tendenziell niedrigerer Krankheitslast) wurde hingewiesen." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Populationsbasierte Erkenntnisse zu Epidemiologie und Risikofaktoren chronischer Sepsisfolgen</p>
-  <blockquote>„Die Projektergebnisse liefern populationsbasierte Erkenntnisse zur Epidemiologie und Risikofaktoren für häufig auftretende, chronische psychische, kognitive und physische Sepsisfolgen, auch unter dem Terminus „Post-Sepsis-Syndrom“ zusammengefasst." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Einsichten in Versorgung und Kosten von Folgeerkrankungen nach Sepsis</p>
-  <blockquote>„Zudem bieten die Ergebnisse Einsichten in die Versorgung und Kosten von Folgeerkrankungen nach Sepsis." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Nachweis, dass Sepsisfolgen auch nach leichteren Verläufen auftreten</p>
-  <blockquote>„Beispielsweise wurde aufgezeigt, dass Sepsisfolgen nicht nur Patientinnen und Patienten mit schwerer Sepsis, das heißt Sepsis mit Organversagen betreffen, sondern auch nach leichteren Verläufen auftreten können." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Informationsdefizit und Wunsch nach mehr Rehabilitation aus Patientensicht aufgezeigt</p>
-  <blockquote>„Darüber hinaus unterstreichen die Ergebnisse der Befragungen, dass Patientinnen und Patienten unter einem Informationsdefizit leiden und sich einen verstärkten Zugang zu Rehabilitation und struktureller Unterstützung nach Sepsis wünschen." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Empfehlungen zur Verbesserung der Versorgung nach Sepsis formuliert</p>
-  <blockquote>„Basierend auf den Ergebnissen des Projekts wurden gemeinsam mit einem Expertenbeirat Empfehlungen zur Verbesserung der Versorgung nach Sepsis formuliert." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.5">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Methoden vom Ausschuss als angemessen bewertet</p>
-  <blockquote>„Die angewandten Methoden waren angemessen." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.6">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Quantifizierung des Versorgungsbedarfs bei Sepsisfolgen</p>
-  <blockquote>„Die Ergebnisse des Projektes quantifizieren den Bedarf für die Versorgung von Sepsisfolgen und verdeutlichen Defizite aus Patienten- und Angehörigensicht." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Auftreten möglicher Sepsisfolgeerkrankungen – mindestens eine neue Erkrankung im ersten Jahr nach Entlassung</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Neue Erkrankungen in mehr als einer Domäne (physisch, psychisch, kognitiv) im ersten Jahr nach Sepsis</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Neue Folgeerkrankungen nach Erkrankungsgruppen im ersten Jahr nach Sepsis</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Sterblichkeit im Nachbeobachtungszeitraum (Langzeitsterblichkeit) – 12 Monate nach Entlassung</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Ambulante Inanspruchnahme“</h3>
   <p class="unser">Umfang der Inanspruchnahme von Rehabilitation nach Sepsis und Zufriedenheit mit diesen Versorgungsleistungen (AP2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Funktion, Mobilität und Alltag“</h3>
   <p class="unser">Neue Pflegebedürftigkeit im ersten Jahr nach Sepsis (Patienten ohne vorbestehende Pflegebedürftigkeit)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Rehospitalisierung im ersten Jahr nach Index-Krankenhausaufenthalt</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Arbeitsfähigkeit und Erwerbsteilhabe“</h3>
   <p class="unser">Rückkehr in die Erwerbstätigkeit nach überlebter Sepsis</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Sonstiges“</h3>
   <p class="unser">Risikofaktoren für ungünstige Verläufe innerhalb von 12 Monaten – vorbestehende Komorbiditäten (&gt;4 Komorbiditäten)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -522,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.10">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Langzeitüberleben 13-36 Monate nach Sepsis: Rehabilitation vs. keine Rehabilitation</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.10" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -541,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.11">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Kurzzeitüberleben 7-12 Monate nach Sepsis: Rehabilitation vs. keine Rehabilitation</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.11" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -560,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.12">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Rehospitalisierung und neuer Pflegegrad nach Rehabilitation vs. keine Rehabilitation</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.12" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -579,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.13">
   <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Gesamt-Versorgungskosten 7-12 und 13-36 Monate nach Sepsis: Rehabilitation vs. keine Rehabilitation</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.13" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -595,129 +441,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
       ></textarea></label>
   </div>
 </section>
-<section class="p" data-stelle="adressat.1">
-  <h3>Institut für Qualitätssicherung und Transparenz im Gesundheitswesen (IQTIG) – eingestuft als „umgesetzt“</h3>
-  <p class="unser">Das IQTIG schreibt, es habe die SEPFROK-Ergebnisse bereits in die Entwicklung des QS-Verfahrens „Diagnostik, Therapie und Nachsorge der Sepsis“ einbezogen und daraus Indikatoren und Kennzahlen zum Outcome nach Sepsis empfohlen, wobei die 365-Tage-Outcomes nur als Kennzahlen konfiguriert werden. Der Abschlussbericht liegt dem G-BA vor und ist noch nicht zur Veröffentlichung freigegeben; ein Antrag auf Freigabe wurde in der AG DeQS gestellt.</p>
-  <blockquote>„Das vom G -BA beauftragte QS -Verfahren „Diagnostik, Therapie und Nachsorge der Sepsis“ bezieht diese Erkenntnisse ein, bestätigt ihre wesentlichen Aussagen und führt zukünftige, kontinuierliche Sozialdaten- Erhebungen zum Sepsis -Outcome ein." <span class="s">S. 11</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.2">
-  <h3>SepsisDialog (Universitätsmedizin Greifswald) – eingestuft als „zur Kenntnis genommen“</h3>
-  <p class="unser">SepsisDialog begrüßt die Weiterleitung, kündigt an, das Thema Post-Sepsis-Syndrom in Schulungsmaterialien weiter zu vertiefen, und schlägt vor, das Entlassungsmanagement mit Patientenbriefen verbindlich zu regeln. Eine Befassung oder Entscheidung zur Empfehlung wird nicht benannt.</p>
-  <blockquote>„unser Team vom SepsisDialog der Universitätsmedizin Greifswald hat mit Freude zur Kenntnis genommen, dass die im Versorgungsforschungsprojekt 01VSF17 010 SEPFROK (Sepsis: Folgeerkrankungen, Risikofaktoren, Versorgung und Kosten) gewonnenen Erkenntnisse den Innovationsausschuss beim Gemeinsamen Bundesausschuss veranlasst haben, diese an wichtige Player zum Thema Sepsis weiterzuleiten." <span class="s">S. 4</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.3">
-  <h3>Deutsche Sepsis-Gesellschaft e. V. – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt.</p>
-  <blockquote>„Die in dem Projekt gewonnenen Erkenntnisse sollen an die Deutsche Sepsis -Gesellschaft e. V., die Sepsis -Stiftung, die Deutsche Sepsishilfe e. V., SepsisDialog und das Aktionsbündnis Patientensicherheit zur Information weitergeleitet werden." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.4">
-  <h3>Sepsis-Stiftung – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt.</p>
-  <blockquote>„Die in dem Projekt gewonnenen Erkenntnisse sollen an die Deutsche Sepsis -Gesellschaft e. V., die Sepsis -Stiftung, die Deutsche Sepsishilfe e. V., SepsisDialog und das Aktionsbündnis Patientensicherheit zur Information weitergeleitet werden." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.5">
-  <h3>Deutsche Sepsishilfe e. V. – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt.</p>
-  <blockquote>„Die in dem Projekt gewonnenen Erkenntnisse sollen an die Deutsche Sepsis -Gesellschaft e. V., die Sepsis -Stiftung, die Deutsche Sepsishilfe e. V., SepsisDialog und das Aktionsbündnis Patientensicherheit zur Information weitergeleitet werden." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.6">
-  <h3>Aktionsbündnis Patientensicherheit – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt.</p>
-  <blockquote>„Die in dem Projekt gewonnenen Erkenntnisse sollen an die Deutsche Sepsis -Gesellschaft e. V., die Sepsis -Stiftung, die Deutsche Sepsishilfe e. V., SepsisDialog und das Aktionsbündnis Patientensicherheit zur Information weitergeleitet werden." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="bericht_kurz">
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">SEPFROK untersuchte Folgeerkrankungen, Risikofaktoren, Versorgung und Kosten nach Sepsis. In einer retrospektiven Routinedatenanalyse (AP1) wurden unter 23 Millionen AOK-Versicherten (2013/2014) 159.684 krankenhausbehandelte Sepsispatienten erfasst. Hinzu kam eine Telefonbefragung von Betroffenen und Angehörigen (AP2) 6 und 12 Monate nach Entlassung von der Intensivstation. Die Krankenhaussterblichkeit lag bei 27,0 %. Von den 116.507 Überlebenden erhielten 74,3 % im ersten Jahr eine neue Diagnose, 31,5 % einen neuen Pflegegrad, und 30,7 % verstarben in diesem Jahr. Die GKV-Versorgungskosten betrugen in den drei Jahren nach Entlassung im Mittel 29.088 Euro pro Patient, zusätzlich 15.361 Euro für den Index-Aufenthalt. In der Befragung hatten 63 % bzw. 71 % eine stationäre Rehabilitation erhalten. Dort wurden physische Einschränkungen zu 95 % adressiert, kognitive Einschränkungen, Schmerzen, Fatigue und pulmonale Folgen zu 13–25 %. Die Aussagekraft hängt an der Erfassung über Abrechnungs-ICD-Codes, die eine eingeschränkte Sensitivität und eine für den ambulanten Bereich unbekannte Validität haben, an der Beschränkung auf AOK-Versicherte und an einem selektierten Befragungskollektiv. Die Autoren werten die Ergebnisse als hypothesengenerierend.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im ersten Jahr nach Entlassung wurde bei 74,3 % der Sepsisüberlebenden eine neue Erkrankung diagnostiziert; jeder vierte Überlebende hatte eine neue Erkrankung in mehr als einer Domäne (physisch, psychisch, kognitiv).</p>
+  
   <blockquote>„„Im ersten Jahr nach Entlassung wurde bei 74,3% der Überlebenden eine neue Erkrankung diagnostiziert. Jeder vierte Überlebende hatte eine neue Erkrankung in mehr als einer Domäne ( physisch, psychisch, kognitiv).“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im ersten Jahr nach Sepsis hatten 31,5 % der Überlebenden einen neuen Pflegegrad, und 30,7 % verstarben. Im zweiten und dritten Jahr hatten 65,8 % bzw. 59,4 % der Überlebenden mindestens eine neue Erkrankung.</p>
+  
   <blockquote>„„31,5% der Überlebenden hatten einen neuen Pflegegrad und 30,7% sind im ersten Jahr verstorben. Im zweiten und dritten Jahr nach Sepsis hatten 65,8% und 59,4% der Überlebenden mindestens eine neue Erkrankung.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,50 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die GKV-Versorgungskosten der Überlebenden betrugen in den drei Jahren nach Entlassung im Durchschnitt 29.088 Euro pro Patient, zuzüglich durchschnittlich 15.361 Euro für den Index-Krankenhausaufenthalt.</p>
+  
   <blockquote>„„Die Versorgungskosten beliefen sich im Durchschnitt auf 29.088 Euro pro Patient in den drei Jahren nach Entlassung . Hinzu kommen die Kosten de s Index -Krankenhausaufenthalts von durchschnittlich 15.361 Euro pro Patient.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">In der Befragung hatten 6 Monate nach Entlassung 141 von 225 Patienten (63 %) mindestens eine stationäre Rehabilitation erhalten, nach 12 Monaten 71 %. Den größten Anteil machte die neurologische Rehabilitation aus (38 %).</p>
-  <blockquote>„„6 Monate nach Entlassung erhielten 141 von 225 Patie nten (63%) mindestens eine stationäre Rehabilitation. Dieser Anteil stieg auf 71% nach 12 Monaten. Der größte Anteil von Überlebenden mit Rehabilitation hatte eine neurologische Rehabilitation erhalten (38%).“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.4">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Die Befragten gaben insgesamt eine hohe Zufriedenheit mit der Rehabilitation an. Physische Einschränkungen wurden in der Rehabilitation zu 95 % adressiert, kognitive Einschränkungen zu 25 %, Schmerzen zu 17 %, Fatigue zu 21 % und pulmonale Folgen zu 13 %.</p>
-  <blockquote>„„Patienten gaben insgesamt eine hohe Zufriedenheit mit der Rehabilitation an . In der Rehabilitation wurden vorwie gend physische Einschränkungen adressiert (zu 95% in der Rehabilitation adressiert), während kognitive Einschränkungen, Schmerzen, Fatigue und pulmonale Folgen wesentlich seltener [...] adressiert wurden (jeweils zu 25%, 17%, 21% und 13% adressiert).“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Sepsispatienten wurden über explizite Sepsis-ICD-Codes aufgegriffen. Diese haben laut Vorstudien eine eingeschränkte Sensitivität, identifizieren nicht alle Sepsisfälle und werden zu Abrechnungszwecken kodiert. Dasselbe gilt für die Abbildung von Folge- und Vorerkrankungen.</p>
+  
   <blockquote>„„Der Aufgriff der Sepsispatienten erfolgte über explizite Sepsis -ICD-Codes. In Vorstudien zeigte sich, dass diese insbesondere eine eingeschränkte Sensitivität besitzen und daher nicht alle Sepsisfälle identifizieren. Ihre Kodierung erfolgt zu Abrechnungs-, nicht zu Forschungszwecken“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Validität der Kodierung ist insbesondere im ambulanten Bereich für die meisten betrachteten Erkrankungen nicht bekannt. Kodierungsungenauigkeiten können sich auf alle Ergebnisse des Projekts auswirken.</p>
+  
   <blockquote>„„Die Validität der Kodierung ist insbesondere für den ambulanten Bereich für die meisten hier betrachteten Erkrankungen nicht bekannt, kann sich aber im Falle von Kodierungsungenauigkeiten auf alle Ergebnisse des Projektes auswirken.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,31 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Nur ärztlich diagnostizierte oder behandelte Erkrankungen konnten erfasst werden, was etwa bei PTBS zu einer Unterschätzung der Inzidenz führen kann. Im Abgleich mit der MSC zeigte sich für Fatigue eine deutlich geringere Prävalenz in den Routinedaten, für Depression eine höhere.</p>
+  
   <blockquote>„„Eine weitere Limitation ist, dass nur ärztlich diagnostizierte/behandelte Erkrankungen identifiziert werden konnten, was bei einigen Erkrankungen wie Post -Traumatischen Belastungsstörungen möglicherweise zu einer U nterschätzung der Inzidenz führen kann.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Die Befragung beruht auf einem selektierten Kollektiv. In der MSC als Rekrutierungsbasis stimmten vor allem weniger schwer Erkrankte zu; die Autoren gehen davon aus, dass dies auch die Rekrutierung über die Intensivstationen in Jena und Berlin betrifft.</p>
-  <blockquote>„„Es gilt allerdings zu beachten, dass es sich um ein selektiertes Patientenkollektiv handelt, da beispielsweise in der MSC, die als Rekrutierungsbasis diente, vor allem weniger schwer erkrankte Patienten ihre Zustimmung zur Studienteilnahme erteilten.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -903,11 +578,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">RNLI: Auf S. 18–19 wird dem RNLI eine gute Reliabilität, Konstrukt- und kongruente Validität zugeschrieben, und er könne zur Beurteilung der Wiedereingliederung nach Sepsis genutzt werden. Auf S. 21 heißt es dagegen, der RNLI solle in einem Folgeprojekt für Sepsisüberlebende erst noch psychometrisch validiert werden.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -922,11 +597,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Routinedaten und Mitteldeutsche Sepsis Kohorte weichen bei ähnlicher Population (schwere, ITS-behandelte Sepsis) in entgegengesetzte Richtungen ab: Fatigue 9,0 % (Diagnosecodes) vs. 67,8 % (Chalder Fatigue Score), Depression 29,2 % vs. 10,6 %, kognitive Einschränkung 28,6 % vs. 21,3 % (S. 16). Die Autoren nennen mögliche Ursachen, lösen den Unterschied aber nicht auf (S. 19).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -941,11 +616,353 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Auf S. 19 wird das Routinedatenkollektiv als unselektiertes Patientenkollektiv bezeichnet. Auf derselben Seite werden ein Selektionsbias der Routinedatenanalyse durch geringe Sensitivität der Kodierung und eine eingeschränkte Sensitivität der Sepsis-ICD-Codes genannt.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>58 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss empfiehlt, die Erkenntnisse aus SEPFROK zur Information an das IQTIG weiterzuleiten. Außerdem gehen sie an die Deutsche Sepsis-Gesellschaft, die Sepsis-Stiftung, die Deutsche Sepsishilfe, SepsisDialog und das Aktionsbündnis Patientensicherheit. Die Geschäftsstelle wird mit der Weiterleitung beauftragt, Beschluss und Ergebnisbericht werden veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Zur Übertragbarkeit auf die Regelversorgung äußert sich der Beschluss nicht ausdrücklich. Er nennt eingeschränkte Repräsentativität der Befragten und verweist darauf, dass weiterführende Fragen zu Versorgungspfaden nach Sepsis im Projekt AVENIR bearbeitet werden.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Populationsbasierte Erkenntnisse zu Epidemiologie und Risikofaktoren chronischer Sepsisfolgen</p>
+  
+  <blockquote>„Die Projektergebnisse liefern populationsbasierte Erkenntnisse zur Epidemiologie und Risikofaktoren für häufig auftretende, chronische psychische, kognitive und physische Sepsisfolgen, auch unter dem Terminus „Post-Sepsis-Syndrom“ zusammengefasst." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Einsichten in Versorgung und Kosten von Folgeerkrankungen nach Sepsis</p>
+  
+  <blockquote>„Zudem bieten die Ergebnisse Einsichten in die Versorgung und Kosten von Folgeerkrankungen nach Sepsis." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Nachweis, dass Sepsisfolgen auch nach leichteren Verläufen auftreten</p>
+  
+  <blockquote>„Beispielsweise wurde aufgezeigt, dass Sepsisfolgen nicht nur Patientinnen und Patienten mit schwerer Sepsis, das heißt Sepsis mit Organversagen betreffen, sondern auch nach leichteren Verläufen auftreten können." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Informationsdefizit und Wunsch nach mehr Rehabilitation aus Patientensicht aufgezeigt</p>
+  
+  <blockquote>„Darüber hinaus unterstreichen die Ergebnisse der Befragungen, dass Patientinnen und Patienten unter einem Informationsdefizit leiden und sich einen verstärkten Zugang zu Rehabilitation und struktureller Unterstützung nach Sepsis wünschen." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.4">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Empfehlungen zur Verbesserung der Versorgung nach Sepsis formuliert</p>
+  
+  <blockquote>„Basierend auf den Ergebnissen des Projekts wurden gemeinsam mit einem Expertenbeirat Empfehlungen zur Verbesserung der Versorgung nach Sepsis formuliert." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.5">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Methoden vom Ausschuss als angemessen bewertet</p>
+  
+  <blockquote>„Die angewandten Methoden waren angemessen." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.5" value="ok" checked hidden>
+    <input type="radio" name="ubefund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.6">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Quantifizierung des Versorgungsbedarfs bei Sepsisfolgen</p>
+  
+  <blockquote>„Die Ergebnisse des Projektes quantifizieren den Bedarf für die Versorgung von Sepsisfolgen und verdeutlichen Defizite aus Patienten- und Angehörigensicht." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.6" value="ok" checked hidden>
+    <input type="radio" name="ubefund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.1">
+  <h3>Institut für Qualitätssicherung und Transparenz im Gesundheitswesen (IQTIG) – eingestuft als „umgesetzt“</h3>
+  <p class="unser">Das IQTIG schreibt, es habe die SEPFROK-Ergebnisse bereits in die Entwicklung des QS-Verfahrens „Diagnostik, Therapie und Nachsorge der Sepsis“ einbezogen und daraus Indikatoren und Kennzahlen zum Outcome nach Sepsis empfohlen, wobei die 365-Tage-Outcomes nur als Kennzahlen konfiguriert werden. Der Abschlussbericht liegt dem G-BA vor und ist noch nicht zur Veröffentlichung freigegeben; ein Antrag auf Freigabe wurde in der AG DeQS gestellt.</p>
+  
+  <blockquote>„Das vom G -BA beauftragte QS -Verfahren „Diagnostik, Therapie und Nachsorge der Sepsis“ bezieht diese Erkenntnisse ein, bestätigt ihre wesentlichen Aussagen und führt zukünftige, kontinuierliche Sozialdaten- Erhebungen zum Sepsis -Outcome ein." <span class="s">S. 11</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.1" value="ok" checked hidden>
+    <input type="radio" name="uadressat.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.2">
+  <h3>SepsisDialog (Universitätsmedizin Greifswald) – eingestuft als „zur Kenntnis genommen“</h3>
+  <p class="unser">SepsisDialog begrüßt die Weiterleitung, kündigt an, das Thema Post-Sepsis-Syndrom in Schulungsmaterialien weiter zu vertiefen, und schlägt vor, das Entlassungsmanagement mit Patientenbriefen verbindlich zu regeln. Eine Befassung oder Entscheidung zur Empfehlung wird nicht benannt.</p>
+  
+  <blockquote>„unser Team vom SepsisDialog der Universitätsmedizin Greifswald hat mit Freude zur Kenntnis genommen, dass die im Versorgungsforschungsprojekt 01VSF17 010 SEPFROK (Sepsis: Folgeerkrankungen, Risikofaktoren, Versorgung und Kosten) gewonnenen Erkenntnisse den Innovationsausschuss beim Gemeinsamen Bundesausschuss veranlasst haben, diese an wichtige Player zum Thema Sepsis weiterzuleiten." <span class="s">S. 4</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.2" value="ok" checked hidden>
+    <input type="radio" name="uadressat.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.3">
+  <h3>Deutsche Sepsis-Gesellschaft e. V. – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt.</p>
+  
+  <blockquote>„Die in dem Projekt gewonnenen Erkenntnisse sollen an die Deutsche Sepsis -Gesellschaft e. V., die Sepsis -Stiftung, die Deutsche Sepsishilfe e. V., SepsisDialog und das Aktionsbündnis Patientensicherheit zur Information weitergeleitet werden." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.3" value="ok" checked hidden>
+    <input type="radio" name="uadressat.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.4">
+  <h3>Sepsis-Stiftung – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt.</p>
+  
+  <blockquote>„Die in dem Projekt gewonnenen Erkenntnisse sollen an die Deutsche Sepsis -Gesellschaft e. V., die Sepsis -Stiftung, die Deutsche Sepsishilfe e. V., SepsisDialog und das Aktionsbündnis Patientensicherheit zur Information weitergeleitet werden." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.4" value="ok" checked hidden>
+    <input type="radio" name="uadressat.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.5">
+  <h3>Deutsche Sepsishilfe e. V. – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt.</p>
+  
+  <blockquote>„Die in dem Projekt gewonnenen Erkenntnisse sollen an die Deutsche Sepsis -Gesellschaft e. V., die Sepsis -Stiftung, die Deutsche Sepsishilfe e. V., SepsisDialog und das Aktionsbündnis Patientensicherheit zur Information weitergeleitet werden." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.5" value="ok" checked hidden>
+    <input type="radio" name="uadressat.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.6">
+  <h3>Aktionsbündnis Patientensicherheit – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt.</p>
+  
+  <blockquote>„Die in dem Projekt gewonnenen Erkenntnisse sollen an die Deutsche Sepsis -Gesellschaft e. V., die Sepsis -Stiftung, die Deutsche Sepsishilfe e. V., SepsisDialog und das Aktionsbündnis Patientensicherheit zur Information weitergeleitet werden." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.6" value="ok" checked hidden>
+    <input type="radio" name="uadressat.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">In der Befragung hatten 6 Monate nach Entlassung 141 von 225 Patienten (63 %) mindestens eine stationäre Rehabilitation erhalten, nach 12 Monaten 71 %. Den größten Anteil machte die neurologische Rehabilitation aus (38 %).</p>
+  
+  <blockquote>„„6 Monate nach Entlassung erhielten 141 von 225 Patie nten (63%) mindestens eine stationäre Rehabilitation. Dieser Anteil stieg auf 71% nach 12 Monaten. Der größte Anteil von Überlebenden mit Rehabilitation hatte eine neurologische Rehabilitation erhalten (38%).“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.4">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die Befragten gaben insgesamt eine hohe Zufriedenheit mit der Rehabilitation an. Physische Einschränkungen wurden in der Rehabilitation zu 95 % adressiert, kognitive Einschränkungen zu 25 %, Schmerzen zu 17 %, Fatigue zu 21 % und pulmonale Folgen zu 13 %.</p>
+  
+  <blockquote>„„Patienten gaben insgesamt eine hohe Zufriedenheit mit der Rehabilitation an . In der Rehabilitation wurden vorwie gend physische Einschränkungen adressiert (zu 95% in der Rehabilitation adressiert), während kognitive Einschränkungen, Schmerzen, Fatigue und pulmonale Folgen wesentlich seltener [...] adressiert wurden (jeweils zu 25%, 17%, 21% und 13% adressiert).“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Befragung beruht auf einem selektierten Kollektiv. In der MSC als Rekrutierungsbasis stimmten vor allem weniger schwer Erkrankte zu; die Autoren gehen davon aus, dass dies auch die Rekrutierung über die Intensivstationen in Jena und Berlin betrifft.</p>
+  
+  <blockquote>„„Es gilt allerdings zu beachten, dass es sich um ein selektiertes Patientenkollektiv handelt, da beispielsweise in der MSC, die als Rekrutierungsbasis diente, vor allem weniger schwer erkrankte Patienten ihre Zustimmung zur Studienteilnahme erteilten.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -960,11 +977,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Reha-Inanspruchnahme: In den Routinedaten wurden 5,5 % der Krankenhausüberlebenden in die Rehabilitation entlassen (S. 12). In der Befragung hatten 63 % bzw. 71 % eine stationäre Rehabilitation erhalten (S. 16). Die Autoren führen den Unterschied auf die Selektion weniger schwer Erkrankter und unterschiedliche Ausgangspopulationen zurück (S. 20).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -974,16 +991,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>39 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Unter 23 Millionen AOK-Versicherten wurden in den Jahren 2013/2014 insgesamt 159.684 krankenhausbehandelte Sepsispatienten identifiziert.</p>
+  
   <blockquote>„„Unter 23 Millionen AOK-Versicherten in 2013/2014 wurden 159.684 krankenhausbehandelte Sepsispatienten identifiziert (Abbildung 1).“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1014,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Patienten der Kohorte waren im Mittel 73,8 Jahre alt und hatten durchschnittlich 2,1 Vorerkrankungen. 38,3 % waren vorher pflegebedürftig, 11,7 % lebten im Pflegeheim, und 34,0 % wurden intensivmedizinisch behandelt.</p>
+  
   <blockquote>„„Das mittlere Alter der Patienten lag bei 73,8 Jahren, sie hatten durchschnittlich 2,1 Vorerkrankungen [...]. 38 ,3% der Patienten waren vorher pflegebedürftig, 11,7% lebten in Pflegeheimen. 34,0% der Sepsispatienten der SEPFROK-Kohorte wurden intensivmedizinisch behandelt.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1033,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Krankenhaussterblichkeit lag bei 27,0 %, sodass 116.507 Überlebende in die Folgeanalysen eingingen. 5,5 % der Krankenhausüberlebenden wurden in die Rehabilitation entlassen.</p>
+  
   <blockquote>„„Die Krankenhaussterblichkeit lag bei 27,0%, das heißt 116.507 Überlebende wurden in die Analysen zu Sepsisfolgeerkrankungen, GKV - Leistungsinanspruchnahme und - kosten einbezogen. 5,5% der Krankenhausüberlebenden wurden in die Rehabilitation entlassen.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1052,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die häufigsten neuen Erkrankungen bei den Überlebenden waren neuromuskuläre Erkrankungen (26 %), kardiovaskuläre Erkrankungen (24 %) und urogenitale Erkrankungen (24 %). Neue kognitive Beeinträchtigungen fanden sich bei 19 %, neue psychische Erkrankungen bei 18 %.</p>
+  
   <blockquote>„„Am häufigsten waren neue neuromuskuläre Erkrankungen (26% der Überlebenden), kardiovaskuläre Erkrankungen (24%) und urogenitale Erkrankungen (24%). Neue kognitive Beeinträchtigungen fanden sich bei 19%, neue psychische Erkrankungen bei 18% der Überlebenden.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1071,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei Patienten, die die drei Jahre nach Entlassung überlebten (n=59.858; 37,5 % der Studienpopulation), betrugen die durchschnittlichen Versorgungskosten im Vorbeobachtungszeitraum 9.417 Euro, im 1. Jahr nach Sepsis 13.062 Euro, im 2. Jahr 9.471 Euro und im 3. Jahr 9.712 Euro.</p>
+  
   <blockquote>„„Betrachtet man die durchschnittlichen Versorgungskosten der Patienten, die den gesamten Zeitraum von drei Jahren nach Entlassung überlebten (n=59.858, [...]), so wiesen diese im Vorbeobachtungszeitraum Kosten von 9.417 Euro, im 1. Jahr nach Sepsis 13.0 62 Euro, im 2. J ahr 9.471 Euro und im 3. Jahr 9.712 Euro auf.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1090,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren schließen aus dem Kostenverlauf, dass Langzeitüberlebende bereits im 2. Jahr nach Sepsis durchschnittlich wieder auf das Kostenniveau des Vorbeobachtungszeitraums fallen.</p>
+  
   <blockquote>„„Diese Kostenentwicklung zeigt, dass Langzeitüberlebende bereits im 2. Jahr nach Sepsis durchschnittlich wieder auf das Kostenniveau des Vorbeobachtungszeitraumes fallen.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1109,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Hochgerechnet auf ca. 320.000 Sepsispatienten pro Jahr schätzen die Autoren die direkten Gesamtkosten einschließlich des Index-Aufenthalts auf 11,7 Mrd. Euro jährlich; Pflegekosten sind darin nicht enthalten.</p>
+  
   <blockquote>„„Mit ca. 320.000 Sepsispatienten in Deutschland pro Jahr schätzen wir die direkten Gesamtkosten einschließlich der Kosten des Index -Krankenhausaufenthalts auf 11,7 Mrd. Euro jährlich. Insbesondere Pflegekosten sind darin noch nicht enthalten.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1128,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Neuer Pflegegrad nach Subgruppe: einfache Sepsis 29,9 %, schwere Sepsis 34,8 %, ITS-behandelt 29,1 %, nicht ITS-behandelt 36,8 %, ohne Voreinschränkungen 19,3 %. Die 12-Monats-Sterblichkeit betrug 29,2 %, 33,9 %, 30,3 %, 31,8 % bzw. 15,2 %. Die Vergleiche einfache vs. schwere Sepsis und ITS- vs. Nicht-ITS-Behandlung waren laut Bericht jeweils statistisch signifikant (p&lt;.0001).</p>
+  
   <blockquote>„„Tabelle 2: Auftreten neuer Pflegebedürftigkeit und 12-Monats-Sterblichkeit entsprechend Subgruppe, Vergleiche zwischen einfacher und schwerer Sepsis und ITS - und Nicht -ITS-behandelter Sepsis waren jeweils statistisch signifikant (p&lt;.0001)“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als wichtige Erkenntnis nennen die Autoren, dass Sepsisfolgen auch nach leichteren Verläufen, ohne Intensivbehandlung und bei Patienten ohne Vorerkrankungen auftreten.</p>
+  
   <blockquote>„„Eine wichtige Erkenntnis des SEPFROK Projektes ist außerdem, dass Sepsisfolgen nicht nur Patienten mit schwerer Sepsis [...] betreffen, sondern auch nach leichteren Verläufen auftrete n können. Genauso sind sie nicht nur auf Patienten beschränkt, die auf Intensivstation behandelt wurden, und betreffen auch Patienten ohne Vorerkrankungen.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im ersten Jahr nach dem Index-Aufenthalt lag die Rehospitalisierungsquote bei 66,8 %; 39,1 % dieser Rehospitalisierungen erfolgten in den 30 Tagen nach Entlassung.</p>
+  
   <blockquote>„„Es fand sich eine Rehospitalisierungsquote von 66,8% im ersten Jahr nach Index - Krankenhausaufenthalt. Von diesen Rehospitalisierungen erfolgten 39,1% in den 30 Tagen nach Entlassung aus dem Index -Krankenhausaufenthalt.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1185,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">45,0 % der Überlebenden hatten eine infektionsassoziierte Rehospitalisierung, ein Anstieg um ca. 10 % gegenüber dem Vorbeobachtungszeitraum. 11,9 % wurden wegen erneuter Sepsis rehospitalisiert, davon rund ein Viertel auf der Intensivstation. 56,6 % erhielten im Jahr nach Sepsis mindestens eine ambulante Antiinfektiva-Verschreibung.</p>
+  
   <blockquote>„„45,0% der Sepsisüberlebenden hatten eine infektionsassoziierte Rehospitalisierung; dieser Anteil stieg um ca. 10% im Vergleich zum Vorbeobachtungszeitraum. 11,9% der Überlebenden wurden wegen einer erneuten Sepsis rehospitalisiert, von denen rund ein Viertel auf Intensivstation behandelt wurde.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1204,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Hohe Anteile infektionsassoziierter Rehospitalisierungen und ambulanter Antiinfektiva-Verschreibungen fanden sich unabhängig von Sepsisschwere, ITS-Behandlung, Alter und vorbestehenden Einschränkungen. Überlebende ohne vorbestehende Einschränkungen zeigten gegenüber dem Vorbeobachtungszeitraum den höchsten Anstieg ambulanter und stationärer Behandlungen sowie Verschreibungen.</p>
+  
   <blockquote>„„Hohe Anteile von Patienten mit infektionsassoziierten Rehospitalisierungen und ambulanten Antiinfektiva -Verschreibungen fanden sich unabhängig von der Sepsisschwere, dem Vorhandensein einer Intensivstationsbehandlung im Indexaufenthalt, dem Alter ode r vorbestehenden Einschränkungen.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1223,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von 7.370 betrachteten, zuvor erwerbstätigen Überlebenden waren nach 6 bzw. 12 Monaten 69,2 % bzw. 76,9 % wieder erwerbstätig. In den 12 Monaten nach Sepsis waren sie im Median 28 Tage arbeitsunfähig (IQR 108 Tage).</p>
+  
   <blockquote>„„Von 7370 Sepsisüberlebenden, die für die Untersuchung der Rückkehr in die Erwerbstätigkeit betrachtet wurden, waren 69,2% bzw. 76,9% nach 6 bzw. 12 Monaten wieder erwerbstätig. Diese Patienten waren in den 12 Monaten nach Sepsis im Median 28 Tage (IQR 108 Tage) arbeitsunfähig.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1242,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach 6 bzw. 12 Monaten waren 22,8 % bzw. 9,8 % weiterhin krankgeschrieben, 8,0 % bzw. 13,3 % wurden erstmals Rentner oder Rentenantragsteller. Patienten mit Rückkehr in die Erwerbstätigkeit waren im Mittel 3,3 Jahre jünger (48,0 vs. 51,3 Jahre; p&lt;.001) und häufiger frei von neuen Erkrankungen (40,2 % vs. 16,9 %; p&lt;.001).</p>
+  
   <blockquote>„„22,8% bzw. 9,8% der Überlebenden waren 6 bzw. 12 Monate nach Sepsis weiterhin krankgeschrieben, und 8,0% bzw. 13,3% wurden [...] erstmalig zu Rentnern bzw. Rentenantragstellern. Patienten mit Rückkehr in die Erwerbstätigkeit waren im Mittel 3,3 Jahre jünger (p&lt;.001, [...]) und häufiger frei von neuen Erkrankungen nach Sepsis (40,2% vs. 16,9%, p&lt;.001)“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1261,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im ersten Jahr nach Sepsis wurden von den Überlebenden unter Risiko 31,9 % neu pflegebedürftig (neuer Pflegegrad oder neue Betreuung im Pflegeheim), 2,8 % neu dialysepflichtig und 1,6 % neu beatmungspflichtig; 30,7 % verstarben.</p>
+  
   <blockquote>„„Im ersten Jahr nach Sepsis waren 31,9% der Überlebenden unter Risiko neu pflegebedürftig (dies schließt das Vorhandensein eines neuen Pflegegrades oder die neue Betreuung in einem Pflegeheim mit ein) , 2,8% neu dialysepflichtig, 1,6% neu be atmungspflichtig und 30,7% verstarben.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1280,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Vorbestehende Komorbiditäten waren mit allen ungünstigen Verläufen assoziiert. Bei mehr als 4 Komorbiditäten betrug die OR 3,2 für neue Pflegebedürftigkeit, 4,9 für neue Dialysepflichtigkeit und 4,7 für Versterben innerhalb von 12 Monaten. Höheres Alter war mit neuer Pflegebedürftigkeit und Versterben assoziiert, nicht aber mit neuer Dialyse- oder Beatmungspflichtigkeit.</p>
+  
   <blockquote>„„Vorbestehende Komorbiditäten waren mit allen ungünstigen Verläufen assoziiert (&gt;4 Komorbiditäten: Odds Ratio (OR) von 3,2 für neue Pflegebedürftigkeit, 4,9 für neue Dialysepflichtigkeit, 4,7 für Versterben innerhalb von 12 Monaten).“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1299,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nosokomiale Infektionen und Infektionen mit multiresistenten Erregern waren mit neuer Pflegebedürftigkeit, neuer Dialysepflichtigkeit und Versterben innerhalb von 12 Monaten assoziiert, multiresistente Erreger zusätzlich mit neuer Beatmungspflichtigkeit. Urogenitale und pulmonale Infektionen waren mit neuer Dialyse- und Beatmungspflichtigkeit assoziiert. ZNS-Infektionen zeigten die höchsten ORs für neue Pflegebedürftigkeit.</p>
+  
   <blockquote>„„Nosokomiale [...] Infektionen, waren mit dem Auftreten von neuer Pflegebedürftigkeit, neuer Dialysepflichtigkeit und Versterben innerhalb von 12 Monaten assoziiert. [...] Infektionen des z entralen Nervensystems zeigten die höchsten ORs für eine neue Pflegebedürftigkeit unter allen anderen Infektionsfok ussen und Organdysfunktionen.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1318,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Patienten mit Rehabilitation in den 6 Monaten nach Entlassung hatten 13–36 Monate nach Sepsis höhere Überlebensraten als ihre Kontrollen. Für 7–12 Monate nach Erkrankung zeigten sich keine signifikanten Unterschiede.</p>
+  
   <blockquote>„„Patienten, die in den 6 Monaten nach Entlassung aus dem Index-Krankenhausaufenthalt eine Rehabilitation erhielten, hatten in den 13 -36 Monaten nach Sepsis höhere Überlebensraten, während sich im Z eitraum 7 -12 Monate nach Erkrankung keine signifikanten Unterschiede zeigten (Abbildung 2).“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1337,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Vergleich zu ihren Kontrollen hatten Überlebende mit Rehabilitation 7–12 Monate nach Sepsis häufiger Krankenhauswiederaufnahmen und erhielten 7–12 und 13–36 Monate nach Sepsis häufiger einen Pflegegrad. Zwischen Rehabilitation und Gesamt-Versorgungskosten fand sich kein signifikanter Zusammenhang. ITS-behandelte Überlebende mit Rehabilitation hatten auch höhere Kurzzeitüberlebensraten; die Autoren schreiben, sie scheinen besonders zu profitieren.</p>
+  
   <blockquote>„„Überlebende mit Rehabilitation im Vergleich zu ihren Kontrollen häufigere Wiederaufnahmen ins Kranke nhaus hatten (7 -12 Monate nach S epsis) und häufiger einen Pflegegrad bekamen (7 -12 und 13 -36 Monate nach Sepsis). Es fand sich kein signifikanter Zusammenhang zwischen Rehabilitation und den Gesamt-Versorgungskosten“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1356,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren schreiben, dass nur ein geringer Teil der Sepsisüberlebenden eine Rehabilitation erhält. Häufige Folgen wie Fatigue, Schmerzen oder kognitive Folgen würden in der meist neurologisch ausgerichteten Rehabilitation häufig nicht adressiert.</p>
+  
   <blockquote>„„Nur ein geringer Teil der Sepsisüberlebenden erhält nach dem Akutaufenthalt eine Rehabilitation; häufige Sepsisfolgen wie Fatigue, Schmerzen oder kognitive Folgen werden in der Rehabilitation, die meist neurologisch ausgerichtet ist, häufig nicht adressiert.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1375,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Mitteldeutschen Sepsis Kohorte (schwere, ITS-behandelte Sepsis) fanden sich klinische Zeichen einer Fatigue bei 67,8 % (154/227, Chalder Fatigue Score), Depressionssymptome bei 10,6 % (26/238, BSI-18) und Zeichen kognitiver Einschränkung bei 21,3 % (36/169, tMOCA).</p>
+  
   <blockquote>„„Klinische Zeichen einer Fatigue fanden sich bei 67,8% d ieser Patienten (154 /227 Patienten, Erhebungsinstrument: Chalder Fatigue Score), Symptome einer Depression bei 10,6% (26/238, Erhebungsinstrument: BSI-18) und Zeichen einer kognitiven Einschränkung bei 21,3% der Patienten (36/169, Erhebungsinstrument: tMOCA).“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1394,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei den ITS-behandelten Krankenhausüberlebenden mit schwerer Sepsis der SEPFROK-Kohorte fanden sich Diagnosecodes für Fatigue bei 9,0 %, für Depression bei 29,2 % und für kognitive Einschränkung bei 28,6 %. Inkontinenz lag bei 36,0 %, respiratorische Erkrankungen bei 33,8 % und Immobilität bei 29,2 % vor. 36,9 % hatten einen neuen Pflegegrad, die 12-Monats-Sterblichkeit betrug 33,2 %.</p>
+  
   <blockquote>„„Im Gegensatz dazu fanden sich unter den ITS -behandelten Patienten der schweren Sepsis der SEPFROK Kohorte, die den Krankenhausaufenthalt überlebten, bei 9,0% ein Diagnosecode für Fatigue, bei 29,2% für Depression und bei 28,6% für kognitive Einschränkung.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1413,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Befragung (AP2) lagen 307 Einwilligungen vor, 287 Personen nahmen teil. Von 400 Interviews flossen 393 in die Auswertung ein: 225 nach 6 Monaten und 168 nach 12 Monaten.</p>
+  
   <blockquote>„„Eine informierte Einwilligung konnte daher insgesamt von 307 Patienten bzw. Angehörigen eingeholt werd en, 287 nahmen dann an der Befragung teil. [...] Insgesamt wurden 400 Interviews durchgeführt, wovon 393 Interviews in die hier dargestellte Auswertung einflossen (6 Monate nach Entlassu ng n(t1)=225; 12 Monate nach Entlassung n(t2)=168“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1432,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">89 von 287 Befragten benannten explizite Versorgungslücken oder Wünsche. Im Vordergrund standen bessere Aufklärung (15 Nennungen), zeitnahe Weiterbehandlung (14), strukturelle Unterstützung (12), spezifische Nachsorge (12), angemessener Therapieumfang (10) und individuellere Rehabilitation (8).</p>
+  
   <blockquote>„„Von 287 Befragten 6 und 12 Monate nach Sepsis benannten 89 Personen explizite Versorgungslücken und/oder Wünsche [...]. Hierbei standen eine bessere Aufklärung von Patienten und Angehörigen (15), zeitnahe medizinische Weiterbehandlung nach Entlassung (14), strukturelle Unterstützung [...] (12), Wunsch nach spezifischer Nachsorge (12) [...] im Vordergrund.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1451,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">55 % der Befragten erfuhren im Krankenhaus von der Sepsisdiagnose, 12 % nach der Krankenhausbehandlung und 25 % erst durch die Einladung zur Befragung. 46 % wussten nicht, dass Sepsisfolgeerkrankungen auftreten können.</p>
+  
   <blockquote>„„gaben 55% der Betroffenen an, von der Sepsisdiagnose im Krankenhaus erfahren zu haben, während 12% nach der Krankenhausbehandlung und 25% erst durch die Einladung zur Teilnahme an der Befragung davon Kenntnis erlangt hatten. Ein großer Anteil der Betroffenen wei ß zudem nicht, dass Sepsisfolgeerkrankungen auftreten können (46%).“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1470,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die deutsche Version des RNLI ergaben sich moderate positive Korrelationen mit dem Barthel-Index (r=0,732), der EQ-5D-3L-VAS (r=0,669) und dem EQ-5D-3L-Utility-Score (r=0,719), die die Autoren als Hinweis auf gute kongruente Validität werten. Die Reliabilität (McDonald&#x27;s Omega) betrug 0,94.</p>
+  
   <blockquote>„„Es zeigten sich moderate positive Korrelationen zwischen RNLI-Score und anderen klinischen Instrumenten Barthel-Index (ADL-Score: r = 0.732), EQ-5D-3L (visueller Analogskala: r = 0.669) und EQ-5D-3L (Utility-Score: r = 0.719) als Hinweis für eine gute kongruente Validität. Die mittels McDonald&#x27;s Omega geschätzte Reliabilität betrug 0.94.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1489,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht stimmt die anhaltend erhöhte Langzeitsterblichkeit, auch bei vorher nicht eingeschränkten Patienten, mit früheren Studien überein. Die Inzidenz neuer Folgeerkrankungen lag zum Teil höher als in vorhergehenden Studien.</p>
+  
   <blockquote>„„Übereinstimmend mit früheren Studien fand sich eine anhaltend erhöhte Langzeitsterblichkeit nach Sepsis, auch unter vorher nicht eingeschränkten Sepsispatienten. Die Inzidenz neuer Folgeerkrankungen, die sich in unserer Studie fand, ist dabei z.T. höher als in vorhergehenden Studien.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1508,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Untersucht wurden nur AOK-Versicherte. Die nationale und internationale Generalisierbarkeit hängt von der Repräsentativität dieses Versichertenkollektivs ab.</p>
+  
   <blockquote>„„Darüber hinaus wurden nur AOK -Versicherte Patienten untersucht, eine nationale und internationale Generalisierbarkeit wird damit immer durch die Repräsentativität des Versichertenkollektives bestimmt.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1527,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Kohorten aus AP1 und AP2 sind nicht direkt vergleichbar. Gründe sind ein möglicher Selektionseffekt in AP2 und der Einschluss einfacher und nicht ITS-behandelter Sepsisfälle in AP1.</p>
+  
   <blockquote>„„Es muss beachtet werden, dass die in AP1 und AP2 analysierten Kohorten nicht direkt vergleichbar sind, da zusätzlich zu einem möglichen Selektionseffekt durch das Einschluss - und Einwilligungsprozedere in die Routinedatenanalyse in AP1 auch Patienten mit einfacher und nicht-intensivstationsbehandelter Sepsis eingeschlossen wurden.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1546,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren bezeichnen ihre Schlussfolgerungen als hypothesengenerierend, sie müssten in Folgestudien untersucht werden. Aussagekräftig seien die Ergebnisse vor allem für das deutsche Gesundheitssystem.</p>
+  
   <blockquote>„„Jedoch können wichtige hypothesengenerierende Schlussfolgerungen gezogen werden, die in Folgestudien untersucht werden müssen. Die Ergebnisse sind darüber hinaus vor allem für das deutsche Gesundheitssystem aussagekräftig.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1565,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Daten zu Hilfsmitteln, häuslicher Krankenpflege und Pflegeleistungen nach SGB XI lagen nicht vor.</p>
+  
   <blockquote>„„Daten für Hilfsmittel, häusliche Krankenpflege und Pflegeleist ungen nach SGB XI lagen hingegen nicht vor.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1584,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In der hochgerechneten Kostenschätzung von 11,7 Mrd. Euro jährlich sind insbesondere Pflegekosten nicht enthalten.</p>
+  
   <blockquote>„„Insbesondere Pflegekosten sind darin noch nicht enthalten.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1603,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für die explorative Befragung fehlten die für eine Fallzahlplanung nötigen Vorinformationen. Die Fallzahl von n=200 wurde auf Basis von Machbarkeitsüberlegungen festgelegt.</p>
+  
   <blockquote>„„Da es sich um eine explorative Studie handelt, fehl ten für eine Fallzahlplanung nötige Vorinformationen. Basierend auf Machbarkeitsüberlegungen wurde eine Fallzahl von n = 200 Betroffenen und Angehörigen [...] festgelegt.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1622,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Von 1.442 Intensivpatienten, die die Einschlusskriterien erfüllten (Januar 2019 bis September 2020), verstarben 681 auf der Intensivstation. 331 nahmen an anderen Studien teil oder sprachen nicht fließend Deutsch. Von 430 Eingeladenen lehnten 186 die Teilnahme ab, 244 willigten ein.</p>
+  
   <blockquote>„„erfüllten 1442 Intensivpatienten die Einschlusskriterien, wovon allerdin gs 681 auf Intensivstation verstarben, 331 bei anderen Studien teilnahmen oder nicht fließend deutsch sprachen. 430 Patienten wurden zur Befragung eingeladen, wovon 186 die Teilnahme ablehnten und 244 eine informierte Einwilligung haben.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1641,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Abgleich mit der Mitteldeutschen Sepsis Kohorte beschränkte sich auf bereits veröffentlichte Teilergebnisse, da deren Ergebnisse noch in Auswertung sind.</p>
+  
   <blockquote>„„Die Ergebnisse der Mitteldeutschen Sepsis Kohorte sind aktuell noch in Auswertung , so dass an dieser Stelle auf einige bereits veröffentlichte Teilergebnisse eingegangen wird“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1660,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Daten zum Infektionsfokus der Befragten lagen nur aus dem Studienzentrum Jena und für Patienten der Mitteldeutschen Sepsis Kohorte vor.</p>
+  
   <blockquote>„„Daten zum Fokus der Infektion liegen nur aus dem Studienzentrum Jena und für die Patienten der Mitteldeutschen Sepsis Kohorte vor“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1679,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der Erhebung in Routinedaten sind die Ergebnisse nur eingeschränkt mit vorherigen Studien vergleichbar.</p>
+  
   <blockquote>„„Diese Ergebnisse erweitern die bisherige Forschung im Bereich der Sepsisfolgeerkrankungen und sind aufgrund ihres Erhebungsmodus in Routinedaten nur eingeschränkt mit vorherigen Studien vergleichbar.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1698,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ursachen der geringen Reha-Inanspruchnahme und Gründe für abgelehnte Reha-Anträge wurden im Projekt nicht erfasst.</p>
+  
   <blockquote>„„Ursachen für die geringe Inanspruchnahme von Rehabilitation müssen in weiterführenden Forschungsarbeiten untersucht werden; sie wurden im Projekt SEPFROK nicht erfasst. Gleiches gilt für die Gründe der Ablehnung von Rehabilitationsanträgen nach überlebter Sepsis.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1717,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Autoren nennen mögliche Ursachen für die Prävalenzunterschiede zur MSC, ohne sie aufzulösen: unterschiedliche Diagnosevoraussetzungen (ICD-Diagnosen vs. Befragungsinstrumente) sowie Selektionsbias in beiden Datenquellen.</p>
+  
   <blockquote>„„Die Ursachen dafür müssen noch besser verstanden werden, möglich sind neben unterschiedlichen Diagnosevoraussetzungen (ICD-Diagnosen vs. Befragungsinstrumente für Fatigue, Depression, kognitive Einschränkungen) auch Unterschiede im Patientenkollektiv (Selektionsbias der MSC durch Einschlussprozedere, Selektionsbias der Routinedatenanalyse durch geringe Sensitivität der Kodierung) .“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1750,28 +1767,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 127, "akronym": "SEPFROK", "kennung": "gtTuEhmzrdzc", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss empfiehlt, die Erkenntnisse aus SEPFROK zur Information an das IQTIG weiterzuleiten. Außerdem gehen sie an die Deutsche Sepsis-Gesellschaft, die Sepsis-Stiftung, die Deutsche Sepsishilfe, SepsisDialog und das Aktionsbündnis Patientensicherheit. Die Geschäftsstelle wird mit der Weiterleitung beauftragt, Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat nach Auffassung des Ausschusses erfolgreich eine retrospektive Längsschnittstudie mit AOK-Routinedaten der Jahre 2009 bis 2017 durchgeführt. Ergänzend wurde die Versorgungszufriedenheit von Betroffenen und Angehörigen in 400 Telefoninterviews untersucht. Die Ergebnisse liefern populationsbasierte Erkenntnisse zu Epidemiologie, Risikofaktoren, Versorgung und Kosten von Sepsisfolgen. Sie zeigen Informationsdefizite und Versorgungsbedarfe aus Patientensicht auf. Die Methoden hält der Ausschuss für angemessen, verweist aber auf Limitationen der Routinedaten und der Repräsentativität der Befragten. Da die Ergebnisse helfen, das Post-Sepsis-Syndrom und die Versorgungsbedarfe besser zu verstehen, werden sie zur Information an das IQTIG und an Fachgesellschaften und Patientenorganisationen weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Zur Übertragbarkeit auf die Regelversorgung äußert sich der Beschluss nicht ausdrücklich. Er nennt eingeschränkte Repräsentativität der Befragten und verweist darauf, dass weiterführende Fragen zu Versorgungspfaden nach Sepsis im Projekt AVENIR bearbeitet werden."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Mögliche Untererfassung von Sepsis, Vor- und Folgeerkrankungen sowie Risikofaktoren im Routinedatensatz"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Eingeschränkte Repräsentativität der Befragten, die tendenziell eine niedrigere Krankheitslast hatten (Selektion)"}, {"stelle": "befund.0", "art": "befund", "unser": "Populationsbasierte Erkenntnisse zu Epidemiologie und Risikofaktoren chronischer Sepsisfolgen"}, {"stelle": "befund.1", "art": "befund", "unser": "Einsichten in Versorgung und Kosten von Folgeerkrankungen nach Sepsis"}, {"stelle": "befund.2", "art": "befund", "unser": "Nachweis, dass Sepsisfolgen auch nach leichteren Verläufen auftreten"}, {"stelle": "befund.3", "art": "befund", "unser": "Informationsdefizit und Wunsch nach mehr Rehabilitation aus Patientensicht aufgezeigt"}, {"stelle": "befund.4", "art": "befund", "unser": "Empfehlungen zur Verbesserung der Versorgung nach Sepsis formuliert"}, {"stelle": "befund.5", "art": "befund", "unser": "Methoden vom Ausschuss als angemessen bewertet"}, {"stelle": "befund.6", "art": "befund", "unser": "Quantifizierung des Versorgungsbedarfs bei Sepsisfolgen"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Auftreten möglicher Sepsisfolgeerkrankungen – mindestens eine neue Erkrankung im ersten Jahr nach Entlassung"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Neue Erkrankungen in mehr als einer Domäne (physisch, psychisch, kognitiv) im ersten Jahr nach Sepsis"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Neue Folgeerkrankungen nach Erkrankungsgruppen im ersten Jahr nach Sepsis"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Sterblichkeit im Nachbeobachtungszeitraum (Langzeitsterblichkeit) – 12 Monate nach Entlassung"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Umfang der Inanspruchnahme von Rehabilitation nach Sepsis und Zufriedenheit mit diesen Versorgungsleistungen (AP2)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Neue Pflegebedürftigkeit im ersten Jahr nach Sepsis (Patienten ohne vorbestehende Pflegebedürftigkeit)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Rehospitalisierung im ersten Jahr nach Index-Krankenhausaufenthalt"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Rückkehr in die Erwerbstätigkeit nach überlebter Sepsis"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Risikofaktoren für ungünstige Verläufe innerhalb von 12 Monaten – vorbestehende Komorbiditäten (>4 Komorbiditäten)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Langzeitüberleben 13-36 Monate nach Sepsis: Rehabilitation vs. keine Rehabilitation"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Kurzzeitüberleben 7-12 Monate nach Sepsis: Rehabilitation vs. keine Rehabilitation"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Rehospitalisierung und neuer Pflegegrad nach Rehabilitation vs. keine Rehabilitation"}, {"stelle": "endpunkt.13", "art": "endpunkt", "unser": "Gesamt-Versorgungskosten 7-12 und 13-36 Monate nach Sepsis: Rehabilitation vs. keine Rehabilitation"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Das IQTIG schreibt, es habe die SEPFROK-Ergebnisse bereits in die Entwicklung des QS-Verfahrens „Diagnostik, Therapie und Nachsorge der Sepsis“ einbezogen und daraus Indikatoren und Kennzahlen zum Outcome nach Sepsis empfohlen, wobei die 365-Tage-Outcomes nur als Kennzahlen konfiguriert werden. Der Abschlussbericht liegt dem G-BA vor und ist noch nicht zur Veröffentlichung freigegeben; ein Antrag auf Freigabe wurde in der AG DeQS gestellt."}, {"stelle": "adressat.2", "art": "adressat", "unser": "SepsisDialog begrüßt die Weiterleitung, kündigt an, das Thema Post-Sepsis-Syndrom in Schulungsmaterialien weiter zu vertiefen, und schlägt vor, das Entlassungsmanagement mit Patientenbriefen verbindlich zu regeln. Eine Befassung oder Entscheidung zur Empfehlung wird nicht benannt."}, {"stelle": "adressat.3", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt."}, {"stelle": "adressat.4", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt."}, {"stelle": "adressat.5", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt."}, {"stelle": "adressat.6", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt."}, {"stelle": "bericht_kurz", "art": "text", "unser": "SEPFROK untersuchte Folgeerkrankungen, Risikofaktoren, Versorgung und Kosten nach Sepsis. In einer retrospektiven Routinedatenanalyse (AP1) wurden unter 23 Millionen AOK-Versicherten (2013/2014) 159.684 krankenhausbehandelte Sepsispatienten erfasst. Hinzu kam eine Telefonbefragung von Betroffenen und Angehörigen (AP2) 6 und 12 Monate nach Entlassung von der Intensivstation. Die Krankenhaussterblichkeit lag bei 27,0 %. Von den 116.507 Überlebenden erhielten 74,3 % im ersten Jahr eine neue Diagnose, 31,5 % einen neuen Pflegegrad, und 30,7 % verstarben in diesem Jahr. Die GKV-Versorgungskosten betrugen in den drei Jahren nach Entlassung im Mittel 29.088 Euro pro Patient, zusätzlich 15.361 Euro für den Index-Aufenthalt. In der Befragung hatten 63 % bzw. 71 % eine stationäre Rehabilitation erhalten. Dort wurden physische Einschränkungen zu 95 % adressiert, kognitive Einschränkungen, Schmerzen, Fatigue und pulmonale Folgen zu 13–25 %. Die Aussagekraft hängt an der Erfassung über Abrechnungs-ICD-Codes, die eine eingeschränkte Sensitivität und eine für den ambulanten Bereich unbekannte Validität haben, an der Beschränkung auf AOK-Versicherte und an einem selektierten Befragungskollektiv. Die Autoren werten die Ergebnisse als hypothesengenerierend."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Im ersten Jahr nach Entlassung wurde bei 74,3 % der Sepsisüberlebenden eine neue Erkrankung diagnostiziert; jeder vierte Überlebende hatte eine neue Erkrankung in mehr als einer Domäne (physisch, psychisch, kognitiv)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Im ersten Jahr nach Sepsis hatten 31,5 % der Überlebenden einen neuen Pflegegrad, und 30,7 % verstarben. Im zweiten und dritten Jahr hatten 65,8 % bzw. 59,4 % der Überlebenden mindestens eine neue Erkrankung."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Die GKV-Versorgungskosten der Überlebenden betrugen in den drei Jahren nach Entlassung im Durchschnitt 29.088 Euro pro Patient, zuzüglich durchschnittlich 15.361 Euro für den Index-Krankenhausaufenthalt."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "In der Befragung hatten 6 Monate nach Entlassung 141 von 225 Patienten (63 %) mindestens eine stationäre Rehabilitation erhalten, nach 12 Monaten 71 %. Den größten Anteil machte die neurologische Rehabilitation aus (38 %)."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Die Befragten gaben insgesamt eine hohe Zufriedenheit mit der Rehabilitation an. Physische Einschränkungen wurden in der Rehabilitation zu 95 % adressiert, kognitive Einschränkungen zu 25 %, Schmerzen zu 17 %, Fatigue zu 21 % und pulmonale Folgen zu 13 %."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Sepsispatienten wurden über explizite Sepsis-ICD-Codes aufgegriffen. Diese haben laut Vorstudien eine eingeschränkte Sensitivität, identifizieren nicht alle Sepsisfälle und werden zu Abrechnungszwecken kodiert. Dasselbe gilt für die Abbildung von Folge- und Vorerkrankungen."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Validität der Kodierung ist insbesondere im ambulanten Bereich für die meisten betrachteten Erkrankungen nicht bekannt. Kodierungsungenauigkeiten können sich auf alle Ergebnisse des Projekts auswirken."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Nur ärztlich diagnostizierte oder behandelte Erkrankungen konnten erfasst werden, was etwa bei PTBS zu einer Unterschätzung der Inzidenz führen kann. Im Abgleich mit der MSC zeigte sich für Fatigue eine deutlich geringere Prävalenz in den Routinedaten, für Depression eine höhere."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Befragung beruht auf einem selektierten Kollektiv. In der MSC als Rekrutierungsbasis stimmten vor allem weniger schwer Erkrankte zu; die Autoren gehen davon aus, dass dies auch die Rekrutierung über die Intensivstationen in Jena und Berlin betrifft."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "RNLI: Auf S. 18–19 wird dem RNLI eine gute Reliabilität, Konstrukt- und kongruente Validität zugeschrieben, und er könne zur Beurteilung der Wiedereingliederung nach Sepsis genutzt werden. Auf S. 21 heißt es dagegen, der RNLI solle in einem Folgeprojekt für Sepsisüberlebende erst noch psychometrisch validiert werden."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Routinedaten und Mitteldeutsche Sepsis Kohorte weichen bei ähnlicher Population (schwere, ITS-behandelte Sepsis) in entgegengesetzte Richtungen ab: Fatigue 9,0 % (Diagnosecodes) vs. 67,8 % (Chalder Fatigue Score), Depression 29,2 % vs. 10,6 %, kognitive Einschränkung 28,6 % vs. 21,3 % (S. 16). Die Autoren nennen mögliche Ursachen, lösen den Unterschied aber nicht auf (S. 19)."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Auf S. 19 wird das Routinedatenkollektiv als unselektiertes Patientenkollektiv bezeichnet. Auf derselben Seite werden ein Selektionsbias der Routinedatenanalyse durch geringe Sensitivität der Kodierung und eine eingeschränkte Sensitivität der Sepsis-ICD-Codes genannt."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Reha-Inanspruchnahme: In den Routinedaten wurden 5,5 % der Krankenhausüberlebenden in die Rehabilitation entlassen (S. 12). In der Befragung hatten 63 % bzw. 71 % eine stationäre Rehabilitation erhalten (S. 16). Die Autoren führen den Unterschied auf die Selektion weniger schwer Erkrankter und unterschiedliche Ausgangspopulationen zurück (S. 20)."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Unter 23 Millionen AOK-Versicherten wurden in den Jahren 2013/2014 insgesamt 159.684 krankenhausbehandelte Sepsispatienten identifiziert."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die Patienten der Kohorte waren im Mittel 73,8 Jahre alt und hatten durchschnittlich 2,1 Vorerkrankungen. 38,3 % waren vorher pflegebedürftig, 11,7 % lebten im Pflegeheim, und 34,0 % wurden intensivmedizinisch behandelt."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die Krankenhaussterblichkeit lag bei 27,0 %, sodass 116.507 Überlebende in die Folgeanalysen eingingen. 5,5 % der Krankenhausüberlebenden wurden in die Rehabilitation entlassen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die häufigsten neuen Erkrankungen bei den Überlebenden waren neuromuskuläre Erkrankungen (26 %), kardiovaskuläre Erkrankungen (24 %) und urogenitale Erkrankungen (24 %). Neue kognitive Beeinträchtigungen fanden sich bei 19 %, neue psychische Erkrankungen bei 18 %."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Bei Patienten, die die drei Jahre nach Entlassung überlebten (n=59.858; 37,5 % der Studienpopulation), betrugen die durchschnittlichen Versorgungskosten im Vorbeobachtungszeitraum 9.417 Euro, im 1. Jahr nach Sepsis 13.062 Euro, im 2. Jahr 9.471 Euro und im 3. Jahr 9.712 Euro."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Autoren schließen aus dem Kostenverlauf, dass Langzeitüberlebende bereits im 2. Jahr nach Sepsis durchschnittlich wieder auf das Kostenniveau des Vorbeobachtungszeitraums fallen."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Hochgerechnet auf ca. 320.000 Sepsispatienten pro Jahr schätzen die Autoren die direkten Gesamtkosten einschließlich des Index-Aufenthalts auf 11,7 Mrd. Euro jährlich; Pflegekosten sind darin nicht enthalten."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Neuer Pflegegrad nach Subgruppe: einfache Sepsis 29,9 %, schwere Sepsis 34,8 %, ITS-behandelt 29,1 %, nicht ITS-behandelt 36,8 %, ohne Voreinschränkungen 19,3 %. Die 12-Monats-Sterblichkeit betrug 29,2 %, 33,9 %, 30,3 %, 31,8 % bzw. 15,2 %. Die Vergleiche einfache vs. schwere Sepsis und ITS- vs. Nicht-ITS-Behandlung waren laut Bericht jeweils statistisch signifikant (p<.0001)."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Als wichtige Erkenntnis nennen die Autoren, dass Sepsisfolgen auch nach leichteren Verläufen, ohne Intensivbehandlung und bei Patienten ohne Vorerkrankungen auftreten."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Im ersten Jahr nach dem Index-Aufenthalt lag die Rehospitalisierungsquote bei 66,8 %; 39,1 % dieser Rehospitalisierungen erfolgten in den 30 Tagen nach Entlassung."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "45,0 % der Überlebenden hatten eine infektionsassoziierte Rehospitalisierung, ein Anstieg um ca. 10 % gegenüber dem Vorbeobachtungszeitraum. 11,9 % wurden wegen erneuter Sepsis rehospitalisiert, davon rund ein Viertel auf der Intensivstation. 56,6 % erhielten im Jahr nach Sepsis mindestens eine ambulante Antiinfektiva-Verschreibung."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Hohe Anteile infektionsassoziierter Rehospitalisierungen und ambulanter Antiinfektiva-Verschreibungen fanden sich unabhängig von Sepsisschwere, ITS-Behandlung, Alter und vorbestehenden Einschränkungen. Überlebende ohne vorbestehende Einschränkungen zeigten gegenüber dem Vorbeobachtungszeitraum den höchsten Anstieg ambulanter und stationärer Behandlungen sowie Verschreibungen."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Von 7.370 betrachteten, zuvor erwerbstätigen Überlebenden waren nach 6 bzw. 12 Monaten 69,2 % bzw. 76,9 % wieder erwerbstätig. In den 12 Monaten nach Sepsis waren sie im Median 28 Tage arbeitsunfähig (IQR 108 Tage)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Nach 6 bzw. 12 Monaten waren 22,8 % bzw. 9,8 % weiterhin krankgeschrieben, 8,0 % bzw. 13,3 % wurden erstmals Rentner oder Rentenantragsteller. Patienten mit Rückkehr in die Erwerbstätigkeit waren im Mittel 3,3 Jahre jünger (48,0 vs. 51,3 Jahre; p<.001) und häufiger frei von neuen Erkrankungen (40,2 % vs. 16,9 %; p<.001)."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Im ersten Jahr nach Sepsis wurden von den Überlebenden unter Risiko 31,9 % neu pflegebedürftig (neuer Pflegegrad oder neue Betreuung im Pflegeheim), 2,8 % neu dialysepflichtig und 1,6 % neu beatmungspflichtig; 30,7 % verstarben."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Vorbestehende Komorbiditäten waren mit allen ungünstigen Verläufen assoziiert. Bei mehr als 4 Komorbiditäten betrug die OR 3,2 für neue Pflegebedürftigkeit, 4,9 für neue Dialysepflichtigkeit und 4,7 für Versterben innerhalb von 12 Monaten. Höheres Alter war mit neuer Pflegebedürftigkeit und Versterben assoziiert, nicht aber mit neuer Dialyse- oder Beatmungspflichtigkeit."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Nosokomiale Infektionen und Infektionen mit multiresistenten Erregern waren mit neuer Pflegebedürftigkeit, neuer Dialysepflichtigkeit und Versterben innerhalb von 12 Monaten assoziiert, multiresistente Erreger zusätzlich mit neuer Beatmungspflichtigkeit. Urogenitale und pulmonale Infektionen waren mit neuer Dialyse- und Beatmungspflichtigkeit assoziiert. ZNS-Infektionen zeigten die höchsten ORs für neue Pflegebedürftigkeit."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Patienten mit Rehabilitation in den 6 Monaten nach Entlassung hatten 13–36 Monate nach Sepsis höhere Überlebensraten als ihre Kontrollen. Für 7–12 Monate nach Erkrankung zeigten sich keine signifikanten Unterschiede."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Im Vergleich zu ihren Kontrollen hatten Überlebende mit Rehabilitation 7–12 Monate nach Sepsis häufiger Krankenhauswiederaufnahmen und erhielten 7–12 und 13–36 Monate nach Sepsis häufiger einen Pflegegrad. Zwischen Rehabilitation und Gesamt-Versorgungskosten fand sich kein signifikanter Zusammenhang. ITS-behandelte Überlebende mit Rehabilitation hatten auch höhere Kurzzeitüberlebensraten; die Autoren schreiben, sie scheinen besonders zu profitieren."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Die Autoren schreiben, dass nur ein geringer Teil der Sepsisüberlebenden eine Rehabilitation erhält. Häufige Folgen wie Fatigue, Schmerzen oder kognitive Folgen würden in der meist neurologisch ausgerichteten Rehabilitation häufig nicht adressiert."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "In der Mitteldeutschen Sepsis Kohorte (schwere, ITS-behandelte Sepsis) fanden sich klinische Zeichen einer Fatigue bei 67,8 % (154/227, Chalder Fatigue Score), Depressionssymptome bei 10,6 % (26/238, BSI-18) und Zeichen kognitiver Einschränkung bei 21,3 % (36/169, tMOCA)."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Bei den ITS-behandelten Krankenhausüberlebenden mit schwerer Sepsis der SEPFROK-Kohorte fanden sich Diagnosecodes für Fatigue bei 9,0 %, für Depression bei 29,2 % und für kognitive Einschränkung bei 28,6 %. Inkontinenz lag bei 36,0 %, respiratorische Erkrankungen bei 33,8 % und Immobilität bei 29,2 % vor. 36,9 % hatten einen neuen Pflegegrad, die 12-Monats-Sterblichkeit betrug 33,2 %."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Für die Befragung (AP2) lagen 307 Einwilligungen vor, 287 Personen nahmen teil. Von 400 Interviews flossen 393 in die Auswertung ein: 225 nach 6 Monaten und 168 nach 12 Monaten."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "89 von 287 Befragten benannten explizite Versorgungslücken oder Wünsche. Im Vordergrund standen bessere Aufklärung (15 Nennungen), zeitnahe Weiterbehandlung (14), strukturelle Unterstützung (12), spezifische Nachsorge (12), angemessener Therapieumfang (10) und individuellere Rehabilitation (8)."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "55 % der Befragten erfuhren im Krankenhaus von der Sepsisdiagnose, 12 % nach der Krankenhausbehandlung und 25 % erst durch die Einladung zur Befragung. 46 % wussten nicht, dass Sepsisfolgeerkrankungen auftreten können."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Für die deutsche Version des RNLI ergaben sich moderate positive Korrelationen mit dem Barthel-Index (r=0,732), der EQ-5D-3L-VAS (r=0,669) und dem EQ-5D-3L-Utility-Score (r=0,719), die die Autoren als Hinweis auf gute kongruente Validität werten. Die Reliabilität (McDonald's Omega) betrug 0,94."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Laut Bericht stimmt die anhaltend erhöhte Langzeitsterblichkeit, auch bei vorher nicht eingeschränkten Patienten, mit früheren Studien überein. Die Inzidenz neuer Folgeerkrankungen lag zum Teil höher als in vorhergehenden Studien."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Untersucht wurden nur AOK-Versicherte. Die nationale und internationale Generalisierbarkeit hängt von der Repräsentativität dieses Versichertenkollektivs ab."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Kohorten aus AP1 und AP2 sind nicht direkt vergleichbar. Gründe sind ein möglicher Selektionseffekt in AP2 und der Einschluss einfacher und nicht ITS-behandelter Sepsisfälle in AP1."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die Autoren bezeichnen ihre Schlussfolgerungen als hypothesengenerierend, sie müssten in Folgestudien untersucht werden. Aussagekräftig seien die Ergebnisse vor allem für das deutsche Gesundheitssystem."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Daten zu Hilfsmitteln, häuslicher Krankenpflege und Pflegeleistungen nach SGB XI lagen nicht vor."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "In der hochgerechneten Kostenschätzung von 11,7 Mrd. Euro jährlich sind insbesondere Pflegekosten nicht enthalten."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Für die explorative Befragung fehlten die für eine Fallzahlplanung nötigen Vorinformationen. Die Fallzahl von n=200 wurde auf Basis von Machbarkeitsüberlegungen festgelegt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Von 1.442 Intensivpatienten, die die Einschlusskriterien erfüllten (Januar 2019 bis September 2020), verstarben 681 auf der Intensivstation. 331 nahmen an anderen Studien teil oder sprachen nicht fließend Deutsch. Von 430 Eingeladenen lehnten 186 die Teilnahme ab, 244 willigten ein."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Der Abgleich mit der Mitteldeutschen Sepsis Kohorte beschränkte sich auf bereits veröffentlichte Teilergebnisse, da deren Ergebnisse noch in Auswertung sind."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Daten zum Infektionsfokus der Befragten lagen nur aus dem Studienzentrum Jena und für Patienten der Mitteldeutschen Sepsis Kohorte vor."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Wegen der Erhebung in Routinedaten sind die Ergebnisse nur eingeschränkt mit vorherigen Studien vergleichbar."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Ursachen der geringen Reha-Inanspruchnahme und Gründe für abgelehnte Reha-Anträge wurden im Projekt nicht erfasst."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die Autoren nennen mögliche Ursachen für die Prävalenzunterschiede zur MSC, ohne sie aufzulösen: unterschiedliche Diagnosevoraussetzungen (ICD-Diagnosen vs. Befragungsinstrumente) sowie Selektionsbias in beiden Datenquellen."}]};
+const D = {"projekt_id": 127, "akronym": "SEPFROK", "kennung": "gtTuEhmzrdzc", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat nach Auffassung des Ausschusses erfolgreich eine retrospektive Längsschnittstudie mit AOK-Routinedaten der Jahre 2009 bis 2017 durchgeführt. Ergänzend wurde die Versorgungszufriedenheit von Betroffenen und Angehörigen in 400 Telefoninterviews untersucht. Die Ergebnisse liefern populationsbasierte Erkenntnisse zu Epidemiologie, Risikofaktoren, Versorgung und Kosten von Sepsisfolgen. Sie zeigen Informationsdefizite und Versorgungsbedarfe aus Patientensicht auf. Die Methoden hält der Ausschuss für angemessen, verweist aber auf Limitationen der Routinedaten und der Repräsentativität der Befragten. Da die Ergebnisse helfen, das Post-Sepsis-Syndrom und die Versorgungsbedarfe besser zu verstehen, werden sie zur Information an das IQTIG und an Fachgesellschaften und Patientenorganisationen weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Mögliche Untererfassung von Sepsis, Vor- und Folgeerkrankungen sowie Risikofaktoren im Routinedatensatz"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Eingeschränkte Repräsentativität der Befragten, die tendenziell eine niedrigere Krankheitslast hatten (Selektion)"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Auftreten möglicher Sepsisfolgeerkrankungen – mindestens eine neue Erkrankung im ersten Jahr nach Entlassung"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Neue Erkrankungen in mehr als einer Domäne (physisch, psychisch, kognitiv) im ersten Jahr nach Sepsis"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Neue Folgeerkrankungen nach Erkrankungsgruppen im ersten Jahr nach Sepsis"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Sterblichkeit im Nachbeobachtungszeitraum (Langzeitsterblichkeit) – 12 Monate nach Entlassung"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Umfang der Inanspruchnahme von Rehabilitation nach Sepsis und Zufriedenheit mit diesen Versorgungsleistungen (AP2)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Neue Pflegebedürftigkeit im ersten Jahr nach Sepsis (Patienten ohne vorbestehende Pflegebedürftigkeit)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Rehospitalisierung im ersten Jahr nach Index-Krankenhausaufenthalt"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Rückkehr in die Erwerbstätigkeit nach überlebter Sepsis"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Risikofaktoren für ungünstige Verläufe innerhalb von 12 Monaten – vorbestehende Komorbiditäten (>4 Komorbiditäten)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Langzeitüberleben 13-36 Monate nach Sepsis: Rehabilitation vs. keine Rehabilitation"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Kurzzeitüberleben 7-12 Monate nach Sepsis: Rehabilitation vs. keine Rehabilitation"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Rehospitalisierung und neuer Pflegegrad nach Rehabilitation vs. keine Rehabilitation"}, {"stelle": "endpunkt.13", "art": "endpunkt", "unser": "Gesamt-Versorgungskosten 7-12 und 13-36 Monate nach Sepsis: Rehabilitation vs. keine Rehabilitation"}, {"stelle": "bericht_kurz", "art": "text", "unser": "SEPFROK untersuchte Folgeerkrankungen, Risikofaktoren, Versorgung und Kosten nach Sepsis. In einer retrospektiven Routinedatenanalyse (AP1) wurden unter 23 Millionen AOK-Versicherten (2013/2014) 159.684 krankenhausbehandelte Sepsispatienten erfasst. Hinzu kam eine Telefonbefragung von Betroffenen und Angehörigen (AP2) 6 und 12 Monate nach Entlassung von der Intensivstation. Die Krankenhaussterblichkeit lag bei 27,0 %. Von den 116.507 Überlebenden erhielten 74,3 % im ersten Jahr eine neue Diagnose, 31,5 % einen neuen Pflegegrad, und 30,7 % verstarben in diesem Jahr. Die GKV-Versorgungskosten betrugen in den drei Jahren nach Entlassung im Mittel 29.088 Euro pro Patient, zusätzlich 15.361 Euro für den Index-Aufenthalt. In der Befragung hatten 63 % bzw. 71 % eine stationäre Rehabilitation erhalten. Dort wurden physische Einschränkungen zu 95 % adressiert, kognitive Einschränkungen, Schmerzen, Fatigue und pulmonale Folgen zu 13–25 %. Die Aussagekraft hängt an der Erfassung über Abrechnungs-ICD-Codes, die eine eingeschränkte Sensitivität und eine für den ambulanten Bereich unbekannte Validität haben, an der Beschränkung auf AOK-Versicherte und an einem selektierten Befragungskollektiv. Die Autoren werten die Ergebnisse als hypothesengenerierend."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Im ersten Jahr nach Entlassung wurde bei 74,3 % der Sepsisüberlebenden eine neue Erkrankung diagnostiziert; jeder vierte Überlebende hatte eine neue Erkrankung in mehr als einer Domäne (physisch, psychisch, kognitiv)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Im ersten Jahr nach Sepsis hatten 31,5 % der Überlebenden einen neuen Pflegegrad, und 30,7 % verstarben. Im zweiten und dritten Jahr hatten 65,8 % bzw. 59,4 % der Überlebenden mindestens eine neue Erkrankung."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Die GKV-Versorgungskosten der Überlebenden betrugen in den drei Jahren nach Entlassung im Durchschnitt 29.088 Euro pro Patient, zuzüglich durchschnittlich 15.361 Euro für den Index-Krankenhausaufenthalt."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Sepsispatienten wurden über explizite Sepsis-ICD-Codes aufgegriffen. Diese haben laut Vorstudien eine eingeschränkte Sensitivität, identifizieren nicht alle Sepsisfälle und werden zu Abrechnungszwecken kodiert. Dasselbe gilt für die Abbildung von Folge- und Vorerkrankungen."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Validität der Kodierung ist insbesondere im ambulanten Bereich für die meisten betrachteten Erkrankungen nicht bekannt. Kodierungsungenauigkeiten können sich auf alle Ergebnisse des Projekts auswirken."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Nur ärztlich diagnostizierte oder behandelte Erkrankungen konnten erfasst werden, was etwa bei PTBS zu einer Unterschätzung der Inzidenz führen kann. Im Abgleich mit der MSC zeigte sich für Fatigue eine deutlich geringere Prävalenz in den Routinedaten, für Depression eine höhere."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "RNLI: Auf S. 18–19 wird dem RNLI eine gute Reliabilität, Konstrukt- und kongruente Validität zugeschrieben, und er könne zur Beurteilung der Wiedereingliederung nach Sepsis genutzt werden. Auf S. 21 heißt es dagegen, der RNLI solle in einem Folgeprojekt für Sepsisüberlebende erst noch psychometrisch validiert werden."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Routinedaten und Mitteldeutsche Sepsis Kohorte weichen bei ähnlicher Population (schwere, ITS-behandelte Sepsis) in entgegengesetzte Richtungen ab: Fatigue 9,0 % (Diagnosecodes) vs. 67,8 % (Chalder Fatigue Score), Depression 29,2 % vs. 10,6 %, kognitive Einschränkung 28,6 % vs. 21,3 % (S. 16). Die Autoren nennen mögliche Ursachen, lösen den Unterschied aber nicht auf (S. 19)."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Auf S. 19 wird das Routinedatenkollektiv als unselektiertes Patientenkollektiv bezeichnet. Auf derselben Seite werden ein Selektionsbias der Routinedatenanalyse durch geringe Sensitivität der Kodierung und eine eingeschränkte Sensitivität der Sepsis-ICD-Codes genannt."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss empfiehlt, die Erkenntnisse aus SEPFROK zur Information an das IQTIG weiterzuleiten. Außerdem gehen sie an die Deutsche Sepsis-Gesellschaft, die Sepsis-Stiftung, die Deutsche Sepsishilfe, SepsisDialog und das Aktionsbündnis Patientensicherheit. Die Geschäftsstelle wird mit der Weiterleitung beauftragt, Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Zur Übertragbarkeit auf die Regelversorgung äußert sich der Beschluss nicht ausdrücklich. Er nennt eingeschränkte Repräsentativität der Befragten und verweist darauf, dass weiterführende Fragen zu Versorgungspfaden nach Sepsis im Projekt AVENIR bearbeitet werden."}, {"stelle": "befund.0", "art": "befund", "unser": "Populationsbasierte Erkenntnisse zu Epidemiologie und Risikofaktoren chronischer Sepsisfolgen"}, {"stelle": "befund.1", "art": "befund", "unser": "Einsichten in Versorgung und Kosten von Folgeerkrankungen nach Sepsis"}, {"stelle": "befund.2", "art": "befund", "unser": "Nachweis, dass Sepsisfolgen auch nach leichteren Verläufen auftreten"}, {"stelle": "befund.3", "art": "befund", "unser": "Informationsdefizit und Wunsch nach mehr Rehabilitation aus Patientensicht aufgezeigt"}, {"stelle": "befund.4", "art": "befund", "unser": "Empfehlungen zur Verbesserung der Versorgung nach Sepsis formuliert"}, {"stelle": "befund.5", "art": "befund", "unser": "Methoden vom Ausschuss als angemessen bewertet"}, {"stelle": "befund.6", "art": "befund", "unser": "Quantifizierung des Versorgungsbedarfs bei Sepsisfolgen"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Das IQTIG schreibt, es habe die SEPFROK-Ergebnisse bereits in die Entwicklung des QS-Verfahrens „Diagnostik, Therapie und Nachsorge der Sepsis“ einbezogen und daraus Indikatoren und Kennzahlen zum Outcome nach Sepsis empfohlen, wobei die 365-Tage-Outcomes nur als Kennzahlen konfiguriert werden. Der Abschlussbericht liegt dem G-BA vor und ist noch nicht zur Veröffentlichung freigegeben; ein Antrag auf Freigabe wurde in der AG DeQS gestellt."}, {"stelle": "adressat.2", "art": "adressat", "unser": "SepsisDialog begrüßt die Weiterleitung, kündigt an, das Thema Post-Sepsis-Syndrom in Schulungsmaterialien weiter zu vertiefen, und schlägt vor, das Entlassungsmanagement mit Patientenbriefen verbindlich zu regeln. Eine Befassung oder Entscheidung zur Empfehlung wird nicht benannt."}, {"stelle": "adressat.3", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt."}, {"stelle": "adressat.4", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt."}, {"stelle": "adressat.5", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt."}, {"stelle": "adressat.6", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt; ein Vermerk über ausgebliebene Antwort fehlt."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "In der Befragung hatten 6 Monate nach Entlassung 141 von 225 Patienten (63 %) mindestens eine stationäre Rehabilitation erhalten, nach 12 Monaten 71 %. Den größten Anteil machte die neurologische Rehabilitation aus (38 %)."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Die Befragten gaben insgesamt eine hohe Zufriedenheit mit der Rehabilitation an. Physische Einschränkungen wurden in der Rehabilitation zu 95 % adressiert, kognitive Einschränkungen zu 25 %, Schmerzen zu 17 %, Fatigue zu 21 % und pulmonale Folgen zu 13 %."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Befragung beruht auf einem selektierten Kollektiv. In der MSC als Rekrutierungsbasis stimmten vor allem weniger schwer Erkrankte zu; die Autoren gehen davon aus, dass dies auch die Rekrutierung über die Intensivstationen in Jena und Berlin betrifft."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Reha-Inanspruchnahme: In den Routinedaten wurden 5,5 % der Krankenhausüberlebenden in die Rehabilitation entlassen (S. 12). In der Befragung hatten 63 % bzw. 71 % eine stationäre Rehabilitation erhalten (S. 16). Die Autoren führen den Unterschied auf die Selektion weniger schwer Erkrankter und unterschiedliche Ausgangspopulationen zurück (S. 20)."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Unter 23 Millionen AOK-Versicherten wurden in den Jahren 2013/2014 insgesamt 159.684 krankenhausbehandelte Sepsispatienten identifiziert."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die Patienten der Kohorte waren im Mittel 73,8 Jahre alt und hatten durchschnittlich 2,1 Vorerkrankungen. 38,3 % waren vorher pflegebedürftig, 11,7 % lebten im Pflegeheim, und 34,0 % wurden intensivmedizinisch behandelt."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die Krankenhaussterblichkeit lag bei 27,0 %, sodass 116.507 Überlebende in die Folgeanalysen eingingen. 5,5 % der Krankenhausüberlebenden wurden in die Rehabilitation entlassen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die häufigsten neuen Erkrankungen bei den Überlebenden waren neuromuskuläre Erkrankungen (26 %), kardiovaskuläre Erkrankungen (24 %) und urogenitale Erkrankungen (24 %). Neue kognitive Beeinträchtigungen fanden sich bei 19 %, neue psychische Erkrankungen bei 18 %."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Bei Patienten, die die drei Jahre nach Entlassung überlebten (n=59.858; 37,5 % der Studienpopulation), betrugen die durchschnittlichen Versorgungskosten im Vorbeobachtungszeitraum 9.417 Euro, im 1. Jahr nach Sepsis 13.062 Euro, im 2. Jahr 9.471 Euro und im 3. Jahr 9.712 Euro."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Autoren schließen aus dem Kostenverlauf, dass Langzeitüberlebende bereits im 2. Jahr nach Sepsis durchschnittlich wieder auf das Kostenniveau des Vorbeobachtungszeitraums fallen."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Hochgerechnet auf ca. 320.000 Sepsispatienten pro Jahr schätzen die Autoren die direkten Gesamtkosten einschließlich des Index-Aufenthalts auf 11,7 Mrd. Euro jährlich; Pflegekosten sind darin nicht enthalten."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Neuer Pflegegrad nach Subgruppe: einfache Sepsis 29,9 %, schwere Sepsis 34,8 %, ITS-behandelt 29,1 %, nicht ITS-behandelt 36,8 %, ohne Voreinschränkungen 19,3 %. Die 12-Monats-Sterblichkeit betrug 29,2 %, 33,9 %, 30,3 %, 31,8 % bzw. 15,2 %. Die Vergleiche einfache vs. schwere Sepsis und ITS- vs. Nicht-ITS-Behandlung waren laut Bericht jeweils statistisch signifikant (p<.0001)."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Als wichtige Erkenntnis nennen die Autoren, dass Sepsisfolgen auch nach leichteren Verläufen, ohne Intensivbehandlung und bei Patienten ohne Vorerkrankungen auftreten."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Im ersten Jahr nach dem Index-Aufenthalt lag die Rehospitalisierungsquote bei 66,8 %; 39,1 % dieser Rehospitalisierungen erfolgten in den 30 Tagen nach Entlassung."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "45,0 % der Überlebenden hatten eine infektionsassoziierte Rehospitalisierung, ein Anstieg um ca. 10 % gegenüber dem Vorbeobachtungszeitraum. 11,9 % wurden wegen erneuter Sepsis rehospitalisiert, davon rund ein Viertel auf der Intensivstation. 56,6 % erhielten im Jahr nach Sepsis mindestens eine ambulante Antiinfektiva-Verschreibung."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Hohe Anteile infektionsassoziierter Rehospitalisierungen und ambulanter Antiinfektiva-Verschreibungen fanden sich unabhängig von Sepsisschwere, ITS-Behandlung, Alter und vorbestehenden Einschränkungen. Überlebende ohne vorbestehende Einschränkungen zeigten gegenüber dem Vorbeobachtungszeitraum den höchsten Anstieg ambulanter und stationärer Behandlungen sowie Verschreibungen."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Von 7.370 betrachteten, zuvor erwerbstätigen Überlebenden waren nach 6 bzw. 12 Monaten 69,2 % bzw. 76,9 % wieder erwerbstätig. In den 12 Monaten nach Sepsis waren sie im Median 28 Tage arbeitsunfähig (IQR 108 Tage)."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Nach 6 bzw. 12 Monaten waren 22,8 % bzw. 9,8 % weiterhin krankgeschrieben, 8,0 % bzw. 13,3 % wurden erstmals Rentner oder Rentenantragsteller. Patienten mit Rückkehr in die Erwerbstätigkeit waren im Mittel 3,3 Jahre jünger (48,0 vs. 51,3 Jahre; p<.001) und häufiger frei von neuen Erkrankungen (40,2 % vs. 16,9 %; p<.001)."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Im ersten Jahr nach Sepsis wurden von den Überlebenden unter Risiko 31,9 % neu pflegebedürftig (neuer Pflegegrad oder neue Betreuung im Pflegeheim), 2,8 % neu dialysepflichtig und 1,6 % neu beatmungspflichtig; 30,7 % verstarben."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Vorbestehende Komorbiditäten waren mit allen ungünstigen Verläufen assoziiert. Bei mehr als 4 Komorbiditäten betrug die OR 3,2 für neue Pflegebedürftigkeit, 4,9 für neue Dialysepflichtigkeit und 4,7 für Versterben innerhalb von 12 Monaten. Höheres Alter war mit neuer Pflegebedürftigkeit und Versterben assoziiert, nicht aber mit neuer Dialyse- oder Beatmungspflichtigkeit."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Nosokomiale Infektionen und Infektionen mit multiresistenten Erregern waren mit neuer Pflegebedürftigkeit, neuer Dialysepflichtigkeit und Versterben innerhalb von 12 Monaten assoziiert, multiresistente Erreger zusätzlich mit neuer Beatmungspflichtigkeit. Urogenitale und pulmonale Infektionen waren mit neuer Dialyse- und Beatmungspflichtigkeit assoziiert. ZNS-Infektionen zeigten die höchsten ORs für neue Pflegebedürftigkeit."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Patienten mit Rehabilitation in den 6 Monaten nach Entlassung hatten 13–36 Monate nach Sepsis höhere Überlebensraten als ihre Kontrollen. Für 7–12 Monate nach Erkrankung zeigten sich keine signifikanten Unterschiede."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Im Vergleich zu ihren Kontrollen hatten Überlebende mit Rehabilitation 7–12 Monate nach Sepsis häufiger Krankenhauswiederaufnahmen und erhielten 7–12 und 13–36 Monate nach Sepsis häufiger einen Pflegegrad. Zwischen Rehabilitation und Gesamt-Versorgungskosten fand sich kein signifikanter Zusammenhang. ITS-behandelte Überlebende mit Rehabilitation hatten auch höhere Kurzzeitüberlebensraten; die Autoren schreiben, sie scheinen besonders zu profitieren."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Die Autoren schreiben, dass nur ein geringer Teil der Sepsisüberlebenden eine Rehabilitation erhält. Häufige Folgen wie Fatigue, Schmerzen oder kognitive Folgen würden in der meist neurologisch ausgerichteten Rehabilitation häufig nicht adressiert."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "In der Mitteldeutschen Sepsis Kohorte (schwere, ITS-behandelte Sepsis) fanden sich klinische Zeichen einer Fatigue bei 67,8 % (154/227, Chalder Fatigue Score), Depressionssymptome bei 10,6 % (26/238, BSI-18) und Zeichen kognitiver Einschränkung bei 21,3 % (36/169, tMOCA)."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Bei den ITS-behandelten Krankenhausüberlebenden mit schwerer Sepsis der SEPFROK-Kohorte fanden sich Diagnosecodes für Fatigue bei 9,0 %, für Depression bei 29,2 % und für kognitive Einschränkung bei 28,6 %. Inkontinenz lag bei 36,0 %, respiratorische Erkrankungen bei 33,8 % und Immobilität bei 29,2 % vor. 36,9 % hatten einen neuen Pflegegrad, die 12-Monats-Sterblichkeit betrug 33,2 %."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Für die Befragung (AP2) lagen 307 Einwilligungen vor, 287 Personen nahmen teil. Von 400 Interviews flossen 393 in die Auswertung ein: 225 nach 6 Monaten und 168 nach 12 Monaten."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "89 von 287 Befragten benannten explizite Versorgungslücken oder Wünsche. Im Vordergrund standen bessere Aufklärung (15 Nennungen), zeitnahe Weiterbehandlung (14), strukturelle Unterstützung (12), spezifische Nachsorge (12), angemessener Therapieumfang (10) und individuellere Rehabilitation (8)."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "55 % der Befragten erfuhren im Krankenhaus von der Sepsisdiagnose, 12 % nach der Krankenhausbehandlung und 25 % erst durch die Einladung zur Befragung. 46 % wussten nicht, dass Sepsisfolgeerkrankungen auftreten können."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Für die deutsche Version des RNLI ergaben sich moderate positive Korrelationen mit dem Barthel-Index (r=0,732), der EQ-5D-3L-VAS (r=0,669) und dem EQ-5D-3L-Utility-Score (r=0,719), die die Autoren als Hinweis auf gute kongruente Validität werten. Die Reliabilität (McDonald's Omega) betrug 0,94."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Laut Bericht stimmt die anhaltend erhöhte Langzeitsterblichkeit, auch bei vorher nicht eingeschränkten Patienten, mit früheren Studien überein. Die Inzidenz neuer Folgeerkrankungen lag zum Teil höher als in vorhergehenden Studien."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Untersucht wurden nur AOK-Versicherte. Die nationale und internationale Generalisierbarkeit hängt von der Repräsentativität dieses Versichertenkollektivs ab."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Kohorten aus AP1 und AP2 sind nicht direkt vergleichbar. Gründe sind ein möglicher Selektionseffekt in AP2 und der Einschluss einfacher und nicht ITS-behandelter Sepsisfälle in AP1."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die Autoren bezeichnen ihre Schlussfolgerungen als hypothesengenerierend, sie müssten in Folgestudien untersucht werden. Aussagekräftig seien die Ergebnisse vor allem für das deutsche Gesundheitssystem."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Daten zu Hilfsmitteln, häuslicher Krankenpflege und Pflegeleistungen nach SGB XI lagen nicht vor."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "In der hochgerechneten Kostenschätzung von 11,7 Mrd. Euro jährlich sind insbesondere Pflegekosten nicht enthalten."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Für die explorative Befragung fehlten die für eine Fallzahlplanung nötigen Vorinformationen. Die Fallzahl von n=200 wurde auf Basis von Machbarkeitsüberlegungen festgelegt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Von 1.442 Intensivpatienten, die die Einschlusskriterien erfüllten (Januar 2019 bis September 2020), verstarben 681 auf der Intensivstation. 331 nahmen an anderen Studien teil oder sprachen nicht fließend Deutsch. Von 430 Eingeladenen lehnten 186 die Teilnahme ab, 244 willigten ein."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Der Abgleich mit der Mitteldeutschen Sepsis Kohorte beschränkte sich auf bereits veröffentlichte Teilergebnisse, da deren Ergebnisse noch in Auswertung sind."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Daten zum Infektionsfokus der Befragten lagen nur aus dem Studienzentrum Jena und für Patienten der Mitteldeutschen Sepsis Kohorte vor."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Wegen der Erhebung in Routinedaten sind die Ergebnisse nur eingeschränkt mit vorherigen Studien vergleichbar."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Ursachen der geringen Reha-Inanspruchnahme und Gründe für abgelehnte Reha-Anträge wurden im Projekt nicht erfasst."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die Autoren nennen mögliche Ursachen für die Prävalenzunterschiede zur MSC, ohne sie aufzulösen: unterschiedliche Diagnosevoraussetzungen (ICD-Diagnosen vs. Befragungsinstrumente) sowie Selektionsbias in beiden Datenquellen."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

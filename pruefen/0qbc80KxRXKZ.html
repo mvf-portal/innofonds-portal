@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF19040</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>14 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 95 Aussagen. Die übrigen
+81 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss leitet die Projektergebnisse zur Information an die AOP-Vertragsparteien (Deutsche Krankenhausgesellschaft, Kassenärztliche Bundesvereinigung, GKV-Spitzenverband) und an das Bundesministerium für Gesundheit weiter. Im Mittelpunkt stehen die Erkenntnisse zur Kalkulation schweregraddifferenzierter Fallpauschalen für sektorengleiche Leistungen nach § 115f SGB V. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Nach Auffassung des Ausschusses hat das Projekt erfolgreich ein Konzept für eine einheitliche sektorengleiche Vergütung entwickelt. Grundlage waren eine Literaturrecherche, Fallstudien aus zwölf OECD-Ländern, Expertenbefragungen und eine Analyse der Routinedaten von 43 Betriebskrankenkassen. Die Methoden hält der Ausschuss für grundsätzlich angemessen. Er verweist aber auf geringe Teilnahmequoten bei den Befragungen der Leistungserbringenden und auf eine unsystematische Konzeption ohne strukturiertes Konsensverfahren, sodass Verzerrungen möglich sind. Inzwischen wurde mit § 115f SGB V und der Hybrid-DRG-Verordnung eine sektorengleiche Vergütung für einen Startkatalog in die Regelversorgung eingeführt. Deshalb werden die Ergebnisse den für Evaluation und Weiterentwicklung zuständigen Vertragsparteien und dem BMG nur zur Information weitergeleitet.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Mixed Methods</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Eine sektorengleiche Vergütung wurde mit § 115f SGB V (Krankenhauspflegeentlastungsgesetz) und der Hybrid-DRG-Verordnung ab 1. Januar 2024 für einen Startkatalog bereits in die Regelversorgung eingeführt. Die Projektergebnisse sollen in die für 2024 vorgesehene Evaluation und in die Weiterentwicklung des Leistungskatalogs einfließen. Sie betreffen auch die ab 2026 vorgesehene Kalkulation auf Grundlage empirischer Kostendaten.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Geringe Teilnahmequoten bei den Befragungen der Leistungserbringenden</p>
+  
   <blockquote>„Die Teilnahmequoten der Befragungen der Leistungserbringenden waren gering." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -199,126 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.1">
   <h3>Hindernis laut Beschluss: Studienanlage</h3>
   <p class="unser">Kein strukturiertes Konsensverfahren, unsystematische Vorgehensweise bei der Konzeption mit möglichen Verzerrungen</p>
+  
   <blockquote>„Es erfolgte kein strukturiertes Konsensverfahren. Verzerrungen aufgrund der unsystematischen Vorgehensweise sind möglich." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Konzept für eine einheitliche sektorengleiche Vergütung erfolgreich entwickelt</p>
-  <blockquote>„Das Projekt hat erfolgreich ein Konzept für die Ausgestaltung einer einheitlichen sektorengleichen Vergütung entwickelt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Fallstudien zeigen Ambulantisierungsbestrebungen in allen untersuchten OECD-Ländern</p>
-  <blockquote>„Die durchgeführten Fallstudien von zwölf OECD- Ländern zeigten, dass es in allen untersuchten Ländern Bestrebungen der Ambulantisierung stationärer Leistungserbringung gibt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Status quo der sektorengleichen Leistungserbringung in Deutschland für 2019 anhand von Routinedaten erfasst</p>
-  <blockquote>„Die routinedatenbasierte Erfassung des Status Quo der sektorengleichen Leistungserbringung in Deutschland zeigte für das Jahr 2019, dass die Leistungen aus dem Abschnitt 1 des AOP -Katalogs zu ungefähr gleichen Anteilen von je 40 % auf die (voll-) stationäre Versorgung im Krankenhaus und die ambulante vertragsärztliche Versorgung entfallen." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Befragung zeigt, dass alle Beteiligten eine Stärkung der sektorengleichen Versorgung anstreben</p>
-  <blockquote>„Eine Befragung unter Leistungserbringenden und Krankenkassen zeigte, dass alle Beteiligten eine Stärkung der sektorengleichen Versorgung anstreben." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Vorschlag für schweregraddifferenzierte Fallpauschalen unabhängig vom Behandlungsort</p>
-  <blockquote>„Fallpauschalen, in zwei Stufen differenziert nach dem medizinischen Schweregrad, vergüten die neuen Leistungen unabhängig vom Behandlungsort." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.5">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Methoden vom Ausschuss als grundsätzlich angemessen bewertet</p>
-  <blockquote>„Die Methoden zur Beantwortung der Fragestellungen waren grundsätzlich angemessen." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -333,11 +198,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben „Einheitliche, Sektorengleiche Vergütung“ (ESV) hat ein Vergütungskonzept für Leistungen entwickelt, die ambulant wie stationär erbracht werden können. Grundlage waren vier Arbeitspakete: ein internationaler Vergleich von 12 Ländern mit Literaturrecherche und Expertenbefragung (AP1), eine Analyse von BKK-Abrechnungsdaten von über 7 Mio. Versicherten, ergänzt um § 21-KHEntgG- und vertragsärztliche Daten (AP2), eine Befragung von 166 Krankenhäusern, 709 auswertbaren Vertragsärzt:innen und 32 Krankenkassen (AP3) sowie die Konzeptentwicklung (AP4). Im Jahr 2019 entfielen Leistungen aus Abschnitt 1 des AOP-Katalogs zu je etwa 40 % auf die stationäre und die vertragsärztliche Versorgung; rund ein Fünftel wurde ambulant im Krankenhaus erbracht. Nach den Abrechnungsdaten unterscheidet sich die Morbidität von Kurzliegern (≤ 3 Tage) nicht grundsätzlich von der ambulant Behandelter; Unterschiede zeigten sich erst bei längeren Verweildauern. Nahezu alle befragten Leistungserbringer halten ambulante Operationen derzeit für nicht kostendeckend finanziert. Das Konzept sieht Fallpauschalen vor, die in zwei Schweregradstufen differenziert sind und unabhängig vom Behandlungsort gelten; Fälle ab PCCL 4 verbleiben im DRG-System. Nach Angabe der Projektnehmer ist das Konzept in § 115f SGB V eingegangen. Die Aussagekraft hängt an mehreren Punkten: Abrechnungsdaten bilden medizinische und soziale Aufnahmegründe nur teilweise ab, vertragsärztliche Leistungen können wegen unvollständiger OPS-Kodierung unterschätzt sein, die Rücklaufquote der Krankenhäuser lag bei 13,2 %, und das Konzept selbst wurde im Bericht nicht erprobt.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das entwickelte Konzept vergütet sektorengleiche Leistungen über Fallpauschalen, die nach dem medizinischen Schweregrad in zwei Stufen differenziert sind und unabhängig vom Behandlungsort gelten. Kalkuliert wird baukastenorientiert, zunächst auf dem um stationsspezifische Kosten bereinigten InEK-Kostengerüst, mittelfristig auf einer sektorengleichen Datengrundlage.</p>
+  
   <blockquote>„„Fallpauschalen, in zwei Stufen differenziert nach dem medizinischen Schweregrad , vergüten die neuen Leistungen unabhängig vom Behandlungsort. Die Kalkulation erfolgt baukastenorientiert initial auf dem um die Kosten, die nur bei stationärer Leistungserbringung entstehen, bereinigten Kostengerüst des InEK; mittelfristig auf einer sektorengleichen Datengrundlage .“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Status quo 2019 entfielen Leistungen aus Abschnitt 1 des AOP-Katalogs zu etwa gleichen Teilen (je rund 40 %) auf die (voll-)stationäre Versorgung im Krankenhaus und auf die vertragsärztliche Versorgung. Ambulant im Krankenhaus wurde etwa ein Fünftel der Fälle versorgt.</p>
+  
   <blockquote>„„Die Erbringung von Leistungen des Abschnitts 1 des AOP -Kataloges [entfällt] zu etwa gleichen Teilen von je 40 % auf die (voll-)stationäre Versorgung im Krankenhaus und die ambulante vertragsärztliche Versorgung. Ambulant im Krankenhaus werden ca. ein Fünftel der Fälle versorgt.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -389,69 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei Kurzliegern (≤ 3 Tage) zeigen die BKK-Daten keine grundsätzliche Morbiditätsdifferenz zu ambulant Behandelten. Die Morbiditätsunterschiede zwischen vollstationär und ambulant Behandelten stammen vornehmlich aus Fällen mit längerer Verweildauer.</p>
+  
   <blockquote>„„Nur bei Behandlungen mit langen Verweildauern zeigen sich deutliche Unterschiede in der Morbiditätsstruktur im Vergleich zu ambulant behandelten Patient:innen. [...] Für Kurzlieger (&lt;= 3 Tage) ist eine derartige grundsätzliche Differenz anhand der analysierten BKK-Abrechnungsdaten nicht ersichtlich.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.12">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Gruppierungsrelevante Kurzlieger-Fälle (Verweildauer bis 3 Tage, AOP-Leistung als Hauptleistung) verursachen über 4 Mrd. Euro stationäre Ausgaben; zusammen mit den ambulanten Ausgaben ergeben sich rund 7 Mrd. Euro. Die durchschnittliche Vergütung je Fall liegt ambulant bei etwa einem Viertel der vollstationären Kurzlieger-Vergütung.</p>
-  <blockquote>„„so ergeben sich Ausgaben für stationäre Leistungen des AOP-Katalogs in Höhe von über 4 Milliarden Euro [...] und damit Gesamtausgaben von circa 7 Milliarden Euro. Die Vergütung je Fall liegt bei der ambulanten Erbringung im Durchschnitt bei etwa einem Viertel der vollstationären (Kurzlieger-)Erbringung.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.15">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Nahezu 100 % der befragten Vertragsärzt:innen und Krankenhäuser geben an, dass ambulante Operationen derzeit nicht kostendeckend finanziert sind (laut Bericht 97 % bzw. 99 %). Krankenkassen und Leistungserbringer sehen gemeinsam die Personalknappheit als Herausforderung. Etwa zwei Drittel der Vertragsärzt:innen halten die Hygieneanforderungen für zu umfassend; Krankenhäuser und Krankenkassen verneinen dies mehrheitlich.</p>
-  <blockquote>„„Nahezu 100 % der Vertragsärzt :innen und Krankenhäuser geben an, dass ambulante Operationen aktuell nicht kostendeckend finanziert werden. Während die Frage der Vergütung also konträr wahrgenommen wird, sehen sowohl Krankenkassen als auch Leistungserbringer die Personalknappheit [...] als Herausforderung.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.34">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Die zitierten Studien aus England und Frankreich schließen übereinstimmend auf tendenziell positive Effekte finanzieller Anreize auf die Verlagerung in die Tageschirurgie. Die Effekte hingen von Prozedurart, Planbarkeit, Höhe des Anreizes und Trägerschaft der Krankenhäuser ab.</p>
-  <blockquote>„„Die Studien schließen übereinstimmend auf tendenziell positive Effekte finanzieller Anreize auf die Verlagerung der Leistungserbringung in das tageschirurgische Setting. Allerdings hingen die Effekte von der untersuchten Prozedurart [...], der Planbarkeit [...], von der Höhe der finanziellen Anreize [...] sowie von der Organisationsart der Krankenhäuser [...] ab.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Abrechnungsdaten bilden die Leistungserbringung und patientenindividuelle Einflussfaktoren nur ausschnittweise ab. Daten aus Patientenakten standen nicht zur Verfügung, etwa Verlaufsdaten, nicht kodierbare Diagnosen oder soziale Aufnahmegründe. Medizinische oder soziale Gründe für eine stationäre Aufnahme und damit Morbiditätsunterschiede, die die Daten nicht zeigen, lassen sich daher nicht ausschließen.</p>
+  
   <blockquote>„„Abrechnungsdaten stellen nur einen Ausschnitt aus der Leistungserbringung und den patientenindividuellen Einflussfaktoren dar. Es kann nicht mit Sicherheit ausgeschlossen werden, dass medizinische oder soziale Gründe, die in den Abrechnungsdaten nicht hinterlegt werden können, Gründe für die stationäre Aufnahme darstellen.“ – Bericht, S. 48" <span class="s">S. 48</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Im vertragsärztlichen Sektor kann das Leistungsvolumen unterschätzt sein, weil OPS-Codes dort nicht durchgehend kodiert werden müssen.</p>
+  
   <blockquote>„„es im vertragsärztlichen Sektor zu Unterschätzungen kommen kann, da die Kodierung von OPS - Codes dort nicht durchgehend notwendig ist.“ – Bericht, S. 48" <span class="s">S. 48</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Rücklaufquote der Krankenhausbefragung betrug 13,2 %. Öffentliche Krankenhäuser waren über-, private unterrepräsentiert; aus dem Saarland nahm kein Krankenhaus teil.</p>
+  
   <blockquote>„„Die Rücklaufquote der Krankenhausbefragung betrug 13,2 %, wobei öffentliche Krankenhäuser über- und private Krankenhäuser unterrepräsentiert waren. Mit Ausnahme des Saarlands beteiligten sich an der Befragung Krankenhäuser aus allen Bundesländern.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -523,11 +331,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zur Fallzahl der Vertragsärzt:innen: S. 16 und S. 49 nennen 709 in die Analyse eingegangene Antworten. Der Abschnitt S. 20–42 gibt für die Befragung dagegen n=703 Vertragsärzt:innen an.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -542,11 +350,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Gründe für den geringen Ambulantisierungsgrad: S. 39 nennt als vorrangige Gründe medizinische Aspekte wie den Gesundheitszustand der Patient:innen. Laut Tabelle auf S. 43 war bei den Vertragsärzt:innen dagegen „Vergütung nicht kostendeckend“ bei fünf von sechs Eingriffen der häufigste Grund (43–52 % gegenüber 27–39 % für den Gesundheitszustand). Nur bei der Koronarintervention lag der Gesundheitszustand vorn (41 % gegenüber 23 %). Ob S. 39 sich auf eine andere Befragtengruppe bezieht, geht aus den Abschnitten nicht hervor.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -561,11 +369,220 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zur Morbidität: Die Zusammenfassung (S. 6) bezeichnet fallbezogene Parameter wie die Morbidität als zwischen den Behandlungsorten „ähnlich ausgeprägt“. S. 24 berichtet dagegen im Querschnitt aller OPS eine höhere Morbidität vollstationär Behandelter (Median-Risikowert 1,28 gegenüber 1,12 bzw. 0,99). Diese führt der Bericht auf S. 26 vornehmlich auf Fälle mit längerer Verweildauer zurück.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>81 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss leitet die Projektergebnisse zur Information an die AOP-Vertragsparteien (Deutsche Krankenhausgesellschaft, Kassenärztliche Bundesvereinigung, GKV-Spitzenverband) und an das Bundesministerium für Gesundheit weiter. Im Mittelpunkt stehen die Erkenntnisse zur Kalkulation schweregraddifferenzierter Fallpauschalen für sektorengleiche Leistungen nach § 115f SGB V. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Eine sektorengleiche Vergütung wurde mit § 115f SGB V (Krankenhauspflegeentlastungsgesetz) und der Hybrid-DRG-Verordnung ab 1. Januar 2024 für einen Startkatalog bereits in die Regelversorgung eingeführt. Die Projektergebnisse sollen in die für 2024 vorgesehene Evaluation und in die Weiterentwicklung des Leistungskatalogs einfließen. Sie betreffen auch die ab 2026 vorgesehene Kalkulation auf Grundlage empirischer Kostendaten.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Konzept für eine einheitliche sektorengleiche Vergütung erfolgreich entwickelt</p>
+  
+  <blockquote>„Das Projekt hat erfolgreich ein Konzept für die Ausgestaltung einer einheitlichen sektorengleichen Vergütung entwickelt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Fallstudien zeigen Ambulantisierungsbestrebungen in allen untersuchten OECD-Ländern</p>
+  
+  <blockquote>„Die durchgeführten Fallstudien von zwölf OECD- Ländern zeigten, dass es in allen untersuchten Ländern Bestrebungen der Ambulantisierung stationärer Leistungserbringung gibt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Status quo der sektorengleichen Leistungserbringung in Deutschland für 2019 anhand von Routinedaten erfasst</p>
+  
+  <blockquote>„Die routinedatenbasierte Erfassung des Status Quo der sektorengleichen Leistungserbringung in Deutschland zeigte für das Jahr 2019, dass die Leistungen aus dem Abschnitt 1 des AOP -Katalogs zu ungefähr gleichen Anteilen von je 40 % auf die (voll-) stationäre Versorgung im Krankenhaus und die ambulante vertragsärztliche Versorgung entfallen." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Befragung zeigt, dass alle Beteiligten eine Stärkung der sektorengleichen Versorgung anstreben</p>
+  
+  <blockquote>„Eine Befragung unter Leistungserbringenden und Krankenkassen zeigte, dass alle Beteiligten eine Stärkung der sektorengleichen Versorgung anstreben." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.4">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Vorschlag für schweregraddifferenzierte Fallpauschalen unabhängig vom Behandlungsort</p>
+  
+  <blockquote>„Fallpauschalen, in zwei Stufen differenziert nach dem medizinischen Schweregrad, vergüten die neuen Leistungen unabhängig vom Behandlungsort." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.5">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Methoden vom Ausschuss als grundsätzlich angemessen bewertet</p>
+  
+  <blockquote>„Die Methoden zur Beantwortung der Fragestellungen waren grundsätzlich angemessen." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.5" value="ok" checked hidden>
+    <input type="radio" name="ubefund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.12">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Gruppierungsrelevante Kurzlieger-Fälle (Verweildauer bis 3 Tage, AOP-Leistung als Hauptleistung) verursachen über 4 Mrd. Euro stationäre Ausgaben; zusammen mit den ambulanten Ausgaben ergeben sich rund 7 Mrd. Euro. Die durchschnittliche Vergütung je Fall liegt ambulant bei etwa einem Viertel der vollstationären Kurzlieger-Vergütung.</p>
+  
+  <blockquote>„„so ergeben sich Ausgaben für stationäre Leistungen des AOP-Katalogs in Höhe von über 4 Milliarden Euro [...] und damit Gesamtausgaben von circa 7 Milliarden Euro. Die Vergütung je Fall liegt bei der ambulanten Erbringung im Durchschnitt bei etwa einem Viertel der vollstationären (Kurzlieger-)Erbringung.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.15">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Nahezu 100 % der befragten Vertragsärzt:innen und Krankenhäuser geben an, dass ambulante Operationen derzeit nicht kostendeckend finanziert sind (laut Bericht 97 % bzw. 99 %). Krankenkassen und Leistungserbringer sehen gemeinsam die Personalknappheit als Herausforderung. Etwa zwei Drittel der Vertragsärzt:innen halten die Hygieneanforderungen für zu umfassend; Krankenhäuser und Krankenkassen verneinen dies mehrheitlich.</p>
+  
+  <blockquote>„„Nahezu 100 % der Vertragsärzt :innen und Krankenhäuser geben an, dass ambulante Operationen aktuell nicht kostendeckend finanziert werden. Während die Frage der Vergütung also konträr wahrgenommen wird, sehen sowohl Krankenkassen als auch Leistungserbringer die Personalknappheit [...] als Herausforderung.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.34">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die zitierten Studien aus England und Frankreich schließen übereinstimmend auf tendenziell positive Effekte finanzieller Anreize auf die Verlagerung in die Tageschirurgie. Die Effekte hingen von Prozedurart, Planbarkeit, Höhe des Anreizes und Trägerschaft der Krankenhäuser ab.</p>
+  
+  <blockquote>„„Die Studien schließen übereinstimmend auf tendenziell positive Effekte finanzieller Anreize auf die Verlagerung der Leistungserbringung in das tageschirurgische Setting. Allerdings hingen die Effekte von der untersuchten Prozedurart [...], der Planbarkeit [...], von der Höhe der finanziellen Anreize [...] sowie von der Organisationsart der Krankenhäuser [...] ab.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -580,11 +597,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zur Verteilung 2019: S. 6 und S. 24 nennen je etwa 40 % stationär und vertragsärztlich sowie ca. ein Fünftel ambulant im Krankenhaus. Der Abschnitt S. 20–42 gibt für dieselbe Stichprobe 39 %, 44 % und 17 % an.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -599,11 +616,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zur Datengüte: Die Projektnehmer schreiben, Validität und Reliabilität seien „sichergestellt“ (S. 48). Im selben Abschnitt räumen sie nicht ausschließbare Abweichungen zur GKV-Grundgesamtheit, eine mögliche Unterschätzung des vertragsärztlichen Volumens und fehlende Daten aus Patientenakten ein.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -613,16 +630,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>68 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Fälle ohne äußerst schwere Komplikationen oder Komorbiditäten, in der Regel Kurzlieger, sollen über sektorengleiche Pauschalen (SP) vergütet werden, gleich ob ambulant oder stationär erbracht. Schwere Fälle verbleiben im DRG-System.</p>
+  
   <blockquote>„„Diese Fälle, bei denen es sich in der Regel um Kurzlieger handelt, werden zukünftig über sektorengleiche Pauschalen (SP) vergütet, unabhängig davon, ob die Leistungserbringung ambulant oder stationär (also mit Übernachtung ) erbracht wird. Schwere Fälle verbleiben im DRG -System“ – Bericht, S. 44" <span class="s">S. 44</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Fälle ab PCCL 4 und andere komplexe Fallkonstellationen werden nicht in die sektorengleichen Leistungsgruppen (SLG) aufgenommen. Sie werden weiter vollstationär versorgt und über eine DRG abgerechnet.</p>
+  
   <blockquote>„„Fälle von Patient:innen, die einem PCCL von 4 und höher entsprechen (Fälle mit äußerst schweren Komplikationen oder Komorbiditäten ) [...] werden bei den SLGs nicht berücksichtigt und weiterhin regelhaft vollstationär im Krankenhaus versorgt“ – Bericht, S. 45" <span class="s">S. 45</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +672,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Einführung ist eine gesetzlich festgelegte Übergangszeit von etwa drei Jahren vorgesehen. In dieser Zeit soll eine gemeinsame sektorengleiche Datengrundlage entstehen.</p>
+  
   <blockquote>„„Während der Einführungsphase, die sich auf eine gesetzlich festgelegte Übergangszeit von etwa drei Jahren beschränken sollte, wird eine gemeinsame sektorengleiche Datengrundlage geschaffen.“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +691,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die BKK-Stichprobe erfasst für 2019 rund 550.000 Fälle mit einem OPS aus Abschnitt 1 des AOP-Katalogs. Sie verteilen sich laut Bericht zu 39 % auf die stationäre Versorgung, zu 44 % auf die vertragsärztliche Versorgung und zu 17 % auf die ambulante Versorgung im Krankenhaus.</p>
+  
   <blockquote>„„Insgesamt werden für das Jahr 2019 in der vorliegenden Stichprobe ca. 550.000 Fälle mit einem OPS aus dem Abschnitt 1 des AOP-Kataloges erfasst.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Über alle betrachteten OPS hinweg ist die Morbidität vollstationär Behandelter höher als die ambulant Behandelter, aber nicht zwangsläufig bei jedem einzelnen OPS. Der Median-Risikowert liegt laut Bericht bei 1,28 (stationär), 1,12 (vertragsärztlich) und 0,99 (ambulant im Krankenhaus). Die Falldringlichkeit ist marginal höher und wird insgesamt als sehr gering eingeschätzt.</p>
+  
   <blockquote>„„im Querschnitt aller betrachteten OPS- Leistungen und nicht zwangsläufig bei einzelnen OPS – die Morbidität der im Krankenhaus vollstationär behandelten Patient:innen höher ist als die der ambulant behandelten. Dies geht einher mit einer marginal höheren Falldringlichkeit. Die mittlere Falldringlichkeit ist insgesamt aber als sehr gering einzuschätzen“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +729,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach den Abrechnungsdaten sind fallbezogene Parameter wie die Morbidität zwischen den Behandlungsorten ähnlich ausgeprägt.</p>
+  
   <blockquote>„„Analysen mit Abrechnungsdaten zu Folge sind fallbezogene Parameter, wie etwa die Morbidität der behandelten Patient:innen, zwischen den Behandlungsorten beziehungsweise -settings ähnlich ausgeprägt.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +748,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Behandlungskontexte unterscheiden sich je Prozedur: Die Kapsulotomie der Linse wird fast ausschließlich vertragsärztlich erbracht, Hernienoperationen fast ausschließlich stationär im Krankenhaus. Die Risikowerte unterscheiden sich zwischen den Prozeduren stärker als zwischen den Sektoren.</p>
+  
   <blockquote>„„Die Risikowerte als Hinweis auf die Morbidität der Patient:innen unterscheiden sich dabei zwischen den Prozeduren stärker als zwischen den Sektoren.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +767,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die 30 häufigsten OPS-5-Steller (von über 700) stehen für 50 % aller Abschnitt-1-Fälle.</p>
+  
   <blockquote>„„Insgesamt ist die Leistungse rbringung hochkonzentriert; die 30 häufigsten OPS - 5-Steller (von über 700) stehen für 50 % aller Abschnitt -1-Fälle.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +786,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leistungserbringung ist je nach Leistung unterschiedlich verteilt. Der vertragsärztliche Sektor ist laut Bericht stärker beteiligt als allgemein angenommen, sein Anteil variiert aber je nach Leistung. Den ambulanten Anteil bezeichnet der Bericht je nach Leistung als stark ausbaufähig.</p>
+  
   <blockquote>„„Zwar ist der vertragsärztliche Sektor stärker an der sektorengleichen Leistungserbringung beteiligt, als allgemeinhin angenommen, doch variierte der Anteil stark in Abhängigkeit der betrachteten Leistung. Ebenso zeigte sich der Teil der ambulanten Leistungserbringung je nach betrachteter Leistung als stark ausbaufähig.“ – Bericht, S. 48" <span class="s">S. 48</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +805,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die jährlichen Ausgaben für ambulantes Operieren durch Krankenhäuser und Vertragsärzt:innen betragen nach KJ 1-Statistik etwa 2,7 Mrd. Euro. Werden alle vollstationären Fälle mit AOP-Leistungen einbezogen (§ 21-Daten), ergeben sich laut Bericht rund 10 Mrd. Euro.</p>
+  
   <blockquote>„„Aktuell betragen die Ausgaben für das ambulante Operieren etwa 2,7 Mil liarden Euro (nach KJ 1 - Statistik) jährlich, sowohl für die Leistungen der Krankenhäuser als auch der Vertragsärzt:innen.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Würde der AOP-Katalog gemäß dem Gutachten nach § 115b SGB V ergänzt, würde sich das potenziell ambulantisierbare stationäre Fallvolumen annähernd verdoppeln.</p>
+  
   <blockquote>„„Würden alle Leistungen gemäß dem Vorschlag des Gutachtens nach § 115b SGB V im AOP- Katalog ergänzt, würde sich das potenziell ambulantisierbare stationäre Fallvolumen annähernd verdoppeln.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Alle befragten Beteiligten wünschen eine Stärkung der sektorengleichen Versorgung. Zu Hemmnissen und künftiger Ausgestaltung gehen die Vorstellungen teilweise auseinander.</p>
+  
   <blockquote>„„Eine Befragung unter Leistungserbringern und Krankenkassen zeigte, dass sich alle Beteiligten eine Stärkung der sektorengleichen Versorgung wünschen. Bezüglich aktueller Hemmnisse und der zukünftigen Ausgestaltung gehen die Vorstellungen jedoch teilweise auseinander.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +862,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Krankenkassen nennen neben personellen Engpässen eher die lukrativere stationäre Vergütung als Hemmnis. Leistungserbringer nennen vor allem nicht kostendeckende Vergütung und personelle Engpässe.</p>
+  
   <blockquote>„„Insbesondere eine nicht kostendeckende Vergütung und personelle Engpässe hemmen aus Sicht der Leistungserbringer den Fortschritt . Krankenkassen sehen ebenfalls personelle Engpässe als Hemmnis, führen zusätzlich aber eher die derzeit deutlich lukrativere Vergütung im stationären Bereich an.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +881,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zur Vergütungssystematik votieren die Krankenkassen am deutlichsten für eine pauschalierte Vergütung. Die Leistungserbringer tendieren zu den jeweils vertrauten Systematiken.</p>
+  
   <blockquote>„„votieren die Krankenkassen am deutlichsten für eine pauschalierte Vergütung, während die Meinungen der Leistungserbringer hier etwas breiter gefächert sind, grundsätzlich aber zu den jeweils vertrauten Systematiken tendieren.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +900,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als motivierende Gründe für ambulantes Operieren nennen Krankenhäuser und Vertragsärzt:innen vor allem die Betreuung aus einer Hand (71 % bzw. 82 %) und die schnelle Rückkehr ins häusliche Umfeld (73 % bzw. 70 %). Bei den Krankenkassen steht die schnelle Rückkehr an erster Stelle (94 %), gefolgt von kostengünstigerer Versorgung (91 %).</p>
+  
   <blockquote>„„Krankenhäuser und Vertragsärzt:innen nennen vor allem die Betreuung aus einer Hand und die schnelle Rückkehr ins häusliche Umfeld als motivierende Faktoren. Letzteres ist auch aus Sicht der Krankenkassen ein wichtiger Aspekt, wird aber dicht gefolgt von der Erwartung einer kostengünstigeren Versorgung“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +919,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für eine Ausweitung des ambulanten Operierens müssten etwa 25 % der Vertragsärzt:innen und 47 % der Krankenhäuser ihre Infrastruktur erweitern.</p>
+  
   <blockquote>„„Etwa 25 % der Vertragsärzt:innen und 47 % der Krankenhäuser gaben an, dass sie für eine Ausweitung des ambulanten Operierens ihre Infrastruktur erweitern müssten“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +938,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Unter den Krankenkassen fand keine Option finanzieller Anreize eine klare Mehrheit. Starken finanziellen Anreizen stehen sie besonders ablehnend gegenüber.</p>
+  
   <blockquote>„„Keine Option fand dabei eine klare Mehrheit. Starken finanziellen Anreizen stehen die Krankenkassen dabei besonders ablehnend gegenüber.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +957,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für eine Abrechnung über eine zentrale Stelle sprechen sich 90 % der Vertragsärzt:innen und 60 % der Krankenhäuser aus. Die Krankenkassen stimmen zu annähernd gleichen Teilen für zentrale und dezentrale Lösungen.</p>
+  
   <blockquote>„„befürwor ten die Abrechnung über eine zentrale Stelle (V ertragsärzt:innen: 90 %, K rankenhäuser: 60 %). Die Krankenkassen stimmten zu annähernd gleichen Teilen für zentrale und dezentrale Lösungen“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +976,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die direkte Abrechnung im Anschluss an die Leistung plädieren etwa die Hälfte der Krankenkassen und Krankenhäuser, aber nur 20 % der Vertragsärzt:innen. 40 % der Vertragsärzt:innen befürworten die Quartalsabrechnung.</p>
+  
   <blockquote>„„plädieren ca. die Hälfte der Krankenkassen und Krankenhäuser für die direkte Abrechnung im Anschluss an die Leistung [...]. Nur 20 % der Vertragsärzt:innen können sich dies vorstellen; die Beibehaltung der ihnen bekannten Quartalsabrechnung befürworten 40 % der Vertragsärzt:innen.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +995,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine sektorengleiche Qualitätssicherung halten etwa 85 % der Krankenkassen und Krankenhäuser sowie 57 % der Vertragsärzt:innen für notwendig.</p>
+  
   <blockquote>„„Die Notwendigkeit einer sektorengleichen Qualitätssicherung (QS) sieht eine klare Mehrheit der Krankenkassen und Krankenhäuser (etwa 85 %) und eine knappe Mehrheit der Vertragsärzt:innen (57 %)“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1014,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Leistungen, die im Ausland häufig ambulant erbracht werden, hierzulande aber nicht oder nur eingeschränkt ambulant abrechenbar sind, sehen die Leistungserbringer überwiegend ein großes Ambulantisierungspotenzial. Ausnahmen sind die Cholezystektomie (5-511.1; laut Bericht 43 % Ja bei Krankenhäusern) und der Herzkathetereingriff mit Stent (8-837.m; 35 % Ja), vor allem wegen eines höheren Komplikationsrisikos.</p>
+  
   <blockquote>„„wurde seitens der Leistungserbringer überwiegend ein großes Potential gesehen. Ausnahme st ellten insbesondere die Cholezystektomie (5-511.1) und der Herzkathetereingriff mit Stentimplantation (8 -837.m) dar, gegen dessen ambulante Erbringung vor allem ein höheres Komplikationsrisiko spreche“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1033,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als Gründe für den bislang geringen Ambulantisierungsgrad bereits ambulant abrechenbarer Leistungen wurden vorrangig medizinische Aspekte wie der Gesundheitszustand der Patient:innen genannt.</p>
+  
   <blockquote>„„Auch bei der Frage nach den Gründen für den bislang geringen Ambulantisierungsgrad bei hierzulande schon ambulant abrechenbaren Leistungen wurden vorrangig medizinische Aspekte wie der Gesundheitszustand der Patient:innen genannt.“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1052,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Vertragsärzt:innen wurden zu sechs ambulant abrechenbaren, aber überwiegend nicht ambulant durchgeführten Eingriffen befragt (Mehrfachantworten möglich). „Vergütung nicht kostendeckend“ nannten 46 % bei der Tracheobronchoskopie (1-620), 23 % bei der Koronarintervention mit Stent (8-837.m), 50 % bei der Kreuzbandplastik (5-813.4), 52 % beim Leistenhernienverschluss (5-530.3), 43 % bei der laparoskopischen Cholezystektomie (5-511.1) und 45 % bei der brusterhaltenden Mammaexzision (5-870.a).</p>
+  
   <blockquote>„„Vergütung nicht kostendeckend 46% 23% 50% 52% 43% 45%“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1071,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Den Gesundheitszustand der Patient:innen nannten die Vertragsärzt:innen bei denselben sechs Eingriffen zu 28 %, 41 %, 27 %, 39 %, 27 % und 31 %. Bei der Koronarintervention (8-837.m) war dies mit 41 % der häufigste Grund.</p>
+  
   <blockquote>„„Gesundheitszustand der Patient:innen 28% 41% 27% 39% 27% 31%“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1090,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Ein höheres Komplikationsrisiko nannten die Vertragsärzt:innen bei der Koronarintervention zu 28 % und bei der laparoskopischen Cholezystektomie zu 26 %, bei den übrigen vier Eingriffen zu 10–13 %.</p>
+  
   <blockquote>„„Höheres Komplikationsrisiko 13% 28% 12% 11% 26% 10%“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1109,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine entgegenstehende Empfehlung einer medizinischen Fachgesellschaft nannten die Vertragsärzt:innen bei den sechs Eingriffen zu 3–11 %, am häufigsten bei der Cholezystektomie (11 %).</p>
+  
   <blockquote>„„Empfehlung einer medizinischen Fachgesellschaft spricht dagegen 4% 4% 3% 3% 11% 6%“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1128,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">An der Krankenkassenbefragung beteiligte sich etwa ein Drittel aller gesetzlichen Krankenkassen. Eine Unterteilung nach der Zahl finanzierter ambulanter Operationen je Quartal ergab keine signifikanten Unterschiede im Antwortverhalten.</p>
+  
   <blockquote>„„An der Befragung der Krankenkassenvertreter haben sich ca. ein Drittel aller gesetzlichen Krankenkassen beteiligt. [...] Eine Unterteilung nach der Anzahl der finanzierten ambulanten Operationen je Quartal ist möglich, ergab jedoch keine signifikanten Unterschiede im Antwortverhalten.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Subgruppenauswertungen, etwa nach Krankenhausgröße oder Art der vertragsärztlichen Leistungserbringung (z. B. MVZ), ergaben laut Bericht keine wesentlichen Erkenntnisse.</p>
+  
   <blockquote>„„Auswertungen nach verschiedenen Subgruppen, beispielsweise nach Krankenhausgröße oder Art der vertragsärztlichen Leistungserbr ingung (z. B. MVZ), wurden ebenfalls durchgeführt, ergaben jedoch keine wesentlichen Erkenntnisse.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">An der Befragung nahmen 166 Krankenhäuser, 776 Vertragsärzt:innen und 32 Krankenkassen teil. Nach Ausschluss der 67 Ärzt:innen, die nicht ambulant operieren, gingen 709 vertragsärztliche Antworten in die Analyse ein.</p>
+  
   <blockquote>„„Insgesamt nahmen 166 Krankenhäuser, 7 76 Vertragsärzt:innen und 32 Krankenkasse n [...] an der Befragung teil. Im vertragsärztlichen Datensatz wurden Personen, die angaben , bislang nicht ambulant zu operieren (n=67), ausgeschlossen, sodass nur 709 Antworten in die Analyse eingingen.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1185,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Gaughan et al. (2019) fanden positive Effekte der englischen Best Practice Tariffs bei 14 von 32 Prozedurenarten, teilweise abhängig von Planbarkeit und Preishöhe.</p>
+  
   <blockquote>„„Gaughan et al. (2019) fanden positive Effekte der Best Practice Tariffs bei 1 4 von 32 Prozedurenarten, wobei die Effekte teilweise von der Planbarkeit und der Höhe des Preises abhängig waren.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1204,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.36">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Cazenave-Lacroutz und Yilmaz (2019) führte die Einführung des Einheitstarifs in Frankreich vor allem in öffentlichen Krankenhäusern zu einer signifikanten Steigerung tageschirurgischer Prozeduren. Eine Liste ambulant erbringbarer Prozeduren verstärkte diesen Effekt.</p>
+  
   <blockquote>„„Die Einführung des Einheitstarifs in Frankreich führte vor allem in öffentlichen Krankenhäusern zu einer signifikanten Steigerung der Anzahl der tageschirurgischen Prozeduren. Dieser Effekt wurde durch die Einführung einer Liste mit ambulant erbringbaren Prozeduren verstärkt“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1223,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Unter den 57 ausgewerteten Publikationen waren nur zwei Wirksamkeitsstudien zu finanziellen Anreizen. Zwei weitere aus Hand- und Expertenrecherche kamen hinzu, insgesamt wurden also vier Studien ausgewertet.</p>
+  
   <blockquote>„„Unter den 57 Publikationen befanden sich zwei Studien zu Wirksamkeitsanalysen von direkten oder indirekten finanziellen Anreizen [...]. Insgesamt wurden somit vier Studien zur Wirksamkeitsanalyse identifiziert und ausgewertet“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1242,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In den englischen Best Practice Tariffs wurde die ambulante Leistung zuletzt rund 10–11 % höher vergütet als die stationäre. Die Höhervergütung wurde eingestellt, sobald eine definierte Zielgröße erreicht war.</p>
+  
   <blockquote>„„In den letzten Jahren wurde die ambulante Leistung rund 10 -11 % höher vergütet als die stationäre Leistungserbringung. Sobald eine definierte Zielgröße an ambulanter Erbringung innerhalb einer Leistungsgruppe erreicht wurde, wurde die Höhervergütung wiedereingestellt.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1261,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In 5 Ländern (Österreich, Dänemark, England, Frankreich, Norwegen) wird die stationäre und die taggleiche bzw. ambulante Leistung gleich vergütet, berechnet auf Basis gepoolter Durchschnittskosten.</p>
+  
   <blockquote>„„In 5 Ländern (Österreich, Dänemark, England, Frankreich und Norwegen) wird die Vergütung für die stationäre und taggleiche beziehungsweise ambulante Leistungserbringung gleichgesetzt und auf Basis gepoolter Durchschnittskosten berechnet.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1280,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.40">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In 8 der untersuchten Länder ist die Vergütung sektorengleicher Leistungen in das Fallpauschalensystem integriert.</p>
+  
   <blockquote>„„In 8 Länder n ist die Vergütung sektorengleicher Leistungen in das Fallpauschalensystem integriert.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.40" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.40" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.40" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.40" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1299,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.41">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">England ist das einzige bekannte Land, in dem potenziell alle Krankenhausleistungen ambulant erbringbar sind. In den übrigen untersuchten Ländern dürfen nur vorab definierte Leistungen ambulant erbracht werden.</p>
+  
   <blockquote>„„England ist das einzige bekannte Land, in dem potenziell alle Krankenhausleistungen ambulant erbringbar sind. In Deutschland, Finnland, Frankreich, Kanada, den Niederlanden, Norwegen, Österreich, Schweden, der Schweiz und den USA dürfen dagegen nur vorab definierte und dafür zugelassene Leistungen ambulant erbracht werden.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.41" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.41" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.41" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.41" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1318,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.42">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Österreich, Deutschland und die Schweiz bilden nach den OECD-Statistiken die Schlusslichter bei der Verlagerung sektorengleicher Leistungen in den ambulanten Bereich.</p>
+  
   <blockquote>„„Österreich, Deutschland und die Schweiz bilden im Vergleich der OECD -Statistiken die Schlusslichter bei der Verlagerung sektorengleicher Leistungen in den ambulanten Bereich.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.42" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.42" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.42" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.42" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1337,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.43">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die 541 in England (247), Frankreich (214) und Österreich (80) am häufigsten ambulant erbrachten Prozeduren wurden in 1.483 deutsche OPS-Codes übersetzt.</p>
+  
   <blockquote>„„Die in den Ranglisten abgebildeten 541 am häufigsten ambulant erbrachten, sektorengleichen Prozeduren (England=247), Frankreich=214 und Österreich=80) wurden in 1.483 deutsche OPS -Codes (4 -6-stellig) übersetzt.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.43" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.43" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.43" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.43" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1356,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.44">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Beispiel: Die Phakoemulsifikation wurde 2019 in Frankreich bei 96 % und in Österreich bei 88 % der Fälle ambulant durchgeführt. In England wurde eine Linsenprozedur bei aphakem Auge bei 99 % der Fälle ambulant durchgeführt.</p>
+  
   <blockquote>„„Beispielsweise wurden im Jahr 2019 die Prozedur „ Linsenkernverflüssigung [Phakoemulsifikation] über sklero -kornealen Zugang“ in Frankreich bei 96 % der Fälle und in Österreich bei 88 % der Fälle ambulant durchgeführt.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.44" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.44" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.44" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.44" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1375,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.45">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die systematische Literaturrecherche ergab 2.508 Einträge. Nach Duplikatbereinigung wurden 1.902 gescreent, 261 nach Title-Abstract-Screening eingeschlossen und 57 nach Volltext-Screening ausgewertet.</p>
+  
   <blockquote>„„Insgesamt wurden in der systematischen Literaturrecherche 2.508 Einträge identifiziert [...]. Nach der Bereinigung um Duplikate wurden die verbleibenden 1.902 Einträge gescreent [...]. Das Title-Abstract Screening ergab 261 eingeschlossene Einträge. Nach Abschluss des Volltext- Screenings verblieben 57 Einträge für die Auswertung.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.45" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.45" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.45" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.45" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1394,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.46">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von 39 angeschriebenen internationalen Expert:innen aus 19 Ländern nahmen zwölf aus 10 Ländern an der Befragung teil. In die Ergebnisse von AP1 gingen insgesamt 12 Länder ein.</p>
+  
   <blockquote>„„Insgesamt wurden 39 Expert:innen aus 19 Ländern angeschrieben. Zw ölf Expert:innen aus den folgenden 10 Ländern haben an der Befragung teilgenommen“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.46" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.46" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.46" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.46" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1413,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.47">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für AP2 übermittelten mehr als 30 Krankenkassen Daten von über 7 Mio. Versicherten.</p>
+  
   <blockquote>„„Insgesamt wurden Daten von mehr als 30 Krankenkassen mit über 7 Mio. Versicherten übermittelt.“ – Bericht, S. 48" <span class="s">S. 48</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.47" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.47" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.47" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.47" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1432,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.48">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Angabe der Projektnehmer ist das Konzept bei der Schaffung des § 115f SGB V in die Regelversorgung eingegangen.</p>
+  
   <blockquote>„„Das vorgelegte Konzept zur einheitlichen, sektorengleichen Vergütung hat bei der Schaffung des § 115f SGB V bereits seinen Eingang in die deutsche Regelversorgung gefunden.“ – Bericht, S. 50" <span class="s">S. 50</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.48" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.48" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.48" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.48" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1451,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für Leistungen außerhalb von Abschnitt 1 des AOP-Katalogs ist der OPS-Code vertragsärztlich nicht verpflichtend, die Angaben sind daher unvollständig. Die Hauptanalysen beschränken sich deshalb auf Abschnitt 1. Die Detailanalysen, die auch andere OPS einbeziehen, erlauben vertragsärztlich kein vollständiges Bild.</p>
+  
   <blockquote>„„Leistungen außerhalb des Abschnittes 1 werden im vertragsärztlichen Bereich ohne verpflichtende Angabe des OPS -Codes abgerechnet, sodass für diese Leistungen nur unvollständige Angaben vorliegen.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1470,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Rücklaufquote der Vertragsärzt:innen ließ sich nicht berechnen, weil unbekannt ist, wie viele Ärzt:innen die Berufsverbände eingeladen hatten.</p>
+  
   <blockquote>„„Bei den Vertragsärzt:innen war es hingegen nicht möglich, die Rücklaufquote zu berechnen, da keine Informationen darüber vorliegen, wie viele Ärzt :innen von den Berufsverbänden zur Teilnahme an der Befragung eingeladen wurden.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1489,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei den niedergelassenen Ärzt:innen beteiligten sich ausgewählte Fachgruppen besonders stark: Rund 50 % gehörten zur Chirurgie und Orthopädie. Die Projektnehmer hätten sich insgesamt eine größere Beteiligung gewünscht.</p>
+  
   <blockquote>„„Gleichzeitig wäre eine noch größere Beteiligung der für die Befragung angeschriebenen Stellen wünschenswert gewesen. Zudem haben sich bei den niedergelassenen Ärzt:innen ausgewählte Fachgruppen besonders stark beteiligt. Rund 50% der teilnehmenden Ärzt:innen gehörten der Fachgruppe Chirurgie und Ortho pädie an.“ – Bericht, S. 49" <span class="s">S. 49</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1508,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei der Koronarintervention antworteten nur wenige Kardiolog:innen und keine Radiolog:innen. Die genannten Gründe beziehen sich daher möglicherweise eher auf die Fachgruppe als auf das Verfahren.</p>
+  
   <blockquote>„„Unter den antwortenden Ärzt:innen waren nur wenige Kardiolog:innen und keine Radiolog:innen, sodass sich die Gründe ggfs. eher auf die Fachgruppenzugehörigkeit der Ärzt:innen als auf das Verfahren beziehen.“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1527,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Zusammensetzung des Krankenkassen-Rücklaufs ist wegen der strikt anonymen Befragung unbekannt.</p>
+  
   <blockquote>„„Einzelheiten zur Zusammensetzung des Rücklaufs sind infolge der strikt anonymen Befragung nicht bekannt.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1546,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Fragebögen wurden nur innerhalb des Konsortiums und durch eingebundene externe Fachleute vorab getestet.</p>
+  
   <blockquote>„„Ein Prätest fand nur innerhalb des Konsortiums und durch die eingebundenen externen Fachleute statt.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1565,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen möglicherweise unterschiedlicher Versichertenkollektive sind Abweichungen der BKK-Daten von der Grundgesamtheit aller GKV-Versicherten nicht grundsätzlich ausgeschlossen. Die Projektnehmer verweisen auf die Übereinstimmung mit Daten anderer Kassen.</p>
+  
   <blockquote>„„Abweichungen zur Grundgesamtheit aller gesetzlichen Krankenkassen können aufgrund ggf. unterschiedlicher Versichertenkollektive nicht grundsätzlich ausgeschlossen werden.“ – Bericht, S. 48" <span class="s">S. 48</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1584,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Etablierte Risikoadjustierungsmethoden (Elixhauser, Charlson) wurden für die Krankenhausmortalität entwickelt. Diese ist für sektorengleiche Leistungen in der Regel kein geeigneter Vergleichsparameter; deshalb wurde ein eigener Risikowert gebildet.</p>
+  
   <blockquote>„„Solche klassischen Methoden der Risikoadjustierung, wie auch verschiedene Varianten des Charlson -Index, wurden allerdings mit Bezug auf die krankenhausinterne Mortalität der Patient: innen entwickelt. Für se ktorengleiche Leistungen stellt die Mortalität aber in der Regel keinen geeigneten Vergleichsparameter dar.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1603,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Elixhauser-Score kann ungenau sein, etwa weil Risikofaktoren infolge der DRG-Abrechnungsbestimmungen nicht kodiert werden.</p>
+  
   <blockquote>„„Gegebenenfalls kann es zu Ungenauigkeiten kommen, beispielsweise durch die Nicht- Kodierung von Risikofaktoren, die u. a. den Abrechnungsbestimmungen des DRG -Systems geschuldet sein können.“ – Bericht, S. 48" <span class="s">S. 48</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1622,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ein Vergleich auf Fallbasis war nicht möglich: Vertragsärztlich wird der Fall quartalsweise definiert, im Krankenhaus von Aufnahme bis Entlassung.</p>
+  
   <blockquote>„„Ein Vergleich auf Fallbasis schließt sich aus, da sich die Definition im vertragsärztlichen Bereich (quartalsweise) und im Krankenhaus (Aufnahme bis Entlassung) wesentlich unterscheidet.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1641,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Distanzen zwischen Wohnort und Behandlungsort beruhen auf Postleitzahlen und sind nur Approximationen, die tendenziell unterschätzt werden. Für Krankenhausverbünde liegt meist nur das Institutionskennzeichen des Verbundes vor.</p>
+  
   <blockquote>„„Tendenziell werden die Abstände durch die Beschränkung auf Postleitzahlen unterschätzt. [...] Die dargestellten Distanzen stellen daher nur eine Approximation der Versorgungswege dar.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1660,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei Notfalleinweisungen muss die Hauptdiagnose nicht mit der Einweisungsdiagnose übereinstimmen; die Dringlichkeit ist über die Hauptdiagnose daher nicht immer erkennbar. Geburtshilflichen Diagnosen wurde aus methodischen Gründen kein Dringlichkeitswert zugewiesen.</p>
+  
   <blockquote>„„Bei Notfalleinweisungen muss die Hauptdiagnose nicht mit der Einweisungs - oder Aufnahmediagnose übereinstimmen, so dass nicht imme r klar ist, ob die Dringlichkeit tatsächlich über die Hauptdiagnose erkannt werden kann.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1679,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">OPS, die im AOP-Katalog je nach Kontext Kategorie 1 oder 2 zugeordnet sind (z. B. Kataraktoperationen), wurden für die Analysen der Kategorie 2 zugeordnet. Das beeinflusst den vertragsärztlichen Anteil in Kategorie 2.</p>
+  
   <blockquote>„„OPS , die im AOP -Katalog je nach Behandlungskontext Kategorie 1 oder 2 zugeordnet werden, für die Analysen der Kategorie 2 zugeordnet wurden (z. B. Kataraktoperationen, 5-144.5).“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1698,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Längere Verweildauer geht tendenziell mit höheren Morbiditätswerten einher, aber nicht durchgehend.</p>
+  
   <blockquote>„„Für viele gehen mit längerer Verweildauer tendenziell auch höhere Morbiditätswerte einher. Dieser Effekt findet sich jedoch nicht durchgehend.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1717,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Schätzung von rund 10 Mrd. Euro überschätzt nach dem Bericht das aktuelle Ambulantisierungspotenzial, weil Gruppierungsrelevanz und weitere Faktoren nicht berücksichtigt sind.</p>
+  
   <blockquote>„„Dieser Ansatz überschätzt, i n Bezug auf den aktuellen AOP -Katalog, das aktuelle Ambulantisierungspotenzial da weder die G ruppierungsrelevanz der Prozeduren noch weitere Faktoren berücksichtigt werden.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1736,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Ländervergleich wird erschwert, weil hinter gleichen Begriffen unterschiedliche rechtliche Rahmenbedingungen und Vergütungsmechanismen stehen.</p>
+  
   <blockquote>„„Der Vergleich zwischen Ländern ist dadurch erschwert, wenn die rechtlichen Rahmenbedingungen und Vergütungsmechanismen, die hinter den einzelnen Begrifflichkeiten stecken, nicht mitgedacht werden.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1755,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen unterschiedlicher Gesundheitssysteme lassen sich Systemelemente anderer Länder nicht direkt übertragen, sondern müssen in den deutschen Kontext übersetzt werden.</p>
+  
   <blockquote>„„Systemelemente anderer Länder nicht direkt übertragen, sondern in den deutschen Kontext übersetzt werden müssen.“ – Bericht, S. 47" <span class="s">S. 47</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1774,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Möglicherweise fanden Länder wegen Sprachbarrieren keinen Eingang in den Vergleich. Eine saubere Erfassung hatte Vorrang vor einer möglichst großen Länderauswahl.</p>
+  
   <blockquote>„„Hierbei ist es möglich, dass ausgewählte Länder aus Gründen der Sprachbarriere keinen Eingang gefunden haben. In diesem Projekt wurden der sauberen Erfassung und Darstellung von Ländern Vorrang über eine möglichst große Auswahl an Ländern gegeben.“ – Bericht, S. 47" <span class="s">S. 47</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1793,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.21">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für Österreich wurde der Mindestanteil ambulanter Erbringung auf 20 % festgesetzt, um eine ausreichende Zahl an Prozeduren zu erhalten.</p>
+  
   <blockquote>„„Für Österreich galt ein Mindestanteil von 20%, um eine ausreichende Zahl an Prozeduren zu erreichen.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1795,12 +1812,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.22">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Publikationen zu Vergütungssystemen im asiatisch-pazifischen Raum wurden nicht weiter verwertet.</p>
+  
   <blockquote>„„Die Publikationen zu Vergütungssystemen im asiatisch-pazifischen Raum wurden nicht weiter verwertet.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1814,12 +1831,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.23">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Konzept wurde in AP4 in zwei Projekttreffen der Projektpartner entwickelt, ohne externe Teilnehmer.</p>
+  
   <blockquote>„„Hierzu wurden zwei Projekttreffen unter Beteiligung aller Projektpartner durchgeführt, externe Teilnehmer waren zu keiner Veranstaltung geladen.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1833,12 +1850,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.24">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Vorschlag nimmt nicht zu allen Unteraspekten vollumfänglich Stellung. Bedarfsplanung, Weiterbildung und Qualitätssicherung wurden angesprochen, aber nicht ausführlich erörtert.</p>
+  
   <blockquote>„„Fragen der Bedarfsplanung, der Weiterbildung des medizinischen Personals, sowie der Qualitätssicherung wurden beispielsweise adressiert, aber nicht ausführlich erörtert.“ – Bericht, S. 49" <span class="s">S. 49</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1852,12 +1869,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.25">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das System zur Einstufung in medizinische Komplexitätsstufen muss im Laufe der Anwendung weiterentwickelt werden.</p>
+  
   <blockquote>„„Das System zur Einstufung in medizinische Komplexitätsstufen muss im Laufe der Anwendung weiterentwickelt werden, um die Einstufung und Steuerung der Patientinnen und Patienten in die richtige Versorgungsebene zu präzisieren.“ – Bericht, S. 47" <span class="s">S. 47</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1871,12 +1888,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.26">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Abschnitt 1 des AOP-Katalogs umfasst über 2.800 OPS-Kodes. Ihre gleichzeitige Überführung könnte eine schnelle Einführung behindern, daher ist eine sukzessive Überführung vorgesehen.</p>
+  
   <blockquote>„„Im Abschnitt 1 AOP -Katalog finden sich de rzeit über 2.800 OPS -Kodes. Eine gleichzeitige Überführung aller dieser OPS-Kodes in ein neues System könnte einer schnellen Einführung dieses Systems behindern.“ – Bericht, S. 44" <span class="s">S. 44</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1890,12 +1907,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.27">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Im neuen § 115f SGB V sind die Identifizierung sektorengleicher Leistungsgruppen und die genaue Kalkulation der Pauschalen noch offen. Sie sollen durch die Selbstverwaltung bzw. das BMG ausgestaltet werden.</p>
+  
   <blockquote>„„Der neu geschaffene Paragraph weis t an einigen Stellen noch offene Punkte auf [...]. Dazu zählen die Identifizierung von Leistungsbereichen, die sich für eine sektorengleiche Leistungserbringung eignen (sektorengleiche Leistungsgruppen) , sowie die genaue Kalkulation der Vergütung (sektorengleiche Pauschalen).“ – Bericht, S. 50" <span class="s">S. 50</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1940,28 +1957,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 329, "akronym": "ESV", "kennung": "0qbc80KxRXKZ", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Projektergebnisse zur Information an die AOP-Vertragsparteien (Deutsche Krankenhausgesellschaft, Kassenärztliche Bundesvereinigung, GKV-Spitzenverband) und an das Bundesministerium für Gesundheit weiter. Im Mittelpunkt stehen die Erkenntnisse zur Kalkulation schweregraddifferenzierter Fallpauschalen für sektorengleiche Leistungen nach § 115f SGB V. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Nach Auffassung des Ausschusses hat das Projekt erfolgreich ein Konzept für eine einheitliche sektorengleiche Vergütung entwickelt. Grundlage waren eine Literaturrecherche, Fallstudien aus zwölf OECD-Ländern, Expertenbefragungen und eine Analyse der Routinedaten von 43 Betriebskrankenkassen. Die Methoden hält der Ausschuss für grundsätzlich angemessen. Er verweist aber auf geringe Teilnahmequoten bei den Befragungen der Leistungserbringenden und auf eine unsystematische Konzeption ohne strukturiertes Konsensverfahren, sodass Verzerrungen möglich sind. Inzwischen wurde mit § 115f SGB V und der Hybrid-DRG-Verordnung eine sektorengleiche Vergütung für einen Startkatalog in die Regelversorgung eingeführt. Deshalb werden die Ergebnisse den für Evaluation und Weiterentwicklung zuständigen Vertragsparteien und dem BMG nur zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine sektorengleiche Vergütung wurde mit § 115f SGB V (Krankenhauspflegeentlastungsgesetz) und der Hybrid-DRG-Verordnung ab 1. Januar 2024 für einen Startkatalog bereits in die Regelversorgung eingeführt. Die Projektergebnisse sollen in die für 2024 vorgesehene Evaluation und in die Weiterentwicklung des Leistungskatalogs einfließen. Sie betreffen auch die ab 2026 vorgesehene Kalkulation auf Grundlage empirischer Kostendaten."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Geringe Teilnahmequoten bei den Befragungen der Leistungserbringenden"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Kein strukturiertes Konsensverfahren, unsystematische Vorgehensweise bei der Konzeption mit möglichen Verzerrungen"}, {"stelle": "befund.0", "art": "befund", "unser": "Konzept für eine einheitliche sektorengleiche Vergütung erfolgreich entwickelt"}, {"stelle": "befund.1", "art": "befund", "unser": "Fallstudien zeigen Ambulantisierungsbestrebungen in allen untersuchten OECD-Ländern"}, {"stelle": "befund.2", "art": "befund", "unser": "Status quo der sektorengleichen Leistungserbringung in Deutschland für 2019 anhand von Routinedaten erfasst"}, {"stelle": "befund.3", "art": "befund", "unser": "Befragung zeigt, dass alle Beteiligten eine Stärkung der sektorengleichen Versorgung anstreben"}, {"stelle": "befund.4", "art": "befund", "unser": "Vorschlag für schweregraddifferenzierte Fallpauschalen unabhängig vom Behandlungsort"}, {"stelle": "befund.5", "art": "befund", "unser": "Methoden vom Ausschuss als grundsätzlich angemessen bewertet"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben „Einheitliche, Sektorengleiche Vergütung“ (ESV) hat ein Vergütungskonzept für Leistungen entwickelt, die ambulant wie stationär erbracht werden können. Grundlage waren vier Arbeitspakete: ein internationaler Vergleich von 12 Ländern mit Literaturrecherche und Expertenbefragung (AP1), eine Analyse von BKK-Abrechnungsdaten von über 7 Mio. Versicherten, ergänzt um § 21-KHEntgG- und vertragsärztliche Daten (AP2), eine Befragung von 166 Krankenhäusern, 709 auswertbaren Vertragsärzt:innen und 32 Krankenkassen (AP3) sowie die Konzeptentwicklung (AP4). Im Jahr 2019 entfielen Leistungen aus Abschnitt 1 des AOP-Katalogs zu je etwa 40 % auf die stationäre und die vertragsärztliche Versorgung; rund ein Fünftel wurde ambulant im Krankenhaus erbracht. Nach den Abrechnungsdaten unterscheidet sich die Morbidität von Kurzliegern (≤ 3 Tage) nicht grundsätzlich von der ambulant Behandelter; Unterschiede zeigten sich erst bei längeren Verweildauern. Nahezu alle befragten Leistungserbringer halten ambulante Operationen derzeit für nicht kostendeckend finanziert. Das Konzept sieht Fallpauschalen vor, die in zwei Schweregradstufen differenziert sind und unabhängig vom Behandlungsort gelten; Fälle ab PCCL 4 verbleiben im DRG-System. Nach Angabe der Projektnehmer ist das Konzept in § 115f SGB V eingegangen. Die Aussagekraft hängt an mehreren Punkten: Abrechnungsdaten bilden medizinische und soziale Aufnahmegründe nur teilweise ab, vertragsärztliche Leistungen können wegen unvollständiger OPS-Kodierung unterschätzt sein, die Rücklaufquote der Krankenhäuser lag bei 13,2 %, und das Konzept selbst wurde im Bericht nicht erprobt."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Das entwickelte Konzept vergütet sektorengleiche Leistungen über Fallpauschalen, die nach dem medizinischen Schweregrad in zwei Stufen differenziert sind und unabhängig vom Behandlungsort gelten. Kalkuliert wird baukastenorientiert, zunächst auf dem um stationsspezifische Kosten bereinigten InEK-Kostengerüst, mittelfristig auf einer sektorengleichen Datengrundlage."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Im Status quo 2019 entfielen Leistungen aus Abschnitt 1 des AOP-Katalogs zu etwa gleichen Teilen (je rund 40 %) auf die (voll-)stationäre Versorgung im Krankenhaus und auf die vertragsärztliche Versorgung. Ambulant im Krankenhaus wurde etwa ein Fünftel der Fälle versorgt."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Bei Kurzliegern (≤ 3 Tage) zeigen die BKK-Daten keine grundsätzliche Morbiditätsdifferenz zu ambulant Behandelten. Die Morbiditätsunterschiede zwischen vollstationär und ambulant Behandelten stammen vornehmlich aus Fällen mit längerer Verweildauer."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Gruppierungsrelevante Kurzlieger-Fälle (Verweildauer bis 3 Tage, AOP-Leistung als Hauptleistung) verursachen über 4 Mrd. Euro stationäre Ausgaben; zusammen mit den ambulanten Ausgaben ergeben sich rund 7 Mrd. Euro. Die durchschnittliche Vergütung je Fall liegt ambulant bei etwa einem Viertel der vollstationären Kurzlieger-Vergütung."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Nahezu 100 % der befragten Vertragsärzt:innen und Krankenhäuser geben an, dass ambulante Operationen derzeit nicht kostendeckend finanziert sind (laut Bericht 97 % bzw. 99 %). Krankenkassen und Leistungserbringer sehen gemeinsam die Personalknappheit als Herausforderung. Etwa zwei Drittel der Vertragsärzt:innen halten die Hygieneanforderungen für zu umfassend; Krankenhäuser und Krankenkassen verneinen dies mehrheitlich."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Die zitierten Studien aus England und Frankreich schließen übereinstimmend auf tendenziell positive Effekte finanzieller Anreize auf die Verlagerung in die Tageschirurgie. Die Effekte hingen von Prozedurart, Planbarkeit, Höhe des Anreizes und Trägerschaft der Krankenhäuser ab."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Abrechnungsdaten bilden die Leistungserbringung und patientenindividuelle Einflussfaktoren nur ausschnittweise ab. Daten aus Patientenakten standen nicht zur Verfügung, etwa Verlaufsdaten, nicht kodierbare Diagnosen oder soziale Aufnahmegründe. Medizinische oder soziale Gründe für eine stationäre Aufnahme und damit Morbiditätsunterschiede, die die Daten nicht zeigen, lassen sich daher nicht ausschließen."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Im vertragsärztlichen Sektor kann das Leistungsvolumen unterschätzt sein, weil OPS-Codes dort nicht durchgehend kodiert werden müssen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Rücklaufquote der Krankenhausbefragung betrug 13,2 %. Öffentliche Krankenhäuser waren über-, private unterrepräsentiert; aus dem Saarland nahm kein Krankenhaus teil."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zur Fallzahl der Vertragsärzt:innen: S. 16 und S. 49 nennen 709 in die Analyse eingegangene Antworten. Der Abschnitt S. 20–42 gibt für die Befragung dagegen n=703 Vertragsärzt:innen an."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Gründe für den geringen Ambulantisierungsgrad: S. 39 nennt als vorrangige Gründe medizinische Aspekte wie den Gesundheitszustand der Patient:innen. Laut Tabelle auf S. 43 war bei den Vertragsärzt:innen dagegen „Vergütung nicht kostendeckend“ bei fünf von sechs Eingriffen der häufigste Grund (43–52 % gegenüber 27–39 % für den Gesundheitszustand). Nur bei der Koronarintervention lag der Gesundheitszustand vorn (41 % gegenüber 23 %). Ob S. 39 sich auf eine andere Befragtengruppe bezieht, geht aus den Abschnitten nicht hervor."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Zur Morbidität: Die Zusammenfassung (S. 6) bezeichnet fallbezogene Parameter wie die Morbidität als zwischen den Behandlungsorten „ähnlich ausgeprägt“. S. 24 berichtet dagegen im Querschnitt aller OPS eine höhere Morbidität vollstationär Behandelter (Median-Risikowert 1,28 gegenüber 1,12 bzw. 0,99). Diese führt der Bericht auf S. 26 vornehmlich auf Fälle mit längerer Verweildauer zurück."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Zur Verteilung 2019: S. 6 und S. 24 nennen je etwa 40 % stationär und vertragsärztlich sowie ca. ein Fünftel ambulant im Krankenhaus. Der Abschnitt S. 20–42 gibt für dieselbe Stichprobe 39 %, 44 % und 17 % an."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Zur Datengüte: Die Projektnehmer schreiben, Validität und Reliabilität seien „sichergestellt“ (S. 48). Im selben Abschnitt räumen sie nicht ausschließbare Abweichungen zur GKV-Grundgesamtheit, eine mögliche Unterschätzung des vertragsärztlichen Volumens und fehlende Daten aus Patientenakten ein."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Fälle ohne äußerst schwere Komplikationen oder Komorbiditäten, in der Regel Kurzlieger, sollen über sektorengleiche Pauschalen (SP) vergütet werden, gleich ob ambulant oder stationär erbracht. Schwere Fälle verbleiben im DRG-System."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Fälle ab PCCL 4 und andere komplexe Fallkonstellationen werden nicht in die sektorengleichen Leistungsgruppen (SLG) aufgenommen. Sie werden weiter vollstationär versorgt und über eine DRG abgerechnet."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Für die Einführung ist eine gesetzlich festgelegte Übergangszeit von etwa drei Jahren vorgesehen. In dieser Zeit soll eine gemeinsame sektorengleiche Datengrundlage entstehen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die BKK-Stichprobe erfasst für 2019 rund 550.000 Fälle mit einem OPS aus Abschnitt 1 des AOP-Katalogs. Sie verteilen sich laut Bericht zu 39 % auf die stationäre Versorgung, zu 44 % auf die vertragsärztliche Versorgung und zu 17 % auf die ambulante Versorgung im Krankenhaus."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Über alle betrachteten OPS hinweg ist die Morbidität vollstationär Behandelter höher als die ambulant Behandelter, aber nicht zwangsläufig bei jedem einzelnen OPS. Der Median-Risikowert liegt laut Bericht bei 1,28 (stationär), 1,12 (vertragsärztlich) und 0,99 (ambulant im Krankenhaus). Die Falldringlichkeit ist marginal höher und wird insgesamt als sehr gering eingeschätzt."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Nach den Abrechnungsdaten sind fallbezogene Parameter wie die Morbidität zwischen den Behandlungsorten ähnlich ausgeprägt."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Behandlungskontexte unterscheiden sich je Prozedur: Die Kapsulotomie der Linse wird fast ausschließlich vertragsärztlich erbracht, Hernienoperationen fast ausschließlich stationär im Krankenhaus. Die Risikowerte unterscheiden sich zwischen den Prozeduren stärker als zwischen den Sektoren."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die 30 häufigsten OPS-5-Steller (von über 700) stehen für 50 % aller Abschnitt-1-Fälle."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Leistungserbringung ist je nach Leistung unterschiedlich verteilt. Der vertragsärztliche Sektor ist laut Bericht stärker beteiligt als allgemein angenommen, sein Anteil variiert aber je nach Leistung. Den ambulanten Anteil bezeichnet der Bericht je nach Leistung als stark ausbaufähig."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Die jährlichen Ausgaben für ambulantes Operieren durch Krankenhäuser und Vertragsärzt:innen betragen nach KJ 1-Statistik etwa 2,7 Mrd. Euro. Werden alle vollstationären Fälle mit AOP-Leistungen einbezogen (§ 21-Daten), ergeben sich laut Bericht rund 10 Mrd. Euro."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Würde der AOP-Katalog gemäß dem Gutachten nach § 115b SGB V ergänzt, würde sich das potenziell ambulantisierbare stationäre Fallvolumen annähernd verdoppeln."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Alle befragten Beteiligten wünschen eine Stärkung der sektorengleichen Versorgung. Zu Hemmnissen und künftiger Ausgestaltung gehen die Vorstellungen teilweise auseinander."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Krankenkassen nennen neben personellen Engpässen eher die lukrativere stationäre Vergütung als Hemmnis. Leistungserbringer nennen vor allem nicht kostendeckende Vergütung und personelle Engpässe."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Zur Vergütungssystematik votieren die Krankenkassen am deutlichsten für eine pauschalierte Vergütung. Die Leistungserbringer tendieren zu den jeweils vertrauten Systematiken."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Als motivierende Gründe für ambulantes Operieren nennen Krankenhäuser und Vertragsärzt:innen vor allem die Betreuung aus einer Hand (71 % bzw. 82 %) und die schnelle Rückkehr ins häusliche Umfeld (73 % bzw. 70 %). Bei den Krankenkassen steht die schnelle Rückkehr an erster Stelle (94 %), gefolgt von kostengünstigerer Versorgung (91 %)."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Für eine Ausweitung des ambulanten Operierens müssten etwa 25 % der Vertragsärzt:innen und 47 % der Krankenhäuser ihre Infrastruktur erweitern."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Unter den Krankenkassen fand keine Option finanzieller Anreize eine klare Mehrheit. Starken finanziellen Anreizen stehen sie besonders ablehnend gegenüber."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Für eine Abrechnung über eine zentrale Stelle sprechen sich 90 % der Vertragsärzt:innen und 60 % der Krankenhäuser aus. Die Krankenkassen stimmen zu annähernd gleichen Teilen für zentrale und dezentrale Lösungen."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Für die direkte Abrechnung im Anschluss an die Leistung plädieren etwa die Hälfte der Krankenkassen und Krankenhäuser, aber nur 20 % der Vertragsärzt:innen. 40 % der Vertragsärzt:innen befürworten die Quartalsabrechnung."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Eine sektorengleiche Qualitätssicherung halten etwa 85 % der Krankenkassen und Krankenhäuser sowie 57 % der Vertragsärzt:innen für notwendig."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Für Leistungen, die im Ausland häufig ambulant erbracht werden, hierzulande aber nicht oder nur eingeschränkt ambulant abrechenbar sind, sehen die Leistungserbringer überwiegend ein großes Ambulantisierungspotenzial. Ausnahmen sind die Cholezystektomie (5-511.1; laut Bericht 43 % Ja bei Krankenhäusern) und der Herzkathetereingriff mit Stent (8-837.m; 35 % Ja), vor allem wegen eines höheren Komplikationsrisikos."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Als Gründe für den bislang geringen Ambulantisierungsgrad bereits ambulant abrechenbarer Leistungen wurden vorrangig medizinische Aspekte wie der Gesundheitszustand der Patient:innen genannt."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Die Vertragsärzt:innen wurden zu sechs ambulant abrechenbaren, aber überwiegend nicht ambulant durchgeführten Eingriffen befragt (Mehrfachantworten möglich). „Vergütung nicht kostendeckend“ nannten 46 % bei der Tracheobronchoskopie (1-620), 23 % bei der Koronarintervention mit Stent (8-837.m), 50 % bei der Kreuzbandplastik (5-813.4), 52 % beim Leistenhernienverschluss (5-530.3), 43 % bei der laparoskopischen Cholezystektomie (5-511.1) und 45 % bei der brusterhaltenden Mammaexzision (5-870.a)."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Den Gesundheitszustand der Patient:innen nannten die Vertragsärzt:innen bei denselben sechs Eingriffen zu 28 %, 41 %, 27 %, 39 %, 27 % und 31 %. Bei der Koronarintervention (8-837.m) war dies mit 41 % der häufigste Grund."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Ein höheres Komplikationsrisiko nannten die Vertragsärzt:innen bei der Koronarintervention zu 28 % und bei der laparoskopischen Cholezystektomie zu 26 %, bei den übrigen vier Eingriffen zu 10–13 %."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Eine entgegenstehende Empfehlung einer medizinischen Fachgesellschaft nannten die Vertragsärzt:innen bei den sechs Eingriffen zu 3–11 %, am häufigsten bei der Cholezystektomie (11 %)."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "An der Krankenkassenbefragung beteiligte sich etwa ein Drittel aller gesetzlichen Krankenkassen. Eine Unterteilung nach der Zahl finanzierter ambulanter Operationen je Quartal ergab keine signifikanten Unterschiede im Antwortverhalten."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Subgruppenauswertungen, etwa nach Krankenhausgröße oder Art der vertragsärztlichen Leistungserbringung (z. B. MVZ), ergaben laut Bericht keine wesentlichen Erkenntnisse."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "An der Befragung nahmen 166 Krankenhäuser, 776 Vertragsärzt:innen und 32 Krankenkassen teil. Nach Ausschluss der 67 Ärzt:innen, die nicht ambulant operieren, gingen 709 vertragsärztliche Antworten in die Analyse ein."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Gaughan et al. (2019) fanden positive Effekte der englischen Best Practice Tariffs bei 14 von 32 Prozedurenarten, teilweise abhängig von Planbarkeit und Preishöhe."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Nach Cazenave-Lacroutz und Yilmaz (2019) führte die Einführung des Einheitstarifs in Frankreich vor allem in öffentlichen Krankenhäusern zu einer signifikanten Steigerung tageschirurgischer Prozeduren. Eine Liste ambulant erbringbarer Prozeduren verstärkte diesen Effekt."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Unter den 57 ausgewerteten Publikationen waren nur zwei Wirksamkeitsstudien zu finanziellen Anreizen. Zwei weitere aus Hand- und Expertenrecherche kamen hinzu, insgesamt wurden also vier Studien ausgewertet."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "In den englischen Best Practice Tariffs wurde die ambulante Leistung zuletzt rund 10–11 % höher vergütet als die stationäre. Die Höhervergütung wurde eingestellt, sobald eine definierte Zielgröße erreicht war."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "In 5 Ländern (Österreich, Dänemark, England, Frankreich, Norwegen) wird die stationäre und die taggleiche bzw. ambulante Leistung gleich vergütet, berechnet auf Basis gepoolter Durchschnittskosten."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "In 8 der untersuchten Länder ist die Vergütung sektorengleicher Leistungen in das Fallpauschalensystem integriert."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "England ist das einzige bekannte Land, in dem potenziell alle Krankenhausleistungen ambulant erbringbar sind. In den übrigen untersuchten Ländern dürfen nur vorab definierte Leistungen ambulant erbracht werden."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Österreich, Deutschland und die Schweiz bilden nach den OECD-Statistiken die Schlusslichter bei der Verlagerung sektorengleicher Leistungen in den ambulanten Bereich."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Die 541 in England (247), Frankreich (214) und Österreich (80) am häufigsten ambulant erbrachten Prozeduren wurden in 1.483 deutsche OPS-Codes übersetzt."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "Beispiel: Die Phakoemulsifikation wurde 2019 in Frankreich bei 96 % und in Österreich bei 88 % der Fälle ambulant durchgeführt. In England wurde eine Linsenprozedur bei aphakem Auge bei 99 % der Fälle ambulant durchgeführt."}, {"stelle": "bericht_befund.45", "art": "aussage", "unser": "Die systematische Literaturrecherche ergab 2.508 Einträge. Nach Duplikatbereinigung wurden 1.902 gescreent, 261 nach Title-Abstract-Screening eingeschlossen und 57 nach Volltext-Screening ausgewertet."}, {"stelle": "bericht_befund.46", "art": "aussage", "unser": "Von 39 angeschriebenen internationalen Expert:innen aus 19 Ländern nahmen zwölf aus 10 Ländern an der Befragung teil. In die Ergebnisse von AP1 gingen insgesamt 12 Länder ein."}, {"stelle": "bericht_befund.47", "art": "aussage", "unser": "Für AP2 übermittelten mehr als 30 Krankenkassen Daten von über 7 Mio. Versicherten."}, {"stelle": "bericht_befund.48", "art": "aussage", "unser": "Nach Angabe der Projektnehmer ist das Konzept bei der Schaffung des § 115f SGB V in die Regelversorgung eingegangen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Für Leistungen außerhalb von Abschnitt 1 des AOP-Katalogs ist der OPS-Code vertragsärztlich nicht verpflichtend, die Angaben sind daher unvollständig. Die Hauptanalysen beschränken sich deshalb auf Abschnitt 1. Die Detailanalysen, die auch andere OPS einbeziehen, erlauben vertragsärztlich kein vollständiges Bild."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Rücklaufquote der Vertragsärzt:innen ließ sich nicht berechnen, weil unbekannt ist, wie viele Ärzt:innen die Berufsverbände eingeladen hatten."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Bei den niedergelassenen Ärzt:innen beteiligten sich ausgewählte Fachgruppen besonders stark: Rund 50 % gehörten zur Chirurgie und Orthopädie. Die Projektnehmer hätten sich insgesamt eine größere Beteiligung gewünscht."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Bei der Koronarintervention antworteten nur wenige Kardiolog:innen und keine Radiolog:innen. Die genannten Gründe beziehen sich daher möglicherweise eher auf die Fachgruppe als auf das Verfahren."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Zusammensetzung des Krankenkassen-Rücklaufs ist wegen der strikt anonymen Befragung unbekannt."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Fragebögen wurden nur innerhalb des Konsortiums und durch eingebundene externe Fachleute vorab getestet."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Wegen möglicherweise unterschiedlicher Versichertenkollektive sind Abweichungen der BKK-Daten von der Grundgesamtheit aller GKV-Versicherten nicht grundsätzlich ausgeschlossen. Die Projektnehmer verweisen auf die Übereinstimmung mit Daten anderer Kassen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Etablierte Risikoadjustierungsmethoden (Elixhauser, Charlson) wurden für die Krankenhausmortalität entwickelt. Diese ist für sektorengleiche Leistungen in der Regel kein geeigneter Vergleichsparameter; deshalb wurde ein eigener Risikowert gebildet."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Der Elixhauser-Score kann ungenau sein, etwa weil Risikofaktoren infolge der DRG-Abrechnungsbestimmungen nicht kodiert werden."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Ein Vergleich auf Fallbasis war nicht möglich: Vertragsärztlich wird der Fall quartalsweise definiert, im Krankenhaus von Aufnahme bis Entlassung."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Distanzen zwischen Wohnort und Behandlungsort beruhen auf Postleitzahlen und sind nur Approximationen, die tendenziell unterschätzt werden. Für Krankenhausverbünde liegt meist nur das Institutionskennzeichen des Verbundes vor."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Bei Notfalleinweisungen muss die Hauptdiagnose nicht mit der Einweisungsdiagnose übereinstimmen; die Dringlichkeit ist über die Hauptdiagnose daher nicht immer erkennbar. Geburtshilflichen Diagnosen wurde aus methodischen Gründen kein Dringlichkeitswert zugewiesen."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "OPS, die im AOP-Katalog je nach Kontext Kategorie 1 oder 2 zugeordnet sind (z. B. Kataraktoperationen), wurden für die Analysen der Kategorie 2 zugeordnet. Das beeinflusst den vertragsärztlichen Anteil in Kategorie 2."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Längere Verweildauer geht tendenziell mit höheren Morbiditätswerten einher, aber nicht durchgehend."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Die Schätzung von rund 10 Mrd. Euro überschätzt nach dem Bericht das aktuelle Ambulantisierungspotenzial, weil Gruppierungsrelevanz und weitere Faktoren nicht berücksichtigt sind."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Der Ländervergleich wird erschwert, weil hinter gleichen Begriffen unterschiedliche rechtliche Rahmenbedingungen und Vergütungsmechanismen stehen."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Wegen unterschiedlicher Gesundheitssysteme lassen sich Systemelemente anderer Länder nicht direkt übertragen, sondern müssen in den deutschen Kontext übersetzt werden."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Möglicherweise fanden Länder wegen Sprachbarrieren keinen Eingang in den Vergleich. Eine saubere Erfassung hatte Vorrang vor einer möglichst großen Länderauswahl."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Für Österreich wurde der Mindestanteil ambulanter Erbringung auf 20 % festgesetzt, um eine ausreichende Zahl an Prozeduren zu erhalten."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Publikationen zu Vergütungssystemen im asiatisch-pazifischen Raum wurden nicht weiter verwertet."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Das Konzept wurde in AP4 in zwei Projekttreffen der Projektpartner entwickelt, ohne externe Teilnehmer."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Der Vorschlag nimmt nicht zu allen Unteraspekten vollumfänglich Stellung. Bedarfsplanung, Weiterbildung und Qualitätssicherung wurden angesprochen, aber nicht ausführlich erörtert."}, {"stelle": "bericht_hindernis.25", "art": "aussage", "unser": "Das System zur Einstufung in medizinische Komplexitätsstufen muss im Laufe der Anwendung weiterentwickelt werden."}, {"stelle": "bericht_hindernis.26", "art": "aussage", "unser": "Abschnitt 1 des AOP-Katalogs umfasst über 2.800 OPS-Kodes. Ihre gleichzeitige Überführung könnte eine schnelle Einführung behindern, daher ist eine sukzessive Überführung vorgesehen."}, {"stelle": "bericht_hindernis.27", "art": "aussage", "unser": "Im neuen § 115f SGB V sind die Identifizierung sektorengleicher Leistungsgruppen und die genaue Kalkulation der Pauschalen noch offen. Sie sollen durch die Selbstverwaltung bzw. das BMG ausgestaltet werden."}]};
+const D = {"projekt_id": 329, "akronym": "ESV", "kennung": "0qbc80KxRXKZ", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Nach Auffassung des Ausschusses hat das Projekt erfolgreich ein Konzept für eine einheitliche sektorengleiche Vergütung entwickelt. Grundlage waren eine Literaturrecherche, Fallstudien aus zwölf OECD-Ländern, Expertenbefragungen und eine Analyse der Routinedaten von 43 Betriebskrankenkassen. Die Methoden hält der Ausschuss für grundsätzlich angemessen. Er verweist aber auf geringe Teilnahmequoten bei den Befragungen der Leistungserbringenden und auf eine unsystematische Konzeption ohne strukturiertes Konsensverfahren, sodass Verzerrungen möglich sind. Inzwischen wurde mit § 115f SGB V und der Hybrid-DRG-Verordnung eine sektorengleiche Vergütung für einen Startkatalog in die Regelversorgung eingeführt. Deshalb werden die Ergebnisse den für Evaluation und Weiterentwicklung zuständigen Vertragsparteien und dem BMG nur zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Geringe Teilnahmequoten bei den Befragungen der Leistungserbringenden"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Kein strukturiertes Konsensverfahren, unsystematische Vorgehensweise bei der Konzeption mit möglichen Verzerrungen"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben „Einheitliche, Sektorengleiche Vergütung“ (ESV) hat ein Vergütungskonzept für Leistungen entwickelt, die ambulant wie stationär erbracht werden können. Grundlage waren vier Arbeitspakete: ein internationaler Vergleich von 12 Ländern mit Literaturrecherche und Expertenbefragung (AP1), eine Analyse von BKK-Abrechnungsdaten von über 7 Mio. Versicherten, ergänzt um § 21-KHEntgG- und vertragsärztliche Daten (AP2), eine Befragung von 166 Krankenhäusern, 709 auswertbaren Vertragsärzt:innen und 32 Krankenkassen (AP3) sowie die Konzeptentwicklung (AP4). Im Jahr 2019 entfielen Leistungen aus Abschnitt 1 des AOP-Katalogs zu je etwa 40 % auf die stationäre und die vertragsärztliche Versorgung; rund ein Fünftel wurde ambulant im Krankenhaus erbracht. Nach den Abrechnungsdaten unterscheidet sich die Morbidität von Kurzliegern (≤ 3 Tage) nicht grundsätzlich von der ambulant Behandelter; Unterschiede zeigten sich erst bei längeren Verweildauern. Nahezu alle befragten Leistungserbringer halten ambulante Operationen derzeit für nicht kostendeckend finanziert. Das Konzept sieht Fallpauschalen vor, die in zwei Schweregradstufen differenziert sind und unabhängig vom Behandlungsort gelten; Fälle ab PCCL 4 verbleiben im DRG-System. Nach Angabe der Projektnehmer ist das Konzept in § 115f SGB V eingegangen. Die Aussagekraft hängt an mehreren Punkten: Abrechnungsdaten bilden medizinische und soziale Aufnahmegründe nur teilweise ab, vertragsärztliche Leistungen können wegen unvollständiger OPS-Kodierung unterschätzt sein, die Rücklaufquote der Krankenhäuser lag bei 13,2 %, und das Konzept selbst wurde im Bericht nicht erprobt."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Das entwickelte Konzept vergütet sektorengleiche Leistungen über Fallpauschalen, die nach dem medizinischen Schweregrad in zwei Stufen differenziert sind und unabhängig vom Behandlungsort gelten. Kalkuliert wird baukastenorientiert, zunächst auf dem um stationsspezifische Kosten bereinigten InEK-Kostengerüst, mittelfristig auf einer sektorengleichen Datengrundlage."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Im Status quo 2019 entfielen Leistungen aus Abschnitt 1 des AOP-Katalogs zu etwa gleichen Teilen (je rund 40 %) auf die (voll-)stationäre Versorgung im Krankenhaus und auf die vertragsärztliche Versorgung. Ambulant im Krankenhaus wurde etwa ein Fünftel der Fälle versorgt."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Bei Kurzliegern (≤ 3 Tage) zeigen die BKK-Daten keine grundsätzliche Morbiditätsdifferenz zu ambulant Behandelten. Die Morbiditätsunterschiede zwischen vollstationär und ambulant Behandelten stammen vornehmlich aus Fällen mit längerer Verweildauer."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Abrechnungsdaten bilden die Leistungserbringung und patientenindividuelle Einflussfaktoren nur ausschnittweise ab. Daten aus Patientenakten standen nicht zur Verfügung, etwa Verlaufsdaten, nicht kodierbare Diagnosen oder soziale Aufnahmegründe. Medizinische oder soziale Gründe für eine stationäre Aufnahme und damit Morbiditätsunterschiede, die die Daten nicht zeigen, lassen sich daher nicht ausschließen."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Im vertragsärztlichen Sektor kann das Leistungsvolumen unterschätzt sein, weil OPS-Codes dort nicht durchgehend kodiert werden müssen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Rücklaufquote der Krankenhausbefragung betrug 13,2 %. Öffentliche Krankenhäuser waren über-, private unterrepräsentiert; aus dem Saarland nahm kein Krankenhaus teil."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zur Fallzahl der Vertragsärzt:innen: S. 16 und S. 49 nennen 709 in die Analyse eingegangene Antworten. Der Abschnitt S. 20–42 gibt für die Befragung dagegen n=703 Vertragsärzt:innen an."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Gründe für den geringen Ambulantisierungsgrad: S. 39 nennt als vorrangige Gründe medizinische Aspekte wie den Gesundheitszustand der Patient:innen. Laut Tabelle auf S. 43 war bei den Vertragsärzt:innen dagegen „Vergütung nicht kostendeckend“ bei fünf von sechs Eingriffen der häufigste Grund (43–52 % gegenüber 27–39 % für den Gesundheitszustand). Nur bei der Koronarintervention lag der Gesundheitszustand vorn (41 % gegenüber 23 %). Ob S. 39 sich auf eine andere Befragtengruppe bezieht, geht aus den Abschnitten nicht hervor."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Zur Morbidität: Die Zusammenfassung (S. 6) bezeichnet fallbezogene Parameter wie die Morbidität als zwischen den Behandlungsorten „ähnlich ausgeprägt“. S. 24 berichtet dagegen im Querschnitt aller OPS eine höhere Morbidität vollstationär Behandelter (Median-Risikowert 1,28 gegenüber 1,12 bzw. 0,99). Diese führt der Bericht auf S. 26 vornehmlich auf Fälle mit längerer Verweildauer zurück."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Projektergebnisse zur Information an die AOP-Vertragsparteien (Deutsche Krankenhausgesellschaft, Kassenärztliche Bundesvereinigung, GKV-Spitzenverband) und an das Bundesministerium für Gesundheit weiter. Im Mittelpunkt stehen die Erkenntnisse zur Kalkulation schweregraddifferenzierter Fallpauschalen für sektorengleiche Leistungen nach § 115f SGB V. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine sektorengleiche Vergütung wurde mit § 115f SGB V (Krankenhauspflegeentlastungsgesetz) und der Hybrid-DRG-Verordnung ab 1. Januar 2024 für einen Startkatalog bereits in die Regelversorgung eingeführt. Die Projektergebnisse sollen in die für 2024 vorgesehene Evaluation und in die Weiterentwicklung des Leistungskatalogs einfließen. Sie betreffen auch die ab 2026 vorgesehene Kalkulation auf Grundlage empirischer Kostendaten."}, {"stelle": "befund.0", "art": "befund", "unser": "Konzept für eine einheitliche sektorengleiche Vergütung erfolgreich entwickelt"}, {"stelle": "befund.1", "art": "befund", "unser": "Fallstudien zeigen Ambulantisierungsbestrebungen in allen untersuchten OECD-Ländern"}, {"stelle": "befund.2", "art": "befund", "unser": "Status quo der sektorengleichen Leistungserbringung in Deutschland für 2019 anhand von Routinedaten erfasst"}, {"stelle": "befund.3", "art": "befund", "unser": "Befragung zeigt, dass alle Beteiligten eine Stärkung der sektorengleichen Versorgung anstreben"}, {"stelle": "befund.4", "art": "befund", "unser": "Vorschlag für schweregraddifferenzierte Fallpauschalen unabhängig vom Behandlungsort"}, {"stelle": "befund.5", "art": "befund", "unser": "Methoden vom Ausschuss als grundsätzlich angemessen bewertet"}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Gruppierungsrelevante Kurzlieger-Fälle (Verweildauer bis 3 Tage, AOP-Leistung als Hauptleistung) verursachen über 4 Mrd. Euro stationäre Ausgaben; zusammen mit den ambulanten Ausgaben ergeben sich rund 7 Mrd. Euro. Die durchschnittliche Vergütung je Fall liegt ambulant bei etwa einem Viertel der vollstationären Kurzlieger-Vergütung."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Nahezu 100 % der befragten Vertragsärzt:innen und Krankenhäuser geben an, dass ambulante Operationen derzeit nicht kostendeckend finanziert sind (laut Bericht 97 % bzw. 99 %). Krankenkassen und Leistungserbringer sehen gemeinsam die Personalknappheit als Herausforderung. Etwa zwei Drittel der Vertragsärzt:innen halten die Hygieneanforderungen für zu umfassend; Krankenhäuser und Krankenkassen verneinen dies mehrheitlich."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Die zitierten Studien aus England und Frankreich schließen übereinstimmend auf tendenziell positive Effekte finanzieller Anreize auf die Verlagerung in die Tageschirurgie. Die Effekte hingen von Prozedurart, Planbarkeit, Höhe des Anreizes und Trägerschaft der Krankenhäuser ab."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Zur Verteilung 2019: S. 6 und S. 24 nennen je etwa 40 % stationär und vertragsärztlich sowie ca. ein Fünftel ambulant im Krankenhaus. Der Abschnitt S. 20–42 gibt für dieselbe Stichprobe 39 %, 44 % und 17 % an."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Zur Datengüte: Die Projektnehmer schreiben, Validität und Reliabilität seien „sichergestellt“ (S. 48). Im selben Abschnitt räumen sie nicht ausschließbare Abweichungen zur GKV-Grundgesamtheit, eine mögliche Unterschätzung des vertragsärztlichen Volumens und fehlende Daten aus Patientenakten ein."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Fälle ohne äußerst schwere Komplikationen oder Komorbiditäten, in der Regel Kurzlieger, sollen über sektorengleiche Pauschalen (SP) vergütet werden, gleich ob ambulant oder stationär erbracht. Schwere Fälle verbleiben im DRG-System."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Fälle ab PCCL 4 und andere komplexe Fallkonstellationen werden nicht in die sektorengleichen Leistungsgruppen (SLG) aufgenommen. Sie werden weiter vollstationär versorgt und über eine DRG abgerechnet."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Für die Einführung ist eine gesetzlich festgelegte Übergangszeit von etwa drei Jahren vorgesehen. In dieser Zeit soll eine gemeinsame sektorengleiche Datengrundlage entstehen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die BKK-Stichprobe erfasst für 2019 rund 550.000 Fälle mit einem OPS aus Abschnitt 1 des AOP-Katalogs. Sie verteilen sich laut Bericht zu 39 % auf die stationäre Versorgung, zu 44 % auf die vertragsärztliche Versorgung und zu 17 % auf die ambulante Versorgung im Krankenhaus."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Über alle betrachteten OPS hinweg ist die Morbidität vollstationär Behandelter höher als die ambulant Behandelter, aber nicht zwangsläufig bei jedem einzelnen OPS. Der Median-Risikowert liegt laut Bericht bei 1,28 (stationär), 1,12 (vertragsärztlich) und 0,99 (ambulant im Krankenhaus). Die Falldringlichkeit ist marginal höher und wird insgesamt als sehr gering eingeschätzt."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Nach den Abrechnungsdaten sind fallbezogene Parameter wie die Morbidität zwischen den Behandlungsorten ähnlich ausgeprägt."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Behandlungskontexte unterscheiden sich je Prozedur: Die Kapsulotomie der Linse wird fast ausschließlich vertragsärztlich erbracht, Hernienoperationen fast ausschließlich stationär im Krankenhaus. Die Risikowerte unterscheiden sich zwischen den Prozeduren stärker als zwischen den Sektoren."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die 30 häufigsten OPS-5-Steller (von über 700) stehen für 50 % aller Abschnitt-1-Fälle."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Leistungserbringung ist je nach Leistung unterschiedlich verteilt. Der vertragsärztliche Sektor ist laut Bericht stärker beteiligt als allgemein angenommen, sein Anteil variiert aber je nach Leistung. Den ambulanten Anteil bezeichnet der Bericht je nach Leistung als stark ausbaufähig."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Die jährlichen Ausgaben für ambulantes Operieren durch Krankenhäuser und Vertragsärzt:innen betragen nach KJ 1-Statistik etwa 2,7 Mrd. Euro. Werden alle vollstationären Fälle mit AOP-Leistungen einbezogen (§ 21-Daten), ergeben sich laut Bericht rund 10 Mrd. Euro."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Würde der AOP-Katalog gemäß dem Gutachten nach § 115b SGB V ergänzt, würde sich das potenziell ambulantisierbare stationäre Fallvolumen annähernd verdoppeln."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Alle befragten Beteiligten wünschen eine Stärkung der sektorengleichen Versorgung. Zu Hemmnissen und künftiger Ausgestaltung gehen die Vorstellungen teilweise auseinander."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Krankenkassen nennen neben personellen Engpässen eher die lukrativere stationäre Vergütung als Hemmnis. Leistungserbringer nennen vor allem nicht kostendeckende Vergütung und personelle Engpässe."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Zur Vergütungssystematik votieren die Krankenkassen am deutlichsten für eine pauschalierte Vergütung. Die Leistungserbringer tendieren zu den jeweils vertrauten Systematiken."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Als motivierende Gründe für ambulantes Operieren nennen Krankenhäuser und Vertragsärzt:innen vor allem die Betreuung aus einer Hand (71 % bzw. 82 %) und die schnelle Rückkehr ins häusliche Umfeld (73 % bzw. 70 %). Bei den Krankenkassen steht die schnelle Rückkehr an erster Stelle (94 %), gefolgt von kostengünstigerer Versorgung (91 %)."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Für eine Ausweitung des ambulanten Operierens müssten etwa 25 % der Vertragsärzt:innen und 47 % der Krankenhäuser ihre Infrastruktur erweitern."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Unter den Krankenkassen fand keine Option finanzieller Anreize eine klare Mehrheit. Starken finanziellen Anreizen stehen sie besonders ablehnend gegenüber."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Für eine Abrechnung über eine zentrale Stelle sprechen sich 90 % der Vertragsärzt:innen und 60 % der Krankenhäuser aus. Die Krankenkassen stimmen zu annähernd gleichen Teilen für zentrale und dezentrale Lösungen."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Für die direkte Abrechnung im Anschluss an die Leistung plädieren etwa die Hälfte der Krankenkassen und Krankenhäuser, aber nur 20 % der Vertragsärzt:innen. 40 % der Vertragsärzt:innen befürworten die Quartalsabrechnung."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Eine sektorengleiche Qualitätssicherung halten etwa 85 % der Krankenkassen und Krankenhäuser sowie 57 % der Vertragsärzt:innen für notwendig."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Für Leistungen, die im Ausland häufig ambulant erbracht werden, hierzulande aber nicht oder nur eingeschränkt ambulant abrechenbar sind, sehen die Leistungserbringer überwiegend ein großes Ambulantisierungspotenzial. Ausnahmen sind die Cholezystektomie (5-511.1; laut Bericht 43 % Ja bei Krankenhäusern) und der Herzkathetereingriff mit Stent (8-837.m; 35 % Ja), vor allem wegen eines höheren Komplikationsrisikos."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Als Gründe für den bislang geringen Ambulantisierungsgrad bereits ambulant abrechenbarer Leistungen wurden vorrangig medizinische Aspekte wie der Gesundheitszustand der Patient:innen genannt."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Die Vertragsärzt:innen wurden zu sechs ambulant abrechenbaren, aber überwiegend nicht ambulant durchgeführten Eingriffen befragt (Mehrfachantworten möglich). „Vergütung nicht kostendeckend“ nannten 46 % bei der Tracheobronchoskopie (1-620), 23 % bei der Koronarintervention mit Stent (8-837.m), 50 % bei der Kreuzbandplastik (5-813.4), 52 % beim Leistenhernienverschluss (5-530.3), 43 % bei der laparoskopischen Cholezystektomie (5-511.1) und 45 % bei der brusterhaltenden Mammaexzision (5-870.a)."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Den Gesundheitszustand der Patient:innen nannten die Vertragsärzt:innen bei denselben sechs Eingriffen zu 28 %, 41 %, 27 %, 39 %, 27 % und 31 %. Bei der Koronarintervention (8-837.m) war dies mit 41 % der häufigste Grund."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Ein höheres Komplikationsrisiko nannten die Vertragsärzt:innen bei der Koronarintervention zu 28 % und bei der laparoskopischen Cholezystektomie zu 26 %, bei den übrigen vier Eingriffen zu 10–13 %."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Eine entgegenstehende Empfehlung einer medizinischen Fachgesellschaft nannten die Vertragsärzt:innen bei den sechs Eingriffen zu 3–11 %, am häufigsten bei der Cholezystektomie (11 %)."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "An der Krankenkassenbefragung beteiligte sich etwa ein Drittel aller gesetzlichen Krankenkassen. Eine Unterteilung nach der Zahl finanzierter ambulanter Operationen je Quartal ergab keine signifikanten Unterschiede im Antwortverhalten."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Subgruppenauswertungen, etwa nach Krankenhausgröße oder Art der vertragsärztlichen Leistungserbringung (z. B. MVZ), ergaben laut Bericht keine wesentlichen Erkenntnisse."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "An der Befragung nahmen 166 Krankenhäuser, 776 Vertragsärzt:innen und 32 Krankenkassen teil. Nach Ausschluss der 67 Ärzt:innen, die nicht ambulant operieren, gingen 709 vertragsärztliche Antworten in die Analyse ein."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Gaughan et al. (2019) fanden positive Effekte der englischen Best Practice Tariffs bei 14 von 32 Prozedurenarten, teilweise abhängig von Planbarkeit und Preishöhe."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Nach Cazenave-Lacroutz und Yilmaz (2019) führte die Einführung des Einheitstarifs in Frankreich vor allem in öffentlichen Krankenhäusern zu einer signifikanten Steigerung tageschirurgischer Prozeduren. Eine Liste ambulant erbringbarer Prozeduren verstärkte diesen Effekt."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Unter den 57 ausgewerteten Publikationen waren nur zwei Wirksamkeitsstudien zu finanziellen Anreizen. Zwei weitere aus Hand- und Expertenrecherche kamen hinzu, insgesamt wurden also vier Studien ausgewertet."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "In den englischen Best Practice Tariffs wurde die ambulante Leistung zuletzt rund 10–11 % höher vergütet als die stationäre. Die Höhervergütung wurde eingestellt, sobald eine definierte Zielgröße erreicht war."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "In 5 Ländern (Österreich, Dänemark, England, Frankreich, Norwegen) wird die stationäre und die taggleiche bzw. ambulante Leistung gleich vergütet, berechnet auf Basis gepoolter Durchschnittskosten."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "In 8 der untersuchten Länder ist die Vergütung sektorengleicher Leistungen in das Fallpauschalensystem integriert."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "England ist das einzige bekannte Land, in dem potenziell alle Krankenhausleistungen ambulant erbringbar sind. In den übrigen untersuchten Ländern dürfen nur vorab definierte Leistungen ambulant erbracht werden."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Österreich, Deutschland und die Schweiz bilden nach den OECD-Statistiken die Schlusslichter bei der Verlagerung sektorengleicher Leistungen in den ambulanten Bereich."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Die 541 in England (247), Frankreich (214) und Österreich (80) am häufigsten ambulant erbrachten Prozeduren wurden in 1.483 deutsche OPS-Codes übersetzt."}, {"stelle": "bericht_befund.44", "art": "aussage", "unser": "Beispiel: Die Phakoemulsifikation wurde 2019 in Frankreich bei 96 % und in Österreich bei 88 % der Fälle ambulant durchgeführt. In England wurde eine Linsenprozedur bei aphakem Auge bei 99 % der Fälle ambulant durchgeführt."}, {"stelle": "bericht_befund.45", "art": "aussage", "unser": "Die systematische Literaturrecherche ergab 2.508 Einträge. Nach Duplikatbereinigung wurden 1.902 gescreent, 261 nach Title-Abstract-Screening eingeschlossen und 57 nach Volltext-Screening ausgewertet."}, {"stelle": "bericht_befund.46", "art": "aussage", "unser": "Von 39 angeschriebenen internationalen Expert:innen aus 19 Ländern nahmen zwölf aus 10 Ländern an der Befragung teil. In die Ergebnisse von AP1 gingen insgesamt 12 Länder ein."}, {"stelle": "bericht_befund.47", "art": "aussage", "unser": "Für AP2 übermittelten mehr als 30 Krankenkassen Daten von über 7 Mio. Versicherten."}, {"stelle": "bericht_befund.48", "art": "aussage", "unser": "Nach Angabe der Projektnehmer ist das Konzept bei der Schaffung des § 115f SGB V in die Regelversorgung eingegangen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Für Leistungen außerhalb von Abschnitt 1 des AOP-Katalogs ist der OPS-Code vertragsärztlich nicht verpflichtend, die Angaben sind daher unvollständig. Die Hauptanalysen beschränken sich deshalb auf Abschnitt 1. Die Detailanalysen, die auch andere OPS einbeziehen, erlauben vertragsärztlich kein vollständiges Bild."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Rücklaufquote der Vertragsärzt:innen ließ sich nicht berechnen, weil unbekannt ist, wie viele Ärzt:innen die Berufsverbände eingeladen hatten."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Bei den niedergelassenen Ärzt:innen beteiligten sich ausgewählte Fachgruppen besonders stark: Rund 50 % gehörten zur Chirurgie und Orthopädie. Die Projektnehmer hätten sich insgesamt eine größere Beteiligung gewünscht."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Bei der Koronarintervention antworteten nur wenige Kardiolog:innen und keine Radiolog:innen. Die genannten Gründe beziehen sich daher möglicherweise eher auf die Fachgruppe als auf das Verfahren."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Zusammensetzung des Krankenkassen-Rücklaufs ist wegen der strikt anonymen Befragung unbekannt."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Fragebögen wurden nur innerhalb des Konsortiums und durch eingebundene externe Fachleute vorab getestet."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Wegen möglicherweise unterschiedlicher Versichertenkollektive sind Abweichungen der BKK-Daten von der Grundgesamtheit aller GKV-Versicherten nicht grundsätzlich ausgeschlossen. Die Projektnehmer verweisen auf die Übereinstimmung mit Daten anderer Kassen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Etablierte Risikoadjustierungsmethoden (Elixhauser, Charlson) wurden für die Krankenhausmortalität entwickelt. Diese ist für sektorengleiche Leistungen in der Regel kein geeigneter Vergleichsparameter; deshalb wurde ein eigener Risikowert gebildet."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Der Elixhauser-Score kann ungenau sein, etwa weil Risikofaktoren infolge der DRG-Abrechnungsbestimmungen nicht kodiert werden."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Ein Vergleich auf Fallbasis war nicht möglich: Vertragsärztlich wird der Fall quartalsweise definiert, im Krankenhaus von Aufnahme bis Entlassung."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Distanzen zwischen Wohnort und Behandlungsort beruhen auf Postleitzahlen und sind nur Approximationen, die tendenziell unterschätzt werden. Für Krankenhausverbünde liegt meist nur das Institutionskennzeichen des Verbundes vor."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Bei Notfalleinweisungen muss die Hauptdiagnose nicht mit der Einweisungsdiagnose übereinstimmen; die Dringlichkeit ist über die Hauptdiagnose daher nicht immer erkennbar. Geburtshilflichen Diagnosen wurde aus methodischen Gründen kein Dringlichkeitswert zugewiesen."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "OPS, die im AOP-Katalog je nach Kontext Kategorie 1 oder 2 zugeordnet sind (z. B. Kataraktoperationen), wurden für die Analysen der Kategorie 2 zugeordnet. Das beeinflusst den vertragsärztlichen Anteil in Kategorie 2."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Längere Verweildauer geht tendenziell mit höheren Morbiditätswerten einher, aber nicht durchgehend."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Die Schätzung von rund 10 Mrd. Euro überschätzt nach dem Bericht das aktuelle Ambulantisierungspotenzial, weil Gruppierungsrelevanz und weitere Faktoren nicht berücksichtigt sind."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Der Ländervergleich wird erschwert, weil hinter gleichen Begriffen unterschiedliche rechtliche Rahmenbedingungen und Vergütungsmechanismen stehen."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Wegen unterschiedlicher Gesundheitssysteme lassen sich Systemelemente anderer Länder nicht direkt übertragen, sondern müssen in den deutschen Kontext übersetzt werden."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Möglicherweise fanden Länder wegen Sprachbarrieren keinen Eingang in den Vergleich. Eine saubere Erfassung hatte Vorrang vor einer möglichst großen Länderauswahl."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Für Österreich wurde der Mindestanteil ambulanter Erbringung auf 20 % festgesetzt, um eine ausreichende Zahl an Prozeduren zu erhalten."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Publikationen zu Vergütungssystemen im asiatisch-pazifischen Raum wurden nicht weiter verwertet."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Das Konzept wurde in AP4 in zwei Projekttreffen der Projektpartner entwickelt, ohne externe Teilnehmer."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Der Vorschlag nimmt nicht zu allen Unteraspekten vollumfänglich Stellung. Bedarfsplanung, Weiterbildung und Qualitätssicherung wurden angesprochen, aber nicht ausführlich erörtert."}, {"stelle": "bericht_hindernis.25", "art": "aussage", "unser": "Das System zur Einstufung in medizinische Komplexitätsstufen muss im Laufe der Anwendung weiterentwickelt werden."}, {"stelle": "bericht_hindernis.26", "art": "aussage", "unser": "Abschnitt 1 des AOP-Katalogs umfasst über 2.800 OPS-Kodes. Ihre gleichzeitige Überführung könnte eine schnelle Einführung behindern, daher ist eine sukzessive Überführung vorgesehen."}, {"stelle": "bericht_hindernis.27", "art": "aussage", "unser": "Im neuen § 115f SGB V sind die Identifizierung sektorengleicher Leistungsgruppen und die genaue Kalkulation der Pauschalen noch offen. Sie sollen durch die Selbstverwaltung bzw. das BMG ausgestaltet werden."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

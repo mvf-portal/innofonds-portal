@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF22007</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>12 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 39 Aussagen. Die übrigen
+27 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss bittet die AWMF, die weiterentwickelte S3-Leitlinie zur nosokomialen Pneumonie bei Erwachsenen zu veröffentlichen. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Der Ausschuss verweist auf die Häufigkeit der nosokomialen Pneumonie und ihre Verbindung mit höherer Morbidität und Mortalität. Die weiterentwickelte Leitlinie löst die bisher gültige Version von 2017 für den deutschen Sprachraum ab. Sie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,68 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Beschluss nennt die Leitlinie als Ablösung der bisher für den deutschen Sprachraum gültigen Version; durch die Erfüllung der S3-Kriterien sieht der Ausschuss die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Weiterentwickelte Leitlinie löst die bisher gültige Version von 2017 ab</p>
-  <blockquote>„Die vorliegende Weiterentwicklung der Leitlinie zur Behandlung von Patientinnen und Patienten mit nosokomialer Pneumonie löst die bisher für den deutschen Sprachraum gültige Version der Leitlinie zur nosokomialen Pneumonie von 2017 ab." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
-  <blockquote>„Die weiterentwickelte Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3 Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -218,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="adressat.1">
   <h3>Arbeitsgemeinschaft der Wissenschaftlichen Medizinischen Fachgesellschaften e.V. (AWMF) – eingestuft als „zur Kenntnis genommen“ <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Die AWMF bedankt sich für die Übersendung der Projektergebnisse und hat die thematisch befassten Fachgesellschaften informiert und um Prüfung und Stellungnahme gebeten. Eine Veröffentlichung der Leitlinie wird in der Antwort nicht benannt.</p>
+  
   <blockquote>„Wir haben die folgenden thematisch befassten Fachgesellschaften informiert und um Prüfung/Stellungnahme mit Rückmeldung an Sie und im cc: an uns gebeten" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uadressat.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uadressat.1" value="ok" checked hidden>
+    <input type="radio" name="uadressat.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -238,11 +179,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben aktualisierte die S3-Leitlinie zu Epidemiologie, Diagnostik und Therapie erwachsener Patienten mit nosokomialer Pneumonie; als Innovation nennt der Bericht hauptsächlich die professionelle Evidenzbewertung. Das Update wurde innerhalb der Laufzeit (01.08.2022–31.01.2024) fertiggestellt, und alle beteiligten Fachgesellschaften stimmten dem Entwurf bis zum 19.12.2023 zu. Es entstanden 26 Empfehlungen, davon die Hälfte evidenzbasiert, laut Bericht mit überwiegend hohem Konsens bzw. durchweg hoher Zustimmung. Inhaltlich neu sind u. a. eine Therapiedauer von 7–8 Tagen, eine Kombinationstherapie nur noch bei septischem Schock plus einem weiteren Risikofaktor für MR-Erreger, eine Risikofaktorentabelle für multiresistente Erreger (vom Bericht als eines der Hauptergebnisse bezeichnet), eine Antibiotika-Dosierungstabelle sowie Empfehlungen zu Mykosen, viralen Erregern, Multiplex-PCR und inhalativen Antibiotika. Die Aussagekraft hängt daran, dass die andere Hälfte der Empfehlungen auf Expertenkonsens beruht, da sich nicht alle klinischen Fragen per Evidenzbewertung beantworten ließen. Eine Wirkung auf die Patientenversorgung formuliert der Bericht als Erwartung („dürfte“), nicht als Ergebnis. Ein primärer Endpunkt ist nicht angegeben; als Outcomes der PICO-Fragen nennt der Bericht Überleben, Krankenhausverweildauer und Rezidivrate.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das Leitlinien-Update wurde innerhalb der Projektlaufzeit vom 01.08.2022 bis 31.01.2024 fertiggestellt; alle beteiligten Fachgesellschaften stimmten dem Entwurf bis zum 19.12.2023 zu.</p>
+  
   <blockquote>„„Innerhalb der Laufzeit des Projektes vom 01.08.2022 bis zum 31.01.2024 konnte das Update der Leitlinie fertiggestellt werden. Alle in die Leitlinie involvierten Fachgesellschaften haben bis zum 19.12.2023 dem Entwurf zugestimmt.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Insgesamt entstanden 26 Empfehlungen, von denen die Hälfte evidenzbasiert ist; unter den Stimmberechtigten wurde durchweg eine hohe Zustimmung erzielt.</p>
+  
   <blockquote>„„Es sind insgesamt 26 Empfehlungen entstanden. Die Hälfte aller Empfehlungen ist evidenzbasiert. Durchweg konnte eine hohe Zustimmung unter den Stimmberechtigten erzielt werden“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine Tabelle mit Risikofaktoren für multiresistente Erreger wurde neu erstellt; der Bericht bezeichnet sie, insbesondere zur Vermeidung von Übertherapie, als eines der Hauptergebnisse.</p>
+  
   <blockquote>„„Eine Tabelle mit Risikofaktoren für Multiresistente Erreger wurde neu erstellt. Insbesondere um eine Übert herapie zu vermeiden, war diese Zusammenstellung eines der Hauptergebnisse des Projektes.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Hälfte der Empfehlungen ist nicht evidenzbasiert; der Bericht fragt nach der zugrundeliegenden Evidenz und hält eine Einschränkung der Effektivität durch die Abhängigkeit von Konsensmeinungen für möglich.</p>
+  
   <blockquote>„„Wie robust ist die zugrundeliegende Evidenz für diese Empfehlungen? Die Abhängigkeit von Konsensmeinungen oder weniger starken Evidenzgraden könnte die Effektivität der Leitlinie in bestimmten Aspekten einschränken.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Nicht alle Fragen aus dem klinischen Alltag ließen sich mittels Evidenzbewertung beantworten; Expertenkonsens wurde daher bewusst im Update belassen.</p>
+  
   <blockquote>„„Nicht alle Fragen aus dem klinischen Alltag lassen sich mittels Evidenzbewertung beantworten, somit wurde auch Expertenkonsens bewusst in dem Update belassen.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eine verbesserte Patientenversorgung durch die Implementierung formuliert der Bericht als Erwartung, nicht als im Projekt erhobenes Ergebnis.</p>
+  
   <blockquote>„„Die Implementierung dieser Leitlinie dürfte zu einer verbesserten Patientenversorgung und einem be sseren Management der nosokomialen Pneumonie führen.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -371,11 +312,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Das Jahr der Vorgängerfassung wird unterschiedlich angegeben: Auf S. 9 (Mykosen) ist von der „letzten Fassung der Leitlinie von 2017“ die Rede, auf S. 9 (virale Erreger) und S. 13 von der Fassung bzw. Leitlinie „von 2018“.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -390,11 +331,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zur Konsensstärke heißt es auf S. 8, „überwiegend“ sei ein hoher Konsens erzielt worden, auf S. 9 dagegen, es sei „durchweg“ eine hohe Zustimmung erzielt worden.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -404,16 +345,92 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>23 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>27 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss bittet die AWMF, die weiterentwickelte S3-Leitlinie zur nosokomialen Pneumonie bei Erwachsenen zu veröffentlichen. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Beschluss nennt die Leitlinie als Ablösung der bisher für den deutschen Sprachraum gültigen Version; durch die Erfüllung der S3-Kriterien sieht der Ausschuss die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Weiterentwickelte Leitlinie löst die bisher gültige Version von 2017 ab</p>
+  
+  <blockquote>„Die vorliegende Weiterentwicklung der Leitlinie zur Behandlung von Patientinnen und Patienten mit nosokomialer Pneumonie löst die bisher für den deutschen Sprachraum gültige Version der Leitlinie zur nosokomialen Pneumonie von 2017 ab." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
+  
+  <blockquote>„Die weiterentwickelte Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3 Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Innovation des Projekts lag laut Bericht hauptsächlich in der professionellen Evidenzbewertung.</p>
+  
   <blockquote>„„Die Innovation dieses Projektes bestand hauptsächlich in der professionellen Evidenzbewertung.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In den Konsensuskonferenzen waren die Fachgruppen laut Bericht alle gut vertreten, und überwiegend wurde ein hoher Konsens erzielt.</p>
+  
   <blockquote>„„In den Konsensuskonferenzen waren die verschiedenen Fachgruppen alle gut vertreten. Überwiegend konnte ein hoher Konsens erzielt werden.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Therapiedauer wird auf 7–8 Tage verkürzt, gestützt auf neuere Studien; eine Kombinationstherapie wird nur noch bei septischem Schock und einem weiteren Risikofaktor für MR-Erreger empfohlen.</p>
+  
   <blockquote>„„Die Verkürzung der Therapiedauer auf 7 -8 Tage ist ein weiterer wichtiger Aspekt, der auf neueren Studien basiert [...] Die Empfehlungen zur Kombinationstherapie, die nur noch bei septischem Schock und einem weiteren Risikofaktor für MR -Erreger empfohlen wird“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zur Frage der Kombinationstherapie wurde mittels Evidenzbewertung eine Empfehlung formuliert, die laut Bericht eine klare Handlungsanweisung gibt.</p>
+  
   <blockquote>„„Die Frage, ob eine Kombinationstherapie hilfreich ist, konnte bisher nicht befriedigend beantwortet werden. Mittels Evidenzbewertung wurde in der vorliegenden Leitlinie eine Empfehlung formuliert, welche dem Anwender der Leitlinie eine klare Handlungsanweisung gibt.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mykosen, darunter invasive Aspergillus-Infektionen, wurden mit Tabellen und Empfehlungen aufgearbeitet; der Bericht bezeichnet dies als tiefgreifende Neuerung gegenüber der letzten Fassung.</p>
+  
   <blockquote>„„konnte das Thema hochwertig aufgearbeitet sowie Tabellen und Empfehlungen generiert werden. Somit ergibt sich eine tiefgreifende Neuerung zur letzten Fassung der Leitlinie von 2017.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zu viralen Erregern ergaben sich 2 neue Empfehlungen, darunter eine Evidenzbewertung zur Aciclovir-Therapie bei Herpesvirus-Nachweis in der BAL, die bei Therapieversagen erwogen werden sollte.</p>
+  
   <blockquote>„„Im Vergleich zur letzten Fassung von 2018 ergaben sich hier 2 neue Empfehlungen. Insbesondere erfolgte eine Evidenzbewertung bezüglich einer Aciclovir- Therapie bei dem Nachweis von Herpesviren in der Bronchoalveolären Lavage“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Evidenzbewertung wurde eine neue Empfehlung zum nicht-routinemäßigen Einsatz der Multiplex-PCR verfasst.</p>
+  
   <blockquote>„„Eine neue Empfehlung zum nicht- Routinemäßigen Einsatz wurde nach einer Evidenzbewertung neu verfasst.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für inhalative Antibiotika bei nosokomialer Pneumonie ergab sich ebenfalls kein routinemäßiger Einsatz.</p>
+  
   <blockquote>„„Des Weiteren wurde die Frage nach inhalativen Antibiotika bei der nosokomialen Pneumonie bearbeitet. Hier ergab sich ebenfalls kein Routinemäßiger Einsatz bei diesen Patienten.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Empfehlung zur verlängerten Infusionszeit von Betalaktam-Antibiotika bei kritisch kranken Patienten wurde nach Evidenzbewertung neu konsentiert.</p>
+  
   <blockquote>„„Empfehlung zur verlängerten Infusionszeit bei Betalaktam - Antibiotika bei kritisch kranken Patienten konnte nach Evidenzbewertung neu konsentiert werden.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +596,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Neu erstellt wurde eine Tabelle mit allen für die Therapie relevanten Antibiotika, der Dosierung und Applikationsart zu entnehmen sind.</p>
+  
   <blockquote>„„In einer in dem Update der Leitlinie neu erstellten Tabelle mit allen Antibiotika, die für die Therapie der Nosokomialen Pneumonie wichtig sind, kann der klinisch tätige Arzt die richtige Dosierung und Applikationsart schnell und zuverlässig der Leitlinie entnehmen.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +615,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Neben der Langfassung wurde eine Kurzversion der Leitlinie erstellt.</p>
+  
   <blockquote>„„Neben der Langfassung der Leitlinie wurde eine Kurzversion erstellt. Sie soll dem Arzt helfen, schnell die wichtigsten Erkenntnisse aufzunehmen.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +634,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Statt einer Patientenleitlinie wurde eine Patienteninformation erstellt, die nach Veröffentlichung bei Deutscher Atemwegsliga und Lungeninformationsdienst bereitgestellt werden soll.</p>
+  
   <blockquote>„„nach Veröffentlichung des Updates würde die Patienteninformation auf diesen Seiten zur Verfügung stehen (Deutsche Atemwegsliga, Lungeninformationsdienst).“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Begründet wird der Verzicht auf eine Patientenleitlinie damit, dass Betroffene meist nicht wissen, die Erkrankung im Krankenhaus erworben zu haben.</p>
+  
   <blockquote>„„Da Patienten mit einer nosokomialen Pneumonie selbst in den meisten Fällen nicht wissen, diese Erkrankung noch zusätzlich im Kranken haus bekommen zu haben, würden s ie auch keine Patientenleitlinie nutzen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +672,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht entspricht die Leitlinie von 2018 nicht mehr dem Forschungsstand; das Update stütze sich auf eine große Menge neuer Studien.</p>
+  
   <blockquote>„„Die zuvor gül tige Leitlinie aus dem Jahr 2018 beinhaltet nicht mehr den aktuellen Stand der Forschung. Das während dieses Projektes erstellte Update verfügt über eine große Menge an neuen Studien“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +691,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das neue Verfahren der Evidenzbewertung erforderte die Unterrichtung der Autoren über ihre Aufgaben sowie Zeit und Schulung zum PICO-Prinzip.</p>
+  
   <blockquote>„„Aufgrund de s neuen Verfahrens mussten die Autoren über ihre Aufgaben innerhalb Evidenzbewertung unte rrichtet und aufgeklärt werden . Ebenfalls braucht es zunächst Zeit und Schulung das PICO -Prinzip allen Beteiligten näher zu bringen.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Vielfalt der beteiligten Fachgesellschaften könnte laut Bericht zu Kompromissen geführt haben, die spezifischere oder fortschrittlichere Ansätze in einigen Bereichen verdünnen.</p>
+  
   <blockquote>„„jedoch könnte diese Vielfalt auch zu Kompromissen geführt haben, die spezifischere oder fortschrittlichere Ansätze in einigen Bereichen verdünnen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +729,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Offen bleibt, ob die neuen Empfehlungen zu Mykosen und viralen Erregern breit genug für die vielfältigen klinischen Szenarien nosokomialer Pneumonien angelegt sind.</p>
+  
   <blockquote>„„dennoch bleibt die Frage offen, ob die neuen Empfehlungen breit genug angelegt sind, um den vielfältigen klinischen Szenarien gerecht zu werden, in denen nosokomiale Pneumonien auftreten.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +748,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Unklar bleibt, wie die Multiplex-PCR-Empfehlung in ressourcenbegrenzten Einstellungen umgesetzt werden soll.</p>
+  
   <blockquote>„„Es bleibt jedoch unklar, wie diese Empfehlung in Ressourcen-begrenzten Einstellungen umgesetzt werden soll, wo der Zugang zu solchen Technologien ohnehin eingeschränkt ist.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +767,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Risikofaktorentabelle für multiresistente Erreger könnte ohne spezifische Implementierungsstrategien und ohne Berücksichtigung lokaler Resistenzmuster in ihrer Anwendbarkeit begrenzt sein.</p>
+  
   <blockquote>„„könnte jedoch ohne spezifische Implementierungsstrategien und ohne Berücksichtigung der lokalen Resistenzmuster in ihrer Anwendbarkeit begrenzt sein.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +786,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Effektivität der Dosierungsinformationen könnte durch variierende Verabreichungspraktiken und Patientenpopulationen beeinträchtigt werden; die Anpassung an individuelle Patientenbedürfnisse ist nicht explizit adressiert.</p>
+  
   <blockquote>„„könnte die Effektivität dieser Maßnahme durch variierende Praktiken in der Medikamentenverabreichung und durch unterschiedliche Patientenpopulationen beeinträchtigt werden. Zudem ist die Frage der Anpassung an individuelle Patientenbedürfnisse und -reaktionen nicht explizit adressiert.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +805,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Flussdiagramm zur Therapie könnte in der Praxis zu starr sein und die Notwendigkeit individueller klinischer Urteile unterschätzen.</p>
+  
   <blockquote>„„Während das Flussdiagramm eine klare Richtlinie bietet, könnte es in der Praxis zu starr sein und die Notwendigkeit individueller klinischer Urteile unterschätzen.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Es besteht das Risiko, dass die Bildungs- und Aufklärungsmaßnahmen nicht alle relevanten Stakeholder erreichen oder in der klinischen Praxis nicht umgesetzt werden.</p>
+  
   <blockquote>„„Es besteht das Risiko, dass die Informationen nicht alle relevanten Stakeholder erreichen oder in der klinischen Praxis nicht umgesetzt werden.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Offen ist, ob die Patienteninformation für Patienten mit unterschiedlichem Bildungsniveau und kulturellem Hintergrund ausreichend zugänglich und verständlich ist.</p>
+  
   <blockquote>„„Es bleibt die Frage, ob die Informationen ausreichend zugängl ich und verständlich für Patienten mit unterschiedlichem Bildungsniveau und kulturellem Hintergrund sind.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -876,28 +893,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 517, "akronym": "HAP S3-LL", "kennung": "NGhgdWlWkzcU", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss bittet die AWMF, die weiterentwickelte S3-Leitlinie zur nosokomialen Pneumonie bei Erwachsenen zu veröffentlichen. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss verweist auf die Häufigkeit der nosokomialen Pneumonie und ihre Verbindung mit höherer Morbidität und Mortalität. Die weiterentwickelte Leitlinie löst die bisher gültige Version von 2017 für den deutschen Sprachraum ab. Sie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss nennt die Leitlinie als Ablösung der bisher für den deutschen Sprachraum gültigen Version; durch die Erfüllung der S3-Kriterien sieht der Ausschuss die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "befund.0", "art": "befund", "unser": "Weiterentwickelte Leitlinie löst die bisher gültige Version von 2017 ab"}, {"stelle": "befund.1", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Die AWMF bedankt sich für die Übersendung der Projektergebnisse und hat die thematisch befassten Fachgesellschaften informiert und um Prüfung und Stellungnahme gebeten. Eine Veröffentlichung der Leitlinie wird in der Antwort nicht benannt."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben aktualisierte die S3-Leitlinie zu Epidemiologie, Diagnostik und Therapie erwachsener Patienten mit nosokomialer Pneumonie; als Innovation nennt der Bericht hauptsächlich die professionelle Evidenzbewertung. Das Update wurde innerhalb der Laufzeit (01.08.2022–31.01.2024) fertiggestellt, und alle beteiligten Fachgesellschaften stimmten dem Entwurf bis zum 19.12.2023 zu. Es entstanden 26 Empfehlungen, davon die Hälfte evidenzbasiert, laut Bericht mit überwiegend hohem Konsens bzw. durchweg hoher Zustimmung. Inhaltlich neu sind u. a. eine Therapiedauer von 7–8 Tagen, eine Kombinationstherapie nur noch bei septischem Schock plus einem weiteren Risikofaktor für MR-Erreger, eine Risikofaktorentabelle für multiresistente Erreger (vom Bericht als eines der Hauptergebnisse bezeichnet), eine Antibiotika-Dosierungstabelle sowie Empfehlungen zu Mykosen, viralen Erregern, Multiplex-PCR und inhalativen Antibiotika. Die Aussagekraft hängt daran, dass die andere Hälfte der Empfehlungen auf Expertenkonsens beruht, da sich nicht alle klinischen Fragen per Evidenzbewertung beantworten ließen. Eine Wirkung auf die Patientenversorgung formuliert der Bericht als Erwartung („dürfte“), nicht als Ergebnis. Ein primärer Endpunkt ist nicht angegeben; als Outcomes der PICO-Fragen nennt der Bericht Überleben, Krankenhausverweildauer und Rezidivrate."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Das Leitlinien-Update wurde innerhalb der Projektlaufzeit vom 01.08.2022 bis 31.01.2024 fertiggestellt; alle beteiligten Fachgesellschaften stimmten dem Entwurf bis zum 19.12.2023 zu."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Insgesamt entstanden 26 Empfehlungen, von denen die Hälfte evidenzbasiert ist; unter den Stimmberechtigten wurde durchweg eine hohe Zustimmung erzielt."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Eine Tabelle mit Risikofaktoren für multiresistente Erreger wurde neu erstellt; der Bericht bezeichnet sie, insbesondere zur Vermeidung von Übertherapie, als eines der Hauptergebnisse."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Hälfte der Empfehlungen ist nicht evidenzbasiert; der Bericht fragt nach der zugrundeliegenden Evidenz und hält eine Einschränkung der Effektivität durch die Abhängigkeit von Konsensmeinungen für möglich."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Nicht alle Fragen aus dem klinischen Alltag ließen sich mittels Evidenzbewertung beantworten; Expertenkonsens wurde daher bewusst im Update belassen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Eine verbesserte Patientenversorgung durch die Implementierung formuliert der Bericht als Erwartung, nicht als im Projekt erhobenes Ergebnis."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Das Jahr der Vorgängerfassung wird unterschiedlich angegeben: Auf S. 9 (Mykosen) ist von der „letzten Fassung der Leitlinie von 2017“ die Rede, auf S. 9 (virale Erreger) und S. 13 von der Fassung bzw. Leitlinie „von 2018“."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Zur Konsensstärke heißt es auf S. 8, „überwiegend“ sei ein hoher Konsens erzielt worden, auf S. 9 dagegen, es sei „durchweg“ eine hohe Zustimmung erzielt worden."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die Innovation des Projekts lag laut Bericht hauptsächlich in der professionellen Evidenzbewertung."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "In den Konsensuskonferenzen waren die Fachgruppen laut Bericht alle gut vertreten, und überwiegend wurde ein hoher Konsens erzielt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die Therapiedauer wird auf 7–8 Tage verkürzt, gestützt auf neuere Studien; eine Kombinationstherapie wird nur noch bei septischem Schock und einem weiteren Risikofaktor für MR-Erreger empfohlen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Zur Frage der Kombinationstherapie wurde mittels Evidenzbewertung eine Empfehlung formuliert, die laut Bericht eine klare Handlungsanweisung gibt."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Mykosen, darunter invasive Aspergillus-Infektionen, wurden mit Tabellen und Empfehlungen aufgearbeitet; der Bericht bezeichnet dies als tiefgreifende Neuerung gegenüber der letzten Fassung."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Zu viralen Erregern ergaben sich 2 neue Empfehlungen, darunter eine Evidenzbewertung zur Aciclovir-Therapie bei Herpesvirus-Nachweis in der BAL, die bei Therapieversagen erwogen werden sollte."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Nach Evidenzbewertung wurde eine neue Empfehlung zum nicht-routinemäßigen Einsatz der Multiplex-PCR verfasst."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Für inhalative Antibiotika bei nosokomialer Pneumonie ergab sich ebenfalls kein routinemäßiger Einsatz."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Empfehlung zur verlängerten Infusionszeit von Betalaktam-Antibiotika bei kritisch kranken Patienten wurde nach Evidenzbewertung neu konsentiert."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Neu erstellt wurde eine Tabelle mit allen für die Therapie relevanten Antibiotika, der Dosierung und Applikationsart zu entnehmen sind."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Neben der Langfassung wurde eine Kurzversion der Leitlinie erstellt."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Statt einer Patientenleitlinie wurde eine Patienteninformation erstellt, die nach Veröffentlichung bei Deutscher Atemwegsliga und Lungeninformationsdienst bereitgestellt werden soll."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Begründet wird der Verzicht auf eine Patientenleitlinie damit, dass Betroffene meist nicht wissen, die Erkrankung im Krankenhaus erworben zu haben."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Laut Bericht entspricht die Leitlinie von 2018 nicht mehr dem Forschungsstand; das Update stütze sich auf eine große Menge neuer Studien."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Das neue Verfahren der Evidenzbewertung erforderte die Unterrichtung der Autoren über ihre Aufgaben sowie Zeit und Schulung zum PICO-Prinzip."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Vielfalt der beteiligten Fachgesellschaften könnte laut Bericht zu Kompromissen geführt haben, die spezifischere oder fortschrittlichere Ansätze in einigen Bereichen verdünnen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Offen bleibt, ob die neuen Empfehlungen zu Mykosen und viralen Erregern breit genug für die vielfältigen klinischen Szenarien nosokomialer Pneumonien angelegt sind."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Unklar bleibt, wie die Multiplex-PCR-Empfehlung in ressourcenbegrenzten Einstellungen umgesetzt werden soll."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Risikofaktorentabelle für multiresistente Erreger könnte ohne spezifische Implementierungsstrategien und ohne Berücksichtigung lokaler Resistenzmuster in ihrer Anwendbarkeit begrenzt sein."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Effektivität der Dosierungsinformationen könnte durch variierende Verabreichungspraktiken und Patientenpopulationen beeinträchtigt werden; die Anpassung an individuelle Patientenbedürfnisse ist nicht explizit adressiert."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Das Flussdiagramm zur Therapie könnte in der Praxis zu starr sein und die Notwendigkeit individueller klinischer Urteile unterschätzen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Es besteht das Risiko, dass die Bildungs- und Aufklärungsmaßnahmen nicht alle relevanten Stakeholder erreichen oder in der klinischen Praxis nicht umgesetzt werden."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Offen ist, ob die Patienteninformation für Patienten mit unterschiedlichem Bildungsniveau und kulturellem Hintergrund ausreichend zugänglich und verständlich ist."}]};
+const D = {"projekt_id": 517, "akronym": "HAP S3-LL", "kennung": "NGhgdWlWkzcU", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss verweist auf die Häufigkeit der nosokomialen Pneumonie und ihre Verbindung mit höherer Morbidität und Mortalität. Die weiterentwickelte Leitlinie löst die bisher gültige Version von 2017 für den deutschen Sprachraum ab. Sie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien und damit die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Die AWMF bedankt sich für die Übersendung der Projektergebnisse und hat die thematisch befassten Fachgesellschaften informiert und um Prüfung und Stellungnahme gebeten. Eine Veröffentlichung der Leitlinie wird in der Antwort nicht benannt."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben aktualisierte die S3-Leitlinie zu Epidemiologie, Diagnostik und Therapie erwachsener Patienten mit nosokomialer Pneumonie; als Innovation nennt der Bericht hauptsächlich die professionelle Evidenzbewertung. Das Update wurde innerhalb der Laufzeit (01.08.2022–31.01.2024) fertiggestellt, und alle beteiligten Fachgesellschaften stimmten dem Entwurf bis zum 19.12.2023 zu. Es entstanden 26 Empfehlungen, davon die Hälfte evidenzbasiert, laut Bericht mit überwiegend hohem Konsens bzw. durchweg hoher Zustimmung. Inhaltlich neu sind u. a. eine Therapiedauer von 7–8 Tagen, eine Kombinationstherapie nur noch bei septischem Schock plus einem weiteren Risikofaktor für MR-Erreger, eine Risikofaktorentabelle für multiresistente Erreger (vom Bericht als eines der Hauptergebnisse bezeichnet), eine Antibiotika-Dosierungstabelle sowie Empfehlungen zu Mykosen, viralen Erregern, Multiplex-PCR und inhalativen Antibiotika. Die Aussagekraft hängt daran, dass die andere Hälfte der Empfehlungen auf Expertenkonsens beruht, da sich nicht alle klinischen Fragen per Evidenzbewertung beantworten ließen. Eine Wirkung auf die Patientenversorgung formuliert der Bericht als Erwartung („dürfte“), nicht als Ergebnis. Ein primärer Endpunkt ist nicht angegeben; als Outcomes der PICO-Fragen nennt der Bericht Überleben, Krankenhausverweildauer und Rezidivrate."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Das Leitlinien-Update wurde innerhalb der Projektlaufzeit vom 01.08.2022 bis 31.01.2024 fertiggestellt; alle beteiligten Fachgesellschaften stimmten dem Entwurf bis zum 19.12.2023 zu."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Insgesamt entstanden 26 Empfehlungen, von denen die Hälfte evidenzbasiert ist; unter den Stimmberechtigten wurde durchweg eine hohe Zustimmung erzielt."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Eine Tabelle mit Risikofaktoren für multiresistente Erreger wurde neu erstellt; der Bericht bezeichnet sie, insbesondere zur Vermeidung von Übertherapie, als eines der Hauptergebnisse."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Hälfte der Empfehlungen ist nicht evidenzbasiert; der Bericht fragt nach der zugrundeliegenden Evidenz und hält eine Einschränkung der Effektivität durch die Abhängigkeit von Konsensmeinungen für möglich."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Nicht alle Fragen aus dem klinischen Alltag ließen sich mittels Evidenzbewertung beantworten; Expertenkonsens wurde daher bewusst im Update belassen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Eine verbesserte Patientenversorgung durch die Implementierung formuliert der Bericht als Erwartung, nicht als im Projekt erhobenes Ergebnis."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Das Jahr der Vorgängerfassung wird unterschiedlich angegeben: Auf S. 9 (Mykosen) ist von der „letzten Fassung der Leitlinie von 2017“ die Rede, auf S. 9 (virale Erreger) und S. 13 von der Fassung bzw. Leitlinie „von 2018“."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Zur Konsensstärke heißt es auf S. 8, „überwiegend“ sei ein hoher Konsens erzielt worden, auf S. 9 dagegen, es sei „durchweg“ eine hohe Zustimmung erzielt worden."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss bittet die AWMF, die weiterentwickelte S3-Leitlinie zur nosokomialen Pneumonie bei Erwachsenen zu veröffentlichen. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss nennt die Leitlinie als Ablösung der bisher für den deutschen Sprachraum gültigen Version; durch die Erfüllung der S3-Kriterien sieht der Ausschuss die Voraussetzung, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "befund.0", "art": "befund", "unser": "Weiterentwickelte Leitlinie löst die bisher gültige Version von 2017 ab"}, {"stelle": "befund.1", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die Innovation des Projekts lag laut Bericht hauptsächlich in der professionellen Evidenzbewertung."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "In den Konsensuskonferenzen waren die Fachgruppen laut Bericht alle gut vertreten, und überwiegend wurde ein hoher Konsens erzielt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die Therapiedauer wird auf 7–8 Tage verkürzt, gestützt auf neuere Studien; eine Kombinationstherapie wird nur noch bei septischem Schock und einem weiteren Risikofaktor für MR-Erreger empfohlen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Zur Frage der Kombinationstherapie wurde mittels Evidenzbewertung eine Empfehlung formuliert, die laut Bericht eine klare Handlungsanweisung gibt."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Mykosen, darunter invasive Aspergillus-Infektionen, wurden mit Tabellen und Empfehlungen aufgearbeitet; der Bericht bezeichnet dies als tiefgreifende Neuerung gegenüber der letzten Fassung."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Zu viralen Erregern ergaben sich 2 neue Empfehlungen, darunter eine Evidenzbewertung zur Aciclovir-Therapie bei Herpesvirus-Nachweis in der BAL, die bei Therapieversagen erwogen werden sollte."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Nach Evidenzbewertung wurde eine neue Empfehlung zum nicht-routinemäßigen Einsatz der Multiplex-PCR verfasst."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Für inhalative Antibiotika bei nosokomialer Pneumonie ergab sich ebenfalls kein routinemäßiger Einsatz."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Empfehlung zur verlängerten Infusionszeit von Betalaktam-Antibiotika bei kritisch kranken Patienten wurde nach Evidenzbewertung neu konsentiert."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Neu erstellt wurde eine Tabelle mit allen für die Therapie relevanten Antibiotika, der Dosierung und Applikationsart zu entnehmen sind."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Neben der Langfassung wurde eine Kurzversion der Leitlinie erstellt."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Statt einer Patientenleitlinie wurde eine Patienteninformation erstellt, die nach Veröffentlichung bei Deutscher Atemwegsliga und Lungeninformationsdienst bereitgestellt werden soll."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Begründet wird der Verzicht auf eine Patientenleitlinie damit, dass Betroffene meist nicht wissen, die Erkrankung im Krankenhaus erworben zu haben."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Laut Bericht entspricht die Leitlinie von 2018 nicht mehr dem Forschungsstand; das Update stütze sich auf eine große Menge neuer Studien."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Das neue Verfahren der Evidenzbewertung erforderte die Unterrichtung der Autoren über ihre Aufgaben sowie Zeit und Schulung zum PICO-Prinzip."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Vielfalt der beteiligten Fachgesellschaften könnte laut Bericht zu Kompromissen geführt haben, die spezifischere oder fortschrittlichere Ansätze in einigen Bereichen verdünnen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Offen bleibt, ob die neuen Empfehlungen zu Mykosen und viralen Erregern breit genug für die vielfältigen klinischen Szenarien nosokomialer Pneumonien angelegt sind."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Unklar bleibt, wie die Multiplex-PCR-Empfehlung in ressourcenbegrenzten Einstellungen umgesetzt werden soll."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Risikofaktorentabelle für multiresistente Erreger könnte ohne spezifische Implementierungsstrategien und ohne Berücksichtigung lokaler Resistenzmuster in ihrer Anwendbarkeit begrenzt sein."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Die Effektivität der Dosierungsinformationen könnte durch variierende Verabreichungspraktiken und Patientenpopulationen beeinträchtigt werden; die Anpassung an individuelle Patientenbedürfnisse ist nicht explizit adressiert."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Das Flussdiagramm zur Therapie könnte in der Praxis zu starr sein und die Notwendigkeit individueller klinischer Urteile unterschätzen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Es besteht das Risiko, dass die Bildungs- und Aufklärungsmaßnahmen nicht alle relevanten Stakeholder erreichen oder in der klinischen Praxis nicht umgesetzt werden."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Offen ist, ob die Patienteninformation für Patienten mit unterschiedlichem Bildungsniveau und kulturellem Hintergrund ausreichend zugänglich und verständlich ist."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

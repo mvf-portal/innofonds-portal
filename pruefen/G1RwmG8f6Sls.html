@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -87,9 +96,11 @@ button.zweit{background:#fff;color:var(--gold)}
 <p><b>Worum wir Sie bitten.</b> Wir führen die Angaben des Innovationsausschusses zu allen 861 geförderten Vorhaben in einem offenen Portal zusammen und machen sie vergleichbar. Unten steht <b>jede Angabe, die dort über Ihr Vorhaben erscheint</b> – unverändert übernommen aus der Projektdatenbank des GBA.</p>
 
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert hat</b> &ndash; und worauf Ihr Vorhaben hinausläuft.</p>
 </div>
@@ -100,11 +111,11 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
   <h3>Titel des Vorhabens</h3>
   <p class="unser">Telemedizinunterstützte, interdisziplinäre und altersübergreifende Versorgung von Menschen mit Seltenen Erkrankungen durch NAMSE-B-Zentrums-Cluster</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="utitel" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="utitel" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="utitel" value="ok" checked hidden>
+    <input type="radio" name="utitel" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -119,11 +130,11 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
   <h3>Förderkennzeichen</h3>
   <p class="unser">01NVF23103</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ufoerderkennzeichen" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ufoerderkennzeichen" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ufoerderkennzeichen" value="ok" checked hidden>
+    <input type="radio" name="ufoerderkennzeichen" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -138,11 +149,11 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
   <h3>Laufzeit</h3>
   <p class="unser">2025-01 bis 2028-06</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ulaufzeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ulaufzeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ulaufzeit" value="ok" checked hidden>
+    <input type="radio" name="ulaufzeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -157,11 +168,11 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
   <h3>Fördersumme</h3>
   <p class="unser">8.800.000 Euro</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ufoerdersumme" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ufoerdersumme" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ufoerdersumme" value="ok" checked hidden>
+    <input type="radio" name="ufoerdersumme" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -176,11 +187,11 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
   <h3>Stand</h3>
   <p class="unser">laufend</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustatus" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustatus" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustatus" value="ok" checked hidden>
+    <input type="radio" name="ustatus" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -195,11 +206,11 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
   <h3>Förderbereich</h3>
   <p class="unser">Neue Versorgungsformen</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ufoerderbereich" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ufoerderbereich" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ufoerderbereich" value="ok" checked hidden>
+    <input type="radio" name="ufoerderbereich" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -214,11 +225,11 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
   <h3>Versorgungsbereich</h3>
   <p class="unser">ambulant</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uversorgungsbereich" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uversorgungsbereich" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uversorgungsbereich" value="ok" checked hidden>
+    <input type="radio" name="uversorgungsbereich" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -233,11 +244,11 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
   <h3>Themenfeld</h3>
   <p class="unser">Interdisziplinäre Versorgungsangebote und geeignete Angebote im Bereich der Sekundär- und Tertiärprävention für Patientinnen und Patienten mit komplexem Versorgungsbedarf</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uthemenfeld" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uthemenfeld" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uthemenfeld" value="ok" checked hidden>
+    <input type="radio" name="uthemenfeld" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -252,11 +263,11 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
   <h3>Zielgruppen</h3>
   <p class="unser">Angehörige, Erwachsene, Früh- und Neugeborene, Kinder und Jugendliche, ländliche Bevölkerung, Menschen mit Behinderung, Menschen mit chronischen Krankheiten, Menschen mit seltenen Krankheiten</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uzielgruppen" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uzielgruppen" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uzielgruppen" value="ok" checked hidden>
+    <input type="radio" name="uzielgruppen" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -271,11 +282,11 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
   <h3>Projektleitung</h3>
   <p class="unser">Prof. Dr. Boris Zernikow · Vestische Caritas-Kliniken GmbH, Vestische Kinder- und Jugendklinik, Universität Witten/Herdecke</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uleitung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uleitung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uleitung" value="ok" checked hidden>
+    <input type="radio" name="uleitung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -290,11 +301,11 @@ das, was in keiner Datenbank steht: <b>was sich seit der Eintragung geändert ha
   <h3>Konsortialpartner</h3>
   <p class="unser">AOK Bayern – Die Gesundheitskasse; Allianz Chronischer Seltener Erkrankungen (ACHSE) e. V.; BARMER; Katholisches Klinikum Bochum gGmbH; PedScience Vestische Forschungs-gGmbH; Techniker Krankenkasse; Technische Universität Dresden – Medizinische Fakultät Carl Gustav Carus; Universität Witten/Herdecke; Universitätsklinikum Augsburg; Universitätsklinikum Hamburg-Eppendorf; Universitätsklinikum Würzburg; Universitätsmedizin der Johannes Gutenberg-Universität Mainz</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="upartner" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="upartner" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="upartner" value="ok" checked hidden>
+    <input type="radio" name="upartner" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -315,11 +326,11 @@ Zum Nachweis der Wirksamkeit der neuen Versorgungsform werden jeweils rund 500 P
 
 Bewährt sich das neue Verfahren der kontinuierlichen Koordination der Versorgungselemente, wird sich die Lebensqualität von Kindern und Jugendlichen mit SE nachhaltig verbessern. Im Erfolgsfall könnte der neue Versorgungsansatz auch in die Regelversorgung übernommen und bundesweit eingeführt werden.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubeschreibung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschreibung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubeschreibung" value="ok" checked hidden>
+    <input type="radio" name="ubeschreibung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,7 +381,7 @@ schlechtesten Fall …"></textarea>
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
@@ -383,15 +394,45 @@ const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

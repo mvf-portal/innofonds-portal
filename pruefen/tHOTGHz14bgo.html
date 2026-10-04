@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF22011</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>9 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 32 Aussagen. Die übrigen
+23 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die im Projekt weiterentwickelte S3-Leitlinie zur nicht-dialysepflichtigen chronischen Nierenerkrankung in der Hausarztpraxis der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Im Projekt wurde eine S3-Leitlinie erstellt. Sie soll Ärztinnen, Ärzten sowie Patientinnen und Patienten evidenzbasierte Empfehlungen zu Prävention, Screening und Management der chronischen Nierenkrankheit geben. Ziel ist außerdem, die Progression zum Nierenversagen zu verzögern, die Kooperation zwischen Hausärzten und Nephrologen zu koordinieren und Unter-, Überdiagnostik und Überversorgung zu vermeiden. Der Ausschuss stellt fest, dass die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien erfüllt. Damit sei die Voraussetzung gegeben, ihr Potential zur Verbesserung der Versorgung auszuschöpfen. Zusätzlich stelle die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene bereit.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,68 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt lediglich fest, dass mit der Erfüllung der AWMF-Kriterien die Voraussetzung gegeben ist, das Potential der Leitlinie zur Verbesserung der Versorgung auszuschöpfen.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Die weiterentwickelte S3-Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien.</p>
-  <blockquote>„Die weiterentwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3-Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Eine Patienteninformation mit evidenzbasierten Informationen für Betroffene wurde miterstellt.</p>
-  <blockquote>„Zudem stellt die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene zur Verfügung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -219,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben hat die S3-Leitlinie zur nicht-dialysepflichtigen chronischen Nierenerkrankung (CKD) in der Hausarztpraxis aktualisiert; eine empirische Studie mit Zielgrößen war es nicht. Die aktualisierte Fassung enthält 54 Empfehlungen: 17 neue, 21 modifizierte und 16 unveränderte; acht alte Empfehlungen wurden entfernt. Neu aufgenommen wurden unter anderem die Nutzung eines Risiko-Scores wie der KFRE zur Abschätzung des Progressionsrisikos, wofür eine deutschsprachige Webseite entstand, sowie SGLT-2-Hemmer bei UACR ≥ 300 mg/g oder eGFR &lt; 45 ml/min/1,73 m². Zur Überweisung in die Nephrologie und zu SGLT-2-Hemmern gibt es erstmals graphische Entscheidungshilfen; hinzu kommen Flussdiagramme, Kurzversionen sowie Patientenbroschüren und Filme. Die meisten Empfehlungen beziehen sich auf Menschen mit eGFR &lt; 60 ml/min/1,73 m²; Menschen mit eGFR &gt; 60 konnten aus pragmatischen Gründen nicht immer berücksichtigt werden. Cochrane Reviews wurden nicht formal bewertet, die STIKO-Impfempfehlungen ohne Evidenzbewertung übernommen. Studien zu GLP-1-Rezeptor-Agonisten erschienen nach dem Recherchezeitraum und blieben unberücksichtigt. Implementierungsmaßnahmen beginnen erst nach der Verabschiedung. Die von den Projektnehmern erwarteten Verbesserungen der Versorgung, etwa durch das Risikoinstrument, wurden im Vorhaben nicht untersucht.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die aktualisierte Leitlinie enthält 54 Empfehlungen, davon 17 neue, 21 modifizierte und 16 unveränderte; acht alte Empfehlungen wurden entfernt.</p>
+  
   <blockquote>„„Es wurden insgesamt 54 Empfehlungen in die Leitlinie aufgenommen. Davon wurden 17 Empfehlungen neu hinzugefügt, 21 Empfehlungen modifiziert und 16 Empfehlungen blieben unverändert. Acht alte Empfehlungen wurden entfernt.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zur Abschätzung des Progressionsrisikos zum nierenersatztherapiepflichtigen Nierenversagen wird neu ein Risiko-Score wie die KFRE empfohlen. Dafür wurde in Kooperation mit den Entwicklern eine deutsche Webseite für den bisher nur englischsprachigen Rechner erstellt.</p>
+  
   <blockquote>„„wird neu die Nutzung eines Risiko-Scores, wie z.B. die Kidney Failure Risk Equation (KFRE) empfohlen. Zur praktischen Umsetzbarkeit wurde eine deutsche Webseite (www.risiko-nierenversagen.de ) erstellt“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Neu empfohlen werden SGLT-2-Hemmer für Patient*innen mit Albuminurie (UACR ≥ 300 mg/g) oder eingeschränkter Nierenfunktion (eGFR &lt; 45 ml/min/1,73 m²). Dazu gibt es erstmals eine graphische Entscheidungshilfe.</p>
+  
   <blockquote>„„Neu in diesem Update der Leitlinie ist die Empfehlung von SGLT-2 Hemmern für Patient*innen mit Albuminurie (UACR ≥ 300 mg/g) oder eingeschränkter Nierenfunktion (eGFR &lt; 45 ml/min/1,73 m²).“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen des heterogenen Risikos der Patientengruppen waren sehr präzise Empfehlungen nicht immer möglich. Menschen mit eGFR &gt; 60 ml/min/1,73 m² konnten aus pragmatischen Gründen nicht immer berücksichtigt werden, daher beziehen sich die meisten Empfehlungen auf eGFR &lt; 60 ml/min/1,73 m².</p>
+  
   <blockquote>„„Das Konzept der CKD umfasst auch Menschen mit einer eGFR &gt; 60 ml/min/1,73 m² , dies konnte aber aus pragmatischen Gründen nicht immer berücksichtigt werden. Die Mehrheit der Empfehlungen bezieht sich daher auf Menschen mit einer eGFR &lt; 60 ml/min/1,73 m².“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Implementierungsmaßnahmen finden erst nach der finalen Verabschiedung der Leitlinie statt und waren nicht Gegenstand des Berichts.</p>
+  
   <blockquote>„„Die Implementierungsmaßnahmen finden erst nach finaler Verabschiedung der Leitlinie statt.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wie sich die Nutzung des neu empfohlenen Risikoinstruments auf die Versorgung auswirkt, muss nach Angabe des Berichts noch erhoben werden.</p>
+  
   <blockquote>„„Die Erhebung der Auswirkung der Nutzung des neu empfohlenen Risikoinstrument auf die Versorgung ist notwendig.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -347,16 +288,92 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>19 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>23 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die im Projekt weiterentwickelte S3-Leitlinie zur nicht-dialysepflichtigen chronischen Nierenerkrankung in der Hausarztpraxis der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt lediglich fest, dass mit der Erfüllung der AWMF-Kriterien die Voraussetzung gegeben ist, das Potential der Leitlinie zur Verbesserung der Versorgung auszuschöpfen.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Die weiterentwickelte S3-Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien.</p>
+  
+  <blockquote>„Die weiterentwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3-Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Eine Patienteninformation mit evidenzbasierten Informationen für Betroffene wurde miterstellt.</p>
+  
+  <blockquote>„Zudem stellt die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene zur Verfügung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Entscheidung über eine Überweisung in die Nephrologie wurde erstmals eine graphische Entscheidungshilfe erstellt.</p>
+  
   <blockquote>„„Die Risikoabschätzung spielt besonders bei der Entscheidung zur Überweisung in die Nephrologie eine Rolle. D azu wurde erstmals eine graphische Entscheidungshilfe erstellt.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Drei Kapitel wurden neu aufgenommen: Risiko-Scores zum Progressionsrisiko, Impfungen sowie Forschungs- und Änderungsbedarf.</p>
+  
   <blockquote>„„Die Kapitel 7 &quot;Abschätzung des Progressionsrisikos zum Nierenversagen (Risiko -Scores)&quot;, 11 &quot;Impfungen&quot; und 12 &quot;Forschungs- und Änderungsbedarf&quot; wurden neu hinzugefügt.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -389,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die einmalige Ultraschalluntersuchung der Nieren ist nicht mehr risikobasiert empfohlen, sondern als „sollte“-Empfehlung für alle, angepasst an die Quellleitlinien.</p>
+  
   <blockquote>„„Die bisherige Empfehlung zur einmaligen Untersuchung der Nieren mittels Ultraschalls wurde von einer risikobasierten Empfehlung zu eine r &quot;sollte&quot; Empfehlung für alle , modifiziert angepasst an die Quellleitlinien.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -408,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei asymptomatischer Hyperurikämie wird keine harnsäuresenkende Therapie mehr empfohlen.</p>
+  
   <blockquote>„„Es wird keine harnsäuresenkende Thera pie mehr empfohlen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Empfehlungen zu Blutdruck-, Lipid- und Diabetesmanagement sowie zur Thrombozytenaggregationshemmung blieben weitgehend unverändert oder wurden minimal modifiziert. Dabei wurde auf Kongruenz mit den NVL Hypertonie und Diabetes Typ 2 geachtet.</p>
+  
   <blockquote>„„Weitgehend unverändert oder minimal modifiziert wurden Empfehlungen zu Blutdruckmanagement, Thrombozytenaggregationshemmung, Lipid management und Diabetesmanagement. Dabei wurde besonders auf Kongruenz mit aktuellen nationalen Leitlinien“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als Grundlage der Indikation zur lipidsenkenden Therapie wird ein kardiovaskulärer Risikokalkulator empfohlen, angepasst an sozialrechtliche Vorgaben und Leitlinien.</p>
+  
   <blockquote>„„wird, angepasst an die sozialrechtlichen Vorgaben und die Leitlinien, die Verwendung eines kardiovaskulären Risikokalkulators als Grundlage für eine Therapieindikation empfohlen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zur renalen Anämie wurde ein neues Flussdiagramm entwickelt. Bei Verdacht wird explizit eine Überweisung in die Nephrologie empfohlen.</p>
+  
   <blockquote>„„dort ein neue s Flussdiagramm zum Vorgehen bei Anämie entwickelt. Bei Verdacht auf renale Anämie wird explizit eine Überweisung in die Nephrologie empfohlen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Kurzversionen für Erstdiagnose und Monitoring sind weitgehend als Flussdiagramme gestaltet. Eingeflossen sind Erkenntnisse aus dem Projekt GUIDAGE-CKD, in dem Hausärzt*innen zur Umsetzbarkeit der ersten Leitlinienversion befragt wurden.</p>
+  
   <blockquote>„„Die Kurzversionen für Erstdiagnose und Monitoring der Leitlinie wurden nun weitgehend in Flussdiagrammen dargestellt. Dabei konnten Erkenntnisse eine s anderen vom Innovationsausschuss geförderten Projektes (GUIDAGE -CKD“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Gemeinsam mit der Patientenvertretung wurden stadienangepasste Patientenbroschüren und Filme erstellt, auch in einfacher Sprache.</p>
+  
   <blockquote>„„An das Stadium der CKD angepasste Patientenbroschüren und Filme , auch in einfacher Sprache, mit ansprechenden graphischen Elementen , wurden, in Zusammenarbeit mit den Patientenvertreten, erstellt.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Cochrane Reviews wurden aus pragmatischen Gründen nicht formal bewertet.</p>
+  
   <blockquote>„„Auf eine formale Bewertung der Cochrane Reviews wurde aus pragmatischen Gründen verzichtet.“ – Bericht, S. 6" <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die speziellen STIKO-Impfempfehlungen bei CKD wurden aus pragmatischen Gründen unverändert und ohne Evidenzbewertung übernommen.</p>
+  
   <blockquote>„„Die speziellen Impfempfehlung der STIKO bei CKD wurden aus pragmatischen Gründen unverändert und ohne Evidenzbewertung übernommen.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei den Impfempfehlungen zeigten sich Probleme, die Evidenz nach dem Stadium der Nierenkrankheit zu differenzieren.</p>
+  
   <blockquote>„„Die Impfempfehlungen der STIKO wurden unverändert übernommen, dabei wurde n aber Probleme mit der Differenzierung der Evidenz in Bezug auf das Stadium d er Nierenkrankheit deutlich .“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +596,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Studien zum Nutzen von GLP-1-Rezeptor-Agonisten auf renale Endpunkte bei CKD und Diabetes erschienen erst nach Abschluss des Recherchezeitraums und konnten nicht berücksichtigt werden.</p>
+  
   <blockquote>„„Studien zum Nutzen von GLP-1-Rezeptor-Agonisten auf renale Endpunkte bei CKD und Diabetes erschienen erst nach Abschluss des Recherchezeitraums der Leitlinie und konnten ebenfalls nicht berücksichtigt werden.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +615,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zu Finerenon wurde nach einer negativen Bewertung im AMNOG-Verfahren keine Empfehlung gegeben.</p>
+  
   <blockquote>„„Auf eine Empfehlung zum neuen nicht-Mineralkortikoidrezeptor-Antagonisten Finerenon wurde nach einer negativen Bewertung im AMNOG-Verfahren verzichtet.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +634,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Update der KDIGO-Leitlinie war erst kurz vor Ende des Updateprozesses verfügbar. An einigen Stellen ergaben sich konsentierte Abweichungen davon.</p>
+  
   <blockquote>„„Das erst kurz vor Beendigung des Updateprozesses verfügbare Update der KDIGO -Leitlinie, versteht sich als Blaupause für nationale Adaptierungen. An einigen Stell en haben sich hier konsentierte Abweichungen ergeben.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für den aus NICE 2021 und KDIGO 2024 übernommenen Risikoscore stand kein deutschsprachiger Risikokalkulator zur Verfügung. Daher wurde die deutsche Webseite entwickelt.</p>
+  
   <blockquote>„„Die erstmals in der NICE Leitlinien 2021 und dann in der KDIGO-Leitlinie 2024 empfohlene Nutzung eines Risikoscores wurde übernommen. Allerdings stand kein Risikokalkulator auf Deutsch zur Verfügung.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +672,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die epidemiologische Datenlage zu CKD in Deutschland wird als unzureichend benannt.</p>
+  
   <blockquote>„„Die epidemiologische Datenlage zu CKD in Deutschland ist unzureichend.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +691,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Genderaspekte bei der CKD werden als unzureichend erforscht benannt.</p>
+  
   <blockquote>„„Genderaspekte bei der CKD sind noch unzureichend erforscht und sollten zukünftig besser berücksichtigt werden.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für die nächste Version wird die Beteiligung oder Konsultation weiterer Fachgesellschaften, etwa der Urologie, als wünschenswert genannt.</p>
+  
   <blockquote>„„Bei der nächsten Version ist eine Beteiligung oder Konsultation weiterer Fachgesellschaften, wie z.B. der Urologie wünschenswert.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -743,28 +760,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 521, "akronym": "CKD-up", "kennung": "tHOTGHz14bgo", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt weiterentwickelte S3-Leitlinie zur nicht-dialysepflichtigen chronischen Nierenerkrankung in der Hausarztpraxis der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Im Projekt wurde eine S3-Leitlinie erstellt. Sie soll Ärztinnen, Ärzten sowie Patientinnen und Patienten evidenzbasierte Empfehlungen zu Prävention, Screening und Management der chronischen Nierenkrankheit geben. Ziel ist außerdem, die Progression zum Nierenversagen zu verzögern, die Kooperation zwischen Hausärzten und Nephrologen zu koordinieren und Unter-, Überdiagnostik und Überversorgung zu vermeiden. Der Ausschuss stellt fest, dass die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien erfüllt. Damit sei die Voraussetzung gegeben, ihr Potential zur Verbesserung der Versorgung auszuschöpfen. Zusätzlich stelle die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene bereit."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt lediglich fest, dass mit der Erfüllung der AWMF-Kriterien die Voraussetzung gegeben ist, das Potential der Leitlinie zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "befund.0", "art": "befund", "unser": "Die weiterentwickelte S3-Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien."}, {"stelle": "befund.1", "art": "befund", "unser": "Eine Patienteninformation mit evidenzbasierten Informationen für Betroffene wurde miterstellt."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat die S3-Leitlinie zur nicht-dialysepflichtigen chronischen Nierenerkrankung (CKD) in der Hausarztpraxis aktualisiert; eine empirische Studie mit Zielgrößen war es nicht. Die aktualisierte Fassung enthält 54 Empfehlungen: 17 neue, 21 modifizierte und 16 unveränderte; acht alte Empfehlungen wurden entfernt. Neu aufgenommen wurden unter anderem die Nutzung eines Risiko-Scores wie der KFRE zur Abschätzung des Progressionsrisikos, wofür eine deutschsprachige Webseite entstand, sowie SGLT-2-Hemmer bei UACR ≥ 300 mg/g oder eGFR < 45 ml/min/1,73 m². Zur Überweisung in die Nephrologie und zu SGLT-2-Hemmern gibt es erstmals graphische Entscheidungshilfen; hinzu kommen Flussdiagramme, Kurzversionen sowie Patientenbroschüren und Filme. Die meisten Empfehlungen beziehen sich auf Menschen mit eGFR < 60 ml/min/1,73 m²; Menschen mit eGFR > 60 konnten aus pragmatischen Gründen nicht immer berücksichtigt werden. Cochrane Reviews wurden nicht formal bewertet, die STIKO-Impfempfehlungen ohne Evidenzbewertung übernommen. Studien zu GLP-1-Rezeptor-Agonisten erschienen nach dem Recherchezeitraum und blieben unberücksichtigt. Implementierungsmaßnahmen beginnen erst nach der Verabschiedung. Die von den Projektnehmern erwarteten Verbesserungen der Versorgung, etwa durch das Risikoinstrument, wurden im Vorhaben nicht untersucht."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die aktualisierte Leitlinie enthält 54 Empfehlungen, davon 17 neue, 21 modifizierte und 16 unveränderte; acht alte Empfehlungen wurden entfernt."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Zur Abschätzung des Progressionsrisikos zum nierenersatztherapiepflichtigen Nierenversagen wird neu ein Risiko-Score wie die KFRE empfohlen. Dafür wurde in Kooperation mit den Entwicklern eine deutsche Webseite für den bisher nur englischsprachigen Rechner erstellt."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Neu empfohlen werden SGLT-2-Hemmer für Patient*innen mit Albuminurie (UACR ≥ 300 mg/g) oder eingeschränkter Nierenfunktion (eGFR < 45 ml/min/1,73 m²). Dazu gibt es erstmals eine graphische Entscheidungshilfe."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Wegen des heterogenen Risikos der Patientengruppen waren sehr präzise Empfehlungen nicht immer möglich. Menschen mit eGFR > 60 ml/min/1,73 m² konnten aus pragmatischen Gründen nicht immer berücksichtigt werden, daher beziehen sich die meisten Empfehlungen auf eGFR < 60 ml/min/1,73 m²."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Implementierungsmaßnahmen finden erst nach der finalen Verabschiedung der Leitlinie statt und waren nicht Gegenstand des Berichts."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Wie sich die Nutzung des neu empfohlenen Risikoinstruments auf die Versorgung auswirkt, muss nach Angabe des Berichts noch erhoben werden."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Für die Entscheidung über eine Überweisung in die Nephrologie wurde erstmals eine graphische Entscheidungshilfe erstellt."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Drei Kapitel wurden neu aufgenommen: Risiko-Scores zum Progressionsrisiko, Impfungen sowie Forschungs- und Änderungsbedarf."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die einmalige Ultraschalluntersuchung der Nieren ist nicht mehr risikobasiert empfohlen, sondern als „sollte“-Empfehlung für alle, angepasst an die Quellleitlinien."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Bei asymptomatischer Hyperurikämie wird keine harnsäuresenkende Therapie mehr empfohlen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die Empfehlungen zu Blutdruck-, Lipid- und Diabetesmanagement sowie zur Thrombozytenaggregationshemmung blieben weitgehend unverändert oder wurden minimal modifiziert. Dabei wurde auf Kongruenz mit den NVL Hypertonie und Diabetes Typ 2 geachtet."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Als Grundlage der Indikation zur lipidsenkenden Therapie wird ein kardiovaskulärer Risikokalkulator empfohlen, angepasst an sozialrechtliche Vorgaben und Leitlinien."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Zur renalen Anämie wurde ein neues Flussdiagramm entwickelt. Bei Verdacht wird explizit eine Überweisung in die Nephrologie empfohlen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Kurzversionen für Erstdiagnose und Monitoring sind weitgehend als Flussdiagramme gestaltet. Eingeflossen sind Erkenntnisse aus dem Projekt GUIDAGE-CKD, in dem Hausärzt*innen zur Umsetzbarkeit der ersten Leitlinienversion befragt wurden."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Gemeinsam mit der Patientenvertretung wurden stadienangepasste Patientenbroschüren und Filme erstellt, auch in einfacher Sprache."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Cochrane Reviews wurden aus pragmatischen Gründen nicht formal bewertet."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die speziellen STIKO-Impfempfehlungen bei CKD wurden aus pragmatischen Gründen unverändert und ohne Evidenzbewertung übernommen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Bei den Impfempfehlungen zeigten sich Probleme, die Evidenz nach dem Stadium der Nierenkrankheit zu differenzieren."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Studien zum Nutzen von GLP-1-Rezeptor-Agonisten auf renale Endpunkte bei CKD und Diabetes erschienen erst nach Abschluss des Recherchezeitraums und konnten nicht berücksichtigt werden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Zu Finerenon wurde nach einer negativen Bewertung im AMNOG-Verfahren keine Empfehlung gegeben."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Das Update der KDIGO-Leitlinie war erst kurz vor Ende des Updateprozesses verfügbar. An einigen Stellen ergaben sich konsentierte Abweichungen davon."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Für den aus NICE 2021 und KDIGO 2024 übernommenen Risikoscore stand kein deutschsprachiger Risikokalkulator zur Verfügung. Daher wurde die deutsche Webseite entwickelt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die epidemiologische Datenlage zu CKD in Deutschland wird als unzureichend benannt."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Genderaspekte bei der CKD werden als unzureichend erforscht benannt."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Für die nächste Version wird die Beteiligung oder Konsultation weiterer Fachgesellschaften, etwa der Urologie, als wünschenswert genannt."}]};
+const D = {"projekt_id": 521, "akronym": "CKD-up", "kennung": "tHOTGHz14bgo", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Im Projekt wurde eine S3-Leitlinie erstellt. Sie soll Ärztinnen, Ärzten sowie Patientinnen und Patienten evidenzbasierte Empfehlungen zu Prävention, Screening und Management der chronischen Nierenkrankheit geben. Ziel ist außerdem, die Progression zum Nierenversagen zu verzögern, die Kooperation zwischen Hausärzten und Nephrologen zu koordinieren und Unter-, Überdiagnostik und Überversorgung zu vermeiden. Der Ausschuss stellt fest, dass die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien erfüllt. Damit sei die Voraussetzung gegeben, ihr Potential zur Verbesserung der Versorgung auszuschöpfen. Zusätzlich stelle die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene bereit."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat die S3-Leitlinie zur nicht-dialysepflichtigen chronischen Nierenerkrankung (CKD) in der Hausarztpraxis aktualisiert; eine empirische Studie mit Zielgrößen war es nicht. Die aktualisierte Fassung enthält 54 Empfehlungen: 17 neue, 21 modifizierte und 16 unveränderte; acht alte Empfehlungen wurden entfernt. Neu aufgenommen wurden unter anderem die Nutzung eines Risiko-Scores wie der KFRE zur Abschätzung des Progressionsrisikos, wofür eine deutschsprachige Webseite entstand, sowie SGLT-2-Hemmer bei UACR ≥ 300 mg/g oder eGFR < 45 ml/min/1,73 m². Zur Überweisung in die Nephrologie und zu SGLT-2-Hemmern gibt es erstmals graphische Entscheidungshilfen; hinzu kommen Flussdiagramme, Kurzversionen sowie Patientenbroschüren und Filme. Die meisten Empfehlungen beziehen sich auf Menschen mit eGFR < 60 ml/min/1,73 m²; Menschen mit eGFR > 60 konnten aus pragmatischen Gründen nicht immer berücksichtigt werden. Cochrane Reviews wurden nicht formal bewertet, die STIKO-Impfempfehlungen ohne Evidenzbewertung übernommen. Studien zu GLP-1-Rezeptor-Agonisten erschienen nach dem Recherchezeitraum und blieben unberücksichtigt. Implementierungsmaßnahmen beginnen erst nach der Verabschiedung. Die von den Projektnehmern erwarteten Verbesserungen der Versorgung, etwa durch das Risikoinstrument, wurden im Vorhaben nicht untersucht."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die aktualisierte Leitlinie enthält 54 Empfehlungen, davon 17 neue, 21 modifizierte und 16 unveränderte; acht alte Empfehlungen wurden entfernt."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Zur Abschätzung des Progressionsrisikos zum nierenersatztherapiepflichtigen Nierenversagen wird neu ein Risiko-Score wie die KFRE empfohlen. Dafür wurde in Kooperation mit den Entwicklern eine deutsche Webseite für den bisher nur englischsprachigen Rechner erstellt."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Neu empfohlen werden SGLT-2-Hemmer für Patient*innen mit Albuminurie (UACR ≥ 300 mg/g) oder eingeschränkter Nierenfunktion (eGFR < 45 ml/min/1,73 m²). Dazu gibt es erstmals eine graphische Entscheidungshilfe."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Wegen des heterogenen Risikos der Patientengruppen waren sehr präzise Empfehlungen nicht immer möglich. Menschen mit eGFR > 60 ml/min/1,73 m² konnten aus pragmatischen Gründen nicht immer berücksichtigt werden, daher beziehen sich die meisten Empfehlungen auf eGFR < 60 ml/min/1,73 m²."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Implementierungsmaßnahmen finden erst nach der finalen Verabschiedung der Leitlinie statt und waren nicht Gegenstand des Berichts."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Wie sich die Nutzung des neu empfohlenen Risikoinstruments auf die Versorgung auswirkt, muss nach Angabe des Berichts noch erhoben werden."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt weiterentwickelte S3-Leitlinie zur nicht-dialysepflichtigen chronischen Nierenerkrankung in der Hausarztpraxis der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt lediglich fest, dass mit der Erfüllung der AWMF-Kriterien die Voraussetzung gegeben ist, das Potential der Leitlinie zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "befund.0", "art": "befund", "unser": "Die weiterentwickelte S3-Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien."}, {"stelle": "befund.1", "art": "befund", "unser": "Eine Patienteninformation mit evidenzbasierten Informationen für Betroffene wurde miterstellt."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Für die Entscheidung über eine Überweisung in die Nephrologie wurde erstmals eine graphische Entscheidungshilfe erstellt."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Drei Kapitel wurden neu aufgenommen: Risiko-Scores zum Progressionsrisiko, Impfungen sowie Forschungs- und Änderungsbedarf."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die einmalige Ultraschalluntersuchung der Nieren ist nicht mehr risikobasiert empfohlen, sondern als „sollte“-Empfehlung für alle, angepasst an die Quellleitlinien."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Bei asymptomatischer Hyperurikämie wird keine harnsäuresenkende Therapie mehr empfohlen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die Empfehlungen zu Blutdruck-, Lipid- und Diabetesmanagement sowie zur Thrombozytenaggregationshemmung blieben weitgehend unverändert oder wurden minimal modifiziert. Dabei wurde auf Kongruenz mit den NVL Hypertonie und Diabetes Typ 2 geachtet."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Als Grundlage der Indikation zur lipidsenkenden Therapie wird ein kardiovaskulärer Risikokalkulator empfohlen, angepasst an sozialrechtliche Vorgaben und Leitlinien."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Zur renalen Anämie wurde ein neues Flussdiagramm entwickelt. Bei Verdacht wird explizit eine Überweisung in die Nephrologie empfohlen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Kurzversionen für Erstdiagnose und Monitoring sind weitgehend als Flussdiagramme gestaltet. Eingeflossen sind Erkenntnisse aus dem Projekt GUIDAGE-CKD, in dem Hausärzt*innen zur Umsetzbarkeit der ersten Leitlinienversion befragt wurden."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Gemeinsam mit der Patientenvertretung wurden stadienangepasste Patientenbroschüren und Filme erstellt, auch in einfacher Sprache."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Cochrane Reviews wurden aus pragmatischen Gründen nicht formal bewertet."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die speziellen STIKO-Impfempfehlungen bei CKD wurden aus pragmatischen Gründen unverändert und ohne Evidenzbewertung übernommen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Bei den Impfempfehlungen zeigten sich Probleme, die Evidenz nach dem Stadium der Nierenkrankheit zu differenzieren."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Studien zum Nutzen von GLP-1-Rezeptor-Agonisten auf renale Endpunkte bei CKD und Diabetes erschienen erst nach Abschluss des Recherchezeitraums und konnten nicht berücksichtigt werden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Zu Finerenon wurde nach einer negativen Bewertung im AMNOG-Verfahren keine Empfehlung gegeben."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Das Update der KDIGO-Leitlinie war erst kurz vor Ende des Updateprozesses verfügbar. An einigen Stellen ergaben sich konsentierte Abweichungen davon."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Für den aus NICE 2021 und KDIGO 2024 übernommenen Risikoscore stand kein deutschsprachiger Risikokalkulator zur Verfügung. Daher wurde die deutsche Webseite entwickelt."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die epidemiologische Datenlage zu CKD in Deutschland wird als unzureichend benannt."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Genderaspekte bei der CKD werden als unzureichend erforscht benannt."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Für die nächste Version wird die Beteiligung oder Konsultation weiterer Fachgesellschaften, etwa der Urologie, als wünschenswert genannt."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

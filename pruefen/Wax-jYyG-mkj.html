@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF20005</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>21 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 89 Aussagen. Die übrigen
+68 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss leitet die Projektergebnisse zur Information an den Hausärztinnen- und Hausärzteverband, den DBfK-Bundesverband, den Spitzenverband der Heilmittelverbände und den Verband wir pflegen weiter. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt hat in einer explorativen Mixed-Methods-Studie mit überwiegend qualitativen Methoden ein aus sechs Komponenten bestehendes interprofessionelles, patientenzentriertes Versorgungskonzept für zuhause lebende Pflegebedürftige entwickelt. Dazu gehört ein Arbeits- und Handbuch für die Umsetzung. Die ursprünglich geplante Testung in einer clusterrandomisierten Pilotstudie konnte wegen der COVID-19-Pandemie nicht wie geplant erfolgen. Der Ausschuss hält Studiendesign und Methoden für angemessen. Er weist aber auf eine sehr geringe Rücklaufquote des Online-Surveys hin. Zudem nennt er eine mögliche Verzerrung der Befragungsergebnisse, weil die Rekrutierung unter COVID-19 schwierig war und die theoretische Sättigung fehlte. Da das Konzept einen Beitrag zur Zusammenarbeit in der häuslichen Versorgung leistet, werden die Ergebnisse zur Information weitergeleitet.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,11 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Mixed Methods</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -161,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: COVID-19-Pandemie</h3>
   <p class="unser">Die geplante Testung des Konzepts in einer clusterrandomisierten Pilotstudie konnte pandemiebedingt nicht wie geplant erfolgen.</p>
+  
   <blockquote>„Durch die COVID 19 Pandemie und die damit einhergehenden Beschränkungen konnte die ursprünglich geplante Testung des entwickelten Versorgungskonzepts im Rahmen einer clusterrandomisierten Pilot -Studie nicht wie geplant erfolgen." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.1">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Sehr geringe Rücklaufquote des Online-Surveys</p>
+  
   <blockquote>„Das Online -Survey erzielte eine sehr geringe Rücklaufquote." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -199,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.2">
   <h3>Hindernis laut Beschluss: Rekrutierung von Teilnehmenden</h3>
   <p class="unser">COVID-19-bedingte Rekrutierungsprobleme führten zu fehlender theoretischer Sättigung der qualitativen Methodik.</p>
+  
   <blockquote>„Aufgrund der COVID- 19-bedingten Rekrutierungsprobleme und der damit einhergehenden fehlenden theoretischen Sättigung der qualitativen Methodik kann von einer möglichen Verzerrung der Befragungsergebnisse, insbesondere durch einen Selektionsbias und sozial erwünschte Antworten, ausgegangen werden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -218,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.3">
   <h3>Hindernis laut Beschluss: Studienanlage</h3>
   <p class="unser">Mögliche Verzerrung der Befragungsergebnisse durch Selektionsbias</p>
+  
   <blockquote>„Aufgrund der COVID- 19-bedingten Rekrutierungsprobleme und der damit einhergehenden fehlenden theoretischen Sättigung der qualitativen Methodik kann von einer möglichen Verzerrung der Befragungsergebnisse, insbesondere durch einen Selektionsbias und sozial erwünschte Antworten, ausgegangen werden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,88 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.4">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Mögliche Verzerrung der Befragungsergebnisse durch sozial erwünschte Antworten</p>
+  
   <blockquote>„Aufgrund der COVID- 19-bedingten Rekrutierungsprobleme und der damit einhergehenden fehlenden theoretischen Sättigung der qualitativen Methodik kann von einer möglichen Verzerrung der Befragungsergebnisse, insbesondere durch einen Selektionsbias und sozial erwünschte Antworten, ausgegangen werden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Interprofessionelles patientenzentriertes Versorgungskonzept erfolgreich entwickelt</p>
-  <blockquote>„Das Projekt hat erfolgreich ein interprofessionelles patientenzentriertes Versorgungskonzept für pflegebedürftige Personen im häuslichen Umfeld entwickelt, um diese aktiv in den Versorgungsprozess einzubeziehen und die Zusammenarbeit aller Beteiligten zu stärken." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Versorgungskonzept aus sechs Komponenten festgelegt</p>
-  <blockquote>„Abschließend wurde das aus sechs Komponenten (u. a. Benennung/Stärkung einer Koordinationsperson, digitales Kommunikationssystem, gemeinsame Haus besuche sowie Fallbesprechungen) bestehende Versorgungskonzept interprof HOME entwickelt." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Umfangreiches Arbeits- und Handbuch zur Umsetzung erarbeitet, das einen Beitrag zur Zusammenarbeit in der häuslichen Versorgung leistet</p>
-  <blockquote>„Insgesamt hat das Projekt ein interprofessionelles patientenzentriertes Versorgungskonzept unter Einbezug aller an der Versorgung beteiligter Personen sowie ein umfangreiches Arbeits - und Handbuch für dessen Umsetzung erarbeitet, welches einen Beitrag zur Zusammenarbeit in der häuslichen Versorgung von Personen mit Pflegebedarf leistet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Studiendesign geeignet und Methoden angemessen durchgeführt</p>
-  <blockquote>„Das Studiendesign war zur Beantwortung der Fragestellung geeignet und die Methoden wurden angemessen durchgeführt." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Zufriedenheit und Versorgungserfahrung“</h3>
   <p class="unser">Zufriedenheit von Personen mit Pflegebedarf und An-/Zugehörigen mit der Zusammenarbeit der Berufsgruppen (Survey WP4)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Arbeitssituation der Gesundheitsfachkräfte“</h3>
   <p class="unser">Bedeutung der interprofessionellen Kommunikation als Bestandteil der beruflichen Praxis (Survey WP4)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Hospitalisierungsrate (aus eingeschlossener Studie Federman et al. 2022 der systematischen Evidenzsynthese WP1, HBPC versus Standardversorgung, nach 12 Monaten)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Besuche in der Notaufnahme (aus eingeschlossener Studie Federman et al. 2022 der systematischen Evidenzsynthese WP1, HBPC versus Standardversorgung)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Lebensqualität“</h3>
   <p class="unser">Lebensqualität (systematische Evidenzsynthese WP1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -424,91 +346,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
       ></textarea></label>
   </div>
 </section>
-<section class="p" data-stelle="adressat.1">
-  <h3>Hausärztinnen und Hausärzteverband e. V. – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt.</p>
-  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Hausärztinnen und Hausärzteverband e. V., den Deutschen Berufsverband für Pflegeberufe – DBfK Bundesverband e. V., den Spitzenverband der Heilmittelverbände e. V. (SHV) und den Verband wir pflegen – Interessenvertretung und Selbsthilfe pflegender Angehöriger e. V. zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.2">
-  <h3>Deutscher Berufsverband für Pflegeberufe – DBfK Bundesverband e. V. – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt.</p>
-  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Hausärztinnen und Hausärzteverband e. V., den Deutschen Berufsverband für Pflegeberufe – DBfK Bundesverband e. V., den Spitzenverband der Heilmittelverbände e. V. (SHV) und den Verband wir pflegen – Interessenvertretung und Selbsthilfe pflegender Angehöriger e. V. zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.3">
-  <h3>Spitzenverband der Heilmittelverbände e. V. (SHV) – eingestuft als „zur Kenntnis genommen“</h3>
-  <p class="unser">Der SHV begrüßt die Zielrichtung des Projekts, nennt vertragsrechtliche und strukturelle Voraussetzungen für eine Umsetzung (u. a. Ergänzung der Heilmittel-Richtlinien, abrechenbare Leistungspositionen) und spricht sich für eine Weiterentwicklung der Rahmenbedingungen und eine Pilotierung des Handbuchs aus. Eine eigene Befassung, Entscheidung oder nach außen gerichtete Handlung benennt er nicht.</p>
-  <blockquote>„Wir sprechen uns daher klar für eine Weiterentwicklung der Rahmenbedingungen und Pilotierung des Handbuchs in der Regelversorgung aus und stehen für Rückfragen oder vertiefende Erörterungen jederzeit zur Verfügung." <span class="s">S. 9</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.4">
-  <h3>Verband wir pflegen – Interessenvertretung und Selbsthilfe pflegender Angehöriger e. V. – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt.</p>
-  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Hausärztinnen und Hausärzteverband e. V., den Deutschen Berufsverband für Pflegeberufe – DBfK Bundesverband e. V., den Spitzenverband der Heilmittelverbände e. V. (SHV) und den Verband wir pflegen – Interessenvertretung und Selbsthilfe pflegender Angehöriger e. V. zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="bericht_kurz">
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben „interprof HOME“ untersuchte mit einem explorativen Mixed-Methods-Design die Zusammenarbeit von Pflegediensten, Hausärzt*innen und Therapeut*innen in der Versorgung zuhause lebender Personen mit Pflegebedarf. Es umfasste Literaturübersicht und Evidenzsynthese (WP1), Interviews und Fokusgruppen (WP2), Best Practice Cases (WP3), einen Survey (WP4), gemischte Fokusgruppen (WP5) und einen Expert*innenworkshop (WP6); Zielgrößen waren laut Bericht nicht vorgesehen. Die Zusammenarbeit fand nach den Ergebnissen in geringem Umfang und meist organisatorisch statt, in komplexen Versorgungssituationen häufiger; Personen mit Pflegebedarf und An-/Zugehörige übernahmen oft koordinierende Aufgaben und äußerten im Survey Unzufriedenheit mit den Absprachen. Daraus wurde ein Versorgungskonzept mit sechs Komponenten entwickelt: Auftakt-Treffen, koordinierende Person, Messenger, Sondertelefonnummer, gemeinsamer Hausbesuch und gemeinsame Besprechungen. Die im Titel genannte Testung des Konzepts fand nicht statt: Wegen pandemiebedingter Rekrutierungsschwierigkeiten endete das Projekt nach 29 Monaten vorzeitig. Durchführbarkeit und Wirkungen sollen in einer späteren Studie untersucht werden. Die Aussagekraft ist zudem durch reduzierte Fallzahlen, Survey-Rücklaufquoten von 6 bis 28 %, einen vom Bericht benannten möglichen Selektionsbias und den Ausschluss von Menschen mit Demenz oder Aphasie begrenzt.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Entwickelt wurde das Versorgungskonzept „interprof HOME“ mit sechs Komponenten: Auftakt-Treffen, koordinierende Person, Messenger, Sondertelefonnummer, gemeinsamer Hausbesuch und gemeinsame Besprechungen.</p>
+  
   <blockquote>„„Das entwickelte Versorgungskonzept „ interprof HOME&quot; besteht aus sechs Komponenten: Auftakt-Treffen, Benennung und Stärkung einer koordinierenden Person, digitales Kommunikationssystem (Messenger), Sondertelefonnummer, gemeinsamer Hausbesuch und gemeinsame Besprechungen.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP2: Interprofessionelle Zusammenarbeit kommt in einfachen Versorgungssituationen selten vor, weil Betroffene und Berufsgruppen sie oft als nicht relevant oder notwendig empfinden; alle Akteursgruppen nahmen eine geringe Zusammenarbeit wahr.</p>
+  
   <blockquote>„„Die Ergebnisse der Interviews und monoprofessionellen Fokusgruppen (WP2) zeigen auf, dass die interpr ofessionelle Zusammenarbeit in einfachen Versorgungssituationen selten vorkommt, da sowohl die Personen mit Pflegebedarf und An- /Zugehörigen, als auch die Vertreter*innen der Berufsgruppen diese oft als nicht relevant oder notwendig empfinden.“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,31 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP3: In den Best Practice Cases stärkten Personen mit Pflegebedarf und Angehörige die Zusammenarbeit, indem sie sich in drei Aufgabenfeldern einbrachten: Informationsaustausch, Entscheidungsprozesse und Beaufsichtigung der professionellen Arbeit.</p>
+  
   <blockquote>„„Die Zusammenarbeit wurde in den Cases dadurch gestärkt, dass sich die Personen mit Pflegebedarf und ihre Angehörigen in drei Aufgabenfeldern aktiv eingebracht haben.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">WP4: Viele befragte Personen mit Pflegebedarf und Angehörige sind mit Zusammenarbeit und Absprachen der Berufsgruppen unzufrieden und haben das Gefühl, diese diene nicht ihrem Wohlbefinden; 25 % können die Zusammenarbeit zwischen Pflegediensten und Therapeut*innen nicht beurteilen.</p>
-  <blockquote>„„viele Personen mit Pflegebedarf und Angehörige mit der Zusammenarbeit und Absprachen zwischen Pflegedie nsten, Hausärzt*innen und Therapeut*innen unzufrieden sind und das Gefühl haben, dass diese nicht ihrem Wohlbefinden dienen. 25% der befragten Personen mit Pflegebedarf bzw. Angehörige können die Zusammenarbeit zwischen Pflegediensten und Therapeut*innen nicht beurteilen.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die im Titel genannte Testung des Versorgungskonzepts war wegen der Rekrutierungsschwierigkeiten und der damit verbundenen Verzögerungen nicht machbar; das Projekt endete vorzeitig nach 29 Monaten am 30. September 2023.</p>
+  
   <blockquote>„„die Testung des entwickelten interprofessionellen, personenzentrierten Versorgungskonzepts im ursprünglich geplanten Förderzeitraum (01.05.2021 bis 31.08.2024) nicht zu bewerkstelligen war. [...] Das Projekt endete vorzeitig nach 29 Monaten am 30. September 2023.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Durchführbarkeit, Akzeptanz und Wirkungen des Konzepts auf Patient*innenoutcomes und Zusammenarbeit wurden nicht untersucht; sie sollen erst in einer späteren Studie geprüft werden.</p>
+  
   <blockquote>„„Das neu entwickelte interprofessionel le und personenzentrierte Pflegekonzept &quot; interprof HOME&quot; soll in einer späteren Studie hinsichtlich Durchführbarkeit und Akzeptanz pilotiert werden.“ – Bericht, S. 47" <span class="s">S. 47</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,31 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">WP4: Die angestrebten 100 Fragebögen pro Gruppe wurden nicht erreicht, insgesamt gingen 244 auswertbare ein. Die Rücklaufquoten lagen bei Pflegediensten bei 12 % (n=75), bei Hausärzt*innen bei 6 % (n=39) und bei Therapeut*innen bei 28 % (n=92).</p>
+  
   <blockquote>„„Wir erhielten we niger als die erwarteten 100 Fragebögen pro Gruppe mit insgesamt 244 ausgefüllten Fragebögen [...] betrug die Rücklaufquote PP: 12% (n=75); HÄ: 6% (n=39); TH: 28%. (n=92).“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Der Bericht nennt einen möglichen Selektionsbias: Die Stichprobe bildet nur Teilnahmebereite ab, bei denen ein Interesse am Thema anzunehmen ist.</p>
-  <blockquote>„„die Stichprobe nur eine Gruppe von Personen mit Pflegebedarf sowie An -/Zugehörige und professionelle Akteur*innen abbildet, die bereit waren, teilzunehmen; ein Interesse am Thema ist anzunehmen (Selektionsbias).“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -675,11 +483,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">WP4-Fallzahl: Auf S. 36 werden 244 auswertbare Fragebögen genannt (Pflegedienste n=75, Hausärzt*innen n=39, Therapeut*innen n=92, Personen mit Pflegebedarf/Angehörige n=38). Tabelle 5 (S. 21) weist dagegen als IST 70 Pflegefachpersonen, 33 Hausärzt*innen, 81 Therapeut*innen und 37 Personen mit Pflegebedarf/Angehörige aus, die Übersicht auf S. 22 insgesamt 221/400.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -694,11 +502,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Evidenzsynthese, Federman et al. 2022, Notaufnahmebesuche (S. 25): Der angegebene Punktschätzer von 1,2 % liegt nicht im angegebenen 95%-KI „-10.5%, -12.4%“; die Angabe ist so im Bericht wiedergegeben.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -708,16 +516,225 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>57 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>68 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss leitet die Projektergebnisse zur Information an den Hausärztinnen- und Hausärzteverband, den DBfK-Bundesverband, den Spitzenverband der Heilmittelverbände und den Verband wir pflegen weiter. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Interprofessionelles patientenzentriertes Versorgungskonzept erfolgreich entwickelt</p>
+  
+  <blockquote>„Das Projekt hat erfolgreich ein interprofessionelles patientenzentriertes Versorgungskonzept für pflegebedürftige Personen im häuslichen Umfeld entwickelt, um diese aktiv in den Versorgungsprozess einzubeziehen und die Zusammenarbeit aller Beteiligten zu stärken." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Versorgungskonzept aus sechs Komponenten festgelegt</p>
+  
+  <blockquote>„Abschließend wurde das aus sechs Komponenten (u. a. Benennung/Stärkung einer Koordinationsperson, digitales Kommunikationssystem, gemeinsame Haus besuche sowie Fallbesprechungen) bestehende Versorgungskonzept interprof HOME entwickelt." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Umfangreiches Arbeits- und Handbuch zur Umsetzung erarbeitet, das einen Beitrag zur Zusammenarbeit in der häuslichen Versorgung leistet</p>
+  
+  <blockquote>„Insgesamt hat das Projekt ein interprofessionelles patientenzentriertes Versorgungskonzept unter Einbezug aller an der Versorgung beteiligter Personen sowie ein umfangreiches Arbeits - und Handbuch für dessen Umsetzung erarbeitet, welches einen Beitrag zur Zusammenarbeit in der häuslichen Versorgung von Personen mit Pflegebedarf leistet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Studiendesign geeignet und Methoden angemessen durchgeführt</p>
+  
+  <blockquote>„Das Studiendesign war zur Beantwortung der Fragestellung geeignet und die Methoden wurden angemessen durchgeführt." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.1">
+  <h3>Hausärztinnen und Hausärzteverband e. V. – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt.</p>
+  
+  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Hausärztinnen und Hausärzteverband e. V., den Deutschen Berufsverband für Pflegeberufe – DBfK Bundesverband e. V., den Spitzenverband der Heilmittelverbände e. V. (SHV) und den Verband wir pflegen – Interessenvertretung und Selbsthilfe pflegender Angehöriger e. V. zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.1" value="ok" checked hidden>
+    <input type="radio" name="uadressat.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.2">
+  <h3>Deutscher Berufsverband für Pflegeberufe – DBfK Bundesverband e. V. – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt.</p>
+  
+  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Hausärztinnen und Hausärzteverband e. V., den Deutschen Berufsverband für Pflegeberufe – DBfK Bundesverband e. V., den Spitzenverband der Heilmittelverbände e. V. (SHV) und den Verband wir pflegen – Interessenvertretung und Selbsthilfe pflegender Angehöriger e. V. zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.2" value="ok" checked hidden>
+    <input type="radio" name="uadressat.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.3">
+  <h3>Spitzenverband der Heilmittelverbände e. V. (SHV) – eingestuft als „zur Kenntnis genommen“</h3>
+  <p class="unser">Der SHV begrüßt die Zielrichtung des Projekts, nennt vertragsrechtliche und strukturelle Voraussetzungen für eine Umsetzung (u. a. Ergänzung der Heilmittel-Richtlinien, abrechenbare Leistungspositionen) und spricht sich für eine Weiterentwicklung der Rahmenbedingungen und eine Pilotierung des Handbuchs aus. Eine eigene Befassung, Entscheidung oder nach außen gerichtete Handlung benennt er nicht.</p>
+  
+  <blockquote>„Wir sprechen uns daher klar für eine Weiterentwicklung der Rahmenbedingungen und Pilotierung des Handbuchs in der Regelversorgung aus und stehen für Rückfragen oder vertiefende Erörterungen jederzeit zur Verfügung." <span class="s">S. 9</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.3" value="ok" checked hidden>
+    <input type="radio" name="uadressat.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.4">
+  <h3>Verband wir pflegen – Interessenvertretung und Selbsthilfe pflegender Angehöriger e. V. – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt.</p>
+  
+  <blockquote>„Die im Projekt erzielten Ergebnisse werden an den Hausärztinnen und Hausärzteverband e. V., den Deutschen Berufsverband für Pflegeberufe – DBfK Bundesverband e. V., den Spitzenverband der Heilmittelverbände e. V. (SHV) und den Verband wir pflegen – Interessenvertretung und Selbsthilfe pflegender Angehöriger e. V. zur Information weitergeleitet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.4" value="ok" checked hidden>
+    <input type="radio" name="uadressat.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">WP4: Viele befragte Personen mit Pflegebedarf und Angehörige sind mit Zusammenarbeit und Absprachen der Berufsgruppen unzufrieden und haben das Gefühl, diese diene nicht ihrem Wohlbefinden; 25 % können die Zusammenarbeit zwischen Pflegediensten und Therapeut*innen nicht beurteilen.</p>
+  
+  <blockquote>„„viele Personen mit Pflegebedarf und Angehörige mit der Zusammenarbeit und Absprachen zwischen Pflegedie nsten, Hausärzt*innen und Therapeut*innen unzufrieden sind und das Gefühl haben, dass diese nicht ihrem Wohlbefinden dienen. 25% der befragten Personen mit Pflegebedarf bzw. Angehörige können die Zusammenarbeit zwischen Pflegediensten und Therapeut*innen nicht beurteilen.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Der Bericht nennt einen möglichen Selektionsbias: Die Stichprobe bildet nur Teilnahmebereite ab, bei denen ein Interesse am Thema anzunehmen ist.</p>
+  
+  <blockquote>„„die Stichprobe nur eine Gruppe von Personen mit Pflegebedarf sowie An -/Zugehörige und professionelle Akteur*innen abbildet, die bereit waren, teilzunehmen; ein Interesse am Thema ist anzunehmen (Selektionsbias).“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Zusammenfassung findet Zusammenarbeit zwischen den Leistungserbringenden in geringem Umfang und meist auf organisatorischer Ebene statt.</p>
+  
   <blockquote>„„Zusammenarbeit zwischen den beteiligten Leistungserbringenden findet in geringem Umfang und meist auf organisatorischer Ebene statt.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +748,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Kontaktaufnahme und inhaltlicher Informationsaustausch erfolgen häufig anlassbezogen und aus Eigeninitiative der Leistungserbringenden.</p>
+  
   <blockquote>„„Kontaktaufnahme und inhaltlicher Informationsaustausch erfolgen häufig anlassbezogen und aufgrund von Eigeninitiative der Leistungserbringenden.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +767,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Persönliche interprofessionelle Begegnungen, feste Vereinbarungen und feste Ansprechpersonen kommen eher selten vor, werden von den Beteiligten aber oft als bereichernd empfunden.</p>
+  
   <blockquote>„„Interprofessionelle persönliche Begegnungen, feste Vereinbarungen und fixe Ansprechpersonen kommen eher selten vor, obwohl sie von den Beteiligten oft als sehr bereichernd empfunden werden.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +786,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mangelnde gegenseitige Erreichbarkeit, fehlende Zeit und geringe Bezahlung werden als hemmend genannt, persönliche Bekanntschaft und gegenseitiges Vertrauen als förderlich.</p>
+  
   <blockquote>„„Mangelnde geg enseitige Erreichbarkeit, fehlende Zeit und geringe Bezahlung behindern die Zusammenarbeit, persönliche Bekanntschaft und gegenseitiges Vertrauen fördern sie.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +805,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP2: Professionelle Akteur*innen neigen eher zur Zusammenarbeit, wenn die Versorgungssituation komplex wird oder sich der Gesundheitszustand zu verschlechtern scheint; gemeinsam gearbeitet wurde überwiegend in komplexen Situationen wie 24-Stunden- oder Langzeitpflege.</p>
+  
   <blockquote>„„die professionellen Akteur*innen eher zur Zusammenarbeit neigen, wenn die Versorgungssituation komplex wird oder sich der Gesundheitszustand einer Person mit Pflegebedarf zu verschlechtern scheint.“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In solchen Situationen übernehmen Pflegefachpersonen oft die Vermittlerfunktion, insbesondere bei überlasteten Personen mit Pflegebedarf oder wenn keine An-/Zugehörigen die Organisation übernehmen können.</p>
+  
   <blockquote>„„Pflegefachpersonen übernehmen dann oft, insbesondere bei überlasteten Personen mit Pflegebedarf oder, wenn kein An-/Zugehöriger die organisatorischen Aufgaben übernehmen kann, die Vermittlerfunktion“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP2: Die Vermittlertätigkeit von Personen mit Pflegebedarf und An-/Zugehörigen wurde teils als ausreichend, häufig aber als nicht zufriedenstellend beurteilt und bedeutete für sie zum Teil eine Belastung.</p>
+  
   <blockquote>„„Die Vermittlertätigkeit von Personen mit Pflegebedarf und An- /Zugehörige zum Teil als ausreichend, aber auch häufig als nicht zufriedenstellend beurteilt. Für die Personen mit Pflegebedarf oder An-/Zugehörige bedeutete diese Aufgabe zum Teil eine Belastung.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +862,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP3: Personen mit Pflegebedarf und An-/Zugehörige übernehmen Koordinationsaufgaben, um mögliche Mängel in der interprofessionellen Koordination und deren negative Folgen zu umgehen.</p>
+  
   <blockquote>„„die Personen mit Pflegebedarf und ihre An- /Zugehörigen Koordinationsaufgaben übernehmen, um die potentiellen Mängel in der interprofessionellen Koordination und die daraus folgenden negativen Konsequenzen zu umgehen.“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +881,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP2: Die Berufsgruppen kommunizierten hauptsächlich per Fax und Telefon; dies wurde teilweise als unbefriedigend, zeitaufwändig und bei mangelnder Erreichbarkeit als verlangsamend empfunden.</p>
+  
   <blockquote>„„Die Berufsgruppen nutzten hauptsächlich Fa x und Telefon, die teilweise als unbefriedigend, zeitaufwändig und bei mangelnder Erreichbarkeit, die Abläufe verlangsamend empfunden wurden“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +900,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP2: Gemeinsame formale Dokumentationssysteme fehlten; einige Beteiligte schufen individuelle Kommunikationsstrukturen.</p>
+  
   <blockquote>„„Da keine formalen, gemeinsamen schriftlichen oder elektronischen Dokumentationssysteme existierten, initiierten einige Personen mit Pflegebedarf, An -/Zugehörige und auc h professionelle Teilnehmer*innen individuelle Kommunikationsstrukturen.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +919,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für den direkten interprofessionellen Austausch existiert derzeit keine formale Regelung.</p>
+  
   <blockquote>„„Derzeit existiert keine formale Regelung für den direkten interprofessionellen Austausch.“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +938,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Organisatorische Koordinationsaufgaben sind oft der einzige Kontakt zwischen den professionellen Akteur*innen und werden als herausfordernd wahrgenommen.</p>
+  
   <blockquote>„„Die organisatorischen Koordinationsaufgaben sind oft der einzige Kontakt zwischen den professionellen Akteur*innen und werden als herausfordernd wahrgenommen.“ – Bericht, S. 43" <span class="s">S. 43</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +957,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP2: Als personenbezogene Faktoren wurden „Bekanntsein“ und gegenseitige Anerkennung von Fachwissen genannt, als strukturelle Faktoren Erreichbarkeit, finanzielle und zeitliche Einschränkungen sowie die Zahl der Dienste und Praxen in einer Region.</p>
+  
   <blockquote>„„Personenbezogene Faktoren, wie das „Bekanntsein“ und die gegenseitige Anerkennung von Fachwissen, wurden als entscheidend für eine effektive Zusammenarbeit betrachtet. [...] strukturelle Faktoren, wie die wechselseitige Erre ichbarkeit, finanzielle und zeitliche Einschränkungen sowie die unterschiedliche Anzahl von Diensten und Praxen in einer Region“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +976,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die professionellen Akteur*innen einer Person mit Pflegebedarf kennen sich oft nicht, die Versorgungsbedürfnisse werden nicht gemeinsam geplant, und schwere Erreichbarkeit kann laut Bericht zu Krankenhausaufenthalten führen.</p>
+  
   <blockquote>„„die professionellen Akteur*innen, die sich um eine Person mit Pflegebedarf kümmern, oft nicht kennen. [...] Es gi bt keine gemeinsame Planung der Versorgungsbedürfnisse. Zudem sind die Vertreter*innen der Berufsgruppen oft schwer zu erreichen, was zu Krankenhausaufenthalten der Personen mit Pflegebedarf führen kann.“ – Bericht, S. 44" <span class="s">S. 44</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +995,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP2, Vertreter*innen von GKV/PKV: Die Berufsgruppen haben wenig Kontakt untereinander und holen selten Informationen für die weitere Versorgung ein.</p>
+  
   <blockquote>„„Die Vertreter*innen der GKV/PKV berichten, dass die Berufsgruppen, wenig Kontakt untereinander haben und sich selten Informationen für die weitere Versorgung einholen.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1014,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP2, GKV/PKV: Eine digitale Pflegedokumentation fehlt meist; ein*e Befragte*r schätzt, dass 90 % handschriftlich dokumentieren, und eine Weiterleitung an die Behandelnden gibt es nicht.</p>
+  
   <blockquote>„„Eine digitale Pflegedokumentation, ist meist nicht vorhanden [...] „Aber der größte Teil, ich würde jetzt wirklich sagen 90 Prozent, macht das immer noch handschriftlich in einer Mappe.“ [...] Eine Weiterleitung an die, an der Behandlung Beteiligten, gibt es nicht.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1033,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP4: Alle Berufsgruppen sehen die Kommunikation zu den anderen als Teil ihrer Verantwortung. Sie berichten aber von unzureichender Kommunikation und sehen Verbesserungsmöglichkeiten in gemeinsamen Hausbesuchen, Fallbesprechungen und digitaler Dokumentation.</p>
+  
   <blockquote>„„berichten professionell Versorgende von unzureichender Kommunikation untereinander, da wichtige Informationen über Personen mit Pflegebedarf in der häuslichen Versorg ung häufig untergehen. Sie sehen die Möglichkeiten der Verbesserung [...] wie gemeinsamen Hausbesuchen, gemeinsamen Fallbesprechungen und gemeinsamer digitaler Dokumentation.“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1052,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP4: Bei der gewünschten Frequenz von Telefonsprechstunden und gemeinsamen Hausbesuchen weichen die Berufsgruppen voneinander ab; Pflegedienste und Hausärzt*innen wünschen häufigeren Austausch als Therapeut*innen.</p>
+  
   <blockquote>„„Während Pflegedienste und Hausärzt*innen sich häufiger in Telefonsprechstunden austauschen möchten, reicht den Therapeut*innen die Festlegung der Zeitpunkte über einen größeren Zeitraum.“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1071,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP4: Pflegedienste sehen sich in der Lage, Aufgaben wie Blutabnahmen, Injektionen, Medikamentenberatung und körperliche Untersuchungen zu übernehmen. Hausärzt*innen sind für eine Übertragung offen, sehen Medikamentenberatung und körperliche Untersuchungen aber bei sich.</p>
+  
   <blockquote>„„Hausärzt*innen zeigen sich offen gegenüber der Übertragung von Aufgaben, sehen allerdings die Medikamentenberatung und körperliche Untersuchungen in ihrem eigenen Aufgabengebiet“ – Bericht, S. 38" <span class="s">S. 38</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1090,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP4, Freitextanalyse: Es wurden sechs Hauptkategorien identifiziert; Personalmangel und Fluktuation nannten die Befragten als konkrete Gründe für das Scheitern der Zusammenarbeit im Status quo.</p>
+  
   <blockquote>„„Durch die qualitative Auswertung der Freitexte des Surveys konnten insgesamt sechs Hauptkategorien identifiziert werden. [...] Personalmangel und Fluktuation sind laut den Befragten konkrete Gründe für das Scheitern der interprofessionellen Zusammenarbeit im Status Quo.“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1109,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Teilnehmenden befürworten Komponenten wie feste Besprechungen, Koordinationspersonen, gemeinsame Hausbesuche und gemeinsame Dokumentation, haben aber wegen Zeit- und Ressourcenbeschränkungen Bedenken hinsichtlich der Umsetzung.</p>
+  
   <blockquote>„„Obwohl die Teilnehmer*innen Komponenten, wie feste Besprechungen und Koordinationspersonen, gemeinsame Hausbesuche und eine gemeinsame Dokumentation [...] befürworten, bestehen Bedenken hinsichtlich der Umsetzung aufgrund von Zeit- und Ressourcenbeschränkungen.“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1128,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP5: In gemischten Fokusgruppen mit 8 bis 10 Teilnehmenden je Gruppe wurden zwölf Handlungsbereiche zur Verbesserung der interprofessionellen Zusammenarbeit herausgearbeitet.</p>
+  
   <blockquote>„„Die Gruppengröße variierte zwischen 8 und 10 Teilnehmenden. Es konnten zwölf Handlungsbereiche zur Verbesserung der interprofessionellen Zusammenarbeit [...] herausgearbeitet werden.“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP6: Am Expert*innenworkshop nahmen 25 Personen teil: 3 Personen mit Pflegebedarf, 2 An-/Zugehörige, 7 Pflegefachpersonen, 4 Hausärzt*innen, 2 Therapeut*innen und 7 Vertreter*innen anderer Gruppen.</p>
+  
   <blockquote>„„Insgesamt nahmen 25 Expert*innen (3 Personen mit Pflegebedarf, 2 An-/Zugehörige, 7 Pflegefachpersonen, 4 Hausärzt*innen, 2 Therapeut*innen und 7 andere Expert*innengruppen) teil.“ – Bericht, S. 41" <span class="s">S. 41</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht wurde das Ziel des Workshops erreicht, also die Priorisierung der Komponenten und die Erarbeitung von Implementierungswegen.</p>
+  
   <blockquote>„„Das Ziel des Expert*innenworkshops (Priorisierung der Komponenten, Erarbeitung der Implementierungswege) konnte erreicht werden.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1185,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP6: Finanzielle Anreize, etwa für gemeinsame Hausbesuche oder Koordinationsaufgaben, wurden als förderlich empfunden. Personen mit Pflegebedarf befürchteten, digitale Treffen könnten für sie zu anstrengend werden.</p>
+  
   <blockquote>„„Auch finanzielle Anreize, z. B. für die Teilnahme an gemeinsamen Hausbesuchen oder die Übernahme von Koordinationsaufgaben, wurden als förderlich empfunden. [...] Personen mit Pflegebedarf äußerten die Befürchtung, dass die Teilnahme an digitaler Kommunikation, insbesondere an digitalen Treffen, für sie zu anstrengend werden könnte“ – Bericht, S. 41" <span class="s">S. 41</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1204,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Komponenten bilden vier Handlungsbereiche ab: personenzentrierte Ziele setzen, Aufgaben teilen und koordinieren, regelmäßiger persönlicher Austausch und Erreichbarkeit in akuten Situationen.</p>
+  
   <blockquote>„„Die entwickelten Komponenten spiegeln vier Handlungsbereiche für eine verbesserte Zusammenarbeit in der häuslichen Versorgung wieder:“ – Bericht, S. 47" <span class="s">S. 47</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1223,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Gemeinsame Besprechungen sollen nach dem gemeinsamen Hausbesuch mindestens einmal pro Quartal stattfinden, persönlich oder online.</p>
+  
   <blockquote>„„Die gemeinsamen Besprechungen finden nach dem gemeinsamen Hausbesuch mindestens einmal pro Quartal statt, entwede r persönlich oder online.“ – Bericht, S. 42" <span class="s">S. 42</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1242,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Implementierung wurden ein Hand- und Arbeitsbuch sowie Formblätter erstellt.</p>
+  
   <blockquote>„„Für eine entsprechende Implementierungsstrategie wurden ein Hand- und Arbeitsbuch sowie Formblätter angefertigt (s. Anhang 2)“ – Bericht, S. 42" <span class="s">S. 42</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1261,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP1, strukturierte Literaturübersicht: Berücksichtigt wurden 28 Studien zu Zusammenarbeit und Kommunikation, davon 19 qualitative und 5 quantitative. Keine Studie befasste sich ausschließlich mit der Perspektive der Therapeut*innen.</p>
+  
   <blockquote>„„Im ersten Te il der strukturierten Literaturübersicht wurden 28 Studien zum Thema Zusammenarbeit und Kommunikation berücksichtigt. [...] bei 19 der Studien um qualitative Studien, fünf Studien hatten ein quantitatives Design [...] keine der Studien befasste sich ausschließlich mit der Perspektive der Therapeut*innen.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1280,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP1, systematische Evidenzsynthese: Aus 2376 potenziell relevanten Treffern wurden 5 Studien eingeschlossen, davon 4 Cluster-RCTs.</p>
+  
   <blockquote>„„Die Suche in den Datenbanken ergab insgesamt 2376 potenziell relevante Studien. [...] Insgesamt konnten fünf Studien eingeschlossen werden. Vier der fünf eingeschlossenen Studien waren Cluster-RCTs“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1299,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Evidenzsynthese: Weder für die ACP-Intervention noch für die HBPC-Intervention wurden Auswirkungen auf die Lebensqualität festgestellt.</p>
+  
   <blockquote>„„Auswirkungen der Interventionen auf die Lebensqualität konnten weder für die ACP -Intervention (39) noch für die HBPC-Intervention festgestellt werden“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1318,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Evidenzsynthese, HBPC (Federman et al. 2022): Nach 12 Monaten lag die Hospitalisierungsrate der Interventionsgruppe niedriger als die der Kontrollgruppe (−17,9 %, 95%-KI −31,0 % bis −1,0 %; p=0,001; NNT 6, 95%-KI 3–100).</p>
+  
   <blockquote>„„Federman et al. (2022) konnten nach 12 Monaten eine geringere Hospitalisierungsrate der Interventionsgruppe im Vergleich zur Kontrollgruppe feststellen (-17.9%, 95%-KI: -31.0%, -1.0%; p=0.001; NNT 6, 95%-KI: 3–100).“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1337,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.36">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Evidenzsynthese, HBPC (Federman et al. 2022): Bei Notaufnahmebesuchen gab es keine statistisch signifikanten Unterschiede zwischen den Gruppen (1,2 %; p=0,87).</p>
+  
   <blockquote>„„Keine statistisch signifikanten Unterschiede zwischen den Gruppen gab es hinsichtlich der Besuche in der Notaufnahme (1.2%, 95%-KI: -10.5%, -12.4%; p=0.87).“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1356,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Evidenzsynthese, Loop-Studie (Selbstauskünfte): Zu Studienbeginn suchten 3 Patient*innen der Interventions- und 1 der Kontrollgruppe die Notaufnahme auf, im dritten Monat 0 bzw. 3. Für Krankenhausaufenthalte wurden ähnliche Zahlen beobachtet.</p>
+  
   <blockquote>„„Zu Beginn der Studie suchten drei Patient*innen der Interventionsgruppe und ein/e Patient*in der Kontrollgruppe die Notaufnahme auf. Im dritten Monat wurden in der Interventionsgruppe keine Besuche und in der Kontrollgruppe drei Besuche gemeldet.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1375,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Evidenzsynthese: Bei Loop gab es mehr Beiträge von Patient*innen als von Gesundheitsdienstleister*innen. Laut den Autor*innen fand bei isolierter Betrachtung des Tools keine Zusammenarbeit statt.</p>
+  
   <blockquote>„„die Nutzung von “Loop” zu einer größeren Anzahl von Beiträgen der Patient*innen im Vergleich zu den Gesundheitsdienstleister*innen führte [...] aber bei isolierter Betrachtung des Tools, keine Zusammenarbeit stattfand.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1394,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Evidenzsynthese, ACP: Als förderlich für die Umsetzung galten unter anderem die rechtzeitige Auswahl der Patient*innen und die Unterstützung durch Hausärzt*innen, als hinderlich Arbeitsbelastung sowie Mangel an Zeit, Geld und Personal.</p>
+  
   <blockquote>„„eine sorgfältige und rechtzeitige Auswahl der Patient*innen, die Bereitschaft und Unterstützung der Hausärzt*innen und die Nutzung bestehender Strukturen [...] Als hinderlich wurden die zunehmende Arbeitsbelastung, der Mangel an Zeit sowie finanzieller und personeller Ressourcen beschrieben.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1413,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.40">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP2: Interviewt wurden 20 Personen mit Pflegebedarf und 21 An-/Zugehörige. Dazu kamen neun monoprofessionelle Fokusgruppen mit 17 Pflegekräften, 14 Allgemeinmediziner*innen und 21 Therapeut*innen.</p>
+  
   <blockquote>„„Für WP2 wurden Interviews mit 20 Personen mit Pflegebedarf und 21 An-/Zugehörigen sowie neun monoprofessionelle Fokusgruppen, drei für jede Berufsgruppe durchgeführt. Es nahmen 17 Pflegekräfte [...], 14 Allgemeinmediziner*innen [...] und 21 Therapeut*innen [...] an den Fokusgruppen teil“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.40" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.40" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.40" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.40" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1432,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.41">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die 20 interviewten Personen mit Pflegebedarf waren 31 bis 99 Jahre alt und hatten Pflegegrad 2 bis 5. Sechs waren männlich; 7 lebten in einer Großstadt, 13 in einer Kleinstadt oder auf dem Land.</p>
+  
   <blockquote>„„20 Personen in einem Alter von 31 – 99 Jahren [...] Pflegegrad von 2 bis 5. Sechs der interviewten Personen sind männlichen Geschlechts. [...] Sieben der interviewten Personen leben in einer Großstadt (&gt; 20.000 Einwohner) und 13 Personen in einer Kleinstadt bzw. dem ländlichen Bereich“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.41" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.41" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.41" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.41" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1451,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.42">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">WP3: In 8 Best Practice Cases nahmen 9 Pflegefachpersonen, 6 Personen mit Pflegebedarf, 5 An-/Zugehörige, 4 Hausärzt*innen, 2 Therapeut*innen und 3 Wundexpert*innen teil; die Altersspanne der Personen mit Pflegebedarf lag bei 59 bis 88 Jahren.</p>
+  
   <blockquote>„„Summe 9 6 5 4 2 3“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.42" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.42" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.42" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.42" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1470,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Rekrutierung lief pandemiebedingt in keinem Arbeitspaket nach Plan. Per Arbeitsplanänderung wurden die Fallzahlen reduziert, die Einschlusskriterien der Best Practice Cases geändert und der Survey auf eine anonyme Onlinebefragung umgestellt.</p>
+  
   <blockquote>„„Es wurde ein Antrag auf Arbeitsplanänderung mit Reduktion der Fallzahlen für die Einzelinterviews [...] und monoprofessionelle Fokusgruppen [...], eine Änderung der Einschlusskriterien für die Best-Practice Cases inklusive Reduktion der Fallzahlen und die Umstellung des Surveys auf eine anonyme Onlinebefragung gestellt.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1489,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Alle Berufsgruppen waren wegen pandemiebedingt erschwerter Arbeitsbedingungen und erhöhter Erkrankungsraten zumindest anfangs weniger zur Teilnahme bereit.</p>
+  
   <blockquote>„„Die Rekrutierung gestaltete sich schwierig, da alle Berufsgruppen, bei durch die pandemiebedingt erschwerten Arbeitsbedingungen und erhöhten Erkrankungsraten der eigenen Mitarbeiter*innen, zumindest initial eine geringere Bereitschaft zur Teilnahme zeigte n.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1508,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der Impfaktion in den Praxen wurde die Rekrutierung von Hausärzt*innen auf 2022 verschoben; die monoprofessionellen Fokusgruppen fanden erst von März bis Mai 2022 statt.</p>
+  
   <blockquote>„„wurde aufgrund der Impfaktion in den Praxen von Ende 2021 in das Jahr 2022 verschoben, sodass die monoprofessionellen Fokusgruppen von März bis Mai 2022 durchgeführt werden konnten.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1527,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Teilnehmendenzahlen blieben in mehreren Arbeitspaketen unter dem Soll, etwa WP2 93/112, WP4 221/400 und WP6 25/40; für WP4 wurde die Anpassung der Fallzahlen rückwirkend beantragt.</p>
+  
   <blockquote>„„Gesamt 93/112 29/12-40 221*2/400 37/40 25/40 [...] *2 Rückwirkend beantragter Antrag auf Anpassung der Fallzahlen“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1546,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">WP4: Mangels vergleichbarer Erhebungen gab es keine Grundlage für eine Stichprobenkalkulation; n=100 pro Gruppe wurde als ausreichend festgelegt.</p>
+  
   <blockquote>„„Aufgrund fehlender im Vorfeld verfügbarer ähnlicher Erhebungen lag kein valider Anhaltspunkt für eine Stichprobenkalkulation vor. Eine Stichprobe von n=100 pro Gruppe [...] wurde als ausreichend erachtet“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1565,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">WP4: Personen mit Pflegebedarf und Angehörige konnten aus Datenschutzgründen nicht über Listen oder Register identifiziert werden. Sie wurden passiv über Öffentlichkeitsarbeit rekrutiert, deshalb ist ihre Rücklaufquote nicht ermittelbar.</p>
+  
   <blockquote>„„Wir erhielten n=38 Fragebögen von PRHC/RL, können aber aufgr und der passiven Rekrutierung die Rücklaufquote nicht ermitteln.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1584,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">WP4: In die Analyse wurden auch Datensätze mit bis zu 30 % fehlenden Werten einbezogen.</p>
+  
   <blockquote>„„Zusätzlich zu den vollständigen Datensätzen haben wir Datensätze mit bis zu 30 % Missings in die Analyse einbezogen.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1603,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht ist der Survey-Rücklauf gerade bei Personen mit Pflegebedarf und Hausärzt*innen relativ gering; die angestrebte Fallzahl wurde wegen erhöhten Arbeitsaufwands bei allen Berufsgruppen nicht erreicht.</p>
+  
   <blockquote>„„Schwäche des Surveys ist der relativ geringe Rücklauf gerade bei Personen mit Pflegebedarf und Hausärzt*innen. Die angestrebte Fallzahl konnte aufgrund erhöhtem Arbeitsaufwand bei allen zu rekrutierenden Berufsgruppen nic ht erreicht werden.“ – Bericht, S. 45" <span class="s">S. 45</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1622,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Menschen mit Demenz, Aphasie und anderen einschränkenden Bedingungen wurden nicht einbezogen; berücksichtigt wurde nur die Perspektive ihrer An-/Zugehörigen.</p>
+  
   <blockquote>„„Zudem wurden Menschen mit Demenz, Aphasie und anderen einschränkenden Bedingungen nicht einbezogen. Jedoch wurde die Perspektive ihrer An - /Zugehörigen berücksichtigt.“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1641,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die pandemiebedingt telefonisch geführten Interviews setzten ausreichende mentale und physische Fähigkeiten für die technischen Anforderungen voraus; der Bericht sieht darin einen weiteren möglichen Selektionsbias.</p>
+  
   <blockquote>„„Ein weiterer Selektionsbias entstand durch die, aufgrund der Distanzauflagen in der Corona -Pandemie telefonisch durchgeführten Interviews mit Personen mit Pflegebedarf, welche eine hinreichende mentale und physische Fähigkeit zur Bewältigung von technischen Anforderungen aufweisen mussten“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1660,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Auch bei sorgfältiger Auswahl können laut Bericht „blinde Flecke“ bei bestimmten Erfahrungen oder Perspektiven bestehen.</p>
+  
   <blockquote>„„Trotz sorgfältiger Auswahl u nd großer Diversität der Teilnehmer*innen könnte es immer noch „blinde Flecke“ in Bezug auf bestimmte Erfahrungen oder Perspektiven geben.“ – Bericht, S. 46" <span class="s">S. 46</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1661,13 +1678,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Unklar bleibt, ob die professionellen Akteur*innen die Zeit für gemeinsame Treffen und Hausbesuche aufbringen können, weil die Vielzahl verschiedener Dienste und Praxen die Zusammenarbeit erschwert.</p>
+  <p class="unser">Unklar bleibt, ob die professionellen Akteur*innen die für gemeinsame Treffen und Hausbesuche erforderliche Zeit aufbringen können.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Zusammenfassung enthielt eine Wertung, die im Bericht nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Unklar bleibt, ob die professionellen Akteur*innen die Zeit für gemeinsame Treffen und Hausbesuche aufbringen können, weil die Vielzahl verschiedener Dienste und Praxen die Zusammenarbeit erschwert.“</i></p>
   <blockquote>„„Es ist jedoch unklar, ob die professionellen Akteur*innen die für gemeinsame Treffen und Hausbesuche erforderliche Zeit aufbringen können.“ – Bericht, S. 45" <span class="s">S. 45</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1700,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">WP3: Es ließen sich nicht in allen Fällen alle Beteiligten befragen; aufgenommen wurde ein Fall daher, sobald mehrere, aber nicht notwendigerweise alle Beteiligten teilnahmebereit waren.</p>
+  
   <blockquote>„„es z.B. vorkam, dass es in einzelnen Fällen keine Angehörigen gab, der/die Hausarzt/Hausärztin keine Zeit für ei ne Teilnahme fand oder auch die Person mit Pflegebedarf (PMP) nicht in der Lage für ein Interview war.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1719,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">WP3: Die geplanten Beobachtungen vor Ort führten, vor allem pandemiebedingt, zu Absagen trotz Interesse an einem Interview; die Beobachtungen wurden daraufhin optional.</p>
+  
   <blockquote>„„So stellten die geplanten Beobachtungen ein Hindernis für die Zustimmung zur Teilnahme dar. [...] In manchen Fällen kam es daher zu Absagen einer Studienteilnahme, obwohl das Interesse an einem Interview bestanden hätte.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1738,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Evidenzsynthese: Das Verzerrungsrisiko der bewerteten Studien wurde insgesamt als unklar eingestuft.</p>
+  
   <blockquote>„„Insgesamt w urde das Verzerrungsrisiko der bewerteten Studien als unklar eingestuft.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1757,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Evidenzsynthese: Keine eingeschlossene Studie erhob die Auswirkungen auf die interprofessionelle Zusammenarbeit explizit.</p>
+  
   <blockquote>„„Daten zu den Auswirkungen der Interventionen auf die interprofessionelle Zusammenarbeit wurden von keiner inkludierten Studie explizit erhoben.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1776,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Evidenzsynthese: In der Loop-Studie wurden Krankenhauseinweisungen und Notaufnahmebesuche nur über Selbstauskünfte erfasst.</p>
+  
   <blockquote>„„Daten über Krankenhauseinweisungen und Besuche in der Notaufnahme wurden durch Selbstauskünfte der Studienteilnehmenden erfasst.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1795,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.21">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">WP2, GKV/PKV: Wegen einer unverständlichen Audioaufnahme konnten nur vier von fünf Interviews ausgewertet werden.</p>
+  
   <blockquote>„„Aufgrund einer nicht zu verstehenden Audioaufnahme aufgrund von schlechter Aufnahmequalität konnten nur vier von fünf Interviews inha ltsanalytisch mittels MAXQDA2022 ausgewertet werden.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1826,28 +1845,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 385, "akronym": "interprof HOME", "kennung": "Wax-jYyG-mkj", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Projektergebnisse zur Information an den Hausärztinnen- und Hausärzteverband, den DBfK-Bundesverband, den Spitzenverband der Heilmittelverbände und den Verband wir pflegen weiter. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat in einer explorativen Mixed-Methods-Studie mit überwiegend qualitativen Methoden ein aus sechs Komponenten bestehendes interprofessionelles, patientenzentriertes Versorgungskonzept für zuhause lebende Pflegebedürftige entwickelt. Dazu gehört ein Arbeits- und Handbuch für die Umsetzung. Die ursprünglich geplante Testung in einer clusterrandomisierten Pilotstudie konnte wegen der COVID-19-Pandemie nicht wie geplant erfolgen. Der Ausschuss hält Studiendesign und Methoden für angemessen. Er weist aber auf eine sehr geringe Rücklaufquote des Online-Surveys hin. Zudem nennt er eine mögliche Verzerrung der Befragungsergebnisse, weil die Rekrutierung unter COVID-19 schwierig war und die theoretische Sättigung fehlte. Da das Konzept einen Beitrag zur Zusammenarbeit in der häuslichen Versorgung leistet, werden die Ergebnisse zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die geplante Testung des Konzepts in einer clusterrandomisierten Pilotstudie konnte pandemiebedingt nicht wie geplant erfolgen."}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Sehr geringe Rücklaufquote des Online-Surveys"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "COVID-19-bedingte Rekrutierungsprobleme führten zu fehlender theoretischer Sättigung der qualitativen Methodik."}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Mögliche Verzerrung der Befragungsergebnisse durch Selektionsbias"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Mögliche Verzerrung der Befragungsergebnisse durch sozial erwünschte Antworten"}, {"stelle": "befund.0", "art": "befund", "unser": "Interprofessionelles patientenzentriertes Versorgungskonzept erfolgreich entwickelt"}, {"stelle": "befund.1", "art": "befund", "unser": "Versorgungskonzept aus sechs Komponenten festgelegt"}, {"stelle": "befund.2", "art": "befund", "unser": "Umfangreiches Arbeits- und Handbuch zur Umsetzung erarbeitet, das einen Beitrag zur Zusammenarbeit in der häuslichen Versorgung leistet"}, {"stelle": "befund.3", "art": "befund", "unser": "Studiendesign geeignet und Methoden angemessen durchgeführt"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Zufriedenheit von Personen mit Pflegebedarf und An-/Zugehörigen mit der Zusammenarbeit der Berufsgruppen (Survey WP4)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Bedeutung der interprofessionellen Kommunikation als Bestandteil der beruflichen Praxis (Survey WP4)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Hospitalisierungsrate (aus eingeschlossener Studie Federman et al. 2022 der systematischen Evidenzsynthese WP1, HBPC versus Standardversorgung, nach 12 Monaten)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Besuche in der Notaufnahme (aus eingeschlossener Studie Federman et al. 2022 der systematischen Evidenzsynthese WP1, HBPC versus Standardversorgung)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Lebensqualität (systematische Evidenzsynthese WP1)"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt."}, {"stelle": "adressat.3", "art": "adressat", "unser": "Der SHV begrüßt die Zielrichtung des Projekts, nennt vertragsrechtliche und strukturelle Voraussetzungen für eine Umsetzung (u. a. Ergänzung der Heilmittel-Richtlinien, abrechenbare Leistungspositionen) und spricht sich für eine Weiterentwicklung der Rahmenbedingungen und eine Pilotierung des Handbuchs aus. Eine eigene Befassung, Entscheidung oder nach außen gerichtete Handlung benennt er nicht."}, {"stelle": "adressat.4", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben „interprof HOME“ untersuchte mit einem explorativen Mixed-Methods-Design die Zusammenarbeit von Pflegediensten, Hausärzt*innen und Therapeut*innen in der Versorgung zuhause lebender Personen mit Pflegebedarf. Es umfasste Literaturübersicht und Evidenzsynthese (WP1), Interviews und Fokusgruppen (WP2), Best Practice Cases (WP3), einen Survey (WP4), gemischte Fokusgruppen (WP5) und einen Expert*innenworkshop (WP6); Zielgrößen waren laut Bericht nicht vorgesehen. Die Zusammenarbeit fand nach den Ergebnissen in geringem Umfang und meist organisatorisch statt, in komplexen Versorgungssituationen häufiger; Personen mit Pflegebedarf und An-/Zugehörige übernahmen oft koordinierende Aufgaben und äußerten im Survey Unzufriedenheit mit den Absprachen. Daraus wurde ein Versorgungskonzept mit sechs Komponenten entwickelt: Auftakt-Treffen, koordinierende Person, Messenger, Sondertelefonnummer, gemeinsamer Hausbesuch und gemeinsame Besprechungen. Die im Titel genannte Testung des Konzepts fand nicht statt: Wegen pandemiebedingter Rekrutierungsschwierigkeiten endete das Projekt nach 29 Monaten vorzeitig. Durchführbarkeit und Wirkungen sollen in einer späteren Studie untersucht werden. Die Aussagekraft ist zudem durch reduzierte Fallzahlen, Survey-Rücklaufquoten von 6 bis 28 %, einen vom Bericht benannten möglichen Selektionsbias und den Ausschluss von Menschen mit Demenz oder Aphasie begrenzt."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Entwickelt wurde das Versorgungskonzept „interprof HOME“ mit sechs Komponenten: Auftakt-Treffen, koordinierende Person, Messenger, Sondertelefonnummer, gemeinsamer Hausbesuch und gemeinsame Besprechungen."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "WP2: Interprofessionelle Zusammenarbeit kommt in einfachen Versorgungssituationen selten vor, weil Betroffene und Berufsgruppen sie oft als nicht relevant oder notwendig empfinden; alle Akteursgruppen nahmen eine geringe Zusammenarbeit wahr."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "WP3: In den Best Practice Cases stärkten Personen mit Pflegebedarf und Angehörige die Zusammenarbeit, indem sie sich in drei Aufgabenfeldern einbrachten: Informationsaustausch, Entscheidungsprozesse und Beaufsichtigung der professionellen Arbeit."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "WP4: Viele befragte Personen mit Pflegebedarf und Angehörige sind mit Zusammenarbeit und Absprachen der Berufsgruppen unzufrieden und haben das Gefühl, diese diene nicht ihrem Wohlbefinden; 25 % können die Zusammenarbeit zwischen Pflegediensten und Therapeut*innen nicht beurteilen."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die im Titel genannte Testung des Versorgungskonzepts war wegen der Rekrutierungsschwierigkeiten und der damit verbundenen Verzögerungen nicht machbar; das Projekt endete vorzeitig nach 29 Monaten am 30. September 2023."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Durchführbarkeit, Akzeptanz und Wirkungen des Konzepts auf Patient*innenoutcomes und Zusammenarbeit wurden nicht untersucht; sie sollen erst in einer späteren Studie geprüft werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "WP4: Die angestrebten 100 Fragebögen pro Gruppe wurden nicht erreicht, insgesamt gingen 244 auswertbare ein. Die Rücklaufquoten lagen bei Pflegediensten bei 12 % (n=75), bei Hausärzt*innen bei 6 % (n=39) und bei Therapeut*innen bei 28 % (n=92)."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Der Bericht nennt einen möglichen Selektionsbias: Die Stichprobe bildet nur Teilnahmebereite ab, bei denen ein Interesse am Thema anzunehmen ist."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "WP4-Fallzahl: Auf S. 36 werden 244 auswertbare Fragebögen genannt (Pflegedienste n=75, Hausärzt*innen n=39, Therapeut*innen n=92, Personen mit Pflegebedarf/Angehörige n=38). Tabelle 5 (S. 21) weist dagegen als IST 70 Pflegefachpersonen, 33 Hausärzt*innen, 81 Therapeut*innen und 37 Personen mit Pflegebedarf/Angehörige aus, die Übersicht auf S. 22 insgesamt 221/400."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Evidenzsynthese, Federman et al. 2022, Notaufnahmebesuche (S. 25): Der angegebene Punktschätzer von 1,2 % liegt nicht im angegebenen 95%-KI „-10.5%, -12.4%“; die Angabe ist so im Bericht wiedergegeben."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Laut Zusammenfassung findet Zusammenarbeit zwischen den Leistungserbringenden in geringem Umfang und meist auf organisatorischer Ebene statt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Kontaktaufnahme und inhaltlicher Informationsaustausch erfolgen häufig anlassbezogen und aus Eigeninitiative der Leistungserbringenden."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Persönliche interprofessionelle Begegnungen, feste Vereinbarungen und feste Ansprechpersonen kommen eher selten vor, werden von den Beteiligten aber oft als bereichernd empfunden."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Mangelnde gegenseitige Erreichbarkeit, fehlende Zeit und geringe Bezahlung werden als hemmend genannt, persönliche Bekanntschaft und gegenseitiges Vertrauen als förderlich."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "WP2: Professionelle Akteur*innen neigen eher zur Zusammenarbeit, wenn die Versorgungssituation komplex wird oder sich der Gesundheitszustand zu verschlechtern scheint; gemeinsam gearbeitet wurde überwiegend in komplexen Situationen wie 24-Stunden- oder Langzeitpflege."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "In solchen Situationen übernehmen Pflegefachpersonen oft die Vermittlerfunktion, insbesondere bei überlasteten Personen mit Pflegebedarf oder wenn keine An-/Zugehörigen die Organisation übernehmen können."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "WP2: Die Vermittlertätigkeit von Personen mit Pflegebedarf und An-/Zugehörigen wurde teils als ausreichend, häufig aber als nicht zufriedenstellend beurteilt und bedeutete für sie zum Teil eine Belastung."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "WP3: Personen mit Pflegebedarf und An-/Zugehörige übernehmen Koordinationsaufgaben, um mögliche Mängel in der interprofessionellen Koordination und deren negative Folgen zu umgehen."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "WP2: Die Berufsgruppen kommunizierten hauptsächlich per Fax und Telefon; dies wurde teilweise als unbefriedigend, zeitaufwändig und bei mangelnder Erreichbarkeit als verlangsamend empfunden."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "WP2: Gemeinsame formale Dokumentationssysteme fehlten; einige Beteiligte schufen individuelle Kommunikationsstrukturen."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Für den direkten interprofessionellen Austausch existiert derzeit keine formale Regelung."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Organisatorische Koordinationsaufgaben sind oft der einzige Kontakt zwischen den professionellen Akteur*innen und werden als herausfordernd wahrgenommen."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "WP2: Als personenbezogene Faktoren wurden „Bekanntsein“ und gegenseitige Anerkennung von Fachwissen genannt, als strukturelle Faktoren Erreichbarkeit, finanzielle und zeitliche Einschränkungen sowie die Zahl der Dienste und Praxen in einer Region."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Die professionellen Akteur*innen einer Person mit Pflegebedarf kennen sich oft nicht, die Versorgungsbedürfnisse werden nicht gemeinsam geplant, und schwere Erreichbarkeit kann laut Bericht zu Krankenhausaufenthalten führen."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "WP2, Vertreter*innen von GKV/PKV: Die Berufsgruppen haben wenig Kontakt untereinander und holen selten Informationen für die weitere Versorgung ein."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "WP2, GKV/PKV: Eine digitale Pflegedokumentation fehlt meist; ein*e Befragte*r schätzt, dass 90 % handschriftlich dokumentieren, und eine Weiterleitung an die Behandelnden gibt es nicht."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "WP4: Alle Berufsgruppen sehen die Kommunikation zu den anderen als Teil ihrer Verantwortung. Sie berichten aber von unzureichender Kommunikation und sehen Verbesserungsmöglichkeiten in gemeinsamen Hausbesuchen, Fallbesprechungen und digitaler Dokumentation."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "WP4: Bei der gewünschten Frequenz von Telefonsprechstunden und gemeinsamen Hausbesuchen weichen die Berufsgruppen voneinander ab; Pflegedienste und Hausärzt*innen wünschen häufigeren Austausch als Therapeut*innen."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "WP4: Pflegedienste sehen sich in der Lage, Aufgaben wie Blutabnahmen, Injektionen, Medikamentenberatung und körperliche Untersuchungen zu übernehmen. Hausärzt*innen sind für eine Übertragung offen, sehen Medikamentenberatung und körperliche Untersuchungen aber bei sich."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "WP4, Freitextanalyse: Es wurden sechs Hauptkategorien identifiziert; Personalmangel und Fluktuation nannten die Befragten als konkrete Gründe für das Scheitern der Zusammenarbeit im Status quo."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Die Teilnehmenden befürworten Komponenten wie feste Besprechungen, Koordinationspersonen, gemeinsame Hausbesuche und gemeinsame Dokumentation, haben aber wegen Zeit- und Ressourcenbeschränkungen Bedenken hinsichtlich der Umsetzung."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "WP5: In gemischten Fokusgruppen mit 8 bis 10 Teilnehmenden je Gruppe wurden zwölf Handlungsbereiche zur Verbesserung der interprofessionellen Zusammenarbeit herausgearbeitet."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "WP6: Am Expert*innenworkshop nahmen 25 Personen teil: 3 Personen mit Pflegebedarf, 2 An-/Zugehörige, 7 Pflegefachpersonen, 4 Hausärzt*innen, 2 Therapeut*innen und 7 Vertreter*innen anderer Gruppen."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Laut Bericht wurde das Ziel des Workshops erreicht, also die Priorisierung der Komponenten und die Erarbeitung von Implementierungswegen."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "WP6: Finanzielle Anreize, etwa für gemeinsame Hausbesuche oder Koordinationsaufgaben, wurden als förderlich empfunden. Personen mit Pflegebedarf befürchteten, digitale Treffen könnten für sie zu anstrengend werden."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Die Komponenten bilden vier Handlungsbereiche ab: personenzentrierte Ziele setzen, Aufgaben teilen und koordinieren, regelmäßiger persönlicher Austausch und Erreichbarkeit in akuten Situationen."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Gemeinsame Besprechungen sollen nach dem gemeinsamen Hausbesuch mindestens einmal pro Quartal stattfinden, persönlich oder online."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Für die Implementierung wurden ein Hand- und Arbeitsbuch sowie Formblätter erstellt."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "WP1, strukturierte Literaturübersicht: Berücksichtigt wurden 28 Studien zu Zusammenarbeit und Kommunikation, davon 19 qualitative und 5 quantitative. Keine Studie befasste sich ausschließlich mit der Perspektive der Therapeut*innen."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "WP1, systematische Evidenzsynthese: Aus 2376 potenziell relevanten Treffern wurden 5 Studien eingeschlossen, davon 4 Cluster-RCTs."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Evidenzsynthese: Weder für die ACP-Intervention noch für die HBPC-Intervention wurden Auswirkungen auf die Lebensqualität festgestellt."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Evidenzsynthese, HBPC (Federman et al. 2022): Nach 12 Monaten lag die Hospitalisierungsrate der Interventionsgruppe niedriger als die der Kontrollgruppe (−17,9 %, 95%-KI −31,0 % bis −1,0 %; p=0,001; NNT 6, 95%-KI 3–100)."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Evidenzsynthese, HBPC (Federman et al. 2022): Bei Notaufnahmebesuchen gab es keine statistisch signifikanten Unterschiede zwischen den Gruppen (1,2 %; p=0,87)."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Evidenzsynthese, Loop-Studie (Selbstauskünfte): Zu Studienbeginn suchten 3 Patient*innen der Interventions- und 1 der Kontrollgruppe die Notaufnahme auf, im dritten Monat 0 bzw. 3. Für Krankenhausaufenthalte wurden ähnliche Zahlen beobachtet."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Evidenzsynthese: Bei Loop gab es mehr Beiträge von Patient*innen als von Gesundheitsdienstleister*innen. Laut den Autor*innen fand bei isolierter Betrachtung des Tools keine Zusammenarbeit statt."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Evidenzsynthese, ACP: Als förderlich für die Umsetzung galten unter anderem die rechtzeitige Auswahl der Patient*innen und die Unterstützung durch Hausärzt*innen, als hinderlich Arbeitsbelastung sowie Mangel an Zeit, Geld und Personal."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "WP2: Interviewt wurden 20 Personen mit Pflegebedarf und 21 An-/Zugehörige. Dazu kamen neun monoprofessionelle Fokusgruppen mit 17 Pflegekräften, 14 Allgemeinmediziner*innen und 21 Therapeut*innen."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "Die 20 interviewten Personen mit Pflegebedarf waren 31 bis 99 Jahre alt und hatten Pflegegrad 2 bis 5. Sechs waren männlich; 7 lebten in einer Großstadt, 13 in einer Kleinstadt oder auf dem Land."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "WP3: In 8 Best Practice Cases nahmen 9 Pflegefachpersonen, 6 Personen mit Pflegebedarf, 5 An-/Zugehörige, 4 Hausärzt*innen, 2 Therapeut*innen und 3 Wundexpert*innen teil; die Altersspanne der Personen mit Pflegebedarf lag bei 59 bis 88 Jahren."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Rekrutierung lief pandemiebedingt in keinem Arbeitspaket nach Plan. Per Arbeitsplanänderung wurden die Fallzahlen reduziert, die Einschlusskriterien der Best Practice Cases geändert und der Survey auf eine anonyme Onlinebefragung umgestellt."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Alle Berufsgruppen waren wegen pandemiebedingt erschwerter Arbeitsbedingungen und erhöhter Erkrankungsraten zumindest anfangs weniger zur Teilnahme bereit."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Wegen der Impfaktion in den Praxen wurde die Rekrutierung von Hausärzt*innen auf 2022 verschoben; die monoprofessionellen Fokusgruppen fanden erst von März bis Mai 2022 statt."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Teilnehmendenzahlen blieben in mehreren Arbeitspaketen unter dem Soll, etwa WP2 93/112, WP4 221/400 und WP6 25/40; für WP4 wurde die Anpassung der Fallzahlen rückwirkend beantragt."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "WP4: Mangels vergleichbarer Erhebungen gab es keine Grundlage für eine Stichprobenkalkulation; n=100 pro Gruppe wurde als ausreichend festgelegt."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "WP4: Personen mit Pflegebedarf und Angehörige konnten aus Datenschutzgründen nicht über Listen oder Register identifiziert werden. Sie wurden passiv über Öffentlichkeitsarbeit rekrutiert, deshalb ist ihre Rücklaufquote nicht ermittelbar."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "WP4: In die Analyse wurden auch Datensätze mit bis zu 30 % fehlenden Werten einbezogen."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Laut Bericht ist der Survey-Rücklauf gerade bei Personen mit Pflegebedarf und Hausärzt*innen relativ gering; die angestrebte Fallzahl wurde wegen erhöhten Arbeitsaufwands bei allen Berufsgruppen nicht erreicht."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Menschen mit Demenz, Aphasie und anderen einschränkenden Bedingungen wurden nicht einbezogen; berücksichtigt wurde nur die Perspektive ihrer An-/Zugehörigen."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die pandemiebedingt telefonisch geführten Interviews setzten ausreichende mentale und physische Fähigkeiten für die technischen Anforderungen voraus; der Bericht sieht darin einen weiteren möglichen Selektionsbias."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Auch bei sorgfältiger Auswahl können laut Bericht „blinde Flecke“ bei bestimmten Erfahrungen oder Perspektiven bestehen."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Unklar bleibt, ob die professionellen Akteur*innen die Zeit für gemeinsame Treffen und Hausbesuche aufbringen können, weil die Vielzahl verschiedener Dienste und Praxen die Zusammenarbeit erschwert."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "WP3: Es ließen sich nicht in allen Fällen alle Beteiligten befragen; aufgenommen wurde ein Fall daher, sobald mehrere, aber nicht notwendigerweise alle Beteiligten teilnahmebereit waren."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "WP3: Die geplanten Beobachtungen vor Ort führten, vor allem pandemiebedingt, zu Absagen trotz Interesse an einem Interview; die Beobachtungen wurden daraufhin optional."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Evidenzsynthese: Das Verzerrungsrisiko der bewerteten Studien wurde insgesamt als unklar eingestuft."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Evidenzsynthese: Keine eingeschlossene Studie erhob die Auswirkungen auf die interprofessionelle Zusammenarbeit explizit."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Evidenzsynthese: In der Loop-Studie wurden Krankenhauseinweisungen und Notaufnahmebesuche nur über Selbstauskünfte erfasst."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "WP2, GKV/PKV: Wegen einer unverständlichen Audioaufnahme konnten nur vier von fünf Interviews ausgewertet werden."}]};
+const D = {"projekt_id": 385, "akronym": "interprof HOME", "kennung": "Wax-jYyG-mkj", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat in einer explorativen Mixed-Methods-Studie mit überwiegend qualitativen Methoden ein aus sechs Komponenten bestehendes interprofessionelles, patientenzentriertes Versorgungskonzept für zuhause lebende Pflegebedürftige entwickelt. Dazu gehört ein Arbeits- und Handbuch für die Umsetzung. Die ursprünglich geplante Testung in einer clusterrandomisierten Pilotstudie konnte wegen der COVID-19-Pandemie nicht wie geplant erfolgen. Der Ausschuss hält Studiendesign und Methoden für angemessen. Er weist aber auf eine sehr geringe Rücklaufquote des Online-Surveys hin. Zudem nennt er eine mögliche Verzerrung der Befragungsergebnisse, weil die Rekrutierung unter COVID-19 schwierig war und die theoretische Sättigung fehlte. Da das Konzept einen Beitrag zur Zusammenarbeit in der häuslichen Versorgung leistet, werden die Ergebnisse zur Information weitergeleitet."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die geplante Testung des Konzepts in einer clusterrandomisierten Pilotstudie konnte pandemiebedingt nicht wie geplant erfolgen."}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Sehr geringe Rücklaufquote des Online-Surveys"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "COVID-19-bedingte Rekrutierungsprobleme führten zu fehlender theoretischer Sättigung der qualitativen Methodik."}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Mögliche Verzerrung der Befragungsergebnisse durch Selektionsbias"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Mögliche Verzerrung der Befragungsergebnisse durch sozial erwünschte Antworten"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Zufriedenheit von Personen mit Pflegebedarf und An-/Zugehörigen mit der Zusammenarbeit der Berufsgruppen (Survey WP4)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Bedeutung der interprofessionellen Kommunikation als Bestandteil der beruflichen Praxis (Survey WP4)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Hospitalisierungsrate (aus eingeschlossener Studie Federman et al. 2022 der systematischen Evidenzsynthese WP1, HBPC versus Standardversorgung, nach 12 Monaten)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Besuche in der Notaufnahme (aus eingeschlossener Studie Federman et al. 2022 der systematischen Evidenzsynthese WP1, HBPC versus Standardversorgung)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Lebensqualität (systematische Evidenzsynthese WP1)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben „interprof HOME“ untersuchte mit einem explorativen Mixed-Methods-Design die Zusammenarbeit von Pflegediensten, Hausärzt*innen und Therapeut*innen in der Versorgung zuhause lebender Personen mit Pflegebedarf. Es umfasste Literaturübersicht und Evidenzsynthese (WP1), Interviews und Fokusgruppen (WP2), Best Practice Cases (WP3), einen Survey (WP4), gemischte Fokusgruppen (WP5) und einen Expert*innenworkshop (WP6); Zielgrößen waren laut Bericht nicht vorgesehen. Die Zusammenarbeit fand nach den Ergebnissen in geringem Umfang und meist organisatorisch statt, in komplexen Versorgungssituationen häufiger; Personen mit Pflegebedarf und An-/Zugehörige übernahmen oft koordinierende Aufgaben und äußerten im Survey Unzufriedenheit mit den Absprachen. Daraus wurde ein Versorgungskonzept mit sechs Komponenten entwickelt: Auftakt-Treffen, koordinierende Person, Messenger, Sondertelefonnummer, gemeinsamer Hausbesuch und gemeinsame Besprechungen. Die im Titel genannte Testung des Konzepts fand nicht statt: Wegen pandemiebedingter Rekrutierungsschwierigkeiten endete das Projekt nach 29 Monaten vorzeitig. Durchführbarkeit und Wirkungen sollen in einer späteren Studie untersucht werden. Die Aussagekraft ist zudem durch reduzierte Fallzahlen, Survey-Rücklaufquoten von 6 bis 28 %, einen vom Bericht benannten möglichen Selektionsbias und den Ausschluss von Menschen mit Demenz oder Aphasie begrenzt."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Entwickelt wurde das Versorgungskonzept „interprof HOME“ mit sechs Komponenten: Auftakt-Treffen, koordinierende Person, Messenger, Sondertelefonnummer, gemeinsamer Hausbesuch und gemeinsame Besprechungen."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "WP2: Interprofessionelle Zusammenarbeit kommt in einfachen Versorgungssituationen selten vor, weil Betroffene und Berufsgruppen sie oft als nicht relevant oder notwendig empfinden; alle Akteursgruppen nahmen eine geringe Zusammenarbeit wahr."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "WP3: In den Best Practice Cases stärkten Personen mit Pflegebedarf und Angehörige die Zusammenarbeit, indem sie sich in drei Aufgabenfeldern einbrachten: Informationsaustausch, Entscheidungsprozesse und Beaufsichtigung der professionellen Arbeit."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die im Titel genannte Testung des Versorgungskonzepts war wegen der Rekrutierungsschwierigkeiten und der damit verbundenen Verzögerungen nicht machbar; das Projekt endete vorzeitig nach 29 Monaten am 30. September 2023."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Durchführbarkeit, Akzeptanz und Wirkungen des Konzepts auf Patient*innenoutcomes und Zusammenarbeit wurden nicht untersucht; sie sollen erst in einer späteren Studie geprüft werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "WP4: Die angestrebten 100 Fragebögen pro Gruppe wurden nicht erreicht, insgesamt gingen 244 auswertbare ein. Die Rücklaufquoten lagen bei Pflegediensten bei 12 % (n=75), bei Hausärzt*innen bei 6 % (n=39) und bei Therapeut*innen bei 28 % (n=92)."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "WP4-Fallzahl: Auf S. 36 werden 244 auswertbare Fragebögen genannt (Pflegedienste n=75, Hausärzt*innen n=39, Therapeut*innen n=92, Personen mit Pflegebedarf/Angehörige n=38). Tabelle 5 (S. 21) weist dagegen als IST 70 Pflegefachpersonen, 33 Hausärzt*innen, 81 Therapeut*innen und 37 Personen mit Pflegebedarf/Angehörige aus, die Übersicht auf S. 22 insgesamt 221/400."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Evidenzsynthese, Federman et al. 2022, Notaufnahmebesuche (S. 25): Der angegebene Punktschätzer von 1,2 % liegt nicht im angegebenen 95%-KI „-10.5%, -12.4%“; die Angabe ist so im Bericht wiedergegeben."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Projektergebnisse zur Information an den Hausärztinnen- und Hausärzteverband, den DBfK-Bundesverband, den Spitzenverband der Heilmittelverbände und den Verband wir pflegen weiter. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "befund.0", "art": "befund", "unser": "Interprofessionelles patientenzentriertes Versorgungskonzept erfolgreich entwickelt"}, {"stelle": "befund.1", "art": "befund", "unser": "Versorgungskonzept aus sechs Komponenten festgelegt"}, {"stelle": "befund.2", "art": "befund", "unser": "Umfangreiches Arbeits- und Handbuch zur Umsetzung erarbeitet, das einen Beitrag zur Zusammenarbeit in der häuslichen Versorgung leistet"}, {"stelle": "befund.3", "art": "befund", "unser": "Studiendesign geeignet und Methoden angemessen durchgeführt"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt."}, {"stelle": "adressat.3", "art": "adressat", "unser": "Der SHV begrüßt die Zielrichtung des Projekts, nennt vertragsrechtliche und strukturelle Voraussetzungen für eine Umsetzung (u. a. Ergänzung der Heilmittel-Richtlinien, abrechenbare Leistungspositionen) und spricht sich für eine Weiterentwicklung der Rahmenbedingungen und eine Pilotierung des Handbuchs aus. Eine eigene Befassung, Entscheidung oder nach außen gerichtete Handlung benennt er nicht."}, {"stelle": "adressat.4", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung dieses Adressaten aufgeführt. Ein ausdrücklicher Vermerk, dass er nicht geantwortet hat, fehlt."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "WP4: Viele befragte Personen mit Pflegebedarf und Angehörige sind mit Zusammenarbeit und Absprachen der Berufsgruppen unzufrieden und haben das Gefühl, diese diene nicht ihrem Wohlbefinden; 25 % können die Zusammenarbeit zwischen Pflegediensten und Therapeut*innen nicht beurteilen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Der Bericht nennt einen möglichen Selektionsbias: Die Stichprobe bildet nur Teilnahmebereite ab, bei denen ein Interesse am Thema anzunehmen ist."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Laut Zusammenfassung findet Zusammenarbeit zwischen den Leistungserbringenden in geringem Umfang und meist auf organisatorischer Ebene statt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Kontaktaufnahme und inhaltlicher Informationsaustausch erfolgen häufig anlassbezogen und aus Eigeninitiative der Leistungserbringenden."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Persönliche interprofessionelle Begegnungen, feste Vereinbarungen und feste Ansprechpersonen kommen eher selten vor, werden von den Beteiligten aber oft als bereichernd empfunden."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Mangelnde gegenseitige Erreichbarkeit, fehlende Zeit und geringe Bezahlung werden als hemmend genannt, persönliche Bekanntschaft und gegenseitiges Vertrauen als förderlich."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "WP2: Professionelle Akteur*innen neigen eher zur Zusammenarbeit, wenn die Versorgungssituation komplex wird oder sich der Gesundheitszustand zu verschlechtern scheint; gemeinsam gearbeitet wurde überwiegend in komplexen Situationen wie 24-Stunden- oder Langzeitpflege."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "In solchen Situationen übernehmen Pflegefachpersonen oft die Vermittlerfunktion, insbesondere bei überlasteten Personen mit Pflegebedarf oder wenn keine An-/Zugehörigen die Organisation übernehmen können."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "WP2: Die Vermittlertätigkeit von Personen mit Pflegebedarf und An-/Zugehörigen wurde teils als ausreichend, häufig aber als nicht zufriedenstellend beurteilt und bedeutete für sie zum Teil eine Belastung."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "WP3: Personen mit Pflegebedarf und An-/Zugehörige übernehmen Koordinationsaufgaben, um mögliche Mängel in der interprofessionellen Koordination und deren negative Folgen zu umgehen."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "WP2: Die Berufsgruppen kommunizierten hauptsächlich per Fax und Telefon; dies wurde teilweise als unbefriedigend, zeitaufwändig und bei mangelnder Erreichbarkeit als verlangsamend empfunden."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "WP2: Gemeinsame formale Dokumentationssysteme fehlten; einige Beteiligte schufen individuelle Kommunikationsstrukturen."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Für den direkten interprofessionellen Austausch existiert derzeit keine formale Regelung."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Organisatorische Koordinationsaufgaben sind oft der einzige Kontakt zwischen den professionellen Akteur*innen und werden als herausfordernd wahrgenommen."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "WP2: Als personenbezogene Faktoren wurden „Bekanntsein“ und gegenseitige Anerkennung von Fachwissen genannt, als strukturelle Faktoren Erreichbarkeit, finanzielle und zeitliche Einschränkungen sowie die Zahl der Dienste und Praxen in einer Region."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Die professionellen Akteur*innen einer Person mit Pflegebedarf kennen sich oft nicht, die Versorgungsbedürfnisse werden nicht gemeinsam geplant, und schwere Erreichbarkeit kann laut Bericht zu Krankenhausaufenthalten führen."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "WP2, Vertreter*innen von GKV/PKV: Die Berufsgruppen haben wenig Kontakt untereinander und holen selten Informationen für die weitere Versorgung ein."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "WP2, GKV/PKV: Eine digitale Pflegedokumentation fehlt meist; ein*e Befragte*r schätzt, dass 90 % handschriftlich dokumentieren, und eine Weiterleitung an die Behandelnden gibt es nicht."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "WP4: Alle Berufsgruppen sehen die Kommunikation zu den anderen als Teil ihrer Verantwortung. Sie berichten aber von unzureichender Kommunikation und sehen Verbesserungsmöglichkeiten in gemeinsamen Hausbesuchen, Fallbesprechungen und digitaler Dokumentation."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "WP4: Bei der gewünschten Frequenz von Telefonsprechstunden und gemeinsamen Hausbesuchen weichen die Berufsgruppen voneinander ab; Pflegedienste und Hausärzt*innen wünschen häufigeren Austausch als Therapeut*innen."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "WP4: Pflegedienste sehen sich in der Lage, Aufgaben wie Blutabnahmen, Injektionen, Medikamentenberatung und körperliche Untersuchungen zu übernehmen. Hausärzt*innen sind für eine Übertragung offen, sehen Medikamentenberatung und körperliche Untersuchungen aber bei sich."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "WP4, Freitextanalyse: Es wurden sechs Hauptkategorien identifiziert; Personalmangel und Fluktuation nannten die Befragten als konkrete Gründe für das Scheitern der Zusammenarbeit im Status quo."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Die Teilnehmenden befürworten Komponenten wie feste Besprechungen, Koordinationspersonen, gemeinsame Hausbesuche und gemeinsame Dokumentation, haben aber wegen Zeit- und Ressourcenbeschränkungen Bedenken hinsichtlich der Umsetzung."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "WP5: In gemischten Fokusgruppen mit 8 bis 10 Teilnehmenden je Gruppe wurden zwölf Handlungsbereiche zur Verbesserung der interprofessionellen Zusammenarbeit herausgearbeitet."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "WP6: Am Expert*innenworkshop nahmen 25 Personen teil: 3 Personen mit Pflegebedarf, 2 An-/Zugehörige, 7 Pflegefachpersonen, 4 Hausärzt*innen, 2 Therapeut*innen und 7 Vertreter*innen anderer Gruppen."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Laut Bericht wurde das Ziel des Workshops erreicht, also die Priorisierung der Komponenten und die Erarbeitung von Implementierungswegen."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "WP6: Finanzielle Anreize, etwa für gemeinsame Hausbesuche oder Koordinationsaufgaben, wurden als förderlich empfunden. Personen mit Pflegebedarf befürchteten, digitale Treffen könnten für sie zu anstrengend werden."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Die Komponenten bilden vier Handlungsbereiche ab: personenzentrierte Ziele setzen, Aufgaben teilen und koordinieren, regelmäßiger persönlicher Austausch und Erreichbarkeit in akuten Situationen."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Gemeinsame Besprechungen sollen nach dem gemeinsamen Hausbesuch mindestens einmal pro Quartal stattfinden, persönlich oder online."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Für die Implementierung wurden ein Hand- und Arbeitsbuch sowie Formblätter erstellt."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "WP1, strukturierte Literaturübersicht: Berücksichtigt wurden 28 Studien zu Zusammenarbeit und Kommunikation, davon 19 qualitative und 5 quantitative. Keine Studie befasste sich ausschließlich mit der Perspektive der Therapeut*innen."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "WP1, systematische Evidenzsynthese: Aus 2376 potenziell relevanten Treffern wurden 5 Studien eingeschlossen, davon 4 Cluster-RCTs."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Evidenzsynthese: Weder für die ACP-Intervention noch für die HBPC-Intervention wurden Auswirkungen auf die Lebensqualität festgestellt."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Evidenzsynthese, HBPC (Federman et al. 2022): Nach 12 Monaten lag die Hospitalisierungsrate der Interventionsgruppe niedriger als die der Kontrollgruppe (−17,9 %, 95%-KI −31,0 % bis −1,0 %; p=0,001; NNT 6, 95%-KI 3–100)."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Evidenzsynthese, HBPC (Federman et al. 2022): Bei Notaufnahmebesuchen gab es keine statistisch signifikanten Unterschiede zwischen den Gruppen (1,2 %; p=0,87)."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Evidenzsynthese, Loop-Studie (Selbstauskünfte): Zu Studienbeginn suchten 3 Patient*innen der Interventions- und 1 der Kontrollgruppe die Notaufnahme auf, im dritten Monat 0 bzw. 3. Für Krankenhausaufenthalte wurden ähnliche Zahlen beobachtet."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "Evidenzsynthese: Bei Loop gab es mehr Beiträge von Patient*innen als von Gesundheitsdienstleister*innen. Laut den Autor*innen fand bei isolierter Betrachtung des Tools keine Zusammenarbeit statt."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Evidenzsynthese, ACP: Als förderlich für die Umsetzung galten unter anderem die rechtzeitige Auswahl der Patient*innen und die Unterstützung durch Hausärzt*innen, als hinderlich Arbeitsbelastung sowie Mangel an Zeit, Geld und Personal."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "WP2: Interviewt wurden 20 Personen mit Pflegebedarf und 21 An-/Zugehörige. Dazu kamen neun monoprofessionelle Fokusgruppen mit 17 Pflegekräften, 14 Allgemeinmediziner*innen und 21 Therapeut*innen."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "Die 20 interviewten Personen mit Pflegebedarf waren 31 bis 99 Jahre alt und hatten Pflegegrad 2 bis 5. Sechs waren männlich; 7 lebten in einer Großstadt, 13 in einer Kleinstadt oder auf dem Land."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "WP3: In 8 Best Practice Cases nahmen 9 Pflegefachpersonen, 6 Personen mit Pflegebedarf, 5 An-/Zugehörige, 4 Hausärzt*innen, 2 Therapeut*innen und 3 Wundexpert*innen teil; die Altersspanne der Personen mit Pflegebedarf lag bei 59 bis 88 Jahren."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Rekrutierung lief pandemiebedingt in keinem Arbeitspaket nach Plan. Per Arbeitsplanänderung wurden die Fallzahlen reduziert, die Einschlusskriterien der Best Practice Cases geändert und der Survey auf eine anonyme Onlinebefragung umgestellt."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Alle Berufsgruppen waren wegen pandemiebedingt erschwerter Arbeitsbedingungen und erhöhter Erkrankungsraten zumindest anfangs weniger zur Teilnahme bereit."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Wegen der Impfaktion in den Praxen wurde die Rekrutierung von Hausärzt*innen auf 2022 verschoben; die monoprofessionellen Fokusgruppen fanden erst von März bis Mai 2022 statt."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Teilnehmendenzahlen blieben in mehreren Arbeitspaketen unter dem Soll, etwa WP2 93/112, WP4 221/400 und WP6 25/40; für WP4 wurde die Anpassung der Fallzahlen rückwirkend beantragt."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "WP4: Mangels vergleichbarer Erhebungen gab es keine Grundlage für eine Stichprobenkalkulation; n=100 pro Gruppe wurde als ausreichend festgelegt."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "WP4: Personen mit Pflegebedarf und Angehörige konnten aus Datenschutzgründen nicht über Listen oder Register identifiziert werden. Sie wurden passiv über Öffentlichkeitsarbeit rekrutiert, deshalb ist ihre Rücklaufquote nicht ermittelbar."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "WP4: In die Analyse wurden auch Datensätze mit bis zu 30 % fehlenden Werten einbezogen."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Laut Bericht ist der Survey-Rücklauf gerade bei Personen mit Pflegebedarf und Hausärzt*innen relativ gering; die angestrebte Fallzahl wurde wegen erhöhten Arbeitsaufwands bei allen Berufsgruppen nicht erreicht."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Menschen mit Demenz, Aphasie und anderen einschränkenden Bedingungen wurden nicht einbezogen; berücksichtigt wurde nur die Perspektive ihrer An-/Zugehörigen."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die pandemiebedingt telefonisch geführten Interviews setzten ausreichende mentale und physische Fähigkeiten für die technischen Anforderungen voraus; der Bericht sieht darin einen weiteren möglichen Selektionsbias."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Auch bei sorgfältiger Auswahl können laut Bericht „blinde Flecke“ bei bestimmten Erfahrungen oder Perspektiven bestehen."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Unklar bleibt, ob die professionellen Akteur*innen die für gemeinsame Treffen und Hausbesuche erforderliche Zeit aufbringen können."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "WP3: Es ließen sich nicht in allen Fällen alle Beteiligten befragen; aufgenommen wurde ein Fall daher, sobald mehrere, aber nicht notwendigerweise alle Beteiligten teilnahmebereit waren."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "WP3: Die geplanten Beobachtungen vor Ort führten, vor allem pandemiebedingt, zu Absagen trotz Interesse an einem Interview; die Beobachtungen wurden daraufhin optional."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Evidenzsynthese: Das Verzerrungsrisiko der bewerteten Studien wurde insgesamt als unklar eingestuft."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Evidenzsynthese: Keine eingeschlossene Studie erhob die Auswirkungen auf die interprofessionelle Zusammenarbeit explizit."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Evidenzsynthese: In der Loop-Studie wurden Krankenhauseinweisungen und Notaufnahmebesuche nur über Selbstauskünfte erfasst."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "WP2, GKV/PKV: Wegen einer unverständlichen Audioaufnahme konnten nur vier von fünf Interviews ausgewertet werden."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

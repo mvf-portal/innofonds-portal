@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF16047</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>16 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 24 Aussagen. Die übrigen
+8 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss spricht für das Projekt EMPAR keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Der Ausschuss sieht weiteren Forschungsbedarf, etwa im Rahmen einer prospektiven Studie.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Die Erhebung pharmakogenetischer Daten und ihre Verknüpfung mit Krankenkassen-Routinedaten gelang. Das Studiendesign hält der Ausschuss für geeignet, die Stichprobe für repräsentativ. Die pharmakoepidemiologischen Analysen bestätigten die erwartete Assoziation zwischen metabolischen Profilen und unerwünschten Arzneimittelwirkungen. In den pharmakoökonomischen Analysen ließ sich dagegen kein statistisch signifikanter Zusammenhang nachweisen. Die Aussagekraft ist nach Auffassung des Ausschusses eingeschränkt: Das Design war retrospektiv, risikobehaftete Profile waren selten, und entsprechend wenige Personen hatten unerwünschte Arzneimittelwirkungen. Eine breitere Anwendung präemptiver Tests in der Regelversorgung hält der Ausschuss daher derzeit für verfrüht.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,11 +141,298 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Sonstiges</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="hindernis.0">
+  <h3>Hindernis laut Beschluss: Studienanlage</h3>
+  <p class="unser">Retrospektives Studiendesign</p>
+  
+  <blockquote>„Limitationen ergaben sich aus einem retrospektiven Studiendesign." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="hindernis.1">
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
+  <p class="unser">Hinweise auf Korrelationen, aber kein statistisch signifikanter Zusammenhang zwischen metabolischen Profilen und UAW in den pharmakoökonomischen Analysen</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung gab nur eine Hälfte des Beschlusssatzes wieder; die Neufassung nennt beide. Vorher stand hier:
+    <i>„Kein statistisch signifikanter Zusammenhang zwischen metabolischen Profilen und UAW in den pharmakoökonomischen Analysen“</i></p>
+  <blockquote>„Hinweise auf Korrelationen zeigten sich auch im Rahmen der pharmakoökonomischen Analysen, ein statistisch signifikanter Zusammenhang von metabolischen Profilen und UAW konnte jedoch nicht nachgewiesen werden." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="hindernis.2">
+  <h3>Hindernis laut Beschluss: Auswertung und Statistik <span class="ampel gelb">hier sind wir unsicher</span></h3>
+  <p class="unser">Pharmakoökonomische Analysen lieferten nur eine erste Kosteneinschätzung</p>
+  
+  <blockquote>„Die pharmakoökonomischen Analysen lieferten somit lediglich eine erste Einschätzung zu den möglichen Kosten präemptiver pharmakogenetischer Tests für ausgewählte pharmakogenetische Merkmale." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="hindernis.3">
+  <h3>Hindernis laut Beschluss: Fallzahl in der Auswertung</h3>
+  <p class="unser">Seltene risikobehaftete Profile und niedrige Fallzahlen für Personen mit UAW schränken die Aussagekraft ein</p>
+  
+  <blockquote>„Zudem war die Häufigkeit von Personen mit identifizierten risikobehafteten metabolischen Profi len gering (&lt; 5 %). Demzufolge waren die Fallzahlen für Personen mit UAW ebenfalls niedrig, was die Aussagekraft der Ergebnisse einschränkt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="hindernis.4">
+  <h3>Hindernis laut Beschluss: Übertragbarkeit</h3>
+  <p class="unser">Breitere Anwendung präemptiver Tests in der Regelversorgung derzeit verfrüht</p>
+  
+  <blockquote>„Eine brei tere Anwendung präemptiver Tests in der Regelversorgung erscheint zum jetzigen Zeitpunkt jedoch verfrüht." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="endpunkt.1">
+  <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
+  <p class="unser">Auftreten unerwünschter Arzneimittelwirkungen (primäre Zielgröße) – hämorrhagische Events unter Thrombozytenaggregationshemmern (ATC B01AC) bei CYP2C19 Ultraschnell-Metabolisierenden</p>
+  
+  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
+  <div class="wahl">
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="endpunkt.2">
+  <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
+  <p class="unser">Hämorrhagische Events unter Clopidogrel (B01AC04) bei CYP2C19 UM</p>
+  
+  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
+  <div class="wahl">
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="endpunkt.3">
+  <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
+  <p class="unser">Ischämische Events unter Thrombozytenaggregationshemmern (B01AC) bei CYP2C19 PM</p>
+  
+  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
+  <div class="wahl">
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="endpunkt.4">
+  <h3>Gemessen wurde – eingeordnet als „Arbeitsfähigkeit und Erwerbsteilhabe“</h3>
+  <p class="unser">Arbeitsunfähigkeit unter Vitamin-K-Antagonisten (Warfarin &amp; Phenprocoumon, B01AA03, B01AA04) bei CYP2C9 IM</p>
+  
+  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
+  <div class="wahl">
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="endpunkt.5">
+  <h3>Gemessen wurde – eingeordnet als „Arbeitsfähigkeit und Erwerbsteilhabe“</h3>
+  <p class="unser">Arbeitsunfähigkeit unter Phenprocoumon (B01AA04) bei CYP2C9 IM</p>
+  
+  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
+  <div class="wahl">
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="endpunkt.6">
+  <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
+  <p class="unser">Korrelation metabolischer Profile mit UAW (univariate Analyse, 1.232 Vierfeldertafeln)</p>
+  
+  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
+  <div class="wahl">
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="endpunkt.7">
+  <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
+  <p class="unser">Differenz der Gesamtleistungsausgaben im Follow-up bei simulierter Kenntnis von CYP2C19_UM (Künstliches Neuronales Netz, Beispielrechnung, 84 von 1663 Testmustern)</p>
+  
+  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
+  <div class="wahl">
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="endpunkt.8">
+  <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
+  <p class="unser">Mögliche Kosteneinsparung pro Person durch präemptive Testung – CYP2C19 Ultraschnell-Metabolisierer (5,0 % Anteil)</p>
+  
+  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
+  <div class="wahl">
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="endpunkt.9">
+  <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
+  <p class="unser">Mögliche Kosteneinsparung pro Person durch präemptive Testung – CYP2C9 Langsam-Metabolisierer (3,8 %) und CYP3A5 Normal-Metabolisierer (1,2 %)</p>
+  
+  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
+  <div class="wahl">
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>8 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss spricht für das Projekt EMPAR keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Der Ausschuss sieht weiteren Forschungsbedarf, etwa im Rahmen einer prospektiven Studie.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -162,106 +447,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Übertragbarkeit</h3>
   <p class="unser">Eine breitere Anwendung präemptiver pharmakogenetischer Tests in der Regelversorgung hält der Ausschuss derzeit für verfrüht. Er sieht weiteren Forschungsbedarf, etwa eine prospektive Studie, die auch weitere patientenrelevante Endpunkte und Effekte auf Therapieanpassungen untersucht.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Studienanlage</h3>
-  <p class="unser">Retrospektives Studiendesign</p>
-  <blockquote>„Limitationen ergaben sich aus einem retrospektiven Studiendesign." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
-  <p class="unser">Kein statistisch signifikanter Zusammenhang zwischen metabolischen Profilen und UAW in den pharmakoökonomischen Analysen</p>
-  <blockquote>„Hinweise auf Korrelationen zeigten sich auch im Rahmen der pharmakoökonomischen Analysen, ein statistisch signifikanter Zusammenhang von metabolischen Profilen und UAW konnte jedoch nicht nachgewiesen werden." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="hindernis.2">
-  <h3>Hindernis laut Beschluss: Auswertung und Statistik <span class="ampel gelb">hier sind wir unsicher</span></h3>
-  <p class="unser">Pharmakoökonomische Analysen lieferten nur eine erste Kosteneinschätzung</p>
-  <blockquote>„Die pharmakoökonomischen Analysen lieferten somit lediglich eine erste Einschätzung zu den möglichen Kosten präemptiver pharmakogenetischer Tests für ausgewählte pharmakogenetische Merkmale." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="hindernis.3">
-  <h3>Hindernis laut Beschluss: Fallzahl zu klein für die Auswertung</h3>
-  <p class="unser">Seltene risikobehaftete Profile und niedrige Fallzahlen für Personen mit UAW schränken die Aussagekraft ein</p>
-  <blockquote>„Zudem war die Häufigkeit von Personen mit identifizierten risikobehafteten metabolischen Profi len gering (&lt; 5 %). Demzufolge waren die Fallzahlen für Personen mit UAW ebenfalls niedrig, was die Aussagekraft der Ergebnisse einschränkt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="hindernis.4">
-  <h3>Hindernis laut Beschluss: Übertragbarkeit unklar</h3>
-  <p class="unser">Breitere Anwendung präemptiver Tests in der Regelversorgung derzeit verfrüht</p>
-  <blockquote>„Eine brei tere Anwendung präemptiver Tests in der Regelversorgung erscheint zum jetzigen Zeitpunkt jedoch verfrüht." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -273,14 +463,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
+  <h3>Was der Beschluss positiv vermerkt</h3>
   <p class="unser">Erhebung pharmakogenetischer Daten und Verknüpfung mit Krankenkassen-Routinedaten gelungen</p>
+  
   <blockquote>„Die hierfür erforderliche Erhebung pharmakogenetischer Patientinnen - und Patientendaten sowie deren Verknüpfung mit Routinedaten einer gesetzlichen Krankenkasse gelang im Projekt erfolgreich." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -292,14 +482,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
+  <h3>Was der Beschluss positiv vermerkt</h3>
   <p class="unser">Studiendesign nach Auffassung des Ausschusses geeignet</p>
+  
   <blockquote>„Das Studiendesign war geeignet um die Fragestellungen zu beantworten." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -311,14 +501,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
+  <h3>Was der Beschluss positiv vermerkt</h3>
   <p class="unser">Repräsentative Stichprobe der Versicherten</p>
+  
   <blockquote>„Die untersuchte Studienpopulation der Versicherten stellte eine repräsentative Stichprobe dar." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -330,14 +520,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
+  <h3>Was der Beschluss positiv vermerkt</h3>
   <p class="unser">Mehrheit der Teilnehmenden mit mindestens einer möglicherweise AMTS-relevanten genetischen Variante</p>
+  
   <blockquote>„Die Ergebnisse der pharmakogenetischen Analysen zeigten, dass die Mehrheit der Teilnehmenden, die hinsichtlich verschiedener Pharmakogene untersucht wurden, mindestens eine genetische Variante aufwiesen, welche für die Arzneimitteltherapiesicherheit der im Projekt evaluierten Medikamentenklassen relevant sein könnte." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -349,14 +539,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
+  <h3>Was der Beschluss positiv vermerkt</h3>
   <p class="unser">Erwartete Assoziation zwischen metabolischen Profilen und UAW pharmakoepidemiologisch bestätigt</p>
+  
   <blockquote>„Die pharmakoepidemiologischen Analysen bestätigten die erwartete Assoziation zwischen den untersuchten metabolischen Profilen und UAW." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -368,14 +558,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.5">
-  <h3>Was erreicht wurde</h3>
+  <h3>Was der Beschluss positiv vermerkt</h3>
   <p class="unser">Hilfreiche Erkenntnisse zum Zusammenhang von metabolischen Profilen und UAW</p>
+  
   <blockquote>„Die Ergebnisse liefern insgesamt hilfreiche Erkenntnisse zum Zusammenhang metabolischer Profile und UAW." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.5" value="ok" checked hidden>
+    <input type="radio" name="ubefund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -385,178 +575,7 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section>
-<section class="p" data-stelle="endpunkt.1">
-  <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
-  <p class="unser">Auftreten unerwünschter Arzneimittelwirkungen (primäre Zielgröße) – hämorrhagische Events unter Thrombozytenaggregationshemmern (ATC B01AC) bei CYP2C19 Ultraschnell-Metabolisierenden</p>
-  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
-  <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="endpunkt.2">
-  <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
-  <p class="unser">Hämorrhagische Events unter Clopidogrel (B01AC04) bei CYP2C19 UM</p>
-  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
-  <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="endpunkt.3">
-  <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
-  <p class="unser">Ischämische Events unter Thrombozytenaggregationshemmern (B01AC) bei CYP2C19 PM</p>
-  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
-  <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="endpunkt.4">
-  <h3>Gemessen wurde – eingeordnet als „Arbeitsfähigkeit und Erwerbsteilhabe“</h3>
-  <p class="unser">Arbeitsunfähigkeit unter Vitamin-K-Antagonisten (Warfarin &amp; Phenprocoumon, B01AA03, B01AA04) bei CYP2C9 IM</p>
-  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
-  <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="endpunkt.5">
-  <h3>Gemessen wurde – eingeordnet als „Arbeitsfähigkeit und Erwerbsteilhabe“</h3>
-  <p class="unser">Arbeitsunfähigkeit unter Phenprocoumon (B01AA04) bei CYP2C9 IM</p>
-  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
-  <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="endpunkt.6">
-  <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
-  <p class="unser">Korrelation metabolischer Profile mit UAW (univariate Analyse, 1.232 Vierfeldertafeln)</p>
-  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
-  <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="endpunkt.7">
-  <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
-  <p class="unser">Differenz der Gesamtleistungsausgaben im Follow-up bei simulierter Kenntnis von CYP2C19_UM (Künstliches Neuronales Netz, Beispielrechnung, 84 von 1663 Testmustern)</p>
-  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
-  <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="endpunkt.8">
-  <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
-  <p class="unser">Mögliche Kosteneinsparung pro Person durch präemptive Testung – CYP2C19 Ultraschnell-Metabolisierer (5,0 % Anteil)</p>
-  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
-  <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="endpunkt.9">
-  <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
-  <p class="unser">Mögliche Kosteneinsparung pro Person durch präemptive Testung – CYP2C9 Langsam-Metabolisierer (3,8 %) und CYP3A5 Normal-Metabolisierer (1,2 %)</p>
-  <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
-  <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
+</section></details>
 
 <h2>Und das, was aus den Erkenntnissen wurde</h2>
 <div class="p danach">
@@ -591,28 +610,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 46, "akronym": "EMPAR", "kennung": "zjmR6L2rH-DK", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt EMPAR keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Der Ausschuss sieht weiteren Forschungsbedarf, etwa im Rahmen einer prospektiven Studie."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Die Erhebung pharmakogenetischer Daten und ihre Verknüpfung mit Krankenkassen-Routinedaten gelang. Das Studiendesign hält der Ausschuss für geeignet, die Stichprobe für repräsentativ. Die pharmakoepidemiologischen Analysen bestätigten die erwartete Assoziation zwischen metabolischen Profilen und unerwünschten Arzneimittelwirkungen. In den pharmakoökonomischen Analysen ließ sich dagegen kein statistisch signifikanter Zusammenhang nachweisen. Die Aussagekraft ist nach Auffassung des Ausschusses eingeschränkt: Das Design war retrospektiv, risikobehaftete Profile waren selten, und entsprechend wenige Personen hatten unerwünschte Arzneimittelwirkungen. Eine breitere Anwendung präemptiver Tests in der Regelversorgung hält der Ausschuss daher derzeit für verfrüht."}, {"stelle": "studiendesign", "art": "text", "unser": "Sonstiges"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine breitere Anwendung präemptiver pharmakogenetischer Tests in der Regelversorgung hält der Ausschuss derzeit für verfrüht. Er sieht weiteren Forschungsbedarf, etwa eine prospektive Studie, die auch weitere patientenrelevante Endpunkte und Effekte auf Therapieanpassungen untersucht."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Retrospektives Studiendesign"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Kein statistisch signifikanter Zusammenhang zwischen metabolischen Profilen und UAW in den pharmakoökonomischen Analysen"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Pharmakoökonomische Analysen lieferten nur eine erste Kosteneinschätzung"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Seltene risikobehaftete Profile und niedrige Fallzahlen für Personen mit UAW schränken die Aussagekraft ein"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Breitere Anwendung präemptiver Tests in der Regelversorgung derzeit verfrüht"}, {"stelle": "befund.0", "art": "befund", "unser": "Erhebung pharmakogenetischer Daten und Verknüpfung mit Krankenkassen-Routinedaten gelungen"}, {"stelle": "befund.1", "art": "befund", "unser": "Studiendesign nach Auffassung des Ausschusses geeignet"}, {"stelle": "befund.2", "art": "befund", "unser": "Repräsentative Stichprobe der Versicherten"}, {"stelle": "befund.3", "art": "befund", "unser": "Mehrheit der Teilnehmenden mit mindestens einer möglicherweise AMTS-relevanten genetischen Variante"}, {"stelle": "befund.4", "art": "befund", "unser": "Erwartete Assoziation zwischen metabolischen Profilen und UAW pharmakoepidemiologisch bestätigt"}, {"stelle": "befund.5", "art": "befund", "unser": "Hilfreiche Erkenntnisse zum Zusammenhang von metabolischen Profilen und UAW"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Auftreten unerwünschter Arzneimittelwirkungen (primäre Zielgröße) – hämorrhagische Events unter Thrombozytenaggregationshemmern (ATC B01AC) bei CYP2C19 Ultraschnell-Metabolisierenden"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Hämorrhagische Events unter Clopidogrel (B01AC04) bei CYP2C19 UM"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Ischämische Events unter Thrombozytenaggregationshemmern (B01AC) bei CYP2C19 PM"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Arbeitsunfähigkeit unter Vitamin-K-Antagonisten (Warfarin & Phenprocoumon, B01AA03, B01AA04) bei CYP2C9 IM"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Arbeitsunfähigkeit unter Phenprocoumon (B01AA04) bei CYP2C9 IM"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Korrelation metabolischer Profile mit UAW (univariate Analyse, 1.232 Vierfeldertafeln)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Differenz der Gesamtleistungsausgaben im Follow-up bei simulierter Kenntnis von CYP2C19_UM (Künstliches Neuronales Netz, Beispielrechnung, 84 von 1663 Testmustern)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Mögliche Kosteneinsparung pro Person durch präemptive Testung – CYP2C19 Ultraschnell-Metabolisierer (5,0 % Anteil)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Mögliche Kosteneinsparung pro Person durch präemptive Testung – CYP2C9 Langsam-Metabolisierer (3,8 %) und CYP3A5 Normal-Metabolisierer (1,2 %)"}]};
+const D = {"projekt_id": 46, "akronym": "EMPAR", "kennung": "zjmR6L2rH-DK", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Die Erhebung pharmakogenetischer Daten und ihre Verknüpfung mit Krankenkassen-Routinedaten gelang. Das Studiendesign hält der Ausschuss für geeignet, die Stichprobe für repräsentativ. Die pharmakoepidemiologischen Analysen bestätigten die erwartete Assoziation zwischen metabolischen Profilen und unerwünschten Arzneimittelwirkungen. In den pharmakoökonomischen Analysen ließ sich dagegen kein statistisch signifikanter Zusammenhang nachweisen. Die Aussagekraft ist nach Auffassung des Ausschusses eingeschränkt: Das Design war retrospektiv, risikobehaftete Profile waren selten, und entsprechend wenige Personen hatten unerwünschte Arzneimittelwirkungen. Eine breitere Anwendung präemptiver Tests in der Regelversorgung hält der Ausschuss daher derzeit für verfrüht."}, {"stelle": "studiendesign", "art": "text", "unser": "Sonstiges"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Retrospektives Studiendesign"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Hinweise auf Korrelationen, aber kein statistisch signifikanter Zusammenhang zwischen metabolischen Profilen und UAW in den pharmakoökonomischen Analysen"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Pharmakoökonomische Analysen lieferten nur eine erste Kosteneinschätzung"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Seltene risikobehaftete Profile und niedrige Fallzahlen für Personen mit UAW schränken die Aussagekraft ein"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Breitere Anwendung präemptiver Tests in der Regelversorgung derzeit verfrüht"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Auftreten unerwünschter Arzneimittelwirkungen (primäre Zielgröße) – hämorrhagische Events unter Thrombozytenaggregationshemmern (ATC B01AC) bei CYP2C19 Ultraschnell-Metabolisierenden"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Hämorrhagische Events unter Clopidogrel (B01AC04) bei CYP2C19 UM"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Ischämische Events unter Thrombozytenaggregationshemmern (B01AC) bei CYP2C19 PM"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Arbeitsunfähigkeit unter Vitamin-K-Antagonisten (Warfarin & Phenprocoumon, B01AA03, B01AA04) bei CYP2C9 IM"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Arbeitsunfähigkeit unter Phenprocoumon (B01AA04) bei CYP2C9 IM"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Korrelation metabolischer Profile mit UAW (univariate Analyse, 1.232 Vierfeldertafeln)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Differenz der Gesamtleistungsausgaben im Follow-up bei simulierter Kenntnis von CYP2C19_UM (Künstliches Neuronales Netz, Beispielrechnung, 84 von 1663 Testmustern)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Mögliche Kosteneinsparung pro Person durch präemptive Testung – CYP2C19 Ultraschnell-Metabolisierer (5,0 % Anteil)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Mögliche Kosteneinsparung pro Person durch präemptive Testung – CYP2C9 Langsam-Metabolisierer (3,8 %) und CYP3A5 Normal-Metabolisierer (1,2 %)"}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt EMPAR keine Empfehlung aus. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Der Ausschuss sieht weiteren Forschungsbedarf, etwa im Rahmen einer prospektiven Studie."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine breitere Anwendung präemptiver pharmakogenetischer Tests in der Regelversorgung hält der Ausschuss derzeit für verfrüht. Er sieht weiteren Forschungsbedarf, etwa eine prospektive Studie, die auch weitere patientenrelevante Endpunkte und Effekte auf Therapieanpassungen untersucht."}, {"stelle": "befund.0", "art": "befund", "unser": "Erhebung pharmakogenetischer Daten und Verknüpfung mit Krankenkassen-Routinedaten gelungen"}, {"stelle": "befund.1", "art": "befund", "unser": "Studiendesign nach Auffassung des Ausschusses geeignet"}, {"stelle": "befund.2", "art": "befund", "unser": "Repräsentative Stichprobe der Versicherten"}, {"stelle": "befund.3", "art": "befund", "unser": "Mehrheit der Teilnehmenden mit mindestens einer möglicherweise AMTS-relevanten genetischen Variante"}, {"stelle": "befund.4", "art": "befund", "unser": "Erwartete Assoziation zwischen metabolischen Profilen und UAW pharmakoepidemiologisch bestätigt"}, {"stelle": "befund.5", "art": "befund", "unser": "Hilfreiche Erkenntnisse zum Zusammenhang von metabolischen Profilen und UAW"}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

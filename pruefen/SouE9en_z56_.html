@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF22009</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>11 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 42 Aussagen. Die übrigen
+31 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die im Projekt LeiSE neu entwickelte S3-Leitlinie zu Schilddrüsenknoten bei Erwachsenen in der hausärztlichen Versorgung der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird beauftragt, die Erkenntnisse an die AWMF weiterzuleiten.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Schilddrüsenknoten sind häufig und überwiegend harmlos. Die verbesserte Technik erhöht die Detektionsrate und damit den hausärztlichen Beratungsbedarf. Das Projekt hat gemeinsam mit Fachgesellschaften und der Patientenvertretung eine S3-Leitlinie mit 20 evidenzbasierten und elf konsensbasierten Empfehlungen sowie eine Patienteninformation erstellt. Nach Auffassung des Ausschusses bietet die Leitlinie Orientierung und Sicherheit, zielt auf die Vermeidung von Überdiagnostik und trägt zu einer evidenzbasierten, rationalen und ressourcenschonenden Versorgung bei. Sie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,106 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Entwicklung von 20 evidenzbasierten und elf konsensbasierten Empfehlungen gemeinsam mit Fachgesellschaften und Patientenvertretung</p>
-  <blockquote>„Gemeinsam mit versorgungsrelevanten Fachgesellschaften und der Patientenvertretung wurden Schlüsselfragen und 20 evidenzbasierte und elf konsensbasierte Empfehlungen entwickelt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie bietet Orientierung und Sicherheit für Ärzteschaft und Patientinnen und Patienten</p>
-  <blockquote>„Insgesamt bietet die Leitlinie Orientierung und Sicherheit für Ärztinnen und Ärzte sowie Patientinnen und Patienten." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Beitrag zu evidenzbasierter, rationaler und ressourcenschonender Versorgung</p>
-  <blockquote>„Somit trägt die neue ntwickelte S3 Leitlinie wesentlich zu einer evidenzbasierten, rationalen und ressourcenschonenden Versorgung bei." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erstellung einer evidenzbasierten Patienteninformation</p>
-  <blockquote>„Zudem stellt die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene zur Verfügung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
-  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 - Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -257,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben hat die S3-Leitlinie „Schilddrüsenknoten bei Erwachsenen in der hausärztlichen Versorgung“ mit Langfassung, Kurzfassung, Leitlinienreport und Patienteninformation neu entwickelt. Die Evidenz wurde, abweichend vom Antrag, nach den Oxford Levels of Evidence 2011 bewertet. Zur Zahl der Empfehlungen macht der Bericht widersprüchliche Angaben: 22 evidenzbasierte und 15 konsensbasierte (S. 14) gegenüber 20 und 11 (S. 21). Von 30 Empfehlungen erreichten 25 einen Konsens von 100 % und 4 einen von &gt;75 %. Zu einer Monitoring-Empfehlung bestand Dissens; DGE, DEGUM, DGIM und DRG gaben eine gemeinsame Dissenserklärung ab. Im Praxistest dokumentierten 17 Hausärzt:innen Daten zu 94 Patient:innen; sie bewerteten die Leitlinie überwiegend positiv. 92,3 % der befragten Patient:innen würden die Patienteninformation weiterempfehlen. Als Schwierigkeiten nannten die Hausärzt:innen die Vermittlung längerer Kontrollintervalle. Qualitätsindikatoren ließen sich weder in der Literatur finden noch aus den Empfehlungen ableiten. Mehrere Empfehlungen konnten wegen begrenzter Evidenz nicht evidenzbasiert formuliert werden, unter anderem weil Studien im Primärversorgungssetting fehlen. Einen primären Endpunkt gibt der Bericht nicht an.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Es wurde die S3-Leitlinie „Schilddrüsenknoten bei Erwachsenen in der hausärztlichen Versorgung“ mit Langfassung, Kurzfassung, Leitlinienreport und Patienteninformation entwickelt.</p>
+  
   <blockquote>„„Es wurde die S3 -Leitlinie „Schilddrüsenknoten bei Erwachsenen in der hausärztlichen Versorgung“ mit evidenz - und konsensbasierten Empfehlungen und Statements zzgl. typischer Leitliniendokumente (Langfassung, Kurzfassung, Leitlinienreport, Patienteninformation) entwickelt.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Ergebnisteil enthält die Leitlinie 22 evidenzbasierte (60 %) und 15 konsensbasierte (40 %) Empfehlungen/Statements.</p>
+  
   <blockquote>„„Die vorliegende Leitlinie enthält 22 evidenzbasierte Empfehlungen/Statements (60 %) sowie 15 konsensbasierte Empfehlung/ Statements (40 %)“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,31 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von 30 Empfehlungen erreichten 25 einen Konsens von 100 % und 4 einen Konsens von &gt;75 %; bei einer Empfehlung zum Monitoring bestand Dissens.</p>
+  
   <blockquote>„„Die Empfehlungen weisen mehrheitlich (25 von 30) einen Konsens von 100 % bzw. von &gt;75 % (4 von 30) auf, was eine gute Akzeptanz der Leitlinie bei allen beteiligten Fachgesellschaften widerspiegelt. Einzig bei einer Empfehlung zum Monitoring gab es einen Dissens“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.7">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Die teilnehmenden Hausärzt:innen bewerteten den Praxistest überwiegend positiv. Sie nannten als Gründe die Standardisierung von Diagnostik und Therapie sowie die Vermeidung von Überdiagnostik und unnötigen Überweisungen.</p>
-  <blockquote>„„Die teilnehmenden Hausärzt:innen bewerteten den Praxistest [...] überwiegend positiv. [...] Die klare Struktur und die wissenschaftlich fundierten Empfehlungen halfen dabei, Überdiagnostik und unnötige Überwe isungen zu vermeiden .“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Geeignete Qualitätsindikatoren konnten weder in der Literatur identifiziert noch aus den Leitlinienempfehlungen abgeleitet werden.</p>
+  
   <blockquote>„„Geeignete Qualitätsindikatoren konnten weder in der Literatur identifiziert noch aus den Leitlinienempfehlungen abgeleitet werden.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Einige Empfehlungen/Statements konnten nicht evidenzbasiert formuliert werden, weil die Evidenz limitiert war, z. B. durch fehlende Studien im Primärversorgungssetting und sehr eingeschränkte Studienqualität.</p>
+  
   <blockquote>„„konnten einige Empfehlungen bzw. Statements nicht evidenzbasiert erfolgen, da die limitierte Evidenz (z.B. fehlende Studien im Primärversorgungssetting, sehr eingeschränkte Qualität der Studien) dies nicht zuließ.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -389,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zur Monitoring-Empfehlung blieb Dissens bestehen: DEGAM und weitere Beteiligte votierten für größere Monitoringzeiträume, einige fachspezialistische Mandatstragende für engere.</p>
+  
   <blockquote>„„entschieden für ein zurückhaltenderes Vorgehen mit größeren Monitoringzeiträumen, während einige fachspezialistische Mandatstragende für engere Monitoringzeiträume plädierten und den DEGAM -Empfehlungen nicht zustimmten.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -409,11 +293,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zahl der Empfehlungen: Der Ergebnisteil nennt 22 evidenzbasierte und 15 konsensbasierte Empfehlungen/Statements (S. 14). Die Diskussion nennt 20 evidenzbasierte und 11 konsensbasierte Empfehlungen (S. 21); nach dem vorliegenden Auszug auch die Zusammenfassung.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -428,11 +312,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Bezugsgröße der Konsensstärke: Sie wird auf 30 Empfehlungen bezogen (S. 22). Das passt weder zu den 37 Empfehlungen/Statements (S. 14) noch zu den 31 Empfehlungen (S. 21).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -442,16 +326,149 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>24 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>31 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die im Projekt LeiSE neu entwickelte S3-Leitlinie zu Schilddrüsenknoten bei Erwachsenen in der hausärztlichen Versorgung der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird beauftragt, die Erkenntnisse an die AWMF weiterzuleiten.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Entwicklung von 20 evidenzbasierten und elf konsensbasierten Empfehlungen gemeinsam mit Fachgesellschaften und Patientenvertretung</p>
+  
+  <blockquote>„Gemeinsam mit versorgungsrelevanten Fachgesellschaften und der Patientenvertretung wurden Schlüsselfragen und 20 evidenzbasierte und elf konsensbasierte Empfehlungen entwickelt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie bietet Orientierung und Sicherheit für Ärzteschaft und Patientinnen und Patienten</p>
+  
+  <blockquote>„Insgesamt bietet die Leitlinie Orientierung und Sicherheit für Ärztinnen und Ärzte sowie Patientinnen und Patienten." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Beitrag zu evidenzbasierter, rationaler und ressourcenschonender Versorgung</p>
+  
+  <blockquote>„Somit trägt die neue ntwickelte S3 Leitlinie wesentlich zu einer evidenzbasierten, rationalen und ressourcenschonenden Versorgung bei." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erstellung einer evidenzbasierten Patienteninformation</p>
+  
+  <blockquote>„Zudem stellt die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene zur Verfügung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.4">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
+  
+  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 - Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.7">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die teilnehmenden Hausärzt:innen bewerteten den Praxistest überwiegend positiv. Sie nannten als Gründe die Standardisierung von Diagnostik und Therapie sowie die Vermeidung von Überdiagnostik und unnötigen Überweisungen.</p>
+  
+  <blockquote>„„Die teilnehmenden Hausärzt:innen bewerteten den Praxistest [...] überwiegend positiv. [...] Die klare Struktur und die wissenschaftlich fundierten Empfehlungen halfen dabei, Überdiagnostik und unnötige Überwe isungen zu vermeiden .“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Diskussion sind 20 Empfehlungen evidenzbasiert und 11 konsensbasiert; daraus leitet der Bericht die Einordnung als S3-Leitlinie ab.</p>
+  
   <blockquote>„„Die Empfehlungen der Leitlinie sind mehrheitlich evidenzbasiert (20 evidenzbasierte, 11 konsensbasierte Empfehlungen) , was die Einordnung als S3 -Leitlinie rechtfertigt .“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">DGE, DEGUM, DGIM und DRG stimmten der Monitoring-Empfehlung nicht zu; ihre gemeinsame Dissenserklärung wurde in die Leitlinie aufgenommen.</p>
+  
   <blockquote>„„Die nicht zustimmenden Fachgesellschaften (DGE, DEGUM, DGIM, DRG ) formulierten eine gemeinsame Dissenserklärung, die in die Leitlinie aufgenommen wurde .“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Monitoring-Empfehlung bleibt für das hausärztliche Setting gültig, weil die DEGAM-Mandatstragenden ihr einheitlich zustimmten.</p>
+  
   <blockquote>„„Da die Mandatstragenden der DEGAM einheitlich für diese Monitoring-Empfehlung stimmten, erhält diese Empfehlung ihre Gültigkeit für das hausärztliche Versorgungssetting und bleibt Bestandteil der Leitlinie.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Praxistest (zwei Studienwochen) dokumentierten 17 Hausärzt:innen Daten zu 94 Patient:innen.</p>
+  
   <blockquote>„„Insgesamt dokumentierten 17 Hausärzt:innen Daten zu 94 Patient: innen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Positiv hervorgehoben wurde die Möglichkeit, langjährige Therapien wie die Einnahme von Thyroxin zu hinterfragen und gegebenenfalls anzupassen.</p>
+  
   <blockquote>„„Positiv hervorgehoben wurde auch die Möglichkeit, langjährige Therapien, wie die Einnahme von Thyroxin, kritisch zu hinterfragen und gegebenenfalls anzupassen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">92,3 % der befragten Patient:innen bewerteten die Patienteninformation als weiterempfehlenswert; sie wurde als Grundlage für Arztgespräche wahrgenommen.</p>
+  
   <blockquote>„„Die Patienteninformation wurde als gute Grundlage für Arztgespräche wahrgenommen und von 92,3% der Bef ragten als weiterempfehlenswert bewertet.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Ein Großteil der befragten Patient:innen empfand die Information als hilfreich, klar strukturiert und leicht verständlich, insbesondere zur Reduzierung von Ängsten vor schwerwiegenden Diagnosen.</p>
+  
   <blockquote>„„Ein Großteil der Teilnehmenden empfand die Information als hilfreich, klar strukturiert und leicht verständlich, insbesondere in Bezug auf die Reduzierung von Ängsten vor schwerwiegenden Diagnosen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +596,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In zwei Workshops bestätigten die teilnehmenden Hausärzt:innen die Vorteile der Leitlinie bei der Standardisierung von Diagnostik und Therapie.</p>
+  
   <blockquote>„„Wie schon in der Befragung beobachtet, bestätigten die Hausärzt:innen in den Workshops die Vorteile der Leitlinie bei der Standardisierung von Diagnostik und Therapie.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +615,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach dem Praxistest wurden einige Hintergrundtexte geändert oder ergänzt; die konsentierten Empfehlungen blieben unverändert.</p>
+  
   <blockquote>„„Darauf aufbauend erfolgte eine Modifizierung / Ergänzung einiger Hintergrundtexte der Leitlinie, die konsentierten Empfehlungen blieben jedoch bestehen.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +634,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für das IMPP wurden 25 prüfungsrelevante Empfehlungen extrahiert.</p>
+  
   <blockquote>„„Insgesamt wurden 25 für das Institut für medizinische und pharmazeutische Prüfungsfragen (IMPP) relevante Empfehlungen extrahiert.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Empfehlung: Ein generelles Bevölkerungsscreening auf Schilddrüsenknoten mittels Sonographie soll nicht erfolgen (Empfehlungsgrad A, Level of Evidence 1–4).</p>
+  
   <blockquote>„„Ein generelles Bevölkerungsscreening mittels Sonographie auf Schilddrüsenknoten soll nicht erfolgen. Empfehlungsgrad: A Level of Evidence: 1-4“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +672,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Statement: Zum Nutzen einer Jodsubstitution zur Primärprävention von Schilddrüsenknoten kann keine evidenzbasierte Empfehlung getroffen werden. Eine Jodzugabe zu diesem Zweck wird als nicht sinnvoll bezeichnet.</p>
+  
   <blockquote>„„Zum Nutzen einer Jodsubstitution (Ernährung oder Medikamente) zur Primärprävention von Schilddrüsenknoten kann keine evidenzbasierte Empfehlung getroffen werden. Eine Jodzugabe [...] ist nicht sinnvoll“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +691,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Empfehlung: Eine Levothyroxin-Therapie mit dem Ziel, Schilddrüsenknoten zu verkleinern, soll nicht erfolgen (Empfehlungsgrad A, Level of Evidence 1).</p>
+  
   <blockquote>„„Eine Therapie mit Levothyroxin mit dem Ziel Schilddrüsenknoten zu verkleinern soll nicht erfolgen. Empfehlungsgrad: A Level of Evidence: 1“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Im systematischen Review zu Qualitätsindikatoren verblieb kein Artikel für das Volltextscreening; auch die Handsuche ergab keine QI zu Schilddrüsenknoten.</p>
+  
   <blockquote>„„Nach Abstimmung beider Reviewer:innen verblieb kein Artikel für das Volltextscreening [...] Anhand der Handsuche konnten ebenso keine QI zum Thema Schilddrüsenknoten identifiziert werden.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -712,12 +729,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die starken Empfehlungen sind zum Großteil Negativempfehlungen; ihre Überführung in QI ist begrenzt, und QI auf Routinedatenbasis werden als nicht geeignet bezeichnet, weil sich Indikationsgründe dort nicht erfassen lassen.</p>
+  
   <blockquote>„„Die bisher entwickelten starken Empfehlungen sind zum Großteil Negativempfehlungen, deren Überführung in klar operationalisierbare QI mit Limitationen verbunden ist. [...] Die Gründe lassen sich jedoch anhand von Routinedaten nicht erfassen, weshalb QI auf Basis von Routinedaten nicht geeignet sind“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +748,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Festlegung von Referenzwerten für QI ist erschwert. Zudem fehlt ein Überblick über Häufigkeit und regionale Unterschiede der Schilddrüsensonografie in Deutschland.</p>
+  
   <blockquote>„„Zugleich ist aufgrund der bisher fehlenden Evidenzbasis die Festlegung von Referenzwerten für QI, die noch als tolerabel gelten, erschwert. [...] Dieser Überblick fehlt bislang.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +767,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zu Jod/Selen als Primärprävention wurden wegen widersprüchlicher und limitierter Evidenz nur konsensbasierte Statements formuliert, keine eindeutigen Empfehlungen.</p>
+  
   <blockquote>„„wurden nur konsensbasierte Statements formuliert, da aufgrund der widersprüchlichen und limitierten Evidenzlage keine eindeutigen Empfehlungen abgeleitet werden konnten.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +786,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Einige Ärzt:innen nannten Schwierigkeiten, den Patient:innen die längeren Kontrollintervalle zu vermitteln. Manchen Patient:innen fiel es schwer, auf bisherige Routinen zu verzichten.</p>
+  
   <blockquote>„„Einige Ärzt:innen äußerten jedoch Herausforderungen bei der praktischen Umsetzung, insbesonder e im Hinblick auf die Kommunikation der längeren Kontrollintervalle mit Patient:innen. [...] fiel es anderen sc hwer, auf die bisherigen Routinen zu verzichten.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +805,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Einige Patient:innen gaben an, dass längere Kontrollintervalle Unsicherheit auslösen könnten.</p>
+  
   <blockquote>„„während einige betonten, dass längere Kontrollintervalle Unsicherheit auslösen könnten.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +824,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Praxistest benannte Optimierungspotenziale: stärkere Berücksichtigung von Hashimoto, präzisere Begründung reduzierter Kontrolluntersuchungen und zusätzliche Unterstützungsangebote für Hausärzt:innen.</p>
+  
   <blockquote>„„Optimierungspotenziale wie die stärkere Berücksichtigung von Hashimoto, die präzisere Begründung reduzierter Kontroll untersuchungen und zusätzliche Unterstützungsangebote für Hausärzt:innen zu identifizieren.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +843,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In den Workshops nannten Hausärzt:innen Herausforderungen bei der Anpassung von Kontrollintervallen und der Patientenaufklärung. Patient:innen mit viel Vorwissen wünschten sich detailliertere Informationen.</p>
+  
   <blockquote>„„Gleichzeitig betonten sie Herausforderungen bei der Anpassung von Kontrollintervallen und der Patientenaufklärung. Besonders Patient:innen mit viel Vorwissen wünschten sich detailliertere Informationen“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +862,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Nach Angabe der Hausärzt:innen könnten zusätzliche Hinweise die Implementierung der Patienteninformation erleichtern, etwa klarere Kommunikationsempfehlungen.</p>
+  
   <blockquote>„„gaben die Hausärzt:innen an, dass ihre Implementierung durch zusätzliche Hinweise erleichtert werden könnte, insbesondere durch eine klarere Darstellung der Kommunikationsempfehlungen“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +881,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Abweichend vom Antrag erfolgte die Evidenzbewertung nach den Oxford Levels of Evidence 2011.</p>
+  
   <blockquote>„„Nach interner Abstimmung erfolgt die Evidenzbewertung nach den Oxford Levels of Evidence 2011 (abweichend vom Antrag)“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +900,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Bericht bezeichnet die Implementierung einer Leitlinie gerade im hausärztlichen Setting als Herausforderung.</p>
+  
   <blockquote>„„Die Implementierung einer Leitlinie ist eine Herausforderung, gerade auch im hausärztlichen Versorgungssetting [5].“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -933,28 +950,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 519, "akronym": "LeiSE", "kennung": "SouE9en_z56_", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt LeiSE neu entwickelte S3-Leitlinie zu Schilddrüsenknoten bei Erwachsenen in der hausärztlichen Versorgung der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird beauftragt, die Erkenntnisse an die AWMF weiterzuleiten."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Schilddrüsenknoten sind häufig und überwiegend harmlos. Die verbesserte Technik erhöht die Detektionsrate und damit den hausärztlichen Beratungsbedarf. Das Projekt hat gemeinsam mit Fachgesellschaften und der Patientenvertretung eine S3-Leitlinie mit 20 evidenzbasierten und elf konsensbasierten Empfehlungen sowie eine Patienteninformation erstellt. Nach Auffassung des Ausschusses bietet die Leitlinie Orientierung und Sicherheit, zielt auf die Vermeidung von Überdiagnostik und trägt zu einer evidenzbasierten, rationalen und ressourcenschonenden Versorgung bei. Sie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "befund.0", "art": "befund", "unser": "Entwicklung von 20 evidenzbasierten und elf konsensbasierten Empfehlungen gemeinsam mit Fachgesellschaften und Patientenvertretung"}, {"stelle": "befund.1", "art": "befund", "unser": "Leitlinie bietet Orientierung und Sicherheit für Ärzteschaft und Patientinnen und Patienten"}, {"stelle": "befund.2", "art": "befund", "unser": "Beitrag zu evidenzbasierter, rationaler und ressourcenschonender Versorgung"}, {"stelle": "befund.3", "art": "befund", "unser": "Erstellung einer evidenzbasierten Patienteninformation"}, {"stelle": "befund.4", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat die S3-Leitlinie „Schilddrüsenknoten bei Erwachsenen in der hausärztlichen Versorgung“ mit Langfassung, Kurzfassung, Leitlinienreport und Patienteninformation neu entwickelt. Die Evidenz wurde, abweichend vom Antrag, nach den Oxford Levels of Evidence 2011 bewertet. Zur Zahl der Empfehlungen macht der Bericht widersprüchliche Angaben: 22 evidenzbasierte und 15 konsensbasierte (S. 14) gegenüber 20 und 11 (S. 21). Von 30 Empfehlungen erreichten 25 einen Konsens von 100 % und 4 einen von >75 %. Zu einer Monitoring-Empfehlung bestand Dissens; DGE, DEGUM, DGIM und DRG gaben eine gemeinsame Dissenserklärung ab. Im Praxistest dokumentierten 17 Hausärzt:innen Daten zu 94 Patient:innen; sie bewerteten die Leitlinie überwiegend positiv. 92,3 % der befragten Patient:innen würden die Patienteninformation weiterempfehlen. Als Schwierigkeiten nannten die Hausärzt:innen die Vermittlung längerer Kontrollintervalle. Qualitätsindikatoren ließen sich weder in der Literatur finden noch aus den Empfehlungen ableiten. Mehrere Empfehlungen konnten wegen begrenzter Evidenz nicht evidenzbasiert formuliert werden, unter anderem weil Studien im Primärversorgungssetting fehlen. Einen primären Endpunkt gibt der Bericht nicht an."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Es wurde die S3-Leitlinie „Schilddrüsenknoten bei Erwachsenen in der hausärztlichen Versorgung“ mit Langfassung, Kurzfassung, Leitlinienreport und Patienteninformation entwickelt."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Laut Ergebnisteil enthält die Leitlinie 22 evidenzbasierte (60 %) und 15 konsensbasierte (40 %) Empfehlungen/Statements."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Von 30 Empfehlungen erreichten 25 einen Konsens von 100 % und 4 einen Konsens von >75 %; bei einer Empfehlung zum Monitoring bestand Dissens."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die teilnehmenden Hausärzt:innen bewerteten den Praxistest überwiegend positiv. Sie nannten als Gründe die Standardisierung von Diagnostik und Therapie sowie die Vermeidung von Überdiagnostik und unnötigen Überweisungen."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Geeignete Qualitätsindikatoren konnten weder in der Literatur identifiziert noch aus den Leitlinienempfehlungen abgeleitet werden."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Einige Empfehlungen/Statements konnten nicht evidenzbasiert formuliert werden, weil die Evidenz limitiert war, z. B. durch fehlende Studien im Primärversorgungssetting und sehr eingeschränkte Studienqualität."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Zur Monitoring-Empfehlung blieb Dissens bestehen: DEGAM und weitere Beteiligte votierten für größere Monitoringzeiträume, einige fachspezialistische Mandatstragende für engere."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zahl der Empfehlungen: Der Ergebnisteil nennt 22 evidenzbasierte und 15 konsensbasierte Empfehlungen/Statements (S. 14). Die Diskussion nennt 20 evidenzbasierte und 11 konsensbasierte Empfehlungen (S. 21); nach dem vorliegenden Auszug auch die Zusammenfassung."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Bezugsgröße der Konsensstärke: Sie wird auf 30 Empfehlungen bezogen (S. 22). Das passt weder zu den 37 Empfehlungen/Statements (S. 14) noch zu den 31 Empfehlungen (S. 21)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Laut Diskussion sind 20 Empfehlungen evidenzbasiert und 11 konsensbasiert; daraus leitet der Bericht die Einordnung als S3-Leitlinie ab."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "DGE, DEGUM, DGIM und DRG stimmten der Monitoring-Empfehlung nicht zu; ihre gemeinsame Dissenserklärung wurde in die Leitlinie aufgenommen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die Monitoring-Empfehlung bleibt für das hausärztliche Setting gültig, weil die DEGAM-Mandatstragenden ihr einheitlich zustimmten."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Im Praxistest (zwei Studienwochen) dokumentierten 17 Hausärzt:innen Daten zu 94 Patient:innen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Positiv hervorgehoben wurde die Möglichkeit, langjährige Therapien wie die Einnahme von Thyroxin zu hinterfragen und gegebenenfalls anzupassen."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "92,3 % der befragten Patient:innen bewerteten die Patienteninformation als weiterempfehlenswert; sie wurde als Grundlage für Arztgespräche wahrgenommen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Ein Großteil der befragten Patient:innen empfand die Information als hilfreich, klar strukturiert und leicht verständlich, insbesondere zur Reduzierung von Ängsten vor schwerwiegenden Diagnosen."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "In zwei Workshops bestätigten die teilnehmenden Hausärzt:innen die Vorteile der Leitlinie bei der Standardisierung von Diagnostik und Therapie."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Nach dem Praxistest wurden einige Hintergrundtexte geändert oder ergänzt; die konsentierten Empfehlungen blieben unverändert."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Für das IMPP wurden 25 prüfungsrelevante Empfehlungen extrahiert."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Empfehlung: Ein generelles Bevölkerungsscreening auf Schilddrüsenknoten mittels Sonographie soll nicht erfolgen (Empfehlungsgrad A, Level of Evidence 1–4)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Statement: Zum Nutzen einer Jodsubstitution zur Primärprävention von Schilddrüsenknoten kann keine evidenzbasierte Empfehlung getroffen werden. Eine Jodzugabe zu diesem Zweck wird als nicht sinnvoll bezeichnet."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Empfehlung: Eine Levothyroxin-Therapie mit dem Ziel, Schilddrüsenknoten zu verkleinern, soll nicht erfolgen (Empfehlungsgrad A, Level of Evidence 1)."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Im systematischen Review zu Qualitätsindikatoren verblieb kein Artikel für das Volltextscreening; auch die Handsuche ergab keine QI zu Schilddrüsenknoten."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die starken Empfehlungen sind zum Großteil Negativempfehlungen; ihre Überführung in QI ist begrenzt, und QI auf Routinedatenbasis werden als nicht geeignet bezeichnet, weil sich Indikationsgründe dort nicht erfassen lassen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Festlegung von Referenzwerten für QI ist erschwert. Zudem fehlt ein Überblick über Häufigkeit und regionale Unterschiede der Schilddrüsensonografie in Deutschland."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Zu Jod/Selen als Primärprävention wurden wegen widersprüchlicher und limitierter Evidenz nur konsensbasierte Statements formuliert, keine eindeutigen Empfehlungen."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Einige Ärzt:innen nannten Schwierigkeiten, den Patient:innen die längeren Kontrollintervalle zu vermitteln. Manchen Patient:innen fiel es schwer, auf bisherige Routinen zu verzichten."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Einige Patient:innen gaben an, dass längere Kontrollintervalle Unsicherheit auslösen könnten."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Der Praxistest benannte Optimierungspotenziale: stärkere Berücksichtigung von Hashimoto, präzisere Begründung reduzierter Kontrolluntersuchungen und zusätzliche Unterstützungsangebote für Hausärzt:innen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "In den Workshops nannten Hausärzt:innen Herausforderungen bei der Anpassung von Kontrollintervallen und der Patientenaufklärung. Patient:innen mit viel Vorwissen wünschten sich detailliertere Informationen."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Nach Angabe der Hausärzt:innen könnten zusätzliche Hinweise die Implementierung der Patienteninformation erleichtern, etwa klarere Kommunikationsempfehlungen."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Abweichend vom Antrag erfolgte die Evidenzbewertung nach den Oxford Levels of Evidence 2011."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Der Bericht bezeichnet die Implementierung einer Leitlinie gerade im hausärztlichen Setting als Herausforderung."}]};
+const D = {"projekt_id": 519, "akronym": "LeiSE", "kennung": "SouE9en_z56_", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Schilddrüsenknoten sind häufig und überwiegend harmlos. Die verbesserte Technik erhöht die Detektionsrate und damit den hausärztlichen Beratungsbedarf. Das Projekt hat gemeinsam mit Fachgesellschaften und der Patientenvertretung eine S3-Leitlinie mit 20 evidenzbasierten und elf konsensbasierten Empfehlungen sowie eine Patienteninformation erstellt. Nach Auffassung des Ausschusses bietet die Leitlinie Orientierung und Sicherheit, zielt auf die Vermeidung von Überdiagnostik und trägt zu einer evidenzbasierten, rationalen und ressourcenschonenden Versorgung bei. Sie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hat die S3-Leitlinie „Schilddrüsenknoten bei Erwachsenen in der hausärztlichen Versorgung“ mit Langfassung, Kurzfassung, Leitlinienreport und Patienteninformation neu entwickelt. Die Evidenz wurde, abweichend vom Antrag, nach den Oxford Levels of Evidence 2011 bewertet. Zur Zahl der Empfehlungen macht der Bericht widersprüchliche Angaben: 22 evidenzbasierte und 15 konsensbasierte (S. 14) gegenüber 20 und 11 (S. 21). Von 30 Empfehlungen erreichten 25 einen Konsens von 100 % und 4 einen von >75 %. Zu einer Monitoring-Empfehlung bestand Dissens; DGE, DEGUM, DGIM und DRG gaben eine gemeinsame Dissenserklärung ab. Im Praxistest dokumentierten 17 Hausärzt:innen Daten zu 94 Patient:innen; sie bewerteten die Leitlinie überwiegend positiv. 92,3 % der befragten Patient:innen würden die Patienteninformation weiterempfehlen. Als Schwierigkeiten nannten die Hausärzt:innen die Vermittlung längerer Kontrollintervalle. Qualitätsindikatoren ließen sich weder in der Literatur finden noch aus den Empfehlungen ableiten. Mehrere Empfehlungen konnten wegen begrenzter Evidenz nicht evidenzbasiert formuliert werden, unter anderem weil Studien im Primärversorgungssetting fehlen. Einen primären Endpunkt gibt der Bericht nicht an."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Es wurde die S3-Leitlinie „Schilddrüsenknoten bei Erwachsenen in der hausärztlichen Versorgung“ mit Langfassung, Kurzfassung, Leitlinienreport und Patienteninformation entwickelt."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Laut Ergebnisteil enthält die Leitlinie 22 evidenzbasierte (60 %) und 15 konsensbasierte (40 %) Empfehlungen/Statements."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Von 30 Empfehlungen erreichten 25 einen Konsens von 100 % und 4 einen Konsens von >75 %; bei einer Empfehlung zum Monitoring bestand Dissens."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Geeignete Qualitätsindikatoren konnten weder in der Literatur identifiziert noch aus den Leitlinienempfehlungen abgeleitet werden."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Einige Empfehlungen/Statements konnten nicht evidenzbasiert formuliert werden, weil die Evidenz limitiert war, z. B. durch fehlende Studien im Primärversorgungssetting und sehr eingeschränkte Studienqualität."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Zur Monitoring-Empfehlung blieb Dissens bestehen: DEGAM und weitere Beteiligte votierten für größere Monitoringzeiträume, einige fachspezialistische Mandatstragende für engere."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zahl der Empfehlungen: Der Ergebnisteil nennt 22 evidenzbasierte und 15 konsensbasierte Empfehlungen/Statements (S. 14). Die Diskussion nennt 20 evidenzbasierte und 11 konsensbasierte Empfehlungen (S. 21); nach dem vorliegenden Auszug auch die Zusammenfassung."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Bezugsgröße der Konsensstärke: Sie wird auf 30 Empfehlungen bezogen (S. 22). Das passt weder zu den 37 Empfehlungen/Statements (S. 14) noch zu den 31 Empfehlungen (S. 21)."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt LeiSE neu entwickelte S3-Leitlinie zu Schilddrüsenknoten bei Erwachsenen in der hausärztlichen Versorgung der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht. Die Geschäftsstelle wird beauftragt, die Erkenntnisse an die AWMF weiterzuleiten."}, {"stelle": "befund.0", "art": "befund", "unser": "Entwicklung von 20 evidenzbasierten und elf konsensbasierten Empfehlungen gemeinsam mit Fachgesellschaften und Patientenvertretung"}, {"stelle": "befund.1", "art": "befund", "unser": "Leitlinie bietet Orientierung und Sicherheit für Ärzteschaft und Patientinnen und Patienten"}, {"stelle": "befund.2", "art": "befund", "unser": "Beitrag zu evidenzbasierter, rationaler und ressourcenschonender Versorgung"}, {"stelle": "befund.3", "art": "befund", "unser": "Erstellung einer evidenzbasierten Patienteninformation"}, {"stelle": "befund.4", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die teilnehmenden Hausärzt:innen bewerteten den Praxistest überwiegend positiv. Sie nannten als Gründe die Standardisierung von Diagnostik und Therapie sowie die Vermeidung von Überdiagnostik und unnötigen Überweisungen."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Laut Diskussion sind 20 Empfehlungen evidenzbasiert und 11 konsensbasiert; daraus leitet der Bericht die Einordnung als S3-Leitlinie ab."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "DGE, DEGUM, DGIM und DRG stimmten der Monitoring-Empfehlung nicht zu; ihre gemeinsame Dissenserklärung wurde in die Leitlinie aufgenommen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Die Monitoring-Empfehlung bleibt für das hausärztliche Setting gültig, weil die DEGAM-Mandatstragenden ihr einheitlich zustimmten."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Im Praxistest (zwei Studienwochen) dokumentierten 17 Hausärzt:innen Daten zu 94 Patient:innen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Positiv hervorgehoben wurde die Möglichkeit, langjährige Therapien wie die Einnahme von Thyroxin zu hinterfragen und gegebenenfalls anzupassen."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "92,3 % der befragten Patient:innen bewerteten die Patienteninformation als weiterempfehlenswert; sie wurde als Grundlage für Arztgespräche wahrgenommen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Ein Großteil der befragten Patient:innen empfand die Information als hilfreich, klar strukturiert und leicht verständlich, insbesondere zur Reduzierung von Ängsten vor schwerwiegenden Diagnosen."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "In zwei Workshops bestätigten die teilnehmenden Hausärzt:innen die Vorteile der Leitlinie bei der Standardisierung von Diagnostik und Therapie."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Nach dem Praxistest wurden einige Hintergrundtexte geändert oder ergänzt; die konsentierten Empfehlungen blieben unverändert."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Für das IMPP wurden 25 prüfungsrelevante Empfehlungen extrahiert."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Empfehlung: Ein generelles Bevölkerungsscreening auf Schilddrüsenknoten mittels Sonographie soll nicht erfolgen (Empfehlungsgrad A, Level of Evidence 1–4)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Statement: Zum Nutzen einer Jodsubstitution zur Primärprävention von Schilddrüsenknoten kann keine evidenzbasierte Empfehlung getroffen werden. Eine Jodzugabe zu diesem Zweck wird als nicht sinnvoll bezeichnet."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Empfehlung: Eine Levothyroxin-Therapie mit dem Ziel, Schilddrüsenknoten zu verkleinern, soll nicht erfolgen (Empfehlungsgrad A, Level of Evidence 1)."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Im systematischen Review zu Qualitätsindikatoren verblieb kein Artikel für das Volltextscreening; auch die Handsuche ergab keine QI zu Schilddrüsenknoten."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die starken Empfehlungen sind zum Großteil Negativempfehlungen; ihre Überführung in QI ist begrenzt, und QI auf Routinedatenbasis werden als nicht geeignet bezeichnet, weil sich Indikationsgründe dort nicht erfassen lassen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Festlegung von Referenzwerten für QI ist erschwert. Zudem fehlt ein Überblick über Häufigkeit und regionale Unterschiede der Schilddrüsensonografie in Deutschland."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Zu Jod/Selen als Primärprävention wurden wegen widersprüchlicher und limitierter Evidenz nur konsensbasierte Statements formuliert, keine eindeutigen Empfehlungen."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Einige Ärzt:innen nannten Schwierigkeiten, den Patient:innen die längeren Kontrollintervalle zu vermitteln. Manchen Patient:innen fiel es schwer, auf bisherige Routinen zu verzichten."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Einige Patient:innen gaben an, dass längere Kontrollintervalle Unsicherheit auslösen könnten."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Der Praxistest benannte Optimierungspotenziale: stärkere Berücksichtigung von Hashimoto, präzisere Begründung reduzierter Kontrolluntersuchungen und zusätzliche Unterstützungsangebote für Hausärzt:innen."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "In den Workshops nannten Hausärzt:innen Herausforderungen bei der Anpassung von Kontrollintervallen und der Patientenaufklärung. Patient:innen mit viel Vorwissen wünschten sich detailliertere Informationen."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Nach Angabe der Hausärzt:innen könnten zusätzliche Hinweise die Implementierung der Patienteninformation erleichtern, etwa klarere Kommunikationsempfehlungen."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Abweichend vom Antrag erfolgte die Evidenzbewertung nach den Oxford Levels of Evidence 2011."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Der Bericht bezeichnet die Implementierung einer Leitlinie gerade im hausärztlichen Setting als Herausforderung."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

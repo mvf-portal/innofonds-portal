@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF17011</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>31 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 95 Aussagen. Die übrigen
+64 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss leitet die Projektergebnisse zur Information an die Unterausschüsse Methodenbewertung und Qualitätssicherung des G-BA, das IQTIG, die DRG, die DGN, die DGK, das ÄZQ und die DEGAM weiter. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Nach Auffassung des Ausschusses hat das Projekt die Versorgungspraxis bei der Indikationsstellung zur Herzkatheteruntersuchung erfolgreich aufgezeigt und alle Fragestellungen umfassend adressiert. Als primärer Endpunkt wurde eine geringe Leitlinienadhärenz von ca. 25,6 % ermittelt; sie ging überwiegend auf den Verzicht auf nicht-invasive bildgebende Diagnostik zurück. Die Modellierung zeigte für perfekte Leitlinienadhärenz geringere Kosten und marginal weniger MACE. Die Validität ist eingeschränkt: Die Fallzahl war deutlich reduziert, der Patientenfragebogen nicht validiert und die Vortestwahrscheinlichkeit teils retrospektiv erfasst. Hinzu kommen die Abweichung der verwendeten NVL von der neueren ESC-Leitlinie und die kleine Datenbasis der Modellierung. Trotz dieser Limitationen sieht der Ausschuss Hinweise auf ein Kosteneinsparungspotenzial und leitet die Erkenntnisse zur Unterstützung einer leitliniengerechten Versorgung weiter.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Mixed Methods</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Die Verallgemeinerbarkeit der gesundheitsökonomischen Ergebnisse ist begrenzt, da die Modellparameter nur der kleinen Studienpopulation entnommen wurden. Der Ausschuss verweist außerdem auf die Aufnahme der Kardio-CT in den vertragsärztlichen Leistungskatalog, deren Auswirkungen der G-BA in den nächsten fünf Jahren evaluieren wird.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -178,14 +157,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Fallzahl nicht erreicht <span class="ampel gelb">hier sind wir unsicher</span></h3>
+  <h3>Hindernis laut Beschluss: Fallzahl bei der Rekrutierung <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Deutlich reduzierte Fallzahl schränkt die Validität ein</p>
+  
   <blockquote>„Die Validität der Ergebnisse ist jedoch aufgrund der deutlich reduzierten Fallzahl, der fehlenden Validierung des Patientenfragebogens und der teils retrospektiven Erfassung der Vortestwahrscheinlichkeit (VTW) bei Patientinnen und Patienten mit bereits durchgeführter HKU eingeschränkt." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -199,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.1">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Patientenfragebogen nicht validiert</p>
+  
   <blockquote>„Die Validität der Ergebnisse ist jedoch aufgrund der deutlich reduzierten Fallzahl, der fehlenden Validierung des Patientenfragebogens und der teils retrospektiven Erfassung der Vortestwahrscheinlichkeit (VTW) bei Patientinnen und Patienten mit bereits durchgeführter HKU eingeschränkt." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -218,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.2">
   <h3>Hindernis laut Beschluss: Studienanlage</h3>
   <p class="unser">Teils retrospektive Erfassung der Vortestwahrscheinlichkeit bei bereits durchgeführter HKU</p>
+  
   <blockquote>„Die Validität der Ergebnisse ist jedoch aufgrund der deutlich reduzierten Fallzahl, der fehlenden Validierung des Patientenfragebogens und der teils retrospektiven Erfassung der Vortestwahrscheinlichkeit (VTW) bei Patientinnen und Patienten mit bereits durchgeführter HKU eingeschränkt." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.3">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Die zugrunde gelegte NVL-KHK weicht stark von der nach Studienbeginn publizierten, restriktiveren ESC-Leitlinie ab</p>
+  
   <blockquote>„Zudem weichen die Empfehlungen (VTW) der in der Studie herangezogenen Nationalen Versorgungleitlinie KHK (NVL -KHK) von der nach Studienbeginn publizierten European Society of Cardiology (ESC) -Leitlinie mit erheblich restriktiveren Empfehlungen für invasive Untersuchungen stark ab." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,31 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.4">
   <h3>Hindernis laut Beschluss: Auswertung und Statistik</h3>
   <p class="unser">Parameter der gesundheitsökonomischen Modellierung stammen nur aus der kleinen Studienpopulation; die Verallgemeinerbarkeit ist begrenzt</p>
+  
   <blockquote>„Die Parameter für die gesundheitsökonomische Modellierung wurden lediglich der kleinen Studienpopulation entnommen, sodass die Verallgemeinerbarkeit der Ergebnisse begrenzt ist." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Aktuelle Versorgungspraxis in der Indikationsstellung zur HKU aufgezeigt und evaluiert</p>
-  <blockquote>„Das Projekt hat erfolgreich die aktuelle Versorgungspraxis in der Indikationsstellung zur Herzkatheteruntersuchung (HKU) bei Menschen mit (potenzieller) obstruktiver koronarer Herzerkrankung (KHK) aufgezeigt und wissenschaftlich evaluiert." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -292,90 +252,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde <span class="ampel gelb">hier sind wir unsicher</span></h3>
-  <p class="unser">Leitlinienadhärenz als primärer Endpunkt ermittelt (ca. 25,6 %)</p>
+  <h3>Was der Beschluss positiv vermerkt <span class="ampel gelb">hier sind wir unsicher</span></h3>
+  <p class="unser">Die beobachtete Leitlinienadhärenz der durchgeführten HKU bei den teilnehmenden Patientinnen und Patienten mit möglicher obstruktiver KHK (primärer Endpunkt) war mit ca. 25,6 % gering.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung nannte nur eine Hälfte des Beschlusssatzes; die Neufassung nennt beide. Vorher stand hier:
+    <i>„Leitlinienadhärenz als primärer Endpunkt ermittelt (ca. 25,6 %)“</i></p>
   <blockquote>„Die Studie wies eine geringe, beobachtete Leitlinienadhärenz (ca. 25,6 %) der durchgeführten HKU bei den teilnehmenden Patientinnen und Patienten mit möglicher obstruktiver KHK auf (primärer Endpunkt)." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Modelliertes Szenario perfekter Leitlinienadhärenz mit geringeren Kosten und marginal weniger MACE</p>
-  <blockquote>„In der gesundheitsökonomischen Modellierung (sekundärer Endpunkt 1) zeigte sich, dass das modellierte Szenario der „perfekten Leitlinienadhärenz“ im Vergleich zur beobachteten Leitlinienadhärenz sowohl geringere Kosten pro Abklärung und Person als auch marginal geringere MACE auswies." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Einflussfaktoren auf leitlinienadhärente Versorgung durch qualitative Befragung identifiziert</p>
-  <blockquote>„Eine qualitative Befragung von Leistungserbringenden hat zudem Einflussfaktoren auf eine leitlinienadhärente KHK -Versorgungspraxis aufgezeigt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Empfehlungen für Versorgungs- und Vergütungsmodelle entwickelt</p>
-  <blockquote>„Basierend auf den Ergebnissen wurden Empfehlungen für Versorgungs- und Vergütungsmodelle für eine leitlinienadhärente und ressourceneffiziente Versorgung entwickelt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.5">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Alle Fragestellungen umfassend adressiert</p>
-  <blockquote>„Insgesamt wurden alle Fragestellungen umfassend adressiert." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -387,33 +273,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.6">
-  <h3>Was erreicht wurde <span class="ampel gelb">hier sind wir unsicher</span></h3>
+  <h3>Was der Beschluss positiv vermerkt <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Tendenz der Ergebnisse auch bei Auswertung nach neuer ESC-Leitlinie nicht substanziell verändert</p>
+  
   <blockquote>„Eine Auswertung anhand der neuen ESC Leitlinie würde die Tendenz der Ergebnisse allerdings nicht substanziell beeinflussen." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.7">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Hinweise auf Kosteneinsparungspotenzial durch stärkere Leitlinienorientierung</p>
-  <blockquote>„Trotz der Limitationen deuten die Ergebnisse darauf hin, dass eine verstärkte Orientierung entlang der Leitlinie Kosteneinsparungspotenzial bietet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.6" value="ok" checked hidden>
+    <input type="radio" name="ubefund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +294,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Leitlinienadhärenz der durchgeführten Herzkatheteruntersuchung (Einschätzung des Ausmaßes von Leitlinienabweichungen in der Indikationsstellung zur HKU)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +313,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Abbildung des Indikationsstellungsprozesses zur HKU bei Patient:innen mit (potenzieller) obstruktiver KHK</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +332,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Komplikationen und Patientensicherheit“</h3>
   <p class="unser">Einschätzung des Auftretens von ggf. mit einer HKU assoziierten MACE (schwerwiegende unerwünschte kardiovaskuläre Ereignisse)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +351,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Kosten pro Person und Abklärung (Gesamtkohorte) – Vergleich hypothetischer und realer Kosten einer leitlinienadhärenten Indikationsstellung</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +370,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Komplikationen und Patientensicherheit“</h3>
   <p class="unser">MACE pro Person und Abklärung (Gesamtkohorte)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -522,12 +389,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Kosten pro Person und Abklärung in Subgruppe VTW &lt; 15%</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -541,12 +408,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Kosten pro Person und Abklärung in Subgruppe VTW 15-85%</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -560,12 +427,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Kosten pro Person und Abklärung in Subgruppe VTW &gt;85%</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -579,12 +446,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Identifikation von hinderlichen und förderlichen Faktoren für eine leitlinienadhärente Versorgungspraxis</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -598,12 +465,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.10">
   <h3>Gemessen wurde – eingeordnet als „Kosten und Wirtschaftlichkeit“</h3>
   <p class="unser">Ressourcenverbrauch nicht-invasive Diagnostik (reale vs. perfekte Leitlinienadhärenz)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.10" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -617,12 +484,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.11">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Entwicklung von Empfehlungen zu Versorgungs- und Vergütungsmodellen (Entwicklungspotenziale)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.11" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -633,148 +500,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
       ></textarea></label>
   </div>
 </section>
-<section class="p" data-stelle="adressat.1">
-  <h3>Gemeinsamer Bundesausschuss Unterausschuss Methodenbewertung (UA MB) – eingestuft als „geprüft und nicht aufgegriffen“</h3>
-  <p class="unser">Der UA MB hat sich in seiner Sitzung am 27. Juni 2024 mit dem Bericht befasst. Er hat daraus derzeit keinen weiteren Beratungsbedarf abgeleitet.</p>
-  <blockquote>„sich in seiner Sitzung am 27. Juni 2024 mit dem Bericht zu den vorgelegten Projektergebnissen befasst, der seinerseits den Beschluss des G -BA zur CCTA bei KHK in Bezug nimmt. Es wurde derzeit kein weiterer Beratungsbedarf daraus abgeleitet." <span class="s">S. 4</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.2">
-  <h3>Gemeinsamer Bundesausschuss Unterausschuss Qualitätssicherung (UA QS) – eingestuft als „geprüft und nicht aufgegriffen“</h3>
-  <p class="unser">Der UA QS hat die Ergebnisse beraten und das IQTIG um eine Prüfung gebeten. Er stellt aktuell keinen Ergänzungs- oder Anpassungsbedarf an der DeQS-RL fest.</p>
-  <blockquote>„Ergänzungs- oder Anpassungsbedarf an der Richtlinie zur datengestützten einrichtungsübergreifenden Qualitätssicherung (DeQS-RL) stellt der Unterausschuss auch vor dem Hintergrund dieser Stellungnahme aktuell nicht fest." <span class="s">S. 6</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="adressat.3">
   <h3>Institut für Qualitätssicherung und Transparenz im Gesundheitswesen (IQTIG) – eingestuft als „in Bearbeitung“ <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Laut Rückmeldung des UA QS hat das IQTIG die Ergebnisse auf Bitte des Unterausschusses geprüft. Es kündigte an, im Rahmen der laufenden Überarbeitung des QS-Verfahrens PCI den Indikator 56000 weiterzuentwickeln.</p>
+  
   <blockquote>„Zudem kündigte das IQTIG an, im Rahmen der laufenden Überarbeitung des QS -Verfahrens PCI einen besonderen Fokus auf die Weiterentwicklung des bestehenden Indikators &quot;56000&quot;; der die Indikationsstellung zur elektiven, isolierten Koronarangiographie prüft, legen zu wollen." <span class="s">S. 6</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uadressat.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.4">
-  <h3>Deutsche Röntgengesellschaft (DRG) – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung der DRG aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt.</p>
-  <blockquote>„die Deutsche Röntgengesellschaft (DRG)" <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.5">
-  <h3>Deutsche Gesellschaft für Nuklearmedizin (DGN) – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung der DGN aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt.</p>
-  <blockquote>„die Deutsche Gesellschaft für Nuklearmedizin (DGN)" <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.6">
-  <h3>Deutsche Gesellschaft für Kardiologie – Herz- und Kreislaufforschung (DGK) – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung der DGK aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt.</p>
-  <blockquote>„die Deutsche Gesellschaft für Kardiologie – Herz- und Kreislaufforschung (DGK)" <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.7">
-  <h3>Ärztliches Zentrum für Qualität in der Medizin (ÄZQ) – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung des ÄZQ aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt.</p>
-  <blockquote>„das Ärztliche Zentrum für Qualität in der Medizin (ÄZQ)" <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.7" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.8">
-  <h3>Deutsche Gesellschaft für Allgemeinmedizin und Familienmedizin (DEGAM) – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser">Im Dokument ist keine Rückmeldung der DEGAM aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt.</p>
-  <blockquote>„die Deutsche Gesellschaft für Allgemeinmedizin und Familienmedizin (DEGAM)" <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uadressat.3" value="ok" checked hidden>
+    <input type="radio" name="uadressat.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -789,11 +523,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das multizentrische Vorhaben ENLIGHT-KHK untersuchte prospektiv, wie häufig die Indikation zur Herzkatheteruntersuchung (HKU) bei Verdacht auf chronische KHK der Nationalen Versorgungsleitlinie KHK (NVL-KHK) entspricht. Außerdem modellierte es die gesundheitsökonomischen Folgen einer vollständig leitlinienadhärenten Indikationsstellung, erhob in Interviews mit niedergelassenen Ärzt:innen Einflussfaktoren auf leitlinienadhärentes Vorgehen und entwickelte einen Selektivvertragsentwurf. Von Januar 2019 bis August 2021 wurden in neun Krankenhäusern 901 AOK-Versicherte eingeschlossen. Die Leitlinienadhärenz der durchgeführten HKU lag nach NVL-KHK bei 25,6 % (169 Patient:innen). Im Entscheidungsmodell (GKV-Perspektive, ein Jahr) betrugen die Kosten je Person und Abklärung 2.206 € bei realer und 1.398 € bei perfekter Leitlinienadhärenz (Differenz 807 €); die MACE lagen bei 0,0036 gegenüber 0,0019, was der Bericht als „marginale Verringerung“ bezeichnet. In den Interviews mit 15 Ärzt:innen wurden 35 Einflussfaktoren identifiziert, wobei Gesundheitssystemfaktoren von allen Befragten thematisiert wurden. Die Zielfallzahl wurde von 2.500 über 1.500 auf 900 gesenkt. Die Aussagekraft hängt zudem an einem selbst entwickelten, nicht spezifisch validierten Patient:innenfragebogen zur Bestimmung der Vortest-Wahrscheinlichkeit, am nicht vergleichenden Studiendesign und an der Beschränkung auf Versicherte zweier AOKen. Ob der Vertragsentwurf die strukturellen Defizite überwinden kann, ist laut Bericht offen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +541,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinienadhärenz der durchgeführten HKU nach NVL-KHK lag in der Gesamtkohorte bei 25,6 % (169 Patient:innen); dies war der primäre Endpunkt.</p>
+  
   <blockquote>„„Die Leitlinienadhärenz der durchgeführten HKU nach der NVL -KHK wurde in der Gesamtkohorte bei 169 (25,6%) Patient:innen beobachtet [14].“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +560,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im gesundheitsökonomischen Modell betrugen die Kosten je Person und Abklärung in der Gesamtkohorte (n=901) 2.206 € bei realer und 1.398 € bei perfekter Leitlinienadhärenz, die MACE 0,0036 gegenüber 0,0019. Der Bericht beschreibt dies als Kostenreduktion um 807 € bei einer „marginalen Verringerung“ der MACE um 0,0017.</p>
+  
   <blockquote>„„Das bedeutet, dass die „ perfekte LA“ die Kosten der Versorgung im Durchschnitt um €807 pro Abklärung und Patient:in reduziert und mit einer marginalen Verringerung von MACE (0,0017) im Vergleich zur „realen LA“ verbunden ist.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,31 +579,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht sind die Effektivitätsunterschiede marginal: Zur Vermeidung eines MACE müssten 558 Patient:innen leitliniengerecht behandelt werden. Die Kostenunterschiede nennt der Bericht substantiell.</p>
+  
   <blockquote>„„Während die Effektivitätsunterschiede zwischen der perfekten leitlinienorientierten und der beobachteten Leitlinienadhärenz (ca. 26%) in der klinischen Versorgung marginal sind und zur Vermeidung eines MACE 558 Patient:innen leitliniengerecht behandelt werden müssten, sind die ermittelten Kostenunterschiede substantiell.“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.21">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">In den Interviews thematisierten alle befragten Ärzt:innen Gesundheitssystemfaktoren, überwiegend als unzureichende Versorgungsstrukturen und damit als Barrieren für eine leitlinienadhärente KHK-Versorgung.</p>
-  <blockquote>„„Als übergeordnetes Thema traten dabei grundsätzlich Gesundheitssystemfaktore n hervor , insofern sie von allen interviewten Ärzt:innen in ein oder anderer Weise thematisiert wurden; und zwar überwiegend im Hinblick auf insuffiziente Versorgungsstrukturen“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +598,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die ursprünglich geplante Zielfallzahl von 2.500 Patient:innen wurde auf 1.500 und schließlich auf 900 gesenkt; Einschlusspauschale und Einschlusszeitraum wurden angepasst.</p>
+  
   <blockquote>„„die Anpassung der Zielfallzahl von 2.500 auf 1.500 (s. Änderungsbescheid vom 23.08.2019) und auf zuletzt 900 (s. Stellungnahme des Methodikers vom 19.02.2021 in Bezugnahme auf den Änderungsbescheid vom 28.08.2020).“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +617,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Patient:innenfragebogen, auf dem die Ermittlung der Beschwerdekategorie und damit der VTW beruht, wurde selbst entwickelt und nicht spezifisch validiert.</p>
+  
   <blockquote>„„Bei fehlenden deutschsprachigen Vorlagen wurde dieser selbst entwickelt. [...] Eine spezifische Validierung des Fragebogens ist nicht erfolgt.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,31 +636,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die beobachtete Adhärenz von 26 %, auf der die gesundheitsökonomische Analyse aufbaut, stammt aus einem nicht vergleichenden Design; Verzerrungen in den Vergleichsgruppen sind daher nicht gänzlich auszuschließen. Zur Minimierung wurden Primär- und GKV-Routinedaten verknüpft, die Ergebnisse sehen die Autor:innen durch Modellvalidierung und Sensitivitätsanalysen bestätigt.</p>
+  
   <blockquote>„„Da die beobachtete Leitlinienadhärenz in der klinischen Praxis (26%) auf einem nicht vergleichenden Studiendesign der ENLIGHT-KHK-Studie basierte, können die damit verbunden Einschränkungen nicht gänzlich ausgeschlossen werden (z.B. das Risiko einer Verzerrung in den Vergleichsgruppen).“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Ob der Vertragsentwurf die bestehenden Strukturdefizite überwinden kann, insbesondere die Unterversorgung mit nicht-invasiver Bildgebung und die ökonomischen Fehlanreize, ist laut Bericht offen.</p>
-  <blockquote>„„Inwieweit dieses Vertragskonstrukt bestehende Strukturdefizite, insbesondere die Unterversorgung mit nichtinvasiv bildgebender Diagnostik und die öko nomischen Fehlanreize, überwinden kann, oder weiterführende Maßnahmen notwendig werden, muss sich zeigen.“ – Bericht, S. 38" <span class="s">S. 38</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -960,11 +656,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Anzahl der Einschlusszentren: Auf S. 10 ist von „zehn rekrutierenden Einschlusszentren“ die Rede, auf S. 4, 13 und 26 von neun Zentren bzw. Krankenhäusern.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -979,11 +675,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Rangfolge der Endpunkte: Laut Text (S. 19) war der Grad der Leitlinienadhärenz der primäre Endpunkt; die HKU-assoziierten MACE werden laut Abbildung 1 ebenfalls als primär geführt, die Abbildung des Indikationsstellungsprozesses (TP I) gleichfalls.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -998,11 +694,334 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Bezugsgröße der Leitlinienadhärenz: 169 Patient:innen werden mit 25,6 % „in der Gesamtkohorte“ angegeben (S. 27). Dieser Anteil entspricht weder den 901 eingeschlossenen Patient:innen noch den 687 der Hauptkohorten mit HKU; der Nenner wird in den vorliegenden Abschnitten nicht genannt.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>64 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss leitet die Projektergebnisse zur Information an die Unterausschüsse Methodenbewertung und Qualitätssicherung des G-BA, das IQTIG, die DRG, die DGN, die DGK, das ÄZQ und die DEGAM weiter. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Die Verallgemeinerbarkeit der gesundheitsökonomischen Ergebnisse ist begrenzt, da die Modellparameter nur der kleinen Studienpopulation entnommen wurden. Der Ausschuss verweist außerdem auf die Aufnahme der Kardio-CT in den vertragsärztlichen Leistungskatalog, deren Auswirkungen der G-BA in den nächsten fünf Jahren evaluieren wird.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Aktuelle Versorgungspraxis in der Indikationsstellung zur HKU aufgezeigt und evaluiert</p>
+  
+  <blockquote>„Das Projekt hat erfolgreich die aktuelle Versorgungspraxis in der Indikationsstellung zur Herzkatheteruntersuchung (HKU) bei Menschen mit (potenzieller) obstruktiver koronarer Herzerkrankung (KHK) aufgezeigt und wissenschaftlich evaluiert." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Modelliertes Szenario perfekter Leitlinienadhärenz mit geringeren Kosten und marginal weniger MACE</p>
+  
+  <blockquote>„In der gesundheitsökonomischen Modellierung (sekundärer Endpunkt 1) zeigte sich, dass das modellierte Szenario der „perfekten Leitlinienadhärenz“ im Vergleich zur beobachteten Leitlinienadhärenz sowohl geringere Kosten pro Abklärung und Person als auch marginal geringere MACE auswies." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Einflussfaktoren auf leitlinienadhärente Versorgung durch qualitative Befragung identifiziert</p>
+  
+  <blockquote>„Eine qualitative Befragung von Leistungserbringenden hat zudem Einflussfaktoren auf eine leitlinienadhärente KHK -Versorgungspraxis aufgezeigt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.4">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Empfehlungen für Versorgungs- und Vergütungsmodelle entwickelt</p>
+  
+  <blockquote>„Basierend auf den Ergebnissen wurden Empfehlungen für Versorgungs- und Vergütungsmodelle für eine leitlinienadhärente und ressourceneffiziente Versorgung entwickelt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.5">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Alle Fragestellungen umfassend adressiert</p>
+  
+  <blockquote>„Insgesamt wurden alle Fragestellungen umfassend adressiert." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.5" value="ok" checked hidden>
+    <input type="radio" name="ubefund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.7">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Hinweise auf Kosteneinsparungspotenzial durch stärkere Leitlinienorientierung</p>
+  
+  <blockquote>„Trotz der Limitationen deuten die Ergebnisse darauf hin, dass eine verstärkte Orientierung entlang der Leitlinie Kosteneinsparungspotenzial bietet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.7" value="ok" checked hidden>
+    <input type="radio" name="ubefund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.1">
+  <h3>Gemeinsamer Bundesausschuss Unterausschuss Methodenbewertung (UA MB) – eingestuft als „geprüft und nicht aufgegriffen“</h3>
+  <p class="unser">Der UA MB hat sich in seiner Sitzung am 27. Juni 2024 mit dem Bericht befasst. Er hat daraus derzeit keinen weiteren Beratungsbedarf abgeleitet.</p>
+  
+  <blockquote>„sich in seiner Sitzung am 27. Juni 2024 mit dem Bericht zu den vorgelegten Projektergebnissen befasst, der seinerseits den Beschluss des G -BA zur CCTA bei KHK in Bezug nimmt. Es wurde derzeit kein weiterer Beratungsbedarf daraus abgeleitet." <span class="s">S. 4</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.1" value="ok" checked hidden>
+    <input type="radio" name="uadressat.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.2">
+  <h3>Gemeinsamer Bundesausschuss Unterausschuss Qualitätssicherung (UA QS) – eingestuft als „geprüft und nicht aufgegriffen“</h3>
+  <p class="unser">Der UA QS hat die Ergebnisse beraten und das IQTIG um eine Prüfung gebeten. Er stellt aktuell keinen Ergänzungs- oder Anpassungsbedarf an der DeQS-RL fest.</p>
+  
+  <blockquote>„Ergänzungs- oder Anpassungsbedarf an der Richtlinie zur datengestützten einrichtungsübergreifenden Qualitätssicherung (DeQS-RL) stellt der Unterausschuss auch vor dem Hintergrund dieser Stellungnahme aktuell nicht fest." <span class="s">S. 6</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.2" value="ok" checked hidden>
+    <input type="radio" name="uadressat.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.4">
+  <h3>Deutsche Röntgengesellschaft (DRG) – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung der DRG aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt.</p>
+  
+  <blockquote>„die Deutsche Röntgengesellschaft (DRG)" <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.4" value="ok" checked hidden>
+    <input type="radio" name="uadressat.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.5">
+  <h3>Deutsche Gesellschaft für Nuklearmedizin (DGN) – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung der DGN aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt.</p>
+  
+  <blockquote>„die Deutsche Gesellschaft für Nuklearmedizin (DGN)" <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.5" value="ok" checked hidden>
+    <input type="radio" name="uadressat.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.6">
+  <h3>Deutsche Gesellschaft für Kardiologie – Herz- und Kreislaufforschung (DGK) – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung der DGK aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt.</p>
+  
+  <blockquote>„die Deutsche Gesellschaft für Kardiologie – Herz- und Kreislaufforschung (DGK)" <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.6" value="ok" checked hidden>
+    <input type="radio" name="uadressat.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.7">
+  <h3>Ärztliches Zentrum für Qualität in der Medizin (ÄZQ) – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung des ÄZQ aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt.</p>
+  
+  <blockquote>„das Ärztliche Zentrum für Qualität in der Medizin (ÄZQ)" <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.7" value="ok" checked hidden>
+    <input type="radio" name="uadressat.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.8">
+  <h3>Deutsche Gesellschaft für Allgemeinmedizin und Familienmedizin (DEGAM) – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser">Im Dokument ist keine Rückmeldung der DEGAM aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt.</p>
+  
+  <blockquote>„die Deutsche Gesellschaft für Allgemeinmedizin und Familienmedizin (DEGAM)" <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.8" value="ok" checked hidden>
+    <input type="radio" name="uadressat.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.21">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">In den Interviews thematisierten alle befragten Ärzt:innen Gesundheitssystemfaktoren, überwiegend als unzureichende Versorgungsstrukturen und damit als Barrieren für eine leitlinienadhärente KHK-Versorgung.</p>
+  
+  <blockquote>„„Als übergeordnetes Thema traten dabei grundsätzlich Gesundheitssystemfaktore n hervor , insofern sie von allen interviewten Ärzt:innen in ein oder anderer Weise thematisiert wurden; und zwar überwiegend im Hinblick auf insuffiziente Versorgungsstrukturen“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Ob der Vertragsentwurf die bestehenden Strukturdefizite überwinden kann, insbesondere die Unterversorgung mit nicht-invasiver Bildgebung und die ökonomischen Fehlanreize, ist laut Bericht offen.</p>
+  
+  <blockquote>„„Inwieweit dieses Vertragskonstrukt bestehende Strukturdefizite, insbesondere die Unterversorgung mit nichtinvasiv bildgebender Diagnostik und die öko nomischen Fehlanreize, überwinden kann, oder weiterführende Maßnahmen notwendig werden, muss sich zeigen.“ – Bericht, S. 38" <span class="s">S. 38</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1017,11 +1036,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zeitraum der Interviews: S. 23 nennt zwei Interviewreihen von November 2020 bis April 2021, S. 32 einen Befragungszeitraum von Oktober 2020 bis April 2021.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1036,11 +1055,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Validität des Fragebogens: S. 16 hält fest, dass keine spezifische Validierung des selbst entwickelten Fragebogens erfolgt ist; S. 35 bezeichnet Fragebogen und Auswertungsregeln als „geeignete Instrumente“ zur Ermittlung der VTW.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1055,11 +1074,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Hochrechnung der Einsparungen: Auf S. 39 wird der Betrag für das 20-%-Szenario als „€ 71,6“ ohne Einheit „Mio.“ angegeben, der für das 10-%-Szenario als „€ 35,8 Mio.“.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1074,11 +1093,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Angefragte Kliniken: S. 10 nennt die Anfrage aller Kliniken mit Studientätigkeit (&gt; 20) im Versorgungsgebiet, S. 12 „weitere knapp 30 Kliniken“; ob es sich um dieselben Kliniken handelt, geht aus den Abschnitten nicht hervor.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1088,16 +1107,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>43 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Subgruppe niedrige Vortest-Wahrscheinlichkeit (VTW &lt;15 %): Perfekte Leitlinienadhärenz reduzierte die Kosten im Modell im Durchschnitt um 502 € je Patient:in.</p>
+  
   <blockquote>„„bei niedriger und mittlerer VTW die „perfekte LA“ die Kosten der Indikationsstellung im Durchschnitt um €502 bzw. €901 je Patient:in reduziert“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1130,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Subgruppe mittlere VTW (15–85 %): Perfekte Leitlinienadhärenz reduzierte die Kosten im Modell im Durchschnitt um 901 € je Patient:in. Die Autor:innen führen dies darauf zurück, dass bei vielen Patient:innen keine nicht-invasive Bildgebung erfolgt war.</p>
+  
   <blockquote>„„Da in ENLIGHT -KHK bei vielen Patient:innen keine nicht -invasive bildgebende Diagnostik erfolgte, zeigt e die gesundheitsökonomische Analyse bei „perfekte LA&quot; das größte Kosteneinsparungspotenzial (€901) [14].“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1149,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Subgruppe hohe VTW (&gt;85 %): Perfekte Leitlinienadhärenz war im Modell um 78 € teurer als reale Leitlinienadhärenz.</p>
+  
   <blockquote>„„während die „perfekte LA“ bei einer hohen VTW mit €78 teurer war als die „reale LA“ (siehe Tabelle 11 für detaillierte Ergebnisse) [14].“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1168,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Gesamtkohorte und bei VTW 15–85 % wies perfekte Leitlinienadhärenz geringere Kosten und weniger MACE auf als reale; bei VTW &lt;15 % und &gt;85 % ist das inkrementelle Kosten-Effektivitäts-Verhältnis nicht definiert.</p>
+  
   <blockquote>„„a Die „perfekte Leitlinienadhärenz“ zeigt gegenüber der „reale Leitlinienadhärenz“ geringere Kosten und MACE auf.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1187,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der probabilistischen Sensitivitätsanalyse war perfekte Leitlinienadhärenz in 99,3 % der Wiederholungen mit geringeren Kosten und MACE verbunden.</p>
+  
   <blockquote>„„die „perfekte LA“ der „reale LA“ in de n meisten Wiederholungen (99,3 %) überlegen ist (geringere Kosten und MACE).“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1206,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der deterministischen Sensitivitätsanalyse hatte die Wahrscheinlichkeit einer HKU nach nicht-invasiver Bildgebung bei moderater VTW unter perfekter Leitlinienadhärenz den größten Einfluss auf die Kostenunterschiede (+12/−11 %). Der Kostenunterschied lag dabei bei mindestens 700 €.</p>
+  
   <blockquote>„„die Wahrscheinlichkeit für eine HKU nach erfolgter nicht -invasiver bildgebender Diagnostik bei moderaten VTW in der „perfekte LA“ den größten Einfluss (+12/-11%) auf die Kostenunterschiede zwischen „perfekte LA“ und „reale LA“ erzielt.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1225,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Unter den Kostenparametern hatten die Kosten für Koronar-CT und Bypass mit 4–5 % den größten Einfluss auf die Kostenunterschiede.</p>
+  
   <blockquote>„„Die Kosten für das Koronar-CT und den Bypass sind die Kostenparameter, die den größten Einfluss auf die Kostenunterschiede (4- 5%) haben.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1244,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In Szenarien mit 90 %, 80 % bzw. 70 % Leitlinienadhärenz betrugen die Kostenunterschiede zur realen Adhärenz durchschnittlich 679 €, 555 € bzw. 440 € je Person und Abklärung. Bei 70 % lag der MACE-Unterschied bei 0,0011, die Kosten bei 1.766 € gegenüber 2.206 €.</p>
+  
   <blockquote>„„waren die Kostenunterschiede zwischen „perfekte LA“ und „reale LA“ (26%) durchschnittlich bei €679, €555 oder €440 pro Person und Abklärung. Der Unterschied bei der Häufigkeit von MACE reduzierte sich mit abnehmender LA und lag bei 0,0011 MACE bei einer LA von 70% [14].“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1263,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Kostendifferenz von 807 € entspricht laut Bericht etwa einem Drittel der Kosten einer stationären HKU (2.534 €) bzw. etwa den halben Kosten einer ambulanten HKU (ca. 400 €).</p>
+  
   <blockquote>„„Dieser Wert entspricht in etwa den halben Kosten einer ambulanten HKU (ca. €400 [37]), einem Drittel der Kosten einer stationären HKU (€2.534 [38])“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1282,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Hochgerechnet auf geschätzte 600.000 HKU bei stabiler KHK wären nach Bericht 446.000 HKU nicht leitlinienadhärent.</p>
+  
   <blockquote>„„Extrapoliert man diese Zahl auf die von Figulla et al. geschätzten 600.000 HKU bei stabiler KHK, wären 446.000 HKU nicht leitlinienadhärent [1].“ – Bericht, S. 40" <span class="s">S. 40</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1301,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Hochrechnung könnte eine leitliniengerechte Indikationsstellung bei 10 % bzw. 20 % der nicht leitliniengerecht Versorgten (Basis ca. 600.000 HKU jährlich) Einsparungen von jährlich 35,8 Mio. € bzw. 71,6 € (Einheit im Zitat ohne „Mio.“) für die GKV ergeben.</p>
+  
   <blockquote>„„könnte eine leitliniengerechte Indikationsstellung bei 10% oder 20% der nicht-leitliniengerecht versorgten Patient:innen zu jährlichen Kosteneinsparungen in Höhe von € 35,8 Mio. bzw. € 71,6 für die GKV führen.“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1320,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von Januar 2019 bis August 2021 wurden in neun Krankenhäusern in Nordrhein-Westfalen und Hamburg 901 Patient:innen eingeschlossen. Je Zentrum wurde im Mittel über 14,3 Monate rekrutiert (Median 10,5 Monate).</p>
+  
   <blockquote>„„Im Zeitraum von Januar 2019 bis einschließlich August 2021 wurden in neun Krankenhäusern in Nordrhein-Westfalen und Hamburg insgesamt 901 Patient:innen eingeschlossen.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1339,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von den 901 Patient:innen entfielen 687 auf die Hauptkohorten mit durchgeführter HKU und 214 auf die Nebenkohorten.</p>
+  
   <blockquote>„„Über die Hauptkohorten mit durchgeführter HKU wurden 687 Patient:innen eingeschlossen, über die Nebenkohorten 214 Patient:innen .“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1358,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das mittlere jährliche HKU-Volumen je Studienzentrum betrug 1.880 (Bereich 830–4.500; Median 1.330).</p>
+  
   <blockquote>„„Das mittlere jährliche HKU -Volumen je Studienzentrum betrug 1 .880 (Bereich: 830 bis 4 .500; Median: 1.330 HKU/Jahr).“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1377,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die 901 Patient:innen waren im Mittel 64,9 Jahre alt (SD 11,8), 58,2 % waren männlich. 80,6 % hatten eine arterielle Hypertonie, 29,9 % einen Diabetes mellitus und 43,1 % eine bekannte KHK.</p>
+  
   <blockquote>„„Die 901 eingeschlossenen Patient :innen mit einem Verdacht auf eine chronische KHK waren im Durchschnitt 64,9 (Standardabweichung (SD) 11,8) Jahre alt und 524 (58,2%) Patient:innen waren männlich.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1396,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von allen Patient:innen hatten 3,8 % eine niedrige, 85,8 % eine mittlere und 5,3 % eine hohe Vortest-Wahrscheinlichkeit für eine chronische KHK.</p>
+  
   <blockquote>„„Von allen Patient:innen hatten 34 (3,8%) eine niedrige VTW (&lt;15%), 773 (85,8%) eine mittlere (15- 85%) und 48 (5,3) eine hohe VTW (&gt;85%) für eine chronische KHK.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1415,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Alter (64,9 vs. 68,5 Jahre) und Männeranteil (58,2 vs. 63,9 %) bezeichnet der Bericht als vergleichbar mit dem Bundesqualitätsbericht QS-PCI 2021; dies unterstreiche aus seiner Sicht die Repräsentativität.</p>
+  
   <blockquote>„„waren die eingeschlossenen Patient:innen hinsichtlich Alter (64,9 vs. 68,5 Jahre) und männlichen Geschlechts (58,2 vs. 63,9%) vergleichbar mit der bundesweiten Population. [32] Dies unterstreicht die Repräsentativität der Kohorte.“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1434,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Fragebogen und Auswertungsregeln bezeichnet der Bericht als geeignete Instrumente, um die Beschwerdekategorien zur Ermittlung der VTW unabhängig von der ärztlichen Dokumentation zu erfassen.</p>
+  
   <blockquote>„„Der entwickelte standardisierte Fragebogen und die Auswertungsregeln erwiesen sich als geeignete Instrumente für die zur Ermittlung der VTW erforderliche Erfassung der Beschwerdekategorien auf Patient:inn enebene unabhängig von der ärztliche n Dokumentation.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1453,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Zugang zur HKU wurde im Vergleich zu nicht-invasiven Ischämie-Tests hinsichtlich Erreichbarkeit, Wartezeit und Vergütung weitestgehend als besser, schneller bzw. ausreichend beschrieben. Zum Teil wurde dies ausdrücklich als Grund für rein diagnostische, nicht leitlinienadhärente HKU genannt.</p>
+  
   <blockquote>„„was zum Teil explizit als Grund für die Notwendigkeit der Durchführung rein-diagnostischer, im engeren Sinne nicht-leitlinienadhärenter HKUs genannt wurde.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1472,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Insgesamt wurden 35 hinderliche und/oder förderliche Einflussfaktoren auf den Ebenen Patient:innen, Leistungserbringer, Leitlinien und Gesundheitssystem identifiziert.</p>
+  
   <blockquote>„„Eine vollständige Übersicht aller identifizierter Einflussfaktoren (N=35)“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1491,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Präferenzen der Patient:innen für bestimmte Diagnostik, Therapie oder Ärzt:innen wurden mehrheitlich als Herausforderung für eine leitlinienadhärente Versorgung gesehen.</p>
+  
   <blockquote>„„Patient:innenpräferenzen für spezifische Diagnostiken/Therapien bzw. Ärzt :innen (=Eigeninteresse als Einflussfaktor auf Patient:innenebene) mehrheitlich dezidiert als Herausforderung im Hinblick auf eine leitlinienadhärente KHK -Versorgung gesehen.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1510,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Patient:innen-, Leistungserbringer- und Leitlinienfaktoren wurden seltener genannt als Gesundheitssystemfaktoren. Der Bericht hält sie dennoch für bedeutsam, weil sie systemische Barrieren ver- oder entschärfen können.</p>
+  
   <blockquote>„„Im Vergleich zu Gesundheitssystemfaktoren wurden Patient:innen-, Leistungserbringer- und Leitlinienfaktoren weniger häufig geäußert.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1529,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Befragt wurden von Oktober 2020 bis April 2021 15 Ärzt:innen aus 14 Praxen (10 Hausärzt:innen, 5 niedergelassene Kardiolog:innen), davon 14 über Ärztenetze rekrutiert.</p>
+  
   <blockquote>„„Von Oktober 2020 bis April 2021 wurden insgesamt 15 Ärzt :innen aus 14 verschiedenen Praxen befragt (Hausärzt:innen: n=10, niedergelassene Kardiolog :innen: n=5)“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1548,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die qualitativen Ergebnisse stehen laut Bericht weitestgehend in inhaltlicher Kongruenz zu einer qualitativen Befragung im Rahmen der KARDIO-Studie.</p>
+  
   <blockquote>„„Die Ergebnisse der formativen Analyse sind im Hinblick auf die Vielfalt und das Zusammenspiel der identifizierten möglichen hinderlichen und/oder förderlichen Einflussfaktoren [...] weitestgehend in inhaltlicher Kongruenz zu den Ergebnissen einer qualitativen Befragung“ – Bericht, S. 39" <span class="s">S. 39</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1567,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Aus den Vertragsworkshops (TP III) entstand ein Modell-Selektivvertragsentwurf nach §140a SGB V mit Vertragsmodulen, u. a. zu medizinischen Leistungsinhalten, Strukturanforderungen und Vergütungsoptionen.</p>
+  
   <blockquote>„„Das Ergebnis der Vertragsworkshop s ist ein Modell-Selektivvertragsentwurf nach §140a SGB V.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1586,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die in TP II ermittelten Abweichungswerte zwischen leitliniengerechter und beobachteter Versorgung zeigten laut Bericht den Handlungsspielraum bei der Vergütungsgestaltung im Vertrag auf.</p>
+  
   <blockquote>„„Die dort ermittelten Abweichungswerte zwischen leitliniengerechter und tatsächlich beobachtbarer Versorgung haben den Handlungsspielraum bei der Vergütungsgestaltung aufgezeigt.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1605,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eingeschlossen wurden nur Versicherte der AOK Rheinland/Hamburg und der AOK NORDWEST. Der Bericht hält die Repräsentativität dadurch für möglicherweise vermindert, nimmt aber Übertragbarkeit an, da diese Versicherten 30–35 % der Patient:innen der Zentren ausmachen.</p>
+  
   <blockquote>„„Die Repräsentativität der Gesamtpopulation könnte durch die Beschränkung auf Versicherte der AOK Rheinland-Hamburg und AOK NORDWEST vermindert sein. Da diese aber in den einschließenden Krankenhäusern ca. 30-35% aller Patient:innen ausmachen, ist die Übertragbarkeit der Ergebnisse [...] anzunehmen.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1624,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Rekrutierung von Zentren war erschwert: Nach einem Wechsel der Projektleitung sprangen Projektpartner ab. Angefragte Kliniken lehnten aus finanziellen Gründen ab, zum Teil auch aus Sorge vor negativen Auswirkungen bei Offenlegung der Indikationsqualität.</p>
+  
   <blockquote>„„Bedingt dur ch einen Wechsel des Projektleiters mit Verlust von Netzwerkbeziehungen sprangen Projektpartner ab [...] die aus finanziellen Gründen, z.T. aber auch aus Sorge vor negativen Auswirkungen bei Offenlegung der Indikationsqualität, eine Teilnahme ablehnten.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1643,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Von knapp 30 zusätzlich angefragten Kliniken erklärten sich vier zur Teilnahme bereit.</p>
+  
   <blockquote>„„Insgesamt wurden weitere knapp 30 Kliniken per Mail und Telefonkontakt adressiert [...] Von den angefragten Kliniken erklärten sich vier weitere zur Teilnahme bereit.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1662,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Einschlusspauschale war nicht kostendeckend und nicht konkurrenzfähig mit industriegesponserten Studien. Die Corona-Pandemie führte laut Bericht über weniger elektive Herzkatheter und Verbote der Studientätigkeit zu einem deutlich reduzierten Patient:inneneinschluss.</p>
+  
   <blockquote>„„Zudem zeigte sich die Einschlusspauschale je Patient:innenrekrutierung als (1) nicht kostendeckend und (2) wie bereits erwartet als nicht kompetitiv zu Industrie-gesponsorten Studien.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1681,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Während der Rekrutierung kam es pandemiebedingt zur Reduktion geplanter HKU und zu Rekrutierungsunterbrechungen. Die Autor:innen gehen dennoch von Übertragbarkeit aus und halten eine eher überschätzte Leitlinienadhärenz für möglich.</p>
+  
   <blockquote>„„Zudem könnte das verminderte Angebot an invasiver Diagnostik im stationären Sektor zu einer Stärkung der ambulanten nicht-invasiven Diagnostik geführt haben und damit eher zu einem Überschätzen der Leitlinienadhärenz.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1700,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Patient:innen mit unzureichenden Deutschkenntnissen konnten nicht eingeschlossen werden.</p>
+  
   <blockquote>„„Durch die erforderliche Patient:innenaufklärung und den in deutscher Sprache vorliegenden Fragebogen konnten Patient:innen mit unzureichenden deutschen Sprachkenntnissen nicht eingeschlossen werden.“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1719,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zur Indikationsqualität bei Leistungserbringern mit reinem Elektivbetrieb (z. B. Praxiskliniken), auf die ca. 10 % der jährlichen Herzkatheter entfallen, ist keine Aussage möglich.</p>
+  
   <blockquote>„„Insofern kann keine Aussage zur Indikationsqualität bei Le istungserbringern mit reinem Elektiv-Betrieb (z.B. Praxiskliniken) getroffen werden. Allerdings machen letztere nur ca. 10% der jährlich durchgeführten Herzkatheter aus [32]“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1738,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinienadhärenz wurde primär nach NVL-KHK beurteilt, da die ESC-CCS-Leitlinie 2019 erst nach Rekrutierungsstart erschien; die ESC-CCS-Adhärenz wurde nur additiv ermittelt.</p>
+  
   <blockquote>„„wurde für die nachfolgenden Auswertungen die Leitlinienadhärenz analog der NVL-KHK verwendet. Allerdings wurde additiv die Leitlinienadhärenz analog der ESC -CCS Leitlinie ebenfalls auf Patient:innenebene ermittelt.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1757,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eine separate Berechnung der Leitlinienadhärenz für einzelne Kohorten war nicht vorgesehen.</p>
+  
   <blockquote>„„Eine separate Berechnung der Leitlinienadhärenz war für einzelne Kohorten innerhalb dieses Projekts nicht vorgesehen.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1776,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinienadhärenz der nicht-invasiven Bildgebung war nicht Gegenstand der Studie. Deren Kosten wurden im Modell kumuliert, was laut Bericht zur Unterschätzung des Einsparpotenzials in einer VTW-Gruppe führte.</p>
+  
   <blockquote>„„wurden die Kosten der nicht invasiven bildgebenden Diagnostik kumuliert, was zu einer Unterschätzung des Kosteneinsparpotenzials in der VTW-Gruppe führte [14].“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1795,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei hoher VTW begünstigte die Kumulierung der Kosten nicht-invasiver Tests laut Bericht den Arm mit realer Leitlinienadhärenz etwas.</p>
+  
   <blockquote>„„wurden die Kosten dieser Tests kumuliert, was den Arm der „reale LA“ etwas begünstigte [14].“ – Bericht, S. 36" <span class="s">S. 36</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1795,12 +1814,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Leitlinienkonforme und nicht leitlinienkonforme PCIs wurden nicht unterschieden, wodurch die Leitlinienadhärenz bei perfekter Adhärenz etwas überschätzt worden sein könnte.</p>
+  
   <blockquote>„„In der gesundheitsökonomischen Analyse wurde nicht zwischen leitlinienkonformen und nicht-leitlinienkonformen PCIs unterschieden.“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1814,12 +1833,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für einzelne nicht-invasive Bildgebungsverfahren waren wegen zu kleiner Subgruppen keine belastbaren Aussagen zur Kosten-Effektivität möglich.</p>
+  
   <blockquote>„„Für die ENLIGHT-KHK-Kohorte wäre n aufgrund von zu kleinen Subgruppen keine belastbaren Aussagen zu Kosten-Effektivität möglich [14].“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1833,12 +1852,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die geplanten Face-to-Face-Fokusgruppen mit niedergelassenen Ärzt:innen ließen sich nicht umsetzen; stattdessen wurden telefonische Einzelinterviews geführt und eine Aufwandsentschädigung eingeführt.</p>
+  
   <blockquote>„„Die Rekrutierung von Interviewpartner :innen erwies sich im H inblick auf den ursprünglich g eplanten Modus der Interviews (Face -to-Face-Fokusgruppen) sowie Einschränkungen im Zuge der Corona-Pandemie [...] org anisatorisch als nicht möglich.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1852,12 +1871,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen Rekrutierungshürden war die Interviewstichprobe nicht vollständig kontrastiv, was Über- oder Unterrepräsentation von Perspektiven zur Folge haben kann. Ärzt:innen aus Medizinischen Versorgungszentren wurden nicht rekrutiert.</p>
+  
   <blockquote>„„was gegebenenfalls eine Über- oder Unterrepräsentation von Perspektiven gewisser Kollektive zur Folge hatte. So konnten beispielsweise keine Ärzt :innen für ein Interview rekrutiert werden, die in einem medizinischen Versorgungszentrum tätig sind“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1871,12 +1890,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Fragen nach Übertragbarkeit und Gültigkeit der qualitativen Ergebnisse können laut Bericht nicht adressiert werden. Die formative Analyse ging nur unter diesem Vorbehalt als mögliche Anhaltspunkte in den Vertragsentwurf ein.</p>
+  
   <blockquote>„„können daher – nicht zuletzt wegen des grundsätzlich qualitativen Designs der Befragungsstudie – nicht adressiert werden.“ – Bericht, S. 37" <span class="s">S. 37</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1890,12 +1909,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Projektlaufzeit musste bis 30.06.2022 verlängert werden, vor allem wegen der verzögerten Rekrutierung. Zur Wahrung der Ausgabenneutralität wurden Stellenanteile reduziert, zudem war der Aufwand für die Vertragsmodule höher als erwartet.</p>
+  
   <blockquote>„„Insbesondere bedingt durch die protrahierte Patient :innenrekrutierung musste die Projektlaufzeit schließlich bis zum 30.06.2022 verlängert werden“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1940,28 +1959,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 128, "akronym": "ENLIGHT-KHK", "kennung": "I_aocA89XuXF", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Projektergebnisse zur Information an die Unterausschüsse Methodenbewertung und Qualitätssicherung des G-BA, das IQTIG, die DRG, die DGN, die DGK, das ÄZQ und die DEGAM weiter. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Nach Auffassung des Ausschusses hat das Projekt die Versorgungspraxis bei der Indikationsstellung zur Herzkatheteruntersuchung erfolgreich aufgezeigt und alle Fragestellungen umfassend adressiert. Als primärer Endpunkt wurde eine geringe Leitlinienadhärenz von ca. 25,6 % ermittelt; sie ging überwiegend auf den Verzicht auf nicht-invasive bildgebende Diagnostik zurück. Die Modellierung zeigte für perfekte Leitlinienadhärenz geringere Kosten und marginal weniger MACE. Die Validität ist eingeschränkt: Die Fallzahl war deutlich reduziert, der Patientenfragebogen nicht validiert und die Vortestwahrscheinlichkeit teils retrospektiv erfasst. Hinzu kommen die Abweichung der verwendeten NVL von der neueren ESC-Leitlinie und die kleine Datenbasis der Modellierung. Trotz dieser Limitationen sieht der Ausschuss Hinweise auf ein Kosteneinsparungspotenzial und leitet die Erkenntnisse zur Unterstützung einer leitliniengerechten Versorgung weiter."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Die Verallgemeinerbarkeit der gesundheitsökonomischen Ergebnisse ist begrenzt, da die Modellparameter nur der kleinen Studienpopulation entnommen wurden. Der Ausschuss verweist außerdem auf die Aufnahme der Kardio-CT in den vertragsärztlichen Leistungskatalog, deren Auswirkungen der G-BA in den nächsten fünf Jahren evaluieren wird."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Deutlich reduzierte Fallzahl schränkt die Validität ein"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Patientenfragebogen nicht validiert"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Teils retrospektive Erfassung der Vortestwahrscheinlichkeit bei bereits durchgeführter HKU"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Die zugrunde gelegte NVL-KHK weicht stark von der nach Studienbeginn publizierten, restriktiveren ESC-Leitlinie ab"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Parameter der gesundheitsökonomischen Modellierung stammen nur aus der kleinen Studienpopulation; die Verallgemeinerbarkeit ist begrenzt"}, {"stelle": "befund.0", "art": "befund", "unser": "Aktuelle Versorgungspraxis in der Indikationsstellung zur HKU aufgezeigt und evaluiert"}, {"stelle": "befund.1", "art": "befund", "unser": "Leitlinienadhärenz als primärer Endpunkt ermittelt (ca. 25,6 %)"}, {"stelle": "befund.2", "art": "befund", "unser": "Modelliertes Szenario perfekter Leitlinienadhärenz mit geringeren Kosten und marginal weniger MACE"}, {"stelle": "befund.3", "art": "befund", "unser": "Einflussfaktoren auf leitlinienadhärente Versorgung durch qualitative Befragung identifiziert"}, {"stelle": "befund.4", "art": "befund", "unser": "Empfehlungen für Versorgungs- und Vergütungsmodelle entwickelt"}, {"stelle": "befund.5", "art": "befund", "unser": "Alle Fragestellungen umfassend adressiert"}, {"stelle": "befund.6", "art": "befund", "unser": "Tendenz der Ergebnisse auch bei Auswertung nach neuer ESC-Leitlinie nicht substanziell verändert"}, {"stelle": "befund.7", "art": "befund", "unser": "Hinweise auf Kosteneinsparungspotenzial durch stärkere Leitlinienorientierung"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Leitlinienadhärenz der durchgeführten Herzkatheteruntersuchung (Einschätzung des Ausmaßes von Leitlinienabweichungen in der Indikationsstellung zur HKU)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Abbildung des Indikationsstellungsprozesses zur HKU bei Patient:innen mit (potenzieller) obstruktiver KHK"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Einschätzung des Auftretens von ggf. mit einer HKU assoziierten MACE (schwerwiegende unerwünschte kardiovaskuläre Ereignisse)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Kosten pro Person und Abklärung (Gesamtkohorte) – Vergleich hypothetischer und realer Kosten einer leitlinienadhärenten Indikationsstellung"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "MACE pro Person und Abklärung (Gesamtkohorte)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Kosten pro Person und Abklärung in Subgruppe VTW < 15%"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Kosten pro Person und Abklärung in Subgruppe VTW 15-85%"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Kosten pro Person und Abklärung in Subgruppe VTW >85%"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Identifikation von hinderlichen und förderlichen Faktoren für eine leitlinienadhärente Versorgungspraxis"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Ressourcenverbrauch nicht-invasive Diagnostik (reale vs. perfekte Leitlinienadhärenz)"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Entwicklung von Empfehlungen zu Versorgungs- und Vergütungsmodellen (Entwicklungspotenziale)"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Der UA MB hat sich in seiner Sitzung am 27. Juni 2024 mit dem Bericht befasst. Er hat daraus derzeit keinen weiteren Beratungsbedarf abgeleitet."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Der UA QS hat die Ergebnisse beraten und das IQTIG um eine Prüfung gebeten. Er stellt aktuell keinen Ergänzungs- oder Anpassungsbedarf an der DeQS-RL fest."}, {"stelle": "adressat.3", "art": "adressat", "unser": "Laut Rückmeldung des UA QS hat das IQTIG die Ergebnisse auf Bitte des Unterausschusses geprüft. Es kündigte an, im Rahmen der laufenden Überarbeitung des QS-Verfahrens PCI den Indikator 56000 weiterzuentwickeln."}, {"stelle": "adressat.4", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung der DRG aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt."}, {"stelle": "adressat.5", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung der DGN aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt."}, {"stelle": "adressat.6", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung der DGK aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt."}, {"stelle": "adressat.7", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des ÄZQ aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt."}, {"stelle": "adressat.8", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung der DEGAM aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das multizentrische Vorhaben ENLIGHT-KHK untersuchte prospektiv, wie häufig die Indikation zur Herzkatheteruntersuchung (HKU) bei Verdacht auf chronische KHK der Nationalen Versorgungsleitlinie KHK (NVL-KHK) entspricht. Außerdem modellierte es die gesundheitsökonomischen Folgen einer vollständig leitlinienadhärenten Indikationsstellung, erhob in Interviews mit niedergelassenen Ärzt:innen Einflussfaktoren auf leitlinienadhärentes Vorgehen und entwickelte einen Selektivvertragsentwurf. Von Januar 2019 bis August 2021 wurden in neun Krankenhäusern 901 AOK-Versicherte eingeschlossen. Die Leitlinienadhärenz der durchgeführten HKU lag nach NVL-KHK bei 25,6 % (169 Patient:innen). Im Entscheidungsmodell (GKV-Perspektive, ein Jahr) betrugen die Kosten je Person und Abklärung 2.206 € bei realer und 1.398 € bei perfekter Leitlinienadhärenz (Differenz 807 €); die MACE lagen bei 0,0036 gegenüber 0,0019, was der Bericht als „marginale Verringerung“ bezeichnet. In den Interviews mit 15 Ärzt:innen wurden 35 Einflussfaktoren identifiziert, wobei Gesundheitssystemfaktoren von allen Befragten thematisiert wurden. Die Zielfallzahl wurde von 2.500 über 1.500 auf 900 gesenkt. Die Aussagekraft hängt zudem an einem selbst entwickelten, nicht spezifisch validierten Patient:innenfragebogen zur Bestimmung der Vortest-Wahrscheinlichkeit, am nicht vergleichenden Studiendesign und an der Beschränkung auf Versicherte zweier AOKen. Ob der Vertragsentwurf die strukturellen Defizite überwinden kann, ist laut Bericht offen."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die Leitlinienadhärenz der durchgeführten HKU nach NVL-KHK lag in der Gesamtkohorte bei 25,6 % (169 Patient:innen); dies war der primäre Endpunkt."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Im gesundheitsökonomischen Modell betrugen die Kosten je Person und Abklärung in der Gesamtkohorte (n=901) 2.206 € bei realer und 1.398 € bei perfekter Leitlinienadhärenz, die MACE 0,0036 gegenüber 0,0019. Der Bericht beschreibt dies als Kostenreduktion um 807 € bei einer „marginalen Verringerung“ der MACE um 0,0017."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Laut Bericht sind die Effektivitätsunterschiede marginal: Zur Vermeidung eines MACE müssten 558 Patient:innen leitliniengerecht behandelt werden. Die Kostenunterschiede nennt der Bericht substantiell."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "In den Interviews thematisierten alle befragten Ärzt:innen Gesundheitssystemfaktoren, überwiegend als unzureichende Versorgungsstrukturen und damit als Barrieren für eine leitlinienadhärente KHK-Versorgung."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die ursprünglich geplante Zielfallzahl von 2.500 Patient:innen wurde auf 1.500 und schließlich auf 900 gesenkt; Einschlusspauschale und Einschlusszeitraum wurden angepasst."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Der Patient:innenfragebogen, auf dem die Ermittlung der Beschwerdekategorie und damit der VTW beruht, wurde selbst entwickelt und nicht spezifisch validiert."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die beobachtete Adhärenz von 26 %, auf der die gesundheitsökonomische Analyse aufbaut, stammt aus einem nicht vergleichenden Design; Verzerrungen in den Vergleichsgruppen sind daher nicht gänzlich auszuschließen. Zur Minimierung wurden Primär- und GKV-Routinedaten verknüpft, die Ergebnisse sehen die Autor:innen durch Modellvalidierung und Sensitivitätsanalysen bestätigt."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Ob der Vertragsentwurf die bestehenden Strukturdefizite überwinden kann, insbesondere die Unterversorgung mit nicht-invasiver Bildgebung und die ökonomischen Fehlanreize, ist laut Bericht offen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Anzahl der Einschlusszentren: Auf S. 10 ist von „zehn rekrutierenden Einschlusszentren“ die Rede, auf S. 4, 13 und 26 von neun Zentren bzw. Krankenhäusern."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Rangfolge der Endpunkte: Laut Text (S. 19) war der Grad der Leitlinienadhärenz der primäre Endpunkt; die HKU-assoziierten MACE werden laut Abbildung 1 ebenfalls als primär geführt, die Abbildung des Indikationsstellungsprozesses (TP I) gleichfalls."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Bezugsgröße der Leitlinienadhärenz: 169 Patient:innen werden mit 25,6 % „in der Gesamtkohorte“ angegeben (S. 27). Dieser Anteil entspricht weder den 901 eingeschlossenen Patient:innen noch den 687 der Hauptkohorten mit HKU; der Nenner wird in den vorliegenden Abschnitten nicht genannt."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Zeitraum der Interviews: S. 23 nennt zwei Interviewreihen von November 2020 bis April 2021, S. 32 einen Befragungszeitraum von Oktober 2020 bis April 2021."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Validität des Fragebogens: S. 16 hält fest, dass keine spezifische Validierung des selbst entwickelten Fragebogens erfolgt ist; S. 35 bezeichnet Fragebogen und Auswertungsregeln als „geeignete Instrumente“ zur Ermittlung der VTW."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Hochrechnung der Einsparungen: Auf S. 39 wird der Betrag für das 20-%-Szenario als „€ 71,6“ ohne Einheit „Mio.“ angegeben, der für das 10-%-Szenario als „€ 35,8 Mio.“."}, {"stelle": "bericht_unstimmig.6", "art": "aussage", "unser": "Angefragte Kliniken: S. 10 nennt die Anfrage aller Kliniken mit Studientätigkeit (> 20) im Versorgungsgebiet, S. 12 „weitere knapp 30 Kliniken“; ob es sich um dieselben Kliniken handelt, geht aus den Abschnitten nicht hervor."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Subgruppe niedrige Vortest-Wahrscheinlichkeit (VTW <15 %): Perfekte Leitlinienadhärenz reduzierte die Kosten im Modell im Durchschnitt um 502 € je Patient:in."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Subgruppe mittlere VTW (15–85 %): Perfekte Leitlinienadhärenz reduzierte die Kosten im Modell im Durchschnitt um 901 € je Patient:in. Die Autor:innen führen dies darauf zurück, dass bei vielen Patient:innen keine nicht-invasive Bildgebung erfolgt war."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Subgruppe hohe VTW (>85 %): Perfekte Leitlinienadhärenz war im Modell um 78 € teurer als reale Leitlinienadhärenz."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "In der Gesamtkohorte und bei VTW 15–85 % wies perfekte Leitlinienadhärenz geringere Kosten und weniger MACE auf als reale; bei VTW <15 % und >85 % ist das inkrementelle Kosten-Effektivitäts-Verhältnis nicht definiert."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "In der probabilistischen Sensitivitätsanalyse war perfekte Leitlinienadhärenz in 99,3 % der Wiederholungen mit geringeren Kosten und MACE verbunden."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "In der deterministischen Sensitivitätsanalyse hatte die Wahrscheinlichkeit einer HKU nach nicht-invasiver Bildgebung bei moderater VTW unter perfekter Leitlinienadhärenz den größten Einfluss auf die Kostenunterschiede (+12/−11 %). Der Kostenunterschied lag dabei bei mindestens 700 €."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Unter den Kostenparametern hatten die Kosten für Koronar-CT und Bypass mit 4–5 % den größten Einfluss auf die Kostenunterschiede."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "In Szenarien mit 90 %, 80 % bzw. 70 % Leitlinienadhärenz betrugen die Kostenunterschiede zur realen Adhärenz durchschnittlich 679 €, 555 € bzw. 440 € je Person und Abklärung. Bei 70 % lag der MACE-Unterschied bei 0,0011, die Kosten bei 1.766 € gegenüber 2.206 €."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Kostendifferenz von 807 € entspricht laut Bericht etwa einem Drittel der Kosten einer stationären HKU (2.534 €) bzw. etwa den halben Kosten einer ambulanten HKU (ca. 400 €)."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Hochgerechnet auf geschätzte 600.000 HKU bei stabiler KHK wären nach Bericht 446.000 HKU nicht leitlinienadhärent."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Laut Hochrechnung könnte eine leitliniengerechte Indikationsstellung bei 10 % bzw. 20 % der nicht leitliniengerecht Versorgten (Basis ca. 600.000 HKU jährlich) Einsparungen von jährlich 35,8 Mio. € bzw. 71,6 € (Einheit im Zitat ohne „Mio.“) für die GKV ergeben."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Von Januar 2019 bis August 2021 wurden in neun Krankenhäusern in Nordrhein-Westfalen und Hamburg 901 Patient:innen eingeschlossen. Je Zentrum wurde im Mittel über 14,3 Monate rekrutiert (Median 10,5 Monate)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Von den 901 Patient:innen entfielen 687 auf die Hauptkohorten mit durchgeführter HKU und 214 auf die Nebenkohorten."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Das mittlere jährliche HKU-Volumen je Studienzentrum betrug 1.880 (Bereich 830–4.500; Median 1.330)."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Die 901 Patient:innen waren im Mittel 64,9 Jahre alt (SD 11,8), 58,2 % waren männlich. 80,6 % hatten eine arterielle Hypertonie, 29,9 % einen Diabetes mellitus und 43,1 % eine bekannte KHK."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Von allen Patient:innen hatten 3,8 % eine niedrige, 85,8 % eine mittlere und 5,3 % eine hohe Vortest-Wahrscheinlichkeit für eine chronische KHK."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Alter (64,9 vs. 68,5 Jahre) und Männeranteil (58,2 vs. 63,9 %) bezeichnet der Bericht als vergleichbar mit dem Bundesqualitätsbericht QS-PCI 2021; dies unterstreiche aus seiner Sicht die Repräsentativität."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Fragebogen und Auswertungsregeln bezeichnet der Bericht als geeignete Instrumente, um die Beschwerdekategorien zur Ermittlung der VTW unabhängig von der ärztlichen Dokumentation zu erfassen."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Der Zugang zur HKU wurde im Vergleich zu nicht-invasiven Ischämie-Tests hinsichtlich Erreichbarkeit, Wartezeit und Vergütung weitestgehend als besser, schneller bzw. ausreichend beschrieben. Zum Teil wurde dies ausdrücklich als Grund für rein diagnostische, nicht leitlinienadhärente HKU genannt."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Insgesamt wurden 35 hinderliche und/oder förderliche Einflussfaktoren auf den Ebenen Patient:innen, Leistungserbringer, Leitlinien und Gesundheitssystem identifiziert."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Präferenzen der Patient:innen für bestimmte Diagnostik, Therapie oder Ärzt:innen wurden mehrheitlich als Herausforderung für eine leitlinienadhärente Versorgung gesehen."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Patient:innen-, Leistungserbringer- und Leitlinienfaktoren wurden seltener genannt als Gesundheitssystemfaktoren. Der Bericht hält sie dennoch für bedeutsam, weil sie systemische Barrieren ver- oder entschärfen können."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Befragt wurden von Oktober 2020 bis April 2021 15 Ärzt:innen aus 14 Praxen (10 Hausärzt:innen, 5 niedergelassene Kardiolog:innen), davon 14 über Ärztenetze rekrutiert."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Die qualitativen Ergebnisse stehen laut Bericht weitestgehend in inhaltlicher Kongruenz zu einer qualitativen Befragung im Rahmen der KARDIO-Studie."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Aus den Vertragsworkshops (TP III) entstand ein Modell-Selektivvertragsentwurf nach §140a SGB V mit Vertragsmodulen, u. a. zu medizinischen Leistungsinhalten, Strukturanforderungen und Vergütungsoptionen."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Die in TP II ermittelten Abweichungswerte zwischen leitliniengerechter und beobachteter Versorgung zeigten laut Bericht den Handlungsspielraum bei der Vergütungsgestaltung im Vertrag auf."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Eingeschlossen wurden nur Versicherte der AOK Rheinland/Hamburg und der AOK NORDWEST. Der Bericht hält die Repräsentativität dadurch für möglicherweise vermindert, nimmt aber Übertragbarkeit an, da diese Versicherten 30–35 % der Patient:innen der Zentren ausmachen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Rekrutierung von Zentren war erschwert: Nach einem Wechsel der Projektleitung sprangen Projektpartner ab. Angefragte Kliniken lehnten aus finanziellen Gründen ab, zum Teil auch aus Sorge vor negativen Auswirkungen bei Offenlegung der Indikationsqualität."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Von knapp 30 zusätzlich angefragten Kliniken erklärten sich vier zur Teilnahme bereit."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Einschlusspauschale war nicht kostendeckend und nicht konkurrenzfähig mit industriegesponserten Studien. Die Corona-Pandemie führte laut Bericht über weniger elektive Herzkatheter und Verbote der Studientätigkeit zu einem deutlich reduzierten Patient:inneneinschluss."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Während der Rekrutierung kam es pandemiebedingt zur Reduktion geplanter HKU und zu Rekrutierungsunterbrechungen. Die Autor:innen gehen dennoch von Übertragbarkeit aus und halten eine eher überschätzte Leitlinienadhärenz für möglich."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Patient:innen mit unzureichenden Deutschkenntnissen konnten nicht eingeschlossen werden."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Zur Indikationsqualität bei Leistungserbringern mit reinem Elektivbetrieb (z. B. Praxiskliniken), auf die ca. 10 % der jährlichen Herzkatheter entfallen, ist keine Aussage möglich."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die Leitlinienadhärenz wurde primär nach NVL-KHK beurteilt, da die ESC-CCS-Leitlinie 2019 erst nach Rekrutierungsstart erschien; die ESC-CCS-Adhärenz wurde nur additiv ermittelt."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Eine separate Berechnung der Leitlinienadhärenz für einzelne Kohorten war nicht vorgesehen."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Leitlinienadhärenz der nicht-invasiven Bildgebung war nicht Gegenstand der Studie. Deren Kosten wurden im Modell kumuliert, was laut Bericht zur Unterschätzung des Einsparpotenzials in einer VTW-Gruppe führte."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Bei hoher VTW begünstigte die Kumulierung der Kosten nicht-invasiver Tests laut Bericht den Arm mit realer Leitlinienadhärenz etwas."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Leitlinienkonforme und nicht leitlinienkonforme PCIs wurden nicht unterschieden, wodurch die Leitlinienadhärenz bei perfekter Adhärenz etwas überschätzt worden sein könnte."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Für einzelne nicht-invasive Bildgebungsverfahren waren wegen zu kleiner Subgruppen keine belastbaren Aussagen zur Kosten-Effektivität möglich."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Die geplanten Face-to-Face-Fokusgruppen mit niedergelassenen Ärzt:innen ließen sich nicht umsetzen; stattdessen wurden telefonische Einzelinterviews geführt und eine Aufwandsentschädigung eingeführt."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Wegen Rekrutierungshürden war die Interviewstichprobe nicht vollständig kontrastiv, was Über- oder Unterrepräsentation von Perspektiven zur Folge haben kann. Ärzt:innen aus Medizinischen Versorgungszentren wurden nicht rekrutiert."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Fragen nach Übertragbarkeit und Gültigkeit der qualitativen Ergebnisse können laut Bericht nicht adressiert werden. Die formative Analyse ging nur unter diesem Vorbehalt als mögliche Anhaltspunkte in den Vertragsentwurf ein."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Die Projektlaufzeit musste bis 30.06.2022 verlängert werden, vor allem wegen der verzögerten Rekrutierung. Zur Wahrung der Ausgabenneutralität wurden Stellenanteile reduziert, zudem war der Aufwand für die Vertragsmodule höher als erwartet."}]};
+const D = {"projekt_id": 128, "akronym": "ENLIGHT-KHK", "kennung": "I_aocA89XuXF", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Nach Auffassung des Ausschusses hat das Projekt die Versorgungspraxis bei der Indikationsstellung zur Herzkatheteruntersuchung erfolgreich aufgezeigt und alle Fragestellungen umfassend adressiert. Als primärer Endpunkt wurde eine geringe Leitlinienadhärenz von ca. 25,6 % ermittelt; sie ging überwiegend auf den Verzicht auf nicht-invasive bildgebende Diagnostik zurück. Die Modellierung zeigte für perfekte Leitlinienadhärenz geringere Kosten und marginal weniger MACE. Die Validität ist eingeschränkt: Die Fallzahl war deutlich reduziert, der Patientenfragebogen nicht validiert und die Vortestwahrscheinlichkeit teils retrospektiv erfasst. Hinzu kommen die Abweichung der verwendeten NVL von der neueren ESC-Leitlinie und die kleine Datenbasis der Modellierung. Trotz dieser Limitationen sieht der Ausschuss Hinweise auf ein Kosteneinsparungspotenzial und leitet die Erkenntnisse zur Unterstützung einer leitliniengerechten Versorgung weiter."}, {"stelle": "studiendesign", "art": "text", "unser": "Mixed Methods"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Deutlich reduzierte Fallzahl schränkt die Validität ein"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Patientenfragebogen nicht validiert"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Teils retrospektive Erfassung der Vortestwahrscheinlichkeit bei bereits durchgeführter HKU"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Die zugrunde gelegte NVL-KHK weicht stark von der nach Studienbeginn publizierten, restriktiveren ESC-Leitlinie ab"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Parameter der gesundheitsökonomischen Modellierung stammen nur aus der kleinen Studienpopulation; die Verallgemeinerbarkeit ist begrenzt"}, {"stelle": "befund.1", "art": "befund", "unser": "Die beobachtete Leitlinienadhärenz der durchgeführten HKU bei den teilnehmenden Patientinnen und Patienten mit möglicher obstruktiver KHK (primärer Endpunkt) war mit ca. 25,6 % gering."}, {"stelle": "befund.6", "art": "befund", "unser": "Tendenz der Ergebnisse auch bei Auswertung nach neuer ESC-Leitlinie nicht substanziell verändert"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Leitlinienadhärenz der durchgeführten Herzkatheteruntersuchung (Einschätzung des Ausmaßes von Leitlinienabweichungen in der Indikationsstellung zur HKU)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Abbildung des Indikationsstellungsprozesses zur HKU bei Patient:innen mit (potenzieller) obstruktiver KHK"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Einschätzung des Auftretens von ggf. mit einer HKU assoziierten MACE (schwerwiegende unerwünschte kardiovaskuläre Ereignisse)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Kosten pro Person und Abklärung (Gesamtkohorte) – Vergleich hypothetischer und realer Kosten einer leitlinienadhärenten Indikationsstellung"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "MACE pro Person und Abklärung (Gesamtkohorte)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Kosten pro Person und Abklärung in Subgruppe VTW < 15%"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Kosten pro Person und Abklärung in Subgruppe VTW 15-85%"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Kosten pro Person und Abklärung in Subgruppe VTW >85%"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Identifikation von hinderlichen und förderlichen Faktoren für eine leitlinienadhärente Versorgungspraxis"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Ressourcenverbrauch nicht-invasive Diagnostik (reale vs. perfekte Leitlinienadhärenz)"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Entwicklung von Empfehlungen zu Versorgungs- und Vergütungsmodellen (Entwicklungspotenziale)"}, {"stelle": "adressat.3", "art": "adressat", "unser": "Laut Rückmeldung des UA QS hat das IQTIG die Ergebnisse auf Bitte des Unterausschusses geprüft. Es kündigte an, im Rahmen der laufenden Überarbeitung des QS-Verfahrens PCI den Indikator 56000 weiterzuentwickeln."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das multizentrische Vorhaben ENLIGHT-KHK untersuchte prospektiv, wie häufig die Indikation zur Herzkatheteruntersuchung (HKU) bei Verdacht auf chronische KHK der Nationalen Versorgungsleitlinie KHK (NVL-KHK) entspricht. Außerdem modellierte es die gesundheitsökonomischen Folgen einer vollständig leitlinienadhärenten Indikationsstellung, erhob in Interviews mit niedergelassenen Ärzt:innen Einflussfaktoren auf leitlinienadhärentes Vorgehen und entwickelte einen Selektivvertragsentwurf. Von Januar 2019 bis August 2021 wurden in neun Krankenhäusern 901 AOK-Versicherte eingeschlossen. Die Leitlinienadhärenz der durchgeführten HKU lag nach NVL-KHK bei 25,6 % (169 Patient:innen). Im Entscheidungsmodell (GKV-Perspektive, ein Jahr) betrugen die Kosten je Person und Abklärung 2.206 € bei realer und 1.398 € bei perfekter Leitlinienadhärenz (Differenz 807 €); die MACE lagen bei 0,0036 gegenüber 0,0019, was der Bericht als „marginale Verringerung“ bezeichnet. In den Interviews mit 15 Ärzt:innen wurden 35 Einflussfaktoren identifiziert, wobei Gesundheitssystemfaktoren von allen Befragten thematisiert wurden. Die Zielfallzahl wurde von 2.500 über 1.500 auf 900 gesenkt. Die Aussagekraft hängt zudem an einem selbst entwickelten, nicht spezifisch validierten Patient:innenfragebogen zur Bestimmung der Vortest-Wahrscheinlichkeit, am nicht vergleichenden Studiendesign und an der Beschränkung auf Versicherte zweier AOKen. Ob der Vertragsentwurf die strukturellen Defizite überwinden kann, ist laut Bericht offen."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die Leitlinienadhärenz der durchgeführten HKU nach NVL-KHK lag in der Gesamtkohorte bei 25,6 % (169 Patient:innen); dies war der primäre Endpunkt."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Im gesundheitsökonomischen Modell betrugen die Kosten je Person und Abklärung in der Gesamtkohorte (n=901) 2.206 € bei realer und 1.398 € bei perfekter Leitlinienadhärenz, die MACE 0,0036 gegenüber 0,0019. Der Bericht beschreibt dies als Kostenreduktion um 807 € bei einer „marginalen Verringerung“ der MACE um 0,0017."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Laut Bericht sind die Effektivitätsunterschiede marginal: Zur Vermeidung eines MACE müssten 558 Patient:innen leitliniengerecht behandelt werden. Die Kostenunterschiede nennt der Bericht substantiell."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die ursprünglich geplante Zielfallzahl von 2.500 Patient:innen wurde auf 1.500 und schließlich auf 900 gesenkt; Einschlusspauschale und Einschlusszeitraum wurden angepasst."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Der Patient:innenfragebogen, auf dem die Ermittlung der Beschwerdekategorie und damit der VTW beruht, wurde selbst entwickelt und nicht spezifisch validiert."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die beobachtete Adhärenz von 26 %, auf der die gesundheitsökonomische Analyse aufbaut, stammt aus einem nicht vergleichenden Design; Verzerrungen in den Vergleichsgruppen sind daher nicht gänzlich auszuschließen. Zur Minimierung wurden Primär- und GKV-Routinedaten verknüpft, die Ergebnisse sehen die Autor:innen durch Modellvalidierung und Sensitivitätsanalysen bestätigt."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Anzahl der Einschlusszentren: Auf S. 10 ist von „zehn rekrutierenden Einschlusszentren“ die Rede, auf S. 4, 13 und 26 von neun Zentren bzw. Krankenhäusern."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Rangfolge der Endpunkte: Laut Text (S. 19) war der Grad der Leitlinienadhärenz der primäre Endpunkt; die HKU-assoziierten MACE werden laut Abbildung 1 ebenfalls als primär geführt, die Abbildung des Indikationsstellungsprozesses (TP I) gleichfalls."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Bezugsgröße der Leitlinienadhärenz: 169 Patient:innen werden mit 25,6 % „in der Gesamtkohorte“ angegeben (S. 27). Dieser Anteil entspricht weder den 901 eingeschlossenen Patient:innen noch den 687 der Hauptkohorten mit HKU; der Nenner wird in den vorliegenden Abschnitten nicht genannt."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Projektergebnisse zur Information an die Unterausschüsse Methodenbewertung und Qualitätssicherung des G-BA, das IQTIG, die DRG, die DGN, die DGK, das ÄZQ und die DEGAM weiter. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle übernimmt die Weiterleitung."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Die Verallgemeinerbarkeit der gesundheitsökonomischen Ergebnisse ist begrenzt, da die Modellparameter nur der kleinen Studienpopulation entnommen wurden. Der Ausschuss verweist außerdem auf die Aufnahme der Kardio-CT in den vertragsärztlichen Leistungskatalog, deren Auswirkungen der G-BA in den nächsten fünf Jahren evaluieren wird."}, {"stelle": "befund.0", "art": "befund", "unser": "Aktuelle Versorgungspraxis in der Indikationsstellung zur HKU aufgezeigt und evaluiert"}, {"stelle": "befund.2", "art": "befund", "unser": "Modelliertes Szenario perfekter Leitlinienadhärenz mit geringeren Kosten und marginal weniger MACE"}, {"stelle": "befund.3", "art": "befund", "unser": "Einflussfaktoren auf leitlinienadhärente Versorgung durch qualitative Befragung identifiziert"}, {"stelle": "befund.4", "art": "befund", "unser": "Empfehlungen für Versorgungs- und Vergütungsmodelle entwickelt"}, {"stelle": "befund.5", "art": "befund", "unser": "Alle Fragestellungen umfassend adressiert"}, {"stelle": "befund.7", "art": "befund", "unser": "Hinweise auf Kosteneinsparungspotenzial durch stärkere Leitlinienorientierung"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Der UA MB hat sich in seiner Sitzung am 27. Juni 2024 mit dem Bericht befasst. Er hat daraus derzeit keinen weiteren Beratungsbedarf abgeleitet."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Der UA QS hat die Ergebnisse beraten und das IQTIG um eine Prüfung gebeten. Er stellt aktuell keinen Ergänzungs- oder Anpassungsbedarf an der DeQS-RL fest."}, {"stelle": "adressat.4", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung der DRG aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt."}, {"stelle": "adressat.5", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung der DGN aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt."}, {"stelle": "adressat.6", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung der DGK aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt."}, {"stelle": "adressat.7", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung des ÄZQ aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt."}, {"stelle": "adressat.8", "art": "adressat", "unser": "Im Dokument ist keine Rückmeldung der DEGAM aufgeführt. Ein Vermerk über ein Ausbleiben der Antwort fehlt."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "In den Interviews thematisierten alle befragten Ärzt:innen Gesundheitssystemfaktoren, überwiegend als unzureichende Versorgungsstrukturen und damit als Barrieren für eine leitlinienadhärente KHK-Versorgung."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Ob der Vertragsentwurf die bestehenden Strukturdefizite überwinden kann, insbesondere die Unterversorgung mit nicht-invasiver Bildgebung und die ökonomischen Fehlanreize, ist laut Bericht offen."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Zeitraum der Interviews: S. 23 nennt zwei Interviewreihen von November 2020 bis April 2021, S. 32 einen Befragungszeitraum von Oktober 2020 bis April 2021."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Validität des Fragebogens: S. 16 hält fest, dass keine spezifische Validierung des selbst entwickelten Fragebogens erfolgt ist; S. 35 bezeichnet Fragebogen und Auswertungsregeln als „geeignete Instrumente“ zur Ermittlung der VTW."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Hochrechnung der Einsparungen: Auf S. 39 wird der Betrag für das 20-%-Szenario als „€ 71,6“ ohne Einheit „Mio.“ angegeben, der für das 10-%-Szenario als „€ 35,8 Mio.“."}, {"stelle": "bericht_unstimmig.6", "art": "aussage", "unser": "Angefragte Kliniken: S. 10 nennt die Anfrage aller Kliniken mit Studientätigkeit (> 20) im Versorgungsgebiet, S. 12 „weitere knapp 30 Kliniken“; ob es sich um dieselben Kliniken handelt, geht aus den Abschnitten nicht hervor."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Subgruppe niedrige Vortest-Wahrscheinlichkeit (VTW <15 %): Perfekte Leitlinienadhärenz reduzierte die Kosten im Modell im Durchschnitt um 502 € je Patient:in."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Subgruppe mittlere VTW (15–85 %): Perfekte Leitlinienadhärenz reduzierte die Kosten im Modell im Durchschnitt um 901 € je Patient:in. Die Autor:innen führen dies darauf zurück, dass bei vielen Patient:innen keine nicht-invasive Bildgebung erfolgt war."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Subgruppe hohe VTW (>85 %): Perfekte Leitlinienadhärenz war im Modell um 78 € teurer als reale Leitlinienadhärenz."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "In der Gesamtkohorte und bei VTW 15–85 % wies perfekte Leitlinienadhärenz geringere Kosten und weniger MACE auf als reale; bei VTW <15 % und >85 % ist das inkrementelle Kosten-Effektivitäts-Verhältnis nicht definiert."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "In der probabilistischen Sensitivitätsanalyse war perfekte Leitlinienadhärenz in 99,3 % der Wiederholungen mit geringeren Kosten und MACE verbunden."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "In der deterministischen Sensitivitätsanalyse hatte die Wahrscheinlichkeit einer HKU nach nicht-invasiver Bildgebung bei moderater VTW unter perfekter Leitlinienadhärenz den größten Einfluss auf die Kostenunterschiede (+12/−11 %). Der Kostenunterschied lag dabei bei mindestens 700 €."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Unter den Kostenparametern hatten die Kosten für Koronar-CT und Bypass mit 4–5 % den größten Einfluss auf die Kostenunterschiede."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "In Szenarien mit 90 %, 80 % bzw. 70 % Leitlinienadhärenz betrugen die Kostenunterschiede zur realen Adhärenz durchschnittlich 679 €, 555 € bzw. 440 € je Person und Abklärung. Bei 70 % lag der MACE-Unterschied bei 0,0011, die Kosten bei 1.766 € gegenüber 2.206 €."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Kostendifferenz von 807 € entspricht laut Bericht etwa einem Drittel der Kosten einer stationären HKU (2.534 €) bzw. etwa den halben Kosten einer ambulanten HKU (ca. 400 €)."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Hochgerechnet auf geschätzte 600.000 HKU bei stabiler KHK wären nach Bericht 446.000 HKU nicht leitlinienadhärent."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Laut Hochrechnung könnte eine leitliniengerechte Indikationsstellung bei 10 % bzw. 20 % der nicht leitliniengerecht Versorgten (Basis ca. 600.000 HKU jährlich) Einsparungen von jährlich 35,8 Mio. € bzw. 71,6 € (Einheit im Zitat ohne „Mio.“) für die GKV ergeben."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Von Januar 2019 bis August 2021 wurden in neun Krankenhäusern in Nordrhein-Westfalen und Hamburg 901 Patient:innen eingeschlossen. Je Zentrum wurde im Mittel über 14,3 Monate rekrutiert (Median 10,5 Monate)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Von den 901 Patient:innen entfielen 687 auf die Hauptkohorten mit durchgeführter HKU und 214 auf die Nebenkohorten."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Das mittlere jährliche HKU-Volumen je Studienzentrum betrug 1.880 (Bereich 830–4.500; Median 1.330)."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Die 901 Patient:innen waren im Mittel 64,9 Jahre alt (SD 11,8), 58,2 % waren männlich. 80,6 % hatten eine arterielle Hypertonie, 29,9 % einen Diabetes mellitus und 43,1 % eine bekannte KHK."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Von allen Patient:innen hatten 3,8 % eine niedrige, 85,8 % eine mittlere und 5,3 % eine hohe Vortest-Wahrscheinlichkeit für eine chronische KHK."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Alter (64,9 vs. 68,5 Jahre) und Männeranteil (58,2 vs. 63,9 %) bezeichnet der Bericht als vergleichbar mit dem Bundesqualitätsbericht QS-PCI 2021; dies unterstreiche aus seiner Sicht die Repräsentativität."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Fragebogen und Auswertungsregeln bezeichnet der Bericht als geeignete Instrumente, um die Beschwerdekategorien zur Ermittlung der VTW unabhängig von der ärztlichen Dokumentation zu erfassen."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Der Zugang zur HKU wurde im Vergleich zu nicht-invasiven Ischämie-Tests hinsichtlich Erreichbarkeit, Wartezeit und Vergütung weitestgehend als besser, schneller bzw. ausreichend beschrieben. Zum Teil wurde dies ausdrücklich als Grund für rein diagnostische, nicht leitlinienadhärente HKU genannt."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Insgesamt wurden 35 hinderliche und/oder förderliche Einflussfaktoren auf den Ebenen Patient:innen, Leistungserbringer, Leitlinien und Gesundheitssystem identifiziert."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Präferenzen der Patient:innen für bestimmte Diagnostik, Therapie oder Ärzt:innen wurden mehrheitlich als Herausforderung für eine leitlinienadhärente Versorgung gesehen."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Patient:innen-, Leistungserbringer- und Leitlinienfaktoren wurden seltener genannt als Gesundheitssystemfaktoren. Der Bericht hält sie dennoch für bedeutsam, weil sie systemische Barrieren ver- oder entschärfen können."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Befragt wurden von Oktober 2020 bis April 2021 15 Ärzt:innen aus 14 Praxen (10 Hausärzt:innen, 5 niedergelassene Kardiolog:innen), davon 14 über Ärztenetze rekrutiert."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Die qualitativen Ergebnisse stehen laut Bericht weitestgehend in inhaltlicher Kongruenz zu einer qualitativen Befragung im Rahmen der KARDIO-Studie."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Aus den Vertragsworkshops (TP III) entstand ein Modell-Selektivvertragsentwurf nach §140a SGB V mit Vertragsmodulen, u. a. zu medizinischen Leistungsinhalten, Strukturanforderungen und Vergütungsoptionen."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Die in TP II ermittelten Abweichungswerte zwischen leitliniengerechter und beobachteter Versorgung zeigten laut Bericht den Handlungsspielraum bei der Vergütungsgestaltung im Vertrag auf."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Eingeschlossen wurden nur Versicherte der AOK Rheinland/Hamburg und der AOK NORDWEST. Der Bericht hält die Repräsentativität dadurch für möglicherweise vermindert, nimmt aber Übertragbarkeit an, da diese Versicherten 30–35 % der Patient:innen der Zentren ausmachen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die Rekrutierung von Zentren war erschwert: Nach einem Wechsel der Projektleitung sprangen Projektpartner ab. Angefragte Kliniken lehnten aus finanziellen Gründen ab, zum Teil auch aus Sorge vor negativen Auswirkungen bei Offenlegung der Indikationsqualität."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Von knapp 30 zusätzlich angefragten Kliniken erklärten sich vier zur Teilnahme bereit."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Einschlusspauschale war nicht kostendeckend und nicht konkurrenzfähig mit industriegesponserten Studien. Die Corona-Pandemie führte laut Bericht über weniger elektive Herzkatheter und Verbote der Studientätigkeit zu einem deutlich reduzierten Patient:inneneinschluss."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Während der Rekrutierung kam es pandemiebedingt zur Reduktion geplanter HKU und zu Rekrutierungsunterbrechungen. Die Autor:innen gehen dennoch von Übertragbarkeit aus und halten eine eher überschätzte Leitlinienadhärenz für möglich."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Patient:innen mit unzureichenden Deutschkenntnissen konnten nicht eingeschlossen werden."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Zur Indikationsqualität bei Leistungserbringern mit reinem Elektivbetrieb (z. B. Praxiskliniken), auf die ca. 10 % der jährlichen Herzkatheter entfallen, ist keine Aussage möglich."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die Leitlinienadhärenz wurde primär nach NVL-KHK beurteilt, da die ESC-CCS-Leitlinie 2019 erst nach Rekrutierungsstart erschien; die ESC-CCS-Adhärenz wurde nur additiv ermittelt."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Eine separate Berechnung der Leitlinienadhärenz für einzelne Kohorten war nicht vorgesehen."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Die Leitlinienadhärenz der nicht-invasiven Bildgebung war nicht Gegenstand der Studie. Deren Kosten wurden im Modell kumuliert, was laut Bericht zur Unterschätzung des Einsparpotenzials in einer VTW-Gruppe führte."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Bei hoher VTW begünstigte die Kumulierung der Kosten nicht-invasiver Tests laut Bericht den Arm mit realer Leitlinienadhärenz etwas."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Leitlinienkonforme und nicht leitlinienkonforme PCIs wurden nicht unterschieden, wodurch die Leitlinienadhärenz bei perfekter Adhärenz etwas überschätzt worden sein könnte."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Für einzelne nicht-invasive Bildgebungsverfahren waren wegen zu kleiner Subgruppen keine belastbaren Aussagen zur Kosten-Effektivität möglich."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Die geplanten Face-to-Face-Fokusgruppen mit niedergelassenen Ärzt:innen ließen sich nicht umsetzen; stattdessen wurden telefonische Einzelinterviews geführt und eine Aufwandsentschädigung eingeführt."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Wegen Rekrutierungshürden war die Interviewstichprobe nicht vollständig kontrastiv, was Über- oder Unterrepräsentation von Perspektiven zur Folge haben kann. Ärzt:innen aus Medizinischen Versorgungszentren wurden nicht rekrutiert."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Fragen nach Übertragbarkeit und Gültigkeit der qualitativen Ergebnisse können laut Bericht nicht adressiert werden. Die formative Analyse ging nur unter diesem Vorbehalt als mögliche Anhaltspunkte in den Vertragsentwurf ein."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "Die Projektlaufzeit musste bis 30.06.2022 verlängert werden, vor allem wegen der verzögerten Rekrutierung. Zur Wahrung der Ausgabenneutralität wurden Stellenanteile reduziert, zudem war der Aufwand für die Vertragsmodule höher als erwartet."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

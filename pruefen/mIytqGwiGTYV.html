@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF16035</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>28 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 63 Aussagen. Die übrigen
+35 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss spricht für das Projekt DELIVER keine Empfehlung aus. Der Beschluss und der Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt untersuchte als primären Endpunkt, wie weit einschlägige Leitlinienempfehlungen bei der Therapie von Brust- und Darmkrebs erfüllt wurden. Die Grundannahme, dass ältere Patientinnen und Patienten häufiger leitlinienabweichend behandelt werden, traf nur für Brustkrebspatientinnen zu, für Darmkrebs konnte sie nicht gezeigt werden. Es wurden insgesamt nur wenige signifikante Zusammenhänge gefunden. Die Methoden hält der Ausschuss grundsätzlich für angemessen. Er sieht aber methodische Schwächen bei der Operationalisierung der Endpunkte, bei den retrospektiv erfassten Registerdaten und bei den eher explorativen Zusammenhängen. Die Validität ist deshalb stark eingeschränkt, und es wurden keine validen Erkenntnisse zur praktischen Umsetzung gewonnen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">nicht angegeben</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Eine Empfehlung zur Nutzbarmachung in der Regelversorgung wird nicht ausgesprochen, da keine validen Erkenntnisse zur praktischen Umsetzung gewonnen wurden.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -178,14 +157,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
-  <p class="unser">Die Grundannahme häufigerer leitlinienabweichender Behandlung Älterer konnte für Darmkrebspatientinnen und -patienten nicht gezeigt werden</p>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
+  <p class="unser">Die Grundannahme häufigerer leitlinienabweichender Behandlung Älterer traf für Brustkrebspatientinnen zu, konnte für Darmkrebspatientinnen und -patienten jedoch nicht gezeigt werden</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung gab nur eine Hälfte des Beschlusssatzes wieder; die Neufassung nennt beide. Vorher stand hier:
+    <i>„Die Grundannahme häufigerer leitlinienabweichender Behandlung Älterer konnte für Darmkrebspatientinnen und -patienten nicht gezeigt werden“</i></p>
   <blockquote>„Die Analysen zeigen, dass die Grundannahme der Studie, dass ältere krebserkrankte Patientinnen und Patienten häufiger als jüngere abweichend von Leitlinienempfehlungen behandelt we rden, lediglich für Brustkrebspatientinnen zutrifft. Für die Darmkrebspatientinnen und -patienten konnte dies nicht gezeigt werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,14 +178,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Insgesamt nur wenige signifikante Zusammenhänge identifiziert</p>
+  
   <blockquote>„Insgesamt konnten nur wenige signifikante Zusammenhänge identifiziert werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -218,12 +199,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.2">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Unklar, ob das gewählte Set von Empfehlungen die Leitliniengemäßheit insgesamt angemessen repräsentiert</p>
+  
   <blockquote>„Es bleibt unklar, ob dieses Set von Empfehlungen die Leitliniengemäßheit der Behandlung insgesamt angemessen repräsentiert." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +218,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.3">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Methodische Schwächen bei der Operationalisierung der Endpunkte</p>
+  
   <blockquote>„Es bestehen methodische Schwächen bezüglich der Operationalisierung der Endpunkte sowie der retrospektiv erfassten Daten aus der Registerstichprobe und der eher explorativen Zusammenhänge. Damit ist die Validität der Ergebnisse stark eingeschränkt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +237,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.4">
   <h3>Hindernis laut Beschluss: Studienanlage</h3>
   <p class="unser">Retrospektiv erfasste Daten aus der Registerstichprobe</p>
+  
   <blockquote>„Es bestehen methodische Schwächen bezüglich der Operationalisierung der Endpunkte sowie der retrospektiv erfassten Daten aus der Registerstichprobe und der eher explorativen Zusammenhänge. Damit ist die Validität der Ergebnisse stark eingeschränkt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +256,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.5">
   <h3>Hindernis laut Beschluss: Auswertung und Statistik</h3>
   <p class="unser">Eher explorative Zusammenhänge</p>
+  
   <blockquote>„Es bestehen methodische Schwächen bezüglich der Operationalisierung der Endpunkte sowie der retrospektiv erfassten Daten aus der Registerstichprobe und der eher explorativen Zusammenhänge. Damit ist die Validität der Ergebnisse stark eingeschränkt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.5" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -292,33 +273,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.6">
-  <h3>Hindernis laut Beschluss: Übertragbarkeit unklar <span class="ampel gelb">hier sind wir unsicher</span></h3>
+  <h3>Hindernis laut Beschluss: Übertragbarkeit <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Keine validen Erkenntnisse zur praktischen Umsetzung in der Regelversorgung</p>
+  
   <blockquote>„Eine Empfehlung zur Nutzbarmachung der Erkenntnisse in die Regelversorgung kann auf Basis der vorliegenden Ergebnisse nicht ausgesprochen werden, da keine validen Erkenntnisse zur praktischen Umsetzung erlangt wurden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Methoden und Auswertungsstrategien waren angemessen</p>
-  <blockquote>„Die Methoden und Auswertungsstrategien waren angemessen, um die Fragestellung zu adressieren." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.6" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -330,14 +292,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde <span class="ampel gelb">hier sind wir unsicher</span></h3>
+  <h3>Was der Beschluss positiv vermerkt <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Schwacher signifikanter Einfluss der Selbstwirksamkeitserwartung auf die Leitlinienkongruenz bei älteren Brustkrebspatientinnen</p>
+  
   <blockquote>„Die Selbstwirksamkeitserwartung hatte beispielsweise einen schwachen signifikanten Einfluss auf die Leitlinienkongruenz der Behandlung älterer Brustkrebspatientinnen (≥70 Jahre)." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,12 +313,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Grad der Erfüllung einschlägiger Leitlinienempfehlungen bei der Therapie von Brust- und Darmkrebs (prozentualer Anteil befolgter Leitlinienempfehlungen; primäre Zielvariable)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +332,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Durchschnittliche Leitlinienkongruenz bei Darmkrebs, Vergleich der Altersgruppen</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +351,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Durchschnittliche Leitlinienkongruenz bei Brustkrebs, Vergleich der Altersgruppen</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +370,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Leitlinienkongruenz bei Darmkrebs nach Geschlecht</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +389,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Zusammenhang allgemeine Selbstwirksamkeit (ASKU) und Leitlinienkongruenz bei Brustkrebs (gesamt)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +408,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Zusammenhang allgemeine Selbstwirksamkeit (ASKU) und Leitlinienkongruenz bei Darmkrebs (gesamt)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +427,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Zusammenhang &quot;Erwartung an das künftige Leben&quot; und Leitlinienkongruenz</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +446,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Zusammenhang Kenntnis von Leitlinien und Leitlinienkongruenz</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +465,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Prozess-, Struktur- und Leitlinienqualität“</h3>
   <p class="unser">Diagnosealter als Prädiktor der Leitlinienkongruenz in der multiplen linearen Regression</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -523,11 +485,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Projekt DELIVER untersuchte mit qualitativen Interviews, einer Fragebogenerhebung und einem theoretischen (dialogphilosophischen) Teil, wovon die leitliniengerechte Behandlung älterer Patient*innen mit Brust- und Darmkrebs abhängt. Primärer Endpunkt war der Grad der Erfüllung einschlägiger Leitlinienempfehlungen je Fall. Weil die Rekrutierung über Kliniken 26 % der angestrebten 600 Fälle erreichte, wurden zusätzlich Patient*innen über Krebsregister angeschrieben, auch jüngere ab 50 Jahren. Daraus ergab sich eine Analysestichprobe von 1832, davon 769 im Alter ab 70 Jahren. Das geplante prä-/posttherapeutische Design wurde zugunsten einer rein posttherapeutischen Erhebung aufgegeben. Ältere wurden im Durchschnitt zu 69,4 % leitlinienkongruent behandelt, jüngere zu 80,0 % (p&lt;0,001). Laut Bericht ist dieser Unterschied stark durch Brustkrebs beeinflusst (77,5 % vs. 87,4 %, p&lt;0,001); bei Darmkrebs war kein altersbezogener Unterschied zu beobachten (p=0,620). Im qualitativen Teil erwiesen sich Angehörige und Vertrauenspersonen als wichtige Akteure der Therapieentscheidung. Die Aussagekraft hängt daran, dass nur ein kleiner Teil der Leitlinienempfehlungen operationalisiert werden konnte und nicht feststellbare Erfüllung vorläufig als Nichtbefolgung erfasst wurde. Hinzu kommen eine mögliche Selektion der Responder und eine nach Bericht nicht ohne Weiteres gegebene Übertragbarkeit auf andere Tumorerkrankungen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +503,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Behandlung älterer Patient*innen (≥70 Jahre) entsprach im Durchschnitt zu 69,4 % den Leitlinienempfehlungen, die jüngerer zu 80,0 %. Der Unterschied ist laut Welch&#x27;s t-Test signifikant (p&lt;0,001), nach Bericht aber stark durch die Altersunterschiede bei Brustkrebs beeinflusst.</p>
+  
   <blockquote>„„Während die Behandlung älterer Patient*innen im Durchschnitt zu 69,4% den Leitlinienempfehlungen entsprach, waren dies bei jüngeren Patient*innen 80,0%; dieser Unterschied ist gemäß Welch&#x27;s t-Test signifikant (p&lt;0,001). Dieses Ergebnis ist aber stark durch die Altersgruppenunterschiede bei Brustkrebs beeinflusst.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +522,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei Brustkrebs lag die durchschnittliche Leitlinienadhärenz der Älteren bei 77,5 % und der Jüngeren bei 87,4 %; der Unterschied ist statistisch signifikant (p&lt;0,001).</p>
+  
   <blockquote>„„Die durchschnittliche Leitlinienadhärenz liegt bei den älteren Brustkrebspatient*innen mit 77,5% deutlich unter den 87,4% bei jüngeren Patient*innen; dieser Unterschied ist statistisch signifikant (p&lt;0,001).“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,50 +541,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Darmkrebs allein ist laut Bericht kein altersbezogener Unterschied der Leitlinienkongruenz zu beobachten (p=0,620).</p>
+  
   <blockquote>„„Für Darmkrebs allein ist dieser altersbezogene Unterschied nicht zu beobachten (p=0.620).“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Die Grundannahme geringerer Leitlinienkongruenz bei Älteren bestätigte sich in Korrelations- und Regressionsanalysen für Brustkrebspatientinnen, nicht jedoch für Darmkrebsbetroffene.</p>
-  <blockquote>„„Die Grundannahme unserer Studie, dass ältere Krebspatient*innen in geringerem Ausmaß als jüngere den Leitlinien entsprechend behandelt werden, bestätigte sich in Korrelations - und Regressionsanalysen für die Brustkrebspatientinnen, nicht jedoch für Darmkrebsbetroffene.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.4">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Im qualitativen Studienteil stellten sich Angehörige und Vertrauenspersonen als wichtige Akteure für die Therapieentscheidung älterer Krebspatient*innen heraus.</p>
-  <blockquote>„„In den Arbeiten des qualitativen Studiendesigns haben sich insbesondere Angehörige und Vertrauenspersonen als für die Therapieent scheidung älterer Krebspatient*innen wichtige Akteure herausgestellt.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -635,13 +559,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Die Rekrutierung über die Kliniken blieb hinter den Erwartungen zurück: 157 Patient*innen (75 Darmkrebs, 82 Mammakarzinom) entsprechen 26 % der angestrebten 600. Auch weitere Kooperationspartner brachten nicht den gewünschten Effekt, sodass alternative Rekrutierungswege nötig wurden.</p>
+  <p class="unser">Über die kooperierenden Kliniken wurden 157 Patient*innen (75 Darmkrebs, 82 Mammakarzinom) rekrutiert; das entspricht 26 % der ursprünglich angestrebten 600. Zusätzlich wurden weitere Kooperationspartner und alternative Rekrutierungswege einbezogen.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Zusammenfassung enthielt eine Wertung, die im Bericht nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Die Rekrutierung über die Kliniken blieb hinter den Erwartungen zurück: 157 Patient*innen (75 Darmkrebs, 82 Mammakarzinom) entsprechen 26 % der angestrebten 600. Auch weitere Kooperationspartner brachten nicht den gewünschten Effekt, sodass alternative Rekrutierungswege nötig wurden.“</i></p>
   <blockquote>„„Über die kooperierenden Kliniken konnten 157 Patient *innen (75 mit Darmkrebs, 82 mit Mammakarzinom) rekrutiert werden. Dies entspricht 26% der ursprünglich angestrebten Fallzahl von 600.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +581,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen unzureichender Rekrutierung wurden zusätzlich Patient*innen über Krebsregister angeschrieben. Da über die Register keine prätherapeutische Rekrutierung möglich ist, wurden fortan nur posttherapeutische Fragebögen verwendet.</p>
+  
   <blockquote>„„Aufgrund unzureichender Rekrutierungszahlen wurde dieses Vorgehen angepasst und zusätzlich wurden Patient*innen über Krebsregister angeschrieben. […] ist eine prätherapeutische Rekrutierung hierüber nicht möglich, weshalb fortan nur posttherapeutische Fragebögen verwendet wurden.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,69 +600,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Im quantitativen Teil konnte nur ein kleiner Teil der Leitlinienempfehlungen berücksichtigt werden. Laut Bericht bleibt unklar, ob dieses Set die Leitliniengemäßheit der Behandlung insgesamt angemessen repräsentiert.</p>
+  
   <blockquote>„„Im Rahmen des quantitativen Studienteils konnte nur ein kleiner Teil der Leitlinienempfehlungen berücksichtigt werden. Es bleibt unklar, ob dieses Set von Empfehlungen die Leitliniengemäßheit der Behandlung insgesamt angemessen repräsentiert.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.4">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Konnte die Erfüllung einer Empfehlung algorithmisch nicht festgestellt werden, wurde vorläufig festgehalten, dass ihr nicht gefolgt wurde.</p>
-  <blockquote>„„Wenn anhand der algorithmischen Überprüfung der Behandlungsdaten keine Erfüllung der Empfehlung festgestellt werden konnte, wurde vorläufig festgehalten, dass der entsprechenden Leitlinienempfehlung nicht gefolgt wurde.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.6">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Der Bericht geht davon aus, dass sich Responder und Non-Responder auch in weiteren Merkmalen unterscheiden, die die interessierenden Variablen beeinflussen.</p>
-  <blockquote>„„Es ist davon auszugehen, dass sich die Responder und Non-Responder auch in weiteren Merkmalen unterscheiden, die Einfluss auf die interessierenden Variablen haben.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.9">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Die Ergebnisse unterschieden sich teilweise je nach Tumorentität. Eine Übertragbarkeit auf andere Tumorerkrankungen ist laut Bericht daher nicht ohne Weiteres gegeben.</p>
-  <blockquote>„„Hinsichtlich der Determinanten für leitliniengerechte Versorgung sind wir zu teilweise zu je nach Tumorentität zu unterschiedlichen Ergebnissen gelangt, so dass eine Verallgemeinerung und Übertragbarkeit der Ergebnisse auf ande re Tumorerkrank ungen nicht ohne Weiteres gegeben ist.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -751,11 +620,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 22: Der Satz „Die Bedeutung der Selbstwirksamkeitserwartung als Determinante ist mehr signifikant&quot; zur multivariaten Analyse aller Brustkrebspatientinnen ist mehrdeutig; vermutlich fehlt ein „nicht&quot;. Damit bleibt offen, ob die zuvor für ältere Brustkrebspatientinnen berichtete schwache, aber signifikante Selbstwirksamkeit multivariat bestehen bleibt.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -770,11 +639,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">S. 9: Die Begründung der theoretischen Sättigung lautet wörtlich, es sei „nicht zu erwarten [gewesen], dass die Hinzunahme noch weiterer ähnlicher Fälle keine neuen Aspekte hervortreten lassen würde&quot;. Durch die doppelte Verneinung besagt der Satz das Gegenteil der behaupteten Sättigung.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -784,16 +653,168 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>27 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>35 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss spricht für das Projekt DELIVER keine Empfehlung aus. Der Beschluss und der Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Eine Empfehlung zur Nutzbarmachung in der Regelversorgung wird nicht ausgesprochen, da keine validen Erkenntnisse zur praktischen Umsetzung gewonnen wurden.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Methoden und Auswertungsstrategien waren angemessen</p>
+  
+  <blockquote>„Die Methoden und Auswertungsstrategien waren angemessen, um die Fragestellung zu adressieren." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die Grundannahme geringerer Leitlinienkongruenz bei Älteren bestätigte sich in Korrelations- und Regressionsanalysen für Brustkrebspatientinnen, nicht jedoch für Darmkrebsbetroffene.</p>
+  
+  <blockquote>„„Die Grundannahme unserer Studie, dass ältere Krebspatient*innen in geringerem Ausmaß als jüngere den Leitlinien entsprechend behandelt werden, bestätigte sich in Korrelations - und Regressionsanalysen für die Brustkrebspatientinnen, nicht jedoch für Darmkrebsbetroffene.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.4">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Im qualitativen Studienteil stellten sich Angehörige und Vertrauenspersonen als wichtige Akteure für die Therapieentscheidung älterer Krebspatient*innen heraus.</p>
+  
+  <blockquote>„„In den Arbeiten des qualitativen Studiendesigns haben sich insbesondere Angehörige und Vertrauenspersonen als für die Therapieent scheidung älterer Krebspatient*innen wichtige Akteure herausgestellt.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.4">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Konnte die Erfüllung einer Empfehlung algorithmisch nicht festgestellt werden, wurde vorläufig festgehalten, dass ihr nicht gefolgt wurde.</p>
+  
+  <blockquote>„„Wenn anhand der algorithmischen Überprüfung der Behandlungsdaten keine Erfüllung der Empfehlung festgestellt werden konnte, wurde vorläufig festgehalten, dass der entsprechenden Leitlinienempfehlung nicht gefolgt wurde.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.6">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Der Bericht geht davon aus, dass sich Responder und Non-Responder auch in weiteren Merkmalen unterscheiden, die die interessierenden Variablen beeinflussen.</p>
+  
+  <blockquote>„„Es ist davon auszugehen, dass sich die Responder und Non-Responder auch in weiteren Merkmalen unterscheiden, die Einfluss auf die interessierenden Variablen haben.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.9">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Die Ergebnisse unterschieden sich teilweise je nach Tumorentität. Eine Übertragbarkeit auf andere Tumorerkrankungen ist laut Bericht daher nicht ohne Weiteres gegeben.</p>
+  
+  <blockquote>„„Hinsichtlich der Determinanten für leitliniengerechte Versorgung sind wir zu teilweise zu je nach Tumorentität zu unterschiedlichen Ergebnissen gelangt, so dass eine Verallgemeinerung und Übertragbarkeit der Ergebnisse auf ande re Tumorerkrank ungen nicht ohne Weiteres gegeben ist.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Über das Gesamtsample betrug die durchschnittliche Erfüllungsrate der überprüften Leitlinienempfehlungen 75,5 %. Den höchsten Wert hatten jüngere Brustkrebspatient*innen (87,4 %), den niedrigsten jüngere männliche Darmkrebspatienten (57,5 %).</p>
+  
   <blockquote>„„Die durchschnittliche Erfüllungsrate der überprüften Leitlinienempfehlungen beträgt über das gesamte Sample hinweg 75,5%. Die im Durchschnitt höchste Kongruenz […] der jüngeren Brustkrebspatient*innen […] (87,4% […]), während die jüngeren, männlichen Darmkrebspatienten den ungünstigsten Wert von 57,5% Übereinstimmung aufweisen.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +828,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei Darmkrebs lag der Durchschnittswert der leitlinienkongruenten Behandlung bei Frauen bei 0,626 und bei Männern bei 0,586; der Unterschied ist nicht statistisch signifikant (p=0,180).</p>
+  
   <blockquote>„„Der Durchschnittswert der leitlinienkongruenten Behandlung ist bei Frauen mit Darmkrebs geringfügig höher als bei Männern (0,626 bzw. 0,586). Der Unterschied dieser Mittelwerte ist jedoch nicht statistisch signifikant (p=0,180).“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +847,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Selbstwirksamkeitserwartung hat laut Bericht einen schwachen, aber signifikanten Einfluss auf die Leitlinienkongruenz der Behandlung älterer Brustkrebspatientinnen.</p>
+  
   <blockquote>„„Einen schwachen, aber signifikanten Einfluss auf die Leitlinienkongruenz der Behandlung älterer Brustkrebspatientinnen hat die Selbstwirksamkeitserwartung.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +866,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Einfluss der Erwartungen an das künftige Leben ist in der Gruppe aller Brustkrebspatientinnen nachweisbar, in den Subgruppen jüngerer und älterer Frauen aber nicht signifikant. In der multivariaten Analyse aller Brustkrebspatientinnen rückt das Alter bei Diagnose in den Vordergrund, und dieser Einfluss schwindet vollständig.</p>
+  
   <blockquote>„„wobei dieser Einfluss in der Gruppe aller Brustkrebspatientinnen nachweisbar ist, in den Subgruppen der jüngeren und älteren Frauen aber nicht signifikant ist. In der multivariaten Analyse aller Brustkrebspatientinnen rückt das Alter bei Diagnosestellung in den Vordergrund. […] der Einfluss der Erwartungen an das künftige Leben schwindet vollständig.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +885,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Es fand sich ein positiver Zusammenhang zwischen der Beurteilung der Therapie als der eigenen Situation angemessen und einer Abweichung von Leitlinienempfehlungen.</p>
+  
   <blockquote>„„Es fand sich ein positiver Zusammenhang zwischen der Beurteilung der jeweiligen Therapie als der eigenen Situation angemessen und Abweichung von Leitlinienempfehlungen.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +904,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Analysestichprobe umfasste 1832 Patient*innen, davon 769 im Alter ab 70 Jahren bei Diagnose. Damit wurden die geplanten Fallzahlen für Ältere bei Darmkrebs (378 statt 240) und bei Brustkrebs (391 statt 360) übertroffen.</p>
+  
   <blockquote>„„Für die primäre Analyse ergab sich somit eine Stichprobe von 1832 Patient*innen. Von diesen waren 769 Patient*innen zum Zeitpunkt ihrer Diagnose 70 Jahre oder älter […]. Damit konnten die geplanten Fallzahlen bei Darmkrebs (378 […], 240 geplant) und bei Brustkrebs (391 […], 360 geplant) übertroffen werden.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +923,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Den zugesandten Fragebogen füllten 51,4 % der über das Krebsregister Schleswig-Holstein angeschriebenen Patient*innen aus, beim Hamburgischen Krebsregister 28,9 %.</p>
+  
   <blockquote>„„Patient*innen aus dem Krebsregister Schleswig -Holstein haben in 51,4% der Fälle den zugesandten Fragebogen ausgefüllt, während diese Rate bei Patient*innen aus dem Hamburgischen Krebsregister bei 28,9% lag.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +942,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Teilnahmerate jüngerer Patient*innen lag bei 46,6 %, die älterer bei 35,3 %.</p>
+  
   <blockquote>„„Des Weiteren lassen sich bei jüngeren Patient*innen höhere Teilnehmerraten verzeichnen als bei älteren (46,6%, bzw. 35,3%).“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +961,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Bericht bezeichnet die Response als befriedigend, insbesondere bei den über das Krebsregister Schleswig-Holstein rekrutierten Patient*innen; er sieht Unterschiede in Bezug auf das Alter.</p>
+  
   <blockquote>„„Die Response auf die Studie war befriedigend, insbesondere im Falle der über das Krebsregister Schleswig -Holstein rekrutierten Patient*innen. Erwartungsgemäß sehen wir hier auch Unterschiede in Bezug au f das Alter.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +980,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im qualitativen Teil wurden 37 Patient*innen, 34 Angehörige und 38 Ärzt*innen interviewt; von 72 angefragten Ärzt*innen sagten 38 zu.</p>
+  
   <blockquote>„„Von 72 angefragten Ärzt*innen erklärten sich 38 zu einem Interview bereit. Somit konnten insgesamt 37 Patient*innen, 34 Angehörige und 38 Ärzt*innen interviewt werden.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +999,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">32 von 37 interviewten Patient*innen (86 %) gaben an, während der Krebserkrankung von einer Vertrauensperson begleitet worden zu sein.</p>
+  
   <blockquote>„„Von den 37 interviewten Patient*innen gaben 32 (86%) an während ihrer Krebserkrankung von einer Vertrauensperson begleitet worden zu sein.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1018,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Hinsichtlich Beteiligung und Einfluss auf die Therapieentscheidung wurden 30 „passive“ und 11 „aktive“ Vertrauenspersonen unterschieden. Patient*innen mit passiven Vertrauenspersonen waren im Median 73 Jahre alt, solche mit aktiven 80 Jahre.</p>
+  
   <blockquote>„„wurde zwischen „passiven&quot; (n=30) und „aktiven&quot; (n=11) Vertrauenspersonen unterschieden. […] Patient*innen mit „passiven&quot; Vertrauenspersonen waren im Schnitt jünger als jene Patient*innen mit „aktiven&quot; Vertrauenspersonen (Medianalter: 73 gegenüber 80).“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1037,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach den Interviews hat die Krebserkrankung mit dem Therapiegeschehen eine oft schon angebahnte Umkehr der Fürsorgebeziehung beschleunigt und manifestiert.</p>
+  
   <blockquote>„„Zwar war diese Umkehr der Fürsorgebeziehung häufig bereits im Vorfeld der Krebserkrankung angebahnt. Aus den Interviews geht jedoch eindeutig hervor, dass die Krebserkrankung und das Therapiegeschehen diesen Prozess der Umkehr beschleunigt und manifestiert hat.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1056,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach den Ärzt*inneninterviews bleibt der strukturierte, routinehafte Einbezug von Angehörigen in Therapiegespräche hinter den Forderungen der meisten onkologischen Leitlinien zurück. Werden Angehörige als beteiligt anerkannt, wird ihnen meist eine eher passive Unterstützerrolle zugestanden.</p>
+  
   <blockquote>„„dass die Realität von Therapiegesprächen hinsichtlich des strukturierten und routinehaften Einbezug von Angehörigen hinter dem zurückbleibt, was nicht zuletzt auch der Großteil der onkologischen Leitlinien fordert. […] wird ihnen dabei meist eine Rolle als eher passiver Unterstützer zugestanden.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1075,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Sichtweisen der Ärzt*innen auf Angehörige sind heterogen; sie reichen von Teil des Behandlungsteams über Mitbetroffene bis zu Störfaktoren in der Kommunikation.</p>
+  
   <blockquote>„„Die Heterogenität der erhobenen Sichtweisen (von z. B. „Angehörige als Teil des Behandlungsteams&quot; über „Angehörige als Mitbetroffene&quot; bis hin zu „Angehörige als Störfaktoren in der medizinischen Kommunikation &quot;)“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1094,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der theoretische Teil unterscheidet das Ärzt*innengespräch dialogphilosophisch in drei distinkte, prinzipiell inkommensurable Ebenen der Situation.</p>
+  
   <blockquote>„„Die existenzielle Fassung des Dialogbegriffs und die dialogphilosophische Analyse des Ärzt*innengesprächs ist geeignet, dieses Gespräch in drei distinkte und prinzipiell inkommensurable Ebenen der Situation zu unterscheiden“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1113,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Weil zu wenige Patient*innen sowohl einen prä- als auch einen posttherapeutischen Fragebogen ausgefüllt hatten, wurden auch bei den über Kliniken rekrutierten Patient*innen nur die Posttherapie-Fragebögen ausgewertet.</p>
+  
   <blockquote>„„Da eine zu geringe Zahl von Patient*innen sowohl einen prä- als auch einen post-therapeutischen Fragebogen ausgefüllt hat, wurden […] auch bei den über die kooperierenden Kliniken rekrutierte Patient*innen für die primäre Analyse nur die Posttherapie-Fragebögen berücksichtigt.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1132,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die für die Darstellung der Empfehlungen notwendige Information war nicht immer Teil der Behandlungsdokumentation; auch für die Aufnahme ins Krebsregister sind viele dieser Parameter nicht vorgesehen.</p>
+  
   <blockquote>„„Nicht immer war die für die Darstellung dieser Empfehlungen notwendige Information Teil der zur Verfügung gestellten Behandlungsdokumentation. Für die Aufnahme ins Krebsregister sind viele dieser Parameter ebenfalls nicht vorgesehen.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1151,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Detailliertere Non-Responder-Analysen waren nicht möglich, da für Non-Responder nur sehr wenige Charakteristika vorlagen.</p>
+  
   <blockquote>„„Detailliertere Non-Responder-Analysen waren nicht möglich, da für Non-Responder nur eine sehr geringe Zahl von Charakteristika vorlagen.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1170,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Im Krebsregister Schleswig-Holstein wurden nur Patient*innen angeschrieben, die einer Kontaktaufnahme zu Studienzwecken zugestimmt hatten. Sie waren damit hinsichtlich ihrer Teilnahmebereitschaft vorselektiert; in Hamburg gibt es diese Option nicht.</p>
+  
   <blockquote>„„Die angefragten Patient*innen waren somit hinsichtlich ihrer prinzipiellen Bereitschaft an regis terbezogenen Studien teilzunehmen vorselektiert. Eine solche Option gibt es beim Hamburgischen Krebsregister nicht.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1189,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Studie war explorativ in die Breite angelegt. Manche Befunde und Fragestellungen konnten nur angerissen werden und erfordern spezifischere Studiendesigns.</p>
+  
   <blockquote>„„Primäres Ansinnen der Studie war die Exploration eines komplexen Gegenstandsbereichs in die Breite. Folglich stießen wir auf Befunde und Fragestellungen, welche spezifischere und dedizierte Studiendesigns bedürfen […] und somit in dieser Studie nur angerissen werden konnten.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1208,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die realisierten Fallzahlen im qualitativen Teil blieben wegen geringerer Teilnahmebereitschaft geringfügig hinter dem Ziel von 40 Personen je Gruppe zurück.</p>
+  
   <blockquote>„„Gegenüber dem ursprünglichen Ziel von 40 Personen je Gruppe blieben die realisierten Fallzahlen geringfügig zurück, da die Teilnahmebereitschaft geringer als erwartet war.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1227,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen semi-strukturierter Leitfäden und offener Gesprächsführung wurde die konkrete Situation der Therapieentscheidung nicht in allen Interviews erörtert.</p>
+  
   <blockquote>„„Aufgrund der Semi-Strukturierung der Interviewleitfäden und der weitgehend offen gehaltenen […] Gesprächsführung wurde nicht in allen Interviews die konkrete Situation der Therapieentscheidung erörtert.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1246,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Ärzt*innen-Sample war bewusst breit angelegt, sodass nur ein Teil mit onkologischen Therapieentscheidungen befasst ist. Die Befunde zum Einbezug von Angehörigen haben daher laut Bericht vorläufigen Charakter.</p>
+  
   <blockquote>„„Somit ist nur ein Teil der interviewten Ärzt*innen mit der onkologischen Therapieentscheidungssituation befasst und die entsprechenden zentralen Befunde über den Stellenwert und Einbezug von Angehörigen und Vertrauenspersonen haben vorläufigen Charakter.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1265,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Ergebnisse der Ärzt*inneninterviews werden mit Blick auf eine geplante Veröffentlichung im Bericht nur kursorisch dargestellt.</p>
+  
   <blockquote>„„Zur Wahrung der Publikationsfähigkeit werden hier nur die wichtigsten Befunde kursorisch dargestellt.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1284,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für den theoretischen Teil gelten die Limitationen interpretativer, hermeneutischer Forschung; seine rahmenden Grundannahmen sind bestreitbare Setzungen.</p>
+  
   <blockquote>„„Für den theoretischen Teil gelten die methodenspezifischen Limitationen interpretativer und hermeneutisch ausgerichteter Forschung. […] stellen rahmende Grundannahmen kulturell verantwortete - und methodisch notwendige - Setzungen dar und können als solche bestritten werden.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1303,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Mögliche Einflüsse von Migration und Interkulturalität konnten nicht berücksichtigt werden.</p>
+  
   <blockquote>„„Mögliche Einflüsse von Migration und Interkulturalität konnten nicht berücksichtigt werden und wären ggf. mit einem angepassten Studiendesign einzuholen.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1332,28 +1353,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 34, "akronym": "DELIVER", "kennung": "mIytqGwiGTYV", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt DELIVER keine Empfehlung aus. Der Beschluss und der Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt untersuchte als primären Endpunkt, wie weit einschlägige Leitlinienempfehlungen bei der Therapie von Brust- und Darmkrebs erfüllt wurden. Die Grundannahme, dass ältere Patientinnen und Patienten häufiger leitlinienabweichend behandelt werden, traf nur für Brustkrebspatientinnen zu, für Darmkrebs konnte sie nicht gezeigt werden. Es wurden insgesamt nur wenige signifikante Zusammenhänge gefunden. Die Methoden hält der Ausschuss grundsätzlich für angemessen. Er sieht aber methodische Schwächen bei der Operationalisierung der Endpunkte, bei den retrospektiv erfassten Registerdaten und bei den eher explorativen Zusammenhängen. Die Validität ist deshalb stark eingeschränkt, und es wurden keine validen Erkenntnisse zur praktischen Umsetzung gewonnen."}, {"stelle": "studiendesign", "art": "text", "unser": "nicht angegeben"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine Empfehlung zur Nutzbarmachung in der Regelversorgung wird nicht ausgesprochen, da keine validen Erkenntnisse zur praktischen Umsetzung gewonnen wurden."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Grundannahme häufigerer leitlinienabweichender Behandlung Älterer konnte für Darmkrebspatientinnen und -patienten nicht gezeigt werden"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Insgesamt nur wenige signifikante Zusammenhänge identifiziert"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Unklar, ob das gewählte Set von Empfehlungen die Leitliniengemäßheit insgesamt angemessen repräsentiert"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Methodische Schwächen bei der Operationalisierung der Endpunkte"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Retrospektiv erfasste Daten aus der Registerstichprobe"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Eher explorative Zusammenhänge"}, {"stelle": "hindernis.6", "art": "hindernis", "unser": "Keine validen Erkenntnisse zur praktischen Umsetzung in der Regelversorgung"}, {"stelle": "befund.0", "art": "befund", "unser": "Methoden und Auswertungsstrategien waren angemessen"}, {"stelle": "befund.1", "art": "befund", "unser": "Schwacher signifikanter Einfluss der Selbstwirksamkeitserwartung auf die Leitlinienkongruenz bei älteren Brustkrebspatientinnen"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Grad der Erfüllung einschlägiger Leitlinienempfehlungen bei der Therapie von Brust- und Darmkrebs (prozentualer Anteil befolgter Leitlinienempfehlungen; primäre Zielvariable)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Durchschnittliche Leitlinienkongruenz bei Darmkrebs, Vergleich der Altersgruppen"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Durchschnittliche Leitlinienkongruenz bei Brustkrebs, Vergleich der Altersgruppen"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Leitlinienkongruenz bei Darmkrebs nach Geschlecht"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Zusammenhang allgemeine Selbstwirksamkeit (ASKU) und Leitlinienkongruenz bei Brustkrebs (gesamt)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Zusammenhang allgemeine Selbstwirksamkeit (ASKU) und Leitlinienkongruenz bei Darmkrebs (gesamt)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Zusammenhang \"Erwartung an das künftige Leben\" und Leitlinienkongruenz"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Zusammenhang Kenntnis von Leitlinien und Leitlinienkongruenz"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Diagnosealter als Prädiktor der Leitlinienkongruenz in der multiplen linearen Regression"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Projekt DELIVER untersuchte mit qualitativen Interviews, einer Fragebogenerhebung und einem theoretischen (dialogphilosophischen) Teil, wovon die leitliniengerechte Behandlung älterer Patient*innen mit Brust- und Darmkrebs abhängt. Primärer Endpunkt war der Grad der Erfüllung einschlägiger Leitlinienempfehlungen je Fall. Weil die Rekrutierung über Kliniken 26 % der angestrebten 600 Fälle erreichte, wurden zusätzlich Patient*innen über Krebsregister angeschrieben, auch jüngere ab 50 Jahren. Daraus ergab sich eine Analysestichprobe von 1832, davon 769 im Alter ab 70 Jahren. Das geplante prä-/posttherapeutische Design wurde zugunsten einer rein posttherapeutischen Erhebung aufgegeben. Ältere wurden im Durchschnitt zu 69,4 % leitlinienkongruent behandelt, jüngere zu 80,0 % (p<0,001). Laut Bericht ist dieser Unterschied stark durch Brustkrebs beeinflusst (77,5 % vs. 87,4 %, p<0,001); bei Darmkrebs war kein altersbezogener Unterschied zu beobachten (p=0,620). Im qualitativen Teil erwiesen sich Angehörige und Vertrauenspersonen als wichtige Akteure der Therapieentscheidung. Die Aussagekraft hängt daran, dass nur ein kleiner Teil der Leitlinienempfehlungen operationalisiert werden konnte und nicht feststellbare Erfüllung vorläufig als Nichtbefolgung erfasst wurde. Hinzu kommen eine mögliche Selektion der Responder und eine nach Bericht nicht ohne Weiteres gegebene Übertragbarkeit auf andere Tumorerkrankungen."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die Behandlung älterer Patient*innen (≥70 Jahre) entsprach im Durchschnitt zu 69,4 % den Leitlinienempfehlungen, die jüngerer zu 80,0 %. Der Unterschied ist laut Welch's t-Test signifikant (p<0,001), nach Bericht aber stark durch die Altersunterschiede bei Brustkrebs beeinflusst."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Bei Brustkrebs lag die durchschnittliche Leitlinienadhärenz der Älteren bei 77,5 % und der Jüngeren bei 87,4 %; der Unterschied ist statistisch signifikant (p<0,001)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Für Darmkrebs allein ist laut Bericht kein altersbezogener Unterschied der Leitlinienkongruenz zu beobachten (p=0,620)."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die Grundannahme geringerer Leitlinienkongruenz bei Älteren bestätigte sich in Korrelations- und Regressionsanalysen für Brustkrebspatientinnen, nicht jedoch für Darmkrebsbetroffene."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Im qualitativen Studienteil stellten sich Angehörige und Vertrauenspersonen als wichtige Akteure für die Therapieentscheidung älterer Krebspatient*innen heraus."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Rekrutierung über die Kliniken blieb hinter den Erwartungen zurück: 157 Patient*innen (75 Darmkrebs, 82 Mammakarzinom) entsprechen 26 % der angestrebten 600. Auch weitere Kooperationspartner brachten nicht den gewünschten Effekt, sodass alternative Rekrutierungswege nötig wurden."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Wegen unzureichender Rekrutierung wurden zusätzlich Patient*innen über Krebsregister angeschrieben. Da über die Register keine prätherapeutische Rekrutierung möglich ist, wurden fortan nur posttherapeutische Fragebögen verwendet."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Im quantitativen Teil konnte nur ein kleiner Teil der Leitlinienempfehlungen berücksichtigt werden. Laut Bericht bleibt unklar, ob dieses Set die Leitliniengemäßheit der Behandlung insgesamt angemessen repräsentiert."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Konnte die Erfüllung einer Empfehlung algorithmisch nicht festgestellt werden, wurde vorläufig festgehalten, dass ihr nicht gefolgt wurde."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Der Bericht geht davon aus, dass sich Responder und Non-Responder auch in weiteren Merkmalen unterscheiden, die die interessierenden Variablen beeinflussen."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Ergebnisse unterschieden sich teilweise je nach Tumorentität. Eine Übertragbarkeit auf andere Tumorerkrankungen ist laut Bericht daher nicht ohne Weiteres gegeben."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "S. 22: Der Satz „Die Bedeutung der Selbstwirksamkeitserwartung als Determinante ist mehr signifikant\" zur multivariaten Analyse aller Brustkrebspatientinnen ist mehrdeutig; vermutlich fehlt ein „nicht\". Damit bleibt offen, ob die zuvor für ältere Brustkrebspatientinnen berichtete schwache, aber signifikante Selbstwirksamkeit multivariat bestehen bleibt."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "S. 9: Die Begründung der theoretischen Sättigung lautet wörtlich, es sei „nicht zu erwarten [gewesen], dass die Hinzunahme noch weiterer ähnlicher Fälle keine neuen Aspekte hervortreten lassen würde\". Durch die doppelte Verneinung besagt der Satz das Gegenteil der behaupteten Sättigung."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Über das Gesamtsample betrug die durchschnittliche Erfüllungsrate der überprüften Leitlinienempfehlungen 75,5 %. Den höchsten Wert hatten jüngere Brustkrebspatient*innen (87,4 %), den niedrigsten jüngere männliche Darmkrebspatienten (57,5 %)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Bei Darmkrebs lag der Durchschnittswert der leitlinienkongruenten Behandlung bei Frauen bei 0,626 und bei Männern bei 0,586; der Unterschied ist nicht statistisch signifikant (p=0,180)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die Selbstwirksamkeitserwartung hat laut Bericht einen schwachen, aber signifikanten Einfluss auf die Leitlinienkongruenz der Behandlung älterer Brustkrebspatientinnen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Der Einfluss der Erwartungen an das künftige Leben ist in der Gruppe aller Brustkrebspatientinnen nachweisbar, in den Subgruppen jüngerer und älterer Frauen aber nicht signifikant. In der multivariaten Analyse aller Brustkrebspatientinnen rückt das Alter bei Diagnose in den Vordergrund, und dieser Einfluss schwindet vollständig."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Es fand sich ein positiver Zusammenhang zwischen der Beurteilung der Therapie als der eigenen Situation angemessen und einer Abweichung von Leitlinienempfehlungen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Analysestichprobe umfasste 1832 Patient*innen, davon 769 im Alter ab 70 Jahren bei Diagnose. Damit wurden die geplanten Fallzahlen für Ältere bei Darmkrebs (378 statt 240) und bei Brustkrebs (391 statt 360) übertroffen."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Den zugesandten Fragebogen füllten 51,4 % der über das Krebsregister Schleswig-Holstein angeschriebenen Patient*innen aus, beim Hamburgischen Krebsregister 28,9 %."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die Teilnahmerate jüngerer Patient*innen lag bei 46,6 %, die älterer bei 35,3 %."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Der Bericht bezeichnet die Response als befriedigend, insbesondere bei den über das Krebsregister Schleswig-Holstein rekrutierten Patient*innen; er sieht Unterschiede in Bezug auf das Alter."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Im qualitativen Teil wurden 37 Patient*innen, 34 Angehörige und 38 Ärzt*innen interviewt; von 72 angefragten Ärzt*innen sagten 38 zu."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "32 von 37 interviewten Patient*innen (86 %) gaben an, während der Krebserkrankung von einer Vertrauensperson begleitet worden zu sein."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Hinsichtlich Beteiligung und Einfluss auf die Therapieentscheidung wurden 30 „passive“ und 11 „aktive“ Vertrauenspersonen unterschieden. Patient*innen mit passiven Vertrauenspersonen waren im Median 73 Jahre alt, solche mit aktiven 80 Jahre."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Nach den Interviews hat die Krebserkrankung mit dem Therapiegeschehen eine oft schon angebahnte Umkehr der Fürsorgebeziehung beschleunigt und manifestiert."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Nach den Ärzt*inneninterviews bleibt der strukturierte, routinehafte Einbezug von Angehörigen in Therapiegespräche hinter den Forderungen der meisten onkologischen Leitlinien zurück. Werden Angehörige als beteiligt anerkannt, wird ihnen meist eine eher passive Unterstützerrolle zugestanden."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Die Sichtweisen der Ärzt*innen auf Angehörige sind heterogen; sie reichen von Teil des Behandlungsteams über Mitbetroffene bis zu Störfaktoren in der Kommunikation."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Der theoretische Teil unterscheidet das Ärzt*innengespräch dialogphilosophisch in drei distinkte, prinzipiell inkommensurable Ebenen der Situation."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Weil zu wenige Patient*innen sowohl einen prä- als auch einen posttherapeutischen Fragebogen ausgefüllt hatten, wurden auch bei den über Kliniken rekrutierten Patient*innen nur die Posttherapie-Fragebögen ausgewertet."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die für die Darstellung der Empfehlungen notwendige Information war nicht immer Teil der Behandlungsdokumentation; auch für die Aufnahme ins Krebsregister sind viele dieser Parameter nicht vorgesehen."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Detailliertere Non-Responder-Analysen waren nicht möglich, da für Non-Responder nur sehr wenige Charakteristika vorlagen."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Im Krebsregister Schleswig-Holstein wurden nur Patient*innen angeschrieben, die einer Kontaktaufnahme zu Studienzwecken zugestimmt hatten. Sie waren damit hinsichtlich ihrer Teilnahmebereitschaft vorselektiert; in Hamburg gibt es diese Option nicht."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Studie war explorativ in die Breite angelegt. Manche Befunde und Fragestellungen konnten nur angerissen werden und erfordern spezifischere Studiendesigns."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die realisierten Fallzahlen im qualitativen Teil blieben wegen geringerer Teilnahmebereitschaft geringfügig hinter dem Ziel von 40 Personen je Gruppe zurück."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Wegen semi-strukturierter Leitfäden und offener Gesprächsführung wurde die konkrete Situation der Therapieentscheidung nicht in allen Interviews erörtert."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Das Ärzt*innen-Sample war bewusst breit angelegt, sodass nur ein Teil mit onkologischen Therapieentscheidungen befasst ist. Die Befunde zum Einbezug von Angehörigen haben daher laut Bericht vorläufigen Charakter."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Ergebnisse der Ärzt*inneninterviews werden mit Blick auf eine geplante Veröffentlichung im Bericht nur kursorisch dargestellt."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Für den theoretischen Teil gelten die Limitationen interpretativer, hermeneutischer Forschung; seine rahmenden Grundannahmen sind bestreitbare Setzungen."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Mögliche Einflüsse von Migration und Interkulturalität konnten nicht berücksichtigt werden."}]};
+const D = {"projekt_id": 34, "akronym": "DELIVER", "kennung": "mIytqGwiGTYV", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt untersuchte als primären Endpunkt, wie weit einschlägige Leitlinienempfehlungen bei der Therapie von Brust- und Darmkrebs erfüllt wurden. Die Grundannahme, dass ältere Patientinnen und Patienten häufiger leitlinienabweichend behandelt werden, traf nur für Brustkrebspatientinnen zu, für Darmkrebs konnte sie nicht gezeigt werden. Es wurden insgesamt nur wenige signifikante Zusammenhänge gefunden. Die Methoden hält der Ausschuss grundsätzlich für angemessen. Er sieht aber methodische Schwächen bei der Operationalisierung der Endpunkte, bei den retrospektiv erfassten Registerdaten und bei den eher explorativen Zusammenhängen. Die Validität ist deshalb stark eingeschränkt, und es wurden keine validen Erkenntnisse zur praktischen Umsetzung gewonnen."}, {"stelle": "studiendesign", "art": "text", "unser": "nicht angegeben"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Grundannahme häufigerer leitlinienabweichender Behandlung Älterer traf für Brustkrebspatientinnen zu, konnte für Darmkrebspatientinnen und -patienten jedoch nicht gezeigt werden"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Insgesamt nur wenige signifikante Zusammenhänge identifiziert"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Unklar, ob das gewählte Set von Empfehlungen die Leitliniengemäßheit insgesamt angemessen repräsentiert"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Methodische Schwächen bei der Operationalisierung der Endpunkte"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Retrospektiv erfasste Daten aus der Registerstichprobe"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Eher explorative Zusammenhänge"}, {"stelle": "hindernis.6", "art": "hindernis", "unser": "Keine validen Erkenntnisse zur praktischen Umsetzung in der Regelversorgung"}, {"stelle": "befund.1", "art": "befund", "unser": "Schwacher signifikanter Einfluss der Selbstwirksamkeitserwartung auf die Leitlinienkongruenz bei älteren Brustkrebspatientinnen"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Grad der Erfüllung einschlägiger Leitlinienempfehlungen bei der Therapie von Brust- und Darmkrebs (prozentualer Anteil befolgter Leitlinienempfehlungen; primäre Zielvariable)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Durchschnittliche Leitlinienkongruenz bei Darmkrebs, Vergleich der Altersgruppen"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Durchschnittliche Leitlinienkongruenz bei Brustkrebs, Vergleich der Altersgruppen"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Leitlinienkongruenz bei Darmkrebs nach Geschlecht"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Zusammenhang allgemeine Selbstwirksamkeit (ASKU) und Leitlinienkongruenz bei Brustkrebs (gesamt)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Zusammenhang allgemeine Selbstwirksamkeit (ASKU) und Leitlinienkongruenz bei Darmkrebs (gesamt)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Zusammenhang \"Erwartung an das künftige Leben\" und Leitlinienkongruenz"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Zusammenhang Kenntnis von Leitlinien und Leitlinienkongruenz"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Diagnosealter als Prädiktor der Leitlinienkongruenz in der multiplen linearen Regression"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Projekt DELIVER untersuchte mit qualitativen Interviews, einer Fragebogenerhebung und einem theoretischen (dialogphilosophischen) Teil, wovon die leitliniengerechte Behandlung älterer Patient*innen mit Brust- und Darmkrebs abhängt. Primärer Endpunkt war der Grad der Erfüllung einschlägiger Leitlinienempfehlungen je Fall. Weil die Rekrutierung über Kliniken 26 % der angestrebten 600 Fälle erreichte, wurden zusätzlich Patient*innen über Krebsregister angeschrieben, auch jüngere ab 50 Jahren. Daraus ergab sich eine Analysestichprobe von 1832, davon 769 im Alter ab 70 Jahren. Das geplante prä-/posttherapeutische Design wurde zugunsten einer rein posttherapeutischen Erhebung aufgegeben. Ältere wurden im Durchschnitt zu 69,4 % leitlinienkongruent behandelt, jüngere zu 80,0 % (p<0,001). Laut Bericht ist dieser Unterschied stark durch Brustkrebs beeinflusst (77,5 % vs. 87,4 %, p<0,001); bei Darmkrebs war kein altersbezogener Unterschied zu beobachten (p=0,620). Im qualitativen Teil erwiesen sich Angehörige und Vertrauenspersonen als wichtige Akteure der Therapieentscheidung. Die Aussagekraft hängt daran, dass nur ein kleiner Teil der Leitlinienempfehlungen operationalisiert werden konnte und nicht feststellbare Erfüllung vorläufig als Nichtbefolgung erfasst wurde. Hinzu kommen eine mögliche Selektion der Responder und eine nach Bericht nicht ohne Weiteres gegebene Übertragbarkeit auf andere Tumorerkrankungen."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die Behandlung älterer Patient*innen (≥70 Jahre) entsprach im Durchschnitt zu 69,4 % den Leitlinienempfehlungen, die jüngerer zu 80,0 %. Der Unterschied ist laut Welch's t-Test signifikant (p<0,001), nach Bericht aber stark durch die Altersunterschiede bei Brustkrebs beeinflusst."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Bei Brustkrebs lag die durchschnittliche Leitlinienadhärenz der Älteren bei 77,5 % und der Jüngeren bei 87,4 %; der Unterschied ist statistisch signifikant (p<0,001)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Für Darmkrebs allein ist laut Bericht kein altersbezogener Unterschied der Leitlinienkongruenz zu beobachten (p=0,620)."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Über die kooperierenden Kliniken wurden 157 Patient*innen (75 Darmkrebs, 82 Mammakarzinom) rekrutiert; das entspricht 26 % der ursprünglich angestrebten 600. Zusätzlich wurden weitere Kooperationspartner und alternative Rekrutierungswege einbezogen."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Wegen unzureichender Rekrutierung wurden zusätzlich Patient*innen über Krebsregister angeschrieben. Da über die Register keine prätherapeutische Rekrutierung möglich ist, wurden fortan nur posttherapeutische Fragebögen verwendet."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Im quantitativen Teil konnte nur ein kleiner Teil der Leitlinienempfehlungen berücksichtigt werden. Laut Bericht bleibt unklar, ob dieses Set die Leitliniengemäßheit der Behandlung insgesamt angemessen repräsentiert."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "S. 22: Der Satz „Die Bedeutung der Selbstwirksamkeitserwartung als Determinante ist mehr signifikant\" zur multivariaten Analyse aller Brustkrebspatientinnen ist mehrdeutig; vermutlich fehlt ein „nicht\". Damit bleibt offen, ob die zuvor für ältere Brustkrebspatientinnen berichtete schwache, aber signifikante Selbstwirksamkeit multivariat bestehen bleibt."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "S. 9: Die Begründung der theoretischen Sättigung lautet wörtlich, es sei „nicht zu erwarten [gewesen], dass die Hinzunahme noch weiterer ähnlicher Fälle keine neuen Aspekte hervortreten lassen würde\". Durch die doppelte Verneinung besagt der Satz das Gegenteil der behaupteten Sättigung."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt DELIVER keine Empfehlung aus. Der Beschluss und der Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine Empfehlung zur Nutzbarmachung in der Regelversorgung wird nicht ausgesprochen, da keine validen Erkenntnisse zur praktischen Umsetzung gewonnen wurden."}, {"stelle": "befund.0", "art": "befund", "unser": "Methoden und Auswertungsstrategien waren angemessen"}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die Grundannahme geringerer Leitlinienkongruenz bei Älteren bestätigte sich in Korrelations- und Regressionsanalysen für Brustkrebspatientinnen, nicht jedoch für Darmkrebsbetroffene."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Im qualitativen Studienteil stellten sich Angehörige und Vertrauenspersonen als wichtige Akteure für die Therapieentscheidung älterer Krebspatient*innen heraus."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Konnte die Erfüllung einer Empfehlung algorithmisch nicht festgestellt werden, wurde vorläufig festgehalten, dass ihr nicht gefolgt wurde."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Der Bericht geht davon aus, dass sich Responder und Non-Responder auch in weiteren Merkmalen unterscheiden, die die interessierenden Variablen beeinflussen."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Ergebnisse unterschieden sich teilweise je nach Tumorentität. Eine Übertragbarkeit auf andere Tumorerkrankungen ist laut Bericht daher nicht ohne Weiteres gegeben."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Über das Gesamtsample betrug die durchschnittliche Erfüllungsrate der überprüften Leitlinienempfehlungen 75,5 %. Den höchsten Wert hatten jüngere Brustkrebspatient*innen (87,4 %), den niedrigsten jüngere männliche Darmkrebspatienten (57,5 %)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Bei Darmkrebs lag der Durchschnittswert der leitlinienkongruenten Behandlung bei Frauen bei 0,626 und bei Männern bei 0,586; der Unterschied ist nicht statistisch signifikant (p=0,180)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Die Selbstwirksamkeitserwartung hat laut Bericht einen schwachen, aber signifikanten Einfluss auf die Leitlinienkongruenz der Behandlung älterer Brustkrebspatientinnen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Der Einfluss der Erwartungen an das künftige Leben ist in der Gruppe aller Brustkrebspatientinnen nachweisbar, in den Subgruppen jüngerer und älterer Frauen aber nicht signifikant. In der multivariaten Analyse aller Brustkrebspatientinnen rückt das Alter bei Diagnose in den Vordergrund, und dieser Einfluss schwindet vollständig."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Es fand sich ein positiver Zusammenhang zwischen der Beurteilung der Therapie als der eigenen Situation angemessen und einer Abweichung von Leitlinienempfehlungen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Analysestichprobe umfasste 1832 Patient*innen, davon 769 im Alter ab 70 Jahren bei Diagnose. Damit wurden die geplanten Fallzahlen für Ältere bei Darmkrebs (378 statt 240) und bei Brustkrebs (391 statt 360) übertroffen."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Den zugesandten Fragebogen füllten 51,4 % der über das Krebsregister Schleswig-Holstein angeschriebenen Patient*innen aus, beim Hamburgischen Krebsregister 28,9 %."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Die Teilnahmerate jüngerer Patient*innen lag bei 46,6 %, die älterer bei 35,3 %."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Der Bericht bezeichnet die Response als befriedigend, insbesondere bei den über das Krebsregister Schleswig-Holstein rekrutierten Patient*innen; er sieht Unterschiede in Bezug auf das Alter."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Im qualitativen Teil wurden 37 Patient*innen, 34 Angehörige und 38 Ärzt*innen interviewt; von 72 angefragten Ärzt*innen sagten 38 zu."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "32 von 37 interviewten Patient*innen (86 %) gaben an, während der Krebserkrankung von einer Vertrauensperson begleitet worden zu sein."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Hinsichtlich Beteiligung und Einfluss auf die Therapieentscheidung wurden 30 „passive“ und 11 „aktive“ Vertrauenspersonen unterschieden. Patient*innen mit passiven Vertrauenspersonen waren im Median 73 Jahre alt, solche mit aktiven 80 Jahre."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Nach den Interviews hat die Krebserkrankung mit dem Therapiegeschehen eine oft schon angebahnte Umkehr der Fürsorgebeziehung beschleunigt und manifestiert."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Nach den Ärzt*inneninterviews bleibt der strukturierte, routinehafte Einbezug von Angehörigen in Therapiegespräche hinter den Forderungen der meisten onkologischen Leitlinien zurück. Werden Angehörige als beteiligt anerkannt, wird ihnen meist eine eher passive Unterstützerrolle zugestanden."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Die Sichtweisen der Ärzt*innen auf Angehörige sind heterogen; sie reichen von Teil des Behandlungsteams über Mitbetroffene bis zu Störfaktoren in der Kommunikation."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Der theoretische Teil unterscheidet das Ärzt*innengespräch dialogphilosophisch in drei distinkte, prinzipiell inkommensurable Ebenen der Situation."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Weil zu wenige Patient*innen sowohl einen prä- als auch einen posttherapeutischen Fragebogen ausgefüllt hatten, wurden auch bei den über Kliniken rekrutierten Patient*innen nur die Posttherapie-Fragebögen ausgewertet."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Die für die Darstellung der Empfehlungen notwendige Information war nicht immer Teil der Behandlungsdokumentation; auch für die Aufnahme ins Krebsregister sind viele dieser Parameter nicht vorgesehen."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Detailliertere Non-Responder-Analysen waren nicht möglich, da für Non-Responder nur sehr wenige Charakteristika vorlagen."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Im Krebsregister Schleswig-Holstein wurden nur Patient*innen angeschrieben, die einer Kontaktaufnahme zu Studienzwecken zugestimmt hatten. Sie waren damit hinsichtlich ihrer Teilnahmebereitschaft vorselektiert; in Hamburg gibt es diese Option nicht."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Die Studie war explorativ in die Breite angelegt. Manche Befunde und Fragestellungen konnten nur angerissen werden und erfordern spezifischere Studiendesigns."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die realisierten Fallzahlen im qualitativen Teil blieben wegen geringerer Teilnahmebereitschaft geringfügig hinter dem Ziel von 40 Personen je Gruppe zurück."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Wegen semi-strukturierter Leitfäden und offener Gesprächsführung wurde die konkrete Situation der Therapieentscheidung nicht in allen Interviews erörtert."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Das Ärzt*innen-Sample war bewusst breit angelegt, sodass nur ein Teil mit onkologischen Therapieentscheidungen befasst ist. Die Befunde zum Einbezug von Angehörigen haben daher laut Bericht vorläufigen Charakter."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Ergebnisse der Ärzt*inneninterviews werden mit Blick auf eine geplante Veröffentlichung im Bericht nur kursorisch dargestellt."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Für den theoretischen Teil gelten die Limitationen interpretativer, hermeneutischer Forschung; seine rahmenden Grundannahmen sind bestreitbare Setzungen."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Mögliche Einflüsse von Migration und Interkulturalität konnten nicht berücksichtigt werden."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF22010</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>9 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 32 Aussagen. Die übrigen
+23 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die im Projekt MRETher neu entwickelte S3-Leitlinie zur Antibiotikatherapie schwerer Infektionen mit multiresistenten Erregern der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Der Ausschuss führt an, dass multiresistente Erreger den Zustand kritisch Erkrankter verschlechtern und die Behandlung zunehmend erschweren. Das Projekt habe erfolgreich eine S3-Leitlinie mit evidenzbasierten Empfehlungen zur Antibiotikatherapie bei schweren MRE-Infektionen entwickelt. Sie soll Ärztinnen und Ärzten bei der zielgerichteten Auswahl von Reserveantibiotika helfen. Im Mittelpunkt steht die mikrobiologische Diagnostik. Die Empfehlungen sind nach Resistenztyp und Infektionslokalisation unterschieden. Zusätzlich wurde eine Patientenleitlinie erstellt. Die Leitlinie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,106 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt fest, dass die Leitlinie mit der Erfüllung der AWMF-Kriterien die Voraussetzung erfüllt, ihr Potential zur Verbesserung der Versorgung auszuschöpfen.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erfolgreiche Entwicklung einer neuen S3-Leitlinie mit evidenzbasierten Empfehlungen zur Antibiotikatherapie bei schweren MRE-Infektionen</p>
-  <blockquote>„Vor diesem Hintergrund entwickelte das Projekt erfolgreich eine neue S3 -Leitlinie mit evidenzbasierten Empfehlungen zur Antibiotikatherapie bei schweren Infektionen durch MRE." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie als Hilfestellung für die zielgerichtete Auswahl von Reserveantibiotika</p>
-  <blockquote>„Die Leitlinie dient Ärztinnen und Ärzten als eine Hilfestellung zur zielgerichteten Auswahl von geeigneten Reserveantibiotika." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Erstmals evidenzbasierte Patienteninformationen durch eine Patientenleitlinie</p>
-  <blockquote>„Die miterstellte Patientenleitlinie stellt für Betroffene erstmalig evidenzbasierte Patienteninformationen zur Verfügung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie erfüllt die AWMF-Kriterien für S3-Leitlinien</p>
-  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 - Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -257,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben hatte die Erstellung einer S3-Leitlinie zum Antibiotikaeinsatz bei schweren Infektionen mit multiresistenten Erregern (MRE) zum Ziel. Die Leitlinie wurde innerhalb der Projektlaufzeit fertiggestellt. Alle beteiligten Fachgesellschaften stimmten den Empfehlungen bis zum 31.10.2025 zu, und die AWMF beriet und begutachtete die Leitlinie. Konsentiert wurden 30 Empfehlungen, davon 50 % evidenzbasiert; die Evidenz wurde abweichend von der ursprünglichen Planung nach GRADE statt nach den Oxford-Kriterien bewertet. Die Empfehlungen betreffen die Diagnostik sowie die Therapie von Carbapenem-resistenten Enterobacterales, Pseudomonas aeruginosa, Acinetobacter baumannii, MRSA und VRE; ergänzend entstanden eine Kurzversion und eine Patientenleitlinie. Die Aussagekraft hängt an der Evidenzbasis: Laut Bericht ist die verfügbare Studienlage nur begrenzt aussagekräftig, beruht überwiegend auf Beobachtungsstudien mit oft geringen Fallzahlen, und die Übertragbarkeit von Vergleichsstudien auf MRE-Patienten bleibt unklar. Die nicht evidenzbasierte Hälfte der Empfehlungen beruht auf Expertenkonsens ohne Qualitätsstufe. Effekte der Implementierung auf die Versorgung wurden nicht gemessen, sondern als mögliche Verbesserungen beschrieben.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Innerhalb der Projektlaufzeit wurde eine S3-Leitlinie zum Antibiotikaeinsatz bei schweren Infektionen mit multiresistenten Erregern fertiggestellt; alle beteiligten Fachgesellschaften stimmten den Empfehlungen bis zum 31.10.2025 zu.</p>
+  
   <blockquote>„„Innerhalb der Projektlaufzeit konnte eine S3 -Leitlinie zum Antibiotikaeinsatz bei schweren Infektionen mit multiresistenten Erregern fertiggestellt werden. Alle in der Leitlinie involvierten Fachgesellschaften haben bis zum 31.10.2025 den Empfehlungen zuge stimmt.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Es wurden 30 Empfehlungen konsentiert, von denen die Hälfte evidenzbasiert ist; laut Bericht bestand durchweg hohe Zustimmung unter den Stimmberechtigten.</p>
+  
   <blockquote>„„Es wurden insgesamt 30 Empfehlungen konsentiert. Die Hälfte aller Empfehlungen ist evidenzbasiert. Durchweg konnte eine hohe Zustimmung unter den Stimmberechtigten erzielt werden.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Laut Bericht sind die verfügbaren Studien zu schweren Infektionen mit multiresistenten Erregern nur begrenzt aussagekräftig.</p>
+  
   <blockquote>„„da die verfügbaren Studien zu schweren Infektionen mit multiresistenten Erregern nur begrenzt aussagekräftig sind.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Randomisiert-kontrollierte Studien sind in dieser vulnerablen Population aus ethischen Gründen nur eingeschränkt durchführbar; die Evidenz beruht überwiegend auf Beobachtungsstudien, viele davon mit geringen Fallzahlen.</p>
+  
   <blockquote>„„Die verfügbare Evidenz b asiert daher überwiegend auf Beobachtungsstudien, die aufgrund ihres Designs grundsätzlich eine geringere methodische Qualität aufweisen. Zudem sind viele dieser Studien durch geringe Fallzahlen gekennzeichnet“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,31 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Vergleichsstudien zu neuen Antibiotika werden häufig in Kollektiven mit weniger kritischen Infektionen ohne Multiresistenz durchgeführt; inwieweit ihre Ergebnisse auf Patienten mit multiresistenten Erregern übertragbar sind, bleibt laut Bericht unklar.</p>
+  
   <blockquote>„„Inwieweit die daraus resultierenden Ergebnisse auf Patienten mit multiresistenten Erregern übertragbar sind, bleibt unklar“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Empfehlungen, für die mangels Literatur keine formale Evidenzbewertung möglich war, beruhen auf Expertenkonsens und tragen keine Qualitätsstufe; dies betrifft die nicht evidenzbasierte Hälfte der 30 Empfehlungen.</p>
-  <blockquote>„„Empfehlungen, für die aufgrund fehlender Literatur keine formale Evidenzbewertung möglich war, wurden auf Basis von Expertenkonsens formuliert. Für diese Empfehlungen wurde keine Qualitätsstufe angegeben.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -390,11 +274,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zur Zustimmung in der Konsensfindung heißt es auf Seite 15 einerseits „Durchweg konnte eine hohe Zustimmung unter den Stimmberechtigten erzielt werden“, andererseits auf derselben Seite „Überwiegend konnte ein hoher Konsens erzielt werden“; ob der hohe Konsens für alle oder nur für die Mehrzahl der 30 Empfehlungen gilt, bleibt damit offen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -404,16 +288,149 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>16 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>23 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die im Projekt MRETher neu entwickelte S3-Leitlinie zur Antibiotikatherapie schwerer Infektionen mit multiresistenten Erregern der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt fest, dass die Leitlinie mit der Erfüllung der AWMF-Kriterien die Voraussetzung erfüllt, ihr Potential zur Verbesserung der Versorgung auszuschöpfen.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erfolgreiche Entwicklung einer neuen S3-Leitlinie mit evidenzbasierten Empfehlungen zur Antibiotikatherapie bei schweren MRE-Infektionen</p>
+  
+  <blockquote>„Vor diesem Hintergrund entwickelte das Projekt erfolgreich eine neue S3 -Leitlinie mit evidenzbasierten Empfehlungen zur Antibiotikatherapie bei schweren Infektionen durch MRE." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie als Hilfestellung für die zielgerichtete Auswahl von Reserveantibiotika</p>
+  
+  <blockquote>„Die Leitlinie dient Ärztinnen und Ärzten als eine Hilfestellung zur zielgerichteten Auswahl von geeigneten Reserveantibiotika." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Erstmals evidenzbasierte Patienteninformationen durch eine Patientenleitlinie</p>
+  
+  <blockquote>„Die miterstellte Patientenleitlinie stellt für Betroffene erstmalig evidenzbasierte Patienteninformationen zur Verfügung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie erfüllt die AWMF-Kriterien für S3-Leitlinien</p>
+  
+  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 - Leitlinien und damit die Voraussetzung zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Empfehlungen, für die mangels Literatur keine formale Evidenzbewertung möglich war, beruhen auf Expertenkonsens und tragen keine Qualitätsstufe; dies betrifft die nicht evidenzbasierte Hälfte der 30 Empfehlungen.</p>
+  
+  <blockquote>„„Empfehlungen, für die aufgrund fehlender Literatur keine formale Evidenzbewertung möglich war, wurden auf Basis von Expertenkonsens formuliert. Für diese Empfehlungen wurde keine Qualitätsstufe angegeben.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mit 50 % evidenzbasierten Empfehlungen ist nach Angabe der Projektnehmer die S3-Vorgabe des AWMF-Regelwerks erfüllt, wonach mindestens die Hälfte der Empfehlungen evidenzbasiert sein soll.</p>
+  
   <blockquote>„„Damit wird die S3 -Vorgabe des AWMF -Regelwerks erfüllt, wonach mindestens die Hälfte der Empfehlungen evidenzbasiert sein sollen.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die AWMF beriet und begutachtete die Leitlinie während und nach der Fertigstellung; ihre Änderungswünsche wurden in die letzten Dokumente eingearbeitet.</p>
+  
   <blockquote>„„Während und nach der Fertigstellung erfolgte eine Beratung und Begutachtung durch die AWMF, deren Änderungswünsche bereits in die letzten Dokumente eingebracht wurden.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das Autorenteam war interdisziplinär aus relevanten Fachgesellschaften zusammengesetzt, in den Konsensuskonferenzen waren alle Fachgruppen vertreten, und überwiegend wurde ein hoher Konsens erzielt.</p>
+  
   <blockquote>„„In den Konsensuskonferenzen waren die verschiedenen Fachgruppen alle vertreten. Überwiegend konnte ein hoher Konsens erzielt werden.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Diagnostik: Bei Erstnachweis eines MRE-Verdachts werden mindestens zwei Verfahren zur Erregeridentifizierung und Resistenzbestimmung empfohlen; die Empfindlichkeitstestung soll den EUCAST-Vorgaben folgen.</p>
+  
   <blockquote>„„Empfohlen wird der Einsatz von mindestens zwei Verfahren zur Erregeridentifizierung und Resistenzbestimmung bei Erstnachweis eines MRE -Verdachts. Bei der Empfindlichkeitstestung sind die Vorgaben des EUCAST zu beachten.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei schweren Infektionen durch gramnegative Bakterien empfiehlt die Leitlinie die Bestimmung des Resistenzmechanismus, insbesondere den Nachweis oder Ausschluss von Metallo-β-Laktamasen (MBL).</p>
+  
   <blockquote>„„Bei schweren Infektionen durch gramnegative Bakterien empfiehlt die Leitlinie die Bestimmung des Resistenzmechanismus , insbesondere des Nachweises oder Ausschlusses von Metallo-β-Laktamasen (MBL).“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Carbapenem-resistente Enterobacterales sprechen sich die Autoren für Ceftazidim-Avibactam, Meropenem-Vaborbactam oder Imipenem-Relebactam aus, sofern keine MBL-Produktion vorliegt und das Antibiogramm Empfindlichkeit ausweist.</p>
+  
   <blockquote>„„sprechen sich die Autoren für eine Therapie mit Ceftazidim-Avibactam, Meropenem-Vaborbactam oder Imipenem-Relebactam aus, sofern keine MBL -Produktion vorliegt und das Antibiogramm Empfindlichkeit ausweist.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Pseudomonas aeruginosa mit schwer zu therapierender Resistenz bewertet die Leitlinie vier Substanzen bei nachgewiesener Empfindlichkeit als geeignet; unter Stewardship-Gesichtspunkten wird Ceftolozan-Tazobactam bevorzugt, Cefiderocol soll auf Infektionen mit nachgewiesenen MBL beschränkt bleiben.</p>
+  
   <blockquote>„„Unter Antimicrobial -Stewardship-Gesichtspunkten wird die bevorzugte Verwendung von Ceftolozan-Tazobactam empfohlen. Cefiderocol soll auf Infektionen mit nachgewiesenen Metallo-β-Laktamasen beschränkt bleiben.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Carbapenem-resistente Acinetobacter baumannii werden Cefiderocol oder Sulbactam-Durlobactam empfohlen; da beide laut Bericht bei MBL-Isolaten nicht wirksam sind, gibt die Leitlinie dafür besondere Empfehlungen.</p>
+  
   <blockquote>„„Für Carbapenem-resistente Acinetobacter baumannii wird Cefiderocol oder Sulbactam - Durlobactam empfohlen. Beide Antibiotika sind bei Isolaten mit Metallo --Laktamasen nicht wirksam, weshalb für solche Fälle besondere Empfehlungen gegeben werden.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei MRSA-Blutstrominfektionen werden Vancomycin und Daptomycin als Mittel der Wahl genannt, bei MRSA-Pneumonien Linezolid oder Vancomycin; die Wahl richtet sich nach Toxizitätsrisiko, Komedikation und Infektionsfokus.</p>
+  
   <blockquote>„„Für erstere werden Vancomycin und Daptomycin als Mittel der Wahl genannt. Bei Pneumonien wird eine Behandlung mit Linezolid oder Vancomycin empfohlen. Dabei richtet sich die Wahl immer nach dem Toxizitätsrisikos, der Comedikation und dem Infektionsfokus.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +596,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei VRE-induzierten Blutstrominfektionen wird Linezolid oder hoch dosiertes Daptomycin (10–12 mg/kg/Tag) empfohlen.</p>
+  
   <blockquote>„„Bei VRE- induzierten Blutstrominfektionen wird eine Behandlung mit Linezolid oder hoch dosiertem Daptomycin (10–12 mg/kg/Tag) empfohlen.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +615,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Neben der Langversion der Leitlinie wurde zur Unterstützung der praktischen Anwendung eine Kurzversion erstellt.</p>
+  
   <blockquote>„„Zur Unterstützung der praktischen Anwendung wurde neben der Langversion der Leitlinie (Anlage 1) eine Kurzversion (Anlage 2) erstellt.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +634,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine Patientenleitlinie wurde durch einen über QR-Code verlinkten Flyer ergänzt; der QR-Code wird allen beteiligten Fachgesellschaften zur Verbreitung zur Verfügung gestellt.</p>
+  
   <blockquote>„„Ergänzt wurde diese Patientenleitlinie durch einen Flyer (Anlage 7 bzw. Appendix der Patientenleitlinie). Dieser wird über einen QR- Code verlinkt.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Auch ein Teil der evidenzbasierten Empfehlungen stützt sich auf methodisch schwache Evidenz, die die Projektnehmer als bestverfügbare Evidenz für diese Patientengruppe einordnen.</p>
+  
   <blockquote>„„Auch wenn sich ein Teil der evidenzbasierten Empfehlungen auf methodisch schwache Evidenz stützt, stellt sie dennoch die bestverfügbare Evidenz für die hier betrachtete Patientengruppe dar.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +672,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Abweichend von der ursprünglichen Planung (Oxford-Kriterien) wurde die Evidenz nach Prüfung der Studienlage nach GRADE bewertet.</p>
+  
   <blockquote>„„Ursprünglich war eine Bewertung entsprechend der Oxford- Kriterien vorgesehen; die Anwendung von GRADE wurde nach Prüfung der Studienlage in gemeinsamer Beratung zwischen Methodikern und klinischen Experten festgelegt.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,12 +691,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Titel-Abstract-Screening der Literatur wurde von einem Methodiker der CGS durchgeführt.</p>
+  
   <blockquote>„„Titel-Abstract-Screening durch einen Methodiker der CGS.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -693,12 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Effekte der Implementierung auf die Patientenversorgung wurden nicht erhoben; der Bericht formuliert sie als mögliche Verbesserungen.</p>
+  
   <blockquote>„„Die Implementierung der Leitlinie kann die Patientenversorgung in mehreren zentralen Bereichen verbessern:“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -743,28 +760,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 520, "akronym": "MRETher", "kennung": "ZoOfX8Qrc1Vx", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt MRETher neu entwickelte S3-Leitlinie zur Antibiotikatherapie schwerer Infektionen mit multiresistenten Erregern der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss führt an, dass multiresistente Erreger den Zustand kritisch Erkrankter verschlechtern und die Behandlung zunehmend erschweren. Das Projekt habe erfolgreich eine S3-Leitlinie mit evidenzbasierten Empfehlungen zur Antibiotikatherapie bei schweren MRE-Infektionen entwickelt. Sie soll Ärztinnen und Ärzten bei der zielgerichteten Auswahl von Reserveantibiotika helfen. Im Mittelpunkt steht die mikrobiologische Diagnostik. Die Empfehlungen sind nach Resistenztyp und Infektionslokalisation unterschieden. Zusätzlich wurde eine Patientenleitlinie erstellt. Die Leitlinie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt fest, dass die Leitlinie mit der Erfüllung der AWMF-Kriterien die Voraussetzung erfüllt, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "befund.0", "art": "befund", "unser": "Erfolgreiche Entwicklung einer neuen S3-Leitlinie mit evidenzbasierten Empfehlungen zur Antibiotikatherapie bei schweren MRE-Infektionen"}, {"stelle": "befund.1", "art": "befund", "unser": "Leitlinie als Hilfestellung für die zielgerichtete Auswahl von Reserveantibiotika"}, {"stelle": "befund.2", "art": "befund", "unser": "Erstmals evidenzbasierte Patienteninformationen durch eine Patientenleitlinie"}, {"stelle": "befund.3", "art": "befund", "unser": "Leitlinie erfüllt die AWMF-Kriterien für S3-Leitlinien"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hatte die Erstellung einer S3-Leitlinie zum Antibiotikaeinsatz bei schweren Infektionen mit multiresistenten Erregern (MRE) zum Ziel. Die Leitlinie wurde innerhalb der Projektlaufzeit fertiggestellt. Alle beteiligten Fachgesellschaften stimmten den Empfehlungen bis zum 31.10.2025 zu, und die AWMF beriet und begutachtete die Leitlinie. Konsentiert wurden 30 Empfehlungen, davon 50 % evidenzbasiert; die Evidenz wurde abweichend von der ursprünglichen Planung nach GRADE statt nach den Oxford-Kriterien bewertet. Die Empfehlungen betreffen die Diagnostik sowie die Therapie von Carbapenem-resistenten Enterobacterales, Pseudomonas aeruginosa, Acinetobacter baumannii, MRSA und VRE; ergänzend entstanden eine Kurzversion und eine Patientenleitlinie. Die Aussagekraft hängt an der Evidenzbasis: Laut Bericht ist die verfügbare Studienlage nur begrenzt aussagekräftig, beruht überwiegend auf Beobachtungsstudien mit oft geringen Fallzahlen, und die Übertragbarkeit von Vergleichsstudien auf MRE-Patienten bleibt unklar. Die nicht evidenzbasierte Hälfte der Empfehlungen beruht auf Expertenkonsens ohne Qualitätsstufe. Effekte der Implementierung auf die Versorgung wurden nicht gemessen, sondern als mögliche Verbesserungen beschrieben."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Innerhalb der Projektlaufzeit wurde eine S3-Leitlinie zum Antibiotikaeinsatz bei schweren Infektionen mit multiresistenten Erregern fertiggestellt; alle beteiligten Fachgesellschaften stimmten den Empfehlungen bis zum 31.10.2025 zu."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Es wurden 30 Empfehlungen konsentiert, von denen die Hälfte evidenzbasiert ist; laut Bericht bestand durchweg hohe Zustimmung unter den Stimmberechtigten."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Laut Bericht sind die verfügbaren Studien zu schweren Infektionen mit multiresistenten Erregern nur begrenzt aussagekräftig."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Randomisiert-kontrollierte Studien sind in dieser vulnerablen Population aus ethischen Gründen nur eingeschränkt durchführbar; die Evidenz beruht überwiegend auf Beobachtungsstudien, viele davon mit geringen Fallzahlen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Vergleichsstudien zu neuen Antibiotika werden häufig in Kollektiven mit weniger kritischen Infektionen ohne Multiresistenz durchgeführt; inwieweit ihre Ergebnisse auf Patienten mit multiresistenten Erregern übertragbar sind, bleibt laut Bericht unklar."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Empfehlungen, für die mangels Literatur keine formale Evidenzbewertung möglich war, beruhen auf Expertenkonsens und tragen keine Qualitätsstufe; dies betrifft die nicht evidenzbasierte Hälfte der 30 Empfehlungen."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zur Zustimmung in der Konsensfindung heißt es auf Seite 15 einerseits „Durchweg konnte eine hohe Zustimmung unter den Stimmberechtigten erzielt werden“, andererseits auf derselben Seite „Überwiegend konnte ein hoher Konsens erzielt werden“; ob der hohe Konsens für alle oder nur für die Mehrzahl der 30 Empfehlungen gilt, bleibt damit offen."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Mit 50 % evidenzbasierten Empfehlungen ist nach Angabe der Projektnehmer die S3-Vorgabe des AWMF-Regelwerks erfüllt, wonach mindestens die Hälfte der Empfehlungen evidenzbasiert sein soll."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die AWMF beriet und begutachtete die Leitlinie während und nach der Fertigstellung; ihre Änderungswünsche wurden in die letzten Dokumente eingearbeitet."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Das Autorenteam war interdisziplinär aus relevanten Fachgesellschaften zusammengesetzt, in den Konsensuskonferenzen waren alle Fachgruppen vertreten, und überwiegend wurde ein hoher Konsens erzielt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Diagnostik: Bei Erstnachweis eines MRE-Verdachts werden mindestens zwei Verfahren zur Erregeridentifizierung und Resistenzbestimmung empfohlen; die Empfindlichkeitstestung soll den EUCAST-Vorgaben folgen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Bei schweren Infektionen durch gramnegative Bakterien empfiehlt die Leitlinie die Bestimmung des Resistenzmechanismus, insbesondere den Nachweis oder Ausschluss von Metallo-β-Laktamasen (MBL)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Für Carbapenem-resistente Enterobacterales sprechen sich die Autoren für Ceftazidim-Avibactam, Meropenem-Vaborbactam oder Imipenem-Relebactam aus, sofern keine MBL-Produktion vorliegt und das Antibiogramm Empfindlichkeit ausweist."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Für Pseudomonas aeruginosa mit schwer zu therapierender Resistenz bewertet die Leitlinie vier Substanzen bei nachgewiesener Empfindlichkeit als geeignet; unter Stewardship-Gesichtspunkten wird Ceftolozan-Tazobactam bevorzugt, Cefiderocol soll auf Infektionen mit nachgewiesenen MBL beschränkt bleiben."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Für Carbapenem-resistente Acinetobacter baumannii werden Cefiderocol oder Sulbactam-Durlobactam empfohlen; da beide laut Bericht bei MBL-Isolaten nicht wirksam sind, gibt die Leitlinie dafür besondere Empfehlungen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Bei MRSA-Blutstrominfektionen werden Vancomycin und Daptomycin als Mittel der Wahl genannt, bei MRSA-Pneumonien Linezolid oder Vancomycin; die Wahl richtet sich nach Toxizitätsrisiko, Komedikation und Infektionsfokus."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Bei VRE-induzierten Blutstrominfektionen wird Linezolid oder hoch dosiertes Daptomycin (10–12 mg/kg/Tag) empfohlen."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Neben der Langversion der Leitlinie wurde zur Unterstützung der praktischen Anwendung eine Kurzversion erstellt."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Eine Patientenleitlinie wurde durch einen über QR-Code verlinkten Flyer ergänzt; der QR-Code wird allen beteiligten Fachgesellschaften zur Verbreitung zur Verfügung gestellt."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Auch ein Teil der evidenzbasierten Empfehlungen stützt sich auf methodisch schwache Evidenz, die die Projektnehmer als bestverfügbare Evidenz für diese Patientengruppe einordnen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Abweichend von der ursprünglichen Planung (Oxford-Kriterien) wurde die Evidenz nach Prüfung der Studienlage nach GRADE bewertet."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Das Titel-Abstract-Screening der Literatur wurde von einem Methodiker der CGS durchgeführt."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Effekte der Implementierung auf die Patientenversorgung wurden nicht erhoben; der Bericht formuliert sie als mögliche Verbesserungen."}]};
+const D = {"projekt_id": 520, "akronym": "MRETher", "kennung": "ZoOfX8Qrc1Vx", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Der Ausschuss führt an, dass multiresistente Erreger den Zustand kritisch Erkrankter verschlechtern und die Behandlung zunehmend erschweren. Das Projekt habe erfolgreich eine S3-Leitlinie mit evidenzbasierten Empfehlungen zur Antibiotikatherapie bei schweren MRE-Infektionen entwickelt. Sie soll Ärztinnen und Ärzten bei der zielgerichteten Auswahl von Reserveantibiotika helfen. Im Mittelpunkt steht die mikrobiologische Diagnostik. Die Empfehlungen sind nach Resistenztyp und Infektionslokalisation unterschieden. Zusätzlich wurde eine Patientenleitlinie erstellt. Die Leitlinie erfüllt nach Auffassung des Ausschusses die Kriterien des AWMF-Regelwerks für S3-Leitlinien."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hatte die Erstellung einer S3-Leitlinie zum Antibiotikaeinsatz bei schweren Infektionen mit multiresistenten Erregern (MRE) zum Ziel. Die Leitlinie wurde innerhalb der Projektlaufzeit fertiggestellt. Alle beteiligten Fachgesellschaften stimmten den Empfehlungen bis zum 31.10.2025 zu, und die AWMF beriet und begutachtete die Leitlinie. Konsentiert wurden 30 Empfehlungen, davon 50 % evidenzbasiert; die Evidenz wurde abweichend von der ursprünglichen Planung nach GRADE statt nach den Oxford-Kriterien bewertet. Die Empfehlungen betreffen die Diagnostik sowie die Therapie von Carbapenem-resistenten Enterobacterales, Pseudomonas aeruginosa, Acinetobacter baumannii, MRSA und VRE; ergänzend entstanden eine Kurzversion und eine Patientenleitlinie. Die Aussagekraft hängt an der Evidenzbasis: Laut Bericht ist die verfügbare Studienlage nur begrenzt aussagekräftig, beruht überwiegend auf Beobachtungsstudien mit oft geringen Fallzahlen, und die Übertragbarkeit von Vergleichsstudien auf MRE-Patienten bleibt unklar. Die nicht evidenzbasierte Hälfte der Empfehlungen beruht auf Expertenkonsens ohne Qualitätsstufe. Effekte der Implementierung auf die Versorgung wurden nicht gemessen, sondern als mögliche Verbesserungen beschrieben."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Innerhalb der Projektlaufzeit wurde eine S3-Leitlinie zum Antibiotikaeinsatz bei schweren Infektionen mit multiresistenten Erregern fertiggestellt; alle beteiligten Fachgesellschaften stimmten den Empfehlungen bis zum 31.10.2025 zu."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Es wurden 30 Empfehlungen konsentiert, von denen die Hälfte evidenzbasiert ist; laut Bericht bestand durchweg hohe Zustimmung unter den Stimmberechtigten."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Laut Bericht sind die verfügbaren Studien zu schweren Infektionen mit multiresistenten Erregern nur begrenzt aussagekräftig."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Randomisiert-kontrollierte Studien sind in dieser vulnerablen Population aus ethischen Gründen nur eingeschränkt durchführbar; die Evidenz beruht überwiegend auf Beobachtungsstudien, viele davon mit geringen Fallzahlen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Vergleichsstudien zu neuen Antibiotika werden häufig in Kollektiven mit weniger kritischen Infektionen ohne Multiresistenz durchgeführt; inwieweit ihre Ergebnisse auf Patienten mit multiresistenten Erregern übertragbar sind, bleibt laut Bericht unklar."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Zur Zustimmung in der Konsensfindung heißt es auf Seite 15 einerseits „Durchweg konnte eine hohe Zustimmung unter den Stimmberechtigten erzielt werden“, andererseits auf derselben Seite „Überwiegend konnte ein hoher Konsens erzielt werden“; ob der hohe Konsens für alle oder nur für die Mehrzahl der 30 Empfehlungen gilt, bleibt damit offen."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt MRETher neu entwickelte S3-Leitlinie zur Antibiotikatherapie schwerer Infektionen mit multiresistenten Erregern der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht. Die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Der Beschluss enthält keine ausdrückliche Aussage zur Übertragbarkeit. Er stellt fest, dass die Leitlinie mit der Erfüllung der AWMF-Kriterien die Voraussetzung erfüllt, ihr Potential zur Verbesserung der Versorgung auszuschöpfen."}, {"stelle": "befund.0", "art": "befund", "unser": "Erfolgreiche Entwicklung einer neuen S3-Leitlinie mit evidenzbasierten Empfehlungen zur Antibiotikatherapie bei schweren MRE-Infektionen"}, {"stelle": "befund.1", "art": "befund", "unser": "Leitlinie als Hilfestellung für die zielgerichtete Auswahl von Reserveantibiotika"}, {"stelle": "befund.2", "art": "befund", "unser": "Erstmals evidenzbasierte Patienteninformationen durch eine Patientenleitlinie"}, {"stelle": "befund.3", "art": "befund", "unser": "Leitlinie erfüllt die AWMF-Kriterien für S3-Leitlinien"}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Empfehlungen, für die mangels Literatur keine formale Evidenzbewertung möglich war, beruhen auf Expertenkonsens und tragen keine Qualitätsstufe; dies betrifft die nicht evidenzbasierte Hälfte der 30 Empfehlungen."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Mit 50 % evidenzbasierten Empfehlungen ist nach Angabe der Projektnehmer die S3-Vorgabe des AWMF-Regelwerks erfüllt, wonach mindestens die Hälfte der Empfehlungen evidenzbasiert sein soll."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Die AWMF beriet und begutachtete die Leitlinie während und nach der Fertigstellung; ihre Änderungswünsche wurden in die letzten Dokumente eingearbeitet."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Das Autorenteam war interdisziplinär aus relevanten Fachgesellschaften zusammengesetzt, in den Konsensuskonferenzen waren alle Fachgruppen vertreten, und überwiegend wurde ein hoher Konsens erzielt."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Diagnostik: Bei Erstnachweis eines MRE-Verdachts werden mindestens zwei Verfahren zur Erregeridentifizierung und Resistenzbestimmung empfohlen; die Empfindlichkeitstestung soll den EUCAST-Vorgaben folgen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Bei schweren Infektionen durch gramnegative Bakterien empfiehlt die Leitlinie die Bestimmung des Resistenzmechanismus, insbesondere den Nachweis oder Ausschluss von Metallo-β-Laktamasen (MBL)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Für Carbapenem-resistente Enterobacterales sprechen sich die Autoren für Ceftazidim-Avibactam, Meropenem-Vaborbactam oder Imipenem-Relebactam aus, sofern keine MBL-Produktion vorliegt und das Antibiogramm Empfindlichkeit ausweist."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Für Pseudomonas aeruginosa mit schwer zu therapierender Resistenz bewertet die Leitlinie vier Substanzen bei nachgewiesener Empfindlichkeit als geeignet; unter Stewardship-Gesichtspunkten wird Ceftolozan-Tazobactam bevorzugt, Cefiderocol soll auf Infektionen mit nachgewiesenen MBL beschränkt bleiben."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Für Carbapenem-resistente Acinetobacter baumannii werden Cefiderocol oder Sulbactam-Durlobactam empfohlen; da beide laut Bericht bei MBL-Isolaten nicht wirksam sind, gibt die Leitlinie dafür besondere Empfehlungen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Bei MRSA-Blutstrominfektionen werden Vancomycin und Daptomycin als Mittel der Wahl genannt, bei MRSA-Pneumonien Linezolid oder Vancomycin; die Wahl richtet sich nach Toxizitätsrisiko, Komedikation und Infektionsfokus."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Bei VRE-induzierten Blutstrominfektionen wird Linezolid oder hoch dosiertes Daptomycin (10–12 mg/kg/Tag) empfohlen."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Neben der Langversion der Leitlinie wurde zur Unterstützung der praktischen Anwendung eine Kurzversion erstellt."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Eine Patientenleitlinie wurde durch einen über QR-Code verlinkten Flyer ergänzt; der QR-Code wird allen beteiligten Fachgesellschaften zur Verbreitung zur Verfügung gestellt."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Auch ein Teil der evidenzbasierten Empfehlungen stützt sich auf methodisch schwache Evidenz, die die Projektnehmer als bestverfügbare Evidenz für diese Patientengruppe einordnen."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Abweichend von der ursprünglichen Planung (Oxford-Kriterien) wurde die Evidenz nach Prüfung der Studienlage nach GRADE bewertet."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Das Titel-Abstract-Screening der Literatur wurde von einem Methodiker der CGS durchgeführt."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Effekte der Implementierung auf die Patientenversorgung wurden nicht erhoben; der Bericht formuliert sie als mögliche Verbesserungen."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

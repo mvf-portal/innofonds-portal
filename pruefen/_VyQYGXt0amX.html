@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF16051</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>25 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 53 Aussagen. Die übrigen
+28 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss empfiehlt, die Erkenntnisse des Projekts INSIST an die Kommission für Krankenhaushygiene und Infektionsprävention (KRINKO) weiterzuleiten. Die KRINKO wird gebeten zu prüfen, ob die Empfehlung zum mikrobiellen Kolonisationsscreening bei Früh- und Neugeborenen weiterentwickelt werden kann. Die Geschäftsstelle wird mit der Weiterleitung beauftragt.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Nach Auffassung des Ausschusses hat das Projekt eine Studie zu den Wirkungen des neonatologischen Kolonisationsscreenings erfolgreich durchgeführt. Die Methodik hält er insgesamt für angemessen. Limitationen sieht er im monozentrischen und retrospektiven Design, die Übertragbarkeit auf andere Einrichtungen sei zu prüfen. Inhaltlich zeigen die Ergebnisse einen niedrigen positiven prädiktiven Wert des Screenings für spätere Bakteriämien. Das Screening ermöglicht die Erkennung von Transmissionen, Ausbrüche lassen sich jedoch nur in Verbindung mit ressourcenintensiver Ganzgenomsequenzierung erkennen. Ein erhöhter Antibiotikaverbrauch nach früherem Nachweis multiresistenter gramnegativer Erreger fand sich nicht. Da diese Erkenntnisse für die KRINKO-Empfehlungen relevant sein können, sollen sie an die KRINKO weitergeleitet werden.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Sekundärdatenanalyse</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Die Übertragbarkeit auf andere Einrichtungen ist nach dem Beschluss zu prüfen, da die Studie monozentrisch an der Universitätsmedizin Göttingen durchgeführt wurde.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: Studienanlage</h3>
   <p class="unser">Limitationen durch monozentrisches und retrospektives Studiendesign</p>
+  
   <blockquote>„Limitationen ergeben sich aus dem monozentrischen und retrospektiven Studiendesign." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,90 +176,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Übertragbarkeit unklar</h3>
+  <h3>Hindernis laut Beschluss: Übertragbarkeit</h3>
   <p class="unser">Übertragbarkeit auf andere Einrichtungen ist noch zu prüfen</p>
+  
   <blockquote>„Die Übertragbarkeit auf andere Einrichtungen ist zu prüfen." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Studie erfolgreich durchgeführt</p>
-  <blockquote>„Das Projekt hat erfolgreich eine Studie zu den Wirkungen des neonatologischen Kolonisationsscreenings auf die Vorhersagbarkeit von Infektionen, Erkennung von Infektionsausbrüchen und Antibiotikagabe durchgeführt." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Methodik insgesamt angemessen</p>
-  <blockquote>„Die angewandte Methodik war insgesamt angemessen." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Kolonisationsscreening ermöglicht die Erkennung von Transmissionen (Hinweise bei 20,7 % bis 30,8 % der Patientinnen und Patienten für E. coli und K. pneumoniae)</p>
-  <blockquote>„Das KoS ermöglicht die Erkennung von Transmissionen. Die Studienergebnisse zeigen, dass bezogen auf die beiden medizinisch wichtigen gramnegativen Bakterienspezies E. coli und K. pneumoniae bei immerhin 20,7 % bis 30,8 % der Patientinnen und Patienten Hinweise auf eine Transmission bestehen." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Ergebnisse relevant für KRINKO-Empfehlungen</p>
-  <blockquote>„Die Studienergebnisse liefern Erkenntnisse mit möglicher Relevanz für Empfehlungen der KRINKO zur Durchführung eines KoS bei Früh - und Neugeborenen." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Positiver prädiktiver Wert (PPV) eines Screening-Nachweises für eine spätere Bakteriämie/Blutkultur mit demselben Erreger</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -313,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Negativer prädiktiver Wert (NPV) eines Screening-Nachweises für eine spätere Bakteriämie mit demselben Erreger</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -332,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Sensitivität eines vorherigen KoS-Ergebnisses hinsichtlich einer Bakteriämie mit demselben Erreger</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> nicht auswertbar</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Spezifität eines KoS-Nachweises für eine spätere Blutkultur mit demselben Erreger</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Komplikationen und Patientensicherheit“</h3>
   <p class="unser">Anteil von Transmissionen an epidemiologisch zusammenhängenden identischen Spezies – K. pneumoniae</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Komplikationen und Patientensicherheit“</h3>
   <p class="unser">Anteil von Transmissionen an epidemiologisch zusammenhängenden identischen Spezies – E. coli</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Antibiotikatherapietage bezogen auf Beobachtungstage, Gesamtdatensatz (ohne vs. mit vorherigem 3GCRE-Nachweis)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Antibiotikatherapietage bezogen auf Beobachtungstage, Subgruppe Geburtsgewicht &lt; 1500 g</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Antibiotikatherapietage bezogen auf Beobachtungstage, Subgruppe Geburtsgewicht ≥ 1500 g</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.10">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Anteil normaler CRP-Werte (≤ 4,1 mg/L) bei Antibiotika-Therapiebeginn ohne vs. mit vorherigem 3GCRE-Nachweis</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.10" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.11">
   <h3>Gemessen wurde – eingeordnet als „Diagnostik und Früherkennung“</h3>
   <p class="unser">Kolonisationsdynamik / häufigste Bakterienspezies im rektalen Kolonisationsscreening</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.11" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.12">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Antibiotikaexposition der Studienpopulation und detektierte Spezies (deskriptiv)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.12" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -523,11 +426,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben untersuchte in einer monozentrischen Beobachtungsstudie mit primär retrospektiver Analyse über achteinhalb Jahre, wie gut das neonatologische Kolonisationsscreening (KoS) auf Enterobacterales, P. aeruginosa und A. baumannii-Gruppe eine nachfolgende Infektion mit demselben Erreger vorhersagt (primärer Endpunkt). Sekundär wurden die Erkennung von Transmissionen und Ausbrüchen per Ganzgenomsequenzierung und der Antibiotikaverbrauch nach Nachweis multiresistenter Erreger untersucht. Ausgewertet wurden 4.295 Patient*innen, davon 1.186 mit mindestens einer Blutkultur. Der positive prädiktive Wert des Screenings für eine spätere Bakteriämie mit demselben Erreger lag bei allen betrachteten Erregern unter 0,2, der negative prädiktive Wert über 0,99; die Autor*innen halten den PPV für klinische Entscheidungen für ungeeignet. Bei gleicher Spezies und epidemiologischem Zusammenhang zeigten 20,7 % bis 30,8 % der Patient*innen mit NGS-Daten Hinweise auf eine Transmission, je nach Erreger (K. pneumoniae, E. coli) und Kontaktdefinition; Transmissionserkennung ist laut Bericht nur zusammen mit hochauflösender Typisierung möglich. Der Anteil der Antibiotikatage lag nach vorherigem Nachweis von Enterobacterales mit Drittgenerationscephalosporin-Resistenz bei 20 % gegenüber 25 % ohne solchen Nachweis. Die Aussagekraft begrenzen das Fehlen einer Kontrollgruppe nicht gescreenter Patient*innen, das monozentrische Design, die retrospektive Analyse (laut Bericht biasanfällig für die Antibiotikafrage) und die fehlende Fallzahlberechnung.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der positive prädiktive Wert des KoS für eine spätere Bakteriämie mit demselben Erreger lag bei allen betrachteten Erregern auch unter Berücksichtigung des Konfidenzintervalls unter 0,2, der negative prädiktive Wert über 0,99; positiv gescreente gramnegative Erreger wurden in weniger als 20 % der Fälle nachfolgend in einer Blutkultur nachgewiesen, fehlender Screeningnachweis ging in über 99 % mit fehlendem Blutkulturnachweis derselben Spezies einher.</p>
+  
   <blockquote>„„Der positive prädiktive Wert (PPV) liegt in allen Fällen auch unter Berücksichtigung des Konfidenzintervalls unter 0,2 ; der negative prädiktive Wert (NPV) demgegenüber mit über 0,99 sehr hoch.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Autor*innen bewerten den PPV als ungeeignet für klinische Entscheidungen, sehen aber eine mögliche Rolle des KoS bei einer initial kalkulierten Antibiotikatherapie.</p>
+  
   <blockquote>„„Der PPV erscheint jedoch für klinische Entscheidungen als ungeeignet: aus einem positiven Screening kann nicht mit hinreichender Sicherheit auf eine später mit demselben Erreger auftretende Bakteriämie geschlossen werden.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,31 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei Nachweis der gleichen Spezies und epidemiologischem Zusammenhang fand laut NGS in der Mehrzahl der Fälle keine Übertragung statt, da die Stämme nicht näher verwandt waren.</p>
+  
   <blockquote>„„in der Mehrzahl der Fälle keine Übertragung unter diesen Patient*innen erfolgte, erkennbar daran, dass mit der hochauflösenden Methode des Next Generation Sequencing (NGS) diese Bakterienstämme nicht näher miteinander verwandt waren.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Laut Bericht ermöglicht das KoS die Erkennung von Transmissionen nur in Verbindung mit ressourcenintensiven hochauflösenden Typisierungsverfahren wie der Ganzgenomsequenzierung; es ist notwendige Voraussetzung der Ausbruchserkennung.</p>
-  <blockquote>„„Das KoS ist dabei die notwendige Voraussetzung zur Ausbruchserkennung, kann aber nur im Verbund mit Typisierungsmethoden Transmissionsereignisse und Ausbrüche verifizieren.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eine Kontrollgruppe nicht gescreenter Patient*innen war aus ethischen Gründen nicht möglich, da das Screening durch die KRINKO-Empfehlungen von 2013 Standard ist; gewählt wurde eine Beobachtungsstudie.</p>
+  
   <blockquote>„„Als Studiendesign wurde eine Beobachtungsstudie gewählt, weil das mikrobiologische Screening durch die KRINKO -Empfehlungen von 2013 als durchzuführender Standard vorgegeben wurde und somit die Analyse einer Kontrollgruppe von nicht -gescreenten Patient*innen aus ethischen Gründen nicht in Frage kommt.“ – Bericht, S. 7" <span class="s">S. 7</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Studie wurde an einem einzelnen Zentrum durchgeführt; bauliche und organisatorische Eigenheiten verschiedener Zentren dürften laut Bericht insbesondere Transmissionsereignisse beeinflussen.</p>
+  
   <blockquote>„„Eine grundsätzliche Limitation des Projektes besteht darin, dass die Studie an einem einzelnen Zentrum durchgeführt wurde, [...] ein solcher Einfluss ist insbesondere auf Transmissionsereignisse anzunehmen.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Frage, ob KoS-Befunde das Antibiotika-Verschreibungsverhalten beeinflussen, ist laut Bericht in einer retrospektiven Studie biasanfällig und kann an anderen Standorten variieren.</p>
+  
   <blockquote>„„Zu beachten ist jedoch, dass diese Fragestellung, ob mikrobiologische Befunde des KoS das Verschreibungsverhalten von Antibiotika beeinflussen, in einer retrospektiven Studie anfällig für Bias ist und an anderen Standorten variieren kann.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -675,11 +559,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Die Rangfolge der häufigsten Spezies unterscheidet sich: Die Zusammenfassung (S. 2) nennt Enterobacter cloacae-Komplex (n=126) vor E. coli (n=60) als häufigste detektierte Spezies, der Ergebnisteil (S. 15) nennt E. coli vor E. cloacae-Komplex als häufigste Kolonisationsspezies. Ob sich beide Angaben auf verschiedene Bezugsmengen (z. B. Blutkulturen vs. Screening) beziehen, geht aus den vorliegenden Abschnitten nicht hervor.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -694,11 +578,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zum Antibiotikaverbrauch heißt es in der Zusammenfassung (S. 2), es hätten sich „keine eindeutigen Hinweise“ auf einen erhöhten Verbrauch ergeben, in der Diskussion (S. 18) dagegen „keinen Hinweis“.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -708,16 +592,153 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>21 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>28 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss empfiehlt, die Erkenntnisse des Projekts INSIST an die Kommission für Krankenhaushygiene und Infektionsprävention (KRINKO) weiterzuleiten. Die KRINKO wird gebeten zu prüfen, ob die Empfehlung zum mikrobiellen Kolonisationsscreening bei Früh- und Neugeborenen weiterentwickelt werden kann. Die Geschäftsstelle wird mit der Weiterleitung beauftragt.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Die Übertragbarkeit auf andere Einrichtungen ist nach dem Beschluss zu prüfen, da die Studie monozentrisch an der Universitätsmedizin Göttingen durchgeführt wurde.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Studie erfolgreich durchgeführt</p>
+  
+  <blockquote>„Das Projekt hat erfolgreich eine Studie zu den Wirkungen des neonatologischen Kolonisationsscreenings auf die Vorhersagbarkeit von Infektionen, Erkennung von Infektionsausbrüchen und Antibiotikagabe durchgeführt." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Methodik insgesamt angemessen</p>
+  
+  <blockquote>„Die angewandte Methodik war insgesamt angemessen." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Kolonisationsscreening ermöglicht die Erkennung von Transmissionen (Hinweise bei 20,7 % bis 30,8 % der Patientinnen und Patienten für E. coli und K. pneumoniae)</p>
+  
+  <blockquote>„Das KoS ermöglicht die Erkennung von Transmissionen. Die Studienergebnisse zeigen, dass bezogen auf die beiden medizinisch wichtigen gramnegativen Bakterienspezies E. coli und K. pneumoniae bei immerhin 20,7 % bis 30,8 % der Patientinnen und Patienten Hinweise auf eine Transmission bestehen." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Ergebnisse möglicherweise relevant für KRINKO-Empfehlungen</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung enthielt eine Wertung, die im Beschluss nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Ergebnisse relevant für KRINKO-Empfehlungen“</i></p>
+  <blockquote>„Die Studienergebnisse liefern Erkenntnisse mit möglicher Relevanz für Empfehlungen der KRINKO zur Durchführung eines KoS bei Früh - und Neugeborenen." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Laut Bericht ermöglicht das KoS die Erkennung von Transmissionen nur in Verbindung mit hochauflösenden Typisierungsverfahren wie der Ganzgenomsequenzierung; es ist notwendige Voraussetzung der Ausbruchserkennung.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Zusammenfassung enthielt eine Wertung, die im Bericht nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Laut Bericht ermöglicht das KoS die Erkennung von Transmissionen nur in Verbindung mit ressourcenintensiven hochauflösenden Typisierungsverfahren wie der Ganzgenomsequenzierung; es ist notwendige Voraussetzung der Ausbruchserkennung.“</i></p>
+  <blockquote>„„Das KoS ist dabei die notwendige Voraussetzung zur Ausbruchserkennung, kann aber nur im Verbund mit Typisierungsmethoden Transmissionsereignisse und Ausbrüche verifizieren.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei K. pneumoniae zeigten 28,4 % (Netzwerk über Zimmerkontakt) bzw. 30,8 % (Netzwerk über Stationskontakt) der Patient*innen mit verwertbaren NGS-Daten Hinweise auf eine Transmission.</p>
+  
   <blockquote>„„Für K. pneumoniae ergab sich dabei, dass - bezogen auf alle Patient*innen mit verwertbaren NGS-Daten - 28,4% Hinweise auf eine Transmission zeigen, wenn man [...] einen zeitlich überlappenden Zimmerkontakt ansetzt, 30,8%, wenn [...] schon ein Stationskontakt ausreicht.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -731,12 +752,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei E. coli lag der Anteil möglicher Transmissionen innerhalb von Clustern bei 20,7 % (Zimmerkontakt) bzw. 22,8 % (Stationskontakt).</p>
+  
   <blockquote>„„Für E. coli ergaben die Daten einen Anteil von 20,7% möglicher Transmissionen innerhalb von Clustern bei Anwendung eines gemeinsamen Zimmerkontaktes [...] sowie 22,8% bei Anwendung eines gemeinsamen Stationskontaktes“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -750,12 +771,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die GKV-Versorgung folgern die Autor*innen, dass der Rückschluss auf einen Ausbruch aus dem KoS allein wenig spezifisch ist und eine Feintypisierung notwendig ist.</p>
+  
   <blockquote>„„der Rückschluss auf einen Ausbruch aus dem aufgrund von individualmedizinischen Erwägungen finanzierten KoS alleine wenig spezifisch ist und eine Ergänzung durch eine [...] Feintypisierung notwendig ist“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +790,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Anteil der Tage mit Antibiotikagabe betrug nach vorherigem Nachweis von Enterobacterales mit Drittgenerationscephalosporin-Resistenz 20 % und war laut Bericht nicht höher als ohne vorherigen Nachweis (25 %).</p>
+  
   <blockquote>„„Wurden derartige Bakterien zuvor nachgewiesen, betrug der Anteil an Tagen mit Antibiotikagabe 20% und war somit nicht höher als in den Fällen, in denen derartige Bakterien vorher nicht detektiert wurden (25%).“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +809,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Autor*innen sehen darin keinen eindeutigen Hinweis auf einen erhöhten Antibiotikaverbrauch nach MRGN-Nachweis, der bei unangemessenem Verordnungsverhalten vermutlich zu erwarten wäre.</p>
+  
   <blockquote>„„Weiterhin ergaben sich keine eindeutigen Hinweise auf einen erhöhten Antibiotikaverbrauch in Ver bindung mit einem früheren MRGN -Nachweis, ein Zusammenhang, der im Falle eines potenziell unangemessenen Antibiotikaverordnungsverhaltens vermutlich gegeben sein müsste.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +828,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Autor*innen vermuten trotz des monozentrischen retrospektiven Designs, dass das Ergebnis zur Prädiktion an anderen Standorten analog ausfällt, und folgern, dass ein Nachweis gramnegativer Bakterien im KoS nicht per se zu einer gezielten Antibiotikatherapie führen sollte.</p>
+  
   <blockquote>„„vermuten wir, dass dieses Ergebnis auch an anderen Standorten und in anderen Studiendesigns analog ausfallen dürfte. Dieses Ergebnis verdeutlicht, dass der Nachweis von gramnegativen Bakterien im KoS nicht per se zu einer gegen diese Bakterien gerichteten Antibiotikatherapie führen sollte.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +847,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Autor*innen sehen mit der speziesspezifischen Prädiktionsanalyse erstmals eine wissenschaftliche Grundlage für die KRINKO-Empfehlungen zum Kolonisationsscreening bei VLBW-Frühgeborenen.</p>
+  
   <blockquote>„„damit gibt es erstmals eine wissenschaftliche Grundlage für die in diesem Dokument getroffenen Empfehlungen bzgl. des bakteriellen Kolonisationsscreening bei VLBW-Frühgeborenen“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +866,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine EDV-gestützte Auswertung des Screeningdatensatzes zur Ausbruchserkennung wird von den Autor*innen als sinnvoll eingeschätzt.</p>
+  
   <blockquote>„„Eine EDV-unterstützte Auswertung zum Zwecke der Ausbruchserkennung erscheint sinnvoll, um den vorhandenen Datensatz im Sinne der Infektionsprävention besser ausschöpfen zu können.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +885,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Ausgewertet wurden 4.295 Patient*innen, davon 1.186 mit mindestens einer Blutkultur; 2.285 (53,2 %) erhielten mindestens einen Tag Antibiotika.</p>
+  
   <blockquote>„„Die Auswertung erfolgte für insgesamt 4.295 Patient*innen, davon 1.186 Patient*innen mit mindestens einer Blutkultur (BK). Insgesamt wurden 2.285 (53,2 %) Patient*innen mindestens einen Tag lang mit Antibiotika behandelt.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +904,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Als häufigste detektierte Spezies nennt die Zusammenfassung Enterobacter cloacae-Komplex (n=126), E. coli (n=60), C. freundii-Komplex (n=32) und K. pneumoniae sensu lato (n=17).</p>
+  
   <blockquote>„„Die häufigsten detektierten Spezies waren Enterobacter cloacae-Komplex (n=126), E. coli (n=60), C. freundii-Komplex (n=32) und K. pneumoniae sensu lato (n=17).“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +923,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die häufigsten Kolonisationsspezies waren in absteigender Reihenfolge E. coli, E. cloacae-Komplex, K. oxytoca und K. pneumoniae; deutlich seltener C. freundii und S. marcescens.</p>
+  
   <blockquote>„„Die häufigsten Bakterienspezies in absteigender Reihenfolge stellen E. coli , E. cloacaecomplex, K. oxytoca und K. pneumoniae dar, deutlich seltener kommen C. freundii und S. marcescens vor“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +942,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In den vollständigen Jahren 2011 bis 2018 wurden zwischen 444 und 541 Kinder pro Jahr aufgenommen (Median 496).</p>
+  
   <blockquote>„„In den acht vollständigen Jahren 2011 bis 2018 gab es zwischen 444 und 541 Kinder pro Jahr, im Median pro Jahr 496 Kinder“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +961,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">12,8 % der Kinder hatten ein Geburtsgewicht unter 1.500 g (VLBW); der jährliche Anteil 2011–2018 lag zwischen 11,1 % und 14,6 %.</p>
+  
   <blockquote>„„12,8% der Kinder sind in very low birth weight ( VLBW) &lt;1.500 g Geburtsgewicht einzugruppieren. Der Anteil an VLBW in den vollen Jahren 2011-2018 lag zwischen 11,1% und 14,6% aller Patient*innen“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +980,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">55,1 % der eingeschlossenen Kinder waren männlich; in der VLBW-Subgruppe zeigte sich dieser höhere Anteil wegen geringerer Fallzahlen nicht.</p>
+  
   <blockquote>„„55,1% der eingeschlossenen Kinder waren männlich. [...] Wegen der deutlich geringeren Fallzahlen zeigte sich diese Beobachtung in der Subgruppe der VLBW jedoch nicht“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +999,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">60,8 % der Kinder wurden im Studienkrankenhaus entbunden, 73,2 % am Tag der Geburt in die Beobachtung aufgenommen.</p>
+  
   <blockquote>„„Der Anteil der Patient*innen, die noch am Tag der Geburt in das Studienkrankenhaus und damit in die Beobachtung aufgenommen wurden, lag mit 73,2% noch etwas höher.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1018,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die kontinuierliche Beobachtungsdauer betrug im Mittel 20,4 Tage, im Median 11 Tage.</p>
+  
   <blockquote>„„Die Dauer der kontinuierlichen, d.h. nicht durch Entlassungen und Wiederaufnahmen unterbrochenen Beobachtung in der Studie betrug im Mittel 20,4 Tage, mit einem Median von 11 Tagen.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1037,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der ermittelte Transmissionsanteil könnte sich laut Bericht an anderen Zentren unterscheiden, da Übertragungen u. a. von räumlichen Gegebenheiten abhängen.</p>
+  
   <blockquote>„„Es ist wahrscheinlich, dass dieser Anteil sich an anderen Zentren unterscheiden könnte, weil Übertr agungsereignisse von vielfältigen Faktoren (u. a. auch räumlichen Gegebenheiten) beeinflusst werden können.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1056,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eine Fallzahlberechnung war nicht anwendbar; stattdessen wurde ein Erfassungszeitraum von achteinhalb Jahren gewählt.</p>
+  
   <blockquote>„„Da somit eine Fallzahlberechnung nicht anwendbar war, wurde ein möglichst großer Zeitrahmen der Erfassung stationärer Patient *innen von achteinhalb Jahren gewählt, um das Risiko nicht repräsentativer Ergebnisse zu reduzieren.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1075,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Auftreten endpunktrelevanter Ereignisse wie Bakteriämien oder Transmissionen hängt von der Liegedauer der Patient*innen ab.</p>
+  
   <blockquote>„„Das Auftreten von endpunktrelevanter Ereignissen (z. B. Bakteriämien oder beobachtbare Transmissionen) ist jedoch mitbeeinflusst von der Dauer der kontinuierlichen Beobachtung pro Patient*in, also dessen/deren Liegedauer.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1094,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Daten wurden manuell aus mehreren Quellen erhoben; Eingabefehler mussten iterativ anhand der Originalquellen gesucht und korrigiert werden.</p>
+  
   <blockquote>„„In einem iterativen Prozess mit den Dateneingebenden wurden Eingabefehler aufgespürt, anhand der originalen Datenquellen kontrolliert und korrigiert.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1113,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Sämtliche Präsentationen des Jahres 2020 wurden wegen der SARS-CoV-2-Pandemie auf 2021 verschoben.</p>
+  
   <blockquote>„„Verschiebung sämtlicher Präsentationen aus dem Jahr 2020 aufgrund der SARS-CoV-2-Pandemie auf das Jahr 2021“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1142,28 +1163,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 50, "akronym": "INSIST", "kennung": "_VyQYGXt0amX", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss empfiehlt, die Erkenntnisse des Projekts INSIST an die Kommission für Krankenhaushygiene und Infektionsprävention (KRINKO) weiterzuleiten. Die KRINKO wird gebeten zu prüfen, ob die Empfehlung zum mikrobiellen Kolonisationsscreening bei Früh- und Neugeborenen weiterentwickelt werden kann. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Nach Auffassung des Ausschusses hat das Projekt eine Studie zu den Wirkungen des neonatologischen Kolonisationsscreenings erfolgreich durchgeführt. Die Methodik hält er insgesamt für angemessen. Limitationen sieht er im monozentrischen und retrospektiven Design, die Übertragbarkeit auf andere Einrichtungen sei zu prüfen. Inhaltlich zeigen die Ergebnisse einen niedrigen positiven prädiktiven Wert des Screenings für spätere Bakteriämien. Das Screening ermöglicht die Erkennung von Transmissionen, Ausbrüche lassen sich jedoch nur in Verbindung mit ressourcenintensiver Ganzgenomsequenzierung erkennen. Ein erhöhter Antibiotikaverbrauch nach früherem Nachweis multiresistenter gramnegativer Erreger fand sich nicht. Da diese Erkenntnisse für die KRINKO-Empfehlungen relevant sein können, sollen sie an die KRINKO weitergeleitet werden."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Die Übertragbarkeit auf andere Einrichtungen ist nach dem Beschluss zu prüfen, da die Studie monozentrisch an der Universitätsmedizin Göttingen durchgeführt wurde."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Limitationen durch monozentrisches und retrospektives Studiendesign"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Übertragbarkeit auf andere Einrichtungen ist noch zu prüfen"}, {"stelle": "befund.0", "art": "befund", "unser": "Studie erfolgreich durchgeführt"}, {"stelle": "befund.1", "art": "befund", "unser": "Methodik insgesamt angemessen"}, {"stelle": "befund.2", "art": "befund", "unser": "Kolonisationsscreening ermöglicht die Erkennung von Transmissionen (Hinweise bei 20,7 % bis 30,8 % der Patientinnen und Patienten für E. coli und K. pneumoniae)"}, {"stelle": "befund.3", "art": "befund", "unser": "Ergebnisse relevant für KRINKO-Empfehlungen"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Positiver prädiktiver Wert (PPV) eines Screening-Nachweises für eine spätere Bakteriämie/Blutkultur mit demselben Erreger"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Negativer prädiktiver Wert (NPV) eines Screening-Nachweises für eine spätere Bakteriämie mit demselben Erreger"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Sensitivität eines vorherigen KoS-Ergebnisses hinsichtlich einer Bakteriämie mit demselben Erreger"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Spezifität eines KoS-Nachweises für eine spätere Blutkultur mit demselben Erreger"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Anteil von Transmissionen an epidemiologisch zusammenhängenden identischen Spezies – K. pneumoniae"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Anteil von Transmissionen an epidemiologisch zusammenhängenden identischen Spezies – E. coli"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Antibiotikatherapietage bezogen auf Beobachtungstage, Gesamtdatensatz (ohne vs. mit vorherigem 3GCRE-Nachweis)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Antibiotikatherapietage bezogen auf Beobachtungstage, Subgruppe Geburtsgewicht < 1500 g"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Antibiotikatherapietage bezogen auf Beobachtungstage, Subgruppe Geburtsgewicht ≥ 1500 g"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Anteil normaler CRP-Werte (≤ 4,1 mg/L) bei Antibiotika-Therapiebeginn ohne vs. mit vorherigem 3GCRE-Nachweis"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Kolonisationsdynamik / häufigste Bakterienspezies im rektalen Kolonisationsscreening"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Antibiotikaexposition der Studienpopulation und detektierte Spezies (deskriptiv)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte in einer monozentrischen Beobachtungsstudie mit primär retrospektiver Analyse über achteinhalb Jahre, wie gut das neonatologische Kolonisationsscreening (KoS) auf Enterobacterales, P. aeruginosa und A. baumannii-Gruppe eine nachfolgende Infektion mit demselben Erreger vorhersagt (primärer Endpunkt). Sekundär wurden die Erkennung von Transmissionen und Ausbrüchen per Ganzgenomsequenzierung und der Antibiotikaverbrauch nach Nachweis multiresistenter Erreger untersucht. Ausgewertet wurden 4.295 Patient*innen, davon 1.186 mit mindestens einer Blutkultur. Der positive prädiktive Wert des Screenings für eine spätere Bakteriämie mit demselben Erreger lag bei allen betrachteten Erregern unter 0,2, der negative prädiktive Wert über 0,99; die Autor*innen halten den PPV für klinische Entscheidungen für ungeeignet. Bei gleicher Spezies und epidemiologischem Zusammenhang zeigten 20,7 % bis 30,8 % der Patient*innen mit NGS-Daten Hinweise auf eine Transmission, je nach Erreger (K. pneumoniae, E. coli) und Kontaktdefinition; Transmissionserkennung ist laut Bericht nur zusammen mit hochauflösender Typisierung möglich. Der Anteil der Antibiotikatage lag nach vorherigem Nachweis von Enterobacterales mit Drittgenerationscephalosporin-Resistenz bei 20 % gegenüber 25 % ohne solchen Nachweis. Die Aussagekraft begrenzen das Fehlen einer Kontrollgruppe nicht gescreenter Patient*innen, das monozentrische Design, die retrospektive Analyse (laut Bericht biasanfällig für die Antibiotikafrage) und die fehlende Fallzahlberechnung."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Der positive prädiktive Wert des KoS für eine spätere Bakteriämie mit demselben Erreger lag bei allen betrachteten Erregern auch unter Berücksichtigung des Konfidenzintervalls unter 0,2, der negative prädiktive Wert über 0,99; positiv gescreente gramnegative Erreger wurden in weniger als 20 % der Fälle nachfolgend in einer Blutkultur nachgewiesen, fehlender Screeningnachweis ging in über 99 % mit fehlendem Blutkulturnachweis derselben Spezies einher."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Die Autor*innen bewerten den PPV als ungeeignet für klinische Entscheidungen, sehen aber eine mögliche Rolle des KoS bei einer initial kalkulierten Antibiotikatherapie."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Bei Nachweis der gleichen Spezies und epidemiologischem Zusammenhang fand laut NGS in der Mehrzahl der Fälle keine Übertragung statt, da die Stämme nicht näher verwandt waren."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Laut Bericht ermöglicht das KoS die Erkennung von Transmissionen nur in Verbindung mit ressourcenintensiven hochauflösenden Typisierungsverfahren wie der Ganzgenomsequenzierung; es ist notwendige Voraussetzung der Ausbruchserkennung."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Eine Kontrollgruppe nicht gescreenter Patient*innen war aus ethischen Gründen nicht möglich, da das Screening durch die KRINKO-Empfehlungen von 2013 Standard ist; gewählt wurde eine Beobachtungsstudie."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Studie wurde an einem einzelnen Zentrum durchgeführt; bauliche und organisatorische Eigenheiten verschiedener Zentren dürften laut Bericht insbesondere Transmissionsereignisse beeinflussen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Frage, ob KoS-Befunde das Antibiotika-Verschreibungsverhalten beeinflussen, ist laut Bericht in einer retrospektiven Studie biasanfällig und kann an anderen Standorten variieren."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Die Rangfolge der häufigsten Spezies unterscheidet sich: Die Zusammenfassung (S. 2) nennt Enterobacter cloacae-Komplex (n=126) vor E. coli (n=60) als häufigste detektierte Spezies, der Ergebnisteil (S. 15) nennt E. coli vor E. cloacae-Komplex als häufigste Kolonisationsspezies. Ob sich beide Angaben auf verschiedene Bezugsmengen (z. B. Blutkulturen vs. Screening) beziehen, geht aus den vorliegenden Abschnitten nicht hervor."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Zum Antibiotikaverbrauch heißt es in der Zusammenfassung (S. 2), es hätten sich „keine eindeutigen Hinweise“ auf einen erhöhten Verbrauch ergeben, in der Diskussion (S. 18) dagegen „keinen Hinweis“."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Bei K. pneumoniae zeigten 28,4 % (Netzwerk über Zimmerkontakt) bzw. 30,8 % (Netzwerk über Stationskontakt) der Patient*innen mit verwertbaren NGS-Daten Hinweise auf eine Transmission."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Bei E. coli lag der Anteil möglicher Transmissionen innerhalb von Clustern bei 20,7 % (Zimmerkontakt) bzw. 22,8 % (Stationskontakt)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Für die GKV-Versorgung folgern die Autor*innen, dass der Rückschluss auf einen Ausbruch aus dem KoS allein wenig spezifisch ist und eine Feintypisierung notwendig ist."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Der Anteil der Tage mit Antibiotikagabe betrug nach vorherigem Nachweis von Enterobacterales mit Drittgenerationscephalosporin-Resistenz 20 % und war laut Bericht nicht höher als ohne vorherigen Nachweis (25 %)."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die Autor*innen sehen darin keinen eindeutigen Hinweis auf einen erhöhten Antibiotikaverbrauch nach MRGN-Nachweis, der bei unangemessenem Verordnungsverhalten vermutlich zu erwarten wäre."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Autor*innen vermuten trotz des monozentrischen retrospektiven Designs, dass das Ergebnis zur Prädiktion an anderen Standorten analog ausfällt, und folgern, dass ein Nachweis gramnegativer Bakterien im KoS nicht per se zu einer gezielten Antibiotikatherapie führen sollte."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Autor*innen sehen mit der speziesspezifischen Prädiktionsanalyse erstmals eine wissenschaftliche Grundlage für die KRINKO-Empfehlungen zum Kolonisationsscreening bei VLBW-Frühgeborenen."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Eine EDV-gestützte Auswertung des Screeningdatensatzes zur Ausbruchserkennung wird von den Autor*innen als sinnvoll eingeschätzt."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Ausgewertet wurden 4.295 Patient*innen, davon 1.186 mit mindestens einer Blutkultur; 2.285 (53,2 %) erhielten mindestens einen Tag Antibiotika."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Als häufigste detektierte Spezies nennt die Zusammenfassung Enterobacter cloacae-Komplex (n=126), E. coli (n=60), C. freundii-Komplex (n=32) und K. pneumoniae sensu lato (n=17)."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Die häufigsten Kolonisationsspezies waren in absteigender Reihenfolge E. coli, E. cloacae-Komplex, K. oxytoca und K. pneumoniae; deutlich seltener C. freundii und S. marcescens."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "In den vollständigen Jahren 2011 bis 2018 wurden zwischen 444 und 541 Kinder pro Jahr aufgenommen (Median 496)."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "12,8 % der Kinder hatten ein Geburtsgewicht unter 1.500 g (VLBW); der jährliche Anteil 2011–2018 lag zwischen 11,1 % und 14,6 %."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "55,1 % der eingeschlossenen Kinder waren männlich; in der VLBW-Subgruppe zeigte sich dieser höhere Anteil wegen geringerer Fallzahlen nicht."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "60,8 % der Kinder wurden im Studienkrankenhaus entbunden, 73,2 % am Tag der Geburt in die Beobachtung aufgenommen."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Die kontinuierliche Beobachtungsdauer betrug im Mittel 20,4 Tage, im Median 11 Tage."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Der ermittelte Transmissionsanteil könnte sich laut Bericht an anderen Zentren unterscheiden, da Übertragungen u. a. von räumlichen Gegebenheiten abhängen."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Eine Fallzahlberechnung war nicht anwendbar; stattdessen wurde ein Erfassungszeitraum von achteinhalb Jahren gewählt."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Das Auftreten endpunktrelevanter Ereignisse wie Bakteriämien oder Transmissionen hängt von der Liegedauer der Patient*innen ab."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die Daten wurden manuell aus mehreren Quellen erhoben; Eingabefehler mussten iterativ anhand der Originalquellen gesucht und korrigiert werden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Sämtliche Präsentationen des Jahres 2020 wurden wegen der SARS-CoV-2-Pandemie auf 2021 verschoben."}]};
+const D = {"projekt_id": 50, "akronym": "INSIST", "kennung": "_VyQYGXt0amX", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Nach Auffassung des Ausschusses hat das Projekt eine Studie zu den Wirkungen des neonatologischen Kolonisationsscreenings erfolgreich durchgeführt. Die Methodik hält er insgesamt für angemessen. Limitationen sieht er im monozentrischen und retrospektiven Design, die Übertragbarkeit auf andere Einrichtungen sei zu prüfen. Inhaltlich zeigen die Ergebnisse einen niedrigen positiven prädiktiven Wert des Screenings für spätere Bakteriämien. Das Screening ermöglicht die Erkennung von Transmissionen, Ausbrüche lassen sich jedoch nur in Verbindung mit ressourcenintensiver Ganzgenomsequenzierung erkennen. Ein erhöhter Antibiotikaverbrauch nach früherem Nachweis multiresistenter gramnegativer Erreger fand sich nicht. Da diese Erkenntnisse für die KRINKO-Empfehlungen relevant sein können, sollen sie an die KRINKO weitergeleitet werden."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Limitationen durch monozentrisches und retrospektives Studiendesign"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Übertragbarkeit auf andere Einrichtungen ist noch zu prüfen"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Positiver prädiktiver Wert (PPV) eines Screening-Nachweises für eine spätere Bakteriämie/Blutkultur mit demselben Erreger"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Negativer prädiktiver Wert (NPV) eines Screening-Nachweises für eine spätere Bakteriämie mit demselben Erreger"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Sensitivität eines vorherigen KoS-Ergebnisses hinsichtlich einer Bakteriämie mit demselben Erreger"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Spezifität eines KoS-Nachweises für eine spätere Blutkultur mit demselben Erreger"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Anteil von Transmissionen an epidemiologisch zusammenhängenden identischen Spezies – K. pneumoniae"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Anteil von Transmissionen an epidemiologisch zusammenhängenden identischen Spezies – E. coli"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Antibiotikatherapietage bezogen auf Beobachtungstage, Gesamtdatensatz (ohne vs. mit vorherigem 3GCRE-Nachweis)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Antibiotikatherapietage bezogen auf Beobachtungstage, Subgruppe Geburtsgewicht < 1500 g"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Antibiotikatherapietage bezogen auf Beobachtungstage, Subgruppe Geburtsgewicht ≥ 1500 g"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Anteil normaler CRP-Werte (≤ 4,1 mg/L) bei Antibiotika-Therapiebeginn ohne vs. mit vorherigem 3GCRE-Nachweis"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Kolonisationsdynamik / häufigste Bakterienspezies im rektalen Kolonisationsscreening"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Antibiotikaexposition der Studienpopulation und detektierte Spezies (deskriptiv)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte in einer monozentrischen Beobachtungsstudie mit primär retrospektiver Analyse über achteinhalb Jahre, wie gut das neonatologische Kolonisationsscreening (KoS) auf Enterobacterales, P. aeruginosa und A. baumannii-Gruppe eine nachfolgende Infektion mit demselben Erreger vorhersagt (primärer Endpunkt). Sekundär wurden die Erkennung von Transmissionen und Ausbrüchen per Ganzgenomsequenzierung und der Antibiotikaverbrauch nach Nachweis multiresistenter Erreger untersucht. Ausgewertet wurden 4.295 Patient*innen, davon 1.186 mit mindestens einer Blutkultur. Der positive prädiktive Wert des Screenings für eine spätere Bakteriämie mit demselben Erreger lag bei allen betrachteten Erregern unter 0,2, der negative prädiktive Wert über 0,99; die Autor*innen halten den PPV für klinische Entscheidungen für ungeeignet. Bei gleicher Spezies und epidemiologischem Zusammenhang zeigten 20,7 % bis 30,8 % der Patient*innen mit NGS-Daten Hinweise auf eine Transmission, je nach Erreger (K. pneumoniae, E. coli) und Kontaktdefinition; Transmissionserkennung ist laut Bericht nur zusammen mit hochauflösender Typisierung möglich. Der Anteil der Antibiotikatage lag nach vorherigem Nachweis von Enterobacterales mit Drittgenerationscephalosporin-Resistenz bei 20 % gegenüber 25 % ohne solchen Nachweis. Die Aussagekraft begrenzen das Fehlen einer Kontrollgruppe nicht gescreenter Patient*innen, das monozentrische Design, die retrospektive Analyse (laut Bericht biasanfällig für die Antibiotikafrage) und die fehlende Fallzahlberechnung."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Der positive prädiktive Wert des KoS für eine spätere Bakteriämie mit demselben Erreger lag bei allen betrachteten Erregern auch unter Berücksichtigung des Konfidenzintervalls unter 0,2, der negative prädiktive Wert über 0,99; positiv gescreente gramnegative Erreger wurden in weniger als 20 % der Fälle nachfolgend in einer Blutkultur nachgewiesen, fehlender Screeningnachweis ging in über 99 % mit fehlendem Blutkulturnachweis derselben Spezies einher."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Die Autor*innen bewerten den PPV als ungeeignet für klinische Entscheidungen, sehen aber eine mögliche Rolle des KoS bei einer initial kalkulierten Antibiotikatherapie."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Bei Nachweis der gleichen Spezies und epidemiologischem Zusammenhang fand laut NGS in der Mehrzahl der Fälle keine Übertragung statt, da die Stämme nicht näher verwandt waren."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Eine Kontrollgruppe nicht gescreenter Patient*innen war aus ethischen Gründen nicht möglich, da das Screening durch die KRINKO-Empfehlungen von 2013 Standard ist; gewählt wurde eine Beobachtungsstudie."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Studie wurde an einem einzelnen Zentrum durchgeführt; bauliche und organisatorische Eigenheiten verschiedener Zentren dürften laut Bericht insbesondere Transmissionsereignisse beeinflussen."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Die Frage, ob KoS-Befunde das Antibiotika-Verschreibungsverhalten beeinflussen, ist laut Bericht in einer retrospektiven Studie biasanfällig und kann an anderen Standorten variieren."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Die Rangfolge der häufigsten Spezies unterscheidet sich: Die Zusammenfassung (S. 2) nennt Enterobacter cloacae-Komplex (n=126) vor E. coli (n=60) als häufigste detektierte Spezies, der Ergebnisteil (S. 15) nennt E. coli vor E. cloacae-Komplex als häufigste Kolonisationsspezies. Ob sich beide Angaben auf verschiedene Bezugsmengen (z. B. Blutkulturen vs. Screening) beziehen, geht aus den vorliegenden Abschnitten nicht hervor."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Zum Antibiotikaverbrauch heißt es in der Zusammenfassung (S. 2), es hätten sich „keine eindeutigen Hinweise“ auf einen erhöhten Verbrauch ergeben, in der Diskussion (S. 18) dagegen „keinen Hinweis“."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss empfiehlt, die Erkenntnisse des Projekts INSIST an die Kommission für Krankenhaushygiene und Infektionsprävention (KRINKO) weiterzuleiten. Die KRINKO wird gebeten zu prüfen, ob die Empfehlung zum mikrobiellen Kolonisationsscreening bei Früh- und Neugeborenen weiterentwickelt werden kann. Die Geschäftsstelle wird mit der Weiterleitung beauftragt."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Die Übertragbarkeit auf andere Einrichtungen ist nach dem Beschluss zu prüfen, da die Studie monozentrisch an der Universitätsmedizin Göttingen durchgeführt wurde."}, {"stelle": "befund.0", "art": "befund", "unser": "Studie erfolgreich durchgeführt"}, {"stelle": "befund.1", "art": "befund", "unser": "Methodik insgesamt angemessen"}, {"stelle": "befund.2", "art": "befund", "unser": "Kolonisationsscreening ermöglicht die Erkennung von Transmissionen (Hinweise bei 20,7 % bis 30,8 % der Patientinnen und Patienten für E. coli und K. pneumoniae)"}, {"stelle": "befund.3", "art": "befund", "unser": "Ergebnisse möglicherweise relevant für KRINKO-Empfehlungen"}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Laut Bericht ermöglicht das KoS die Erkennung von Transmissionen nur in Verbindung mit hochauflösenden Typisierungsverfahren wie der Ganzgenomsequenzierung; es ist notwendige Voraussetzung der Ausbruchserkennung."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Bei K. pneumoniae zeigten 28,4 % (Netzwerk über Zimmerkontakt) bzw. 30,8 % (Netzwerk über Stationskontakt) der Patient*innen mit verwertbaren NGS-Daten Hinweise auf eine Transmission."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Bei E. coli lag der Anteil möglicher Transmissionen innerhalb von Clustern bei 20,7 % (Zimmerkontakt) bzw. 22,8 % (Stationskontakt)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Für die GKV-Versorgung folgern die Autor*innen, dass der Rückschluss auf einen Ausbruch aus dem KoS allein wenig spezifisch ist und eine Feintypisierung notwendig ist."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Der Anteil der Tage mit Antibiotikagabe betrug nach vorherigem Nachweis von Enterobacterales mit Drittgenerationscephalosporin-Resistenz 20 % und war laut Bericht nicht höher als ohne vorherigen Nachweis (25 %)."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Die Autor*innen sehen darin keinen eindeutigen Hinweis auf einen erhöhten Antibiotikaverbrauch nach MRGN-Nachweis, der bei unangemessenem Verordnungsverhalten vermutlich zu erwarten wäre."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Autor*innen vermuten trotz des monozentrischen retrospektiven Designs, dass das Ergebnis zur Prädiktion an anderen Standorten analog ausfällt, und folgern, dass ein Nachweis gramnegativer Bakterien im KoS nicht per se zu einer gezielten Antibiotikatherapie führen sollte."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Autor*innen sehen mit der speziesspezifischen Prädiktionsanalyse erstmals eine wissenschaftliche Grundlage für die KRINKO-Empfehlungen zum Kolonisationsscreening bei VLBW-Frühgeborenen."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Eine EDV-gestützte Auswertung des Screeningdatensatzes zur Ausbruchserkennung wird von den Autor*innen als sinnvoll eingeschätzt."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Ausgewertet wurden 4.295 Patient*innen, davon 1.186 mit mindestens einer Blutkultur; 2.285 (53,2 %) erhielten mindestens einen Tag Antibiotika."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Als häufigste detektierte Spezies nennt die Zusammenfassung Enterobacter cloacae-Komplex (n=126), E. coli (n=60), C. freundii-Komplex (n=32) und K. pneumoniae sensu lato (n=17)."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Die häufigsten Kolonisationsspezies waren in absteigender Reihenfolge E. coli, E. cloacae-Komplex, K. oxytoca und K. pneumoniae; deutlich seltener C. freundii und S. marcescens."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "In den vollständigen Jahren 2011 bis 2018 wurden zwischen 444 und 541 Kinder pro Jahr aufgenommen (Median 496)."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "12,8 % der Kinder hatten ein Geburtsgewicht unter 1.500 g (VLBW); der jährliche Anteil 2011–2018 lag zwischen 11,1 % und 14,6 %."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "55,1 % der eingeschlossenen Kinder waren männlich; in der VLBW-Subgruppe zeigte sich dieser höhere Anteil wegen geringerer Fallzahlen nicht."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "60,8 % der Kinder wurden im Studienkrankenhaus entbunden, 73,2 % am Tag der Geburt in die Beobachtung aufgenommen."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Die kontinuierliche Beobachtungsdauer betrug im Mittel 20,4 Tage, im Median 11 Tage."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Der ermittelte Transmissionsanteil könnte sich laut Bericht an anderen Zentren unterscheiden, da Übertragungen u. a. von räumlichen Gegebenheiten abhängen."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Eine Fallzahlberechnung war nicht anwendbar; stattdessen wurde ein Erfassungszeitraum von achteinhalb Jahren gewählt."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Das Auftreten endpunktrelevanter Ereignisse wie Bakteriämien oder Transmissionen hängt von der Liegedauer der Patient*innen ab."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die Daten wurden manuell aus mehreren Quellen erhoben; Eingabefehler mussten iterativ anhand der Originalquellen gesucht und korrigiert werden."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Sämtliche Präsentationen des Jahres 2020 wurden wegen der SARS-CoV-2-Pandemie auf 2021 verschoben."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

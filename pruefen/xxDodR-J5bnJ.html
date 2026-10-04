@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF16020</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>23 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 63 Aussagen. Die übrigen
+40 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss leitet die Erkenntnisse des Projekts PV-Monitor an das BfArM und das Paul-Ehrlich-Institut weiter. Beide werden gebeten, die Projekterkenntnisse gegebenenfalls im Rahmen einer Validierung zu prüfen und eine weitere Nutzbarmachung für die datengestützte Risikosignalerkennung zu erwägen. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt erforschte statistische Methoden und entwickelte Deep-Learning-Algorithmen für die Pharmakovigilanz auf Basis von GKV-Abrechnungsdaten. Die Simulationsstudie zum Vergleich der Lernverfahren führte nicht bei allen Fragestellungen zum Ziel. Erfolgreich wurden dagegen zwei Verarbeitungsketten aufgebaut.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Sekundärdatenanalyse und Simulationsstudien</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Eine praktische Anwendung setzt nach dem Beschluss weitere Expertenkonsultationen und für jeden Einzelfall weitere pharmakoepidemiologische Überprüfungen voraus; gefundene Signale sollten stets von Expertinnen und Experten begutachtet werden. Die Übernahme in die datengestützte Risikosignalerkennung soll von BfArM und PEI geprüft werden.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: Auswertung und Statistik <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Die Simulationsstudie zum Vergleich der maschinellen Lernverfahren führte nicht bei allen Fragestellungen zum Ziel</p>
+  
   <blockquote>„Es zeigte sich, dass die Simulationsstudie nicht bei allen Fragestellungen zum Ziel führte." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -199,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.1">
   <h3>Hindernis laut Beschluss: Studienanlage <span class="ampel gelb">hier sind wir unsicher</span></h3>
   <p class="unser">Stark exploratives Vorgehen; Methoden in frühem Entwicklungsstadium</p>
+  
   <blockquote>„Das methodische Vorgehen des Projektes war insgesamt stark explorativ und die neuen statistischen Methoden und Verfahren befinden sich in einem frühen Stadium." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -216,90 +195,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.2">
-  <h3>Hindernis laut Beschluss: Übertragbarkeit unklar <span class="ampel gelb">hier sind wir unsicher</span></h3>
-  <p class="unser">Vor praktischer Anwendung sind weitere Expertenkonsultationen und Einzelfallprüfungen in pharmakoepidemiologischen Studien erforderlich</p>
+  <h3>Hindernis laut Beschluss: Übertragbarkeit <span class="ampel gelb">hier sind wir unsicher</span></h3>
+  <p class="unser">Ein bisher unbekanntes Risikosignal wurde identifiziert, ist aber noch nicht verifiziert; vor praktischer Anwendung sind weitere Expertenkonsultationen und Einzelfallprüfungen in pharmakoepidemiologischen Studien erforderlich</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung gab nur eine Hälfte des Beschlusssatzes wieder; die Neufassung nennt beide. Vorher stand hier:
+    <i>„Vor praktischer Anwendung sind weitere Expertenkonsultationen und Einzelfallprüfungen in pharmakoepidemiologischen Studien erforderlich“</i></p>
   <blockquote>„Darüber hinaus konnte ein unbekanntes Risikosignal identifiziert werden, welches noch nicht in entsprechenden pharmakoepidemiologischen Validierungsstudien verifiziert wurde. Hierzu bedarf es weiterer Expertenkonsultationen sowie für jeden Einzelfall weitere Überprüfungen mit Hilfe von weiteren pharmakoepidemiologischen Studien bevor das methodische Vorgehen praktische Anwendung findet." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Zwei Verarbeitungsketten zur Signalgenerierung auf GKV-Abrechnungsdaten entwickelt und am Beispiel der DOAKs angewandt</p>
-  <blockquote>„Für die Signalgenerierung auf Basis von GKV -Abrechnungsdaten wurden erfolgreich zwei Verarbeitungsketten entwickelt und im Rahmen einer Machbarkeitsstudie am Beispiel der direkten oralen Gerinnungshemmer (DOAKs) angewandt, um potenzielle unerwünschte Arzneimittelwirkung (UAWs) zu identifizieren." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Neue Forschungsansätze aufgezeigt; generierte Risikosignale spiegeln bereits bekannte Signale wider</p>
-  <blockquote>„Gleichwohl konnte das Projekt PV -Monitor neue Forschungsansätze aufzeigen und anhand der generierten Risikosignale zeigen, dass diese bereits b ekannte Signale widerspiegeln." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Ein bisher unbekanntes Risikosignal identifiziert (noch nicht verifiziert)</p>
-  <blockquote>„Darüber hinaus konnte ein unbekanntes Risikosignal identifiziert werden, welches noch nicht in entsprechenden pharmakoepidemiologischen Validierungsstudien verifiziert wurde." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Potenzial der Verarbeitungsketten zur Identifikation von UAWs auf GKV-Abrechnungsdaten gezeigt</p>
-  <blockquote>„Insgesamt konnte das Projekt anhand neu entwickelter methodischer Ansätze zeigen, dass die Anwendung der Verarbeitungsketten zur Signaldetektion auf Abrechnungsdaten der GKV das Potenzial aufweist, UAWs zu identifizieren." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +218,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Gastrointestinale Blutung (Positivkontrolle), Einzelnutzung eines DOAKs am Indextag</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -332,12 +237,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Intrakranielle Blutung (Positivkontrolle), Einzelnutzung eines DOAKs am Indextag</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +256,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Akute Leberschädigung, Einzelnutzung eines DOAKs am Indextag</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +275,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Akute Nierenschädigung, Einzelnutzung eines DOAKs am Indextag</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +294,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Zystitis, Einzelnutzung eines DOAKs am Indextag</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +313,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Epilepsie, Einzelnutzung eines DOAKs am Indextag</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +332,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Glaukom, Einzelnutzung eines DOAKs am Indextag</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +351,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Sepsis, Einzelnutzung eines DOAKs am Indextag</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -462,53 +367,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
       ></textarea></label>
   </div>
 </section>
-<section class="p" data-stelle="adressat.1">
-  <h3>Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) – eingestuft als „geprüft und nicht aufgegriffen“</h3>
-  <p class="unser">In einer gemeinsamen Stellungnahme mit dem PEI berichtet das BfArM über eine komplementäre Analyse der Spontanberichte in EudraVigilance, die das vom PV-Monitor generierte Epilepsie-Signal unter DOAK nicht bestätigt hat. Die Signalerkennung aus GKV-Daten wird als möglicher weiterer Ansatz zum Signalmanagement betrachtet; eine Übernahme in ein Verfahren wird nicht benannt.</p>
-  <blockquote>„Das vom PV-Monitor detektierte Signal zum Risiko des Auftretens von Epilepsie im Zusammenhang mit der Anwendung von DOAK aus den Abrechnungsdaten von gesetzlichen Krankenversicherungen (GKV) konnte durch die komplementäre Analyse von Spontanberichten nicht bestätigt werden." <span class="s">S. 8</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.2">
-  <h3>Paul-Ehrlich-Institut (PEI) Bundesinstitut für Impfstoffe und biomedizinische Arzneimittel – eingestuft als „geprüft und nicht aufgegriffen“</h3>
-  <p class="unser">Das PEI hat die gemeinsame Stellungnahme mit dem BfArM abgegeben, nach der das Epilepsie-Signal durch die komplementäre Analyse nicht bestätigt wurde. Die Signaldetektion in GKV-Daten wird als Quelle erster Hinweise gewertet; eine Übernahme in ein Verfahren wird nicht benannt.</p>
-  <blockquote>„Das vom PV-Monitor detektierte Signal zum Risiko des Auftretens von Epilepsie im Zusammenhang mit der Anwendung von DOAK aus den Abrechnungsdaten von gesetzlichen Krankenversicherungen (GKV) konnte durch die komplementäre Analyse von Spontanberichten nicht bestätigt werden." <span class="s">S. 8</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="bericht_kurz">
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben entwickelte Verfahren zur Signaldetektion unerwünschter Arzneimittelwirkungen (UAW) auf GKV-Abrechnungsdaten. Es übertrug dafür Konzepte der genetischen Epidemiologie, verglich 27 statistische Methoden und baute zwei Verarbeitungsketten auf: Deep Learning (TK) und einen Methoden-Mix (BIPS). Ein primärer Endpunkt ist im Bericht nicht angegeben. In einer Machbarkeitsstudie zu DOAKs auf GePaRD-Daten mit 12.203.348 TK-Versicherten (2015–2016) identifizierten beide Ketten bekannte UAWs. Sieben Signale wurden in einer Active-Comparator-Studie gegen Phenprocoumon geprüft; nur eines führte zu einer potenziell interessanten Neuentdeckung, deren Ergebnis vorläufig ist und weitere Expertenbewertung erfordert. Lasso erwies sich laut Bericht als einzige verglichene Methode robust gegen den Innocent Bystander Effect. Die Aussagekraft ist begrenzt: Ein Abgleich gegen einen Goldstandard war nicht möglich, ein direkter Vergleich der beiden Ketten ebenfalls nicht, und eine abschließende Methodenempfehlung lässt sich daraus nicht ableiten. Hinzu kommen geplante, aber nicht umsetzbare Simulationsstudien, Daten aus nur zwei Jahren sowie technische und organisatorische Hindernisse zwischen den Partnern. Nach dem Bericht liefern die Signale nur Hinweise für Forschungshypothesen und müssen jeweils pharmakoepidemiologisch überprüft werden.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +389,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Signaldetektion zu DOAKs ergab sieben Signale: akute Blutungen, akute Leberschädigungen, akutes Nierenversagen, Epilepsie, Glaukom, Sepsis und Zystitis. Sie wurden in einer Validierungsphase überprüft, mit gastrointestinaler und intrakranialer Blutung als Positivkontrollen.</p>
+  
   <blockquote>„„Die Signaldetektion hat die Signale akute Blutungen , akute Leberschädigungen, akutes Nierenversagen, Epilepsie, Glaukom, Sepsis und Zystitis identifiziert. Diese wurden in der Validierungsphase überprüft. Zusätzlich wurden die beiden bereits bekannten Neben wirkungen der gastrointestinalen sowie intrakranialen Blutung als Positivkontrolle analysiert.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +408,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von den sieben im Active-Comparator-Design (DOAK vs. Phenprocoumon) geprüften Signalen führte nur eines zu einer potenziell interessanten Neuentdeckung. Dieses Ergebnis ist vorläufig und erfordert vor einer Publikation weitere Experten.</p>
+  
   <blockquote>„„Von den sieben Signalen führte lediglich ein Signal zu einer potenziell interessanten Neuentdeckung (siehe Anlage 7). Bevor dieses Signal allerdings als solches publiziert werden kann, ist der Einbezug weiterer Experten oder Expertinnen notwendig. Die im Anlage 7 bereitgestellten Ergebnisse sind demnach vorläufig.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,50 +427,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Beide Verarbeitungsketten konnten bekannte UAWs identifizieren.</p>
+  
   <blockquote>„„Beide Verarbeitungsketten waren zudem in der Lage, bekannte UAWs zu identifizieren.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Mit Lasso ließ sich die große Zahl an Kovariaten aus GKV-Daten in die Signaldetektion integrieren. Lasso war die einzige verglichene Methode, die sich als robust gegen den Innocent Bystander Effect erwies.</p>
-  <blockquote>„„So wurde gezeigt, dass mit Lasso die große Anzahl von Kovariaten, die in GKV-Daten zur Verfügung stehen, in die Signaldetektion integriert werden kann. Dies war auch die einzige Methode im Vergleich, die sich als robust gegen den Innocent Bystander Effect erwiesen hat“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.4">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Die Positivkontrollen entsprachen der Erwartung aus der Literatur: Unter DOAK-Therapie lag das Odds Ratio gegenüber Vitamin-K-Antagonisten für gastrointestinale Blutungen höher und für intrakranielle Blutungen niedriger.</p>
-  <blockquote>„„Wie aus der Literatur zu erwarten war, zeigte eine DOAK -Therapie im Vergleich zu einer Therapie mit Vitamin -K-Antagonisten ein höheres Odds Ratio für gastrointestinale Blutungen und ein niedrigeres Odds Ratio für intrakranielle Blutungen.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +446,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Methoden ließen sich nicht gegen einen Goldstandard abgleichen. Wegen unterschiedlicher Ergebnisausgaben war auch kein direkter Vergleich der beiden Verarbeitungsketten möglich, sodass keine abschließende Empfehlung zur Methodenwahl möglich ist.</p>
+  
   <blockquote>„„da diese nicht gegen einen Goldstandard abgeglichen werden konnten. Aufgrund der unterschiedlichen Ergebnisausgaben beider Verarbeitungsketten war leider auch ein direkter Vergleich nicht möglich. Dies erlaubte keine abschließende Beurteilung mit daraus resultierenden Empfehlungen für die Methodenwahl.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +465,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ohne Vorwissen über Patientenklientel, Dosierungen oder Störvariablen liefern die Ergebnisse nur Hinweise für Forschungshypothesen. Jedes potenziell interessante Signal muss im Einzelfall pharmakoepidemiologisch überprüft werden.</p>
+  
   <blockquote>„„ohne genaues Vorwissen über das Patientenklientel, Dosierungen oder mögliche Störvariablen bieten die Ergebnisse jedoch nur wertvolle Hinweise für spezifisch zu definierende Forschungshypothesen. Daher ist eine abschließende Überprüfung von potenziell interessanten Signalen mit Hilfe einer pharmakoepidemiologischen Studie in jedem Einzelfall zwingend notwendig.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,31 +484,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die neu identifizierten Signale konnten in Validierungsstudien bis auf eines nicht verifiziert werden. Der endgültige Nachweis für dieses eine Signal steht noch aus.</p>
+  
   <blockquote>„„Darüber hinaus wur den weitere, bisher unbekannte Signale identifiziert, die allerdings bis auf ein Signal nicht in entsprechenden pharmakoepidemiologischen Validierungsstudien verifiziert werden konnten. Der endgültige Nachweis steht noch aus“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Wegen kürzerer Löschfristen bei der TK und Verzögerungen in der Datenlieferung standen für den Methodenvergleich de facto nur die Abrechnungsdaten der Jahre 2015 und 2016 zur Verfügung.</p>
-  <blockquote>„„überlappten sich die Abrechnungsdaten für die Jahre 2015 und 2016 und standen so de facto für einen Methodenvergleich zur Verfügung.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -694,11 +504,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Vergleich der Verarbeitungsketten: S. 9 sagt, ein Vergleich beider Verarbeitungsketten habe über die gemeinsame Datenschnittmenge in GePaRD „dennoch realisiert werden“ können, und S. 21 berichtet, die Ergebnisse stimmten „im Wesentlichen“ überein. S. 22 dagegen sagt, wegen unterschiedlicher Ergebnisausgaben sei „auch ein direkter Vergleich nicht möglich“ gewesen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -713,11 +523,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Methodengüte: S. 22 schreibt den multivariaten Methoden „eine eher bessere Genauigkeit und Trefferquote“ zu als den Standardverfahren. Derselbe Abschnitt hält fest, dass die Methoden nicht gegen einen Goldstandard abgeglichen werden konnten und keine abschließende Beurteilung möglich war.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -732,11 +542,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Wiedergabe bekannter UAWs: S. 25 sagt, die generierten Signale spiegelten die bekannten Signale wider, was „eindrücklich“ den Erfolg des Ansatzes zeige. Nach S. 21 gelang die Detektion der bekannten toxischen Leberkrankheit (K71) unter Rivaroxaban durch die meisten Methoden nicht.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -746,16 +556,227 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>29 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>40 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss leitet die Erkenntnisse des Projekts PV-Monitor an das BfArM und das Paul-Ehrlich-Institut weiter. Beide werden gebeten, die Projekterkenntnisse gegebenenfalls im Rahmen einer Validierung zu prüfen und eine weitere Nutzbarmachung für die datengestützte Risikosignalerkennung zu erwägen. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Eine praktische Anwendung setzt nach dem Beschluss weitere Expertenkonsultationen und für jeden Einzelfall weitere pharmakoepidemiologische Überprüfungen voraus; gefundene Signale sollten stets von Expertinnen und Experten begutachtet werden. Die Übernahme in die datengestützte Risikosignalerkennung soll von BfArM und PEI geprüft werden.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Zwei Verarbeitungsketten zur Signalgenerierung auf GKV-Abrechnungsdaten entwickelt und am Beispiel der DOAKs angewandt</p>
+  
+  <blockquote>„Für die Signalgenerierung auf Basis von GKV -Abrechnungsdaten wurden erfolgreich zwei Verarbeitungsketten entwickelt und im Rahmen einer Machbarkeitsstudie am Beispiel der direkten oralen Gerinnungshemmer (DOAKs) angewandt, um potenzielle unerwünschte Arzneimittelwirkung (UAWs) zu identifizieren." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Neue Forschungsansätze aufgezeigt; generierte Risikosignale spiegeln bereits bekannte Signale wider</p>
+  
+  <blockquote>„Gleichwohl konnte das Projekt PV -Monitor neue Forschungsansätze aufzeigen und anhand der generierten Risikosignale zeigen, dass diese bereits b ekannte Signale widerspiegeln." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Ein bisher unbekanntes Risikosignal identifiziert (noch nicht verifiziert)</p>
+  
+  <blockquote>„Darüber hinaus konnte ein unbekanntes Risikosignal identifiziert werden, welches noch nicht in entsprechenden pharmakoepidemiologischen Validierungsstudien verifiziert wurde." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Potenzial der Verarbeitungsketten zur Identifikation von UAWs auf GKV-Abrechnungsdaten gezeigt</p>
+  
+  <blockquote>„Insgesamt konnte das Projekt anhand neu entwickelter methodischer Ansätze zeigen, dass die Anwendung der Verarbeitungsketten zur Signaldetektion auf Abrechnungsdaten der GKV das Potenzial aufweist, UAWs zu identifizieren." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.1">
+  <h3>Bundesinstitut für Arzneimittel und Medizinprodukte (BfArM) – eingestuft als „geprüft und nicht aufgegriffen“</h3>
+  <p class="unser">In einer gemeinsamen Stellungnahme mit dem PEI berichtet das BfArM über eine komplementäre Analyse der Spontanberichte in EudraVigilance, die das vom PV-Monitor generierte Epilepsie-Signal unter DOAK nicht bestätigt hat. Die Signalerkennung aus GKV-Daten wird als möglicher weiterer Ansatz zum Signalmanagement betrachtet; eine Übernahme in ein Verfahren wird nicht benannt.</p>
+  
+  <blockquote>„Das vom PV-Monitor detektierte Signal zum Risiko des Auftretens von Epilepsie im Zusammenhang mit der Anwendung von DOAK aus den Abrechnungsdaten von gesetzlichen Krankenversicherungen (GKV) konnte durch die komplementäre Analyse von Spontanberichten nicht bestätigt werden." <span class="s">S. 8</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.1" value="ok" checked hidden>
+    <input type="radio" name="uadressat.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.2">
+  <h3>Paul-Ehrlich-Institut (PEI) Bundesinstitut für Impfstoffe und biomedizinische Arzneimittel – eingestuft als „geprüft und nicht aufgegriffen“</h3>
+  <p class="unser">Das PEI hat die gemeinsame Stellungnahme mit dem BfArM abgegeben, nach der das Epilepsie-Signal durch die komplementäre Analyse nicht bestätigt wurde. Die Signaldetektion in GKV-Daten wird als Quelle erster Hinweise gewertet; eine Übernahme in ein Verfahren wird nicht benannt.</p>
+  
+  <blockquote>„Das vom PV-Monitor detektierte Signal zum Risiko des Auftretens von Epilepsie im Zusammenhang mit der Anwendung von DOAK aus den Abrechnungsdaten von gesetzlichen Krankenversicherungen (GKV) konnte durch die komplementäre Analyse von Spontanberichten nicht bestätigt werden." <span class="s">S. 8</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.2" value="ok" checked hidden>
+    <input type="radio" name="uadressat.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Mit Lasso ließ sich die große Zahl an Kovariaten aus GKV-Daten in die Signaldetektion integrieren. Lasso war die einzige verglichene Methode, die sich als robust gegen den Innocent Bystander Effect erwies.</p>
+  
+  <blockquote>„„So wurde gezeigt, dass mit Lasso die große Anzahl von Kovariaten, die in GKV-Daten zur Verfügung stehen, in die Signaldetektion integriert werden kann. Dies war auch die einzige Methode im Vergleich, die sich als robust gegen den Innocent Bystander Effect erwiesen hat“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.4">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die Positivkontrollen entsprachen der Erwartung aus der Literatur: Unter DOAK-Therapie lag das Odds Ratio gegenüber Vitamin-K-Antagonisten für gastrointestinale Blutungen höher und für intrakranielle Blutungen niedriger.</p>
+  
+  <blockquote>„„Wie aus der Literatur zu erwarten war, zeigte eine DOAK -Therapie im Vergleich zu einer Therapie mit Vitamin -K-Antagonisten ein höheres Odds Ratio für gastrointestinale Blutungen und ein niedrigeres Odds Ratio für intrakranielle Blutungen.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Wegen kürzerer Löschfristen bei der TK und Verzögerungen in der Datenlieferung standen für den Methodenvergleich de facto die Abrechnungsdaten der Jahre 2015 und 2016 zur Verfügung.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Zusammenfassung enthielt eine Wertung, die im Bericht nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Wegen kürzerer Löschfristen bei der TK und Verzögerungen in der Datenlieferung standen für den Methodenvergleich de facto nur die Abrechnungsdaten der Jahre 2015 und 2016 zur Verfügung.“</i></p>
+  <blockquote>„„überlappten sich die Abrechnungsdaten für die Jahre 2015 und 2016 und standen so de facto für einen Methodenvergleich zur Verfügung.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">27 statistische Methoden wurden daraufhin verglichen, ob sie wahre Signale trotz Confounding entdecken. Lasso, bisher in der Pharmakovigilanz nicht eingesetzt, war das einzige Verfahren, das alle potenziellen UAWs multivariat analysieren konnte.</p>
+  
   <blockquote>„„Letztendlich wurden 27 statistische Methoden ausgewählt und hinsichtlich ihrer Fähigkeit miteinander verglichen, wahre Signale trotz Confounding in den Daten zu entdecken. [...] Dies war das einzige Verfahren, das im Gegensatz zu den anderen Methoden, alle potenziellen UAWs multivariat analysieren konnte.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -769,12 +790,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Simulationsstudie zu Spontanmeldesystemen lag der Gamma-Poisson-Shrinker ohne Innocent Bystander Effekt im oberen Mittelfeld; mit diesen Effekten schnitt er im Vergleich wesentlich besser ab. Keine Methode war in allen Szenarien die beste; die Performanz hing von Effektgrößen und Abhängigkeitsstruktur ab.</p>
+  
   <blockquote>„„der Gamma -Poisson-Shrinker im oberen Mittelfeld lag, die Performanz im Vergleich zu anderen Methoden jedoch wesentlich besser wurde, wenn Innocent Bystander Effekte betrachtet wurden. Die Simulationsstudie zeigte auf, dass keine Methode in allen Szenarien am besten abschnitt“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +809,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Benchmarktest lagen die Klassifikationsergebnisse des Deep Learnings im Mittel um 23 % über denen entsprechender logistischer Regressionen.</p>
+  
   <blockquote>„„Der Benchmarktest zeigte, dass die erzielten Klassifikationsergebnisse des Deep Learnings im Mittel um 23% besser waren als die Ergebnisse entsprechender logi stischer Regressionen“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +828,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die Ermittlung individueller Risikoprofile wurde die Vorhersage von UAWs auf Basis von Functional Targets (FTs) als vielversprechend gezeigt. Dazu wurden fünf statistische Verfahren verglichen.</p>
+  
   <blockquote>„„Für die Ermittlung von Risikoprofilen für Patienten und Patientinnen konnte hingegen gezeigt werden, dass die Vorhersage von UAWs basierend auf FTs vielversprechend ist . Es wurden fünf verschiedene statistische Verfahren miteinander verglichen.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +847,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der naive Lasso reduzierte die Zahl der Kovariaten von ca. 8.500 auf 260 Functional Targets.</p>
+  
   <blockquote>„„Dies reduzierte die Dimension der Kovariaten von ca. 8.500 Kovariaten auf 260 FTs.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +866,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Machbarkeitsstudie nutzte einen GePaRD-Datensnapshot mit 12.203.348 TK-Versicherten aus 2015–2016. Ausgewertet wurden Versicherte mit DOAK-Neuverschreibung und mindestens einem neuen Ereignis.</p>
+  
   <blockquote>„„Der verwendete Datensnapshot von GePaRD umfasste im Zeitrau m 2015 -2016 insgesamt 12.203.348 TK -Versicherte. Von diesen interessierten uns die Versicherten, die in diesem Zeitraum ein DOAK neu verschrieben bekamen und mindestens ein neues Ereignis hatten“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +885,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Signale der Verarbeitungskette Deep Learning stimmten im Wesentlichen mit denen des Methoden-Mix überein; einzelne Methoden des Methoden-Mix lieferten in Einzelfällen jedoch sehr unterschiedliche Ergebnisse.</p>
+  
   <blockquote>„„Die Ergebnisse der verwendeten Verarbeitungskette Deep Learning Ansatzes stimmen im Wesentlichen mit den Signalen überein, die mit dem Methoden-Mix gefunden wurden. Die Ergebnisse der statistischen Methoden in der Verarbeitungskette „Methoden-Mix“ können in einzelnen Fällen allerdings auch sehr unterschiedlich sein.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +904,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">ICA und das Auszählen der Reports (NREP) erzeugten sehr ähnliche Signalrangfolgen. Die multivariaten Methoden (Random Forest, LASSO) führten eher zu anderen Rangfolgen als die univariaten Verfahren.</p>
+  
   <blockquote>„„dass die ICA -Methode und das Auszählen der Reports (NREP) sehr ähnliche Signalrangfolgen erzeugten. Die Ergebnisse der multivariaten Methoden (Random Forest, LASSO) führten jedoch eher zu anderen Signalrangfolgen als die klassischen uni variaten Verfahren“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +923,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Rivaroxaban fanden alle statistischen Methoden die bekannten Blutungsnebenwirkungen und die Negativkontrolle (Femurfraktur, S71) gut auf. Die toxische Leberkrankheit (K71) erkannten die meisten Methoden dagegen nicht.</p>
+  
   <blockquote>„„Hier konnten alle statistischen Methoden die bekannten Blutungsnebenwirkungen und die Negativkontrolle ( S71, Fraktur des Femurs) gut auffinden, während die Detektion der toxischen Leberkrankheit (K71) durch die meisten Methoden nicht gelang.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +942,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Sepsis (3.504 Fälle, 35.022 Kontrollen): Bei Einzelanwendung eines DOAK oder von Phenprocoumon am Indextag wird das Risiko im Bericht als vergleichbar mit Referenzgruppe 1 (mindestens ein Jahr ohne Exposition) beschrieben, z. B. Rivaroxaban adjustiertes OR 0,98 (0,82; 1,16). Das Active-Comparator-Design ergab ein ähnliches Bild, z. B. Rivaroxaban adjustiertes OR 1,10 (0,98; 1,23).</p>
+  
   <blockquote>„„Tabelle 6 zeigt, dass Personen, die am Indextag ein DOAK oder Phenprocoumon einge nommen haben, ein vergleichbares Risiko haben, an Sepsis zu erkranken, wie Personen, die mindestens ein Jahr vorher das Studienmedikament abgesetzt haben (Referenzgruppe 1). Das Active-Comparator Design (Referenzgruppe 2) ergab ein ähnliches Bild.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +961,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei Einnahme mehrerer Studienmedikamente am Indextag berichtet die Studie ein erhöhtes Odds Ratio für Sepsis. Gegenüber Referenzgruppe 1: unadjustiert 1,87 (1,25; 2,79), adjustiert 1,46 (0,95; 2,23). Gegenüber Referenzgruppe 2: unadjustiert 1,97 (1,35; 2,87), adjustiert 1,64 (1,10; 2,45).</p>
+  
   <blockquote>„„Es zeigte sich jedoch ein erhöhtes Odds Ratio für Versicherte, die am Indextag mehrere Studienmedikamente einnahmen, im Vergleich zu den Referenzgruppen 1 und 2.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +980,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die flankierende Metamizol-Studie bestätigte den bekannten Zusammenhang mit Neutropenie bzw. Agranulozytose. Dazu wurden 630.285 Metamizol-Versicherte per Propensity Score mit 390.830 Kontrollen gematcht; der Bericht nennt ein beträchtliches Risiko von 1:1602 pro Verschreibung.</p>
+  
   <blockquote>„„Der bekannte Zusammenhang konnte bestätigt werden. In der Studie wurden 630.285 Versicherte identifiziert, denen Metamizol verschrieben worden war. [...] Die Studie zeigte ein beträchtliches Risiko von 1:1602 für die Entwicklung einer arzneimittelinduzierten Neutropenie oder Agranulozytose pro Metamizol-Verschreibung.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +999,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Vergleich von Spontanberichten wurden zu Dimethylfumarat und Nikotinsäure teilweise ähnliche Nebenwirkungen berichtet (gastrointestinale Nebenwirkungen, Angstsymptome). Andere waren substanzspezifisch; so wurde Lymphopenie häufiger unter Dimethylfumarat berichtet.</p>
+  
   <blockquote>„„So wurden in Assoziation mit beiden Pharmaka gastrointestinale Nebenwirkungen und Angstsymptome berichtet. Andere Nebenwirkungen waren allerdings spezifisch für Dimethylfumarat oder Nikotin säure. So wurde eine Lymphopenie häufiger unter Dimethylfumarat als unter Nikotinsäure berichtet.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1018,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Aus der Kooperation zwischen IPT und BfArM entstand eine Auswertung von Spontanberichten zu Dimethylfumarat. Das Manuskript wurde 2020 beim British Journal of Clinical Pharmacology eingereicht.</p>
+  
   <blockquote>„„Dies führte zu einer Auswertung von Spontanber ichten zu Nebenwirkungen von Dimethylfumarat, aus der ein Publikationsmanuskript entstand, das 2020 beim British Journal of Clinical Pharmacology eingereicht wurde“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1037,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Entwickelt wurden mehrere Softwarepakete (u. a. pvm, srsim, batchlasso, ARTPredict, rgp, hccdsim). Das auf Permutationstests beruhende ARTPredict ist sehr zeitintensiv; der Block Forest benötigt etwa ein Fünftel der Zeit.</p>
+  
   <blockquote>„„Da ARTPredict auf Permutationstests basiert, ist das Verfahren sehr zeitintensiv. Als Alternative bietet sich hier der Block Forest an, der nur ungefähr ein Fünftel der Zeit benötigt.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1056,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Mit srsim lassen sich sehr große binäre Korrelationsmatrizen mit vorgegebener Abhängigkeitsstruktur simulieren. Die Autoren werten dies als großen Erfolg, weil es zuvor keine entsprechende Funktion in C++, Python oder R gab.</p>
+  
   <blockquote>„„Ein großer Erfolg ist die Entwicklung des Softwarepakets srsim, mit dem sehr große binäre Korrelationsmatrizen auf Basis einer vorgegebenen Abhängigkeitsstruktur simuliert werd en können.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1075,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Trotz Verzögerungen erhielt das Projekt rechtzeitig die Datennutzungsgenehmigungen für TK, HKK, DAK und AOK Bremen/Bremerhaven.</p>
+  
   <blockquote>„„hat unser Projekt die erforderlichen Genehmigungen vom BVA für die Datennutzung der Krankenkassen TK, HKK und DAK als auch von der damaligen Senatorin für Wissenschaft, Gesundheit und Verbraucherschutz für die AOK Bremen/Bremerhaven rechtzeitig erhalten.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1094,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die geplante Simulationsstudie zum Vergleich der Lernverfahren bei seltenen Ereignissen war nicht umsetzbar. Gründe waren zu viele Parameterkonstellationen und die beschränkte Rechnerkapazität; stattdessen wurde die Vorhersagekraft bewertet.</p>
+  
   <blockquote>„„Für einen fairen Methodenvergleich hätten wir demnach eine zu große Anzahl verschiedener Parameterkonstellationen untersuchen müssen. [...] Obwohl das BIPS über einen HP-Cluster (HPC) verfügt, war dies aufgrund der beschränkten Rechnerkapazität nicht möglich.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1113,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Auch für die Functional-Target-Struktur wurde die Simulation wegen fehlenden Vorwissens zur Parametrisierung durch eine Vorhersagestudie ersetzt.</p>
+  
   <blockquote>„„bedurfte die Simulation noch zusätzlicher Parametervoreinstellungen, die aufgrund des fehlenden Vorwissens schwer festzulegen waren. Wir haben uns stattdessen dazu entschieden, die Methoden basierend auf einer Vorhersagestudie zu vergleichen.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1132,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Der Austausch der Algorithmen zwischen den Partnern scheiterte in beide Richtungen. Die R-Pakete des BIPS standen dem Sicherheitskonzept der TK entgegen, und dem BIPS fehlte ein GPGPU-Rechner mit Windows Server für den Deep-Learning-Ansatz der TK.</p>
+  
   <blockquote>„„Schnell zeigte sich jedoch, dass die Implementierung der im BIPS verwendeten R Packages dem Sicherheitskonzept der TK entgegensteht [...] Umgekehrt verfügte das BIPS über keinen leistungsstarken GPGPU- Rechner mit Windows Server als Betriebssystem“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1151,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Auflösung des WINEG zum 31. Mai 2018 erzwang eine Umverteilung der Aufgaben zwischen den Partnern. Zudem behinderte die unterschiedliche IT-Ausstattung von BIPS und TK die Erstellung gemeinsamer Software.</p>
+  
   <blockquote>„„So wurde zum einen zum 31. Mai 2018 das WINEG aufgelöst, was eine Umstrukturierung der zu übernehmenden Aufgaben zwischen den Partnern zur Folge hatte. Zum anderen behinderte die unterschiedliche IT- Ausstattung am BIPS und an der TK die Erstellung gemeinsamer Software.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1170,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Weder Random Survival Forests noch RNNs waren geeignet, die Vorhersagekraft für seltene unerwünschte Ereignisse auf Basis longitudinaler GKV-Daten zu verbessern.</p>
+  
   <blockquote>„„Dabei zeigte sich, dass weder Random Survival Forests noch RNNs geeignet sind, die Vorhersagekraft für seltene unerwünschte Ereignisse auf Basis von longitudinalen GKV-Daten zu verbessern“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1189,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In der Metamizol-Studie kontrollierte das Propensity-Score-Matching nicht alle konkurrierenden Ursachen. In der Metamizol-Gruppe waren mehr Patienten unter Chemotherapie, sodass das zugeschriebene Risiko teilweise auf die Begleitmedikation zurückgehen könnte.</p>
+  
   <blockquote>„„Allerdings konnten durch das Matching auf Basis des Propensity Scores nicht alle konkurrierenden Ursachen für eine Neutropenie und Agranulozytose kontrolliert werden. Insbesondere fanden sich in der Metamizol behandelten Gruppe auch mehr Patienten, die sich einer Tumorbehandlung mit Chemotherapeutika unterziehen mussten.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1208,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Im Random Forest wurde die Signifikanz der ICD-Assoziationen auf dem 5%-Niveau ohne Adjustierung für multiples Testen bestimmt. Die Effektrichtung musste aus Vierfeldertafeln geschätzt werden.</p>
+  
   <blockquote>„„Alle signifikant assoziierten ICDs (5% Signifikanzniveau ohne Adjustierung für multiples Testen) wurden nach der Effektstärke sortiert. Da ein Random Forest keine Richtung der Effekte bestimmt, wurde diese aus Vierfeldertafeln geschätzt.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1227,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei ca. 3.800 UAWs × 12 Antikoagulanzien (ca. 45.600 mögliche Zusammenhänge) war eine manuelle Optimierung der Parametrisierung des neuronalen Netzes nicht möglich.</p>
+  
   <blockquote>„„dass eine manuelle Optimierung der Parametrisierung des KNN angesichts der Größe der Matrix aus zu untersuchenden UAWs und Arzneimitteln (ca. 3.800 UAWs x 12 Antikoagulanzien = ca. 45.600 mögliche Zusammenhänge) nicht möglich war.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1246,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Aus der Literaturrecherche ließ sich nicht ableiten, welche Methoden für welche Szenarien vorzuziehen sind.</p>
+  
   <blockquote>„„Basierend auf der Literaturrecherche war es jedoch unmöglich zu erkennen, welche Methoden für welche Szenarien zu bevorzugen sind und wie stark sich diese Methoden voneinander unterscheiden.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1265,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Viele publizierte Vergleichsverfahren lagen nicht als Software vor oder konnten keine hochdimensionalen Daten verarbeiten.</p>
+  
   <blockquote>„„Dabei zeigte sich zum einen, dass viele der publizierten V erfahren nicht als Software zur Verfügung standen und zum anderen konnten viele Verfahren keine hochdimensionalen Daten verarbeiten.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1284,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Datenbank STITCH wurde verworfen, weil sich Krankheiten dort nicht einbeziehen ließen, die für Nebenwirkungsprofile entscheidend sind.</p>
+  
   <blockquote>„„Wir mussten aber feststellen, dass der Einbezug von Krankheiten hier nicht möglich war. Dies ist aber entscheidend, um Nebenwirkungsprofile zu erstellen, so dass STITCH nicht weiter in Betracht gezogen wurde.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1303,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Revision von § 75 SGB X im Jahr 2018 änderte das Antragsverfahren des BVA und verzögerte die Bearbeitung der Datennutzungsanträge.</p>
+  
   <blockquote>„„Aufgrund der Revision von § 75 Sozialgesetzbuch (SGB) X im Jahr 2018 hat das damalige Bundesversicherungsamt (BVA; jetzt Bundesamt für Soziale Sicherung) sein Antragsverfahren zur Nutzung der Krankenversicherungs daten geändert. Obwohl dies zu Verzögerungen bei der Bearbeitung der Nutzungsanträge führte“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1332,28 +1353,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 20, "akronym": "PV-Monitor", "kennung": "xxDodR-J5bnJ", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Erkenntnisse des Projekts PV-Monitor an das BfArM und das Paul-Ehrlich-Institut weiter. Beide werden gebeten, die Projekterkenntnisse gegebenenfalls im Rahmen einer Validierung zu prüfen und eine weitere Nutzbarmachung für die datengestützte Risikosignalerkennung zu erwägen. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt erforschte statistische Methoden und entwickelte Deep-Learning-Algorithmen für die Pharmakovigilanz auf Basis von GKV-Abrechnungsdaten. Die Simulationsstudie zum Vergleich der Lernverfahren führte nicht bei allen Fragestellungen zum Ziel. Erfolgreich wurden dagegen zwei Verarbeitungsketten aufgebaut."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse und Simulationsstudien"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine praktische Anwendung setzt nach dem Beschluss weitere Expertenkonsultationen und für jeden Einzelfall weitere pharmakoepidemiologische Überprüfungen voraus; gefundene Signale sollten stets von Expertinnen und Experten begutachtet werden. Die Übernahme in die datengestützte Risikosignalerkennung soll von BfArM und PEI geprüft werden."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Simulationsstudie zum Vergleich der maschinellen Lernverfahren führte nicht bei allen Fragestellungen zum Ziel"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Stark exploratives Vorgehen; Methoden in frühem Entwicklungsstadium"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Vor praktischer Anwendung sind weitere Expertenkonsultationen und Einzelfallprüfungen in pharmakoepidemiologischen Studien erforderlich"}, {"stelle": "befund.0", "art": "befund", "unser": "Zwei Verarbeitungsketten zur Signalgenerierung auf GKV-Abrechnungsdaten entwickelt und am Beispiel der DOAKs angewandt"}, {"stelle": "befund.1", "art": "befund", "unser": "Neue Forschungsansätze aufgezeigt; generierte Risikosignale spiegeln bereits bekannte Signale wider"}, {"stelle": "befund.2", "art": "befund", "unser": "Ein bisher unbekanntes Risikosignal identifiziert (noch nicht verifiziert)"}, {"stelle": "befund.3", "art": "befund", "unser": "Potenzial der Verarbeitungsketten zur Identifikation von UAWs auf GKV-Abrechnungsdaten gezeigt"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Gastrointestinale Blutung (Positivkontrolle), Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Intrakranielle Blutung (Positivkontrolle), Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Akute Leberschädigung, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Akute Nierenschädigung, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Zystitis, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Epilepsie, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Glaukom, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Sepsis, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "adressat.1", "art": "adressat", "unser": "In einer gemeinsamen Stellungnahme mit dem PEI berichtet das BfArM über eine komplementäre Analyse der Spontanberichte in EudraVigilance, die das vom PV-Monitor generierte Epilepsie-Signal unter DOAK nicht bestätigt hat. Die Signalerkennung aus GKV-Daten wird als möglicher weiterer Ansatz zum Signalmanagement betrachtet; eine Übernahme in ein Verfahren wird nicht benannt."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Das PEI hat die gemeinsame Stellungnahme mit dem BfArM abgegeben, nach der das Epilepsie-Signal durch die komplementäre Analyse nicht bestätigt wurde. Die Signaldetektion in GKV-Daten wird als Quelle erster Hinweise gewertet; eine Übernahme in ein Verfahren wird nicht benannt."}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben entwickelte Verfahren zur Signaldetektion unerwünschter Arzneimittelwirkungen (UAW) auf GKV-Abrechnungsdaten. Es übertrug dafür Konzepte der genetischen Epidemiologie, verglich 27 statistische Methoden und baute zwei Verarbeitungsketten auf: Deep Learning (TK) und einen Methoden-Mix (BIPS). Ein primärer Endpunkt ist im Bericht nicht angegeben. In einer Machbarkeitsstudie zu DOAKs auf GePaRD-Daten mit 12.203.348 TK-Versicherten (2015–2016) identifizierten beide Ketten bekannte UAWs. Sieben Signale wurden in einer Active-Comparator-Studie gegen Phenprocoumon geprüft; nur eines führte zu einer potenziell interessanten Neuentdeckung, deren Ergebnis vorläufig ist und weitere Expertenbewertung erfordert. Lasso erwies sich laut Bericht als einzige verglichene Methode robust gegen den Innocent Bystander Effect. Die Aussagekraft ist begrenzt: Ein Abgleich gegen einen Goldstandard war nicht möglich, ein direkter Vergleich der beiden Ketten ebenfalls nicht, und eine abschließende Methodenempfehlung lässt sich daraus nicht ableiten. Hinzu kommen geplante, aber nicht umsetzbare Simulationsstudien, Daten aus nur zwei Jahren sowie technische und organisatorische Hindernisse zwischen den Partnern. Nach dem Bericht liefern die Signale nur Hinweise für Forschungshypothesen und müssen jeweils pharmakoepidemiologisch überprüft werden."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die Signaldetektion zu DOAKs ergab sieben Signale: akute Blutungen, akute Leberschädigungen, akutes Nierenversagen, Epilepsie, Glaukom, Sepsis und Zystitis. Sie wurden in einer Validierungsphase überprüft, mit gastrointestinaler und intrakranialer Blutung als Positivkontrollen."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Von den sieben im Active-Comparator-Design (DOAK vs. Phenprocoumon) geprüften Signalen führte nur eines zu einer potenziell interessanten Neuentdeckung. Dieses Ergebnis ist vorläufig und erfordert vor einer Publikation weitere Experten."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Beide Verarbeitungsketten konnten bekannte UAWs identifizieren."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Mit Lasso ließ sich die große Zahl an Kovariaten aus GKV-Daten in die Signaldetektion integrieren. Lasso war die einzige verglichene Methode, die sich als robust gegen den Innocent Bystander Effect erwies."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Die Positivkontrollen entsprachen der Erwartung aus der Literatur: Unter DOAK-Therapie lag das Odds Ratio gegenüber Vitamin-K-Antagonisten für gastrointestinale Blutungen höher und für intrakranielle Blutungen niedriger."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Methoden ließen sich nicht gegen einen Goldstandard abgleichen. Wegen unterschiedlicher Ergebnisausgaben war auch kein direkter Vergleich der beiden Verarbeitungsketten möglich, sodass keine abschließende Empfehlung zur Methodenwahl möglich ist."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Ohne Vorwissen über Patientenklientel, Dosierungen oder Störvariablen liefern die Ergebnisse nur Hinweise für Forschungshypothesen. Jedes potenziell interessante Signal muss im Einzelfall pharmakoepidemiologisch überprüft werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die neu identifizierten Signale konnten in Validierungsstudien bis auf eines nicht verifiziert werden. Der endgültige Nachweis für dieses eine Signal steht noch aus."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Wegen kürzerer Löschfristen bei der TK und Verzögerungen in der Datenlieferung standen für den Methodenvergleich de facto nur die Abrechnungsdaten der Jahre 2015 und 2016 zur Verfügung."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Vergleich der Verarbeitungsketten: S. 9 sagt, ein Vergleich beider Verarbeitungsketten habe über die gemeinsame Datenschnittmenge in GePaRD „dennoch realisiert werden“ können, und S. 21 berichtet, die Ergebnisse stimmten „im Wesentlichen“ überein. S. 22 dagegen sagt, wegen unterschiedlicher Ergebnisausgaben sei „auch ein direkter Vergleich nicht möglich“ gewesen."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Methodengüte: S. 22 schreibt den multivariaten Methoden „eine eher bessere Genauigkeit und Trefferquote“ zu als den Standardverfahren. Derselbe Abschnitt hält fest, dass die Methoden nicht gegen einen Goldstandard abgeglichen werden konnten und keine abschließende Beurteilung möglich war."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Wiedergabe bekannter UAWs: S. 25 sagt, die generierten Signale spiegelten die bekannten Signale wider, was „eindrücklich“ den Erfolg des Ansatzes zeige. Nach S. 21 gelang die Detektion der bekannten toxischen Leberkrankheit (K71) unter Rivaroxaban durch die meisten Methoden nicht."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "27 statistische Methoden wurden daraufhin verglichen, ob sie wahre Signale trotz Confounding entdecken. Lasso, bisher in der Pharmakovigilanz nicht eingesetzt, war das einzige Verfahren, das alle potenziellen UAWs multivariat analysieren konnte."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "In der Simulationsstudie zu Spontanmeldesystemen lag der Gamma-Poisson-Shrinker ohne Innocent Bystander Effekt im oberen Mittelfeld; mit diesen Effekten schnitt er im Vergleich wesentlich besser ab. Keine Methode war in allen Szenarien die beste; die Performanz hing von Effektgrößen und Abhängigkeitsstruktur ab."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Im Benchmarktest lagen die Klassifikationsergebnisse des Deep Learnings im Mittel um 23 % über denen entsprechender logistischer Regressionen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Für die Ermittlung individueller Risikoprofile wurde die Vorhersage von UAWs auf Basis von Functional Targets (FTs) als vielversprechend gezeigt. Dazu wurden fünf statistische Verfahren verglichen."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Der naive Lasso reduzierte die Zahl der Kovariaten von ca. 8.500 auf 260 Functional Targets."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Machbarkeitsstudie nutzte einen GePaRD-Datensnapshot mit 12.203.348 TK-Versicherten aus 2015–2016. Ausgewertet wurden Versicherte mit DOAK-Neuverschreibung und mindestens einem neuen Ereignis."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Signale der Verarbeitungskette Deep Learning stimmten im Wesentlichen mit denen des Methoden-Mix überein; einzelne Methoden des Methoden-Mix lieferten in Einzelfällen jedoch sehr unterschiedliche Ergebnisse."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "ICA und das Auszählen der Reports (NREP) erzeugten sehr ähnliche Signalrangfolgen. Die multivariaten Methoden (Random Forest, LASSO) führten eher zu anderen Rangfolgen als die univariaten Verfahren."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Für Rivaroxaban fanden alle statistischen Methoden die bekannten Blutungsnebenwirkungen und die Negativkontrolle (Femurfraktur, S71) gut auf. Die toxische Leberkrankheit (K71) erkannten die meisten Methoden dagegen nicht."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Sepsis (3.504 Fälle, 35.022 Kontrollen): Bei Einzelanwendung eines DOAK oder von Phenprocoumon am Indextag wird das Risiko im Bericht als vergleichbar mit Referenzgruppe 1 (mindestens ein Jahr ohne Exposition) beschrieben, z. B. Rivaroxaban adjustiertes OR 0,98 (0,82; 1,16). Das Active-Comparator-Design ergab ein ähnliches Bild, z. B. Rivaroxaban adjustiertes OR 1,10 (0,98; 1,23)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Bei Einnahme mehrerer Studienmedikamente am Indextag berichtet die Studie ein erhöhtes Odds Ratio für Sepsis. Gegenüber Referenzgruppe 1: unadjustiert 1,87 (1,25; 2,79), adjustiert 1,46 (0,95; 2,23). Gegenüber Referenzgruppe 2: unadjustiert 1,97 (1,35; 2,87), adjustiert 1,64 (1,10; 2,45)."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Die flankierende Metamizol-Studie bestätigte den bekannten Zusammenhang mit Neutropenie bzw. Agranulozytose. Dazu wurden 630.285 Metamizol-Versicherte per Propensity Score mit 390.830 Kontrollen gematcht; der Bericht nennt ein beträchtliches Risiko von 1:1602 pro Verschreibung."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Im Vergleich von Spontanberichten wurden zu Dimethylfumarat und Nikotinsäure teilweise ähnliche Nebenwirkungen berichtet (gastrointestinale Nebenwirkungen, Angstsymptome). Andere waren substanzspezifisch; so wurde Lymphopenie häufiger unter Dimethylfumarat berichtet."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Aus der Kooperation zwischen IPT und BfArM entstand eine Auswertung von Spontanberichten zu Dimethylfumarat. Das Manuskript wurde 2020 beim British Journal of Clinical Pharmacology eingereicht."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Entwickelt wurden mehrere Softwarepakete (u. a. pvm, srsim, batchlasso, ARTPredict, rgp, hccdsim). Das auf Permutationstests beruhende ARTPredict ist sehr zeitintensiv; der Block Forest benötigt etwa ein Fünftel der Zeit."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Mit srsim lassen sich sehr große binäre Korrelationsmatrizen mit vorgegebener Abhängigkeitsstruktur simulieren. Die Autoren werten dies als großen Erfolg, weil es zuvor keine entsprechende Funktion in C++, Python oder R gab."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Trotz Verzögerungen erhielt das Projekt rechtzeitig die Datennutzungsgenehmigungen für TK, HKK, DAK und AOK Bremen/Bremerhaven."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die geplante Simulationsstudie zum Vergleich der Lernverfahren bei seltenen Ereignissen war nicht umsetzbar. Gründe waren zu viele Parameterkonstellationen und die beschränkte Rechnerkapazität; stattdessen wurde die Vorhersagekraft bewertet."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Auch für die Functional-Target-Struktur wurde die Simulation wegen fehlenden Vorwissens zur Parametrisierung durch eine Vorhersagestudie ersetzt."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Der Austausch der Algorithmen zwischen den Partnern scheiterte in beide Richtungen. Die R-Pakete des BIPS standen dem Sicherheitskonzept der TK entgegen, und dem BIPS fehlte ein GPGPU-Rechner mit Windows Server für den Deep-Learning-Ansatz der TK."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Auflösung des WINEG zum 31. Mai 2018 erzwang eine Umverteilung der Aufgaben zwischen den Partnern. Zudem behinderte die unterschiedliche IT-Ausstattung von BIPS und TK die Erstellung gemeinsamer Software."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Weder Random Survival Forests noch RNNs waren geeignet, die Vorhersagekraft für seltene unerwünschte Ereignisse auf Basis longitudinaler GKV-Daten zu verbessern."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "In der Metamizol-Studie kontrollierte das Propensity-Score-Matching nicht alle konkurrierenden Ursachen. In der Metamizol-Gruppe waren mehr Patienten unter Chemotherapie, sodass das zugeschriebene Risiko teilweise auf die Begleitmedikation zurückgehen könnte."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Im Random Forest wurde die Signifikanz der ICD-Assoziationen auf dem 5%-Niveau ohne Adjustierung für multiples Testen bestimmt. Die Effektrichtung musste aus Vierfeldertafeln geschätzt werden."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Bei ca. 3.800 UAWs × 12 Antikoagulanzien (ca. 45.600 mögliche Zusammenhänge) war eine manuelle Optimierung der Parametrisierung des neuronalen Netzes nicht möglich."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Aus der Literaturrecherche ließ sich nicht ableiten, welche Methoden für welche Szenarien vorzuziehen sind."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Viele publizierte Vergleichsverfahren lagen nicht als Software vor oder konnten keine hochdimensionalen Daten verarbeiten."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Datenbank STITCH wurde verworfen, weil sich Krankheiten dort nicht einbeziehen ließen, die für Nebenwirkungsprofile entscheidend sind."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die Revision von § 75 SGB X im Jahr 2018 änderte das Antragsverfahren des BVA und verzögerte die Bearbeitung der Datennutzungsanträge."}]};
+const D = {"projekt_id": 20, "akronym": "PV-Monitor", "kennung": "xxDodR-J5bnJ", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt erforschte statistische Methoden und entwickelte Deep-Learning-Algorithmen für die Pharmakovigilanz auf Basis von GKV-Abrechnungsdaten. Die Simulationsstudie zum Vergleich der Lernverfahren führte nicht bei allen Fragestellungen zum Ziel. Erfolgreich wurden dagegen zwei Verarbeitungsketten aufgebaut."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse und Simulationsstudien"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Die Simulationsstudie zum Vergleich der maschinellen Lernverfahren führte nicht bei allen Fragestellungen zum Ziel"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Stark exploratives Vorgehen; Methoden in frühem Entwicklungsstadium"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Ein bisher unbekanntes Risikosignal wurde identifiziert, ist aber noch nicht verifiziert; vor praktischer Anwendung sind weitere Expertenkonsultationen und Einzelfallprüfungen in pharmakoepidemiologischen Studien erforderlich"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Gastrointestinale Blutung (Positivkontrolle), Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Intrakranielle Blutung (Positivkontrolle), Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Akute Leberschädigung, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Akute Nierenschädigung, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Zystitis, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Epilepsie, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Glaukom, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Sepsis, Einzelnutzung eines DOAKs am Indextag"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben entwickelte Verfahren zur Signaldetektion unerwünschter Arzneimittelwirkungen (UAW) auf GKV-Abrechnungsdaten. Es übertrug dafür Konzepte der genetischen Epidemiologie, verglich 27 statistische Methoden und baute zwei Verarbeitungsketten auf: Deep Learning (TK) und einen Methoden-Mix (BIPS). Ein primärer Endpunkt ist im Bericht nicht angegeben. In einer Machbarkeitsstudie zu DOAKs auf GePaRD-Daten mit 12.203.348 TK-Versicherten (2015–2016) identifizierten beide Ketten bekannte UAWs. Sieben Signale wurden in einer Active-Comparator-Studie gegen Phenprocoumon geprüft; nur eines führte zu einer potenziell interessanten Neuentdeckung, deren Ergebnis vorläufig ist und weitere Expertenbewertung erfordert. Lasso erwies sich laut Bericht als einzige verglichene Methode robust gegen den Innocent Bystander Effect. Die Aussagekraft ist begrenzt: Ein Abgleich gegen einen Goldstandard war nicht möglich, ein direkter Vergleich der beiden Ketten ebenfalls nicht, und eine abschließende Methodenempfehlung lässt sich daraus nicht ableiten. Hinzu kommen geplante, aber nicht umsetzbare Simulationsstudien, Daten aus nur zwei Jahren sowie technische und organisatorische Hindernisse zwischen den Partnern. Nach dem Bericht liefern die Signale nur Hinweise für Forschungshypothesen und müssen jeweils pharmakoepidemiologisch überprüft werden."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die Signaldetektion zu DOAKs ergab sieben Signale: akute Blutungen, akute Leberschädigungen, akutes Nierenversagen, Epilepsie, Glaukom, Sepsis und Zystitis. Sie wurden in einer Validierungsphase überprüft, mit gastrointestinaler und intrakranialer Blutung als Positivkontrollen."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Von den sieben im Active-Comparator-Design (DOAK vs. Phenprocoumon) geprüften Signalen führte nur eines zu einer potenziell interessanten Neuentdeckung. Dieses Ergebnis ist vorläufig und erfordert vor einer Publikation weitere Experten."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Beide Verarbeitungsketten konnten bekannte UAWs identifizieren."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Die Methoden ließen sich nicht gegen einen Goldstandard abgleichen. Wegen unterschiedlicher Ergebnisausgaben war auch kein direkter Vergleich der beiden Verarbeitungsketten möglich, sodass keine abschließende Empfehlung zur Methodenwahl möglich ist."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Ohne Vorwissen über Patientenklientel, Dosierungen oder Störvariablen liefern die Ergebnisse nur Hinweise für Forschungshypothesen. Jedes potenziell interessante Signal muss im Einzelfall pharmakoepidemiologisch überprüft werden."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die neu identifizierten Signale konnten in Validierungsstudien bis auf eines nicht verifiziert werden. Der endgültige Nachweis für dieses eine Signal steht noch aus."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Vergleich der Verarbeitungsketten: S. 9 sagt, ein Vergleich beider Verarbeitungsketten habe über die gemeinsame Datenschnittmenge in GePaRD „dennoch realisiert werden“ können, und S. 21 berichtet, die Ergebnisse stimmten „im Wesentlichen“ überein. S. 22 dagegen sagt, wegen unterschiedlicher Ergebnisausgaben sei „auch ein direkter Vergleich nicht möglich“ gewesen."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Methodengüte: S. 22 schreibt den multivariaten Methoden „eine eher bessere Genauigkeit und Trefferquote“ zu als den Standardverfahren. Derselbe Abschnitt hält fest, dass die Methoden nicht gegen einen Goldstandard abgeglichen werden konnten und keine abschließende Beurteilung möglich war."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Wiedergabe bekannter UAWs: S. 25 sagt, die generierten Signale spiegelten die bekannten Signale wider, was „eindrücklich“ den Erfolg des Ansatzes zeige. Nach S. 21 gelang die Detektion der bekannten toxischen Leberkrankheit (K71) unter Rivaroxaban durch die meisten Methoden nicht."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Erkenntnisse des Projekts PV-Monitor an das BfArM und das Paul-Ehrlich-Institut weiter. Beide werden gebeten, die Projekterkenntnisse gegebenenfalls im Rahmen einer Validierung zu prüfen und eine weitere Nutzbarmachung für die datengestützte Risikosignalerkennung zu erwägen. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine praktische Anwendung setzt nach dem Beschluss weitere Expertenkonsultationen und für jeden Einzelfall weitere pharmakoepidemiologische Überprüfungen voraus; gefundene Signale sollten stets von Expertinnen und Experten begutachtet werden. Die Übernahme in die datengestützte Risikosignalerkennung soll von BfArM und PEI geprüft werden."}, {"stelle": "befund.0", "art": "befund", "unser": "Zwei Verarbeitungsketten zur Signalgenerierung auf GKV-Abrechnungsdaten entwickelt und am Beispiel der DOAKs angewandt"}, {"stelle": "befund.1", "art": "befund", "unser": "Neue Forschungsansätze aufgezeigt; generierte Risikosignale spiegeln bereits bekannte Signale wider"}, {"stelle": "befund.2", "art": "befund", "unser": "Ein bisher unbekanntes Risikosignal identifiziert (noch nicht verifiziert)"}, {"stelle": "befund.3", "art": "befund", "unser": "Potenzial der Verarbeitungsketten zur Identifikation von UAWs auf GKV-Abrechnungsdaten gezeigt"}, {"stelle": "adressat.1", "art": "adressat", "unser": "In einer gemeinsamen Stellungnahme mit dem PEI berichtet das BfArM über eine komplementäre Analyse der Spontanberichte in EudraVigilance, die das vom PV-Monitor generierte Epilepsie-Signal unter DOAK nicht bestätigt hat. Die Signalerkennung aus GKV-Daten wird als möglicher weiterer Ansatz zum Signalmanagement betrachtet; eine Übernahme in ein Verfahren wird nicht benannt."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Das PEI hat die gemeinsame Stellungnahme mit dem BfArM abgegeben, nach der das Epilepsie-Signal durch die komplementäre Analyse nicht bestätigt wurde. Die Signaldetektion in GKV-Daten wird als Quelle erster Hinweise gewertet; eine Übernahme in ein Verfahren wird nicht benannt."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Mit Lasso ließ sich die große Zahl an Kovariaten aus GKV-Daten in die Signaldetektion integrieren. Lasso war die einzige verglichene Methode, die sich als robust gegen den Innocent Bystander Effect erwies."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Die Positivkontrollen entsprachen der Erwartung aus der Literatur: Unter DOAK-Therapie lag das Odds Ratio gegenüber Vitamin-K-Antagonisten für gastrointestinale Blutungen höher und für intrakranielle Blutungen niedriger."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Wegen kürzerer Löschfristen bei der TK und Verzögerungen in der Datenlieferung standen für den Methodenvergleich de facto die Abrechnungsdaten der Jahre 2015 und 2016 zur Verfügung."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "27 statistische Methoden wurden daraufhin verglichen, ob sie wahre Signale trotz Confounding entdecken. Lasso, bisher in der Pharmakovigilanz nicht eingesetzt, war das einzige Verfahren, das alle potenziellen UAWs multivariat analysieren konnte."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "In der Simulationsstudie zu Spontanmeldesystemen lag der Gamma-Poisson-Shrinker ohne Innocent Bystander Effekt im oberen Mittelfeld; mit diesen Effekten schnitt er im Vergleich wesentlich besser ab. Keine Methode war in allen Szenarien die beste; die Performanz hing von Effektgrößen und Abhängigkeitsstruktur ab."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Im Benchmarktest lagen die Klassifikationsergebnisse des Deep Learnings im Mittel um 23 % über denen entsprechender logistischer Regressionen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Für die Ermittlung individueller Risikoprofile wurde die Vorhersage von UAWs auf Basis von Functional Targets (FTs) als vielversprechend gezeigt. Dazu wurden fünf statistische Verfahren verglichen."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Der naive Lasso reduzierte die Zahl der Kovariaten von ca. 8.500 auf 260 Functional Targets."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Machbarkeitsstudie nutzte einen GePaRD-Datensnapshot mit 12.203.348 TK-Versicherten aus 2015–2016. Ausgewertet wurden Versicherte mit DOAK-Neuverschreibung und mindestens einem neuen Ereignis."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Die Signale der Verarbeitungskette Deep Learning stimmten im Wesentlichen mit denen des Methoden-Mix überein; einzelne Methoden des Methoden-Mix lieferten in Einzelfällen jedoch sehr unterschiedliche Ergebnisse."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "ICA und das Auszählen der Reports (NREP) erzeugten sehr ähnliche Signalrangfolgen. Die multivariaten Methoden (Random Forest, LASSO) führten eher zu anderen Rangfolgen als die univariaten Verfahren."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Für Rivaroxaban fanden alle statistischen Methoden die bekannten Blutungsnebenwirkungen und die Negativkontrolle (Femurfraktur, S71) gut auf. Die toxische Leberkrankheit (K71) erkannten die meisten Methoden dagegen nicht."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Sepsis (3.504 Fälle, 35.022 Kontrollen): Bei Einzelanwendung eines DOAK oder von Phenprocoumon am Indextag wird das Risiko im Bericht als vergleichbar mit Referenzgruppe 1 (mindestens ein Jahr ohne Exposition) beschrieben, z. B. Rivaroxaban adjustiertes OR 0,98 (0,82; 1,16). Das Active-Comparator-Design ergab ein ähnliches Bild, z. B. Rivaroxaban adjustiertes OR 1,10 (0,98; 1,23)."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Bei Einnahme mehrerer Studienmedikamente am Indextag berichtet die Studie ein erhöhtes Odds Ratio für Sepsis. Gegenüber Referenzgruppe 1: unadjustiert 1,87 (1,25; 2,79), adjustiert 1,46 (0,95; 2,23). Gegenüber Referenzgruppe 2: unadjustiert 1,97 (1,35; 2,87), adjustiert 1,64 (1,10; 2,45)."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Die flankierende Metamizol-Studie bestätigte den bekannten Zusammenhang mit Neutropenie bzw. Agranulozytose. Dazu wurden 630.285 Metamizol-Versicherte per Propensity Score mit 390.830 Kontrollen gematcht; der Bericht nennt ein beträchtliches Risiko von 1:1602 pro Verschreibung."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Im Vergleich von Spontanberichten wurden zu Dimethylfumarat und Nikotinsäure teilweise ähnliche Nebenwirkungen berichtet (gastrointestinale Nebenwirkungen, Angstsymptome). Andere waren substanzspezifisch; so wurde Lymphopenie häufiger unter Dimethylfumarat berichtet."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Aus der Kooperation zwischen IPT und BfArM entstand eine Auswertung von Spontanberichten zu Dimethylfumarat. Das Manuskript wurde 2020 beim British Journal of Clinical Pharmacology eingereicht."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Entwickelt wurden mehrere Softwarepakete (u. a. pvm, srsim, batchlasso, ARTPredict, rgp, hccdsim). Das auf Permutationstests beruhende ARTPredict ist sehr zeitintensiv; der Block Forest benötigt etwa ein Fünftel der Zeit."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Mit srsim lassen sich sehr große binäre Korrelationsmatrizen mit vorgegebener Abhängigkeitsstruktur simulieren. Die Autoren werten dies als großen Erfolg, weil es zuvor keine entsprechende Funktion in C++, Python oder R gab."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Trotz Verzögerungen erhielt das Projekt rechtzeitig die Datennutzungsgenehmigungen für TK, HKK, DAK und AOK Bremen/Bremerhaven."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die geplante Simulationsstudie zum Vergleich der Lernverfahren bei seltenen Ereignissen war nicht umsetzbar. Gründe waren zu viele Parameterkonstellationen und die beschränkte Rechnerkapazität; stattdessen wurde die Vorhersagekraft bewertet."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Auch für die Functional-Target-Struktur wurde die Simulation wegen fehlenden Vorwissens zur Parametrisierung durch eine Vorhersagestudie ersetzt."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Der Austausch der Algorithmen zwischen den Partnern scheiterte in beide Richtungen. Die R-Pakete des BIPS standen dem Sicherheitskonzept der TK entgegen, und dem BIPS fehlte ein GPGPU-Rechner mit Windows Server für den Deep-Learning-Ansatz der TK."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Auflösung des WINEG zum 31. Mai 2018 erzwang eine Umverteilung der Aufgaben zwischen den Partnern. Zudem behinderte die unterschiedliche IT-Ausstattung von BIPS und TK die Erstellung gemeinsamer Software."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Weder Random Survival Forests noch RNNs waren geeignet, die Vorhersagekraft für seltene unerwünschte Ereignisse auf Basis longitudinaler GKV-Daten zu verbessern."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "In der Metamizol-Studie kontrollierte das Propensity-Score-Matching nicht alle konkurrierenden Ursachen. In der Metamizol-Gruppe waren mehr Patienten unter Chemotherapie, sodass das zugeschriebene Risiko teilweise auf die Begleitmedikation zurückgehen könnte."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Im Random Forest wurde die Signifikanz der ICD-Assoziationen auf dem 5%-Niveau ohne Adjustierung für multiples Testen bestimmt. Die Effektrichtung musste aus Vierfeldertafeln geschätzt werden."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Bei ca. 3.800 UAWs × 12 Antikoagulanzien (ca. 45.600 mögliche Zusammenhänge) war eine manuelle Optimierung der Parametrisierung des neuronalen Netzes nicht möglich."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Aus der Literaturrecherche ließ sich nicht ableiten, welche Methoden für welche Szenarien vorzuziehen sind."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Viele publizierte Vergleichsverfahren lagen nicht als Software vor oder konnten keine hochdimensionalen Daten verarbeiten."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Die Datenbank STITCH wurde verworfen, weil sich Krankheiten dort nicht einbeziehen ließen, die für Nebenwirkungsprofile entscheidend sind."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die Revision von § 75 SGB X im Jahr 2018 änderte das Antragsverfahren des BVA und verzögerte die Bearbeitung der Datennutzungsanträge."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

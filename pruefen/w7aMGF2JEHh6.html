@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF22005</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>8 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 29 Aussagen. Die übrigen
+21 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss stellt die im Projekt IdUNa neu entwickelte S3-Leitlinie „Nicht-spezifische Nackenschmerzen“ der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt hat die bisherige S1-Handlungsempfehlung „Nackenschmerzen“ durch eine neu entwickelte S3-Leitlinie abgelöst. Die Leitlinie soll durch strukturierte Anamnese und klinische Basisdiagnostik abwendbar gefährliche Verläufe früher erkennen und Überdiagnostik reduzieren sowie durch evidenzbasierte Therapieverfahren Symptome lindern, Chronifizierung und Rezidive verhindern. Zusätzlich wurde eine Patienteninformation erstellt. Der Ausschuss stellt fest, dass die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien erfüllt und damit die Voraussetzungen zur Ausschöpfung ihres Verbesserungspotentials entsprechend der Antragstellung gegeben sind.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,68 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Leitlinien- oder Instrumentenentwicklung</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Neue S3-Leitlinie „Nicht-spezifische Nackenschmerzen“ entwickelt, die die S1-Handlungsempfehlung ablöst</p>
-  <blockquote>„Die im Rahmen des Projekts neu entwickelte S3-Leitlinie „Nicht- spezifische Nackenschmerzen“ löst die bisherige S1 -Handlunsgempfehlung „Nackenschmerzen“ ab." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
-  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 - Leitlinien und damit die Voraussetzung en zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Evidenzbasierte Patienteninformation miterstellt</p>
-  <blockquote>„Zudem stellt die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene zur Verfügung." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -219,11 +160,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben hatte zum Ziel, die DEGAM-S1-Handlungsempfehlungen Nackenschmerzen interprofessionell und digital zu einer S3-Leitlinie weiterzuentwickeln. Grundlage war eine Recherche in Pubmed von Februar bis August 2023 (7339 Datenbankeinträge, 675 Volltexte, 33 eingeschlossene Studien). Die Leitlinie wurde innerhalb der geplanten Projektzeit fertiggestellt und von allen beteiligten Fachgesellschaften verabschiedet. Sie enthält 43 Empfehlungen, davon 20 evidenz- und 23 konsensbasiert; 37 erhielten „starken Konsens“, 6 „Konsens“. Evidenzbasierte Positivempfehlungen betreffen unter anderem Bewegungstherapie bei chronischen Nackenschmerzen und Patient*innenedukation. Medikamentös werden vor allem NSAR bei akuten Nackenschmerzen empfohlen, wobei der Bericht die Effektstärke als eher klein beurteilt. Die Aussagekraft hängt an der Evidenzlage: Laut Bericht behinderten Forschungslücken den angestrebten Grad der Evidenzbasierung, und mit 47 % evidenzbasierten Empfehlungen verfehlt die Leitlinie nach eigener Angabe knapp die AWMF-Empfehlung von mindestens 50 %. Erfahrungen zur Implementierung liegen noch nicht vor, da diese erst mit der Veröffentlichung möglich ist.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinie wurde innerhalb der geplanten Projektzeit fertiggestellt und von allen beteiligten Fachgesellschaften verabschiedet.</p>
+  
   <blockquote>„„Die Leitlinie konnte innerhalb der geplanten Projektzeit fertiggestellt werden und wurde durch alle involvierten Fachgesellschaften verabschiedet.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -256,12 +197,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Formuliert wurden 43 Empfehlungen (20 evidenz-, 23 konsensbasiert; 12 aus bestehenden Leitlinien adaptiert bzw. adoptiert); 37 davon wurden mit starkem Konsens, 6 mit Konsens verabschiedet.</p>
+  
   <blockquote>„„Es wurden insgesamt 43 Empfehlungen formuliert (20 evidenz - und 23 konsensbasierte Empfehlungen; 12 der Empfehlungen wurden von bestehenden Leitlinien adaptiert bzw. adopiert). 37 Empfehlungen konnten mit „starkem Konsens“ verabschiedet werden, 6 Empfehlungen mit „Konsens“.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Mit 47 % evidenzbasierten Empfehlungen (20 von 43) verfehlt die Leitlinie nach eigener Angabe knapp die Empfehlung der AWMF-Leitlinienkommission von mindestens 50 % formal evidenzbasierten Empfehlungen in S3-Leitlinien.</p>
+  
   <blockquote>„„liegt der Anteil an evidenzbasierten Empfehlungen bei 47% und verfehlt damit knapp die Empfehlung der AWMF Leitlinienkommission (mindestens 50% formal evidenzbasierte Empfehlungen in S3 - Leitlinien).“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -294,12 +235,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bestehende Forschungslücken behinderten den angestrebten Grad der Evidenzbasierung.</p>
+  
   <blockquote>„„wobei sich aufgrund bestehender Forschungslücken Hindernisse für den angestrebten Grad der Evidenzbasierung ergaben.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -313,12 +254,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zur Implementierung der Leitlinie können noch keine Erfahrungen berichtet werden, da sie erst mit der Veröffentlichung möglich ist.</p>
+  
   <blockquote>„„Da die Implementierung der Leitlinie erst mit ihrer Veröffentlichung möglich sein wird, können derzeit noch keine Erfahrungen diesbezüglich berichtet werden.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -328,16 +269,92 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>17 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section><details class="weitere"><summary>21 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss stellt die im Projekt IdUNa neu entwickelte S3-Leitlinie „Nicht-spezifische Nackenschmerzen“ der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Neue S3-Leitlinie „Nicht-spezifische Nackenschmerzen“ entwickelt, die die S1-Handlungsempfehlung ablöst</p>
+  
+  <blockquote>„Die im Rahmen des Projekts neu entwickelte S3-Leitlinie „Nicht- spezifische Nackenschmerzen“ löst die bisherige S1 -Handlunsgempfehlung „Nackenschmerzen“ ab." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien</p>
+  
+  <blockquote>„Die neu entwickelte S3 -Leitlinie erfüllt die Kriterien des AWMF- Regelwerks für S3 - Leitlinien und damit die Voraussetzung en zur Ausschöpfung ihres Potentials zur Verbesserung der Versorgung entsprechend der Antragstellung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Evidenzbasierte Patienteninformation miterstellt</p>
+  
+  <blockquote>„Zudem stellt die miterstellte Patienteninformation evidenzbasierte Informationen für Betroffene zur Verfügung." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Recherche in Pubmed (Februar bis August 2023) ergab 7339 Datenbankeinträge, von denen 675 im Volltext gesichtet und 33 Studien in die systematischen Reviews eingeschlossen wurden.</p>
+  
   <blockquote>„„Von 7339 Datenbankeinträgen wurden 675 Ar tikel im Volltext gesichtet. 33 Studien wurden in die systematischen Reviews eingeschlossen“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -351,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Bereich der nichtmedikamentösen Therapie gibt es evidenzbasierte Positivempfehlungen zu Bewegungstherapie (bei chronischen Nackenschmerzen) und Patient*innenedukation (bei akuten und chronischen Nackenschmerzen); für digitale Gesundheitsanwendungen und Massagen wurde auf Basis der vorliegenden Evidenz keine Positivempfehlung ausgesprochen.</p>
+  
   <blockquote>„„Positivempfehlungen zu Bewegungstherapie (bei ch ronischen Nackenschmerzen) und Patient*innenedukation (bei akuten und chronischen Nackenschmerzen) hervorzuheben. Beide Empfehlungen sind evidenzbasiert. Für digitale Gesundheitsanwendungen wie z.B. Apps konnte hingegen […] keine Positivempfehlung ausgesprochen werden“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -370,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Medikamentös wird vor allem die Einnahme von NSAR bei akuten Nackenschmerzen empfohlen, wobei die Effektstärke laut Bericht auf Basis der Studienlage als eher klein zu beurteilen ist; als Alternative bei z.B. Gegenanzeigen wird Metamizol empfohlen.</p>
+  
   <blockquote>„„vor allem die Einnahme nicht -steroidaler Antirheumatika (NSAR) bei akuten Nackenschmerzen empfohlen werden, wobei die Effektstärke auf Basis der Studienlage als eher klein zu beurteilen ist. Als Alternative bei z.B. Gegenanzeigen wird Metamizol empfohlen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -389,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.5">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Alle anderen verfügbaren Schmerzmittel sowie Muskelrelaxantien werden weder bei akuten noch bei chronischen Nackenschmerzen empfohlen.</p>
+  
   <blockquote>„„Alle anderen verfügbaren Schmerzmittel wie auch Muskelrelaxantien werden weder bei akuten noch bei chronischen Nackenschmerzen empfohlen.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -408,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zu Cannabis wurden keine aussagekräftigen Studien gefunden; wegen des nach Meinung der Autor*innen erheblichen Abhängigkeitspotentials wurde eine starke Negativempfehlung ausgesprochen.</p>
+  
   <blockquote>„„Hier wurden keine aussagekräftigen Studien gefunden und aufgrund des nach Meinung der Autor*innen der Leitlinie erheblichen Abhängigkeitspotentials eine starke Negativempfehlung ausgesprochen.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -427,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das Kapitel Selbstmanagement empfiehlt körperliche Aktivität, Entspannung, Wärme und Kälte mit unterschiedlichen Empfehlungsgraden und enthält eine starke Negativempfehlung zur Ruhigstellung.</p>
+  
   <blockquote>„„empfiehlt körperliche Aktivität, Entspannung, Wärme und Kälte mit unterschiedlichen Empfehlungsgraden. Das Kapitel enthält eine starke Negativempfehlung zur Ruhigstellung bei Nackenschmerzen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -446,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach Darstellung des Berichts zeigt die Leitlinie, dass Patient*innen nach Ausschluss struktureller Ursachen und abwendbar-gefährlicher Verläufe von aktivierender Therapie in Form selbstinitiierter körperlicher Aktivität profitieren.</p>
+  
   <blockquote>„„Insgesamt zeigt die vorliegende Leitlinie, dass Patient*innen mit Nackenschmerzen nach Ausschluss struktureller Ursachen und abwendbar -gefährlicher Ve rläufe von einer aktivierenden Therapie (in Form von selbstinitiierter körperlicher Aktivität) profitieren.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -465,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Projektnehmer werten die Beteiligung von Expert*innen aller relevanten Fachrichtungen als erheblichen Erfolg und sehen die Zusammenarbeit in den erzielten hohen Konsensstärken abgebildet.</p>
+  
   <blockquote>„„Die engagierte Beteiligung von Expert*innen aller relevanten Fachrichtungen ist vor diesem Hintergrund besonders bedeutsam und als erheblicher Erfolg zu werten.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -484,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leitlinie wird über die MAGICapp publiziert, was laut Bericht den Zugang niederschwellig macht und Aktualisierungen erleichtert.</p>
+  
   <blockquote>„„Die Publikation über die MAGICapp macht den Zugang besonders niederschwellig und erleichert Aktualisierungen.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -503,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Von der Implementierung erhoffen sich die Projektnehmer einen verbesserten diagnostischen Standard und weniger Heterogenität in der supportiven Therapie; langfristig dürften sich daraus laut Bericht niedrigere Folgeerkrankungs- und Chronifizierungsraten ergeben.</p>
+  
   <blockquote>„„vor allem eine Verbesserung des diagnostischen Standards durch klare Vorgaben zur Abgrenzung gegenüber häufigen Differentialdiagnosen zu erhoffen, wie auch eine Reduktion der derzeit noch ausgeprägten Heterogenität im Bereich der supportiven Therap ie.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -522,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für bislang unzureichend untersuchte Fragestellungen kam die systematische Evidenzaufbereitung zu keinem zufriedenstellenden Ergebnis; einige Fragen wurden daher im Expert*innenkonsens beantwortet.</p>
+  
   <blockquote>„„Da für bestimmte, bislang u nzureichend wissenschaftlich untersuchte Fragestellungen eine systematische Evidenzaufbereitung zu keinem zufriedenstellenden Ergebnis kam, erfolgte die Beantwortung einiger Fragen im Expert*innenkonsens.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Empfehlungen im Kapitel Diagnostik beruhen wegen mangelnder Studienlage größtenteils auf Expert*innenkonsens und wurden aus der NVL Kreuzschmerz adaptiert.</p>
+  
   <blockquote>„„Die Empfehlungen im Kapitel „Diagnostik“ ber uhen aufgrund von mangelnder Studienlage größtenteils auf Expert*innenkonsens und wurden aus der Nationalen VersorgungsLeitlinie (NVL) Kreuzschmerz adaptiert.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Limitationen ergeben sich laut Bericht aus der teils defizitären wissenschaftlichen Datenlage bei den Therapien.</p>
+  
   <blockquote>„„Limitationen ergeben sich aus der teils defizitären wissenschaftlichen Datenlage bei den Therapien.“ – Bericht, S. 2" <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,12 +596,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der qualitativen Einschränkungen der Studienlage halten die Projektnehmer neue kontrollierte Studien mit angemessener Fallzahl sowie einen internationalen Berichtsstandard für Nackenschmerz-Studien für erforderlich.</p>
+  
   <blockquote>„„Um trotz der genannten qualitativen Einschränkungen kleine aber möglicherweise reale Unterschiede zwischen den zu vergleichenden Therapien detektieren zu können, sind deshalb neue kontrollierte Studien mit angemessener Fallzahl erforderlich.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -598,12 +615,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zur Prävention lassen sich aus der bestehenden Forschung bislang nur wenige konkrete Handlungsanweisungen ableiten.</p>
+  
   <blockquote>„„Leider lassen sich aus der bestehenden Forschung bislang nur wenige konkrete Handlungsanweisungen ableiten.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -617,12 +634,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Zur Vermittlung an Patient*innen, dass die Beschwerden häufig ungefährlicher Genese sind, sieht der Bericht eine Lücke, die ergänzende qualitative Forschung schließen könnte.</p>
+  
   <blockquote>„„Ergänzende qualitative Forschung könnte diese Lücke für zukünftige Aktualisierungen der Leitlinie schließen.“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -636,12 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Auf die Entwicklung eigener Lernziele für die ärztliche und physiotherapeutische Aus- und Weiterbildung wurde mit Verweis auf den NKLM-Prozess verzichtet.</p>
+  
   <blockquote>„„Von einer Entwicklung von Lernzielen für die ärztl. und physiotherapeut. Aus - und Weiterbildung haben wir aufgrund der Entwicklungen rund um den Nationalen Kompetenzbasierten Lernzielkatalog Medizin (NKLM) Abstand genommen“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -686,28 +703,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 515, "akronym": "IdUNa", "kennung": "w7aMGF2JEHh6", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt IdUNa neu entwickelte S3-Leitlinie „Nicht-spezifische Nackenschmerzen“ der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat die bisherige S1-Handlungsempfehlung „Nackenschmerzen“ durch eine neu entwickelte S3-Leitlinie abgelöst. Die Leitlinie soll durch strukturierte Anamnese und klinische Basisdiagnostik abwendbar gefährliche Verläufe früher erkennen und Überdiagnostik reduzieren sowie durch evidenzbasierte Therapieverfahren Symptome lindern, Chronifizierung und Rezidive verhindern. Zusätzlich wurde eine Patienteninformation erstellt. Der Ausschuss stellt fest, dass die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien erfüllt und damit die Voraussetzungen zur Ausschöpfung ihres Verbesserungspotentials entsprechend der Antragstellung gegeben sind."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "befund.0", "art": "befund", "unser": "Neue S3-Leitlinie „Nicht-spezifische Nackenschmerzen“ entwickelt, die die S1-Handlungsempfehlung ablöst"}, {"stelle": "befund.1", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "befund.2", "art": "befund", "unser": "Evidenzbasierte Patienteninformation miterstellt"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hatte zum Ziel, die DEGAM-S1-Handlungsempfehlungen Nackenschmerzen interprofessionell und digital zu einer S3-Leitlinie weiterzuentwickeln. Grundlage war eine Recherche in Pubmed von Februar bis August 2023 (7339 Datenbankeinträge, 675 Volltexte, 33 eingeschlossene Studien). Die Leitlinie wurde innerhalb der geplanten Projektzeit fertiggestellt und von allen beteiligten Fachgesellschaften verabschiedet. Sie enthält 43 Empfehlungen, davon 20 evidenz- und 23 konsensbasiert; 37 erhielten „starken Konsens“, 6 „Konsens“. Evidenzbasierte Positivempfehlungen betreffen unter anderem Bewegungstherapie bei chronischen Nackenschmerzen und Patient*innenedukation. Medikamentös werden vor allem NSAR bei akuten Nackenschmerzen empfohlen, wobei der Bericht die Effektstärke als eher klein beurteilt. Die Aussagekraft hängt an der Evidenzlage: Laut Bericht behinderten Forschungslücken den angestrebten Grad der Evidenzbasierung, und mit 47 % evidenzbasierten Empfehlungen verfehlt die Leitlinie nach eigener Angabe knapp die AWMF-Empfehlung von mindestens 50 %. Erfahrungen zur Implementierung liegen noch nicht vor, da diese erst mit der Veröffentlichung möglich ist."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die Leitlinie wurde innerhalb der geplanten Projektzeit fertiggestellt und von allen beteiligten Fachgesellschaften verabschiedet."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Formuliert wurden 43 Empfehlungen (20 evidenz-, 23 konsensbasiert; 12 aus bestehenden Leitlinien adaptiert bzw. adoptiert); 37 davon wurden mit starkem Konsens, 6 mit Konsens verabschiedet."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Mit 47 % evidenzbasierten Empfehlungen (20 von 43) verfehlt die Leitlinie nach eigener Angabe knapp die Empfehlung der AWMF-Leitlinienkommission von mindestens 50 % formal evidenzbasierten Empfehlungen in S3-Leitlinien."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Bestehende Forschungslücken behinderten den angestrebten Grad der Evidenzbasierung."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Zur Implementierung der Leitlinie können noch keine Erfahrungen berichtet werden, da sie erst mit der Veröffentlichung möglich ist."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Die Recherche in Pubmed (Februar bis August 2023) ergab 7339 Datenbankeinträge, von denen 675 im Volltext gesichtet und 33 Studien in die systematischen Reviews eingeschlossen wurden."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Im Bereich der nichtmedikamentösen Therapie gibt es evidenzbasierte Positivempfehlungen zu Bewegungstherapie (bei chronischen Nackenschmerzen) und Patient*innenedukation (bei akuten und chronischen Nackenschmerzen); für digitale Gesundheitsanwendungen und Massagen wurde auf Basis der vorliegenden Evidenz keine Positivempfehlung ausgesprochen."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Medikamentös wird vor allem die Einnahme von NSAR bei akuten Nackenschmerzen empfohlen, wobei die Effektstärke laut Bericht auf Basis der Studienlage als eher klein zu beurteilen ist; als Alternative bei z.B. Gegenanzeigen wird Metamizol empfohlen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Alle anderen verfügbaren Schmerzmittel sowie Muskelrelaxantien werden weder bei akuten noch bei chronischen Nackenschmerzen empfohlen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Zu Cannabis wurden keine aussagekräftigen Studien gefunden; wegen des nach Meinung der Autor*innen erheblichen Abhängigkeitspotentials wurde eine starke Negativempfehlung ausgesprochen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Das Kapitel Selbstmanagement empfiehlt körperliche Aktivität, Entspannung, Wärme und Kälte mit unterschiedlichen Empfehlungsgraden und enthält eine starke Negativempfehlung zur Ruhigstellung."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Nach Darstellung des Berichts zeigt die Leitlinie, dass Patient*innen nach Ausschluss struktureller Ursachen und abwendbar-gefährlicher Verläufe von aktivierender Therapie in Form selbstinitiierter körperlicher Aktivität profitieren."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Projektnehmer werten die Beteiligung von Expert*innen aller relevanten Fachrichtungen als erheblichen Erfolg und sehen die Zusammenarbeit in den erzielten hohen Konsensstärken abgebildet."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Leitlinie wird über die MAGICapp publiziert, was laut Bericht den Zugang niederschwellig macht und Aktualisierungen erleichtert."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Von der Implementierung erhoffen sich die Projektnehmer einen verbesserten diagnostischen Standard und weniger Heterogenität in der supportiven Therapie; langfristig dürften sich daraus laut Bericht niedrigere Folgeerkrankungs- und Chronifizierungsraten ergeben."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Für bislang unzureichend untersuchte Fragestellungen kam die systematische Evidenzaufbereitung zu keinem zufriedenstellenden Ergebnis; einige Fragen wurden daher im Expert*innenkonsens beantwortet."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Empfehlungen im Kapitel Diagnostik beruhen wegen mangelnder Studienlage größtenteils auf Expert*innenkonsens und wurden aus der NVL Kreuzschmerz adaptiert."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Limitationen ergeben sich laut Bericht aus der teils defizitären wissenschaftlichen Datenlage bei den Therapien."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Wegen der qualitativen Einschränkungen der Studienlage halten die Projektnehmer neue kontrollierte Studien mit angemessener Fallzahl sowie einen internationalen Berichtsstandard für Nackenschmerz-Studien für erforderlich."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Zur Prävention lassen sich aus der bestehenden Forschung bislang nur wenige konkrete Handlungsanweisungen ableiten."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Zur Vermittlung an Patient*innen, dass die Beschwerden häufig ungefährlicher Genese sind, sieht der Bericht eine Lücke, die ergänzende qualitative Forschung schließen könnte."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Auf die Entwicklung eigener Lernziele für die ärztliche und physiotherapeutische Aus- und Weiterbildung wurde mit Verweis auf den NKLM-Prozess verzichtet."}]};
+const D = {"projekt_id": 515, "akronym": "IdUNa", "kennung": "w7aMGF2JEHh6", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt hat die bisherige S1-Handlungsempfehlung „Nackenschmerzen“ durch eine neu entwickelte S3-Leitlinie abgelöst. Die Leitlinie soll durch strukturierte Anamnese und klinische Basisdiagnostik abwendbar gefährliche Verläufe früher erkennen und Überdiagnostik reduzieren sowie durch evidenzbasierte Therapieverfahren Symptome lindern, Chronifizierung und Rezidive verhindern. Zusätzlich wurde eine Patienteninformation erstellt. Der Ausschuss stellt fest, dass die Leitlinie die Kriterien des AWMF-Regelwerks für S3-Leitlinien erfüllt und damit die Voraussetzungen zur Ausschöpfung ihres Verbesserungspotentials entsprechend der Antragstellung gegeben sind."}, {"stelle": "studiendesign", "art": "text", "unser": "Leitlinien- oder Instrumentenentwicklung"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben hatte zum Ziel, die DEGAM-S1-Handlungsempfehlungen Nackenschmerzen interprofessionell und digital zu einer S3-Leitlinie weiterzuentwickeln. Grundlage war eine Recherche in Pubmed von Februar bis August 2023 (7339 Datenbankeinträge, 675 Volltexte, 33 eingeschlossene Studien). Die Leitlinie wurde innerhalb der geplanten Projektzeit fertiggestellt und von allen beteiligten Fachgesellschaften verabschiedet. Sie enthält 43 Empfehlungen, davon 20 evidenz- und 23 konsensbasiert; 37 erhielten „starken Konsens“, 6 „Konsens“. Evidenzbasierte Positivempfehlungen betreffen unter anderem Bewegungstherapie bei chronischen Nackenschmerzen und Patient*innenedukation. Medikamentös werden vor allem NSAR bei akuten Nackenschmerzen empfohlen, wobei der Bericht die Effektstärke als eher klein beurteilt. Die Aussagekraft hängt an der Evidenzlage: Laut Bericht behinderten Forschungslücken den angestrebten Grad der Evidenzbasierung, und mit 47 % evidenzbasierten Empfehlungen verfehlt die Leitlinie nach eigener Angabe knapp die AWMF-Empfehlung von mindestens 50 %. Erfahrungen zur Implementierung liegen noch nicht vor, da diese erst mit der Veröffentlichung möglich ist."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Die Leitlinie wurde innerhalb der geplanten Projektzeit fertiggestellt und von allen beteiligten Fachgesellschaften verabschiedet."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Formuliert wurden 43 Empfehlungen (20 evidenz-, 23 konsensbasiert; 12 aus bestehenden Leitlinien adaptiert bzw. adoptiert); 37 davon wurden mit starkem Konsens, 6 mit Konsens verabschiedet."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Mit 47 % evidenzbasierten Empfehlungen (20 von 43) verfehlt die Leitlinie nach eigener Angabe knapp die Empfehlung der AWMF-Leitlinienkommission von mindestens 50 % formal evidenzbasierten Empfehlungen in S3-Leitlinien."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Bestehende Forschungslücken behinderten den angestrebten Grad der Evidenzbasierung."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Zur Implementierung der Leitlinie können noch keine Erfahrungen berichtet werden, da sie erst mit der Veröffentlichung möglich ist."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss stellt die im Projekt IdUNa neu entwickelte S3-Leitlinie „Nicht-spezifische Nackenschmerzen“ der AWMF zur Veröffentlichung im AWMF-Leitlinienregister zur Verfügung. Beschluss und Ergebnisbericht werden veröffentlicht, die Geschäftsstelle leitet die Erkenntnisse an die AWMF weiter."}, {"stelle": "befund.0", "art": "befund", "unser": "Neue S3-Leitlinie „Nicht-spezifische Nackenschmerzen“ entwickelt, die die S1-Handlungsempfehlung ablöst"}, {"stelle": "befund.1", "art": "befund", "unser": "Leitlinie erfüllt die Kriterien des AWMF-Regelwerks für S3-Leitlinien"}, {"stelle": "befund.2", "art": "befund", "unser": "Evidenzbasierte Patienteninformation miterstellt"}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Die Recherche in Pubmed (Februar bis August 2023) ergab 7339 Datenbankeinträge, von denen 675 im Volltext gesichtet und 33 Studien in die systematischen Reviews eingeschlossen wurden."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Im Bereich der nichtmedikamentösen Therapie gibt es evidenzbasierte Positivempfehlungen zu Bewegungstherapie (bei chronischen Nackenschmerzen) und Patient*innenedukation (bei akuten und chronischen Nackenschmerzen); für digitale Gesundheitsanwendungen und Massagen wurde auf Basis der vorliegenden Evidenz keine Positivempfehlung ausgesprochen."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Medikamentös wird vor allem die Einnahme von NSAR bei akuten Nackenschmerzen empfohlen, wobei die Effektstärke laut Bericht auf Basis der Studienlage als eher klein zu beurteilen ist; als Alternative bei z.B. Gegenanzeigen wird Metamizol empfohlen."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Alle anderen verfügbaren Schmerzmittel sowie Muskelrelaxantien werden weder bei akuten noch bei chronischen Nackenschmerzen empfohlen."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Zu Cannabis wurden keine aussagekräftigen Studien gefunden; wegen des nach Meinung der Autor*innen erheblichen Abhängigkeitspotentials wurde eine starke Negativempfehlung ausgesprochen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Das Kapitel Selbstmanagement empfiehlt körperliche Aktivität, Entspannung, Wärme und Kälte mit unterschiedlichen Empfehlungsgraden und enthält eine starke Negativempfehlung zur Ruhigstellung."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Nach Darstellung des Berichts zeigt die Leitlinie, dass Patient*innen nach Ausschluss struktureller Ursachen und abwendbar-gefährlicher Verläufe von aktivierender Therapie in Form selbstinitiierter körperlicher Aktivität profitieren."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Die Projektnehmer werten die Beteiligung von Expert*innen aller relevanten Fachrichtungen als erheblichen Erfolg und sehen die Zusammenarbeit in den erzielten hohen Konsensstärken abgebildet."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die Leitlinie wird über die MAGICapp publiziert, was laut Bericht den Zugang niederschwellig macht und Aktualisierungen erleichtert."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Von der Implementierung erhoffen sich die Projektnehmer einen verbesserten diagnostischen Standard und weniger Heterogenität in der supportiven Therapie; langfristig dürften sich daraus laut Bericht niedrigere Folgeerkrankungs- und Chronifizierungsraten ergeben."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Für bislang unzureichend untersuchte Fragestellungen kam die systematische Evidenzaufbereitung zu keinem zufriedenstellenden Ergebnis; einige Fragen wurden daher im Expert*innenkonsens beantwortet."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die Empfehlungen im Kapitel Diagnostik beruhen wegen mangelnder Studienlage größtenteils auf Expert*innenkonsens und wurden aus der NVL Kreuzschmerz adaptiert."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Limitationen ergeben sich laut Bericht aus der teils defizitären wissenschaftlichen Datenlage bei den Therapien."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Wegen der qualitativen Einschränkungen der Studienlage halten die Projektnehmer neue kontrollierte Studien mit angemessener Fallzahl sowie einen internationalen Berichtsstandard für Nackenschmerz-Studien für erforderlich."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Zur Prävention lassen sich aus der bestehenden Forschung bislang nur wenige konkrete Handlungsanweisungen ableiten."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Zur Vermittlung an Patient*innen, dass die Beschwerden häufig ungefährlicher Genese sind, sieht der Bericht eine Lücke, die ergänzende qualitative Forschung schließen könnte."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Auf die Entwicklung eigener Lernziele für die ärztliche und physiotherapeutische Aus- und Weiterbildung wurde mit Verweis auf den NKLM-Prozess verzichtet."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

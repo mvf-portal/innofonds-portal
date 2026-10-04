@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF18041</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>35 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 104 Aussagen. Die übrigen
+69 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss leitet die Erkenntnisse aus QUASCH wegen der positiven Assoziationen der Behandlung in Stroke Units an die Stiftung Deutsche Schlaganfall-Hilfe und die Deutsche Schlaganfall-Gesellschaft (DSG) weiter und bittet sie um Prüfung. Zur Information gehen die Erkenntnisse zudem an den Unterausschuss Qualitätssicherung des G-BA. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">Das Projekt untersuchte retrospektiv auf Basis von Sekundärdaten, ob die verpflichtende externe Qualitätssicherung der Schlaganfallversorgung in Hessen mit besseren Gesundheitsergebnissen einhergeht. Beim primären Endpunkt Sterblichkeit war die Versorgung im Rahmen der hessischen eQS ohne Berücksichtigung der Stroke Units mit einer stärkeren Sterblichkeitsreduktion verbunden als die eQS in anderen Bundesländern. Unter Einbezug der Stroke-Unit-Behandlungen verringerte sich dieser Abstand leicht. Bei Patientinnen und Patienten in Stroke Units zeigte die eQS kaum zusätzliche positive Effekte. Bei den sekundären Endpunkten fanden sich nur wenige positive Assoziationen mit der eQS; für die hessische eQS zeigten sich teils sogar Risikoerhöhungen. Eine starke positive Assoziation ergab sich dagegen für die Behandlung in Stroke Units. Einschränkend nennt der Ausschuss, dass die Analysen teilweise nur auf AOK-Daten beruhen und das Datenlinkage nicht immer optimal war.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,11 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">Sekundärdatenanalyse</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -161,12 +159,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.0">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Analysen beruhen teilweise nur auf Daten der AOK</p>
+  
   <blockquote>„Bei der Interpretation der Ergebnisse ist zu berücksichtigen, dass die Analysen teilweise nur auf Daten der AOK basieren." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -180,12 +178,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.1">
   <h3>Hindernis laut Beschluss: Datenverfügbarkeit und Datenqualität</h3>
   <p class="unser">Datenlinkage wegen schlechter Dokumentationsqualität nicht immer optimal</p>
+  
   <blockquote>„Zudem war das Datenlinkage aufgrund schlechter Dokumentations-qualität der Daten nicht immer optimal." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,14 +195,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.2">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Kaum zusätzliche positive Effekte der eQS bei Patientinnen und Patienten in Stroke Units</p>
+  
   <blockquote>„Bei Schlaganfallpatientinnen und -patienten, die in einer Stroke Unit behandelt wurden, waren kaum zusätzliche positive Effekte durch die eQS festzustellen." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -216,14 +214,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.3">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Keine relevanten Unterschiede bei Hirninfarktrezidiven für eQS und GQH</p>
+  
   <blockquote>„Bei der Betrachtung aller (embolische und hämorrhagische) Hirninfarktrezidive konnten sowohl für eQS (ohne GQH) als auch für GQH keine relevanten Unterschiede gezeigt werden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -235,14 +233,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.4">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Keine signifikante Assoziation der eQS mit erneuten Krankenhausbehandlungen, für GQH sogar signifikante Risikoerhöhungen</p>
+  
   <blockquote>„Während eQS in anderen Regionen mit erneuten Krankenhausbehandlungen nicht signifikant assoziiert war, konnten für GQH sogar signifikante Risikoerhöhungen festgestellt werden." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -254,128 +252,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.5">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Geringfügig erhöhtes Risiko einer Pflegegraderhöhung bei GQH-Fällen</p>
+  
   <blockquote>„Auch die Analysen hinsichtlich der Erhöhung des Pflegegrads zeigten positive Effekte bei Behandlung in Stroke Units und noch günstigere Effekte in Bundesländern mit eQS -CI. Hingegen war bei GQH-Fällen ein geringfügig erhöhtes Risiko festzustellen." <span class="s">S. 2</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Stärkere Sterblichkeitsreduktion unter der hessischen eQS (ohne Berücksichtigung von Stroke Units) im Vergleich zur eQS in anderen Bundesländern</p>
-  <blockquote>„Bezüglich des primären Endpunkts „Sterblichkeit in Form des Gesamtrisikos“ zeigen die Projektergebnisse, dass die Versorgung von Schlaganfallpatientinnen und - patienten im Rahmen der externen Qualitätssicherung (eQS) in Hessen (GQH) ohne Berücksichtigung der Versorgung von Stroke Units mit einer stärkeren Sterblichkeitsreduktion als die eQS in anderen Bundesländern verbunden ist." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Starke positive Assoziation der Stroke-Unit-Behandlung mit primären und sekundären Ergebnisparametern</p>
-  <blockquote>„Es konnte eine starke positive Assoziation mit sowohl den primären als auch den sekundären Ergebnisparametern festgestellt werden, wenn Schlaganfallpatientinnen und - patienten in einer Stroke Unit behandelt wurden." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.2">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Signifikante Reduktion erneuter Krankenhausaufenthalte bei Behandlung in Stroke Units</p>
-  <blockquote>„Bezüglich der erneuten Krankenhauseinweisung konnte für Stroke Units eine signifikante Reduktion sowohl für alle erneuten Krankenhausaufenthalte als auch für erneute Krankenhausaufenthalte ohne Rezidive aufgezeigt werden." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.3">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Positive Effekte bezüglich der Erhöhung des Pflegegrads bei Stroke-Unit-Behandlung, noch günstiger in Bundesländern mit eQS-CI</p>
-  <blockquote>„Auch die Analysen hinsichtlich der Erhöhung des Pflegegrads zeigten positive Effekte bei Behandlung in Stroke Units und noch günstigere Effekte in Bundesländern mit eQS -CI." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.4">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Methoden vom Ausschuss als angemessen bewertet</p>
-  <blockquote>„Die eingesetzten Methoden waren zur Beantwortung der Fragestellungen angemessen." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.5">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Routinedaten für die Hauptfragestellungen als gut und valide bewertet</p>
-  <blockquote>„Die Routinedaten für die Hauptfragestellungen wurden jedoch als gut und valide bewertet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.5" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -389,12 +273,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Gesamtsterberisiko im Beobachtungszeitraum – eQS in Hessen (GQH) vs. alle anderen Bundesländer (Modell ohne Stroke Unit)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +292,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Gesamtsterberisiko im Beobachtungszeitraum – eQS in übrigen Bundesländern (ohne GQH) vs. Bundesländer ohne eQS (Modell ohne Stroke Unit)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +311,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Gesamtsterberisiko – eQS in Hessen (GQH) im Modell mit Stroke Unit</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +330,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Gesamtsterberisiko – eQS ohne GQH im Modell mit Stroke Unit</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +349,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Gesamtsterberisiko – Behandlung in einer Stroke Unit vs. keine Stroke Unit</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +368,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Mediane Überlebenszeit nach Schlaganfall (Kaplan-Meier)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> keine statistische Prüfung berichtet</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +387,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Gesamtsterberisiko GQH vs. ohne eQS nach Zeiträumen (alle Fälle)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -522,12 +406,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Gesamtsterberisiko eQS (ohne GQH) vs. ohne eQS nach Zeiträumen (alle Fälle)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -541,12 +425,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Mortalität und Überleben“</h3>
   <p class="unser">Risikoadjustierte 10-Tages-, 90-Tages-, 1-Jahres- und 3-Jahres-Sterblichkeit bei ICD-10-I63 (GQH vs. übrige Bundesländer)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -560,12 +444,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.10">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Rezidive (alle Rezidive) – GQH bzw. eQS</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.10" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -579,12 +463,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.11">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Rezidive (alle Rezidive) – Behandlung in Stroke Unit</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.11" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -598,12 +482,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.12">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Embolische Rezidive – Behandlung in Stroke Unit</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.12" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -617,12 +501,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.13">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Erneute Krankenhausbehandlungen (alle erneuten Aufenthalte bzw. ohne Rezidive) – GQH</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zuungunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.13" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -636,12 +520,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.14">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Erneute Krankenhausbehandlungen – Behandlung in Stroke Unit</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.14" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -655,12 +539,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.15">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Erneute Krankenhausbehandlungen – eQS in anderen Regionen</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.15" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -674,12 +558,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.16">
   <h3>Gemessen wurde – eingeordnet als „Funktion, Mobilität und Alltag“</h3>
   <p class="unser">Erhöhung des Pflegegrads/der Pflegestufe – eQS-CI bzw. GQH</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.16" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -693,12 +577,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.17">
   <h3>Gemessen wurde – eingeordnet als „Funktion, Mobilität und Alltag“</h3>
   <p class="unser">Erhöhung des Pflegegrads – Behandlung in Stroke Unit</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.17" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -709,72 +593,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
       ></textarea></label>
   </div>
 </section>
-<section class="p" data-stelle="adressat.1">
-  <h3>Deutsche Schlaganfall-Gesellschaft (DSG) – eingestuft als „zur Kenntnis genommen“</h3>
-  <p class="unser">Die DSG ordnet in einer mit der Stiftung abgestimmten Stellungnahme die Studie ein, schließt sich dem Fazit der Autoren zur Konzentration der Versorgung in Stroke Units an und empfiehlt dem G-BA, Projekte zur sektorenübergreifenden Qualitätssicherung zu fördern; eine eigene Entscheidung oder Übernahme in Regelungen benennt sie nicht.</p>
-  <blockquote>„Dem Fazit der Autoren, dass zur Ergebnisverbesserung daher die Schlaganfallversorgung vordringlich in Stroke Units konzentriert werden sollte, schließen sich DSG und SDSH in vollem Umfang an." <span class="s">S. 14</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.1" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.2">
-  <h3>Stiftung Deutsche Schlaganfall-Hilfe – eingestuft als „zur Kenntnis genommen“</h3>
-  <p class="unser">Die Stiftung äußert sich gemeinsam mit der DSG, stimmt dem Fazit der Studienautoren zu und richtet eine Empfehlung an den G-BA; eine eigene Entscheidung oder Übernahme in Regelungen wird nicht benannt.</p>
-  <blockquote>„Dem Fazit der Autoren, dass zur Ergebnisverbesserung daher die Schlaganfallversorgung vordringlich in Stroke Units konzentriert werden sollte, schließen sich DSG und SDSH in vollem Umfang an." <span class="s">S. 14</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="adressat.3">
-  <h3>Unterausschuss Qualitätssicherung des G-BA – eingestuft als „nicht erkennbar“</h3>
-  <p class="unser"></p>
-  <blockquote>„Die im Projekt erzielten Erkenntnisse werden zur Information an den Unterausschuss Qualitätssicherung des G-BA weitergeleitet." <span class="s">S. 2</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="uadressat.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uadressat.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="bericht_kurz">
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben untersuchte in einer retrospektiven Kohortenstudie mit AOK-Routinedaten der Jahre 2007–2017 (379.825 Schlaganfall-Fälle), ob die externe Qualitätssicherung (eQS) in Hessen (GQH) und in anderen Bundesländern sowie die Behandlung in einer Stroke Unit mit der Sterblichkeit nach Schlaganfall assoziiert sind. Primäre Zielgröße war die Sterblichkeit (Gesamtsterberisiko sowie 10-Tages- bis 5-Jahres-Sterblichkeit); sekundär wurden Rezidive, erneute Krankenhausaufenthalte und Erhöhungen der Pflegestufe untersucht. Gegenüber einer Behandlung ohne eQS war das Gesamtsterberisiko unter GQH mit HR 0,93 (95%-KI 0,92–0,95; p&lt;0,000001) und unter eQS in den übrigen Bundesländern mit HR 0,96 (95%-KI 0,95–0,97; p&lt;0,000001) verbunden, die Stroke-Unit-Behandlung mit HR 0,86 (95%-KI 0,85–0,87; p&lt;0,000001). Die Assoziation der GQH schwächte sich laut Bericht im Zeitverlauf ab; für 2014–2017 lag die HR bei 0,989 (p=0,536). Bei Stroke-Unit-Patient:innen fanden sich laut Bericht kaum bzw. keine zusätzlichen Überlebensvorteile durch die eQS. Propensity Score Matching und Entropy Balancing ergaben keine Unterschiede zum Cox-Modell. Die Aussagekraft hängt daran, dass es sich um eine Beobachtungsstudie ohne kausale Interpretierbarkeit handelt, die Risikoadjustierung den Schlaganfallschweregrad nicht enthält, wegen der Fallzahl auch sehr kleine Effekte hochsignifikant werden und nur AOK-Versicherte betrachtet wurden. Die Autoren empfehlen, die Schlaganfallversorgung vordringlich in Stroke Units zu konzentrieren.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -788,12 +615,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Gegenüber einer Behandlung ohne eQS war das Gesamtsterberisiko unter eQS in Hessen reduziert (HR 0,93; 95%-KI 0,92–0,95; p&lt;0,000001), laut Bericht hochsignifikant; unter eQS in den übrigen Bundesländern lag die HR bei 0,96 (95%-KI 0,95–0,97; p&lt;0,000001).</p>
+  
   <blockquote>„„Unter eQS in Hessen war im Vergleich zur Behandlung ohne eQS das Gesamtsterberisiko hochsignifikant reduziert (Hazard Ratio = HR) 0,93; 95% CI 0,92-0,95; p&lt;0,000001), fast genauso unter eQS in den übrigen Bundesländern (HR 0,96; 95% CI 0,95- 0,97; p&lt;0,000001).“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -807,12 +634,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Behandlung in einer Stroke Unit war unabhängig von den übrigen Faktoren mit einem geringeren Gesamtsterberisiko verbunden (HR 0,86; 95%-KI 0,85–0,87; p&lt;0,000001), laut Bericht stärker als die eQS.</p>
+  
   <blockquote>„„Noch stärker reduzierte die Behandlung in einer Stroke Unit (unabhängig von allen übrigen Faktoren) das Risiko (HR 0,86; 95% CI 0,85-0,87; p&lt;0,000001).“ – Bericht, S. 3" <span class="s">S. 3</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,88 +653,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im multivariaten Cox-Modell ohne Stroke-Unit-Variable war GQH mit HR 0,926 (95%-KI 0,91–0,94) und eQS in anderen Bundesländern mit HR 0,972 (95%-KI 0,96–0,98) assoziiert; mit Stroke-Unit-Variable lagen die Werte bei 0,934 bzw. 0,961, der Abstand verringerte sich laut Bericht leicht.</p>
+  
   <blockquote>„„Im Modell ohne Berücksichtigung der Versorgung in Stroke Units war die eQS in Hessen (GQH) mit einer HR von 0,926 (95% CI 0,91-0,94; p&lt;0,000001) mit einer stärkeren Sterblichkeitsreduktion als die eQS in anderen Bundesländern assoziiert (HR 0,972; 95% CI 0,96-0,98; p&lt;0,000001). Unter Berücksichtigung der Stroke Unit Behandlung verminderte sich der Abstand … leicht.“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.3">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Nach Zeiträumen getrennt lag die HR für GQH gegenüber ohne eQS bei 0,927 (2007–2010; p=1,46e-09), 0,973 (2011–2013; p=0,05662) und 0,989 (2014–2017; p=0,53566).</p>
-  <blockquote>„„GQH 2007-2010 0.927467 1.46e-09 … GQH 2011-2013 0.973421 0.05662 … GQH 2014-2017 0.989192 0.53566“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.5">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">GQH ging laut Bericht vor allem zu Beginn der Beobachtung und bei Fällen ohne Stroke-Unit-Behandlung mit Überlebensvorteilen einher; eQS zeigte Vorteile für alle Fälle und Fälle ohne Stroke Unit im gesamten Zeitraum, für Fälle in Stroke Units nur 2007–2010.</p>
-  <blockquote>„„GQH vor allem zu Beginn der Beobachtung und bei Fällen ohne Stroke Unit-Behandlung mit Vorteilen für das Überleben einherging; eQS zeigte Vorteile für alle Fälle und Fälle ohne Stroke Unit -Behandlung im gesamten Zeitraum, für Fälle in Stroke Units nur in den Jahren 2007-2010.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.6">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Die Subanalysen der Stroke-Unit-Behandelten zeigten laut Bericht keine Überlebensvorteile durch eQS; bei Betrachtung aller Patient:innen war eQS in Hessen und anderen Regionen mit Überlebensvorteilen verbunden.</p>
-  <blockquote>„„eQS in Hessen (GQH) und anderen Regionen Deutschlands weist insgesamt Überlebensvorteil für Schlaganfallpatient:innen auf, wenn man alle Patient:innen gemeinsam betrachtet. Die Subanalysen der Stroke Unit-Behandelten zeigten, dass bei diesen keine Überlebensvorteile durch eQS festzustellen waren.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.26">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Die Berücksichtigung der Schweregradindizes reduzierte die Bedeutung der Stroke-Unit-Versorgung im Modell, und der Zeitpunkt des Schlaganfalls hatte danach keine signifikante Bedeutung mehr.</p>
-  <blockquote>„„die Berücksichtigung dieser Schweregradindices sowohl die Bedeutung der Stroke Unit-Versorgung im Modell reduzierte, als auch dazu führte, dass der Zeitpunkt des Schlaganfalles keine signifikante Bedeutung mehr hatte.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +672,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Als Beobachtungsstudie können die Ergebnisse nicht kausal interpretiert werden; gezeigt werden nur Assoziationen.</p>
+  
   <blockquote>„„Als Beobachtungsstudie können die Ergebnisse naturgemäß nicht kausal interpretiert werden. Stattdessen werden nur Assoziationen verschiedener Maßnahmen der Qualitätsförderung … mit dem Sterberisiko von Schlaganfallpatienten aufgezeigt.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +691,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Risikoadjustierung beruht nur auf Routinedaten, sodass möglicherweise relevante Einflussfaktoren wie der Schlaganfallschweregrad bei Aufnahme nicht berücksichtigt werden konnten.</p>
+  
   <blockquote>„„Diese Limitation gilt auch für die nur auf Routinedaten beruhende Risikoadjustierung, womit möglicherweise relevante Einflussfaktoren wie der Schlaganfallschweregrad bei Aufnahme nicht berücksichtigt werden konnten.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,31 +710,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Wegen der hohen Fallzahl können auch sehr geringe Effekte hochsignifikant sein; der Bericht warnt davor, sie zu überinterpretieren.</p>
+  
   <blockquote>„„Bei der vorliegenden Studie geht es eher darum, sehr geringe Effekte, die aufgrund der hohen Fallzahlen ebenfalls hochsignifikant sein können, nicht zu überinterpretieren.“ – Bericht, S. 8" <span class="s">S. 8</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.5">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Schweregradanalysen mit Barthel-Index und modifizierter Rankin-Scale waren nur für GQH-registrierte Fälle möglich, da diese Angaben im GKV-Sekundärdatensatz nicht erhoben werden.</p>
-  <blockquote>„„Nur für GQH-registrierte Fälle – da im GKV-Sekundärdatensatz nicht erhoben - konnten zusätzliche Regressionen unter Einbeziehung des Barthel -Index und der modifizierten Rankin-Scale … durchgeführt werden.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -998,11 +730,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Altersbezogenes Sterberisiko: Die Kurzfassung nennt für &gt;89 vs. &lt;50 Jahre HR 8,35 (95%-KI 7,93–8,79) (S. 3), der Ergebnisteil HR 8,754 (95%-KI 8,33–9,20) (S. 19). Ebenso Pflegestufe 3: HR 2,92 (S. 3) vs. HR 2,937 (S. 19).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1017,11 +749,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Zeittrend des Sterberisikos: S. 3 nennt für 2014–2017 vs. 2007–2010 HR 0,89, S. 20 HR 0,859.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1036,11 +768,296 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Erneute Krankenhausaufenthalte: Für Modell b wird die Stroke-Unit-Assoziation (HR 0,95) als signifikante Reduktion bezeichnet, der angegebene p-Wert lautet jedoch p&gt;0,4 (S. 24).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>69 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss leitet die Erkenntnisse aus QUASCH wegen der positiven Assoziationen der Behandlung in Stroke Units an die Stiftung Deutsche Schlaganfall-Hilfe und die Deutsche Schlaganfall-Gesellschaft (DSG) weiter und bittet sie um Prüfung. Zur Information gehen die Erkenntnisse zudem an den Unterausschuss Qualitätssicherung des G-BA. Beschluss und Ergebnisbericht werden veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Stärkere Sterblichkeitsreduktion unter der hessischen eQS (ohne Berücksichtigung von Stroke Units) im Vergleich zur eQS in anderen Bundesländern</p>
+  
+  <blockquote>„Bezüglich des primären Endpunkts „Sterblichkeit in Form des Gesamtrisikos“ zeigen die Projektergebnisse, dass die Versorgung von Schlaganfallpatientinnen und - patienten im Rahmen der externen Qualitätssicherung (eQS) in Hessen (GQH) ohne Berücksichtigung der Versorgung von Stroke Units mit einer stärkeren Sterblichkeitsreduktion als die eQS in anderen Bundesländern verbunden ist." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Starke positive Assoziation der Stroke-Unit-Behandlung mit primären und sekundären Ergebnisparametern</p>
+  
+  <blockquote>„Es konnte eine starke positive Assoziation mit sowohl den primären als auch den sekundären Ergebnisparametern festgestellt werden, wenn Schlaganfallpatientinnen und - patienten in einer Stroke Unit behandelt wurden." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.2">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Signifikante Reduktion erneuter Krankenhausaufenthalte bei Behandlung in Stroke Units</p>
+  
+  <blockquote>„Bezüglich der erneuten Krankenhauseinweisung konnte für Stroke Units eine signifikante Reduktion sowohl für alle erneuten Krankenhausaufenthalte als auch für erneute Krankenhausaufenthalte ohne Rezidive aufgezeigt werden." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.2" value="ok" checked hidden>
+    <input type="radio" name="ubefund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.3">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Positive Effekte bezüglich der Erhöhung des Pflegegrads bei Stroke-Unit-Behandlung, noch günstiger in Bundesländern mit eQS-CI</p>
+  
+  <blockquote>„Auch die Analysen hinsichtlich der Erhöhung des Pflegegrads zeigten positive Effekte bei Behandlung in Stroke Units und noch günstigere Effekte in Bundesländern mit eQS -CI." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.3" value="ok" checked hidden>
+    <input type="radio" name="ubefund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.4">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Methoden vom Ausschuss als angemessen bewertet</p>
+  
+  <blockquote>„Die eingesetzten Methoden waren zur Beantwortung der Fragestellungen angemessen." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.4" value="ok" checked hidden>
+    <input type="radio" name="ubefund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.5">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Routinedaten für die Hauptfragestellungen als gut und valide bewertet</p>
+  
+  <blockquote>„Die Routinedaten für die Hauptfragestellungen wurden jedoch als gut und valide bewertet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.5" value="ok" checked hidden>
+    <input type="radio" name="ubefund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.1">
+  <h3>Deutsche Schlaganfall-Gesellschaft (DSG) – eingestuft als „zur Kenntnis genommen“</h3>
+  <p class="unser">Die DSG ordnet in einer mit der Stiftung abgestimmten Stellungnahme die Studie ein, schließt sich dem Fazit der Autoren zur Konzentration der Versorgung in Stroke Units an und empfiehlt dem G-BA, Projekte zur sektorenübergreifenden Qualitätssicherung zu fördern; eine eigene Entscheidung oder Übernahme in Regelungen benennt sie nicht.</p>
+  
+  <blockquote>„Dem Fazit der Autoren, dass zur Ergebnisverbesserung daher die Schlaganfallversorgung vordringlich in Stroke Units konzentriert werden sollte, schließen sich DSG und SDSH in vollem Umfang an." <span class="s">S. 14</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.1" value="ok" checked hidden>
+    <input type="radio" name="uadressat.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.2">
+  <h3>Stiftung Deutsche Schlaganfall-Hilfe – eingestuft als „zur Kenntnis genommen“</h3>
+  <p class="unser">Die Stiftung äußert sich gemeinsam mit der DSG, stimmt dem Fazit der Studienautoren zu und richtet eine Empfehlung an den G-BA; eine eigene Entscheidung oder Übernahme in Regelungen wird nicht benannt.</p>
+  
+  <blockquote>„Dem Fazit der Autoren, dass zur Ergebnisverbesserung daher die Schlaganfallversorgung vordringlich in Stroke Units konzentriert werden sollte, schließen sich DSG und SDSH in vollem Umfang an." <span class="s">S. 14</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.2" value="ok" checked hidden>
+    <input type="radio" name="uadressat.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="adressat.3">
+  <h3>Unterausschuss Qualitätssicherung des G-BA – eingestuft als „nicht erkennbar“</h3>
+  <p class="unser"></p>
+  
+  <blockquote>„Die im Projekt erzielten Erkenntnisse werden zur Information an den Unterausschuss Qualitätssicherung des G-BA weitergeleitet." <span class="s">S. 2</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="uadressat.3" value="ok" checked hidden>
+    <input type="radio" name="uadressat.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    <label>Richtige Einstufung: <select data-feld="einstufung"><option value=""></option><option value="umgesetzt">umgesetzt</option><option value="teilweise umgesetzt">teilweise umgesetzt</option><option value="in Bearbeitung">in Bearbeitung</option><option value="eigene Initiative ergriffen">eigene Initiative ergriffen</option><option value="geprüft und nicht aufgegriffen">geprüft und nicht aufgegriffen</option><option value="zur Kenntnis genommen">zur Kenntnis genommen</option><option value="keine Rückmeldung">keine Rückmeldung</option><option value="nicht erkennbar">nicht erkennbar</option></select></label>
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.3">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Nach Zeiträumen getrennt lag die HR für GQH gegenüber ohne eQS bei 0,927 (2007–2010; p=1,46e-09), 0,973 (2011–2013; p=0,05662) und 0,989 (2014–2017; p=0,53566).</p>
+  
+  <blockquote>„„GQH 2007-2010 0.927467 1.46e-09 … GQH 2011-2013 0.973421 0.05662 … GQH 2014-2017 0.989192 0.53566“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.5">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">GQH ging laut Bericht vor allem zu Beginn der Beobachtung und bei Fällen ohne Stroke-Unit-Behandlung mit Überlebensvorteilen einher; eQS zeigte Vorteile für alle Fälle und Fälle ohne Stroke Unit im gesamten Zeitraum, für Fälle in Stroke Units nur 2007–2010.</p>
+  
+  <blockquote>„„GQH vor allem zu Beginn der Beobachtung und bei Fällen ohne Stroke Unit-Behandlung mit Vorteilen für das Überleben einherging; eQS zeigte Vorteile für alle Fälle und Fälle ohne Stroke Unit -Behandlung im gesamten Zeitraum, für Fälle in Stroke Units nur in den Jahren 2007-2010.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.6">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die Subanalysen der Stroke-Unit-Behandelten zeigten laut Bericht keine Überlebensvorteile durch eQS; bei Betrachtung aller Patient:innen war eQS in Hessen und anderen Regionen mit Überlebensvorteilen verbunden.</p>
+  
+  <blockquote>„„eQS in Hessen (GQH) und anderen Regionen Deutschlands weist insgesamt Überlebensvorteil für Schlaganfallpatient:innen auf, wenn man alle Patient:innen gemeinsam betrachtet. Die Subanalysen der Stroke Unit-Behandelten zeigten, dass bei diesen keine Überlebensvorteile durch eQS festzustellen waren.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.26">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Die Berücksichtigung der Schweregradindizes reduzierte die Bedeutung der Stroke-Unit-Versorgung im Modell, und der Zeitpunkt des Schlaganfalls hatte danach keine signifikante Bedeutung mehr.</p>
+  
+  <blockquote>„„die Berücksichtigung dieser Schweregradindices sowohl die Bedeutung der Stroke Unit-Versorgung im Modell reduzierte, als auch dazu führte, dass der Zeitpunkt des Schlaganfalles keine signifikante Bedeutung mehr hatte.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.5">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Schweregradanalysen mit Barthel-Index und modifizierter Rankin-Scale waren nur für GQH-registrierte Fälle möglich, da diese Angaben im GKV-Sekundärdatensatz nicht erhoben werden.</p>
+  
+  <blockquote>„„Nur für GQH-registrierte Fälle – da im GKV-Sekundärdatensatz nicht erhoben - konnten zusätzliche Regressionen unter Einbeziehung des Barthel -Index und der modifizierten Rankin-Scale … durchgeführt werden.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1055,11 +1072,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">eQS bei Stroke-Unit-Patient:innen: S. 21 berichtet für Fälle in Stroke Units Vorteile durch eQS in den Jahren 2007–2010, S. 23 dagegen, dass bei Stroke-Unit-Behandelten keine Überlebensvorteile durch eQS festzustellen waren; S. 25 spricht von kaum zusätzlichen positiven Effekten.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1074,11 +1091,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Verknüpfungsquote: 10.158 von N=46.621 GQH-Fällen entsprächen 21,8 %, angegeben werden 17,9 % (S. 14); 17,9 % ergäbe sich nur bezogen auf 56.779 Fälle. Die S. 25 genannte Zuordnungsquote von 82 % passt zu 17,9 %.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1093,11 +1110,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Schweregradanalyse: Für den Barthel-Teilindex Lagewechsel (HR 1,28; 95%-KI 1,21–1,36) wird p&lt;0,02 angegeben, für Fortbewegung (HR 1,08; 95%-KI 1,02–1,15) p&lt;0,000001 (S. 22); die p-Werte passen nicht zu den jeweiligen Konfidenzintervallen.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1107,16 +1124,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>51 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.4">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für eQS gegenüber ohne eQS lag die HR nach Zeiträumen bei 0,952 (2007–2010; p=1,50e-09), 0,967 (2011–2013; p=0,00134) und 0,951 (2014–2017; p=3,13e-05); Stroke Unit in diesem Modell HR 0,824 (p&lt;2e-16).</p>
+  
   <blockquote>„„eQS 2007-2010 0.951663 1.50e-09 … eQS 2011-2013 0.966989 0.00134 … eQS 2014-2017 0.951405 3.13e-05 … Stroke Unit 0.823802 &lt;2e-16“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1147,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Patient:innen ohne Stroke-Unit-Behandlung und ohne eQS hatten laut Bericht die schlechtesten Versorgungsergebnisse; bei Stroke-Unit-Patient:innen waren kaum zusätzliche positive Effekte durch die eQS festzustellen.</p>
+  
   <blockquote>„„Bei Schlaganfallpatient:innen, die in einer Stroke Unit behandelt wurden, waren kaum zusätzliche posi tive Effekte durch die eQS festzustellen. Dennoch war es so, dass Schlaganfallpatient:innen, die nicht in Stroke Units und nicht in einer Region mit eQS behandelt werden, die schlechtesten Versorgungsergebnisse erfuhren.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1166,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Hauptergebnis war die Assoziation für GQH geringfügig stärker als für die eQS anderer Bundesländer, umfasste embolische und hämorrhagische Schlaganfälle und schwächte sich im Verlauf der Beobachtungsjahre ab.</p>
+  
   <blockquote>„„Diese Assoziation stellte sich für die GQH geringfügig stärker als für die eQS in anderen Bundesländern dar und umfasst nicht nur embolische, sondern auch hämorrhagische Schlaganfälle. Die Assoziation schwächte sich im Verlauf der Beobachtungsjahre ab.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1185,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Propensity Score Matching und Entropy Balancing ergaben als Sensitivitätsanalysen für das Gesamtsterberisiko keine Unterschiede zum Cox-Regressionsmodell.</p>
+  
   <blockquote>„„Unter Verwendung des Propensity Score Matchings und auch beim Entropy Balancing ergaben sich für das Gesamtsterberisiko unter den verschiedenen Formen von eQS keine Unterschiede zum hier vordringlich genutzten Cox-Regressionsmodell.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1204,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die mediane Überlebenszeit (Kaplan-Meier) betrug ohne eQS 3,99 Jahre ohne bzw. 5,28 Jahre mit Stroke Unit, unter GQH 4,59 bzw. 5,65 Jahre und unter eQS in anderen Bundesländern 4,57 bzw. 5,98 Jahre.</p>
+  
   <blockquote>„„Ohne eQS und ohne Stroke Unit Behandlung (SU) überlebten die Patien:innen im Median 3,99 … Jahre, ohne eQS, aber mit SU 5,28 … Jahre. Unter GQH ohne/mit SU waren es 4,59 … / 5,65 … Jahre; unter eQS in anderen Bundesländern ohne/mit SU waren es 4,57 … / 5,98 … Jahre.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1223,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der mediane Überlebensvorteil von GQH- gegenüber Patient:innen ohne eQS betrug ohne Stroke Unit 0,6 Jahre und mit Stroke Unit 0,3 Jahre.</p>
+  
   <blockquote>„„Der Überlebensvorteil der GQH-Patient:innen zu „ohne eQS-Patient:innen“, der ohne SU im Median 0,6 Jahre betrug (Verlängerung von 4 auf 4,6 Jahre) verringerte sich unter SU auf 0,3 Jahre (von 5,28 auf 5,65 Jahre).“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1242,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der mit Stroke-Unit-Behandlung assoziierte Überlebenszeitvorteil betrug unter GQH 1,06 Jahre, ohne eQS 1,29 Jahre und unter eQS in anderen Bundesländern 1,41 Jahre; die Autoren erklären dies mit der in Hessen zu Beginn höheren Stroke-Unit-Durchdringung.</p>
+  
   <blockquote>„„Hier scheint sich die Tatsache auszuwirken, dass die Durchdringung mit Stroke Units in Hessen schon zu Beginn des Beobachtungszeitraum höher war als im übrigen Bundesgebiet: der mit SU assoziierte Überlebenszeitvorteil fiel unter GQH mit 1,06 Jahren geringer aus als unter der Bedingung ohne eQS (1,29 Jahre) bzw. eQS in anderen Bundesländern (1,41 Jahre).“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1261,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Ergebnisse zum Gesamtsterberisiko bestätigten sich laut Bericht bei der kurz- und längerfristigen Sterblichkeit.</p>
+  
   <blockquote>„„Die Ergebnisse zum Gesamtsterberisiko über den Beobachtungszeitraum hinweg bestätigten sich bei Betrachtung der kurzfristigen und längerfristigen Sterblichkeit der Patient:innen.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1280,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Beim embolischen Hirninfarkt (I63) bestand für GQH-Patient:innen gegenüber den übrigen Bundesländern ein Überlebensvorteil bis zum dritten Jahr bei Erstereignis 2007–2010, bis zu einem Jahr bei Erstereignis 2011–2013 und keiner bei Erstereignis 2014–2017.</p>
+  
   <blockquote>„„Hierbei wird ein Überlebensvorteil bis zum dritten Jahr nach dem Erstereignis für GQH-Patient:innen deutlich, deren erster Schlaganfall in den Jahren 2007-2010 stattfand. Für Schlaganfälle im Zeitraum 2011-2013 war noch ein Überlebensvorteil bis zu einem Jahr … während für Schlaganfälle, die im Zeitraum 2014-2017 stattfanden, kein Überlebensvorteil mehr existierte“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1299,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei der transitorisch-ischämischen Attacke (G45) fielen die Ergebnisse vergleichbar zu I63 aus.</p>
+  
   <blockquote>„„Vergleichbar zu I63 fielen die Ergebnisse zu G45 (transitorisch -ischämische Attacke) aus.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1318,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei hämorrhagischen Schlaganfällen (I60, I61) war bei höherer Sterblichkeit insbesondere bei Fällen ohne Stroke-Unit-Behandlung ein Überlebensvorteil für GQH auch 2014–2017 festzustellen.</p>
+  
   <blockquote>„„Dagegen war bei den hämorrhagischen Schlaganfällen (I60, I61) bei insgesamt wesentlich höherer Sterblichkeit insbesondere bei Fällen ohne Stroke Unit-Behandlung ein Überlebensvorteil für GQH auch im Zeitraum 2014-2017 festzustellen.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1337,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Andere Bundesländer mit eQS wiesen im Zeitraum 2014–2017 zum Teil noch einen Überlebensvorteil gegenüber Regionen ohne eQS auf, während Vorteile für GQH vor allem in den frühen Zeiträumen bestanden.</p>
+  
   <blockquote>„„Wie im grafischen Beispiel waren Vorteile für GQH vor allem in den frühen Zeiträumen gegeben. Betrachtet man die übrigen Länder mit einer eQS, dann wiesen diese auch im letzten Zeitraum 2014-2017 zum Teil noch Überlebensvorteil im Vergleich zu Regionen ohne eQS auf.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1356,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In allen Vergleichen wiesen in Stroke Units behandelte Patient:innen einen Überlebensvorteil auf.</p>
+  
   <blockquote>„„Ad c) Vergleich Stroke Unit / keine Stroke Unit: Bei allen Vergleichen wiesen Patientinnen, die in Stroke Units behandelt wurden, Überlebensvorteil auf.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1375,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">GQH wies laut Bericht über alle Subgruppen leichte Vorteile gegenüber anderen Regionen mit eQS auf, nicht jedoch im letzten Beobachtungszeitraum.</p>
+  
   <blockquote>„„GQH weist über alle Subgruppen hinweg leichte Vorteile gegenüber anderen Regionen mit eQS auf; wie bereits erwähnt, gilt dies nicht für den letzten Beobachtungszeitraum.“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1394,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In Subanalysen fanden sich signifikante positive Assoziationen für GQH gegenüber dem übrigen Bundesgebiet vor allem 2007–2010 und nicht bei alleiniger Betrachtung von Stroke-Unit-Patient:innen; die meisten signifikant positiven Assoziationen ergaben sich beim Vergleich GQH mit Regionen ohne eQS, auch in späteren Zeiträumen.</p>
+  
   <blockquote>„„Im Vergleich zum übrigen Bundesgebiet (unabhängig von eQS) zeigten sich signifikante positive Assoziationen für GQH vor allem im Zeitraum 2007-2010 und nicht bei der alleinigen Betrachtung von Patient:innen, die in Stroke Units behandelt wurden. … Die meisten signifikant positiven Assoziationen fanden sich beim Vergleich GQH mit Regionen ohne eQS“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1413,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Beim Vergleich von Regionen mit und ohne eQS insgesamt fielen positive Assoziationen insbesondere bei intracerebraler Blutung (I61) auf.</p>
+  
   <blockquote>„„Beim Vergleich von Regionen mit/ohne eQS insgesamt fielen positive Assoziationen insbesondere bei ICD -I61 auf.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1432,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Durch die Risikoadjustierung wurden einzelne vormals signifikante Assoziationen zwischen GQH und Sterblichkeit hinfällig.</p>
+  
   <blockquote>„„Ad e) Durch die Risikoadjustierung wurden einzelne der vormals signifikanten Assoziationen zwischen GQH und der Sterblichkeit der Schlaganfallpatient:innen hinfällig“ – Bericht, S. 23" <span class="s">S. 23</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1451,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Das Gesamtsterberisiko stieg mit dem Alter (bis HR 8,754 bei &gt;89 Jahren), den Komorbiditäten (HR 2,094 bei Elixhauser &gt;6), einer Pflegestufe vor dem Insult (HR 2,937 bei Stufe 3) und unterschied sich nach Diagnose (bis HR 2,966 bei I61), jeweils p&lt;0,05.</p>
+  
   <blockquote>„„das Gesamt sterberisiko stieg mit dem Alter (bis HR 8,754 im Alter &gt;89 Jahre; 95% CI 8,33-9,20; p&lt;0,05), den Komorbiditäten (HR 2,094 bei Elixhauser &gt;6 …), einer Pflegestufe vor dem cerebralen Insult (HR 2,937 bei Pflegestufe 3 …) und unterschied sich zwischen den CI-Diagnosen (bis HR 2,966 bei ICD -10-I61“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1470,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Frauen hatten ein geringeres Sterberisiko (HR 0,824; p&lt;0,05); das Sterberisiko sank im Beobachtungszeitraum (2011–13 HR 0,927; 2014–17 HR 0,859; je p&lt;0,000001); der GISD (sozioökonomische Deprivation) war der einzige Faktor ohne Bedeutung im Modell.</p>
+  
   <blockquote>„„Geringere HR wiesen Frauen auf (HR 0,824; 95% CI 0,82-0,83; p&lt;0,05) und das Sterberisiko sank im Verlauf des Beobachtungszeitraums (in den Jahren 2011 -13 auf HR 0,927 …, in 2014-17 auf HR 0,859 …). Der einzige Faktor ohne Bedeutung im Modell war der GISD“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1489,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei GQH-Fällen war ein Rankin-Scale-Wert &gt;3 bei Aufnahme mit HR 1,39 verbunden, Barthel-Teilindizes &lt;10 mit HR 1,51 (Blasenkontrolle), 1,28 (Lagewechsel) und 1,08 (Fortbewegung), eine Verschlechterung der Rankin-Scale im Verlauf mit HR 1,9.</p>
+  
   <blockquote>„„Bei Aufnahme ergaben sich für Rankin-Scale-Werte &gt;3 erhöhte Sterblichkeitsrisken (HR 1,39 …). Die drei Barthel-Indizes zeigten für Werte &lt;10 ebenfalls negative Effekte (Blasenkontrolle HR 1,51 … / Lagewechsel HR 1,28 … / Fortbewegung HR 1,08 …). … Verschlechterte sich die Rankin-Scale-Einschätzung … (HR 1,9“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1508,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für Rezidive zeigten eQS (ohne GQH) und GQH keine relevanten Unterschiede; die Stroke-Unit-Behandlung war signifikant mit allen Rezidiven (HR 0,96; p&lt;0,000001) und embolischen Rezidiven (HR 0,98; p&lt;0,02) assoziiert, nicht aber mit hämorrhagischen Rezidiven.</p>
+  
   <blockquote>„„Das Cox-Modell unter Einbeziehung aller Rezidive zeigte für eQS (ohne GQH) und für GQH keine relevanten Unterschiede. Dagegen ergaben sich signifikante, gering positive Assoziationen mit der Behandlung in Stroke Units für alle Rezidive (HR 0,96 …) und für embolische Rezidive (HR 0,98 …), nicht aber für hämorrhagische Rezidive.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1527,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei erneuten Krankenhausaufenthalten war die Stroke-Unit-Behandlung mit HR 0,96 bzw. 0,95 verbunden, GQH mit einer signifikanten Risikoerhöhung (HR 1,06 in beiden Modellen; p&lt;0,000001); eQS in anderen Regionen war nicht signifikant assoziiert.</p>
+  
   <blockquote>„„Beide Modelle ergaben für Stroke Units signifikante Reduktionen (HR 0,96 … bzw. 0,95 …), während für GQH signifikante Risikoerhöhungen festzustellen waren (beide Modelle HR 1,06 …). eQS in anderen Regionen war nicht signifikant mit erneuten Krankenhausbehandlungen assoziiert.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1546,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für eine Erhöhung des Pflegegrads ergab sich bei Stroke-Unit-Behandlung HR 0,95 und in Bundesländern mit eQS HR 0,92 (je p&lt;0,000001), bei GQH-Fällen ein laut Bericht geringfügig erhöhtes Risiko (HR 1,02; 95%-KI 1,00–1,04; p&lt;0,05).</p>
+  
   <blockquote>„„Die Analysen zur Erhöhung des Pflegegrads zeigen positive Effekte bei Behandlung in Stroke Units (HR 0,95 …) und noch günstigere Effekte in Bundesländern mit eQS-CI (HR 0,92 …). Dagegen war bei GQH-Fällen ein geringfügig erhöhtes Risiko festzustellen (HR 1,02 ; 95% Cl 1,00-1,04; p&lt;0,05).“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1565,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im Zeitraum 2014–2017 stieg das Risiko einer Pflegestufenerhöhung signifikant an (HR 1,5; p&lt;0,000001), anders als in allen anderen Modellen.</p>
+  
   <blockquote>„„Im Unterschied zu allen anderen Model len stieg im jüngsten Beobachtungszeitraum 2014- 2017 das Risiko einer Pflegestufenerhöhung signifikant an (HR 1,5; 95% CI 1,48-1,53; p&lt;0,000001).“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1584,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In die Analysen gingen 379.825 Fälle ein, von denen im Beobachtungszeitraum 194.681 verstarben und 185.144 überlebten.</p>
+  
   <blockquote>„„konnten insgesamt 379.825 Fälle in die Analysen einbezogen werden. Im Beobachtungszeitraum sind insgesamt 194.681 Patient:innen verstorben, 185.144 Patient:innen haben überlebt.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1603,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Über den gesamten Zeitraum wurden in Hessen 61 % und in den anderen Bundesländern 50 % der Patient:innen in einer Stroke Unit behandelt; der Anteil Verstorbener lag in Hessen bei 49,1 % und in den anderen Bundesländern bei 51,6 %.</p>
+  
   <blockquote>„„während über den gesamten Beobachtungszeitraum in Hessen 61 % der Patient:innen in einer Stroke Unit behandelt wurden, belief sich dieser Anteil in den anderen Bundesländern auf 50 %. Zudem war die Rate der verstorbenen nach einem Schlaganfall in Hessen mit 49,1 % geringer als in den anderen Bundesländern mit 51,6 %.“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1622,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Subgruppen unterschieden sich bei den meisten Variablen kaum; in Hessen war der Anteil embolischer Schlaganfälle und der Anteil mit weniger Komorbiditäten geringfügig höher, der Anteil ohne dokumentierte Pflegestufe vor dem Schlaganfall etwas geringer.</p>
+  
   <blockquote>„„Deutlich wird, dass sich die Subgruppen bei den meisten Variablen kaum unterscheiden; die Alters- und Geschlechtsverteilung stimmt fast vollständig. … in Hessen war der Anteil an embolischen Schlaganfällen geringfügig höher, genauso wie der Anteil Patient:innen mit weniger Komorbiditäten. Etwas geringer fiel jedoch der Anteil Patient:innen ohne eine dokumentierte Pflegestufe“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1641,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Der Anteil hessischer AOK-Fälle, die GQH-dokumentierten Fällen zugeordnet werden konnten, stieg von 68,3 % (2007) auf 91,8 % (2017).</p>
+  
   <blockquote>„„Der Anteil von AOK-Fällen aus Hessen, die als GQH-dokumentiert zugeordnet werden konnte, stieg kontinuierlich von 68,3% im Jahr 2007 auf 91,8% im Jahr 2017.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1660,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zwischen 2006/2007 und 2017 stieg der Anteil der unter qualitätsfördernden Maßnahmen behandelnden Krankenhäuser für ADSR um 20 %, für SU QB um 15,4 % sowie für SU DSG und PN um je 14,1 %.</p>
+  
   <blockquote>„„hat die Maßnahme ADSR den höchsten prozentualen Anstieg mit 20%, gefolgt von SU QB mit 15,4%. SU DSG und PN sind um 14,1% gestiegen.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1679,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.36">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut Qualitätsberichten lag der Anteil kodierter Schlaganfall-Diagnosen in Krankenhäusern mit qualitätsfördernden Maßnahmen im Beobachtungszeitraum durchschnittlich bei 90 %, mit einem Anstieg von 2006 bis 2017 um 15 %.</p>
+  
   <blockquote>„„Insgesamt zeigten die QB -Analysen für den Beobachtungszeitraum einen durchschnittlichen Anteil kodierter CI-ICD in Krankenhäusern mit qfM (Kategorie 1 und 2) von 90% und einen Anstieg von 2006 im Vergleich zu 2017 um 15%.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1698,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die mittlere Durchdringung der Kreise lag 2007 bei 33,78 % (qfM 1), 42,86 % (qfM 2) und 25,12 % (Stroke Units); für 2017 werden 87,47 %, 78,58 % bzw. 79,67 % angegeben.</p>
+  
   <blockquote>„„2007 33,78 42,86 25,12“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1717,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In den AOK-Daten wohnten am Ende des Zeitraums 20 % weniger Patient:innen in einem Kreis ohne qualitätsfördernde Maßnahme; 2007 und 2017 wurden je 30 % außerhalb des Wohnkreises behandelt; der Anteil behandelnder Krankenhäuser mit qfM stieg von 55 % auf 72 %.</p>
+  
   <blockquote>„„Am Ende des Beobachtungszeitraums wohnten 20% weniger Patient:innen in einem Kreis ohne qfM. Die Behandlung erfolgte in 2007 und 2017 bei 30% der Patient:innen in anderen Kreisen als dem Wohnort. In 2007 waren in 55% der behandelnden K rankenhäuser qfM vorhanden, in 2017 waren es 72%.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1736,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Korrelationsanalysen zeigten einen signifikanten Trend zur Behandlung in Krankenhäusern mit qfM im Jahresverlauf; Projekt- und Netzwerkaktivitäten zeigten keine relevante Assoziation mit den Zielparametern und wurden nicht zur Adjustierung genutzt.</p>
+  
   <blockquote>„„Korrelationsanalysen zeigten einen signifikanten Trend hin zur Behandlung in Krankenhäusern mit qfM im Jahresverlauf. Die regionalen Durchdringungsanalysen zu den „weiteren qualitätsfördernden Maßnahmen“ (Projekt- und Netzwerkaktivitäten) zeigten keine relevante Assoziation mit den Zielparametern“ – Bericht, S. 18" <span class="s">S. 18</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1755,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.40">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine höhergradige Multikollinearität wurde ausgeschlossen: Die Korrelationen überschritten 0,53 und der Varianzinflationsfaktor 1,7 nicht.</p>
+  
   <blockquote>„„der maximale Absolutwert der Korrelationen den Wert von 0,53 nicht überschritt. Gleichfalls überschritt der Varianzinflationsfaktor bei keiner Variable den Wert 1,7, so dass im Gesamtbild eine höhergradige und relevante Multikollinearität ausgeschlossen werden konnte.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.40" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.40" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.40" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.40" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1774,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.41">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">An der Befragung der eQS-Gremien nahmen 19 Expert:innen teil, mindestens eine:r pro Bundesland; die Rückmeldequote lag bei 100 %.</p>
+  
   <blockquote>„„Die Rückmeldequote lag bei 100%.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.41" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.41" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.41" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.41" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1793,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Studie ist eine retrospektive Kohortenstudie auf Sekundärdaten ohne Randomisierung und Verblindung.</p>
+  
   <blockquote>„„Eine Randomisierung oder Verblindung fand studiendesignkonform nicht statt.“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1795,12 +1812,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.3">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Den Routinedaten fehlen Angaben zum Schweregrad und zu nicht als Prozedur dokumentierten Behandlungen, die für eine weitergehende Risikoadjustierung notwendig wären.</p>
+  
   <blockquote>„„Diesen Routinedaten fehlen jedoch Daten zum jeweiligen Schweregrad der Erkrankung und der nicht in Form von dokumentierten Prozeduren durchgeführten Behandlung, die für eine weitergehende Risikoadjustierung der behandelten Population notwendig sind“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1814,12 +1831,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Vom Barthel-Index sind in der Dokumentation nur drei Teilindizes enthalten (Blasenkontrolle, Lagewechsel Bett–Stuhl, Fortbewegung).</p>
+  
   <blockquote>„„bei den Barthel-Indices enthält die Dokumentation nur die folgende drei Indices: Blasenkontrolle … Lagewechsel Bett -Stuhl … und Fortbewegung“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1833,12 +1850,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Studie beschränkt sich auf die Sterblichkeit; Funktionalität nach Schlaganfall wird nicht berichtet, da hierzu keine Routinedaten vorliegen.</p>
+  
   <blockquote>„„Die Studie beschränkt sich auf die Sterblichkeit als Aspekt der Ergebnisqualität, der mit Routinedaten abgebildet werden kann, aber zum Teil kritisch hinterfragt wird [19]. Andere relevante Ergebnisse wie beispielsweise die Funktionalität nach Schlaganfall … werden nicht berichtet“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1852,12 +1869,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Betrachtet wurden nur AOK-Versicherte (32 % der Bevölkerung); die Autoren gehen von einem geringen Risiko für einen Selektionsbias aus.</p>
+  
   <blockquote>„„Zudem betrachtet die Studie nur AOK-Versicherte. Mit einem Versichertenanteil von 32 % der Bevölkerung Deutschlands ist jedoch von einem geringen Risiko für einen Selektionsbias auszugehen.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1871,12 +1888,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Nicht alle hessischen Patient:innen wurden in Hessen behandelt, und nicht alle Fälle hessischer Kliniken wurden nach GQH-Vorgaben dokumentiert; die Autoren schätzen die daraus mögliche Fehlklassifikation als konservativ und gering ein.</p>
+  
   <blockquote>„„nicht alle hessischen Patienten auch in Hessen behandelt wurden, zum anderen wurden nicht alle Fälle von hessischen Kliniken nach den Vorgaben der GQH dokumentiert.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1890,12 +1907,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Von den hessischen GQH-Fällen waren 17,9 % Nicht-GQH-Fälle oder nicht verknüpfbar; die Verknüpfbarkeit war in den frühen Jahren geringer (68 % 2007, 92 % 2017).</p>
+  
   <blockquote>„„Letztlich verblieben als GQH-Fälle aus Hessen N=46.621, von denen 10.158 entweder Nicht-GQH-Fälle aus Hessen bzw. nicht über die genutzten Variablen verknüpfbar waren (17,9%).“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1909,12 +1926,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die multiplen Tests der Sterblichkeits-Subgruppenanalysen sind nur hypothesengenerierend zu interpretieren.</p>
+  
   <blockquote>„„Diese multiplen Tests sind jedoch nur hypothesengenerierend zu interpretieren.“ – Bericht, S. 22" <span class="s">S. 22</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1928,12 +1945,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Eine detaillierte Würdigung aller Subanalysen zum Gesamtsterberisiko enthält der Ergebnisbericht nicht.</p>
+  
   <blockquote>„„Eine detaillierte Würdigung aller Subanalysen zur Assoziation der GQH/eQS -Versorgung mit dem Gesamtsterberisiko sprengt leider den Umfang des Ergebnisberichts.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1947,12 +1964,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ausgewertet wurden nur vollständige Datensätze (rund 80 % der Fälle, mehr als 300.000); Imputation oder Sensitivitätsanalysen zu fehlenden Werten wurden nicht durchgeführt, weil die Autoren die fehlenden Werte überwiegend für zufällig halten.</p>
+  
   <blockquote>„„So wurden auch bei den multivariaten Analysen nur die Datensätze berücksichtigt, die komplett vollständig waren. Es lag eine Vollständigkeit bei rund 80% der Fälle vor, so dass für diese Auswertung insgesamt mehr als 300.000 komplette Fälle verfügbar waren.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1966,12 +1983,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Bei den sekundären Zielparametern konnten nur wenige positive Assoziationen mit der eQS festgestellt werden.</p>
+  
   <blockquote>„„Bei den sekundären Zielparametern konnten nur wenige positive Assoziationen mit der eQS festgestellt werden.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1985,12 +2002,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die ADSR-Daten enthielten aus Datenschutzgründen keine krankenhausidentifizierende Kennung, sodass das Merkmal ADSR nicht genau zugeordnet werden konnte.</p>
+  
   <blockquote>„„Aus Datenschutzgründen konnte keine krankenhausidentifizierende Kennung (Institutionskennzeichen und genaue Adress daten) übermittelt werden, weshalb eine genaue Zuordnung des Merkmals ADSR nicht umgesetzt werden konnte.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2004,12 +2021,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für ADSR-Beteiligung und eQS-CI gab es nur begrenzte Verknüpfungsmethoden; in betroffenen Gebieten wurde eine Durchdringung von 100 % angenommen.</p>
+  
   <blockquote>„„ADSR- Beteiligung und Vorhandensein einer eQS-CI boten lediglich limitierte Verknüpfungsmethoden, wobei von einer Durchdringung von 100% in betroffenen Gebieten ausgegangen wurde“ – Bericht, S. 13" <span class="s">S. 13</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2023,12 +2040,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Dubletten waren ein wesentliches Datenproblem; allein in den Stammdaten wurden 15.374 Dubletten (etwa 3,5 %) korrigiert.</p>
+  
   <blockquote>„„Wesentliches Problem war die Identifizierung von Dubletten in allen Dateien. So wurden alleine in den Stammdaten 15.374 Dubletten (etwa 3,5%) korrigiert“ – Bericht, S. 9" <span class="s">S. 9</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2042,12 +2059,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Fehlende Bundeslandangaben (885 Fälle) und fehlende Werte führen in den Tabellen zu abweichenden Summen.</p>
+  
   <blockquote>„„Zudem lagen von manchen Fällen keine Bundeslandangaben vor (885), so dass auch dies bei Analysen ohne Bundeslandbezug zu Abweichungen bei den Summen führen kann.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2061,12 +2078,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Beobachtungsfenster der deutschen eQS umfasst typischerweise nur den Akutaufenthalt, zum Teil eine anschließende Rehabilitation; Langzeitergebnisse werden dort nicht erhoben.</p>
+  
   <blockquote>„„Problematisch bei der deutschen Form der eQS bleibt aber, dass das Beobachtungsfenster typischerweise nur den Akutaufenthalt, zum Teil noch eine anschließende Rehabilitation umfasst, jedoch keine Langzeitergebnisse erhoben werden.“ – Bericht, S. 5" <span class="s">S. 5</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2111,28 +2128,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 231, "akronym": "QUASCH", "kennung": "CLnNUOc7BOQ0", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Erkenntnisse aus QUASCH wegen der positiven Assoziationen der Behandlung in Stroke Units an die Stiftung Deutsche Schlaganfall-Hilfe und die Deutsche Schlaganfall-Gesellschaft (DSG) weiter und bittet sie um Prüfung. Zur Information gehen die Erkenntnisse zudem an den Unterausschuss Qualitätssicherung des G-BA. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt untersuchte retrospektiv auf Basis von Sekundärdaten, ob die verpflichtende externe Qualitätssicherung der Schlaganfallversorgung in Hessen mit besseren Gesundheitsergebnissen einhergeht. Beim primären Endpunkt Sterblichkeit war die Versorgung im Rahmen der hessischen eQS ohne Berücksichtigung der Stroke Units mit einer stärkeren Sterblichkeitsreduktion verbunden als die eQS in anderen Bundesländern. Unter Einbezug der Stroke-Unit-Behandlungen verringerte sich dieser Abstand leicht. Bei Patientinnen und Patienten in Stroke Units zeigte die eQS kaum zusätzliche positive Effekte. Bei den sekundären Endpunkten fanden sich nur wenige positive Assoziationen mit der eQS; für die hessische eQS zeigten sich teils sogar Risikoerhöhungen. Eine starke positive Assoziation ergab sich dagegen für die Behandlung in Stroke Units. Einschränkend nennt der Ausschuss, dass die Analysen teilweise nur auf AOK-Daten beruhen und das Datenlinkage nicht immer optimal war."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Analysen beruhen teilweise nur auf Daten der AOK"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Datenlinkage wegen schlechter Dokumentationsqualität nicht immer optimal"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Kaum zusätzliche positive Effekte der eQS bei Patientinnen und Patienten in Stroke Units"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Keine relevanten Unterschiede bei Hirninfarktrezidiven für eQS und GQH"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Keine signifikante Assoziation der eQS mit erneuten Krankenhausbehandlungen, für GQH sogar signifikante Risikoerhöhungen"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Geringfügig erhöhtes Risiko einer Pflegegraderhöhung bei GQH-Fällen"}, {"stelle": "befund.0", "art": "befund", "unser": "Stärkere Sterblichkeitsreduktion unter der hessischen eQS (ohne Berücksichtigung von Stroke Units) im Vergleich zur eQS in anderen Bundesländern"}, {"stelle": "befund.1", "art": "befund", "unser": "Starke positive Assoziation der Stroke-Unit-Behandlung mit primären und sekundären Ergebnisparametern"}, {"stelle": "befund.2", "art": "befund", "unser": "Signifikante Reduktion erneuter Krankenhausaufenthalte bei Behandlung in Stroke Units"}, {"stelle": "befund.3", "art": "befund", "unser": "Positive Effekte bezüglich der Erhöhung des Pflegegrads bei Stroke-Unit-Behandlung, noch günstiger in Bundesländern mit eQS-CI"}, {"stelle": "befund.4", "art": "befund", "unser": "Methoden vom Ausschuss als angemessen bewertet"}, {"stelle": "befund.5", "art": "befund", "unser": "Routinedaten für die Hauptfragestellungen als gut und valide bewertet"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Gesamtsterberisiko im Beobachtungszeitraum – eQS in Hessen (GQH) vs. alle anderen Bundesländer (Modell ohne Stroke Unit)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Gesamtsterberisiko im Beobachtungszeitraum – eQS in übrigen Bundesländern (ohne GQH) vs. Bundesländer ohne eQS (Modell ohne Stroke Unit)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Gesamtsterberisiko – eQS in Hessen (GQH) im Modell mit Stroke Unit"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Gesamtsterberisiko – eQS ohne GQH im Modell mit Stroke Unit"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Gesamtsterberisiko – Behandlung in einer Stroke Unit vs. keine Stroke Unit"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Mediane Überlebenszeit nach Schlaganfall (Kaplan-Meier)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Gesamtsterberisiko GQH vs. ohne eQS nach Zeiträumen (alle Fälle)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Gesamtsterberisiko eQS (ohne GQH) vs. ohne eQS nach Zeiträumen (alle Fälle)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Risikoadjustierte 10-Tages-, 90-Tages-, 1-Jahres- und 3-Jahres-Sterblichkeit bei ICD-10-I63 (GQH vs. übrige Bundesländer)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Rezidive (alle Rezidive) – GQH bzw. eQS"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Rezidive (alle Rezidive) – Behandlung in Stroke Unit"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Embolische Rezidive – Behandlung in Stroke Unit"}, {"stelle": "endpunkt.13", "art": "endpunkt", "unser": "Erneute Krankenhausbehandlungen (alle erneuten Aufenthalte bzw. ohne Rezidive) – GQH"}, {"stelle": "endpunkt.14", "art": "endpunkt", "unser": "Erneute Krankenhausbehandlungen – Behandlung in Stroke Unit"}, {"stelle": "endpunkt.15", "art": "endpunkt", "unser": "Erneute Krankenhausbehandlungen – eQS in anderen Regionen"}, {"stelle": "endpunkt.16", "art": "endpunkt", "unser": "Erhöhung des Pflegegrads/der Pflegestufe – eQS-CI bzw. GQH"}, {"stelle": "endpunkt.17", "art": "endpunkt", "unser": "Erhöhung des Pflegegrads – Behandlung in Stroke Unit"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Die DSG ordnet in einer mit der Stiftung abgestimmten Stellungnahme die Studie ein, schließt sich dem Fazit der Autoren zur Konzentration der Versorgung in Stroke Units an und empfiehlt dem G-BA, Projekte zur sektorenübergreifenden Qualitätssicherung zu fördern; eine eigene Entscheidung oder Übernahme in Regelungen benennt sie nicht."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Die Stiftung äußert sich gemeinsam mit der DSG, stimmt dem Fazit der Studienautoren zu und richtet eine Empfehlung an den G-BA; eine eigene Entscheidung oder Übernahme in Regelungen wird nicht benannt."}, {"stelle": "adressat.3", "art": "adressat", "unser": ""}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte in einer retrospektiven Kohortenstudie mit AOK-Routinedaten der Jahre 2007–2017 (379.825 Schlaganfall-Fälle), ob die externe Qualitätssicherung (eQS) in Hessen (GQH) und in anderen Bundesländern sowie die Behandlung in einer Stroke Unit mit der Sterblichkeit nach Schlaganfall assoziiert sind. Primäre Zielgröße war die Sterblichkeit (Gesamtsterberisiko sowie 10-Tages- bis 5-Jahres-Sterblichkeit); sekundär wurden Rezidive, erneute Krankenhausaufenthalte und Erhöhungen der Pflegestufe untersucht. Gegenüber einer Behandlung ohne eQS war das Gesamtsterberisiko unter GQH mit HR 0,93 (95%-KI 0,92–0,95; p<0,000001) und unter eQS in den übrigen Bundesländern mit HR 0,96 (95%-KI 0,95–0,97; p<0,000001) verbunden, die Stroke-Unit-Behandlung mit HR 0,86 (95%-KI 0,85–0,87; p<0,000001). Die Assoziation der GQH schwächte sich laut Bericht im Zeitverlauf ab; für 2014–2017 lag die HR bei 0,989 (p=0,536). Bei Stroke-Unit-Patient:innen fanden sich laut Bericht kaum bzw. keine zusätzlichen Überlebensvorteile durch die eQS. Propensity Score Matching und Entropy Balancing ergaben keine Unterschiede zum Cox-Modell. Die Aussagekraft hängt daran, dass es sich um eine Beobachtungsstudie ohne kausale Interpretierbarkeit handelt, die Risikoadjustierung den Schlaganfallschweregrad nicht enthält, wegen der Fallzahl auch sehr kleine Effekte hochsignifikant werden und nur AOK-Versicherte betrachtet wurden. Die Autoren empfehlen, die Schlaganfallversorgung vordringlich in Stroke Units zu konzentrieren."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Gegenüber einer Behandlung ohne eQS war das Gesamtsterberisiko unter eQS in Hessen reduziert (HR 0,93; 95%-KI 0,92–0,95; p<0,000001), laut Bericht hochsignifikant; unter eQS in den übrigen Bundesländern lag die HR bei 0,96 (95%-KI 0,95–0,97; p<0,000001)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Die Behandlung in einer Stroke Unit war unabhängig von den übrigen Faktoren mit einem geringeren Gesamtsterberisiko verbunden (HR 0,86; 95%-KI 0,85–0,87; p<0,000001), laut Bericht stärker als die eQS."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Im multivariaten Cox-Modell ohne Stroke-Unit-Variable war GQH mit HR 0,926 (95%-KI 0,91–0,94) und eQS in anderen Bundesländern mit HR 0,972 (95%-KI 0,96–0,98) assoziiert; mit Stroke-Unit-Variable lagen die Werte bei 0,934 bzw. 0,961, der Abstand verringerte sich laut Bericht leicht."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Nach Zeiträumen getrennt lag die HR für GQH gegenüber ohne eQS bei 0,927 (2007–2010; p=1,46e-09), 0,973 (2011–2013; p=0,05662) und 0,989 (2014–2017; p=0,53566)."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "GQH ging laut Bericht vor allem zu Beginn der Beobachtung und bei Fällen ohne Stroke-Unit-Behandlung mit Überlebensvorteilen einher; eQS zeigte Vorteile für alle Fälle und Fälle ohne Stroke Unit im gesamten Zeitraum, für Fälle in Stroke Units nur 2007–2010."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die Subanalysen der Stroke-Unit-Behandelten zeigten laut Bericht keine Überlebensvorteile durch eQS; bei Betrachtung aller Patient:innen war eQS in Hessen und anderen Regionen mit Überlebensvorteilen verbunden."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Die Berücksichtigung der Schweregradindizes reduzierte die Bedeutung der Stroke-Unit-Versorgung im Modell, und der Zeitpunkt des Schlaganfalls hatte danach keine signifikante Bedeutung mehr."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Als Beobachtungsstudie können die Ergebnisse nicht kausal interpretiert werden; gezeigt werden nur Assoziationen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die Risikoadjustierung beruht nur auf Routinedaten, sodass möglicherweise relevante Einflussfaktoren wie der Schlaganfallschweregrad bei Aufnahme nicht berücksichtigt werden konnten."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Wegen der hohen Fallzahl können auch sehr geringe Effekte hochsignifikant sein; der Bericht warnt davor, sie zu überinterpretieren."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Schweregradanalysen mit Barthel-Index und modifizierter Rankin-Scale waren nur für GQH-registrierte Fälle möglich, da diese Angaben im GKV-Sekundärdatensatz nicht erhoben werden."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Altersbezogenes Sterberisiko: Die Kurzfassung nennt für >89 vs. <50 Jahre HR 8,35 (95%-KI 7,93–8,79) (S. 3), der Ergebnisteil HR 8,754 (95%-KI 8,33–9,20) (S. 19). Ebenso Pflegestufe 3: HR 2,92 (S. 3) vs. HR 2,937 (S. 19)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Zeittrend des Sterberisikos: S. 3 nennt für 2014–2017 vs. 2007–2010 HR 0,89, S. 20 HR 0,859."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Erneute Krankenhausaufenthalte: Für Modell b wird die Stroke-Unit-Assoziation (HR 0,95) als signifikante Reduktion bezeichnet, der angegebene p-Wert lautet jedoch p>0,4 (S. 24)."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "eQS bei Stroke-Unit-Patient:innen: S. 21 berichtet für Fälle in Stroke Units Vorteile durch eQS in den Jahren 2007–2010, S. 23 dagegen, dass bei Stroke-Unit-Behandelten keine Überlebensvorteile durch eQS festzustellen waren; S. 25 spricht von kaum zusätzlichen positiven Effekten."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Verknüpfungsquote: 10.158 von N=46.621 GQH-Fällen entsprächen 21,8 %, angegeben werden 17,9 % (S. 14); 17,9 % ergäbe sich nur bezogen auf 56.779 Fälle. Die S. 25 genannte Zuordnungsquote von 82 % passt zu 17,9 %."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Schweregradanalyse: Für den Barthel-Teilindex Lagewechsel (HR 1,28; 95%-KI 1,21–1,36) wird p<0,02 angegeben, für Fortbewegung (HR 1,08; 95%-KI 1,02–1,15) p<0,000001 (S. 22); die p-Werte passen nicht zu den jeweiligen Konfidenzintervallen."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Für eQS gegenüber ohne eQS lag die HR nach Zeiträumen bei 0,952 (2007–2010; p=1,50e-09), 0,967 (2011–2013; p=0,00134) und 0,951 (2014–2017; p=3,13e-05); Stroke Unit in diesem Modell HR 0,824 (p<2e-16)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Patient:innen ohne Stroke-Unit-Behandlung und ohne eQS hatten laut Bericht die schlechtesten Versorgungsergebnisse; bei Stroke-Unit-Patient:innen waren kaum zusätzliche positive Effekte durch die eQS festzustellen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Laut Hauptergebnis war die Assoziation für GQH geringfügig stärker als für die eQS anderer Bundesländer, umfasste embolische und hämorrhagische Schlaganfälle und schwächte sich im Verlauf der Beobachtungsjahre ab."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Propensity Score Matching und Entropy Balancing ergaben als Sensitivitätsanalysen für das Gesamtsterberisiko keine Unterschiede zum Cox-Regressionsmodell."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die mediane Überlebenszeit (Kaplan-Meier) betrug ohne eQS 3,99 Jahre ohne bzw. 5,28 Jahre mit Stroke Unit, unter GQH 4,59 bzw. 5,65 Jahre und unter eQS in anderen Bundesländern 4,57 bzw. 5,98 Jahre."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Der mediane Überlebensvorteil von GQH- gegenüber Patient:innen ohne eQS betrug ohne Stroke Unit 0,6 Jahre und mit Stroke Unit 0,3 Jahre."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Der mit Stroke-Unit-Behandlung assoziierte Überlebenszeitvorteil betrug unter GQH 1,06 Jahre, ohne eQS 1,29 Jahre und unter eQS in anderen Bundesländern 1,41 Jahre; die Autoren erklären dies mit der in Hessen zu Beginn höheren Stroke-Unit-Durchdringung."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Die Ergebnisse zum Gesamtsterberisiko bestätigten sich laut Bericht bei der kurz- und längerfristigen Sterblichkeit."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Beim embolischen Hirninfarkt (I63) bestand für GQH-Patient:innen gegenüber den übrigen Bundesländern ein Überlebensvorteil bis zum dritten Jahr bei Erstereignis 2007–2010, bis zu einem Jahr bei Erstereignis 2011–2013 und keiner bei Erstereignis 2014–2017."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Bei der transitorisch-ischämischen Attacke (G45) fielen die Ergebnisse vergleichbar zu I63 aus."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Bei hämorrhagischen Schlaganfällen (I60, I61) war bei höherer Sterblichkeit insbesondere bei Fällen ohne Stroke-Unit-Behandlung ein Überlebensvorteil für GQH auch 2014–2017 festzustellen."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Andere Bundesländer mit eQS wiesen im Zeitraum 2014–2017 zum Teil noch einen Überlebensvorteil gegenüber Regionen ohne eQS auf, während Vorteile für GQH vor allem in den frühen Zeiträumen bestanden."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "In allen Vergleichen wiesen in Stroke Units behandelte Patient:innen einen Überlebensvorteil auf."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "GQH wies laut Bericht über alle Subgruppen leichte Vorteile gegenüber anderen Regionen mit eQS auf, nicht jedoch im letzten Beobachtungszeitraum."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "In Subanalysen fanden sich signifikante positive Assoziationen für GQH gegenüber dem übrigen Bundesgebiet vor allem 2007–2010 und nicht bei alleiniger Betrachtung von Stroke-Unit-Patient:innen; die meisten signifikant positiven Assoziationen ergaben sich beim Vergleich GQH mit Regionen ohne eQS, auch in späteren Zeiträumen."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Beim Vergleich von Regionen mit und ohne eQS insgesamt fielen positive Assoziationen insbesondere bei intracerebraler Blutung (I61) auf."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Durch die Risikoadjustierung wurden einzelne vormals signifikante Assoziationen zwischen GQH und Sterblichkeit hinfällig."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Das Gesamtsterberisiko stieg mit dem Alter (bis HR 8,754 bei >89 Jahren), den Komorbiditäten (HR 2,094 bei Elixhauser >6), einer Pflegestufe vor dem Insult (HR 2,937 bei Stufe 3) und unterschied sich nach Diagnose (bis HR 2,966 bei I61), jeweils p<0,05."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Frauen hatten ein geringeres Sterberisiko (HR 0,824; p<0,05); das Sterberisiko sank im Beobachtungszeitraum (2011–13 HR 0,927; 2014–17 HR 0,859; je p<0,000001); der GISD (sozioökonomische Deprivation) war der einzige Faktor ohne Bedeutung im Modell."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Bei GQH-Fällen war ein Rankin-Scale-Wert >3 bei Aufnahme mit HR 1,39 verbunden, Barthel-Teilindizes <10 mit HR 1,51 (Blasenkontrolle), 1,28 (Lagewechsel) und 1,08 (Fortbewegung), eine Verschlechterung der Rankin-Scale im Verlauf mit HR 1,9."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Für Rezidive zeigten eQS (ohne GQH) und GQH keine relevanten Unterschiede; die Stroke-Unit-Behandlung war signifikant mit allen Rezidiven (HR 0,96; p<0,000001) und embolischen Rezidiven (HR 0,98; p<0,02) assoziiert, nicht aber mit hämorrhagischen Rezidiven."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Bei erneuten Krankenhausaufenthalten war die Stroke-Unit-Behandlung mit HR 0,96 bzw. 0,95 verbunden, GQH mit einer signifikanten Risikoerhöhung (HR 1,06 in beiden Modellen; p<0,000001); eQS in anderen Regionen war nicht signifikant assoziiert."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Für eine Erhöhung des Pflegegrads ergab sich bei Stroke-Unit-Behandlung HR 0,95 und in Bundesländern mit eQS HR 0,92 (je p<0,000001), bei GQH-Fällen ein laut Bericht geringfügig erhöhtes Risiko (HR 1,02; 95%-KI 1,00–1,04; p<0,05)."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Im Zeitraum 2014–2017 stieg das Risiko einer Pflegestufenerhöhung signifikant an (HR 1,5; p<0,000001), anders als in allen anderen Modellen."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "In die Analysen gingen 379.825 Fälle ein, von denen im Beobachtungszeitraum 194.681 verstarben und 185.144 überlebten."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Über den gesamten Zeitraum wurden in Hessen 61 % und in den anderen Bundesländern 50 % der Patient:innen in einer Stroke Unit behandelt; der Anteil Verstorbener lag in Hessen bei 49,1 % und in den anderen Bundesländern bei 51,6 %."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Die Subgruppen unterschieden sich bei den meisten Variablen kaum; in Hessen war der Anteil embolischer Schlaganfälle und der Anteil mit weniger Komorbiditäten geringfügig höher, der Anteil ohne dokumentierte Pflegestufe vor dem Schlaganfall etwas geringer."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Der Anteil hessischer AOK-Fälle, die GQH-dokumentierten Fällen zugeordnet werden konnten, stieg von 68,3 % (2007) auf 91,8 % (2017)."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Zwischen 2006/2007 und 2017 stieg der Anteil der unter qualitätsfördernden Maßnahmen behandelnden Krankenhäuser für ADSR um 20 %, für SU QB um 15,4 % sowie für SU DSG und PN um je 14,1 %."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Laut Qualitätsberichten lag der Anteil kodierter Schlaganfall-Diagnosen in Krankenhäusern mit qualitätsfördernden Maßnahmen im Beobachtungszeitraum durchschnittlich bei 90 %, mit einem Anstieg von 2006 bis 2017 um 15 %."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Die mittlere Durchdringung der Kreise lag 2007 bei 33,78 % (qfM 1), 42,86 % (qfM 2) und 25,12 % (Stroke Units); für 2017 werden 87,47 %, 78,58 % bzw. 79,67 % angegeben."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "In den AOK-Daten wohnten am Ende des Zeitraums 20 % weniger Patient:innen in einem Kreis ohne qualitätsfördernde Maßnahme; 2007 und 2017 wurden je 30 % außerhalb des Wohnkreises behandelt; der Anteil behandelnder Krankenhäuser mit qfM stieg von 55 % auf 72 %."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Korrelationsanalysen zeigten einen signifikanten Trend zur Behandlung in Krankenhäusern mit qfM im Jahresverlauf; Projekt- und Netzwerkaktivitäten zeigten keine relevante Assoziation mit den Zielparametern und wurden nicht zur Adjustierung genutzt."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Eine höhergradige Multikollinearität wurde ausgeschlossen: Die Korrelationen überschritten 0,53 und der Varianzinflationsfaktor 1,7 nicht."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "An der Befragung der eQS-Gremien nahmen 19 Expert:innen teil, mindestens eine:r pro Bundesland; die Rückmeldequote lag bei 100 %."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Studie ist eine retrospektive Kohortenstudie auf Sekundärdaten ohne Randomisierung und Verblindung."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Den Routinedaten fehlen Angaben zum Schweregrad und zu nicht als Prozedur dokumentierten Behandlungen, die für eine weitergehende Risikoadjustierung notwendig wären."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Vom Barthel-Index sind in der Dokumentation nur drei Teilindizes enthalten (Blasenkontrolle, Lagewechsel Bett–Stuhl, Fortbewegung)."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Studie beschränkt sich auf die Sterblichkeit; Funktionalität nach Schlaganfall wird nicht berichtet, da hierzu keine Routinedaten vorliegen."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Betrachtet wurden nur AOK-Versicherte (32 % der Bevölkerung); die Autoren gehen von einem geringen Risiko für einen Selektionsbias aus."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Nicht alle hessischen Patient:innen wurden in Hessen behandelt, und nicht alle Fälle hessischer Kliniken wurden nach GQH-Vorgaben dokumentiert; die Autoren schätzen die daraus mögliche Fehlklassifikation als konservativ und gering ein."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Von den hessischen GQH-Fällen waren 17,9 % Nicht-GQH-Fälle oder nicht verknüpfbar; die Verknüpfbarkeit war in den frühen Jahren geringer (68 % 2007, 92 % 2017)."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die multiplen Tests der Sterblichkeits-Subgruppenanalysen sind nur hypothesengenerierend zu interpretieren."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Eine detaillierte Würdigung aller Subanalysen zum Gesamtsterberisiko enthält der Ergebnisbericht nicht."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Ausgewertet wurden nur vollständige Datensätze (rund 80 % der Fälle, mehr als 300.000); Imputation oder Sensitivitätsanalysen zu fehlenden Werten wurden nicht durchgeführt, weil die Autoren die fehlenden Werte überwiegend für zufällig halten."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Bei den sekundären Zielparametern konnten nur wenige positive Assoziationen mit der eQS festgestellt werden."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die ADSR-Daten enthielten aus Datenschutzgründen keine krankenhausidentifizierende Kennung, sodass das Merkmal ADSR nicht genau zugeordnet werden konnte."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Für ADSR-Beteiligung und eQS-CI gab es nur begrenzte Verknüpfungsmethoden; in betroffenen Gebieten wurde eine Durchdringung von 100 % angenommen."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Dubletten waren ein wesentliches Datenproblem; allein in den Stammdaten wurden 15.374 Dubletten (etwa 3,5 %) korrigiert."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Fehlende Bundeslandangaben (885 Fälle) und fehlende Werte führen in den Tabellen zu abweichenden Summen."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Das Beobachtungsfenster der deutschen eQS umfasst typischerweise nur den Akutaufenthalt, zum Teil eine anschließende Rehabilitation; Langzeitergebnisse werden dort nicht erhoben."}]};
+const D = {"projekt_id": 231, "akronym": "QUASCH", "kennung": "CLnNUOc7BOQ0", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "Das Projekt untersuchte retrospektiv auf Basis von Sekundärdaten, ob die verpflichtende externe Qualitätssicherung der Schlaganfallversorgung in Hessen mit besseren Gesundheitsergebnissen einhergeht. Beim primären Endpunkt Sterblichkeit war die Versorgung im Rahmen der hessischen eQS ohne Berücksichtigung der Stroke Units mit einer stärkeren Sterblichkeitsreduktion verbunden als die eQS in anderen Bundesländern. Unter Einbezug der Stroke-Unit-Behandlungen verringerte sich dieser Abstand leicht. Bei Patientinnen und Patienten in Stroke Units zeigte die eQS kaum zusätzliche positive Effekte. Bei den sekundären Endpunkten fanden sich nur wenige positive Assoziationen mit der eQS; für die hessische eQS zeigten sich teils sogar Risikoerhöhungen. Eine starke positive Assoziation ergab sich dagegen für die Behandlung in Stroke Units. Einschränkend nennt der Ausschuss, dass die Analysen teilweise nur auf AOK-Daten beruhen und das Datenlinkage nicht immer optimal war."}, {"stelle": "studiendesign", "art": "text", "unser": "Sekundärdatenanalyse"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Analysen beruhen teilweise nur auf Daten der AOK"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Datenlinkage wegen schlechter Dokumentationsqualität nicht immer optimal"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Kaum zusätzliche positive Effekte der eQS bei Patientinnen und Patienten in Stroke Units"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Keine relevanten Unterschiede bei Hirninfarktrezidiven für eQS und GQH"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Keine signifikante Assoziation der eQS mit erneuten Krankenhausbehandlungen, für GQH sogar signifikante Risikoerhöhungen"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Geringfügig erhöhtes Risiko einer Pflegegraderhöhung bei GQH-Fällen"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Gesamtsterberisiko im Beobachtungszeitraum – eQS in Hessen (GQH) vs. alle anderen Bundesländer (Modell ohne Stroke Unit)"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Gesamtsterberisiko im Beobachtungszeitraum – eQS in übrigen Bundesländern (ohne GQH) vs. Bundesländer ohne eQS (Modell ohne Stroke Unit)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Gesamtsterberisiko – eQS in Hessen (GQH) im Modell mit Stroke Unit"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Gesamtsterberisiko – eQS ohne GQH im Modell mit Stroke Unit"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Gesamtsterberisiko – Behandlung in einer Stroke Unit vs. keine Stroke Unit"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Mediane Überlebenszeit nach Schlaganfall (Kaplan-Meier)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Gesamtsterberisiko GQH vs. ohne eQS nach Zeiträumen (alle Fälle)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Gesamtsterberisiko eQS (ohne GQH) vs. ohne eQS nach Zeiträumen (alle Fälle)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Risikoadjustierte 10-Tages-, 90-Tages-, 1-Jahres- und 3-Jahres-Sterblichkeit bei ICD-10-I63 (GQH vs. übrige Bundesländer)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Rezidive (alle Rezidive) – GQH bzw. eQS"}, {"stelle": "endpunkt.11", "art": "endpunkt", "unser": "Rezidive (alle Rezidive) – Behandlung in Stroke Unit"}, {"stelle": "endpunkt.12", "art": "endpunkt", "unser": "Embolische Rezidive – Behandlung in Stroke Unit"}, {"stelle": "endpunkt.13", "art": "endpunkt", "unser": "Erneute Krankenhausbehandlungen (alle erneuten Aufenthalte bzw. ohne Rezidive) – GQH"}, {"stelle": "endpunkt.14", "art": "endpunkt", "unser": "Erneute Krankenhausbehandlungen – Behandlung in Stroke Unit"}, {"stelle": "endpunkt.15", "art": "endpunkt", "unser": "Erneute Krankenhausbehandlungen – eQS in anderen Regionen"}, {"stelle": "endpunkt.16", "art": "endpunkt", "unser": "Erhöhung des Pflegegrads/der Pflegestufe – eQS-CI bzw. GQH"}, {"stelle": "endpunkt.17", "art": "endpunkt", "unser": "Erhöhung des Pflegegrads – Behandlung in Stroke Unit"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben untersuchte in einer retrospektiven Kohortenstudie mit AOK-Routinedaten der Jahre 2007–2017 (379.825 Schlaganfall-Fälle), ob die externe Qualitätssicherung (eQS) in Hessen (GQH) und in anderen Bundesländern sowie die Behandlung in einer Stroke Unit mit der Sterblichkeit nach Schlaganfall assoziiert sind. Primäre Zielgröße war die Sterblichkeit (Gesamtsterberisiko sowie 10-Tages- bis 5-Jahres-Sterblichkeit); sekundär wurden Rezidive, erneute Krankenhausaufenthalte und Erhöhungen der Pflegestufe untersucht. Gegenüber einer Behandlung ohne eQS war das Gesamtsterberisiko unter GQH mit HR 0,93 (95%-KI 0,92–0,95; p<0,000001) und unter eQS in den übrigen Bundesländern mit HR 0,96 (95%-KI 0,95–0,97; p<0,000001) verbunden, die Stroke-Unit-Behandlung mit HR 0,86 (95%-KI 0,85–0,87; p<0,000001). Die Assoziation der GQH schwächte sich laut Bericht im Zeitverlauf ab; für 2014–2017 lag die HR bei 0,989 (p=0,536). Bei Stroke-Unit-Patient:innen fanden sich laut Bericht kaum bzw. keine zusätzlichen Überlebensvorteile durch die eQS. Propensity Score Matching und Entropy Balancing ergaben keine Unterschiede zum Cox-Modell. Die Aussagekraft hängt daran, dass es sich um eine Beobachtungsstudie ohne kausale Interpretierbarkeit handelt, die Risikoadjustierung den Schlaganfallschweregrad nicht enthält, wegen der Fallzahl auch sehr kleine Effekte hochsignifikant werden und nur AOK-Versicherte betrachtet wurden. Die Autoren empfehlen, die Schlaganfallversorgung vordringlich in Stroke Units zu konzentrieren."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Gegenüber einer Behandlung ohne eQS war das Gesamtsterberisiko unter eQS in Hessen reduziert (HR 0,93; 95%-KI 0,92–0,95; p<0,000001), laut Bericht hochsignifikant; unter eQS in den übrigen Bundesländern lag die HR bei 0,96 (95%-KI 0,95–0,97; p<0,000001)."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Die Behandlung in einer Stroke Unit war unabhängig von den übrigen Faktoren mit einem geringeren Gesamtsterberisiko verbunden (HR 0,86; 95%-KI 0,85–0,87; p<0,000001), laut Bericht stärker als die eQS."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Im multivariaten Cox-Modell ohne Stroke-Unit-Variable war GQH mit HR 0,926 (95%-KI 0,91–0,94) und eQS in anderen Bundesländern mit HR 0,972 (95%-KI 0,96–0,98) assoziiert; mit Stroke-Unit-Variable lagen die Werte bei 0,934 bzw. 0,961, der Abstand verringerte sich laut Bericht leicht."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Als Beobachtungsstudie können die Ergebnisse nicht kausal interpretiert werden; gezeigt werden nur Assoziationen."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Die Risikoadjustierung beruht nur auf Routinedaten, sodass möglicherweise relevante Einflussfaktoren wie der Schlaganfallschweregrad bei Aufnahme nicht berücksichtigt werden konnten."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Wegen der hohen Fallzahl können auch sehr geringe Effekte hochsignifikant sein; der Bericht warnt davor, sie zu überinterpretieren."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "Altersbezogenes Sterberisiko: Die Kurzfassung nennt für >89 vs. <50 Jahre HR 8,35 (95%-KI 7,93–8,79) (S. 3), der Ergebnisteil HR 8,754 (95%-KI 8,33–9,20) (S. 19). Ebenso Pflegestufe 3: HR 2,92 (S. 3) vs. HR 2,937 (S. 19)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Zeittrend des Sterberisikos: S. 3 nennt für 2014–2017 vs. 2007–2010 HR 0,89, S. 20 HR 0,859."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Erneute Krankenhausaufenthalte: Für Modell b wird die Stroke-Unit-Assoziation (HR 0,95) als signifikante Reduktion bezeichnet, der angegebene p-Wert lautet jedoch p>0,4 (S. 24)."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss leitet die Erkenntnisse aus QUASCH wegen der positiven Assoziationen der Behandlung in Stroke Units an die Stiftung Deutsche Schlaganfall-Hilfe und die Deutsche Schlaganfall-Gesellschaft (DSG) weiter und bittet sie um Prüfung. Zur Information gehen die Erkenntnisse zudem an den Unterausschuss Qualitätssicherung des G-BA. Beschluss und Ergebnisbericht werden veröffentlicht."}, {"stelle": "befund.0", "art": "befund", "unser": "Stärkere Sterblichkeitsreduktion unter der hessischen eQS (ohne Berücksichtigung von Stroke Units) im Vergleich zur eQS in anderen Bundesländern"}, {"stelle": "befund.1", "art": "befund", "unser": "Starke positive Assoziation der Stroke-Unit-Behandlung mit primären und sekundären Ergebnisparametern"}, {"stelle": "befund.2", "art": "befund", "unser": "Signifikante Reduktion erneuter Krankenhausaufenthalte bei Behandlung in Stroke Units"}, {"stelle": "befund.3", "art": "befund", "unser": "Positive Effekte bezüglich der Erhöhung des Pflegegrads bei Stroke-Unit-Behandlung, noch günstiger in Bundesländern mit eQS-CI"}, {"stelle": "befund.4", "art": "befund", "unser": "Methoden vom Ausschuss als angemessen bewertet"}, {"stelle": "befund.5", "art": "befund", "unser": "Routinedaten für die Hauptfragestellungen als gut und valide bewertet"}, {"stelle": "adressat.1", "art": "adressat", "unser": "Die DSG ordnet in einer mit der Stiftung abgestimmten Stellungnahme die Studie ein, schließt sich dem Fazit der Autoren zur Konzentration der Versorgung in Stroke Units an und empfiehlt dem G-BA, Projekte zur sektorenübergreifenden Qualitätssicherung zu fördern; eine eigene Entscheidung oder Übernahme in Regelungen benennt sie nicht."}, {"stelle": "adressat.2", "art": "adressat", "unser": "Die Stiftung äußert sich gemeinsam mit der DSG, stimmt dem Fazit der Studienautoren zu und richtet eine Empfehlung an den G-BA; eine eigene Entscheidung oder Übernahme in Regelungen wird nicht benannt."}, {"stelle": "adressat.3", "art": "adressat", "unser": ""}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Nach Zeiträumen getrennt lag die HR für GQH gegenüber ohne eQS bei 0,927 (2007–2010; p=1,46e-09), 0,973 (2011–2013; p=0,05662) und 0,989 (2014–2017; p=0,53566)."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "GQH ging laut Bericht vor allem zu Beginn der Beobachtung und bei Fällen ohne Stroke-Unit-Behandlung mit Überlebensvorteilen einher; eQS zeigte Vorteile für alle Fälle und Fälle ohne Stroke Unit im gesamten Zeitraum, für Fälle in Stroke Units nur 2007–2010."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Die Subanalysen der Stroke-Unit-Behandelten zeigten laut Bericht keine Überlebensvorteile durch eQS; bei Betrachtung aller Patient:innen war eQS in Hessen und anderen Regionen mit Überlebensvorteilen verbunden."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Die Berücksichtigung der Schweregradindizes reduzierte die Bedeutung der Stroke-Unit-Versorgung im Modell, und der Zeitpunkt des Schlaganfalls hatte danach keine signifikante Bedeutung mehr."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Schweregradanalysen mit Barthel-Index und modifizierter Rankin-Scale waren nur für GQH-registrierte Fälle möglich, da diese Angaben im GKV-Sekundärdatensatz nicht erhoben werden."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "eQS bei Stroke-Unit-Patient:innen: S. 21 berichtet für Fälle in Stroke Units Vorteile durch eQS in den Jahren 2007–2010, S. 23 dagegen, dass bei Stroke-Unit-Behandelten keine Überlebensvorteile durch eQS festzustellen waren; S. 25 spricht von kaum zusätzlichen positiven Effekten."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Verknüpfungsquote: 10.158 von N=46.621 GQH-Fällen entsprächen 21,8 %, angegeben werden 17,9 % (S. 14); 17,9 % ergäbe sich nur bezogen auf 56.779 Fälle. Die S. 25 genannte Zuordnungsquote von 82 % passt zu 17,9 %."}, {"stelle": "bericht_unstimmig.5", "art": "aussage", "unser": "Schweregradanalyse: Für den Barthel-Teilindex Lagewechsel (HR 1,28; 95%-KI 1,21–1,36) wird p<0,02 angegeben, für Fortbewegung (HR 1,08; 95%-KI 1,02–1,15) p<0,000001 (S. 22); die p-Werte passen nicht zu den jeweiligen Konfidenzintervallen."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Für eQS gegenüber ohne eQS lag die HR nach Zeiträumen bei 0,952 (2007–2010; p=1,50e-09), 0,967 (2011–2013; p=0,00134) und 0,951 (2014–2017; p=3,13e-05); Stroke Unit in diesem Modell HR 0,824 (p<2e-16)."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Patient:innen ohne Stroke-Unit-Behandlung und ohne eQS hatten laut Bericht die schlechtesten Versorgungsergebnisse; bei Stroke-Unit-Patient:innen waren kaum zusätzliche positive Effekte durch die eQS festzustellen."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Laut Hauptergebnis war die Assoziation für GQH geringfügig stärker als für die eQS anderer Bundesländer, umfasste embolische und hämorrhagische Schlaganfälle und schwächte sich im Verlauf der Beobachtungsjahre ab."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Propensity Score Matching und Entropy Balancing ergaben als Sensitivitätsanalysen für das Gesamtsterberisiko keine Unterschiede zum Cox-Regressionsmodell."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Die mediane Überlebenszeit (Kaplan-Meier) betrug ohne eQS 3,99 Jahre ohne bzw. 5,28 Jahre mit Stroke Unit, unter GQH 4,59 bzw. 5,65 Jahre und unter eQS in anderen Bundesländern 4,57 bzw. 5,98 Jahre."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Der mediane Überlebensvorteil von GQH- gegenüber Patient:innen ohne eQS betrug ohne Stroke Unit 0,6 Jahre und mit Stroke Unit 0,3 Jahre."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "Der mit Stroke-Unit-Behandlung assoziierte Überlebenszeitvorteil betrug unter GQH 1,06 Jahre, ohne eQS 1,29 Jahre und unter eQS in anderen Bundesländern 1,41 Jahre; die Autoren erklären dies mit der in Hessen zu Beginn höheren Stroke-Unit-Durchdringung."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "Die Ergebnisse zum Gesamtsterberisiko bestätigten sich laut Bericht bei der kurz- und längerfristigen Sterblichkeit."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Beim embolischen Hirninfarkt (I63) bestand für GQH-Patient:innen gegenüber den übrigen Bundesländern ein Überlebensvorteil bis zum dritten Jahr bei Erstereignis 2007–2010, bis zu einem Jahr bei Erstereignis 2011–2013 und keiner bei Erstereignis 2014–2017."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Bei der transitorisch-ischämischen Attacke (G45) fielen die Ergebnisse vergleichbar zu I63 aus."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "Bei hämorrhagischen Schlaganfällen (I60, I61) war bei höherer Sterblichkeit insbesondere bei Fällen ohne Stroke-Unit-Behandlung ein Überlebensvorteil für GQH auch 2014–2017 festzustellen."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Andere Bundesländer mit eQS wiesen im Zeitraum 2014–2017 zum Teil noch einen Überlebensvorteil gegenüber Regionen ohne eQS auf, während Vorteile für GQH vor allem in den frühen Zeiträumen bestanden."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "In allen Vergleichen wiesen in Stroke Units behandelte Patient:innen einen Überlebensvorteil auf."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "GQH wies laut Bericht über alle Subgruppen leichte Vorteile gegenüber anderen Regionen mit eQS auf, nicht jedoch im letzten Beobachtungszeitraum."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "In Subanalysen fanden sich signifikante positive Assoziationen für GQH gegenüber dem übrigen Bundesgebiet vor allem 2007–2010 und nicht bei alleiniger Betrachtung von Stroke-Unit-Patient:innen; die meisten signifikant positiven Assoziationen ergaben sich beim Vergleich GQH mit Regionen ohne eQS, auch in späteren Zeiträumen."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Beim Vergleich von Regionen mit und ohne eQS insgesamt fielen positive Assoziationen insbesondere bei intracerebraler Blutung (I61) auf."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Durch die Risikoadjustierung wurden einzelne vormals signifikante Assoziationen zwischen GQH und Sterblichkeit hinfällig."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Das Gesamtsterberisiko stieg mit dem Alter (bis HR 8,754 bei >89 Jahren), den Komorbiditäten (HR 2,094 bei Elixhauser >6), einer Pflegestufe vor dem Insult (HR 2,937 bei Stufe 3) und unterschied sich nach Diagnose (bis HR 2,966 bei I61), jeweils p<0,05."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Frauen hatten ein geringeres Sterberisiko (HR 0,824; p<0,05); das Sterberisiko sank im Beobachtungszeitraum (2011–13 HR 0,927; 2014–17 HR 0,859; je p<0,000001); der GISD (sozioökonomische Deprivation) war der einzige Faktor ohne Bedeutung im Modell."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Bei GQH-Fällen war ein Rankin-Scale-Wert >3 bei Aufnahme mit HR 1,39 verbunden, Barthel-Teilindizes <10 mit HR 1,51 (Blasenkontrolle), 1,28 (Lagewechsel) und 1,08 (Fortbewegung), eine Verschlechterung der Rankin-Scale im Verlauf mit HR 1,9."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Für Rezidive zeigten eQS (ohne GQH) und GQH keine relevanten Unterschiede; die Stroke-Unit-Behandlung war signifikant mit allen Rezidiven (HR 0,96; p<0,000001) und embolischen Rezidiven (HR 0,98; p<0,02) assoziiert, nicht aber mit hämorrhagischen Rezidiven."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Bei erneuten Krankenhausaufenthalten war die Stroke-Unit-Behandlung mit HR 0,96 bzw. 0,95 verbunden, GQH mit einer signifikanten Risikoerhöhung (HR 1,06 in beiden Modellen; p<0,000001); eQS in anderen Regionen war nicht signifikant assoziiert."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Für eine Erhöhung des Pflegegrads ergab sich bei Stroke-Unit-Behandlung HR 0,95 und in Bundesländern mit eQS HR 0,92 (je p<0,000001), bei GQH-Fällen ein laut Bericht geringfügig erhöhtes Risiko (HR 1,02; 95%-KI 1,00–1,04; p<0,05)."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Im Zeitraum 2014–2017 stieg das Risiko einer Pflegestufenerhöhung signifikant an (HR 1,5; p<0,000001), anders als in allen anderen Modellen."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "In die Analysen gingen 379.825 Fälle ein, von denen im Beobachtungszeitraum 194.681 verstarben und 185.144 überlebten."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Über den gesamten Zeitraum wurden in Hessen 61 % und in den anderen Bundesländern 50 % der Patient:innen in einer Stroke Unit behandelt; der Anteil Verstorbener lag in Hessen bei 49,1 % und in den anderen Bundesländern bei 51,6 %."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Die Subgruppen unterschieden sich bei den meisten Variablen kaum; in Hessen war der Anteil embolischer Schlaganfälle und der Anteil mit weniger Komorbiditäten geringfügig höher, der Anteil ohne dokumentierte Pflegestufe vor dem Schlaganfall etwas geringer."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Der Anteil hessischer AOK-Fälle, die GQH-dokumentierten Fällen zugeordnet werden konnten, stieg von 68,3 % (2007) auf 91,8 % (2017)."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "Zwischen 2006/2007 und 2017 stieg der Anteil der unter qualitätsfördernden Maßnahmen behandelnden Krankenhäuser für ADSR um 20 %, für SU QB um 15,4 % sowie für SU DSG und PN um je 14,1 %."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "Laut Qualitätsberichten lag der Anteil kodierter Schlaganfall-Diagnosen in Krankenhäusern mit qualitätsfördernden Maßnahmen im Beobachtungszeitraum durchschnittlich bei 90 %, mit einem Anstieg von 2006 bis 2017 um 15 %."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "Die mittlere Durchdringung der Kreise lag 2007 bei 33,78 % (qfM 1), 42,86 % (qfM 2) und 25,12 % (Stroke Units); für 2017 werden 87,47 %, 78,58 % bzw. 79,67 % angegeben."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "In den AOK-Daten wohnten am Ende des Zeitraums 20 % weniger Patient:innen in einem Kreis ohne qualitätsfördernde Maßnahme; 2007 und 2017 wurden je 30 % außerhalb des Wohnkreises behandelt; der Anteil behandelnder Krankenhäuser mit qfM stieg von 55 % auf 72 %."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Korrelationsanalysen zeigten einen signifikanten Trend zur Behandlung in Krankenhäusern mit qfM im Jahresverlauf; Projekt- und Netzwerkaktivitäten zeigten keine relevante Assoziation mit den Zielparametern und wurden nicht zur Adjustierung genutzt."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "Eine höhergradige Multikollinearität wurde ausgeschlossen: Die Korrelationen überschritten 0,53 und der Varianzinflationsfaktor 1,7 nicht."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "An der Befragung der eQS-Gremien nahmen 19 Expert:innen teil, mindestens eine:r pro Bundesland; die Rückmeldequote lag bei 100 %."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Die Studie ist eine retrospektive Kohortenstudie auf Sekundärdaten ohne Randomisierung und Verblindung."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Den Routinedaten fehlen Angaben zum Schweregrad und zu nicht als Prozedur dokumentierten Behandlungen, die für eine weitergehende Risikoadjustierung notwendig wären."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Vom Barthel-Index sind in der Dokumentation nur drei Teilindizes enthalten (Blasenkontrolle, Lagewechsel Bett–Stuhl, Fortbewegung)."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Studie beschränkt sich auf die Sterblichkeit; Funktionalität nach Schlaganfall wird nicht berichtet, da hierzu keine Routinedaten vorliegen."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Betrachtet wurden nur AOK-Versicherte (32 % der Bevölkerung); die Autoren gehen von einem geringen Risiko für einen Selektionsbias aus."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Nicht alle hessischen Patient:innen wurden in Hessen behandelt, und nicht alle Fälle hessischer Kliniken wurden nach GQH-Vorgaben dokumentiert; die Autoren schätzen die daraus mögliche Fehlklassifikation als konservativ und gering ein."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Von den hessischen GQH-Fällen waren 17,9 % Nicht-GQH-Fälle oder nicht verknüpfbar; die Verknüpfbarkeit war in den frühen Jahren geringer (68 % 2007, 92 % 2017)."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die multiplen Tests der Sterblichkeits-Subgruppenanalysen sind nur hypothesengenerierend zu interpretieren."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Eine detaillierte Würdigung aller Subanalysen zum Gesamtsterberisiko enthält der Ergebnisbericht nicht."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Ausgewertet wurden nur vollständige Datensätze (rund 80 % der Fälle, mehr als 300.000); Imputation oder Sensitivitätsanalysen zu fehlenden Werten wurden nicht durchgeführt, weil die Autoren die fehlenden Werte überwiegend für zufällig halten."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Bei den sekundären Zielparametern konnten nur wenige positive Assoziationen mit der eQS festgestellt werden."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Die ADSR-Daten enthielten aus Datenschutzgründen keine krankenhausidentifizierende Kennung, sodass das Merkmal ADSR nicht genau zugeordnet werden konnte."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Für ADSR-Beteiligung und eQS-CI gab es nur begrenzte Verknüpfungsmethoden; in betroffenen Gebieten wurde eine Durchdringung von 100 % angenommen."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Dubletten waren ein wesentliches Datenproblem; allein in den Stammdaten wurden 15.374 Dubletten (etwa 3,5 %) korrigiert."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "Fehlende Bundeslandangaben (885 Fälle) und fehlende Werte führen in den Tabellen zu abweichenden Summen."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Das Beobachtungsfenster der deutschen eQS umfasst typischerweise nur den Akutaufenthalt, zum Teil eine anschließende Rehabilitation; Langzeitergebnisse werden dort nicht erhoben."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];

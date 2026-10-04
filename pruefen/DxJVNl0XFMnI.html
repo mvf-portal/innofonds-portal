@@ -46,7 +46,16 @@ blockquote .s{color:var(--gedaempft);font-size:12.5px}
 .ampel.grau{background:var(--weich);color:var(--gedaempft);
   border-color:var(--linie)}
 .ampel.hand{background:#e9eefb;color:#23408c;border-color:#c3cff0}
-.wahl{display:flex;gap:18px;font-size:14px;margin:6px 0 0}
+.wahl{margin:4px 0 0}
+/* Unauffaellig. Wer liest, soll ihn finden, wenn er ihn braucht - und
+   ihn sonst nicht als Aufforderung empfinden. */
+.nein{font:inherit;font-size:13px;color:var(--gedaempft);background:none;
+  border:0;border-bottom:1px dotted var(--linie);padding:0;cursor:pointer}
+.nein:hover{color:#a3261d;border-bottom-color:#a3261d}
+.p.bestritten{border-left:3px solid #a3261d;padding-left:13px}
+.p.bestritten .nein{color:#a3261d}
+.neugefasst{font-size:13.5px;color:var(--gedaempft);margin:6px 0 0;
+  padding:7px 10px;background:var(--weich);border-radius:5px}
 .korr{margin:10px 0 0;padding:10px 12px;background:#fffdf5;
   border:1px solid #efdcb4;border-radius:7px}
 /* Der eigene Abschnitt fuer das, was in keinem Bericht steht. Er faellt
@@ -84,7 +93,14 @@ button.zweit{background:#fff;color:var(--gold)}
   Förderkennzeichen 01VSF17053</p>
 
 <div class="kopf">
-<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Unten steht <b>jede Aussage, die dort über Ihr Projekt erscheint</b>, mit dem Beleg, auf dem sie beruht.</p>
+<p><b>Worum wir Sie bitten.</b> Wir werten die Beschlüsse, Ergebnis- und Transferberichte des Innovationsausschusses maschinell aus und stellen sie in einem offenen Portal dar. Wir bitten Sie um <b>28 Punkte</b> – sie stehen unten, jeder mit dem Beleg, auf dem er beruht.</p>
+
+<p><b>Nichts davon ist weggelassen.</b> Über Ihr Projekt stehen im
+Portal 102 Aussagen. Die übrigen
+74 haben wir eingeklappt &ndash; Einzelbefunde,
+Messgrößen und Angaben, bei denen Korrekturen erfahrungsgemäß selten
+nötig sind. Sie finden sie vollständig in einem Block am Ende und
+können jede davon genauso richtigstellen.</p>
 
 <p><b>Wir zeigen Ihnen auch, wo wir selbst unsicher sind.</b> Einzelne
 Aussagen sind mit <span class="ampel gelb">hier sind wir unsicher</span>
@@ -92,43 +108,25 @@ gekennzeichnet. Dort haben unsere eigenen Kontrollen widersprochen oder
 sich nicht einigen können &ndash; bitte sehen Sie sich diese Stellen
 besonders an.</p>
 
-<p><b>Was zu tun ist.</b> Lassen Sie stehen, was stimmt. Wo etwas falsch
-ist, klicken Sie „stimmt nicht" und schreiben Sie hin, wie es richtig
-wäre. Fünf Minuten reichen, wenn alles passt.</p>
+<p><b>Was zu tun ist: lesen.</b> Es gibt nichts anzuklicken, solange
+alles stimmt &ndash; unten genügt dann ein Knopf. Nur wo etwas falsch
+ist, klicken Sie daneben auf „stimmt nicht" und schreiben hin, wie es
+richtig wäre.</p>
 <p><b>Und eine Bitte darüber hinaus.</b> Ganz unten steht ein Feld für
 das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist</b>. Das können wir aus keiner Quelle erschließen.</p>
 </div>
 
 <h2>Die Aussagen im Einzelnen</h2>
 
-<section class="p" data-stelle="beschluss_kurzfassung">
-  <h3>Kurzfassung des Beschlusses</h3>
-  <p class="unser">Der Innovationsausschuss spricht für das Projekt COFRAIL keine Empfehlung aus. Der Beschluss und der Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
-  
-  <div class="wahl">
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubeschluss_kurzfassung" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
 <section class="p" data-stelle="ergebnis_begruendung">
   <h3>Warum es so ausging</h3>
   <p class="unser">In der cluster-randomisierten Studie im hausärztlichen Setting sank die Hospitalisierungsrate als primärer Endpunkt nicht. Die Zahl potentiell inadäquater Medikamente ging in der Interventionsgruppe nach sechs Monaten zurück. Nach zwölf Monaten war dieser Effekt nicht mehr statistisch signifikant. Für die geriatrischen Endpunkte, die gesundheitsbezogene Lebensqualität und die Inanspruchnahme von Notfallbehandlungen wurden keine Interventionseffekte nachgewiesen, und eine Kosteneffektivität konnte nicht gezeigt werden. Die Methoden hält der Ausschuss für angemessen. Die Validität sieht er durch die fehlende Verblindung und mögliche Verzerrungen durch Selbstberichte teils eingeschränkt. Auf Basis der Ergebnisse kann daher keine Empfehlung zur breiteren Umsetzung ausgesprochen werden.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="uergebnis_begruendung" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uergebnis_begruendung" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uergebnis_begruendung" value="ok" checked hidden>
+    <input type="radio" name="uergebnis_begruendung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -143,30 +141,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Studiendesign</h3>
   <p class="unser">cluster-randomisiert</p>
   
-  <div class="wahl">
-    <label><input type="radio" name="ustudiendesign" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ustudiendesign" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="uebertragbarkeit">
-  <h3>Übertragbarkeit</h3>
-  <p class="unser">Eine Empfehlung zur breiteren Umsetzung der modularen Interventionen kann auf Basis der Ergebnisse nicht ausgesprochen werden. Weitere Aussagen zur Übertragbarkeit enthält der Beschluss nicht.</p>
   
   <div class="wahl">
-    <label><input type="radio" name="uuebertragbarkeit" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uuebertragbarkeit" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ustudiendesign" value="ok" checked hidden>
+    <input type="radio" name="ustudiendesign" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -178,14 +157,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.0">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Keine Reduktion der Hospitalisierungsrate (primärer Endpunkt)</p>
+  
   <blockquote>„Die Analysen legen im Rahmen des Vergleichs zwischen I nterventionsgruppe (IG) und Kontrollgruppe (KG) dar, dass es zu keiner Reduktion der Hospitalisierungsrate (primärer Endpunkt) kam." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.0" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -197,14 +176,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.1">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Reduktion potentiell inadäquater Medikamente nach 12 Monaten nicht mehr statistisch signifikant</p>
+  
   <blockquote>„Die Auswertungen der pharmakologischen Outcomes (sekundäre Endpunkte) zeigen, dass die Anzahl potentiell inadäquater Medikamente in der IG nach sechs Monaten reduziert werden konnte, nach 12 Monaten war dieser Effekt jedoch nicht mehr statistisch signifikant." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.1" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -216,14 +195,14 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   </div>
 </section>
 <section class="p" data-stelle="hindernis.2">
-  <h3>Hindernis laut Beschluss: Kein Effekt nachweisbar</h3>
+  <h3>Hindernis laut Beschluss: Ergebnis der Wirksamkeitsanalyse</h3>
   <p class="unser">Keine Interventionseffekte bei geriatrischen Endpunkten, Lebensqualität und Notfallinanspruchnahme</p>
+  
   <blockquote>„Für die sekundären Endpunkte des geriatrischen Assessments (u. a. Gewichtsverlauf, Sturzhäufigkeit, körperliche Schwäche , subjektiver Erschöpfungsgrad) sowie die gesundheitsbezogene Lebensqualität und die Inanspruchnahme medizinischer Notfallbehandlungen konnten keine Interventionseffekte nachgewiesen werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.2" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -237,12 +216,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.3">
   <h3>Hindernis laut Beschluss: Kosten und Wirtschaftlichkeit</h3>
   <p class="unser">Kosteneffektivität nicht gezeigt</p>
+  
   <blockquote>„Eine Kosteneffektivität der Intervention konnte nicht gezeigt werden." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.3" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -255,13 +234,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="hindernis.4">
   <h3>Hindernis laut Beschluss: Studienanlage</h3>
-  <p class="unser">Fehlende Verblindung schränkt die Validität ein</p>
+  <p class="unser">Fehlende Verblindung schränkt die Validität teils ein</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Fassung enthielt eine Wertung, die im Beschluss nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Fehlende Verblindung schränkt die Validität ein“</i></p>
   <blockquote>„Insgesamt ist die Validität der Ergebnisse aufgrund fehlender Verblindung und möglicher Verzerrungen durch Selbstberichte der Patientinnen und Patienten teils eingeschränkt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.4" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -275,50 +256,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="hindernis.5">
   <h3>Hindernis laut Beschluss: Messinstrumente und Endpunkte</h3>
   <p class="unser">Mögliche Verzerrungen durch Selbstberichte der Patientinnen und Patienten</p>
+  
   <blockquote>„Insgesamt ist die Validität der Ergebnisse aufgrund fehlender Verblindung und möglicher Verzerrungen durch Selbstberichte der Patientinnen und Patienten teils eingeschränkt." <span class="s">S. 1</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="uhindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uhindernis.5" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.0">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Reduktion potentiell inadäquater Medikamente in der Interventionsgruppe nach sechs Monaten (nach 12 Monaten nicht mehr signifikant)</p>
-  <blockquote>„Die Auswertungen der pharmakologischen Outcomes (sekundäre Endpunkte) zeigen, dass die Anzahl potentiell inadäquater Medikamente in der IG nach sechs Monaten reduziert werden konnte, nach 12 Monaten war dieser Effekt jedoch nicht mehr statistisch signifikant." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.0" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="befund.1">
-  <h3>Was erreicht wurde</h3>
-  <p class="unser">Methoden als angemessen bewertet</p>
-  <blockquote>„Die angewandten Methoden waren angemessen, um die Fragestellungen zu adressieren." <span class="s">S. 1</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubefund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubefund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uhindernis.5" value="ok" checked hidden>
+    <input type="radio" name="uhindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -332,12 +275,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.1">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Hospitalisierungsrate nach 12 Monaten (durchschnittliche Anzahl der Klinikaufenthalte pro Patient/Patientin innerhalb von 12 Monaten nach Interventionsbeginn), Intention-to-treat-Analyse</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.1" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -351,12 +294,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.2">
   <h3>Gemessen wurde – eingeordnet als „Stationäre Inanspruchnahme“</h3>
   <p class="unser">Hospitalisierungsrate nach 12 Monaten, Per-Protokoll-Analyse (Sensitivitätsanalyse)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.2" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -370,12 +313,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.3">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Anzahl der eingenommenen Medikamente nach 6 Monaten (T1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> statistisch signifikant zugunsten der Intervention</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.3" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -389,12 +332,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.4">
   <h3>Gemessen wurde – eingeordnet als „Arzneimitteltherapie und Arzneimittelsicherheit“</h3>
   <p class="unser">Anzahl der eingenommenen Medikamente nach 12 Monaten (T2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.4" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -408,12 +351,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.5">
   <h3>Gemessen wurde – eingeordnet als „Funktion, Mobilität und Alltag“</h3>
   <p class="unser">Handkraftmessung nach 6 Monaten (T1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.5" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -427,12 +370,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.6">
   <h3>Gemessen wurde – eingeordnet als „Funktion, Mobilität und Alltag“</h3>
   <p class="unser">Timed up &amp; Go Test nach 6 Monaten (T1)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.6" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -446,12 +389,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.7">
   <h3>Gemessen wurde – eingeordnet als „Krankheitsspezifische klinische Messwerte“</h3>
   <p class="unser">Kognition – CERAD Word List Memory nach 12 Monaten (T2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.7" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -465,12 +408,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.8">
   <h3>Gemessen wurde – eingeordnet als „Psychische Symptomatik“</h3>
   <p class="unser">Depressivität nach 12 Monaten (T2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.8" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -484,12 +427,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.9">
   <h3>Gemessen wurde – eingeordnet als „Komplikationen und Patientensicherheit“</h3>
   <p class="unser">Sturzhäufigkeit (letzte 6 Monate) nach 12 Monaten (T2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.9" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -503,12 +446,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="endpunkt.10">
   <h3>Gemessen wurde – eingeordnet als „Notfall- und Rettungsdienst“</h3>
   <p class="unser">Inanspruchnahme Notfalldienst (mindestens 1x in letzten 6 Monaten) nach 12 Monaten (T2)</p>
+  
   <p class="ergebnis"><b>Ergebnis laut Bericht:</b> kein statistisch signifikanter Unterschied</p>
   <div class="wahl">
-    <label><input type="radio" name="uendpunkt.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="uendpunkt.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="uendpunkt.10" value="ok" checked hidden>
+    <input type="radio" name="uendpunkt.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     <p class="wozu">Gemeint ist die <b>Bezeichnung der Messgröße</b> – nicht das Ergebnis. Wenn der Endpunkt anders heißt oder anders eingeordnet gehört, schreiben Sie es bitte hier hinein.</p>
@@ -523,11 +466,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Kurzfassung aus Ihren Berichten</h3>
   <p class="unser">Das Vorhaben (COFRAIL) untersuchte in einer randomisierten Studie in 114 Hausarztpraxen mit 623 rekrutierten älteren Patientinnen und Patienten mit Frailty und Polypharmazie, ob hausärztliche Familienkonferenzen mit Deprescribing-Leitfaden die Hospitalisierungsrate innerhalb von 12 Monaten senken. In der ITT-Analyse (n=510) lag die auf 12 Monate adjustierte mittlere Zahl der Hospitalisierungen bei 0,98 in der Interventions- und 0,99 in der Kontrollgruppe (adjustierte IRR 1,08 [0,84; 1,39], p=0,533). Das primäre Studienziel wurde laut Bericht nicht erreicht. Nach 6 Monaten waren Medikamentenzahl (IG von 8,98 auf 8,11), Drug Burden Index und potenziell inadäquate Medikation laut Bericht in der Interventionsgruppe statistisch signifikant gegenüber der Kontrollgruppe gesunken; nach 12 Monaten war das nicht mehr statistisch signifikant (Medikamentenzahl p=0,073 bzw. p=0,08). Für das geriatrische Assessment, kritische Ereignisse und Sicherheitsparameter wurden keine Gruppenunterschiede berichtet; die Mortalität lag bei 10,7 % gegenüber 12,0 % (p=0,618). Gesundheitsökonomisch ergaben sich zusätzliche Kosten von 61.984 € pro QALY, in der Kosten-Effektivitäts-Analyse wurde die Intervention von der Routineversorgung dominiert. Die Aussagekraft wird nach dem Bericht durch mehrere Faktoren begrenzt: die pandemiebedingte Umstellung auf Telefonerhebungen mit erhöhtem Drop-out (vollständiges 12-Monats-Follow-up bei 385 von 521), die Auswertung der sekundären Endpunkte nur in der Per-Protokoll-Population, die fehlende Korrektur für multiples Testen und mögliche Auswahleffekte bei Praxen und Patienten (Rekrutierungsquote der Hausärzte 1,8 %).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_kurz" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_kurz" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_kurz" value="ok" checked hidden>
+    <input type="radio" name="ubericht_kurz" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -541,12 +484,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.0">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Primärer Endpunkt: In der ITT-Analyse lag die auf 12 Monate Beobachtungszeit adjustierte mittlere Zahl der Hospitalisierungen in der Interventionsgruppe (n=262) bei 0,98 (SD 1,72) und in der Kontrollgruppe (n=248) bei 0,99 (SD 1,5); die Intervention führte laut Bericht nicht zu einer Reduktion der Hospitalisierungsrate.</p>
+  
   <blockquote>„„Die durchschnittliche Anzahl der Hospitalisierung en betrug nach Adjustierung der tatsächlichen Beobachtungszeit auf eine einheitliche Beobachtungszeit von 12 Monaten in der Interventionsgruppe (26 2 Patienten/Patientinnen) 0,98 (Standardabweichung 1,72 ) und in der Kontrollgruppe (248 Patienten/Patientinnen) 0,99 (Standardabweichung 1,5).“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -560,12 +503,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.1">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Im gemischten Modell mit Praxen als Random Effect zeigten sich beim primären Endpunkt auch nach Adjustierung für Beobachtungszeitraum, Alter, Geschlecht, Anzahl Erkrankungen und Hospitalisierungsrate zu Baseline keine Gruppenunterschiede (ITT, n=510; Modell 2: IRR 1,08 [0,84; 1,39], p=0,533; Modell 1: IRR 1,08 [0,85; 1,37], p=0,552).</p>
+  
   <blockquote>„„Auch nach Adjustie rung für diese Variablen zeigten sich hinsichtlich des primären Endpunkt s keine Gruppenunterschiede.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -579,50 +522,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.3">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Anzahl eingenommener Medikamente: In der Interventionsgruppe von 8,98 (T0) auf 8,11 (6 Monate) und 8,49 (12 Monate), in der Kontrollgruppe 9,24, 9,32 und 9,16; der Gruppenunterschied war nach 6 Monaten signifikant (Modell 1: IRR 0,88 [0,82; 0,95], p&lt;0,001; Modell 2: p=0,001), nach 12 Monaten nicht mehr (Modell 1: p=0,073; Modell 2: p=0,08, laut Bericht „knapp verfehlt“).</p>
+  
   <blockquote>„„ergab für T1 einen signifikanten Gruppenunterschied zwischen Interventions - und Kontrollarm (p &lt; 0 ,001). Dieser Effekt ließ s ich zu T2 allerdings nicht mehr nachweisen (p=0, 073).“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.3" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.4">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Drug Burden Index und Anzahl potenziell inadäquater Medikation sanken laut Zusammenfassung in der Interventionsgruppe nach 6 Monaten statistisch signifikant im Vergleich zur Kontrollgruppe; nach 12 Monaten waren die Effekte geringer und nicht statistisch signifikant.</p>
-  <blockquote>„„Der Drug Burden Index sowie die Anzahl eingenommener potentiell inadäquater Medikation (PIM) sank in der IG nach 6 Monaten (T1) statistisch signifikant zur KG ab. Diese Effekte waren jedoch nach 12 Monaten zu T2 geringer und nicht statistisch signifikant.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.4" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_befund.5">
-  <h3>Befund laut Ihrem Bericht</h3>
-  <p class="unser">Mortalität nach 12 Monaten: Von 521 zur Baseline untersuchten Personen waren 59 (11,3 %) verstorben, 29 (10,7 %) in der Interventions- und 30 (12,0 %) in der Kontrollgruppe; laut Bericht kein statistisch signifikanter Unterschied (p=0,618, χ²-Test).</p>
-  <blockquote>„„Es gibt keinen statistisch signifikanten Unterschied zwischen den Gruppen hinsichtlich der Mortalität (p=0.618, χ²-Test).“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -635,13 +540,15 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </section>
 <section class="p" data-stelle="bericht_hindernis.0">
   <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Das primäre Studienziel, eine niedrigere Hospitalisierungsrate, wurde nicht erreicht. Die Verringerung der Medikamentenzahl und der inadäquaten Wirkstoffe zeigte sich nur nach 6 Monaten.</p>
+  <p class="unser">Das primäre Studienziel, eine niedrigere Hospitalisierungsrate, wurde nicht erreicht. Die Verringerung der Medikamentenzahl und der inadäquaten Wirkstoffe zeigte sich zumindest nach 6 Monaten.</p>
+  <p class="neugefasst"><b>Diese Stelle haben wir geändert.</b>
+    Unsere Zusammenfassung enthielt eine Wertung, die im Bericht nicht steht. Wir stellen dar und werten nicht. Vorher stand hier:
+    <i>„Das primäre Studienziel, eine niedrigere Hospitalisierungsrate, wurde nicht erreicht. Die Verringerung der Medikamentenzahl und der inadäquaten Wirkstoffe zeigte sich nur nach 6 Monaten.“</i></p>
   <blockquote>„„Obwohl sich zumindest nach 6 Monaten die Zahl eingenommener Medikamente und die Anzahl inadäquater Wirkstoffe verringerte, konnte das primäre Studienziel, die Reduktion der Hospitalisierungsrate, nicht erreicht werden.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -655,12 +562,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.1">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Von 521 zur Baseline untersuchten Personen konnten nach 12 Monaten 136 nicht oder nicht vollständig untersucht werden. Die sekundären Endpunkte wurden deshalb nur in der Per-Protokoll-Population ausgewertet.</p>
+  
   <blockquote>„„Von den 521 zur Baseline (T0) untersuchten Patienten/Patientinnen, konnten nach zwölf Monaten (T2) 136 Patienten /Patientinnen nicht oder nicht vollständig untersucht werden. Daher erfolgte die Auswertung der sekundären Endpunkte für die Per-Protokoll-Population.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -674,31 +581,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.2">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für die vielen gleichartigen pharmakologischen Tests wurde das Signifikanzniveau nicht für multiples Testen korrigiert (z. B. nach Bonferroni). Signifikante Ergebnisse können daher laut Bericht überschätzt sein.</p>
+  
   <blockquote>„„Beim Einsatz vieler gleichartiger statistischer Tests im Sinne des „Multiple Testing“ können Ergebnisse „überschätzt“ w erden und fälschlicherweise signifikant sein . Eine Korrektur des Signifikanzniveaus z.B. nach Bonferroni wurde nicht vorgenommen“ – Bericht, S. 35" <span class="s">S. 35</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.2" value="nein">
-      stimmt nicht</label>
-  </div>
-  <div class="korr" hidden>
-    
-    
-    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
-      ></textarea></label>
-    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
-      ></textarea></label>
-  </div>
-</section>
-<section class="p" data-stelle="bericht_hindernis.3">
-  <h3>Hindernis laut Ihrem Bericht</h3>
-  <p class="unser">Möglicher Auswahleffekt: Hausärztinnen und Hausärzte könnten verstärkt Patientinnen und Patienten mit erwarteter hoher Adhärenz eingeschlossen haben. Das limitiert laut Bericht die Repräsentativität; das Nutzenpotenzial in der Breite der Versorgung wurde möglicherweise nicht vollständig abgebildet.</p>
-  <blockquote>„„Auf Patientenebene ist es denkbar, dass die Hausärzte verstärkt solche Patienten /Patientinnen eingeschlossen haben, bei denen sie eine hohe Adhärenz bei der Studiendurchführung erwartet haben, was die Repräsentativität de r Studie limitiert.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
-  <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -713,11 +601,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">DBI und PIM: Die Zusammenfassung (S. 4) und die Diskussion (S. 33) sprechen von einer statistisch signifikanten Senkung nach 6 Monaten im Vergleich zur Kontrollgruppe. Die Detailergebnisse (S. 28–29) geben p&lt;0,05 dagegen für die Veränderung innerhalb der Interventionsgruppe von T0 zu T1 an (DBI, EU(7)-PIM). Für PRISCUS-PIM nennen sie keinen p-Wert, und auch in der Kontrollgruppe sanken PRISCUS-PIM von 41 auf 31 (Anteil 21,64 % auf 15,79 %).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.0" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.0" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.0" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -732,11 +620,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Verlauf nach 12 Monaten: Laut S. 4 waren die Effekte auf DBI und PIM zu T2 „geringer und nicht statistisch signifikant“, laut S. 33 „nicht mehr vorhanden“. Zur Medikamentenzahl heißt es auf S. 25, der Unterschied sei zu T2 „knapp verfehlt“ (p=0,08), auf S. 35 seien die Effekte „nicht mehr eindeutig nachweisbar“.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.1" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.1" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.1" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -751,11 +639,144 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Gehgeschwindigkeit: Als sekundärer Endpunkt ist die Gehzeit über 4 Meter beschrieben (S. 15), in den Ergebnissen wird stattdessen ein Timed-up-&amp;-Go-Test berichtet (S. 25–26).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section><details class="weitere"><summary>74 weitere Angaben – nachrangig. Sie dürfen sie überspringen; wir fragen hier nicht nach ihnen. Aufklappen, wenn Sie etwas prüfen wollen, das oben nicht steht.</summary>
+<section class="p" data-stelle="beschluss_kurzfassung">
+  <h3>Kurzfassung des Beschlusses</h3>
+  <p class="unser">Der Innovationsausschuss spricht für das Projekt COFRAIL keine Empfehlung aus. Der Beschluss und der Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="ubeschluss_kurzfassung" value="ok" checked hidden>
+    <input type="radio" name="ubeschluss_kurzfassung" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="uebertragbarkeit">
+  <h3>Übertragbarkeit</h3>
+  <p class="unser">Eine Empfehlung zur breiteren Umsetzung der modularen Interventionen kann auf Basis der Ergebnisse nicht ausgesprochen werden. Weitere Aussagen zur Übertragbarkeit enthält der Beschluss nicht.</p>
+  
+  
+  <div class="wahl">
+    <input type="radio" name="uuebertragbarkeit" value="ok" checked hidden>
+    <input type="radio" name="uuebertragbarkeit" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.0">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Reduktion potentiell inadäquater Medikamente in der Interventionsgruppe nach sechs Monaten (nach 12 Monaten nicht mehr signifikant)</p>
+  
+  <blockquote>„Die Auswertungen der pharmakologischen Outcomes (sekundäre Endpunkte) zeigen, dass die Anzahl potentiell inadäquater Medikamente in der IG nach sechs Monaten reduziert werden konnte, nach 12 Monaten war dieser Effekt jedoch nicht mehr statistisch signifikant." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.0" value="ok" checked hidden>
+    <input type="radio" name="ubefund.0" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="befund.1">
+  <h3>Was der Beschluss positiv vermerkt</h3>
+  <p class="unser">Methoden als angemessen bewertet</p>
+  
+  <blockquote>„Die angewandten Methoden waren angemessen, um die Fragestellungen zu adressieren." <span class="s">S. 1</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubefund.1" value="ok" checked hidden>
+    <input type="radio" name="ubefund.1" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.4">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Drug Burden Index und Anzahl potenziell inadäquater Medikation sanken laut Zusammenfassung in der Interventionsgruppe nach 6 Monaten statistisch signifikant im Vergleich zur Kontrollgruppe; nach 12 Monaten waren die Effekte geringer und nicht statistisch signifikant.</p>
+  
+  <blockquote>„„Der Drug Burden Index sowie die Anzahl eingenommener potentiell inadäquater Medikation (PIM) sank in der IG nach 6 Monaten (T1) statistisch signifikant zur KG ab. Diese Effekte waren jedoch nach 12 Monaten zu T2 geringer und nicht statistisch signifikant.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_befund.5">
+  <h3>Befund laut Ihrem Bericht</h3>
+  <p class="unser">Mortalität nach 12 Monaten: Von 521 zur Baseline untersuchten Personen waren 59 (11,3 %) verstorben, 29 (10,7 %) in der Interventions- und 30 (12,0 %) in der Kontrollgruppe; laut Bericht kein statistisch signifikanter Unterschied (p=0,618, χ²-Test).</p>
+  
+  <blockquote>„„Es gibt keinen statistisch signifikanten Unterschied zwischen den Gruppen hinsichtlich der Mortalität (p=0.618, χ²-Test).“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_befund.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
+  </div>
+  <div class="korr" hidden>
+    
+    
+    <label>Wie müsste es heißen?<textarea data-feld="richtig" rows="3"
+      ></textarea></label>
+    <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
+      ></textarea></label>
+  </div>
+</section>
+<section class="p" data-stelle="bericht_hindernis.3">
+  <h3>Hindernis laut Ihrem Bericht</h3>
+  <p class="unser">Möglicher Auswahleffekt: Hausärztinnen und Hausärzte könnten verstärkt Patientinnen und Patienten mit erwarteter hoher Adhärenz eingeschlossen haben. Das limitiert laut Bericht die Repräsentativität; das Nutzenpotenzial in der Breite der Versorgung wurde möglicherweise nicht vollständig abgebildet.</p>
+  
+  <blockquote>„„Auf Patientenebene ist es denkbar, dass die Hausärzte verstärkt solche Patienten /Patientinnen eingeschlossen haben, bei denen sie eine hohe Adhärenz bei der Studiendurchführung erwartet haben, was die Repräsentativität de r Studie limitiert.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
+  <div class="wahl">
+    <input type="radio" name="ubericht_hindernis.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -770,11 +791,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Pandemiebedingte Formatumstellung: Laut S. 34 hat sich die telefonische bzw. Online-Durchführung „nicht negativ auf die Durchführung ausgewirkt“. Laut S. 30 und S. 34 entfielen jedoch Rollenspiele und Gruppenarbeiten, und das Kommunikationstraining war online nicht realisierbar und nur teilweise durch ein Lehrvideo kompensiert.</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.3" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.3" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.3" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.3" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -789,11 +810,11 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
   <h3>Hier widersprechen sich Ihre Berichte</h3>
   <p class="unser">Krankenhausaufenthalte: In der klinischen Analyse lagen die Mittelwerte bei 0,98 (Intervention) gegenüber 0,99 (Kontrolle). In der gesundheitsökonomischen Analyse waren die Aufenthalte in der Interventionsgruppe im Mittel häufiger (vermiedene Aufenthalte -0,0877). Der Bericht führt die Abweichung auf unterschiedliche ITT-Population, Datenquelle, Imputation und Adjustierung zurück (S. 29).</p>
   
+  
   <div class="wahl">
-    <label><input type="radio" name="ubericht_unstimmig.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_unstimmig.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_unstimmig.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_unstimmig.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -803,16 +824,16 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     <label>Warum? Gern mit Fundstelle.<textarea data-feld="grund" rows="2"
       ></textarea></label>
   </div>
-</section><details class="weitere"><summary>65 weitere Aussagen aus Ihren Berichten – ergänzend, nicht tragend. Sie dürfen sie überspringen.</summary>
+</section>
 <section class="p" data-stelle="bericht_befund.2">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Sensitivitätsanalyse in der Per-Protokoll-Population (n=385) zeigte laut Bericht keine statistisch signifikanten Effekte der Intervention auf die Hospitalisierungsrate (IRR Modell 2: 1,08 [0,83; 1,43], p=0,545).</p>
+  
   <blockquote>„„Eine Sensitivitätsanalyse für die Per-Protokoll Population zeigte ebenfalls keine statistisch signifikanten Effekte der Intervention.“ – Bericht, S. 24" <span class="s">S. 24</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.2" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.2" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.2" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.2" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -826,12 +847,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.6">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für alle anderen sekundären Endpunkte einschließlich sämtlicher Elemente des geriatrischen Assessments wurden laut Bericht keine Interventionseffekte nachgewiesen.</p>
+  
   <blockquote>„„Für alle anderen sekundären Endpunkte einschließlich sämtlicher Elemente des geriatrischen Assessments konnten keine Interventionseffekte nachgewiesen werden.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -845,12 +866,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.7">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Geriatrisches Assessment Teil II und kritische Ereignisse nach 12 Monaten (Kognition CERAD, GDS-15, Barthel-Index, Körpergewicht, Stürze, Inanspruchnahme des Notfalldienstes): laut Bericht keine statistisch signifikanten Unterschiede zwischen Interventions- und Kontrollgruppe.</p>
+  
   <blockquote>„„Für sämtliche Ergebnisse dieser Parameter zeigten sich keine Unterschiede zwischen Interventions - und Kontrollgruppe mit statistischer Signifikanz.“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -864,12 +885,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.8">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Handkraft und Timed-up-&amp;-Go-Test nach 6 Monaten: Handkraft β -0,32 [-1,97; 1,33] (p=0,704), TUG β -1,12 [-5,61; 3,38] (p=0,627).</p>
+  
   <blockquote>„„T1 17,78 (± 9,58) (N=65) 16,60 (± 10,69) (N=47) -0,32 [-1,97; 1,33] (p=0,704)“ – Bericht, S. 26" <span class="s">S. 26</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -883,12 +904,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.9">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Für die übrigen Sicherheitsparameter (Blutdruck, Herzfrequenz, Glukose, GFR) zeigten sich nach 12 Monaten keine Unterschiede zwischen den Gruppen.</p>
+  
   <blockquote>„„Für sämtlich e Parameter zeigten sich keine Unterschiede zwischen Interventions- und Kontrollgruppe.“ – Bericht, S. 27" <span class="s">S. 27</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -902,12 +923,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.10">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Arzneimittel-Wechselwirkungen (Medikationsanalyse bei n=347): In der Interventionsgruppe Rückgang von 110 (0,62 pro Person) auf 95 (0,54 pro Person) nach 6 Monaten (p&lt;0,05) und Anstieg auf 102 nach 12 Monaten (n.s.); in der Kontrollgruppe 127 und 121.</p>
+  
   <blockquote>„„in der Interventionsgruppe zu T0 n=110 Interaktionen (0,62 ±1,07 pro Patient/Patientin), die zu T1 signifikant auf n=95 Interaktionen abnahmen (0,54 ±0,94 pro Patient/Patientin; p &lt; 0,05 ) und zu T2 wieder leicht auf n=102 anstiegen (0,58 ±0,94 pro Patient/Patientin; n.s.)“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -921,12 +942,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.11">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Drug Burden Index in der Interventionsgruppe: 0,76 (T0), 0,66 nach 6 Monaten (p&lt;0,05) und 0,73 nach 12 Monaten (n.s.); in der Kontrollgruppe 0,70 und 0,73.</p>
+  
   <blockquote>„„in der Interventionsgruppe im Mittel ein DBI von 0,76 ± 0,83 (Median: 0,58) zu T0 errechnet. Zu T1 sank der berechnete DBI signifikant auf 0,66 ±0,75 (Median: 0,50; p &lt; 0,05) und stieg zu T2 wieder leicht an auf 0,73 ±0,81 (Median: 0,50; n.s.)“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -940,12 +961,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.12">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">PIM nach PRISCUS-Liste in der Interventionsgruppe: 47 (T0), 32 (T1), 38 (T2); Anteil mit mindestens einem PIM 22,16 %, 17,61 % und 18,18 %. In der Kontrollgruppe sank die Zahl von 41 auf 31 und der Anteil von 21,64 % auf 15,79 %. Ein p-Wert ist hierzu nicht angegeben.</p>
+  
   <blockquote>„„in der Interventionsgruppe zu T0 n=47 PRISCUS- PIM erfasst. Zu T1 sank die Anzahl auf n=32 und stieg zu T2 wieder auf n=38 PRISCUS-PIM an.“ – Bericht, S. 28" <span class="s">S. 28</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -959,12 +980,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.13">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">PIM nach EU(7)-Liste in der Interventionsgruppe: 276 (T0), 228 nach 6 Monaten (p&lt;0,05) und 256 nach 12 Monaten (n.s.); Anteil Betroffener 81,82 %, 75,57 % und 76,14 %. In der Kontrollgruppe sank die Zahl von 307 auf 281.</p>
+  
   <blockquote>„„In der Interventionsgruppe betrug der Wert zu T0 n=276 EU(7)-PIM und sank zu T1 signifikant auf n= 228 (p &lt; 0,05), um zu T2 wieder auf n= 256 EU(7) -PIM anzusteigen (n.s.).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -978,12 +999,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.14">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Umsetzung des Deprescribing-Leitfadens (Convenience Sample, 177 Personen): Die mittlere Zahl der Wirkstoffe sank von 10,4 vor auf 9,0 nach der ersten Familienkonferenz (p&lt;0,001) und blieb nach der zweiten Konferenz bei etwa 9,0.</p>
+  
   <blockquote>„„Nach der ersten Familienkonferenz wurden im Mittel 9,0 ±3,7 Wirkstoffe pro Patient /Patientin eingenommen (p &lt; 0,001 Vergleich vor versus nach 1. Familienkonferenz).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -997,12 +1018,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.15">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Hauptsächlich abgesetzt wurden Medikamente wie Allopurinol und Statine.</p>
+  
   <blockquote>„„Möglicherweise stellen die hauptsächlich abgesetzten Medikamente wie beispielsweise Allopurinol und Statine nicht die hauptsächlichen Verursacher unerwünschter Ereignisse dar.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1016,12 +1037,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.16">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">65 % der eingenommenen Medikation der Studienpopulation sind im Deprescribing-Leitfaden enthalten. Drei Viertel der Absetzungen beruhten auf dem Leitfaden, ein weiteres Viertel betraf Medikamente, die der Leitfaden nicht behandelt.</p>
+  
   <blockquote>„„Ein erheblicher Anteil der von der Studienpopulation eingenommenen Medikation (65%) findet sich im Deprescribi ng-Leitfaden wieder. Darüber hinaus basierte ¾ des Absetzens auf dem Leitfaden.“ – Bericht, S. 33" <span class="s">S. 33</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1035,12 +1056,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.17">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Interventionskosten betrugen im Durchschnitt ca. 391 € pro Person. Darin enthalten sind ca. 118 € Fortbildungskosten pro Person und ca. 110 € je zusätzlicher Familienkonferenz.</p>
+  
   <blockquote>„„Die Interventionskosten betrugen im Durchschnitt ca. 391€ pro Patient/Patientin (ca. 118€ für Fortbildungskosten pro Patient/Patientin in der Interventionsgruppe und ca. 110€ für jede zusätzlich durchgeführte Familienkonferenz).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1054,12 +1075,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.18">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Leistungsinanspruchnahmekosten (11.615 €) bildeten nach 12 Monaten den größten Anteil der Gesamtkosten, die Interventionskosten lagen bei 391 €. Den größten Teil der Leistungsinanspruchnahme machten Kosten der Pflegeversicherung aus.</p>
+  
   <blockquote>„„Die Leistungsinanspruchnahmekosten bildeten im Vergl eich zu den Interventionskosten den größten Anteil an den Ges amtkosten (Leistungsinanspruchnahmekosten=11,615€; Interventionskosten=391€) zum 12-Monats-Follow-Up“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1073,12 +1094,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.19">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Kosten-Effektivitäts-Analyse nach 12 Monaten: Mehrkosten in der Interventionsgruppe von im Mittel 1.171 € (95%-KI -332 bis 2.674). Die Zahl vermiedener Krankenhausaufenthalte betrug -0,0877 (95%-KI -0,308 bis 0,1329), d. h. im Durchschnitt mehr Aufenthalte als in der Kontrollgruppe. Die Intervention wurde damit im Basisfall von der Routineversorgung dominiert.</p>
+  
   <blockquote>„„Dabei war die Anzahl an Krankenhausaufenthalten in der Int erventionsgruppe im Durchschnitt größer als in der Kontrollgruppe , d.h. die Anzahl an vermiedenen Krankenhausaufenthalten betrug in der Interventionsgruppe im Durchschnitt -0,0877 (95%-KI: -0,308 bis 0,1329).“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1092,12 +1113,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.20">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Kosten-Nutzwert-Analyse nach 12 Monaten: Mehrkosten von 1.351 € (95%-KI -7 bis 2.710) und 0,02 zusätzliche QALYs (95%-KI -0,01 bis 0,06) ergeben zusätzliche Kosten von 61.984 € pro QALY (95%-KI -33.853 bis 666.340).</p>
+  
   <blockquote>„„Somit erzeugte die Intervention gegenüber der Routineversorgung zusätzliche Kosten in Höhe von 61.984€ pro QALY (95%-KI: -33.853 bis 666.340).“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1111,12 +1132,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.21">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Wahrscheinlichkeit, dass die Intervention kosteneffektiv ist, lag bei einer Zahlungsbereitschaft von 100 € bis 10.000 € pro QALY unter 5 % und bei 100.000 € pro QALY bei ca. 78 %.</p>
+  
   <blockquote>„„Bei einer maximalen Zahlungsbereitschaft von 100€ bis 10.000€ pro QALY betrug die Wahrscheinlichkeit, dass die Intervention gegenüber der Ro utineversorgung kosteneffektiv war unter 5%“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1130,12 +1151,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.22">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Gesundheitsökonomische Sensitivitätsanalysen: Die Intervention wurde entweder dominiert oder lag bei 53.690 € bis 162.418 € pro QALY. In SA-III wurde sie nicht mehr dominiert (32.753 € pro vermiedenem Krankenhausaufenthalt, 31.766 € pro QALY).</p>
+  
   <blockquote>„„Die ICER-Schätzwerte wichen am meisten zugunsten der Intervention in SA- III ab, denn die Intervention wurde nun nicht mehr dominiert, sondern lag bei zusätzlichen Kosten von 32,753€ pro vermiedenen Krankenhausaufenthalt.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1149,12 +1170,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.23">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Rekrutiert und randomisiert wurden 114 Hausarztpraxen mit 623 Patientinnen und Patienten (Düsseldorf 404, Rostock 219).</p>
+  
   <blockquote>„„Es konnten 114 Hausarztpraxen mit 623 P atienten/Patientinnen rekrutiert und randomisiert werden.“ – Bericht, S. 4" <span class="s">S. 4</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1168,12 +1189,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.24">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Angeschrieben wurden 6.632 Hausärztinnen und Hausärzte, 237 sagten per Fax zu. Die Rekrutierungsquote lag bei 3,6 % bezogen auf die Einwilligung und bei 1,8 % bezogen auf den Studieneinschluss.</p>
+  
   <blockquote>„„Die Rekrutierungsquote lag bezogen auf die Einwilligung von Hausärzten/Hausärztinnen bei 3,6 % und bezogen auf den Einschluss in die Studie bei 1,8 %.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1187,12 +1208,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.25">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Pro Praxis wurden im Mittel 5,46 Patientinnen und Patienten rekrutiert (SD 1,76), zur Baseline im Mittel 4,57 untersucht (SD 1,82).</p>
+  
   <blockquote>„„Im Mittel wurden pro Praxis 5,46 Patient en/Patientinnen rekrutiert (Standardabweichung 1,76), in der Baseline wurden im Mittel pro Praxis 4,57 Patient*innen unters ucht (Standardabweichung 1,82).“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1206,12 +1227,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.26">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach der Baseline-Erhebung umfasste die Population 521 Personen (Intervention 272, Kontrolle 249). Die ITT-Population für den primären Endpunkt umfasste nach Ausschluss von 11 Personen ohne Baseline-Angaben 510 Personen.</p>
+  
   <blockquote>„„Somit ergab sich nach Baseline-Erhebung eine Population von 521 Patienten/Patientinnen (Interventionsgruppe 272; Kontrollgruppe 249).“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1225,12 +1246,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.27">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Eine vollständige Follow-up-Erhebung über 12 Monate lag für 385 Personen vor (Intervention 200, Kontrolle 185); sie bilden die Per-Protokoll-Population.</p>
+  
   <blockquote>„„Bei 385 Patienten /Patientinnen (Interventionsgruppe 200; Kontrollgruppe 185) lag eine vollständige Follow-up Erhebung von zwölf Monaten vor (T0-T2).“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1244,12 +1265,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.28">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Populationen in Interventions- und Kontrollarm unterschieden sich zur Baseline laut Bericht nicht relevant. Das mittlere Alter lag bei 83,5 Jahren, der Frauenanteil bei 68,1 %.</p>
+  
   <blockquote>„„Eine vergleichende Analyse ergab, dass sich die Populationen in Interventions - und Kontrollarm nicht relevant unterschieden.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1263,12 +1284,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.29">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Zur Baseline nahmen die Teilnehmenden im Mittel 9,32 Wirkstoffe täglich ein und hatten 11,93 Diagnosen. In den 6 Monaten vor Baseline hatten sie im Mittel 0,51 Krankenhausaufenthalte (SD 0,84).</p>
+  
   <blockquote>„„Die Patienten /Patientinnen nahmen im Durchschnitt 9,32 unterschiedliche Wirkstoffe täglich ein und wiesen 11,93 Diagnosen bzw. medizinische Komplikationen auf.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1282,12 +1303,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.30">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Frailty-Grad zur Baseline: 10,8 % stark, 37,9 % mäßig und 51,3 % leicht gebrechlich.</p>
+  
   <blockquote>„„Im Hinblick auf den geriatrischen Frailty-Grad galten 10,8% der Patienten/Patientinnen als stark gebrechlich, 37,9% als mäßig gebrechlich und die übrigen 51,3% als leicht gebrechlich.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.30" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.30" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.30" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.30" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1301,12 +1322,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.31">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Lebensqualität nach EuroQol-5L lag zur Baseline im Mittel bei 0,48 (SD 0,47). Laut GDS hatten 4,5 % eine schwere und 19,8 % eine geringe bis moderate Depression.</p>
+  
   <blockquote>„„Die ermittelte Lebensqualität nach EuroQol- 5L betrug im Durchschnitt 0,48 mit einer Streubreite (Standardabweichung) von 0, 47.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.31" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.31" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.31" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.31" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1320,12 +1341,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.32">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Es fanden 676 Familienkonferenzen statt. Von 272 Personen der Interventionsgruppe hatten 185 alle drei, 46 zwei und 29 eine Familienkonferenz; 12 nahmen an keiner teil.</p>
+  
   <blockquote>„„Bei 185 Patienten/Patientinnen von den insgesamt 272 Patienten/Patientinnen der Interventionsgruppe wurden alle drei Familienkonferenzen durchgeführt, bei 46 Patienten/Pa tientinnen zwei Familienkonferenzen und bei 29 Patienten/Patientinnen hat eine Familienkonferenz stattgefunden.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.32" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.32" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.32" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.32" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1339,12 +1360,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.33">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Bei 525 Familienkonferenzen (77,8 %) nahm mindestens eine angehörige Person oder Vertrauensperson teil, bei 144 (21,3 %) eine Person aus dem Pflegedienst.</p>
+  
   <blockquote>„„Bei 525 Familienkonferenzen hat mindestens ein Angehöriger oder eine Vertrauensperson teilgenommen (77.8%), bei 144 Familienkonferenzen hat eine Person aus dem Pflegedienst teilgenommen (21.3%).“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.33" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.33" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.33" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.33" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1358,12 +1379,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.34">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Laut den Ergebnisprotokollen war in 93 % der Fälle mindestens eine Hauptbezugsperson (Angehörige und/oder Pflegedienst) an den Familienkonferenzen beteiligt.</p>
+  
   <blockquote>„„Aus den Ergebnisprotokollen der Familienkonferenzen in der Interventionsgruppe geht hervor, dass in 93% der Fälle mindestens eine Hauptbezugsperson (Angehörige und/oder Pflegedienst) beteiligt waren.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.34" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.34" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.34" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.34" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1377,12 +1398,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.35">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">An der ersten Fortbildung nahmen alle 60 Hausärztinnen und Hausärzte der Interventionsgruppe teil, an der zweiten 57 und an der fakultativen dritten 26.</p>
+  
   <blockquote>„„An der ersten Fortbildung haben alle der insgesamt 60 Hausärzte/Hausärztinnen der Interventionsgruppe teilgenommen. Bei der zweiten Fortbildung waren es insgesamt 57 Hausärzte/Hausärztinnen.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.35" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.35" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.35" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.35" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1396,12 +1417,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.36">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">50 Hausärztinnen und Hausärzte bewerteten die Fortbildung; die Gesamtnote nach Schulnoten lag im Durchschnitt bei 1,5 (Spanne 1 bis 2).</p>
+  
   <blockquote>„„Die Gesamteinschätzung der Fortbildung analog zu Schulnoten lag im Durchschnitt bei 1,5 (Min; 1; Max: 2).“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.36" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.36" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.36" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.36" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1415,12 +1436,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.37">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In 24 bzw. 18 Telefoninterviews schätzten Patientinnen, Patienten und Angehörige die Familienkonferenzen überwiegend positiv ein. Sie verbanden das mit dem guten Verhältnis zur Hausarztpraxis.</p>
+  
   <blockquote>„„Die Familienkonferenzen wurden von den interviewten Patienten/Patientinnen und Angehörigen überwiegend positiv eingeschätzt. Dies wurde insbesonder e mit dem allgemein guten Verhältnis zum Hausarzt/zur Hausärztin in Verbindung gebracht.“ – Bericht, S. 31" <span class="s">S. 31</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.37" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.37" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.37" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.37" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1434,12 +1455,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.38">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In 23 Interviews erachteten Hausärztinnen und Hausärzte den Deprescribing-Leitfaden als besonders unterstützend. Er wurde als Entscheidungs- und Argumentationshilfe genutzt.</p>
+  
   <blockquote>„„Als besonders unterstützend wurde der Deprescribing- Leitfaden erachtet, der als Entscheidungs- und Argumentationshilfe in den Familienkonferenzen genutzt wurde.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.38" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.38" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.38" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.38" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1453,12 +1474,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.39">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Intervention wurde in 4 Praxen (2 pro Studienzentrum) mit 8 Familienkonferenzen pilotiert.</p>
+  
   <blockquote>„„Die Pilotierung der Intervention fand in insgesamt 4 Praxen (2 pro Studienzentrum) mit Durchführung von 8 Familienkonferenzen statt.“ – Bericht, S. 10" <span class="s">S. 10</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.39" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.39" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.39" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.39" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1472,12 +1493,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.40">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Pilotierung gaben vier Patientinnen und Patienten sowie fünf Angehörige Rückmeldung. Alle konnten relevante Fragen zufriedenstellend klären und fühlten sich einbezogen.</p>
+  
   <blockquote>„„Die Teilnehmer/Teilnehmerinnen betonten das vertrauensvolle Verhältnis zum Hausarzt /zur Hausärztin und schätzten die Familienkonferenz, die sie wie einen &quot;no rmalen Hausbesuch&quot; empfanden. Die Dauer schien angemessen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.40" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.40" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.40" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.40" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1491,12 +1512,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.41">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">In der Pilotierung lag die Hauptverantwortung für das Medikamentenmanagement oft bei den Angehörigen. Über das Absetzen entschieden in der Regel sie mit der Hausarztpraxis, wobei sich alle auf die hausärztliche Einschätzung verließen.</p>
+  
   <blockquote>„„Die Hauptverantwortung für das Medikamentenmanagement lag oft bei den Angehörigen, Entscheidungen über das Absetzen der Medikamente wurden in der Regel zwischen ihnen und dem Ha usarzt/der Hausärztin getroffen.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.41" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.41" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.41" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.41" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1510,12 +1531,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.42">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Die Toolbox zu nicht-pharmakologischen Optionen zeigte sich in der Pilotierung grundsätzlich geeignet; laut Bericht sollten ausreichend Zeit für narrative Fragen und eine Nachbereitung eingeplant werden.</p>
+  
   <blockquote>„„Diese zeigte sich grundsätzlich geeignet für die strukturierte Erfassung von Patientenbedürfnissen und Versorgungslücken sowie für die weitere Therapieplanung. Dennoch sollte ausreichend Zeit für narrative Fragen eingeplant und eine Nachbereitung durchgeführt werden.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.42" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.42" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.42" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.42" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1529,12 +1550,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_befund.43">
   <h3>Befund laut Ihrem Bericht</h3>
   <p class="unser">Nach der Pilotierung war keine wesentliche Anpassung der COFRAIL-Familienkonferenz-Leitlinie erforderlich.</p>
+  
   <blockquote>„„Eine wesentliche Anpassung der COFRAIL-Familienkonferenz-Leitlinie war nicht erforderlich.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_befund.43" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_befund.43" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_befund.43" value="ok" checked hidden>
+    <input type="radio" name="ubericht_befund.43" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1548,12 +1569,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.4">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die pandemiebedingte Umstellung von Hausbesuchen auf Telefonbefragungen führte laut Bericht zu einer vergleichsweise erhöhten Drop-out-Rate. Durch Kommunikationsprobleme am Telefon sind Einschränkungen der Datenqualität denkbar.</p>
+  
   <blockquote>„„Durch die COVID-19-Pandemie und die damit verbundene Umstellung der Datenerhebung durch die Study Nurses von Hausbesuchen auf Telefonbefragungen kam es zu einer vergleichsweise erhöhten Drop -out Rate bei den Patienten/Patientinnen.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.4" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.4" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.4" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.4" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1567,12 +1588,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.5">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Ab Mitte März 2020 wurde die Datenerhebung durch die Study Nurses wegen der COVID-19-Pandemie von persönlichen Hausbesuchen auf telefonische Interviews umgestellt.</p>
+  
   <blockquote>„„Mitte März 2020 die Umstellung der „face -to-face“ Datenerhebung auf telefonische Interviews durch die Study Nurses .“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.5" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.5" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.5" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.5" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1586,12 +1607,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.6">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Hand-Greifkraft wurde wegen der Umstellung auf Telefoninterviews ab Mitte März 2020 nicht mehr erhoben.</p>
+  
   <blockquote>„„Körperliche Schwäche, gemessen als Hand-Greifkraft mit Dynamometer (Männer ≤ 30kg, Frauen ≤ 18kg). Dieser Parameter w urde ab Mitte März 2020 wegen der Umstellung auf Telefoninterviews aufgrund der Corona -Pandemie nicht mehr erhoben,“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.6" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.6" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.6" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.6" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1605,12 +1626,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.7">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Gehgeschwindigkeit (Gehzeit über 4 Meter) wurde aus demselben Grund ab Mitte März 2020 nicht mehr erhoben.</p>
+  
   <blockquote>„„Dieser Parameter wurde ab Mitte März 2020 wegen der Umstellung auf Telefoninterviews aufgrund der Corona -Pandemie nicht mehr erhoben,“ – Bericht, S. 15" <span class="s">S. 15</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.7" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.7" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.7" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.7" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1624,12 +1645,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.8">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Handkraft und Timed-up-&amp;-Go-Test konnten nur nach 6 Monaten in relevanter Anzahl erhoben werden, mit reduzierten Fallzahlen (z. B. TUG Kontrollgruppe N=39).</p>
+  
   <blockquote>„„konnte die Messung der Handkraft und die Durchführung des Timed -up &amp; Go Tests in relevanter Anzahl nur im ersten Follow -up, nach sechs Monaten (T1) erhoben werden.“ – Bericht, S. 25" <span class="s">S. 25</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.8" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.8" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.8" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.8" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1643,12 +1664,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.9">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Study Nurses waren nicht verblindet, weil Patientinnen und Patienten der Interventionsgruppe am Ende der Baseline-Erhebung ein Merkblatt zur Familienkonferenz erhielten.</p>
+  
   <blockquote>„„Patient*innen der Interventionsgruppe erhielten von der Study Nurse am Ende der Baseline -Erhebung ein Merkblatt für di e geplante Familienkonferenz und wurde auf diese Weise entblindet. Die Study Nurses waren aus diesem Grund nicht verblindet.“ – Bericht, S. 14" <span class="s">S. 14</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.9" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.9" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.9" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.9" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1662,12 +1683,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.10">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Pandemiebedingt war die Beobachtungsdauer vor allem in der Interventionsgruppe im Mittel länger als die vorgesehenen 12 Monate. Sie wurde deshalb als adjustierender Parameter berücksichtigt.</p>
+  
   <blockquote>„„da aufgrund der pandemischen Lage insbesondere in der Interventionsgruppe die Beobachtungsdauer im Mittel länger als die vorgesehenen 12 Monate war.“ – Bericht, S. 16" <span class="s">S. 16</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.10" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.10" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.10" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.10" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1681,12 +1702,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.11">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die pharmakologische Auswertung (Interaktionen, DBI, PIM nach PRISCUS- und EU(7)-Liste) bezog sich nur auf eine Subpopulation der Per-Protokoll-Population mit Medikationserfassung zu allen drei Zeitpunkten (n=347).</p>
+  
   <blockquote>„„Die pharmakologische Auswertung der Interaktionen, des DBI und der PIM nach PRISCUS- und EU(7)-PIM-Liste bezogen sich a uf eine Sub -Population der Per-Protokoll-Population, für die zu allen drei Messzeitpunkten die Medikation erfasst wurde.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.11" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.11" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.11" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.11" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1700,12 +1721,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.12">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Umsetzung der Empfehlungen des Deprescribing-Leitfadens wurde anhand eines Convenience Sample ausgewertet.</p>
+  
   <blockquote>„„Die Auswertung wurde anhand dieses convenience samples durchgeführt.“ – Bericht, S. 17" <span class="s">S. 17</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.12" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.12" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.12" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.12" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1719,12 +1740,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.13">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Geplant waren 124 Hausarztpraxen in ländlichen und städtischen Regionen. Eingeschlossen wurden 114.</p>
+  
   <blockquote>„„Es sollten insgesamt 124 Haus arztpraxen sowohl im ländlichen als auch im städtischen Bereich rekrutiert.“ – Bericht, S. 12" <span class="s">S. 12</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.13" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.13" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.13" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.13" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1738,12 +1759,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.14">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Vor der Randomisierung zogen 38 Hausärztinnen und Hausärzte aus 35 Praxen ihre Einwilligung zurück. Weitere 28 aus 25 Praxen wurden ausgeschlossen, weil sie zu wenige Patientinnen und Patienten rekrutiert hatten.</p>
+  
   <blockquote>„„Von diesen haben noch vor der Randomisierung 38 Hausärzte aus 35 Praxen die Einwilligung wieder zurückgezogen. Weitere 28 Hausärzte aus 25 Praxen wurden vor Randomisierung ausgeschlossen, da sie nicht die geforderte Anzahl an Patienten/Patientinnen rekrutiert haben.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.14" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.14" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.14" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.14" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1757,12 +1778,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.15">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Nach der Rekrutierung und vor der Baseline-Erhebung schieden 41 Personen der Interventions- und 61 der Kontrollgruppe aus.</p>
+  
   <blockquote>„„Nach erfolgter Rekrutierung kam es zu einem Drop-out von 41 Patienten/Patientinnen in der Interventionsgruppe und 61 Patienten/Patientinnen in der Kontrollgruppe bevor jeweils die Hausbesuche der Study Nurses für die Baseline-Erhebungen erfolgen konnten.“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.15" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.15" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.15" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.15" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1776,12 +1797,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.16">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Anzahl und Merkmale der Hauptbezugspersonen lassen sich aus den Daten nicht ableiten, da diese Personen nicht in die Studie eingeschlossen wurden.</p>
+  
   <blockquote>„„Die Anzahl und die Chrakteristika der Hauptbezugspersonen (ob Angehörige und/oder Pflegedienst) kann aus der Datenerhebung nicht abgeleitet werden, da diese Personen nicht in die Studie eingeschlossen wurden“ – Bericht, S. 20" <span class="s">S. 20</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.16" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.16" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.16" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.16" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1795,12 +1816,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.17">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die zulässige Zahl der Angehörigen pro Familienkonferenz war nicht definiert. Erfasst wurde nur, ob eine Hauptbezugsperson anwesend war, nicht aber die Anwesenheit weiterer Personen.</p>
+  
   <blockquote>„„Die zugelassene Anzahl der Angehörigen pro Konferenz wurde nicht definiert. In den Bögen wurde nur erfasst, ob eine Hauptbezugsperson anwesend war. Es wurde nicht erfasst, ob weitere Personen anwesend waren.“ – Bericht, S. 21" <span class="s">S. 21</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.17" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.17" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.17" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.17" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1814,12 +1835,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.18">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In der gesundheitsökonomischen Analyse fehlten bei einer Variable bis zu 29 % der Angaben. Die Analyse beruhte auf 30 imputierten Datensätzen.</p>
+  
   <blockquote>„„Die Analyse basierte auf 30 imputierten Datensätzen, vor dem Hintergrund, dass der prozentuale Anteil an fehlenden Informationen bei einer Variable maximal 29% betrug.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.18" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.18" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.18" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.18" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1833,12 +1854,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.19">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Zahl der Krankenhausaufenthalte in der gesundheitsökonomischen Analyse weicht von der klinischen Analyse ab. Gründe sind laut Bericht eine abweichende ITT-Population, eine andere Datenquelle, die Imputation und die Adjustierung für weitere Kovariaten.</p>
+  
   <blockquote>„„Die Abweichung der Anzahl der Krankenhausaufenthalte gegenüber der klinischen Analyse begründet sich mit voneinander abweichender ITT - Population, Datenquelle für die Krankenhausaufenthalte, Imputation und Adjustierung für weitere Kovariate.“ – Bericht, S. 29" <span class="s">S. 29</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.19" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.19" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.19" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.19" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1852,12 +1873,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.20">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In Kosten-Effektivitäts- und Kosten-Nutzwert-Analyse war der Anteil fehlender Informationen im Outcome hoch. Das beeinflusste die ICER- und ICUR-Schätzwerte.</p>
+  
   <blockquote>„„Bei der CEA und der CUA ist zu berücksichtigen, dass der Anteil an fehlenden Informationen im Outcome hoch war. Dies hatte Einfluss auf die ICER-/ICUR-Schätzwerte.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.20" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.20" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.20" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.20" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1871,12 +1892,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.21">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die für die Intervention günstigste Sensitivitätsanalyse SA-III schloss nur 318 von 521 Personen ein und ist laut Bericht mit Vorsicht zu interpretieren.</p>
+  
   <blockquote>„„Diese Ergebnisse sind mit Vorsicht zu interpretieren, da eine kleinere Studienpopulation (318 von 521 Patienten/Patientinnen) in die Analyse eingeschlossen wurde.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.21" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.21" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.21" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.21" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1890,12 +1911,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.22">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Fortbildungen wurden pandemiebedingt telefonisch oder online durchgeführt. Rollenspiele und Gruppenarbeiten entfielen.</p>
+  
   <blockquote>„„Abweichungen haben sich insbesondere durch die Umstellung auf telefonische Fortbildungen bzw. das Online-Format ergeben, wodurch beispielsweise Rollenspiele bzw. Gruppenarbeiten nicht durchgeführt werden konnten.“ – Bericht, S. 30" <span class="s">S. 30</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.22" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.22" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.22" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.22" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1909,12 +1930,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.23">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Das Kommunikationstraining war online nicht realisierbar und wurde durch ein Lehrvideo nur teilweise kompensiert.</p>
+  
   <blockquote>„„Das Kommunikationstraining war online nicht realisierbar und konnte durch den Einsatz eines Lehrvideos nur teilweise kompensiert werden.“ – Bericht, S. 34" <span class="s">S. 34</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.23" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.23" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.23" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.23" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1928,12 +1949,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.24">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Für einige Teilnehmende unterschieden sich die Familienkonferenzen nicht von üblichen Hausarztbesuchen. Teils wurden die Datenerhebungen der Studie als die eigentliche Intervention wahrgenommen.</p>
+  
   <blockquote>„„Für einige der Teilnehmenden stellten die Familienkonferenzen keinen Unterschied zu üblichen Hausarztbesuchen dar. Es zeigte sich mitunter auch, dass nicht die Familienkonferenzen selbst, son dern die Datenerhebungen im Rahmen der COFRAIL - Studie als Intervention wahrgenommen wurden.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.24" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.24" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.24" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.24" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1947,12 +1968,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.25">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Patientinnen, Patienten und Angehörige konnten Vorschläge zum Absetzen oder Reduzieren der Medikation oft fachlich nicht beurteilen und vertrauten auf die hausärztliche Einschätzung.</p>
+  
   <blockquote>„„wobei sich aber auch zeigte, dass oftmals die Patienten/Patientinnen und Angehörigen den Vorschlag zum Absetzen oder zur Reduktion der Medikation fachlich nicht beurteilen konnten und auf die Einschätzung des Hausarztes/der Hausärztin vertrauten.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.25" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.25" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.25" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.25" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1966,12 +1987,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.26">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die Terminfindung war teilweise schwierig. Einige Hausärztinnen und Hausärzte hielten Familienkonferenzen in der Regelversorgung für nicht machbar und zu aufwendig.</p>
+  
   <blockquote>„„Einzig die Terminfindung gestaltete sich teilweise schwierig. Der Zeitu mfang wurde sehr unterschiedlich wahrgenommen. Ein Teil der interviewten Hausärzte/Hausärztinnen hat den Umfang als angemessen eingeschätzt. E inige erachteten aber die Umsetzung von Familienkonferenzen in der Regelversorgung als nicht machbar und zu aufwendig.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.26" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.26" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.26" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.26" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -1985,12 +2006,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.27">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">Die pharmakologische Hotline wurde im Studienverlauf achtmal und damit laut Bericht kaum genutzt, da wenig Bedarf gesehen wurde.</p>
+  
   <blockquote>„„Die pharmakologische Hotline wurde hingegen kaum in Anspruch genommen, da wenig Bedarf dafür gesehen wurde.“ – Bericht, S. 32" <span class="s">S. 32</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.27" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.27" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.27" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.27" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2004,12 +2025,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.28">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In der Pilotierung konnten wegen des Gesundheitszustands der Patientinnen und Patienten in einigen Fällen nur Angehörige Auskunft geben.</p>
+  
   <blockquote>„„Aufgrund des Gesundheitszustandes der gebrechlichen Patienten/Patientinnen konnten in einigen Fällen nur die Angehörigen Au skunft geben.“ – Bericht, S. 11" <span class="s">S. 11</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.28" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.28" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.28" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.28" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2023,12 +2044,12 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 <section class="p" data-stelle="bericht_hindernis.29">
   <h3>Hindernis laut Ihrem Bericht</h3>
   <p class="unser">In der Prozessevaluation waren gemeinsame Interviews mit Patienten-Angehörigen-Dyaden oft nicht realisierbar. Die Telefoninterviews wurden daher auch getrennt geführt.</p>
+  
   <blockquote>„„Da in vielen Fällen die Angehörigen nicht über die Patiente n/Patientinnen erreicht werden konnten bzw. gemeinsame Interviewtermine mit Angehörigen und Patienten/Patientinnen nicht realisierbar waren, wurden die Telefoninterviews auch separat mit Patienten/Patientinnen und Angehörigen geführt.“ – Bericht, S. 19" <span class="s">S. 19</span></blockquote>
   <div class="wahl">
-    <label><input type="radio" name="ubericht_hindernis.29" value="ok" checked>
-      stimmt</label>
-    <label><input type="radio" name="ubericht_hindernis.29" value="nein">
-      stimmt nicht</label>
+    <input type="radio" name="ubericht_hindernis.29" value="ok" checked hidden>
+    <input type="radio" name="ubericht_hindernis.29" value="nein" hidden>
+    <button type="button" class="nein">stimmt nicht</button>
   </div>
   <div class="korr" hidden>
     
@@ -2073,28 +2094,58 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
 </div>
 
 <div class="fuss">
-  <button id="senden">Freigeben und an die Redaktion senden</button>
+  <button id="senden">Alles stimmt – freigeben und senden</button>
   <button class="zweit" id="laden">Kopie für mich speichern</button>
   <p id="stand"></p>
   <button id="nachtragen" hidden>Ich möchte noch etwas ergänzen</button>
 </div>
 
 <script>
-const D = {"projekt_id": 170, "akronym": "COFRAIL", "kennung": "DxJVNl0XFMnI", "stellen": [{"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt COFRAIL keine Empfehlung aus. Der Beschluss und der Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "ergebnis_begruendung", "art": "text", "unser": "In der cluster-randomisierten Studie im hausärztlichen Setting sank die Hospitalisierungsrate als primärer Endpunkt nicht. Die Zahl potentiell inadäquater Medikamente ging in der Interventionsgruppe nach sechs Monaten zurück. Nach zwölf Monaten war dieser Effekt nicht mehr statistisch signifikant. Für die geriatrischen Endpunkte, die gesundheitsbezogene Lebensqualität und die Inanspruchnahme von Notfallbehandlungen wurden keine Interventionseffekte nachgewiesen, und eine Kosteneffektivität konnte nicht gezeigt werden. Die Methoden hält der Ausschuss für angemessen. Die Validität sieht er durch die fehlende Verblindung und mögliche Verzerrungen durch Selbstberichte teils eingeschränkt. Auf Basis der Ergebnisse kann daher keine Empfehlung zur breiteren Umsetzung ausgesprochen werden."}, {"stelle": "studiendesign", "art": "text", "unser": "cluster-randomisiert"}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine Empfehlung zur breiteren Umsetzung der modularen Interventionen kann auf Basis der Ergebnisse nicht ausgesprochen werden. Weitere Aussagen zur Übertragbarkeit enthält der Beschluss nicht."}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Keine Reduktion der Hospitalisierungsrate (primärer Endpunkt)"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Reduktion potentiell inadäquater Medikamente nach 12 Monaten nicht mehr statistisch signifikant"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Keine Interventionseffekte bei geriatrischen Endpunkten, Lebensqualität und Notfallinanspruchnahme"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Kosteneffektivität nicht gezeigt"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Fehlende Verblindung schränkt die Validität ein"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Mögliche Verzerrungen durch Selbstberichte der Patientinnen und Patienten"}, {"stelle": "befund.0", "art": "befund", "unser": "Reduktion potentiell inadäquater Medikamente in der Interventionsgruppe nach sechs Monaten (nach 12 Monaten nicht mehr signifikant)"}, {"stelle": "befund.1", "art": "befund", "unser": "Methoden als angemessen bewertet"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Hospitalisierungsrate nach 12 Monaten (durchschnittliche Anzahl der Klinikaufenthalte pro Patient/Patientin innerhalb von 12 Monaten nach Interventionsbeginn), Intention-to-treat-Analyse"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Hospitalisierungsrate nach 12 Monaten, Per-Protokoll-Analyse (Sensitivitätsanalyse)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Anzahl der eingenommenen Medikamente nach 6 Monaten (T1)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Anzahl der eingenommenen Medikamente nach 12 Monaten (T2)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Handkraftmessung nach 6 Monaten (T1)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Timed up & Go Test nach 6 Monaten (T1)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Kognition – CERAD Word List Memory nach 12 Monaten (T2)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Depressivität nach 12 Monaten (T2)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Sturzhäufigkeit (letzte 6 Monate) nach 12 Monaten (T2)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Inanspruchnahme Notfalldienst (mindestens 1x in letzten 6 Monaten) nach 12 Monaten (T2)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben (COFRAIL) untersuchte in einer randomisierten Studie in 114 Hausarztpraxen mit 623 rekrutierten älteren Patientinnen und Patienten mit Frailty und Polypharmazie, ob hausärztliche Familienkonferenzen mit Deprescribing-Leitfaden die Hospitalisierungsrate innerhalb von 12 Monaten senken. In der ITT-Analyse (n=510) lag die auf 12 Monate adjustierte mittlere Zahl der Hospitalisierungen bei 0,98 in der Interventions- und 0,99 in der Kontrollgruppe (adjustierte IRR 1,08 [0,84; 1,39], p=0,533). Das primäre Studienziel wurde laut Bericht nicht erreicht. Nach 6 Monaten waren Medikamentenzahl (IG von 8,98 auf 8,11), Drug Burden Index und potenziell inadäquate Medikation laut Bericht in der Interventionsgruppe statistisch signifikant gegenüber der Kontrollgruppe gesunken; nach 12 Monaten war das nicht mehr statistisch signifikant (Medikamentenzahl p=0,073 bzw. p=0,08). Für das geriatrische Assessment, kritische Ereignisse und Sicherheitsparameter wurden keine Gruppenunterschiede berichtet; die Mortalität lag bei 10,7 % gegenüber 12,0 % (p=0,618). Gesundheitsökonomisch ergaben sich zusätzliche Kosten von 61.984 € pro QALY, in der Kosten-Effektivitäts-Analyse wurde die Intervention von der Routineversorgung dominiert. Die Aussagekraft wird nach dem Bericht durch mehrere Faktoren begrenzt: die pandemiebedingte Umstellung auf Telefonerhebungen mit erhöhtem Drop-out (vollständiges 12-Monats-Follow-up bei 385 von 521), die Auswertung der sekundären Endpunkte nur in der Per-Protokoll-Population, die fehlende Korrektur für multiples Testen und mögliche Auswahleffekte bei Praxen und Patienten (Rekrutierungsquote der Hausärzte 1,8 %)."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Primärer Endpunkt: In der ITT-Analyse lag die auf 12 Monate Beobachtungszeit adjustierte mittlere Zahl der Hospitalisierungen in der Interventionsgruppe (n=262) bei 0,98 (SD 1,72) und in der Kontrollgruppe (n=248) bei 0,99 (SD 1,5); die Intervention führte laut Bericht nicht zu einer Reduktion der Hospitalisierungsrate."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Im gemischten Modell mit Praxen als Random Effect zeigten sich beim primären Endpunkt auch nach Adjustierung für Beobachtungszeitraum, Alter, Geschlecht, Anzahl Erkrankungen und Hospitalisierungsrate zu Baseline keine Gruppenunterschiede (ITT, n=510; Modell 2: IRR 1,08 [0,84; 1,39], p=0,533; Modell 1: IRR 1,08 [0,85; 1,37], p=0,552)."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Anzahl eingenommener Medikamente: In der Interventionsgruppe von 8,98 (T0) auf 8,11 (6 Monate) und 8,49 (12 Monate), in der Kontrollgruppe 9,24, 9,32 und 9,16; der Gruppenunterschied war nach 6 Monaten signifikant (Modell 1: IRR 0,88 [0,82; 0,95], p<0,001; Modell 2: p=0,001), nach 12 Monaten nicht mehr (Modell 1: p=0,073; Modell 2: p=0,08, laut Bericht „knapp verfehlt“)."}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Drug Burden Index und Anzahl potenziell inadäquater Medikation sanken laut Zusammenfassung in der Interventionsgruppe nach 6 Monaten statistisch signifikant im Vergleich zur Kontrollgruppe; nach 12 Monaten waren die Effekte geringer und nicht statistisch signifikant."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Mortalität nach 12 Monaten: Von 521 zur Baseline untersuchten Personen waren 59 (11,3 %) verstorben, 29 (10,7 %) in der Interventions- und 30 (12,0 %) in der Kontrollgruppe; laut Bericht kein statistisch signifikanter Unterschied (p=0,618, χ²-Test)."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Das primäre Studienziel, eine niedrigere Hospitalisierungsrate, wurde nicht erreicht. Die Verringerung der Medikamentenzahl und der inadäquaten Wirkstoffe zeigte sich nur nach 6 Monaten."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Von 521 zur Baseline untersuchten Personen konnten nach 12 Monaten 136 nicht oder nicht vollständig untersucht werden. Die sekundären Endpunkte wurden deshalb nur in der Per-Protokoll-Population ausgewertet."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Für die vielen gleichartigen pharmakologischen Tests wurde das Signifikanzniveau nicht für multiples Testen korrigiert (z. B. nach Bonferroni). Signifikante Ergebnisse können daher laut Bericht überschätzt sein."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Möglicher Auswahleffekt: Hausärztinnen und Hausärzte könnten verstärkt Patientinnen und Patienten mit erwarteter hoher Adhärenz eingeschlossen haben. Das limitiert laut Bericht die Repräsentativität; das Nutzenpotenzial in der Breite der Versorgung wurde möglicherweise nicht vollständig abgebildet."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "DBI und PIM: Die Zusammenfassung (S. 4) und die Diskussion (S. 33) sprechen von einer statistisch signifikanten Senkung nach 6 Monaten im Vergleich zur Kontrollgruppe. Die Detailergebnisse (S. 28–29) geben p<0,05 dagegen für die Veränderung innerhalb der Interventionsgruppe von T0 zu T1 an (DBI, EU(7)-PIM). Für PRISCUS-PIM nennen sie keinen p-Wert, und auch in der Kontrollgruppe sanken PRISCUS-PIM von 41 auf 31 (Anteil 21,64 % auf 15,79 %)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Verlauf nach 12 Monaten: Laut S. 4 waren die Effekte auf DBI und PIM zu T2 „geringer und nicht statistisch signifikant“, laut S. 33 „nicht mehr vorhanden“. Zur Medikamentenzahl heißt es auf S. 25, der Unterschied sei zu T2 „knapp verfehlt“ (p=0,08), auf S. 35 seien die Effekte „nicht mehr eindeutig nachweisbar“."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Gehgeschwindigkeit: Als sekundärer Endpunkt ist die Gehzeit über 4 Meter beschrieben (S. 15), in den Ergebnissen wird stattdessen ein Timed-up-&-Go-Test berichtet (S. 25–26)."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Pandemiebedingte Formatumstellung: Laut S. 34 hat sich die telefonische bzw. Online-Durchführung „nicht negativ auf die Durchführung ausgewirkt“. Laut S. 30 und S. 34 entfielen jedoch Rollenspiele und Gruppenarbeiten, und das Kommunikationstraining war online nicht realisierbar und nur teilweise durch ein Lehrvideo kompensiert."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Krankenhausaufenthalte: In der klinischen Analyse lagen die Mittelwerte bei 0,98 (Intervention) gegenüber 0,99 (Kontrolle). In der gesundheitsökonomischen Analyse waren die Aufenthalte in der Interventionsgruppe im Mittel häufiger (vermiedene Aufenthalte -0,0877). Der Bericht führt die Abweichung auf unterschiedliche ITT-Population, Datenquelle, Imputation und Adjustierung zurück (S. 29)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Die Sensitivitätsanalyse in der Per-Protokoll-Population (n=385) zeigte laut Bericht keine statistisch signifikanten Effekte der Intervention auf die Hospitalisierungsrate (IRR Modell 2: 1,08 [0,83; 1,43], p=0,545)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Für alle anderen sekundären Endpunkte einschließlich sämtlicher Elemente des geriatrischen Assessments wurden laut Bericht keine Interventionseffekte nachgewiesen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Geriatrisches Assessment Teil II und kritische Ereignisse nach 12 Monaten (Kognition CERAD, GDS-15, Barthel-Index, Körpergewicht, Stürze, Inanspruchnahme des Notfalldienstes): laut Bericht keine statistisch signifikanten Unterschiede zwischen Interventions- und Kontrollgruppe."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Handkraft und Timed-up-&-Go-Test nach 6 Monaten: Handkraft β -0,32 [-1,97; 1,33] (p=0,704), TUG β -1,12 [-5,61; 3,38] (p=0,627)."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Für die übrigen Sicherheitsparameter (Blutdruck, Herzfrequenz, Glukose, GFR) zeigten sich nach 12 Monaten keine Unterschiede zwischen den Gruppen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Arzneimittel-Wechselwirkungen (Medikationsanalyse bei n=347): In der Interventionsgruppe Rückgang von 110 (0,62 pro Person) auf 95 (0,54 pro Person) nach 6 Monaten (p<0,05) und Anstieg auf 102 nach 12 Monaten (n.s.); in der Kontrollgruppe 127 und 121."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Drug Burden Index in der Interventionsgruppe: 0,76 (T0), 0,66 nach 6 Monaten (p<0,05) und 0,73 nach 12 Monaten (n.s.); in der Kontrollgruppe 0,70 und 0,73."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "PIM nach PRISCUS-Liste in der Interventionsgruppe: 47 (T0), 32 (T1), 38 (T2); Anteil mit mindestens einem PIM 22,16 %, 17,61 % und 18,18 %. In der Kontrollgruppe sank die Zahl von 41 auf 31 und der Anteil von 21,64 % auf 15,79 %. Ein p-Wert ist hierzu nicht angegeben."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "PIM nach EU(7)-Liste in der Interventionsgruppe: 276 (T0), 228 nach 6 Monaten (p<0,05) und 256 nach 12 Monaten (n.s.); Anteil Betroffener 81,82 %, 75,57 % und 76,14 %. In der Kontrollgruppe sank die Zahl von 307 auf 281."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Umsetzung des Deprescribing-Leitfadens (Convenience Sample, 177 Personen): Die mittlere Zahl der Wirkstoffe sank von 10,4 vor auf 9,0 nach der ersten Familienkonferenz (p<0,001) und blieb nach der zweiten Konferenz bei etwa 9,0."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Hauptsächlich abgesetzt wurden Medikamente wie Allopurinol und Statine."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "65 % der eingenommenen Medikation der Studienpopulation sind im Deprescribing-Leitfaden enthalten. Drei Viertel der Absetzungen beruhten auf dem Leitfaden, ein weiteres Viertel betraf Medikamente, die der Leitfaden nicht behandelt."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Die Interventionskosten betrugen im Durchschnitt ca. 391 € pro Person. Darin enthalten sind ca. 118 € Fortbildungskosten pro Person und ca. 110 € je zusätzlicher Familienkonferenz."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Die Leistungsinanspruchnahmekosten (11.615 €) bildeten nach 12 Monaten den größten Anteil der Gesamtkosten, die Interventionskosten lagen bei 391 €. Den größten Teil der Leistungsinanspruchnahme machten Kosten der Pflegeversicherung aus."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Kosten-Effektivitäts-Analyse nach 12 Monaten: Mehrkosten in der Interventionsgruppe von im Mittel 1.171 € (95%-KI -332 bis 2.674). Die Zahl vermiedener Krankenhausaufenthalte betrug -0,0877 (95%-KI -0,308 bis 0,1329), d. h. im Durchschnitt mehr Aufenthalte als in der Kontrollgruppe. Die Intervention wurde damit im Basisfall von der Routineversorgung dominiert."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Kosten-Nutzwert-Analyse nach 12 Monaten: Mehrkosten von 1.351 € (95%-KI -7 bis 2.710) und 0,02 zusätzliche QALYs (95%-KI -0,01 bis 0,06) ergeben zusätzliche Kosten von 61.984 € pro QALY (95%-KI -33.853 bis 666.340)."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Die Wahrscheinlichkeit, dass die Intervention kosteneffektiv ist, lag bei einer Zahlungsbereitschaft von 100 € bis 10.000 € pro QALY unter 5 % und bei 100.000 € pro QALY bei ca. 78 %."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Gesundheitsökonomische Sensitivitätsanalysen: Die Intervention wurde entweder dominiert oder lag bei 53.690 € bis 162.418 € pro QALY. In SA-III wurde sie nicht mehr dominiert (32.753 € pro vermiedenem Krankenhausaufenthalt, 31.766 € pro QALY)."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Rekrutiert und randomisiert wurden 114 Hausarztpraxen mit 623 Patientinnen und Patienten (Düsseldorf 404, Rostock 219)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Angeschrieben wurden 6.632 Hausärztinnen und Hausärzte, 237 sagten per Fax zu. Die Rekrutierungsquote lag bei 3,6 % bezogen auf die Einwilligung und bei 1,8 % bezogen auf den Studieneinschluss."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Pro Praxis wurden im Mittel 5,46 Patientinnen und Patienten rekrutiert (SD 1,76), zur Baseline im Mittel 4,57 untersucht (SD 1,82)."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Nach der Baseline-Erhebung umfasste die Population 521 Personen (Intervention 272, Kontrolle 249). Die ITT-Population für den primären Endpunkt umfasste nach Ausschluss von 11 Personen ohne Baseline-Angaben 510 Personen."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Eine vollständige Follow-up-Erhebung über 12 Monate lag für 385 Personen vor (Intervention 200, Kontrolle 185); sie bilden die Per-Protokoll-Population."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Die Populationen in Interventions- und Kontrollarm unterschieden sich zur Baseline laut Bericht nicht relevant. Das mittlere Alter lag bei 83,5 Jahren, der Frauenanteil bei 68,1 %."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Zur Baseline nahmen die Teilnehmenden im Mittel 9,32 Wirkstoffe täglich ein und hatten 11,93 Diagnosen. In den 6 Monaten vor Baseline hatten sie im Mittel 0,51 Krankenhausaufenthalte (SD 0,84)."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Frailty-Grad zur Baseline: 10,8 % stark, 37,9 % mäßig und 51,3 % leicht gebrechlich."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Die Lebensqualität nach EuroQol-5L lag zur Baseline im Mittel bei 0,48 (SD 0,47). Laut GDS hatten 4,5 % eine schwere und 19,8 % eine geringe bis moderate Depression."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Es fanden 676 Familienkonferenzen statt. Von 272 Personen der Interventionsgruppe hatten 185 alle drei, 46 zwei und 29 eine Familienkonferenz; 12 nahmen an keiner teil."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Bei 525 Familienkonferenzen (77,8 %) nahm mindestens eine angehörige Person oder Vertrauensperson teil, bei 144 (21,3 %) eine Person aus dem Pflegedienst."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Laut den Ergebnisprotokollen war in 93 % der Fälle mindestens eine Hauptbezugsperson (Angehörige und/oder Pflegedienst) an den Familienkonferenzen beteiligt."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "An der ersten Fortbildung nahmen alle 60 Hausärztinnen und Hausärzte der Interventionsgruppe teil, an der zweiten 57 und an der fakultativen dritten 26."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "50 Hausärztinnen und Hausärzte bewerteten die Fortbildung; die Gesamtnote nach Schulnoten lag im Durchschnitt bei 1,5 (Spanne 1 bis 2)."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "In 24 bzw. 18 Telefoninterviews schätzten Patientinnen, Patienten und Angehörige die Familienkonferenzen überwiegend positiv ein. Sie verbanden das mit dem guten Verhältnis zur Hausarztpraxis."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "In 23 Interviews erachteten Hausärztinnen und Hausärzte den Deprescribing-Leitfaden als besonders unterstützend. Er wurde als Entscheidungs- und Argumentationshilfe genutzt."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Die Intervention wurde in 4 Praxen (2 pro Studienzentrum) mit 8 Familienkonferenzen pilotiert."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "In der Pilotierung gaben vier Patientinnen und Patienten sowie fünf Angehörige Rückmeldung. Alle konnten relevante Fragen zufriedenstellend klären und fühlten sich einbezogen."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "In der Pilotierung lag die Hauptverantwortung für das Medikamentenmanagement oft bei den Angehörigen. Über das Absetzen entschieden in der Regel sie mit der Hausarztpraxis, wobei sich alle auf die hausärztliche Einschätzung verließen."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Die Toolbox zu nicht-pharmakologischen Optionen zeigte sich in der Pilotierung grundsätzlich geeignet; laut Bericht sollten ausreichend Zeit für narrative Fragen und eine Nachbereitung eingeplant werden."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Nach der Pilotierung war keine wesentliche Anpassung der COFRAIL-Familienkonferenz-Leitlinie erforderlich."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die pandemiebedingte Umstellung von Hausbesuchen auf Telefonbefragungen führte laut Bericht zu einer vergleichsweise erhöhten Drop-out-Rate. Durch Kommunikationsprobleme am Telefon sind Einschränkungen der Datenqualität denkbar."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Ab Mitte März 2020 wurde die Datenerhebung durch die Study Nurses wegen der COVID-19-Pandemie von persönlichen Hausbesuchen auf telefonische Interviews umgestellt."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die Hand-Greifkraft wurde wegen der Umstellung auf Telefoninterviews ab Mitte März 2020 nicht mehr erhoben."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Gehgeschwindigkeit (Gehzeit über 4 Meter) wurde aus demselben Grund ab Mitte März 2020 nicht mehr erhoben."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Handkraft und Timed-up-&-Go-Test konnten nur nach 6 Monaten in relevanter Anzahl erhoben werden, mit reduzierten Fallzahlen (z. B. TUG Kontrollgruppe N=39)."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Study Nurses waren nicht verblindet, weil Patientinnen und Patienten der Interventionsgruppe am Ende der Baseline-Erhebung ein Merkblatt zur Familienkonferenz erhielten."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Pandemiebedingt war die Beobachtungsdauer vor allem in der Interventionsgruppe im Mittel länger als die vorgesehenen 12 Monate. Sie wurde deshalb als adjustierender Parameter berücksichtigt."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die pharmakologische Auswertung (Interaktionen, DBI, PIM nach PRISCUS- und EU(7)-Liste) bezog sich nur auf eine Subpopulation der Per-Protokoll-Population mit Medikationserfassung zu allen drei Zeitpunkten (n=347)."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Umsetzung der Empfehlungen des Deprescribing-Leitfadens wurde anhand eines Convenience Sample ausgewertet."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Geplant waren 124 Hausarztpraxen in ländlichen und städtischen Regionen. Eingeschlossen wurden 114."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Vor der Randomisierung zogen 38 Hausärztinnen und Hausärzte aus 35 Praxen ihre Einwilligung zurück. Weitere 28 aus 25 Praxen wurden ausgeschlossen, weil sie zu wenige Patientinnen und Patienten rekrutiert hatten."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Nach der Rekrutierung und vor der Baseline-Erhebung schieden 41 Personen der Interventions- und 61 der Kontrollgruppe aus."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Anzahl und Merkmale der Hauptbezugspersonen lassen sich aus den Daten nicht ableiten, da diese Personen nicht in die Studie eingeschlossen wurden."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Die zulässige Zahl der Angehörigen pro Familienkonferenz war nicht definiert. Erfasst wurde nur, ob eine Hauptbezugsperson anwesend war, nicht aber die Anwesenheit weiterer Personen."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "In der gesundheitsökonomischen Analyse fehlten bei einer Variable bis zu 29 % der Angaben. Die Analyse beruhte auf 30 imputierten Datensätzen."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Die Zahl der Krankenhausaufenthalte in der gesundheitsökonomischen Analyse weicht von der klinischen Analyse ab. Gründe sind laut Bericht eine abweichende ITT-Population, eine andere Datenquelle, die Imputation und die Adjustierung für weitere Kovariaten."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "In Kosten-Effektivitäts- und Kosten-Nutzwert-Analyse war der Anteil fehlender Informationen im Outcome hoch. Das beeinflusste die ICER- und ICUR-Schätzwerte."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Die für die Intervention günstigste Sensitivitätsanalyse SA-III schloss nur 318 von 521 Personen ein und ist laut Bericht mit Vorsicht zu interpretieren."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Die Fortbildungen wurden pandemiebedingt telefonisch oder online durchgeführt. Rollenspiele und Gruppenarbeiten entfielen."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Das Kommunikationstraining war online nicht realisierbar und wurde durch ein Lehrvideo nur teilweise kompensiert."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Für einige Teilnehmende unterschieden sich die Familienkonferenzen nicht von üblichen Hausarztbesuchen. Teils wurden die Datenerhebungen der Studie als die eigentliche Intervention wahrgenommen."}, {"stelle": "bericht_hindernis.25", "art": "aussage", "unser": "Patientinnen, Patienten und Angehörige konnten Vorschläge zum Absetzen oder Reduzieren der Medikation oft fachlich nicht beurteilen und vertrauten auf die hausärztliche Einschätzung."}, {"stelle": "bericht_hindernis.26", "art": "aussage", "unser": "Die Terminfindung war teilweise schwierig. Einige Hausärztinnen und Hausärzte hielten Familienkonferenzen in der Regelversorgung für nicht machbar und zu aufwendig."}, {"stelle": "bericht_hindernis.27", "art": "aussage", "unser": "Die pharmakologische Hotline wurde im Studienverlauf achtmal und damit laut Bericht kaum genutzt, da wenig Bedarf gesehen wurde."}, {"stelle": "bericht_hindernis.28", "art": "aussage", "unser": "In der Pilotierung konnten wegen des Gesundheitszustands der Patientinnen und Patienten in einigen Fällen nur Angehörige Auskunft geben."}, {"stelle": "bericht_hindernis.29", "art": "aussage", "unser": "In der Prozessevaluation waren gemeinsame Interviews mit Patienten-Angehörigen-Dyaden oft nicht realisierbar. Die Telefoninterviews wurden daher auch getrennt geführt."}]};
+const D = {"projekt_id": 170, "akronym": "COFRAIL", "kennung": "DxJVNl0XFMnI", "stellen": [{"stelle": "ergebnis_begruendung", "art": "text", "unser": "In der cluster-randomisierten Studie im hausärztlichen Setting sank die Hospitalisierungsrate als primärer Endpunkt nicht. Die Zahl potentiell inadäquater Medikamente ging in der Interventionsgruppe nach sechs Monaten zurück. Nach zwölf Monaten war dieser Effekt nicht mehr statistisch signifikant. Für die geriatrischen Endpunkte, die gesundheitsbezogene Lebensqualität und die Inanspruchnahme von Notfallbehandlungen wurden keine Interventionseffekte nachgewiesen, und eine Kosteneffektivität konnte nicht gezeigt werden. Die Methoden hält der Ausschuss für angemessen. Die Validität sieht er durch die fehlende Verblindung und mögliche Verzerrungen durch Selbstberichte teils eingeschränkt. Auf Basis der Ergebnisse kann daher keine Empfehlung zur breiteren Umsetzung ausgesprochen werden."}, {"stelle": "studiendesign", "art": "text", "unser": "cluster-randomisiert"}, {"stelle": "hindernis.0", "art": "hindernis", "unser": "Keine Reduktion der Hospitalisierungsrate (primärer Endpunkt)"}, {"stelle": "hindernis.1", "art": "hindernis", "unser": "Reduktion potentiell inadäquater Medikamente nach 12 Monaten nicht mehr statistisch signifikant"}, {"stelle": "hindernis.2", "art": "hindernis", "unser": "Keine Interventionseffekte bei geriatrischen Endpunkten, Lebensqualität und Notfallinanspruchnahme"}, {"stelle": "hindernis.3", "art": "hindernis", "unser": "Kosteneffektivität nicht gezeigt"}, {"stelle": "hindernis.4", "art": "hindernis", "unser": "Fehlende Verblindung schränkt die Validität teils ein"}, {"stelle": "hindernis.5", "art": "hindernis", "unser": "Mögliche Verzerrungen durch Selbstberichte der Patientinnen und Patienten"}, {"stelle": "endpunkt.1", "art": "endpunkt", "unser": "Hospitalisierungsrate nach 12 Monaten (durchschnittliche Anzahl der Klinikaufenthalte pro Patient/Patientin innerhalb von 12 Monaten nach Interventionsbeginn), Intention-to-treat-Analyse"}, {"stelle": "endpunkt.2", "art": "endpunkt", "unser": "Hospitalisierungsrate nach 12 Monaten, Per-Protokoll-Analyse (Sensitivitätsanalyse)"}, {"stelle": "endpunkt.3", "art": "endpunkt", "unser": "Anzahl der eingenommenen Medikamente nach 6 Monaten (T1)"}, {"stelle": "endpunkt.4", "art": "endpunkt", "unser": "Anzahl der eingenommenen Medikamente nach 12 Monaten (T2)"}, {"stelle": "endpunkt.5", "art": "endpunkt", "unser": "Handkraftmessung nach 6 Monaten (T1)"}, {"stelle": "endpunkt.6", "art": "endpunkt", "unser": "Timed up & Go Test nach 6 Monaten (T1)"}, {"stelle": "endpunkt.7", "art": "endpunkt", "unser": "Kognition – CERAD Word List Memory nach 12 Monaten (T2)"}, {"stelle": "endpunkt.8", "art": "endpunkt", "unser": "Depressivität nach 12 Monaten (T2)"}, {"stelle": "endpunkt.9", "art": "endpunkt", "unser": "Sturzhäufigkeit (letzte 6 Monate) nach 12 Monaten (T2)"}, {"stelle": "endpunkt.10", "art": "endpunkt", "unser": "Inanspruchnahme Notfalldienst (mindestens 1x in letzten 6 Monaten) nach 12 Monaten (T2)"}, {"stelle": "bericht_kurz", "art": "text", "unser": "Das Vorhaben (COFRAIL) untersuchte in einer randomisierten Studie in 114 Hausarztpraxen mit 623 rekrutierten älteren Patientinnen und Patienten mit Frailty und Polypharmazie, ob hausärztliche Familienkonferenzen mit Deprescribing-Leitfaden die Hospitalisierungsrate innerhalb von 12 Monaten senken. In der ITT-Analyse (n=510) lag die auf 12 Monate adjustierte mittlere Zahl der Hospitalisierungen bei 0,98 in der Interventions- und 0,99 in der Kontrollgruppe (adjustierte IRR 1,08 [0,84; 1,39], p=0,533). Das primäre Studienziel wurde laut Bericht nicht erreicht. Nach 6 Monaten waren Medikamentenzahl (IG von 8,98 auf 8,11), Drug Burden Index und potenziell inadäquate Medikation laut Bericht in der Interventionsgruppe statistisch signifikant gegenüber der Kontrollgruppe gesunken; nach 12 Monaten war das nicht mehr statistisch signifikant (Medikamentenzahl p=0,073 bzw. p=0,08). Für das geriatrische Assessment, kritische Ereignisse und Sicherheitsparameter wurden keine Gruppenunterschiede berichtet; die Mortalität lag bei 10,7 % gegenüber 12,0 % (p=0,618). Gesundheitsökonomisch ergaben sich zusätzliche Kosten von 61.984 € pro QALY, in der Kosten-Effektivitäts-Analyse wurde die Intervention von der Routineversorgung dominiert. Die Aussagekraft wird nach dem Bericht durch mehrere Faktoren begrenzt: die pandemiebedingte Umstellung auf Telefonerhebungen mit erhöhtem Drop-out (vollständiges 12-Monats-Follow-up bei 385 von 521), die Auswertung der sekundären Endpunkte nur in der Per-Protokoll-Population, die fehlende Korrektur für multiples Testen und mögliche Auswahleffekte bei Praxen und Patienten (Rekrutierungsquote der Hausärzte 1,8 %)."}, {"stelle": "bericht_befund.0", "art": "aussage", "unser": "Primärer Endpunkt: In der ITT-Analyse lag die auf 12 Monate Beobachtungszeit adjustierte mittlere Zahl der Hospitalisierungen in der Interventionsgruppe (n=262) bei 0,98 (SD 1,72) und in der Kontrollgruppe (n=248) bei 0,99 (SD 1,5); die Intervention führte laut Bericht nicht zu einer Reduktion der Hospitalisierungsrate."}, {"stelle": "bericht_befund.1", "art": "aussage", "unser": "Im gemischten Modell mit Praxen als Random Effect zeigten sich beim primären Endpunkt auch nach Adjustierung für Beobachtungszeitraum, Alter, Geschlecht, Anzahl Erkrankungen und Hospitalisierungsrate zu Baseline keine Gruppenunterschiede (ITT, n=510; Modell 2: IRR 1,08 [0,84; 1,39], p=0,533; Modell 1: IRR 1,08 [0,85; 1,37], p=0,552)."}, {"stelle": "bericht_befund.3", "art": "aussage", "unser": "Anzahl eingenommener Medikamente: In der Interventionsgruppe von 8,98 (T0) auf 8,11 (6 Monate) und 8,49 (12 Monate), in der Kontrollgruppe 9,24, 9,32 und 9,16; der Gruppenunterschied war nach 6 Monaten signifikant (Modell 1: IRR 0,88 [0,82; 0,95], p<0,001; Modell 2: p=0,001), nach 12 Monaten nicht mehr (Modell 1: p=0,073; Modell 2: p=0,08, laut Bericht „knapp verfehlt“)."}, {"stelle": "bericht_hindernis.0", "art": "aussage", "unser": "Das primäre Studienziel, eine niedrigere Hospitalisierungsrate, wurde nicht erreicht. Die Verringerung der Medikamentenzahl und der inadäquaten Wirkstoffe zeigte sich zumindest nach 6 Monaten."}, {"stelle": "bericht_hindernis.1", "art": "aussage", "unser": "Von 521 zur Baseline untersuchten Personen konnten nach 12 Monaten 136 nicht oder nicht vollständig untersucht werden. Die sekundären Endpunkte wurden deshalb nur in der Per-Protokoll-Population ausgewertet."}, {"stelle": "bericht_hindernis.2", "art": "aussage", "unser": "Für die vielen gleichartigen pharmakologischen Tests wurde das Signifikanzniveau nicht für multiples Testen korrigiert (z. B. nach Bonferroni). Signifikante Ergebnisse können daher laut Bericht überschätzt sein."}, {"stelle": "bericht_unstimmig.0", "art": "aussage", "unser": "DBI und PIM: Die Zusammenfassung (S. 4) und die Diskussion (S. 33) sprechen von einer statistisch signifikanten Senkung nach 6 Monaten im Vergleich zur Kontrollgruppe. Die Detailergebnisse (S. 28–29) geben p<0,05 dagegen für die Veränderung innerhalb der Interventionsgruppe von T0 zu T1 an (DBI, EU(7)-PIM). Für PRISCUS-PIM nennen sie keinen p-Wert, und auch in der Kontrollgruppe sanken PRISCUS-PIM von 41 auf 31 (Anteil 21,64 % auf 15,79 %)."}, {"stelle": "bericht_unstimmig.1", "art": "aussage", "unser": "Verlauf nach 12 Monaten: Laut S. 4 waren die Effekte auf DBI und PIM zu T2 „geringer und nicht statistisch signifikant“, laut S. 33 „nicht mehr vorhanden“. Zur Medikamentenzahl heißt es auf S. 25, der Unterschied sei zu T2 „knapp verfehlt“ (p=0,08), auf S. 35 seien die Effekte „nicht mehr eindeutig nachweisbar“."}, {"stelle": "bericht_unstimmig.2", "art": "aussage", "unser": "Gehgeschwindigkeit: Als sekundärer Endpunkt ist die Gehzeit über 4 Meter beschrieben (S. 15), in den Ergebnissen wird stattdessen ein Timed-up-&-Go-Test berichtet (S. 25–26)."}, {"stelle": "beschluss_kurzfassung", "art": "text", "unser": "Der Innovationsausschuss spricht für das Projekt COFRAIL keine Empfehlung aus. Der Beschluss und der Ergebnisbericht werden auf der Internetseite des Innovationsausschusses veröffentlicht."}, {"stelle": "uebertragbarkeit", "art": "text", "unser": "Eine Empfehlung zur breiteren Umsetzung der modularen Interventionen kann auf Basis der Ergebnisse nicht ausgesprochen werden. Weitere Aussagen zur Übertragbarkeit enthält der Beschluss nicht."}, {"stelle": "befund.0", "art": "befund", "unser": "Reduktion potentiell inadäquater Medikamente in der Interventionsgruppe nach sechs Monaten (nach 12 Monaten nicht mehr signifikant)"}, {"stelle": "befund.1", "art": "befund", "unser": "Methoden als angemessen bewertet"}, {"stelle": "bericht_befund.4", "art": "aussage", "unser": "Drug Burden Index und Anzahl potenziell inadäquater Medikation sanken laut Zusammenfassung in der Interventionsgruppe nach 6 Monaten statistisch signifikant im Vergleich zur Kontrollgruppe; nach 12 Monaten waren die Effekte geringer und nicht statistisch signifikant."}, {"stelle": "bericht_befund.5", "art": "aussage", "unser": "Mortalität nach 12 Monaten: Von 521 zur Baseline untersuchten Personen waren 59 (11,3 %) verstorben, 29 (10,7 %) in der Interventions- und 30 (12,0 %) in der Kontrollgruppe; laut Bericht kein statistisch signifikanter Unterschied (p=0,618, χ²-Test)."}, {"stelle": "bericht_hindernis.3", "art": "aussage", "unser": "Möglicher Auswahleffekt: Hausärztinnen und Hausärzte könnten verstärkt Patientinnen und Patienten mit erwarteter hoher Adhärenz eingeschlossen haben. Das limitiert laut Bericht die Repräsentativität; das Nutzenpotenzial in der Breite der Versorgung wurde möglicherweise nicht vollständig abgebildet."}, {"stelle": "bericht_unstimmig.3", "art": "aussage", "unser": "Pandemiebedingte Formatumstellung: Laut S. 34 hat sich die telefonische bzw. Online-Durchführung „nicht negativ auf die Durchführung ausgewirkt“. Laut S. 30 und S. 34 entfielen jedoch Rollenspiele und Gruppenarbeiten, und das Kommunikationstraining war online nicht realisierbar und nur teilweise durch ein Lehrvideo kompensiert."}, {"stelle": "bericht_unstimmig.4", "art": "aussage", "unser": "Krankenhausaufenthalte: In der klinischen Analyse lagen die Mittelwerte bei 0,98 (Intervention) gegenüber 0,99 (Kontrolle). In der gesundheitsökonomischen Analyse waren die Aufenthalte in der Interventionsgruppe im Mittel häufiger (vermiedene Aufenthalte -0,0877). Der Bericht führt die Abweichung auf unterschiedliche ITT-Population, Datenquelle, Imputation und Adjustierung zurück (S. 29)."}, {"stelle": "bericht_befund.2", "art": "aussage", "unser": "Die Sensitivitätsanalyse in der Per-Protokoll-Population (n=385) zeigte laut Bericht keine statistisch signifikanten Effekte der Intervention auf die Hospitalisierungsrate (IRR Modell 2: 1,08 [0,83; 1,43], p=0,545)."}, {"stelle": "bericht_befund.6", "art": "aussage", "unser": "Für alle anderen sekundären Endpunkte einschließlich sämtlicher Elemente des geriatrischen Assessments wurden laut Bericht keine Interventionseffekte nachgewiesen."}, {"stelle": "bericht_befund.7", "art": "aussage", "unser": "Geriatrisches Assessment Teil II und kritische Ereignisse nach 12 Monaten (Kognition CERAD, GDS-15, Barthel-Index, Körpergewicht, Stürze, Inanspruchnahme des Notfalldienstes): laut Bericht keine statistisch signifikanten Unterschiede zwischen Interventions- und Kontrollgruppe."}, {"stelle": "bericht_befund.8", "art": "aussage", "unser": "Handkraft und Timed-up-&-Go-Test nach 6 Monaten: Handkraft β -0,32 [-1,97; 1,33] (p=0,704), TUG β -1,12 [-5,61; 3,38] (p=0,627)."}, {"stelle": "bericht_befund.9", "art": "aussage", "unser": "Für die übrigen Sicherheitsparameter (Blutdruck, Herzfrequenz, Glukose, GFR) zeigten sich nach 12 Monaten keine Unterschiede zwischen den Gruppen."}, {"stelle": "bericht_befund.10", "art": "aussage", "unser": "Arzneimittel-Wechselwirkungen (Medikationsanalyse bei n=347): In der Interventionsgruppe Rückgang von 110 (0,62 pro Person) auf 95 (0,54 pro Person) nach 6 Monaten (p<0,05) und Anstieg auf 102 nach 12 Monaten (n.s.); in der Kontrollgruppe 127 und 121."}, {"stelle": "bericht_befund.11", "art": "aussage", "unser": "Drug Burden Index in der Interventionsgruppe: 0,76 (T0), 0,66 nach 6 Monaten (p<0,05) und 0,73 nach 12 Monaten (n.s.); in der Kontrollgruppe 0,70 und 0,73."}, {"stelle": "bericht_befund.12", "art": "aussage", "unser": "PIM nach PRISCUS-Liste in der Interventionsgruppe: 47 (T0), 32 (T1), 38 (T2); Anteil mit mindestens einem PIM 22,16 %, 17,61 % und 18,18 %. In der Kontrollgruppe sank die Zahl von 41 auf 31 und der Anteil von 21,64 % auf 15,79 %. Ein p-Wert ist hierzu nicht angegeben."}, {"stelle": "bericht_befund.13", "art": "aussage", "unser": "PIM nach EU(7)-Liste in der Interventionsgruppe: 276 (T0), 228 nach 6 Monaten (p<0,05) und 256 nach 12 Monaten (n.s.); Anteil Betroffener 81,82 %, 75,57 % und 76,14 %. In der Kontrollgruppe sank die Zahl von 307 auf 281."}, {"stelle": "bericht_befund.14", "art": "aussage", "unser": "Umsetzung des Deprescribing-Leitfadens (Convenience Sample, 177 Personen): Die mittlere Zahl der Wirkstoffe sank von 10,4 vor auf 9,0 nach der ersten Familienkonferenz (p<0,001) und blieb nach der zweiten Konferenz bei etwa 9,0."}, {"stelle": "bericht_befund.15", "art": "aussage", "unser": "Hauptsächlich abgesetzt wurden Medikamente wie Allopurinol und Statine."}, {"stelle": "bericht_befund.16", "art": "aussage", "unser": "65 % der eingenommenen Medikation der Studienpopulation sind im Deprescribing-Leitfaden enthalten. Drei Viertel der Absetzungen beruhten auf dem Leitfaden, ein weiteres Viertel betraf Medikamente, die der Leitfaden nicht behandelt."}, {"stelle": "bericht_befund.17", "art": "aussage", "unser": "Die Interventionskosten betrugen im Durchschnitt ca. 391 € pro Person. Darin enthalten sind ca. 118 € Fortbildungskosten pro Person und ca. 110 € je zusätzlicher Familienkonferenz."}, {"stelle": "bericht_befund.18", "art": "aussage", "unser": "Die Leistungsinanspruchnahmekosten (11.615 €) bildeten nach 12 Monaten den größten Anteil der Gesamtkosten, die Interventionskosten lagen bei 391 €. Den größten Teil der Leistungsinanspruchnahme machten Kosten der Pflegeversicherung aus."}, {"stelle": "bericht_befund.19", "art": "aussage", "unser": "Kosten-Effektivitäts-Analyse nach 12 Monaten: Mehrkosten in der Interventionsgruppe von im Mittel 1.171 € (95%-KI -332 bis 2.674). Die Zahl vermiedener Krankenhausaufenthalte betrug -0,0877 (95%-KI -0,308 bis 0,1329), d. h. im Durchschnitt mehr Aufenthalte als in der Kontrollgruppe. Die Intervention wurde damit im Basisfall von der Routineversorgung dominiert."}, {"stelle": "bericht_befund.20", "art": "aussage", "unser": "Kosten-Nutzwert-Analyse nach 12 Monaten: Mehrkosten von 1.351 € (95%-KI -7 bis 2.710) und 0,02 zusätzliche QALYs (95%-KI -0,01 bis 0,06) ergeben zusätzliche Kosten von 61.984 € pro QALY (95%-KI -33.853 bis 666.340)."}, {"stelle": "bericht_befund.21", "art": "aussage", "unser": "Die Wahrscheinlichkeit, dass die Intervention kosteneffektiv ist, lag bei einer Zahlungsbereitschaft von 100 € bis 10.000 € pro QALY unter 5 % und bei 100.000 € pro QALY bei ca. 78 %."}, {"stelle": "bericht_befund.22", "art": "aussage", "unser": "Gesundheitsökonomische Sensitivitätsanalysen: Die Intervention wurde entweder dominiert oder lag bei 53.690 € bis 162.418 € pro QALY. In SA-III wurde sie nicht mehr dominiert (32.753 € pro vermiedenem Krankenhausaufenthalt, 31.766 € pro QALY)."}, {"stelle": "bericht_befund.23", "art": "aussage", "unser": "Rekrutiert und randomisiert wurden 114 Hausarztpraxen mit 623 Patientinnen und Patienten (Düsseldorf 404, Rostock 219)."}, {"stelle": "bericht_befund.24", "art": "aussage", "unser": "Angeschrieben wurden 6.632 Hausärztinnen und Hausärzte, 237 sagten per Fax zu. Die Rekrutierungsquote lag bei 3,6 % bezogen auf die Einwilligung und bei 1,8 % bezogen auf den Studieneinschluss."}, {"stelle": "bericht_befund.25", "art": "aussage", "unser": "Pro Praxis wurden im Mittel 5,46 Patientinnen und Patienten rekrutiert (SD 1,76), zur Baseline im Mittel 4,57 untersucht (SD 1,82)."}, {"stelle": "bericht_befund.26", "art": "aussage", "unser": "Nach der Baseline-Erhebung umfasste die Population 521 Personen (Intervention 272, Kontrolle 249). Die ITT-Population für den primären Endpunkt umfasste nach Ausschluss von 11 Personen ohne Baseline-Angaben 510 Personen."}, {"stelle": "bericht_befund.27", "art": "aussage", "unser": "Eine vollständige Follow-up-Erhebung über 12 Monate lag für 385 Personen vor (Intervention 200, Kontrolle 185); sie bilden die Per-Protokoll-Population."}, {"stelle": "bericht_befund.28", "art": "aussage", "unser": "Die Populationen in Interventions- und Kontrollarm unterschieden sich zur Baseline laut Bericht nicht relevant. Das mittlere Alter lag bei 83,5 Jahren, der Frauenanteil bei 68,1 %."}, {"stelle": "bericht_befund.29", "art": "aussage", "unser": "Zur Baseline nahmen die Teilnehmenden im Mittel 9,32 Wirkstoffe täglich ein und hatten 11,93 Diagnosen. In den 6 Monaten vor Baseline hatten sie im Mittel 0,51 Krankenhausaufenthalte (SD 0,84)."}, {"stelle": "bericht_befund.30", "art": "aussage", "unser": "Frailty-Grad zur Baseline: 10,8 % stark, 37,9 % mäßig und 51,3 % leicht gebrechlich."}, {"stelle": "bericht_befund.31", "art": "aussage", "unser": "Die Lebensqualität nach EuroQol-5L lag zur Baseline im Mittel bei 0,48 (SD 0,47). Laut GDS hatten 4,5 % eine schwere und 19,8 % eine geringe bis moderate Depression."}, {"stelle": "bericht_befund.32", "art": "aussage", "unser": "Es fanden 676 Familienkonferenzen statt. Von 272 Personen der Interventionsgruppe hatten 185 alle drei, 46 zwei und 29 eine Familienkonferenz; 12 nahmen an keiner teil."}, {"stelle": "bericht_befund.33", "art": "aussage", "unser": "Bei 525 Familienkonferenzen (77,8 %) nahm mindestens eine angehörige Person oder Vertrauensperson teil, bei 144 (21,3 %) eine Person aus dem Pflegedienst."}, {"stelle": "bericht_befund.34", "art": "aussage", "unser": "Laut den Ergebnisprotokollen war in 93 % der Fälle mindestens eine Hauptbezugsperson (Angehörige und/oder Pflegedienst) an den Familienkonferenzen beteiligt."}, {"stelle": "bericht_befund.35", "art": "aussage", "unser": "An der ersten Fortbildung nahmen alle 60 Hausärztinnen und Hausärzte der Interventionsgruppe teil, an der zweiten 57 und an der fakultativen dritten 26."}, {"stelle": "bericht_befund.36", "art": "aussage", "unser": "50 Hausärztinnen und Hausärzte bewerteten die Fortbildung; die Gesamtnote nach Schulnoten lag im Durchschnitt bei 1,5 (Spanne 1 bis 2)."}, {"stelle": "bericht_befund.37", "art": "aussage", "unser": "In 24 bzw. 18 Telefoninterviews schätzten Patientinnen, Patienten und Angehörige die Familienkonferenzen überwiegend positiv ein. Sie verbanden das mit dem guten Verhältnis zur Hausarztpraxis."}, {"stelle": "bericht_befund.38", "art": "aussage", "unser": "In 23 Interviews erachteten Hausärztinnen und Hausärzte den Deprescribing-Leitfaden als besonders unterstützend. Er wurde als Entscheidungs- und Argumentationshilfe genutzt."}, {"stelle": "bericht_befund.39", "art": "aussage", "unser": "Die Intervention wurde in 4 Praxen (2 pro Studienzentrum) mit 8 Familienkonferenzen pilotiert."}, {"stelle": "bericht_befund.40", "art": "aussage", "unser": "In der Pilotierung gaben vier Patientinnen und Patienten sowie fünf Angehörige Rückmeldung. Alle konnten relevante Fragen zufriedenstellend klären und fühlten sich einbezogen."}, {"stelle": "bericht_befund.41", "art": "aussage", "unser": "In der Pilotierung lag die Hauptverantwortung für das Medikamentenmanagement oft bei den Angehörigen. Über das Absetzen entschieden in der Regel sie mit der Hausarztpraxis, wobei sich alle auf die hausärztliche Einschätzung verließen."}, {"stelle": "bericht_befund.42", "art": "aussage", "unser": "Die Toolbox zu nicht-pharmakologischen Optionen zeigte sich in der Pilotierung grundsätzlich geeignet; laut Bericht sollten ausreichend Zeit für narrative Fragen und eine Nachbereitung eingeplant werden."}, {"stelle": "bericht_befund.43", "art": "aussage", "unser": "Nach der Pilotierung war keine wesentliche Anpassung der COFRAIL-Familienkonferenz-Leitlinie erforderlich."}, {"stelle": "bericht_hindernis.4", "art": "aussage", "unser": "Die pandemiebedingte Umstellung von Hausbesuchen auf Telefonbefragungen führte laut Bericht zu einer vergleichsweise erhöhten Drop-out-Rate. Durch Kommunikationsprobleme am Telefon sind Einschränkungen der Datenqualität denkbar."}, {"stelle": "bericht_hindernis.5", "art": "aussage", "unser": "Ab Mitte März 2020 wurde die Datenerhebung durch die Study Nurses wegen der COVID-19-Pandemie von persönlichen Hausbesuchen auf telefonische Interviews umgestellt."}, {"stelle": "bericht_hindernis.6", "art": "aussage", "unser": "Die Hand-Greifkraft wurde wegen der Umstellung auf Telefoninterviews ab Mitte März 2020 nicht mehr erhoben."}, {"stelle": "bericht_hindernis.7", "art": "aussage", "unser": "Die Gehgeschwindigkeit (Gehzeit über 4 Meter) wurde aus demselben Grund ab Mitte März 2020 nicht mehr erhoben."}, {"stelle": "bericht_hindernis.8", "art": "aussage", "unser": "Handkraft und Timed-up-&-Go-Test konnten nur nach 6 Monaten in relevanter Anzahl erhoben werden, mit reduzierten Fallzahlen (z. B. TUG Kontrollgruppe N=39)."}, {"stelle": "bericht_hindernis.9", "art": "aussage", "unser": "Die Study Nurses waren nicht verblindet, weil Patientinnen und Patienten der Interventionsgruppe am Ende der Baseline-Erhebung ein Merkblatt zur Familienkonferenz erhielten."}, {"stelle": "bericht_hindernis.10", "art": "aussage", "unser": "Pandemiebedingt war die Beobachtungsdauer vor allem in der Interventionsgruppe im Mittel länger als die vorgesehenen 12 Monate. Sie wurde deshalb als adjustierender Parameter berücksichtigt."}, {"stelle": "bericht_hindernis.11", "art": "aussage", "unser": "Die pharmakologische Auswertung (Interaktionen, DBI, PIM nach PRISCUS- und EU(7)-Liste) bezog sich nur auf eine Subpopulation der Per-Protokoll-Population mit Medikationserfassung zu allen drei Zeitpunkten (n=347)."}, {"stelle": "bericht_hindernis.12", "art": "aussage", "unser": "Die Umsetzung der Empfehlungen des Deprescribing-Leitfadens wurde anhand eines Convenience Sample ausgewertet."}, {"stelle": "bericht_hindernis.13", "art": "aussage", "unser": "Geplant waren 124 Hausarztpraxen in ländlichen und städtischen Regionen. Eingeschlossen wurden 114."}, {"stelle": "bericht_hindernis.14", "art": "aussage", "unser": "Vor der Randomisierung zogen 38 Hausärztinnen und Hausärzte aus 35 Praxen ihre Einwilligung zurück. Weitere 28 aus 25 Praxen wurden ausgeschlossen, weil sie zu wenige Patientinnen und Patienten rekrutiert hatten."}, {"stelle": "bericht_hindernis.15", "art": "aussage", "unser": "Nach der Rekrutierung und vor der Baseline-Erhebung schieden 41 Personen der Interventions- und 61 der Kontrollgruppe aus."}, {"stelle": "bericht_hindernis.16", "art": "aussage", "unser": "Anzahl und Merkmale der Hauptbezugspersonen lassen sich aus den Daten nicht ableiten, da diese Personen nicht in die Studie eingeschlossen wurden."}, {"stelle": "bericht_hindernis.17", "art": "aussage", "unser": "Die zulässige Zahl der Angehörigen pro Familienkonferenz war nicht definiert. Erfasst wurde nur, ob eine Hauptbezugsperson anwesend war, nicht aber die Anwesenheit weiterer Personen."}, {"stelle": "bericht_hindernis.18", "art": "aussage", "unser": "In der gesundheitsökonomischen Analyse fehlten bei einer Variable bis zu 29 % der Angaben. Die Analyse beruhte auf 30 imputierten Datensätzen."}, {"stelle": "bericht_hindernis.19", "art": "aussage", "unser": "Die Zahl der Krankenhausaufenthalte in der gesundheitsökonomischen Analyse weicht von der klinischen Analyse ab. Gründe sind laut Bericht eine abweichende ITT-Population, eine andere Datenquelle, die Imputation und die Adjustierung für weitere Kovariaten."}, {"stelle": "bericht_hindernis.20", "art": "aussage", "unser": "In Kosten-Effektivitäts- und Kosten-Nutzwert-Analyse war der Anteil fehlender Informationen im Outcome hoch. Das beeinflusste die ICER- und ICUR-Schätzwerte."}, {"stelle": "bericht_hindernis.21", "art": "aussage", "unser": "Die für die Intervention günstigste Sensitivitätsanalyse SA-III schloss nur 318 von 521 Personen ein und ist laut Bericht mit Vorsicht zu interpretieren."}, {"stelle": "bericht_hindernis.22", "art": "aussage", "unser": "Die Fortbildungen wurden pandemiebedingt telefonisch oder online durchgeführt. Rollenspiele und Gruppenarbeiten entfielen."}, {"stelle": "bericht_hindernis.23", "art": "aussage", "unser": "Das Kommunikationstraining war online nicht realisierbar und wurde durch ein Lehrvideo nur teilweise kompensiert."}, {"stelle": "bericht_hindernis.24", "art": "aussage", "unser": "Für einige Teilnehmende unterschieden sich die Familienkonferenzen nicht von üblichen Hausarztbesuchen. Teils wurden die Datenerhebungen der Studie als die eigentliche Intervention wahrgenommen."}, {"stelle": "bericht_hindernis.25", "art": "aussage", "unser": "Patientinnen, Patienten und Angehörige konnten Vorschläge zum Absetzen oder Reduzieren der Medikation oft fachlich nicht beurteilen und vertrauten auf die hausärztliche Einschätzung."}, {"stelle": "bericht_hindernis.26", "art": "aussage", "unser": "Die Terminfindung war teilweise schwierig. Einige Hausärztinnen und Hausärzte hielten Familienkonferenzen in der Regelversorgung für nicht machbar und zu aufwendig."}, {"stelle": "bericht_hindernis.27", "art": "aussage", "unser": "Die pharmakologische Hotline wurde im Studienverlauf achtmal und damit laut Bericht kaum genutzt, da wenig Bedarf gesehen wurde."}, {"stelle": "bericht_hindernis.28", "art": "aussage", "unser": "In der Pilotierung konnten wegen des Gesundheitszustands der Patientinnen und Patienten in einigen Fällen nur Angehörige Auskunft geben."}, {"stelle": "bericht_hindernis.29", "art": "aussage", "unser": "In der Prozessevaluation waren gemeinsame Interviews mit Patienten-Angehörigen-Dyaden oft nicht realisierbar. Die Telefoninterviews wurden daher auch getrennt geführt."}]};
 const ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
 const MAIL = "info@m-vf.de";
 
 /* Die Korrekturfelder erscheinen erst, wenn jemand widerspricht. Eine
    Seite mit hundert offenen Feldern sieht nach Arbeit aus, und dann
-   antwortet niemand. */
-document.querySelectorAll('.p').forEach(sec => {
-  sec.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener('change', () => {
-      const korr = sec.querySelector('.korr');
-      if (korr) korr.hidden = r.value !== 'nein';
-    });
-  });
-});
+   antwortet niemand.
+
+   Die Radioknoepfe stehen versteckt im Markup und werden hier gesetzt;
+   sammeln() liest sie unveraendert weiter. Ein zweiter Klick nimmt den
+   Widerspruch zurueck - sonst waere ein Fehlklick nur noch durch Neuladen
+   zu beheben, und das wirft alles Eingetippte weg. */
+function widersprechen(b) {
+  const sec = b.closest('.p');
+  const an = b.dataset.an !== '1';
+  b.dataset.an = an ? '1' : '';
+  const r = sec.querySelector(`input[value="${an ? 'nein' : 'ok'}"]`);
+  if (r) r.checked = true;
+  const korr = sec.querySelector('.korr');
+  if (korr) korr.hidden = !an;
+  sec.classList.toggle('bestritten', an);
+  b.textContent = an ? 'doch, stimmt' : 'stimmt nicht';
+  if (an) {
+    const f = korr && korr.querySelector('textarea, select');
+    if (f) f.focus();
+  }
+  knopfText();
+}
+
+/* Der Knopf sagt, was er tut. Wer drei Dinge bemaengelt hat, sieht an
+   ihm, dass sie angekommen sind - und wer nichts bemaengelt hat, sieht,
+   dass "senden" hier Zustimmung heisst und nicht bloss Abgabe. */
+function knopfText() {
+  const k = document.getElementById('senden');
+  if (!k || k.disabled || k.dataset.fertig === '1') return;
+  const n = document.querySelectorAll(
+    '.p input[value="nein"]:checked').length;
+  k.textContent = n === 0
+    ? 'Alles stimmt – freigeben und senden'
+    : (n === 1 ? 'Mit 1 Korrektur senden' : `Mit ${n} Korrekturen senden`);
+}
+
+document.querySelectorAll('.p .nein').forEach(
+  b => b.addEventListener('click', () => widersprechen(b)));
+knopfText();
 
 function sammeln() {
   const k = [];
