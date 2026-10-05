@@ -506,6 +506,9 @@ ul.punkte li{margin-bottom:5px}
   background:#f1faf7;font-size:.94em;border-radius:0 3px 3px 0}
 .pl-komm-kopf{font-weight:600;color:#0a7d6b;font-size:.86em;
   text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+/* Der Name bleibt in normaler Schreibung - in Versalien liest er sich
+   wie eine Rubrik, nicht wie der Mensch, der uns geantwortet hat. */
+.pl-komm-wer{text-transform:none;letter-spacing:0;font-weight:500}
 blockquote{margin:6px 0 0;padding:7px 12px;border-left:3px solid var(--linie);
   color:var(--gedaempft);font-size:13.5px;background:var(--bg);border-radius:0 7px 7px 0}
 blockquote .seite{font-size:12px;opacity:.8}
@@ -5143,7 +5146,8 @@ function plKommentar(h) {
   const wer = [h.kommentar_von, h.kommentar_am].filter(Boolean)
                 .map(esc).join(', ');
   return `<div class="pl-komm"><div class="pl-komm-kopf">Kommentar der
-    Projektleitung${wer ? ' · ' + wer : ''}</div>${esc(h.kommentar)}</div>`;
+    Projektleitung${wer ? `<span class="pl-komm-wer"> · ${wer}</span>`
+    : ''}</div>${esc(h.kommentar)}</div>`;
 }
 
 function statusblock(p) {
