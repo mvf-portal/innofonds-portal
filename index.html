@@ -2638,8 +2638,95 @@ const pWort = p => p < 0.0001 ? 'p < 0,0001'
   : 'p = ' + p.toLocaleString('de-DE', {minimumFractionDigits: 4,
                                         maximumFractionDigits: 4});
 
-function dossierRechnen(frage) {
-  const treffer = suche(frage, {}).map(t => t.p)
+/* kohorte: wer gefragt ist. Ohne Angabe sucht die Funktion selbst -
+   mit Angabe rechnet sie ueber einen fertigen Bestand, etwa alle
+   beschiedenen Vorhaben. So gibt es nur EINE Rechnung. */
+/* Die Hindernis-Tabelle. Sie steht in zwei Antworten - der
+   Themenbilanz und der Frage nach dem Scheitern - und darf deshalb
+   nur einmal existieren. */
+function grundTabelle(d) {
+  const pz = x => Math.round(x * 100) + ' %';
+  const tab = d.gruende.filter(g => g.n >= 3).slice(0, 10);
+  if (!tab.length) return '';
+  return `<div class="huelle"
+    style="max-height:none"><table id="do-gtab"><thead><tr>
+    <th>belegtes Hindernis</th><th class="zahl">mit Empfehlung</th>
+    <th class="zahl">ohne</th><th class="zahl">Unterschied</th>
+    <th class="zahl">p</th></tr></thead><tbody>${tab.map(g => `<tr
+    class="p-zeile" data-k="${esc(g.k)}">
+    <td>${esc(g.k)}</td>
+    <td class="zahl">${g.a} von ${d.mit.length}${g.mitQ != null
+      ? ' · ' + pz(g.mitQ) : ''}</td>
+    <td class="zahl">${g.c} von ${d.ohne.length}${g.ohneQ != null
+      ? ' · ' + pz(g.ohneQ) : ''}</td>
+    <td class="zahl">${g.mitQ != null && g.ohneQ != null
+      ? (g.ohneQ - g.mitQ >= 0 ? '+' : '')
+        + Math.round((g.ohneQ - g.mitQ) * 100) + ' Pp.' : '–'}</td>
+    <td class="zahl${g.p < 0.05 ? ' id-traegt' : ''}">${
+      pWort(g.p).replace('p = ', '').replace('p < ', '&lt; ')}</td>
+    </tr>`).join('')}</tbody></table></div>
+    <div id="do-grund"></div>
+    <p class="hinweis">Gezählt sind nur Hindernisse, deren Zuordnung im
+    Beschlusstext belegt ist: Jede Zuordnung wurde einzeln gegen ihr
+    Zitat geprüft, 12,6 Prozent hielten der Prüfung nicht stand und sind
+    hier nicht mitgezählt. „Pp." ist der Abstand in Prozentpunkten,
+    positiv heißt: häufiger bei den Vorhaben ohne Empfehlung.</p>`;
+}
+
+/* Woran Vorhaben scheitern - gefragt nach dem ganzen Bestand, nicht
+   nach einem Thema. "Warum scheitern Projekte beim Transfer in die
+   Regelversorgung?" meint nicht die zwanzig Vorhaben, die das Wort
+   Transfer fuehren, sondern die 321, die keine Empfehlung bekamen. */
+function antwortScheitern() {
+  const alle = P.filter(p => p.vf !== 'Medizinische Leitlinien'
+                             && p.st === 'beendet' && p.te);
+  const d = dossierRechnen('alle beschiedenen Vorhaben', alle);
+  if (!d) return '';
+  const pz = x => Math.round(x * 100) + ' %';
+  const trennend = d.gruende.filter(g => g.p < 0.05 && g.n >= 3);
+  const erste = trennend[0];
+  return `<div class="amzug">
+    <h3 style="margin-top:0">Woran Vorhaben scheitern</h3>
+    <div class="rueckfrage"><b>Ich habe Ihre Frage so gelesen:</b>
+      nicht nach einem Thema, sondern nach dem ganzen Bestand &ndash;
+      <b>${d.ohne.length} Vorhaben ohne Empfehlung</b> gegen
+      ${d.mit.length} mit. Stimmt das?
+      <div class="andere">
+        <button class="chip" id="do-roh">die Frage wörtlich suchen</button>
+      </div></div>
+    <div class="kacheln">
+      <div class="kachel"><div class="gross">${d.beendet.length}</div>
+        <div class="was">abgeschlossen und beschieden</div></div>
+      <div class="kachel"><div class="gross">${d.mit.length}</div>
+        <div class="was">mit Empfehlung, ${pz(d.quote)}</div></div>
+      <div class="kachel"><div class="gross">${d.ohne.length}</div>
+        <div class="was">ohne Empfehlung</div></div>
+      <div class="kachel"><div class="gross">${trennend.length}</div>
+        <div class="was">Hindernisse trennen die Gruppen</div></div>
+    </div>
+    ${erste ? `<p><b>Was die beiden Gruppen unterscheidet.</b>
+      ${trennend.length} Merkmale trennen sie, allen voran
+      <b>${esc(erste.k)}</b>: bei ${erste.c} von ${d.ohne.length}
+      Vorhaben ohne Empfehlung belegt, bei ${erste.a} von
+      ${d.mit.length} mit (${pWort(erste.p)}).</p>`
+      : `<p><b>Kein Hindernis trennt die beiden Gruppen.</b></p>`}
+    <p class="hinweis">Gelesen wird die Tabelle von oben: Je weiter
+      oben, desto deutlicher unterscheidet das Hindernis die beiden
+      Gruppen. Ein negativer Abstand heißt, dass es bei den Vorhaben
+      MIT Empfehlung häufiger belegt ist &ndash; daran scheitert
+      niemand.</p>
+    ${grundTabelle(d)}
+    <p class="hinweis"><b>Was diese Zahlen nicht sagen.</b> Sie zeigen,
+      welche Hindernisse im Beschluss eines Vorhabens stehen, das keine
+      Empfehlung bekam &ndash; nicht, dass dieses Hindernis der Grund
+      war. Der Innovationsausschuss entscheidet auch nach
+      Versorgungsrelevanz, Umsetzbarkeit und Stellungnahmen. Die
+      Begründung des einzelnen Beschlusses steht im Eintrag des
+      Vorhabens.</p></div>`;
+}
+
+function dossierRechnen(frage, kohorte) {
+  const treffer = (kohorte || suche(frage, {}).map(t => t.p))
     .filter(p => p.vf !== 'Medizinische Leitlinien');
   if (!treffer.length) return null;
   const beendet = treffer.filter(p => p.st === 'beendet');
@@ -3161,6 +3248,18 @@ function dossierZeichnen() {
     if (art === 'bilanz') {
       ziel.innerHTML = antwortBilanz(); doThema = null; return;
     }
+    /* "Warum scheitern Projekte beim Transfer in die
+       Regelversorgung?" ist keine Themenfrage. Verlangt sind beide
+       Teile: das Scheitern UND der Transfer - sonst faenge die Regel
+       auch "Woran scheitern Telemedizin-Vorhaben?", und das ist eine
+       Themenfrage. */
+    if (/(warum|woran|weshalb|wieso|wodurch)/.test(norm(roh))
+        && /(scheiter|gescheitert|abgelehnt|misslang|misserfolg)/
+             .test(norm(roh))
+        && /(transfer|regelversorgung|uberfuhrung|uberfuhrt|regelbetrieb|empfehlung)/
+             .test(ohneStrich(norm(roh)))) {
+      ziel.innerHTML = antwortScheitern(); doThema = null; return;
+    }
     /* Eine Frage nach Geld oder Dauer, die zugleich ein Thema nennt,
        ist eine Themenfrage: Das Dossier weist Fördervolumen und
        Wartezeit ohnehin aus. Verwiesen wird nur, wenn kein Thema
@@ -3245,31 +3344,7 @@ function dossierZeichnen() {
       mit (${pWort(erste.p)}).</p>`;
   }
 
-  const tab = d.gruende.filter(g => g.n >= 3).slice(0, 10);
-  const grundTab = tab.length ? `<div class="huelle"
-    style="max-height:none"><table id="do-gtab"><thead><tr>
-    <th>belegtes Hindernis</th><th class="zahl">mit Empfehlung</th>
-    <th class="zahl">ohne</th><th class="zahl">Unterschied</th>
-    <th class="zahl">p</th></tr></thead><tbody>${tab.map(g => `<tr
-    class="p-zeile" data-k="${esc(g.k)}">
-    <td>${esc(g.k)}</td>
-    <td class="zahl">${g.a} von ${d.mit.length}${g.mitQ != null
-      ? ' · ' + pz(g.mitQ) : ''}</td>
-    <td class="zahl">${g.c} von ${d.ohne.length}${g.ohneQ != null
-      ? ' · ' + pz(g.ohneQ) : ''}</td>
-    <td class="zahl">${g.mitQ != null && g.ohneQ != null
-      ? (g.ohneQ - g.mitQ >= 0 ? '+' : '')
-        + Math.round((g.ohneQ - g.mitQ) * 100) + ' Pp.' : '–'}</td>
-    <td class="zahl${g.p < 0.05 ? ' id-traegt' : ''}">${
-      pWort(g.p).replace('p = ', '').replace('p < ', '&lt; ')}</td>
-    </tr>`).join('')}</tbody></table></div>
-    <div id="do-grund"></div>
-    <p class="hinweis">Gezählt sind nur Hindernisse, deren Zuordnung im
-    Beschlusstext belegt ist: Jede Zuordnung wurde einzeln gegen ihr
-    Zitat geprüft, 12,6 Prozent hielten der Prüfung nicht stand und sind
-    hier nicht mitgezählt. „Pp." ist der Abstand in Prozentpunkten,
-    positiv heißt: häufiger bei den Vorhaben ohne Empfehlung.</p>` : '';
-
+  const grundTab = grundTabelle(d);
   const belege = trennend.length
     ? dossierBelege(d, trennend[0].k, 5) : [];
   const belegHtml = belege.length ? `<h4>Wie das in den Beschlüssen klingt</h4><p class="hinweis">Je Vorhaben ein Beleg, aus den
@@ -3824,6 +3899,9 @@ const DO_VORSCHLAEGE = [
    'sektorenübergreifend'],
   ['Was wurde für Kinder und Jugendliche erprobt?', 'Kinder'],
   ['Wirkt Palliativversorgung nachweisbar?', 'Palliativ'],
+  /* Diese Frage hat kein Thema: Sie wird zur Bestandsauswertung
+     (antwortScheitern) und steht deshalb mit leerem Sollwert. */
+  ['Warum scheitern Projekte beim Transfer in die Regelversorgung?', ''],
 ];
 document.getElementById('do-vorschlaege').innerHTML = DO_VORSCHLAEGE.map(
   ([frage]) => `<button class="chip" data-f="${esc(frage)}">${
