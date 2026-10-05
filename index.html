@@ -303,6 +303,20 @@ button.zu:hover{background:var(--weich);color:var(--text);
   background:var(--flaeche);border-radius:999px;padding:3px 11px;
   font:inherit;font-size:13px;color:var(--text);margin:0 6px 4px 0}
 .rueckfrage .chip:hover{border-color:var(--akzent);background:var(--flaeche)}
+details.fragekasten{margin:22px 0 0;padding:0;border:1px solid var(--linie);
+  border-radius:8px;background:var(--weich)}
+details.fragekasten>summary{padding:10px 14px;cursor:pointer;font-weight:600}
+details.fragekasten>p,details.fragekasten>label,
+details.fragekasten>button{margin:0 14px 10px;display:block;max-width:70ch}
+details.fragekasten label{font-weight:600;font-size:.94em}
+details.fragekasten textarea,details.fragekasten input{display:block;
+  width:100%;max-width:62ch;margin-top:4px;padding:7px 9px;
+  border:1px solid var(--linie);border-radius:6px;font:inherit;
+  font-weight:400}
+details.fragekasten button{margin-bottom:14px}
+#do-vorschlaege .chip.gewaehlt{border-color:var(--gold);
+  background:var(--gold);color:#fff}
+p.fa-frage{color:var(--grau);margin:0 0 12px;max-width:72ch}
 #do-vorschlaege .chip{cursor:pointer;border:1px solid var(--linie);
   background:var(--flaeche);border-radius:999px;padding:5px 13px;
   font:inherit;font-size:13px;color:var(--text);margin:0 6px 6px 0}
@@ -1313,18 +1327,36 @@ Projektverantwortlichen geprüft.">Beta</span></h1>
     bei uns in der Redaktion, weil jede Abfrage Rechenkosten auslöst.
     Was Sie hier sehen, bleibt kostenlos und ohne Anmeldung.</p>
   </details>
-  <div class="werkzeuge do-frage">
-    <input type="search" id="do-q" autocomplete="off"
-           placeholder="Ihre Frage oder ein Stichwort, zum Beispiel: In welchen Projekten wurden Apps eingesetzt und wie werden sie bewertet?">
-    <button id="do-los" class="gold">Antwort zeigen</button>
-  </div>
-  <p class="hinweis" style="margin:2px 0 6px">Sie können eine ganze Frage
-    stellen. Das Portal sagt Ihnen, wie es die Frage gelesen hat, und Sie
-    können die Lesart ändern, wenn sie nicht stimmt. Oder Sie klicken
-    eine dieser Fragen an, die sich sonst nur beantworten ließen, indem
-    man hunderte Beschlüsse und Berichte nebeneinanderlegt.</p>
+  <!-- Das Suchfeld ist am 05.10.2026 entfallen. Es versprach, eine
+       ganze Frage zu verstehen, und riet in Wahrheit ein Stichwort
+       aus dem Satz: "beim", "Antrag", "Woran", "abgelehnt". Jede
+       Reparatur schloss einen Fall und liess den naechsten offen. -->
+  <p class="hinweis" style="margin:2px 0 10px">Diese Fragen ließen sich
+    sonst nur beantworten, indem man hunderte Beschlüsse und Berichte
+    nebeneinanderlegt. Jede Antwort rechnet in Ihrem Browser, aus den
+    Belegen dieses Portals – kostenlos, ohne Anmeldung.</p>
   <div id="do-vorschlaege" class="chips"></div>
+  <input type="hidden" id="do-q">
   <div id="do-ergebnis"></div>
+
+  <!-- Fuer alles, was nicht unter den fuenfzehn steht. Die Frage geht
+       an denselben Endpunkt wie die Rueckmeldungen der Pruefseiten. -->
+  <details class="fragekasten">
+    <summary>Ihre Frage steht nicht dabei?</summary>
+    <p>Schreiben Sie sie hier hinein. Wir lesen jede Frage und
+      antworten, so schnell wir können. Wenn sie sich aus den Daten
+      dieses Portals beantworten lässt, nehmen wir sie als feste
+      Auswertung auf – dann steht die Antwort künftig für alle da.</p>
+    <label>Ihre Frage
+      <textarea id="fk-text" rows="4"
+        placeholder="Zum Beispiel: Wie viele Vorhaben zur Pflege hatten eine Kontrollgruppe?"></textarea></label>
+    <label>Ihre E-Mail-Adresse <span class="hinweis">– nur dafür, dass
+      die Antwort Sie erreicht</span>
+      <input type="email" id="fk-mail" autocomplete="email"
+             placeholder="name@einrichtung.de"></label>
+    <button id="fk-senden" class="gold">Frage absenden</button>
+    <p class="hinweis" id="fk-stand"></p>
+  </details>
 
   <div class="zweiteSuche">
     <h3>Einzelne Vorhaben finden</h3>
@@ -2892,7 +2924,18 @@ const FRAGEWORT = new Set(('projekt projekte projekten projektes vorhaben '
   + 'bewerbung ausschreibung forderrunde welle runde '
   /* Praepositionen mit angehaengtem Artikel. Sie stehen nicht in
      FUELLWORT, sind aber genauso leer. */
-  + 'beim vorm hinterm uberm unterm ans ins aufs furs').split(' '));
+  + 'beim vorm hinterm uberm unterm ans ins aufs furs '
+  /* Die Frageworte selbst. "Woran scheitern Projekte meistens?" wurde
+     zum Thema "Woran" (1 Vorhaben): Das Wort steht fast nirgends, und
+     die Rangfolge nimmt das seltenste. */
+  + 'woran warum weshalb wieso wodurch wofur womit worauf worin '
+  + 'meistens meist oft haufig haufigsten selten eigentlich '
+  + 'uberhaupt denn etwa jemals bisher '
+  /* Das Scheitern selbst. "Warum werden Projekte abgelehnt?" wurde
+     sonst zum Thema "abgelehnt" - das Wort, mit dem die Frage nach
+     dem Grund fragt, galt als die Sache, nach der gefragt wird. */
+  + 'abgelehnt ablehnung abgewiesen misslungen misserfolg erfolglos '
+  + 'gescheiterte scheiterten').split(' '));
 
 /* Eine Frage zerlegen. Anders als woerter() trennt das auch an
    Bindestrichen: "Telemedizin-Vorhaben" ist sonst ein Wort, das im
@@ -3248,17 +3291,25 @@ function dossierZeichnen() {
     if (art === 'bilanz') {
       ziel.innerHTML = antwortBilanz(); doThema = null; return;
     }
-    /* "Warum scheitern Projekte beim Transfer in die
-       Regelversorgung?" ist keine Themenfrage. Verlangt sind beide
-       Teile: das Scheitern UND der Transfer - sonst faenge die Regel
-       auch "Woran scheitern Telemedizin-Vorhaben?", und das ist eine
-       Themenfrage. */
+    /* Fragt jemand nach dem Scheitern, entscheidet sich die Antwort
+       daran, ob die Frage ein Thema nennt. "Woran scheitern
+       Telemedizin-Vorhaben?" nennt eines und bleibt eine
+       Themenbilanz; "Woran scheitern Projekte meistens?" nennt
+       keines und meint den ganzen Bestand.
+
+       Der Transfer in die Regelversorgung ist die Ausnahme: "Transfer"
+       ginge als Thema durch (20 Vorhaben fuehren das Wort), gefragt
+       sind aber die 321 ohne Empfehlung. */
     if (/(warum|woran|weshalb|wieso|wodurch)/.test(norm(roh))
         && /(scheiter|gescheitert|abgelehnt|misslang|misserfolg)/
-             .test(norm(roh))
-        && /(transfer|regelversorgung|uberfuhrung|uberfuhrt|regelbetrieb|empfehlung)/
-             .test(ohneStrich(norm(roh)))) {
-      ziel.innerHTML = antwortScheitern(); doThema = null; return;
+             .test(norm(roh))) {
+      const t = themaAusFrage(roh);
+      const transfer =
+        /(transfer|regelversorgung|uberfuhrung|uberfuhrt|regelbetrieb)/
+          .test(ohneStrich(norm(roh)));
+      if (transfer || !t || !t.erkannt) {
+        ziel.innerHTML = antwortScheitern(); doThema = null; return;
+      }
     }
     /* Eine Frage nach Geld oder Dauer, die zugleich ein Thema nennt,
        ist eine Themenfrage: Das Dossier weist Fördervolumen und
@@ -3878,12 +3929,16 @@ function ampel(tabelle, ...schluessel) {
 /* Fragen statt Stichworte. Ein Stichwort verlangt, dass jemand schon
    weiss, was er sucht; eine Frage zeigt, was hier ueberhaupt zu holen
    ist. Jede dieser Fragen kostet einen Menschen sonst Tage. */
-/* Die zweite Spalte ist der SOLLWERT, nicht die Abkuerzung: Was
-   themaAusFrage() aus der Frage macht, soll dem entsprechen. Bis zum
-   05.10.2026 setzte der Klick dieses Wort direkt ins Suchfeld und
-   umging die Deutung - die Beispielfragen funktionierten dadurch
-   immer, getippte Fragen nicht, und niemand konnte den Unterschied
-   sehen. Stand der Messung: 11 von 12. */
+/* Die fertigen Fragen. Die zweite Spalte sagt, was sie beantwortet:
+   ein Stichwort fuer eine Themenbilanz, oder der Name einer eigenen
+   Auswertung.
+
+   Seit dem 05.10.2026 gibt es keine freie Frage mehr. Die Deutung
+   einer getippten Frage war eine Heuristik, die aus einem Satz ein
+   Stichwort riet, und sie wurde nie fertig: "beim", "Antrag",
+   "Woran", "abgelehnt", "bekommen" - jedes Mal ein Wort, das keine
+   Sache benennt. Wer etwas anderes wissen will, schreibt es in den
+   Kasten darunter. */
 const DO_VORSCHLAEGE = [
   ['Was wurde aus den Lotsenprojekten?', 'Lotsen'],
   ['Woran scheitern Telemedizin-Vorhaben?', 'Telemedizin'],
@@ -3899,26 +3954,45 @@ const DO_VORSCHLAEGE = [
    'sektorenübergreifend'],
   ['Was wurde für Kinder und Jugendliche erprobt?', 'Kinder'],
   ['Wirkt Palliativversorgung nachweisbar?', 'Palliativ'],
-  /* Diese Frage hat kein Thema: Sie wird zur Bestandsauswertung
-     (antwortScheitern) und steht deshalb mit leerem Sollwert. */
-  ['Warum scheitern Projekte beim Transfer in die Regelversorgung?', ''],
+  ['Warum scheitern Projekte beim Transfer in die Regelversorgung?',
+   antwortScheitern],
+  ['Wie lange dauert es bis zur Entscheidung?', faWartezeit],
+  ['Wie viel Geld steckt im Innovationsfonds?', faGeld],
+  ['Wie hat sich die Förderung entwickelt?', faJahre],
+  ['Wie groß sind die Konsortien?', faKonsortien],
+  ['Was wird in den Vorhaben eigentlich gemessen?', faGemessen],
+  ['Wie oft zeigt sich überhaupt ein Effekt?', faEffekte],
+  ['Wird die geplante Fallzahl erreicht?', faFallzahl],
+  ['Welche Probleme hat die Pandemie ausgelöst?', faPandemie],
+  ['Welche Themen haben die beste Bilanz?', faThemen],
+  ['Was wurde aus den empfohlenen Vorhaben?', faEmpfohlen],
+  ['Wer forscht am meisten?', () => antwortEinrichtungen('')],
+  ['Wo im Land wird geforscht?', antwortLaender],
+  ['Wie steht der Innovationsfonds insgesamt da?', antwortBilanz],
+  ['Worauf beruht das alles?', faGrundlage],
 ];
 document.getElementById('do-vorschlaege').innerHTML = DO_VORSCHLAEGE.map(
-  ([frage]) => `<button class="chip" data-f="${esc(frage)}">${
+  ([frage], i) => `<button class="chip" data-i="${i}">${
     esc(frage)}</button>`).join('');
 document.querySelectorAll('#do-vorschlaege button').forEach(b => b.onclick = () => {
-  /* Die FRAGE ins Feld, nicht ihr Stichwort. Der Knopf nimmt damit
-     denselben Weg wie eine getippte Frage - samt der Rueckfrage
-     "Ich habe Ihre Frage so gelesen", die der Leser korrigieren
-     kann. */
-  document.getElementById('do-q').value = b.dataset.f;
-  doWahl = null;
-  doRoh = false;
-  dossierZeichnen();
-});
-document.getElementById('do-los').onclick = dossierZeichnen;
-document.getElementById('do-q').addEventListener('keydown', ev => {
-  if (ev.key === 'Enter') dossierZeichnen();
+  const [frage, was] = DO_VORSCHLAEGE[+b.dataset.i];
+  const ziel = document.getElementById('do-ergebnis');
+  document.querySelectorAll('#do-vorschlaege button')
+    .forEach(x => x.classList.toggle('gewaehlt', x === b));
+  if (typeof was === 'function') {
+    /* Eine eigene Auswertung - sie rechnet selbst. */
+    doThema = null;
+    ziel.innerHTML = was();
+  } else {
+    /* Eine Themenbilanz ueber das hinterlegte Stichwort. Gedeutet
+       wird nichts: Das Stichwort steht fest. */
+    document.getElementById('do-q').value = was;
+    doWahl = null;
+    doRoh = true;
+    dossierZeichnen();
+    doRoh = false;
+  }
+  ziel.scrollIntoView({block: 'nearest', behavior: 'smooth'});
 });
 
 /* ---------- Ideencheck ----------
@@ -5490,6 +5564,405 @@ const ERGKLAR = {
     <div class="links"><a href="${BASIS}${p.url}" target="_blank"
       rel="noopener">Projektseite beim GBA</a>${dok ? ' · ' + dok : ''}
       · <a href="${meldeLink(p)}">Angabe korrigieren</a></div></div>`;
+}
+
+
+/* Der Fragekasten. Er schickt an den Korrektur-Endpunkt der
+   Pruefseiten - denselben Weg, dieselbe Pruefung, kein zweiter
+   Server. Die Kennung FRAGE-OEFFENTLICH steht in kennungen.txt und
+   gehoert zu keinem Vorhaben; if_abholen.py erkennt sie daran und
+   legt die Einsendung als Frage ab, nicht als Korrektur. */
+(() => {
+  const knopf = document.getElementById('fk-senden');
+  if (!knopf) return;
+  knopf.onclick = async () => {
+    const text = document.getElementById('fk-text').value.trim();
+    const mail = document.getElementById('fk-mail').value.trim();
+    const stand = document.getElementById('fk-stand');
+    if (text.length < 10) {
+      stand.textContent = 'Bitte schreiben Sie Ihre Frage etwas ausführlicher.';
+      return;
+    }
+    knopf.disabled = true;
+    stand.textContent = 'Wird gesendet …';
+    try {
+      const r = await fetch(
+        /* Die ausgeschriebene Adresse, nicht m-vf.de: Die Kurzform
+           antwortet auf POST mit 301, und ein Browser macht aus einem
+           umgeleiteten POST ein GET. Der Endpunkt saehe dann nie eine
+           Einsendung. Gemessen am 26.09.2026. */
+        'https://www.monitor-versorgungsforschung.de'
+        + '/innofonds-korrektur/innofonds-korrektur.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          kennung: 'FRAGE-OEFFENTLICH',
+          absender: mail,
+          korrekturen: [{stelle: 'frage', art: 'frage', richtig: text}],
+        }),
+      });
+      if (!r.ok) throw new Error(r.status);
+      stand.innerHTML = '<b>Danke – Ihre Frage ist angekommen.</b>'
+        + (mail ? ' Wir melden uns bei Ihnen.'
+                : ' Ohne Adresse können wir nicht antworten; die Frage'
+                  + ' fließt aber in die nächste Auswertung ein.');
+      document.getElementById('fk-text').value = '';
+    } catch (e) {
+      stand.innerHTML = 'Das Absenden hat nicht geklappt. Schreiben Sie'
+        + ' uns bitte an <a href="mailto:info@m-vf.de?subject=Frage%20an'
+        + '%20Innofonds-Wissen">info@m-vf.de</a>.';
+      knopf.disabled = false;
+    }
+  };
+})();
+
+/* ---------- Die fertigen Antworten ----------
+   Jede rechnet aus den Daten, die ohnehin auf der Seite liegen. Keine
+   eingetippten Zahlen: Was hier steht, stimmt bei jedem Datenstand.
+
+   Gemeinsame Hilfen stehen oben, damit die Antworten gleich aussehen
+   und gleich rechnen. */
+
+const faZahl = n => (n == null ? '–' : n.toLocaleString('de-DE'));
+const faPz = x => (x == null ? '–' : Math.round(x * 100) + ' %');
+const faMedian = a => {
+  const b = a.slice().sort((x, y) => x - y);
+  return b.length ? b[Math.floor(b.length / 2)] : null;
+};
+/* Die Grundmenge: ohne Leitlinienvorhaben. Sie bekommen ausnahmslos
+   eine Pruefbitte und heben jede Quote, ohne dass eine Versorgung
+   besser geworden waere. */
+const faVF = () => P.filter(p => p.vf !== 'Medizinische Leitlinien');
+const faBeschieden = () => faVF().filter(p => p.st === 'beendet' && p.te);
+
+function faKopf(titel, frage, kacheln) {
+  return `<div class="amzug"><h3 style="margin-top:0">${esc(titel)}</h3>
+    <p class="fa-frage">${esc(frage)}</p>
+    <div class="kacheln">${kacheln.map(([gross, was]) =>
+      `<div class="kachel"><div class="gross">${gross}</div>
+       <div class="was">${was}</div></div>`).join('')}</div>`;
+}
+function faTabelle(kopf, zeilen) {
+  if (!zeilen.length) return '';
+  return `<div class="huelle" style="max-height:none"><table><thead><tr>${
+    kopf.map((k, i) => `<th${i ? ' class="zahl"' : ''}>${k}</th>`).join('')
+  }</tr></thead><tbody>${zeilen.map(z => `<tr>${
+    z.map((x, i) => `<td${i ? ' class="zahl"' : ''}>${x}</td>`).join('')
+  }</tr>`).join('')}</tbody></table></div>`;
+}
+/* Was eine Antwort NICHT sagt. Jede fertige Antwort traegt diesen
+   Satz, weil eine Zahl ohne ihre Grenze eine halbe Auskunft ist. */
+function faGrenze(text) {
+  return `<p class="hinweis"><b>Was diese Zahlen nicht sagen.</b> ${text}</p>`;
+}
+
+function faWartezeit() {
+  const be = faBeschieden();
+  const w = be.map(p => {
+    const e = /^(\d{4})-(\d{2})$/.exec(p.bis || '');
+    const b = /^(\d{4})-(\d{2})/.exec(p.bd || '');
+    return e && b ? {p, m: (+b[1] - +e[1]) * 12 + (+b[2] - +e[2])} : null;
+  }).filter(x => x && x.m >= 0);
+  const med = faMedian(w.map(x => x.m));
+  const lang = w.filter(x => x.m >= 24).length;
+  const spitze = w.slice().sort((a, b) => b.m - a.m).slice(0, 8);
+  return faKopf('Wie lange dauert es bis zur Entscheidung?',
+    'Vom Ende eines Vorhabens bis zum Beschluss des Innovationsausschusses.',
+    [[faZahl(med) + ' Monate', 'im Median'],
+     [faZahl(w.length), 'Vorhaben mit beiden Daten'],
+     [faZahl(lang), 'warteten zwei Jahre oder länger'],
+     [faZahl(Math.max(...w.map(x => x.m))) + ' Monate', 'am längsten']])
+    + `<p>Die Hälfte aller Vorhaben wartet länger als ${med} Monate auf
+       die Entscheidung über ihre Zukunft. In dieser Zeit laufen
+       Verträge aus, Personal wechselt, und die Versorgungsform, über
+       die entschieden wird, besteht vielfach nicht mehr.</p>`
+    + faTabelle(['Vorhaben', 'Projektende', 'Beschluss', 'Monate'],
+        spitze.map(x => [`<b>${esc(x.p.akr)}</b>`, datum(x.p.bis),
+                         datum(x.p.bd), x.m]))
+    + faGrenze(`Gezählt ist der Abstand zwischen dem im Portal
+       hinterlegten Projektende und dem Datum des Beschlusses. Bei
+       Vorhaben mit Verlängerung kann das tatsächliche Ende später
+       liegen.</p>`) + '</div>';
+}
+
+function faGeld() {
+  const vf = faVF();
+  const summe = vf.reduce((s, p) => s + (p.sum || 0), 0);
+  const med = faMedian(vf.map(p => p.sum || 0).filter(x => x > 0));
+  const gross = vf.slice().sort((a, b) => (b.sum || 0) - (a.sum || 0))
+    .slice(0, 8);
+  const be = faBeschieden();
+  const mitS = be.filter(p => UE_TE.includes(p.te))
+    .reduce((s, p) => s + (p.sum || 0), 0);
+  const ohneS = be.filter(p => !UE_TE.includes(p.te))
+    .reduce((s, p) => s + (p.sum || 0), 0);
+  return faKopf('Wie viel Geld steckt im Innovationsfonds?',
+    'Fördervolumen aller Vorhaben, ohne die Leitlinienvorhaben.',
+    [[eur(summe), 'insgesamt'],
+     [eur(med), 'im Median je Vorhaben'],
+     [faZahl(vf.length), 'Vorhaben'],
+     [eur(ohneS), 'in Vorhaben ohne Empfehlung']])
+    + `<p>Von den ${eur(mitS + ohneS)}, über die bereits entschieden
+       ist, entfallen <b>${eur(mitS)}</b> auf Vorhaben mit Empfehlung
+       und <b>${eur(ohneS)}</b> auf solche ohne. Das ist keine
+       verlorene Summe: Auch ein Vorhaben ohne Empfehlung hat
+       gemessen, was vorher niemand gemessen hatte.</p>`
+    + faTabelle(['Vorhaben', 'Titel', 'Fördersumme'],
+        gross.map(p => [`<b><a href="#p=${p.id}">${esc(p.akr)}</a></b>`,
+                        esc((p.tit || '').slice(0, 70)), eur(p.sum)]))
+    + faGrenze(`Die Fördersumme ist die bewilligte, nicht die
+       abgerufene. Wo ein Vorhaben vorzeitig endete, floss weniger.`)
+    + '</div>';
+}
+
+function faJahre() {
+  const vf = faVF();
+  const j = {};
+  vf.forEach(p => {
+    const jahr = (p.von || '').slice(0, 4);
+    if (!jahr) return;
+    j[jahr] = j[jahr] || {n: 0, s: 0};
+    j[jahr].n++; j[jahr].s += (p.sum || 0);
+  });
+  const zeilen = Object.keys(j).sort().map(x => [x, faZahl(j[x].n),
+    eur(j[x].s), eur(Math.round(j[x].s / j[x].n))]);
+  const erste = Object.keys(j).sort()[0];
+  const letzte = Object.keys(j).sort().slice(-1)[0];
+  return faKopf('Wie hat sich die Förderung entwickelt?',
+    'Vorhaben nach dem Jahr ihres Beginns.',
+    [[erste + '–' + letzte, 'Startjahre'],
+     [faZahl(vf.length), 'Vorhaben insgesamt'],
+     [faZahl(Math.max(...Object.values(j).map(x => x.n))), 'im stärksten Jahr'],
+     [faZahl(Object.keys(j).length), 'Jahrgänge']])
+    + faTabelle(['Startjahr', 'Vorhaben', 'Fördervolumen', 'je Vorhaben'],
+                zeilen)
+    + faGrenze(`Gezählt ist das Jahr des Projektbeginns, nicht das der
+       Bewilligung. Die letzten Jahrgänge sind unvollständig, weil
+       noch nicht alle Vorhaben begonnen haben.`) + '</div>';
+}
+
+function faKonsortien() {
+  const vf = faVF().filter(p => (p.pa || []).length);
+  const g = vf.map(p => (p.pa || []).length);
+  const med = faMedian(g);
+  const gross = vf.slice().sort((a, b) => (b.pa || []).length - (a.pa || []).length)
+    .slice(0, 8);
+  const allein = vf.filter(p => (p.pa || []).length === 1).length;
+  return faKopf('Wie groß sind die Konsortien?',
+    'Zahl der beteiligten Einrichtungen je Vorhaben.',
+    [[faZahl(med), 'Partner im Median'],
+     [faZahl(Math.max(...g)), 'im größten Konsortium'],
+     [faZahl(allein), 'Vorhaben mit nur einer Einrichtung'],
+     [faZahl(vf.length), 'Vorhaben mit Partnerangabe']])
+    + faTabelle(['Vorhaben', 'Titel', 'Partner'],
+        gross.map(p => [`<b><a href="#p=${p.id}">${esc(p.akr)}</a></b>`,
+                        esc((p.tit || '').slice(0, 64)), (p.pa || []).length]))
+    + faGrenze(`Gezählt sind die Einrichtungen, die in der
+       Projektdatenbank als Partner geführt werden. Wer nur eine
+       Leistung zuliefert, steht dort nicht immer.`) + '</div>';
+}
+
+function faGemessen() {
+  const fam = {};
+  EP.forEach(e => { if (e.f) fam[e.f] = (fam[e.f] || 0) + 1; });
+  const sort = Object.entries(fam).sort((a, b) => b[1] - a[1]);
+  const bew = EP.filter(e => e.g != null);
+  return faKopf('Was wird in den Vorhaben eigentlich gemessen?',
+    'Alle ausgewerteten Endpunkte, nach Familien geordnet.',
+    [[faZahl(EP.length), 'Endpunkte insgesamt'],
+     [faZahl(sort.length), 'Familien'],
+     [faZahl(new Set(EP.map(e => e.p)).size), 'Vorhaben mit Endpunkten'],
+     [faZahl(bew.length), 'mit bewertetem Ergebnis']])
+    + `<p>Ein Bericht nennt seine Endpunkte in eigenen Worten.
+       „Krankenhausaufenthalte insgesamt“, „Stationäre
+       Behandlungstage“ und „Zahl der stationären Aufenthalte“ stehen
+       so in drei Berichten und meinen dasselbe. Erst die Zuordnung zu
+       einer Familie macht sichtbar, wie viele Vorhaben dieselbe Sache
+       gemessen haben.</p>`
+    + faTabelle(['Familie', 'Endpunkte', 'Anteil'],
+        sort.slice(0, 15).map(([k, n]) => [esc(k), faZahl(n),
+          Math.round(n / EP.length * 100) + ' %']))
+    + faGrenze(`Die Familie ist unsere Zuordnung, nicht die der
+       Berichte. Das Messinstrument bleibt in der Endpunkt-Tabelle
+       einzeln stehen.`) + '</div>';
+}
+
+function faEffekte() {
+  const bew = EP.filter(e => e.g != null);
+  const sig = bew.filter(e => e.g === 1);
+  const gegen = sig.filter(e => e.r === -1);
+  const flach = bew.filter(e => e.g === 0);
+  const fam = {};
+  bew.forEach(e => {
+    if (!e.f) return;
+    fam[e.f] = fam[e.f] || {n: 0, s: 0};
+    fam[e.f].n++; if (e.g === 1) fam[e.f].s++;
+  });
+  const zeilen = Object.entries(fam).filter(([, v]) => v.n >= 40)
+    .sort((a, b) => b[1].s / b[1].n - a[1].s / a[1].n)
+    .map(([k, v]) => [esc(k), faZahl(v.n), faZahl(v.s),
+                      Math.round(v.s / v.n * 100) + ' %']);
+  return faKopf('Wie oft zeigt sich überhaupt ein Effekt?',
+    'Alle Endpunkte, deren Ergebnis im Bericht bewertet ist.',
+    [[faZahl(bew.length), 'bewertete Endpunkte'],
+     [faPz(sig.length / bew.length), 'statistisch signifikant'],
+     [faZahl(flach.length), 'ohne nachweisbaren Unterschied'],
+     [faZahl(gegen.length), 'signifikant in die unerwünschte Richtung']])
+    + `<p>Rund die Hälfte der gemessenen Endpunkte zeigt einen
+       statistisch signifikanten Unterschied. Das ist weder gut noch
+       schlecht: Ein Vorhaben, das etwas Neues erprobt, misst
+       absichtlich auch dort, wo es scheitern kann.</p>`
+    + faTabelle(['Familie', 'bewertet', 'davon signifikant', 'Anteil'],
+                zeilen.slice(0, 12))
+    + faGrenze(`Signifikant heißt: der Unterschied ist nicht durch
+       Zufall erklärbar. Ob er für Patientinnen und Patienten spürbar
+       ist, sagt die Zahl nicht.`) + '</div>';
+}
+
+function faFallzahl() {
+  const q = Object.entries(FZ).map(([id, f]) => ({id, q: f.q, f}))
+    .filter(x => x.q != null);
+  const med = faMedian(q.map(x => x.q));
+  const unter = q.filter(x => x.q < 0.8);
+  const weit = q.slice().sort((a, b) => a.q - b.q).slice(0, 8);
+  const name = id => {
+    const p = P.find(x => String(x.id) === String(id));
+    return p ? `<b><a href="#p=${p.id}">${esc(p.akr)}</a></b>` : id;
+  };
+  return faKopf('Wird die geplante Fallzahl erreicht?',
+    'Geplante gegen tatsächlich ausgewertete Fallzahl.',
+    [[faPz(med), 'im Median erreicht'],
+     [faZahl(q.length), 'Vorhaben mit beiden Zahlen'],
+     [faZahl(unter.length), 'blieben unter 80 Prozent'],
+     [faZahl(q.filter(x => x.q >= 1).length), 'erreichten ihr Ziel']])
+    + `<p>Die Fallzahl entscheidet, ob ein Vorhaben seine Frage
+       überhaupt beantworten kann: Sie wird vorab so berechnet, dass
+       ein erwarteter Effekt sichtbar würde. Wer sie verfehlt, misst
+       nicht weniger genau, sondern riskiert, einen vorhandenen Effekt
+       nicht zu finden.</p>`
+    + faTabelle(['Vorhaben', 'geplant', 'ausgewertet', 'erreicht'],
+        weit.map(x => [name(x.id), faZahl(x.f.g), faZahl(x.f.a),
+                       faPz(x.q)]))
+    + faGrenze(`Verglichen wird die Zahl, die der Bericht als geplant
+       nennt, mit der ausgewerteten. Wo ein Vorhaben seine Planung
+       begründet geändert hat, steht der Grund in seinem Eintrag.`)
+    + '</div>';
+}
+
+function faPandemie() {
+  const be = faBeschieden();
+  const covid = be.filter(p => (p.hk || []).includes('COVID-19-Pandemie'));
+  const mit = covid.filter(p => UE_TE.includes(p.te));
+  const alle = be.filter(p => UE_TE.includes(p.te));
+  const beg = covid.filter(p => p.von && p.von < '2020-03').length;
+  return faKopf('Welche Probleme hat die Pandemie ausgelöst?',
+    'Vorhaben, deren Beschluss die Pandemie als Hindernis benennt.',
+    [[faZahl(covid.length), 'Vorhaben betroffen'],
+     [faPz(covid.length / be.length), 'aller beschiedenen Vorhaben'],
+     [faPz(mit.length / Math.max(1, covid.length)), 'davon mit Empfehlung'],
+     [faPz(alle.length / be.length), 'im Bestand mit Empfehlung']])
+    + `<p>Bei ${covid.length} von ${be.length} beschiedenen Vorhaben
+       nennt der Beschluss die Pandemie ausdrücklich als Hindernis;
+       ${beg} von ihnen hatten vor März 2020 begonnen. Ihre
+       Empfehlungsquote liegt bei
+       ${faPz(mit.length / Math.max(1, covid.length))} gegenüber
+       ${faPz(alle.length / be.length)} im Bestand.</p>`
+    + faTabelle(['Vorhaben', 'Titel', 'Ergebnis'],
+        covid.slice(0, 12).map(p => [
+          `<b><a href="#p=${p.id}">${esc(p.akr)}</a></b>`,
+          esc((p.tit || '').slice(0, 60)), marke(p)]))
+    + faGrenze(`Gezählt sind nur Vorhaben, bei denen die Pandemie im
+       Beschlusstext als Hindernis belegt ist. Wo sie ein Vorhaben
+       behinderte, ohne dass der Beschluss es erwähnt, fehlt es hier.`)
+    + '</div>';
+}
+
+function faThemen() {
+  const be = faBeschieden();
+  const alleQ = be.filter(p => UE_TE.includes(p.te)).length / be.length;
+  const zeilen = [];
+  SYN.forEach(r => {
+    const t = be.filter(p => (p._sf || '').includes(
+      ohneStrich(norm(r.name)).slice(0, 10)));
+    if (t.length < 8) return;
+    const m = t.filter(p => UE_TE.includes(p.te)).length;
+    zeilen.push({k: r.name, n: t.length, m, q: m / t.length});
+  });
+  zeilen.sort((a, b) => b.q - a.q);
+  const zeig = x => [esc(x.k), faZahl(x.n), faZahl(x.m), faPz(x.q)];
+  return faKopf('Welche Themen haben die beste Bilanz?',
+    'Empfehlungsquote je Thema, verglichen mit dem Bestand.',
+    [[faPz(alleQ), 'Empfehlungsquote im Bestand'],
+     [faZahl(zeilen.length), 'Themen mit mindestens 8 Vorhaben'],
+     [faZahl(zeilen.filter(x => x.q > alleQ).length), 'darüber'],
+     [faZahl(zeilen.filter(x => x.q < alleQ).length), 'darunter']])
+    + `<p>Gezeigt sind die zehn Themen mit der höchsten und der
+       niedrigsten Quote. Ein Thema mit acht Vorhaben trägt keine
+       starke Aussage; die Spalte „Vorhaben“ sagt, wie belastbar die
+       Quote ist.</p>`
+    + `<h4>Die höchsten Quoten</h4>`
+    + faTabelle(['Thema', 'Vorhaben', 'mit Empfehlung', 'Quote'],
+                zeilen.slice(0, 10).map(zeig))
+    + `<h4>Die niedrigsten</h4>`
+    + faTabelle(['Thema', 'Vorhaben', 'mit Empfehlung', 'Quote'],
+                zeilen.slice(-10).reverse().map(zeig))
+    + faGrenze(`Ein Vorhaben zählt zu einem Thema, wenn es dessen Wort
+       führt; viele zählen zu mehreren. Die Quote sagt nichts darüber,
+       ob das Thema taugt — nur, wie die Vorhaben ausgingen, die es
+       bearbeitet haben.`) + '</div>';
+}
+
+function faEmpfohlen() {
+  const be = faBeschieden();
+  const mit = be.filter(p => UE_TE.includes(p.te));
+  const nach = mit.filter(p => (p.danach || []).length);
+  const arten = {};
+  mit.forEach(p => { arten[p.te] = (arten[p.te] || 0) + 1; });
+  return faKopf('Was wurde aus den empfohlenen Vorhaben?',
+    'Die Vorhaben, für die der Ausschuss eine Überführung empfohlen hat.',
+    [[faZahl(mit.length), 'mit Empfehlung'],
+     [faPz(mit.length / be.length), 'aller beschiedenen'],
+     [faZahl(nach.length), 'mit eigener Rückmeldung'],
+     [eur(mit.reduce((s, p) => s + (p.sum || 0), 0)), 'Fördervolumen']])
+    + `<p>Eine Empfehlung ist kein Beschluss über die Regelversorgung.
+       Sie richtet sich an die Selbstverwaltung, die dann entscheidet.
+       Was danach geschah, wissen am besten die Vorhaben selbst –
+       darum fragen wir sie, und ${nach.length} haben geantwortet.</p>`
+    + faTabelle(['Art der Empfehlung', 'Vorhaben'],
+        Object.entries(arten).sort((a, b) => b[1] - a[1])
+          .map(([k, n]) => [esc(k), faZahl(n)]))
+    + faTabelle(['Vorhaben', 'Titel', 'Beschluss'],
+        mit.slice(0, 14).map(p => [
+          `<b><a href="#p=${p.id}">${esc(p.akr)}</a></b>`,
+          esc((p.tit || '').slice(0, 60)), p.bd ? datum(p.bd) : '']))
+    + faGrenze(`Ob eine Versorgungsform heute erbracht wird, steht
+       nicht in dieser Datenbank. Die Rückmeldungen der
+       Projektleitungen stehen im Eintrag des jeweiligen Vorhabens.`)
+    + '</div>';
+}
+
+function faGrundlage() {
+  const E = {};
+  (D.erhebung || []).forEach(g => (g.z || []).forEach(
+    x => { E[x.w] = x.n; }));
+  const be = faBeschieden();
+  return faKopf('Worauf beruht das alles?',
+    'Die Quellen dieses Portals und was daraus gelesen wurde.',
+    [[faZahl(E['Dokumente mit Textschicht']), 'PDF ausgelesen'],
+     [faZahl(E['Seiten']), 'Seiten'],
+     [faZahl(E['Zeichen']), 'Zeichen'],
+     [faZahl(be.length), 'Vorhaben ausgewertet']])
+    + `<p>Jede Aussage dieses Portals trägt ihren Beleg: das wörtliche
+       Zitat und die Seite, auf der es steht. Was sich nicht belegen
+       ließ, steht nicht da.</p>`
+    + `<p>Gelesen werden der Beschluss des Innovationsausschusses, der
+       Ergebnisbericht des Vorhabens und – bei den Neuen
+       Versorgungsformen – der Evaluationsbericht des unabhängigen
+       Evaluators. Die Berichte stehen in den Einträgen im Wortlaut,
+       Kapitel für Kapitel.</p>`
+    + faGrenze(`Das Portal wertet aus, was veröffentlicht ist. Wo ein
+       Bericht fehlt oder eine Angabe nicht im Text steht, kann es sie
+       nicht kennen.`) + '</div>';
 }
 
 /* ---------- Direktlink auf einen Eintrag ----------
