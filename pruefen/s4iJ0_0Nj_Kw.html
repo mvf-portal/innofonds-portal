@@ -543,8 +543,28 @@ document.getElementById('nachtragen').onclick = () => {
   knopf.textContent = 'Ergänzung senden';
   document.getElementById('nachtragen').hidden = true;
   st.className = '';
+  /* Der Satz nennt den naechsten Handgriff. Die Eingabefelder sind
+     nicht von vornherein da - erst "stimmt nicht" klappt eines auf.
+     Wer das nicht weiss, sucht oben vergeblich nach einer Maske. */
   st.textContent = 'Ihre erste Rückmeldung bleibt gespeichert. '
-    + 'Ergänzen Sie, was fehlt, und senden Sie noch einmal.';
+    + 'Klicken Sie oben bei dem Punkt, um den es geht, auf '
+    + '„stimmt nicht“ – dann öffnet sich das Eingabefeld.';
+  /* Und der Sprung dorthin. Dieser Knopf steht am Seitenende; ohne
+     ihn sieht man nur den neuen Satz und haelt den Klick fuer
+     wirkungslos. Gemeldet von Andreas Polanc (TeleDerm) am
+     05.10.2026. */
+  /* Die Position selbst rechnen statt scrollIntoView: Auf dieser
+     Seite springt scrollIntoView ans Dokumentende statt zum Element -
+     am 05.10.2026 gemessen, 17.167 statt 8.132 Pixel. window.scrollTo
+     tut zuverlaessig, was es soll. */
+  const erster = document.querySelector('.p[data-stelle]');
+  const y = erster
+    ? erster.getBoundingClientRect().top + window.scrollY - 90 : 0;
+  /* Harter Sprung, kein smooth: Ueber achttausend Pixel dauert
+     sanftes Scrollen lange und sieht aus wie ein Fehler. Und wo der
+     Browser reduzierte Bewegung erzwingt, wird smooth ganz
+     ignoriert - dann bewegt sich gar nichts. */
+  window.scrollTo(0, Math.max(0, y));
 };
 </script>
 </html>
