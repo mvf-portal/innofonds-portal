@@ -5195,7 +5195,7 @@ function karteHtml(p) {
         <span class="seite">${seiteLink(uBeschluss, x.zitat.seite,
           'Beschlusstext' + (x.zitat.seite ? ', S. ' + esc(x.zitat.seite)
            : ''))}</span>
-        </blockquote>` : ''}</div>`;
+        </blockquote>` : ''}${plKommentar({ko: x.warum_k})}</div>`;
     if ((x.minus||[]).length) inhalt += `<div class="abschnitt"><h4>Hindernisse laut Beschluss</h4>
       <ul class="punkte">${x.minus.map((h, i) => `<li>${
         ampel('hindernis_pruefung', p.id, i)} <b>${esc(h.kategorie)}:</b>
@@ -5208,7 +5208,7 @@ function karteHtml(p) {
       <ul class="punkte">${x.plus.map(f => `<li>${esc(f.faktor)}${f.zitat ?
         `<blockquote>„${esc(f.zitat)}“<span class="seite">${f.seite
           ? seiteLink(uBeschluss, f.seite, 'S. ' + esc(f.seite)) : ''}</span>
-        </blockquote>` : ''}</li>`).join('')}</ul></div>`;
+        </blockquote>` : ''}${plKommentar(f)}</li>`).join('')}</ul></div>`;
     if ((x.adr||[]).length) inhalt += `<div class="abschnitt"><h4>Adressaten</h4>
       <ul class="punkte">${x.adr.map(a => `<li><b>${esc(a.name)}:</b> ${esc(a.auftrag)}</li>`
         ).join('')}</ul></div>`;
