@@ -82,7 +82,9 @@ def main() -> int:
     jetzt = berliner_zeit(datetime.now(timezone.utc))
     alter = jetzt - stand.astimezone(jetzt.tzinfo)
     stunden = alter.total_seconds() / 3600
-    eintraege = len(daten.get("eintraege") or daten.get("meldungen") or [])
+    # Die Liste heisst "ergebnisse"; "wartet" sind die Vorhaben, deren
+    # Bericht noch aussteht. Beide zaehlen, denn beide stehen im Block.
+    eintraege = len(daten.get("ergebnisse") or []) + len(daten.get("wartet") or [])
     frisch = stand.date() == jetzt.date()
 
     kopf = "in Ordnung" if frisch else "ALARM"
