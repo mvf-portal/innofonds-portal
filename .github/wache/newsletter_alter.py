@@ -71,6 +71,27 @@ def main() -> int:
                "erreichbar, faellt die Karte im Entwurf ersatzlos weg."])
         return 1
 
+    # Hat die Datei noch die Felder, auf die sich diese Wache stuetzt?
+    # Am 06.10.2026 zaehlte sie daten.get("eintraege") - ein Feld, das
+    # es nie gab - und meldete klaglos null. Wer sich auf einen
+    # Feldnamen verlaesst, muss pruefen, dass es ihn gibt; sonst misst
+    # er das Fehlen und nennt es ein Ergebnis.
+    fehlende = [f for f in ("stand", "rubrik", "fenster_tage",
+                            "ergebnisse", "wartet")
+                if f not in daten]
+    if fehlende:
+        notiz(["## Neu im Innovationsfonds: ALARM", "",
+               f"Die Datei hat nicht die erwarteten Felder: "
+               f"**{', '.join(fehlende)}** fehlt.",
+               "",
+               "Vorhanden sind: " + ", ".join(sorted(daten)) + ".",
+               "",
+               "Entweder baut der taegliche Lauf sie anders als bisher,",
+               "oder diese Wache misst am falschen Feld. Beides macht",
+               "jede weitere Aussage hier wertlos - auch die ueber den",
+               "Stand."])
+        return 1
+
     stand_roh = str(daten.get("stand", ""))
     try:
         stand = datetime.fromisoformat(stand_roh).replace(tzinfo=BERLIN)
@@ -92,6 +113,20 @@ def main() -> int:
               f"- Stand der ausgelieferten Datei: **{stand:%d.%m.%Y %H:%M}**",
               f"- Alter: {stunden:.1f} Stunden",
               f"- Eintraege im Block: {eintraege}"]
+    if frisch and eintraege == 0:
+        # Kein Alarm: Ab dem 13.11.2026 faellt der letzte Beschluss aus
+        # dem 56-Tage-Fenster, und solange der Innovationsausschuss
+        # nichts Neues fasst, ist der Block zu Recht leer. Aber es
+        # gehoert in die Notiz, damit niemand einen leeren Block fuer
+        # einen gefuellten haelt.
+        zeilen += ["",
+                   "Der Block ist LEER - die Karte im Newsletter traegt",
+                   "dann nur die Rubrik und den Knopf. Das ist richtig, wenn",
+                   "im Fenster von " + str(daten.get("fenster_tage", "?"))
+                   + " Tagen kein Beschluss liegt; der juengste stammt",
+                   "vom 18.09.2026. Kommt nichts Neues, ist der Block ab",
+                   "dem 13.11.2026 dauerhaft leer."]
+
     if not frisch:
         zeilen += ["",
                    "Der taegliche Lauf hat heute nichts ausgeliefert. Die",
