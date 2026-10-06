@@ -1,0 +1,37 @@
+# Taegliche Wache: Ist der Block "Neu im Innovationsfonds" von heute?
+#
+# Diese Wache ersetzt den taeglichen Lauf nicht - er bleibt auf dem Rechner
+# von Peter Stegmaier. Sie merkt nur, wenn er ausgefallen ist, BEVOR die
+# alten Zahlen im Newsletter stehen.
+#
+# Uhrzeit: 06:00 UTC, also 08:00 Berlin im Sommer und 07:00 im Winter. Frueher
+# geht nicht verlaesslich - der Lauf beginnt um 06:00 Berlin und braucht
+# seine Zeit; eine Wache um 06:10 Berlin wuerde im Winter jeden Tag Alarm
+# schlagen, weil der Lauf noch arbeitet. Der Newsletter-Entwurf entsteht um
+# 05:20 UTC, die Meldung kommt also nach ihm. Das ist Absicht: ein falscher
+# Alarm jeden Morgen waere teurer als eine Meldung 40 Minuten spaeter.
+#
+# Gemeldet wird durch Fehlschlagen des Laufs - GitHub schickt dann von sich
+# aus eine Mail. Kein Secret, kein Token, keine zweite Stelle zum Pflegen.
+name: Wache "Neu im Innovationsfonds"
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Alter der ausgelieferten newsletter.json pruefen
+        run: python .github/wache/newsletter_alter.py
