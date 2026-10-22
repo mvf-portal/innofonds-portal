@@ -1855,6 +1855,23 @@ const BESTELLUNG = 'https://monitor-versorgungsforschung.de/bestellung/bestellun
    Bestellformular; stuenden sie mehrfach, wuerde irgendwann eine
    Stelle vergessen. Gerechnet wird ohnehin auf dem Server. */
 const PREIS = { 1: {einzeln: 490, jahr: 1900}, 2: {einzeln: 1900, jahr: 4900} };
+/* Der Bestellknopf ruht, solange der Steuersatz nicht feststeht.
+
+   Der Endpunkt auf dem MVF-Server ist seit laengerem da und die
+   Zugangsdatei daneben lesbar - gemessen am 22.10.2026. Eine
+   Bestellung wuerde also heute durchgehen und eine echte
+   Auftragsbestaetigung ausloesen, gerechnet mit dem Steuersatz, der
+   in jener Datei steht. Das Muster im Repo setzt 19,0; ob fuer eine
+   elektronische Publikation 7 % gelten (Paragraph 12 Abs. 2 Nr. 14
+   UStG), klaert der Steuerberater. Die Frage steht seit dem
+   20.09.2026 offen.
+
+   Bei 490 bis 4.900 Euro netto ist der Unterschied kein Detail, und
+   ein falscher Steuersatz in einem kaufmaennischen Schreiben laesst
+   sich nicht stillschweigend berichtigen.
+
+   Steht der Satz fest: auf false setzen, bauen, veroeffentlichen. */
+const BESTELLUNG_RUHT = true;
 const eu = n => new Intl.NumberFormat('de-DE',
   {style:'currency', currency:'EUR', maximumFractionDigits:0}).format(n);
 /* Der Erklaerkasten. Er stand zweimal wortgleich im Code, einmal beim
@@ -9174,11 +9191,17 @@ ${BEGRIFFE}`;
             + ' Tsd. Zeichen · ' + s.gliederung.length + ' Kapitel')}
       </div>
       <p class="was">Nach dem Maßstab von <b>Stufe ${s.stufe}</b>, siehe oben.</p>
-      ${zu.length ? `<div class="bestellkopf">
+      ${zu.length ? `<div class="bestellkopf${
+          BESTELLUNG_RUHT ? ' ruht' : ''}">
         <span>Der kostenpflichtige Teil dieser Synthese kostet
           <b>${eu((PREIS[s.stufe] || PREIS[1]).einzeln)}</b> zzgl. USt.
-          Abonnenten und Beiratsmitglieder zahlen weniger.</span>
-        <button class="tat" data-best="einzeln">Bestellen</button>
+          Abonnenten und Beiratsmitglieder zahlen weniger.${
+          BESTELLUNG_RUHT ? ' <b>Die Bestellung ist noch nicht '
+            + 'freigeschaltet.</b> Wenn Sie die Synthese jetzt '
+            + 'brauchen, schreiben Sie uns an '
+            + '<a href="mailto:info@m-vf.de">info@m-vf.de</a>.' : ''}</span>
+        ${BESTELLUNG_RUHT ? '' :
+          '<button class="tat" data-best="einzeln">Bestellen</button>'}
       </div>` : ''}
       ${s.ueberschneidung && s.ueberschneidung.length ? `
       <details class="ueberschnitt"><summary>Überschneidung mit anderen
@@ -9247,10 +9270,14 @@ ${BEGRIFFE}`;
           Word-Datei</b>, die Evidenztabelle zusätzlich <b>als Excel- und
           als CSV-Datei</b>, sortier- und filterbar, für eigene
           Auswertungen.</p>
+        ${BESTELLUNG_RUHT ? `<p class="hinweis"><b>Die Bestellung ist
+          noch nicht freigeschaltet.</b> Wenn Sie die Synthese jetzt
+          brauchen, schreiben Sie uns an
+          <a href="mailto:info@m-vf.de">info@m-vf.de</a>.</p>` : `
         <div class="bestellknoepfe">
           <button class="tat" data-best="einzeln">Diese Kohorte bestellen</button>
           <button class="tat leise" data-best="jahr">Jahreszugang bestellen</button>
-        </div>
+        </div>`}
         <div id="bestellfeld"></div>
       </div>`;
     }
@@ -9288,6 +9315,14 @@ ${BEGRIFFE}`;
   };
 
   function bestellformular(s, umfang) {
+
+    /* Die Sperre an der Stelle, durch die JEDE Bestellung
+
+       muss. Einzelne Knoepfe abzuschalten hiesse, beim
+
+       naechsten Umbau einen zu vergessen. */
+
+    if (BESTELLUNG_RUHT) return;
     const pr = PREIS[s.stufe] || PREIS[1];
     const vorhanden = SYN.filter(x => x.titel === s.titel).map(x => x.stufe);
     const feld = document.getElementById('bestellfeld');
