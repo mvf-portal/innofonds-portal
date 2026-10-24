@@ -3988,9 +3988,17 @@ function dossierZeichnen() {
      gingen. Die Namen der Richtlinien stehen in den Antworten der
      Unterausschuesse und werden dort gelesen: Fest eingetippte
      Beispiele waeren nach dem naechsten Beschluss falsch. */
-  const GBA_MUSTER = /gemeinsamer bundesausschuss|unterausschuss|\bg-?ba\b/i;
+  /* Seit 24.10.2026 wie im Reiter Transfer: nur Pruefauftraege, keine
+     Weitergaben zur Information (sp === 'info'). Vorher stand hier
+     „Zehnmal", der Reiter Transfer zaehlte 8 - zwei der zehn waren
+     Weitergaben, bei denen nichts verlangt war (Pruefung Canvas 1). */
+  const PRUEF = r => r.sp !== 'info';
   const gbaAlle = (UM.adressat_liste || [])
-    .filter(r => GBA_MUSTER.test(r.name || ''));
+    .filter(r => r.art === 'GBA und seine Gremien' && PRUEF(r));
+  const fgAlle = (UM.adressat_liste || [])
+    .filter(r => r.art === 'Fachgesellschaften und Verbände' && PRUEF(r));
+  const fgOhne = fgAlle.filter(
+    r => r.st === 'keine Rückmeldung' || r.st === 'nicht erkennbar');
   const gbaGetan = gbaAlle.filter(
     r => r.st === 'umgesetzt' || r.st === 'teilweise umgesetzt');
   const gbaOhne = gbaAlle.filter(
@@ -4085,18 +4093,23 @@ function dossierZeichnen() {
         endet seine Macht bei der Empfehlung.</p>
       <p><b>Und wo er sich selbst binden kann, tut er es.</b>
         ${ZAHLWORT[gbaGetan.length] || zahl(gbaGetan.length) + ' mal'}
-        hat der GBA auf eine Empfehlung hin
-        seine eigenen Regeln geändert oder in Teilen angepasst${
+        hat der GBA auf einen Prüfauftrag hin seine eigenen Regeln
+        geändert${(() => {
+          const tw = gbaGetan.filter(r => r.st === 'teilweise umgesetzt').length;
+          return tw ? `, ${(ZAHLWORT[tw] || zahl(tw) + ' mal').toLowerCase()}
+            davon in Teilen` : '';
+        })()}${
         regeln.length ? `, darunter die ${regeln.slice(0, 4).map(esc)
           .join(' und die ')}` : ''}. Betroffen sind die Vorhaben
         ${gbaVorhaben.map(v =>
           `<a href="#p=${v.id}">${esc(v.akr)}</a>`).join(', ')}. Von
-        ${zahl(gbaAlle.length)} Nennungen des GBA und seiner
+        ${zahl(gbaAlle.length)} Prüfaufträgen an den GBA und seine
         Unterausschüsse blieben nur ${zahl(gbaOhne.length)} ohne Antwort,
         ${Math.round(gbaOhne.length / Math.max(1, gbaAlle.length) * 100)}
-        Prozent. Bei den Fachgesellschaften sind es übrigens 67 Prozent,
-        aber: Sie könnten ja gar nichts beschließen oder selbst
-        ändern!</p>
+        Prozent.${fgAlle.length ? ` Bei den Fachgesellschaften und Verbänden
+        sind es ${zahl(fgOhne.length)} von ${zahl(fgAlle.length)},
+        ${Math.round(fgOhne.length / fgAlle.length * 100)} Prozent; sie
+        können allerdings keine Richtlinien beschließen.` : ''}</p>
       <p>Zudem müssen die so genannten „benannten Stellen“${
         (UM.benannte || []).length ? ` – am häufigsten ${
           UM.benannte.map(b => `${esc(b.n)} (${b.z})`).join(', ')} –`
