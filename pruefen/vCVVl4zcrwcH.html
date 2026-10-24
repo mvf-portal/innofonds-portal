@@ -244,6 +244,21 @@ das, was in keiner Datenbank steht: <b>was aus Ihren Erkenntnissen geworden ist<
     ></textarea></label>
   <label style="display:block;margin-top:10px">Ihr Name
     <input type="text" id="wer" value="Prof. Dr. Jürgen Wasem"></label>
+  <!-- 24.10.2026: Bis dahin stand hier nur "Ihr Name". Dass er im
+       Portal unter der Angabe erscheint, stand nirgends - weder
+       hier noch im Anschreiben. 283 Namen waren so zustande
+       gekommen. Das Feld daneben nennt seinen Zweck ("fuer
+       Rueckfragen"); dieses muss ihn auch nennen. -->
+  <label style="display:block;margin-top:8px">Wie sollen wir Sie
+    nennen, wenn wir Ihre Angabe zeigen?
+    <select id="nennung">
+      <option value="name">mit meinem Namen</option>
+      <option value="einrichtung">nur die Einrichtung</option>
+      <option value="keine">ohne Nennung (&bdquo;Projektleitung&ldquo;)</option>
+    </select></label>
+  <p class="wozu" style="margin-top:4px">Was Sie unter &bdquo;Was
+    wurde daraus&ldquo; schreiben, erscheint im Portal als Zitat &ndash;
+    mit Datum und dieser Nennung. Ihre E-Mail-Adresse erscheint nie.</p>
   <label style="display:block;margin-top:8px">E-Mail für Rückfragen
     <input type="email" id="mail" value="medizin-management@uni-due.de"></label>
 </div>
@@ -344,6 +359,11 @@ function sammeln() {
                      .value.trim(),
            frei: document.getElementById('frei').value.trim(),
            absender: document.getElementById('wer').value.trim(),
+           /* Reist von selbst mit: Der Endpunkt legt das ganze JSON
+              ab (json_encode($d) in innofonds-korrektur.php), ein
+              neues Feld braucht dort keine Aenderung. */
+           nennung: (document.getElementById('nennung')
+                     || {value: ''}).value,
            mail: document.getElementById('mail').value.trim(),
            gesendet: new Date().toISOString()};
 }
