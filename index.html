@@ -393,6 +393,54 @@ details.fragekasten button{margin-bottom:14px}
 #do-vorschlaege .chip.gewaehlt{border-color:var(--gold);
   background:var(--gold);color:#fff}
 p.fa-frage{color:var(--grau);margin:0 0 12px;max-width:72ch}
+/* Stufe 104: Themen-Bilanz */
+.bl-einzeln{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between;
+  background:var(--flaeche);border:1px solid var(--linie);border-radius:10px;padding:12px 16px;margin:0 0 18px;font-weight:600}
+.bl-einzeln a{font-weight:700}
+.bl-h{margin:18px 0 4px}
+.bl-gruppe{margin:18px 0 0}
+.bl-gruppe > h4{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gedaempft);margin:0 0 8px}
+.bl-raster{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+a.bl-frage{display:flex;justify-content:space-between;gap:10px;align-items:flex-end;min-height:64px;padding:12px 14px;
+  border:1px solid var(--linie);border-radius:10px;background:var(--flaeche);color:var(--text);text-decoration:none;line-height:1.35}
+a.bl-frage b{color:var(--akzent)}
+a.bl-frage .pf{color:var(--gold);font-weight:700;white-space:nowrap}
+a.bl-frage:hover{border-color:var(--gold)}
+a.bl-frage[aria-current]{border:2px solid var(--gold);background:var(--goldweich)}
+a.bl-frage.breit{grid-column:1/-1;display:block;padding:16px 18px}
+a.bl-frage.breit .t{font-size:19px;font-weight:650;display:block}
+a.bl-frage.breit .s{display:block;color:var(--gedaempft);margin:3px 0 8px}
+a.bl-frage.breit .los{color:var(--akzent);font-weight:700}
+.bl-menue{margin-top:34px;padding-top:18px;border-top:2px solid var(--linie)}
+.bl-menue h3{margin:0 0 4px}
+.bl-menue .bl-raster{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.bl-menue a.bl-frage{min-height:0;font-size:14px;padding:9px 12px}
+.bl-kann{margin:26px 0 10px;padding:16px 18px;border:1px solid var(--linie);border-radius:12px;background:var(--flaeche)}
+.bl-kann h3{margin:0 0 10px}
+.bl-kann-raster{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.bl-kann-raster p{margin:4px 0 0;font-size:14px}
+.bl-kann .stufenliste{margin-top:12px}
+.bl-zurueck{display:inline-block;margin:0 0 10px;font-weight:600}
+.bl-ober{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gedaempft);margin:0 0 2px;font-weight:700}
+.bl-titel{margin:0 0 6px;font-size:28px;line-height:1.2}
+.bl-kurz-h{margin:14px 0 6px}
+.bl-kurz .kachel{display:flex;flex-direction:column}
+.bl-kurz .was{font-size:14px;color:var(--text);flex:1}
+.bl-kurz .gross small{display:block;font-size:12px;font-weight:400;color:var(--gedaempft)}
+.bl-sprung{margin-top:8px;font-size:13px;font-weight:600}
+.bl-gezaehlt,.bl-einordnung{border:1px solid var(--linie);border-radius:10px;padding:12px 16px;margin:16px 0;background:var(--flaeche)}
+.bl-gezaehlt h4{margin:0 0 6px}
+.bl-gezaehlt p{margin:6px 0}
+.bl-einordnung{border-left:4px solid var(--akzent)}
+.bl-synthese{border-radius:10px;padding:12px 16px;margin:16px 0;background:var(--goldweich);border-left:4px solid var(--gold)}
+.bl-mehrzeile{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--gedaempft)}
+td.bl-balkenzelle{position:relative;min-width:110px;width:32%}
+.bl-spanne{position:absolute;top:50%;height:8px;margin-top:-4px;border-radius:4px;
+  background:color-mix(in srgb, var(--akzent) 30%, transparent)}
+.bl-median{position:absolute;top:50%;height:16px;margin-top:-8px;width:3px;background:var(--akzent)}
+#bl-antwort .rueckfrage{display:none}
+@media (max-width:600px){ .bl-titel{font-size:23px} td.bl-balkenzelle{display:none}
+  .bl-kurz{grid-template-columns:1fr 1fr!important;gap:8px} .bl-kurz .kachel{padding:10px 11px} .bl-kurz .gross{font-size:19px} .bl-kurz .was{font-size:13px} }
 #do-vorschlaege .chip{cursor:pointer;border:1px solid var(--linie);
   background:var(--flaeche);border-radius:999px;padding:5px 13px;
   font:inherit;font-size:13px;color:var(--text);margin:0 6px 6px 0}
@@ -1249,7 +1297,7 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
       <div class="ifw-kopf"><div><b>Innovationsfonds-Radar</b>
         <span>Alle Vorhaben des Innovationsfonds, durchsuchbar und ausgewertet.</span></div>
         <a class="ifw-start" href="#uebersicht" data-reiter="t-uebersicht">Zur Übersicht →</a></div>
-      <div class="ifw-spalten"><div class="ifw-spalte"><h3>Recherche</h3><ul><li><a href="#projekte" data-reiter="t-projekte"><b>Projektdatenbank</b><small>Alle Vorhaben einzeln, mit Filtern nach Förderbereich, Status, Beschluss, Studiendesign und mehr.</small></a></li><li><a href="#suche" data-reiter="t-suche"><b>Themen-Bilanz</b><small>Gerechnete Antworten auf geprüfte Fragen, dazu die Suche nach einem Thema.</small></a></li></ul></div><div class="ifw-spalte"><h3>Auswertungen</h3><ul><li><a href="#auswertungen" data-reiter="t-auswertungen"><b>Alle Auswertungen</b><small>Was die sieben Auswertungen zeigen und wo man anfängt.</small></a></li><li><a href="#zahlen" data-reiter="t-zahlen"><b>Förderung in Zahlen</b><small>Fördersummen, Laufzeiten, Wartezeiten und Jahrgänge seit 2016.</small></a></li><li><a href="#netz" data-reiter="t-netz"><b>Einrichtungen &amp; Netzwerk</b><small>Beteiligte Einrichtungen, Konsortialführungen und Kooperationen.</small></a></li><li><a href="#karte" data-reiter="t-karte"><b>Landkarte</b><small>Vorhaben und Einrichtungen nach Bundesland und Ort.</small></a></li><li><a href="#fallzahl" data-reiter="t-fallzahl"><b>Fallzahlen</b><small>Geplante und tatsächlich erreichte Teilnehmendenzahlen je Vorhaben.</small></a></li><li><a href="#endpunkte" data-reiter="t-endpunkte"><b>Endpunkte &amp; Messinstrumente</b><small>Gemessene Zielgrößen, Messinstrumente und Ergebnisse.</small></a></li><li><a href="#transfer" data-reiter="t-transfer"><b>Transfer der Ergebnisse</b><small>Empfehlungen des Ausschusses und was aus ihnen wurde.</small></a></li><li><a href="/versorgungskerne/lotsen/"><b>Versorgungskerne</b><small>Wie eine Versorgungsform aufgebaut ist, am Beispiel der 31 Lotsenprojekte.</small></a></li></ul></div><div class="ifw-spalte"><h3>Antrag &amp; Bericht</h3><ul><li><a href="#idee" data-reiter="t-idee"><b>Ideencheck</b><small>Gibt es Ihre Idee schon? Abgleich mit ähnlichen geförderten Vorhaben.</small></a></li><li><a href="#berichte" data-reiter="t-berichte"><b>Tipps für auswertbare Berichte</b><small>Woran die Auswertung eines Ergebnisberichts hängen bleibt.</small></a></li></ul></div><div class="ifw-spalte ifw-euro"><h3>Evidenzsynthesen €</h3><ul><li><a href="#evidenz" data-reiter="t-evidenz"><b>Synthesen nach Thema</b><small>Stand der Forschung zu einem Versorgungsthema. Kapitel 1 und 2 frei, ab Kapitel 3 kostenpflichtig.</small></a></li></ul></div></div>
+      <div class="ifw-spalten"><div class="ifw-spalte"><h3>Recherche</h3><ul><li><a href="#projekte" data-reiter="t-projekte"><b>Projektdatenbank</b><small>Alle Vorhaben einzeln, mit Filtern nach Förderbereich, Status, Beschluss, Studiendesign und mehr.</small></a></li><li><a href="#suche" data-reiter="t-suche"><b>Themen-Bilanz</b><small>Fragen zu den Vorhaben des Innovationsfonds, beantwortet aus den Daten: zu Versorgungsformen, Krankheitsbildern, Wirkung, Förderung und Akteuren. Wie viele Vorhaben es gab, wie viele eine Empfehlung erhielten und was die erfolgreichen von den übrigen unterscheidet. Kostenlos, ohne Anmeldung.</small></a></li></ul></div><div class="ifw-spalte"><h3>Auswertungen</h3><ul><li><a href="#auswertungen" data-reiter="t-auswertungen"><b>Alle Auswertungen</b><small>Was die sieben Auswertungen zeigen und wo man anfängt.</small></a></li><li><a href="#zahlen" data-reiter="t-zahlen"><b>Förderung in Zahlen</b><small>Fördersummen, Laufzeiten, Wartezeiten und Jahrgänge seit 2016.</small></a></li><li><a href="#netz" data-reiter="t-netz"><b>Einrichtungen &amp; Netzwerk</b><small>Beteiligte Einrichtungen, Konsortialführungen und Kooperationen.</small></a></li><li><a href="#karte" data-reiter="t-karte"><b>Landkarte</b><small>Vorhaben und Einrichtungen nach Bundesland und Ort.</small></a></li><li><a href="#fallzahl" data-reiter="t-fallzahl"><b>Fallzahlen</b><small>Geplante und tatsächlich erreichte Teilnehmendenzahlen je Vorhaben.</small></a></li><li><a href="#endpunkte" data-reiter="t-endpunkte"><b>Endpunkte &amp; Messinstrumente</b><small>Gemessene Zielgrößen, Messinstrumente und Ergebnisse.</small></a></li><li><a href="#transfer" data-reiter="t-transfer"><b>Transfer der Ergebnisse</b><small>Empfehlungen des Ausschusses und was aus ihnen wurde.</small></a></li><li><a href="/versorgungskerne/lotsen/"><b>Versorgungskerne</b><small>Wie eine Versorgungsform aufgebaut ist, am Beispiel der 31 Lotsenprojekte.</small></a></li></ul></div><div class="ifw-spalte"><h3>Antrag &amp; Bericht</h3><ul><li><a href="#idee" data-reiter="t-idee"><b>Ideencheck</b><small>Gibt es Ihre Idee schon? Abgleich mit ähnlichen geförderten Vorhaben.</small></a></li><li><a href="#berichte" data-reiter="t-berichte"><b>Tipps für auswertbare Berichte</b><small>Woran die Auswertung eines Ergebnisberichts hängen bleibt.</small></a></li></ul></div><div class="ifw-spalte ifw-euro"><h3>Evidenzsynthesen €</h3><ul><li><a href="#evidenz" data-reiter="t-evidenz"><b>Synthesen nach Thema</b><small>Stand der Forschung zu einem Versorgungsthema. Kapitel 1 und 2 frei, ab Kapitel 3 kostenpflichtig.</small></a></li></ul></div></div>
       <div class="ifw-fuss"><b>Hintergrund:</b> <a href="#ueber" data-reiter="t-ueber">Über das Portal</a> · <a href="#vorwort" data-reiter="t-vorwort">Methodik &amp; Verlässlichkeit</a> · <a href="#dossier" data-reiter="t-dossier">Einordnung der Redaktion</a> · <a href="#glossar" data-reiter="t-glossar">Glossar</a></div>
     </div></div>
   </div>
@@ -1535,6 +1583,7 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
   <div class="pdb-suche" role="search">
     <input type="search" id="pdb-q" placeholder="Vorhaben finden: Thema, Akronym, Einrichtung …" aria-label="In den Vorhaben suchen">
   </div>
+  <p class="pdb-auswahl" id="pdb-auswahl" hidden></p>
   <div class="pdb-raster">
     <aside class="pdb-filter" aria-label="Filter">
       <details class="pdb-filterhuelle" id="pdb-filterhuelle" open>
@@ -1925,13 +1974,41 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
      Aufgaben auf einmal trug: erklaeren und arbeiten. Wer suchen
      wollte, musste an acht Absaetzen Einordnung vorbei. -->
 <section class="tafel" id="t-suche" hidden>
-  <h2 class="suchkopf">Ein Wort hinein, die Bilanz eines ganzen Themas heraus.</h2>
-  <p class="suchvorspann">Zwei Suchen, untereinander. Die <b>obere</b> rechnet über ein Thema: wie viele Vorhaben es gab,
-    wie viele eine Empfehlung erhielten, und was die erfolgreichen von den erfolglosen unterscheidet. Die <b>untere</b> findet
-    einzelne Vorhaben und zeigt sie als Karte. Beides rechnet in Ihrem Browser: kostenlos, ohne Anmeldung, ohne Begrenzung, und
-    Ihre Eingabe verlässt Ihren Rechner nicht.</p>
-  <details class="stufenliste"><summary>Was diese Suche kann und was
-    nicht &ndash; und was sie <b>nicht</b> ist</summary>
+  <!-- Stufe 104 (30.10.2026): Themen-Bilanz nach Marianns Canvas 2,
+       Tafeln „Themenbilanz-Start“, „Themenbilanz“, „Antwort“ und
+       „Gesamtbilanz“. Drei Ansichten in einem Reiter: die Startseite mit
+       den Fragen nach Bereichen (#suche), die Antwort auf eine Frage mit
+       eigener Adresse (#suche/lotsen) und der einzelne Eintrag für die
+       Links der Prüfbitten (#p=123). Gewechselt wird in bilanzAnsicht(). -->
+  <div id="bl-start">
+  <p class="bl-einzeln"><span>Sie suchen ein einzelnes Vorhaben?</span>
+    <a href="#projekte" data-reiter="t-projekte">Zur Projektdatenbank →</a></p>
+  <h3 class="bl-h">Fragen, die sich schon beantworten lassen</h3>
+  <p class="hinweis" style="margin:0 0 4px">Sonst müsste man dafür hunderte
+    Beschlüsse und Berichte nebeneinanderlegen. Die Belege wurden mithilfe
+    von KI aus Beschlüssen und Berichten ausgelesen und jeder einzeln gegen
+    sein Zitat geprüft. Die Antworten werden daraus gerechnet, in Ihrem
+    Browser, kostenlos und ohne Anmeldung.</p>
+  <div id="bl-fragen"></div>
+  <div class="bl-kann">
+    <h3>Was die Themen-Bilanz kann und was nicht</h3>
+    <div class="bl-kann-raster">
+      <div><b>Was Sie bekommen</b><p>Zu jeder Frage die Zahl der Vorhaben,
+        ihr Fördervolumen, die Empfehlungsquote im Vergleich zu allen
+        Vorhaben, die Hindernisse bei Vorhaben mit und ohne Empfehlung,
+        Zitate aus den Beschlüssen und die Liste der Vorhaben.</p></div>
+      <div><b>Worauf sie beruht</b><p>Auf der Auswertung der Beschlüsse und
+        Berichte, nicht auf deren Volltext. Ein Thema umfasst alle Vorhaben,
+        deren Auswertung das Stichwort oder ein Synonym enthält, auch wenn
+        es dort nur eine Nebensache ist.</p></div>
+      <div><b>Was sie nicht kann</b><p>Sie versteht keine frei formulierten
+        Fragen und schreibt keine eigenen Texte, sondern setzt gerechnete
+        Zahlen in feste Sätze. Ist die Grundlage zu klein, steht das
+        dabei.</p></div>
+    </div>
+    <p style="margin:12px 0 0"><a href="#vorwort" data-reiter="t-vorwort">So entstehen diese Daten →</a></p>
+  <details class="stufenliste"><summary>Ausführlich: wie die Themen-Bilanz
+    sucht und zählt</summary>
     <p>Jemand fragt: <i>„Zeige mir alle Lotsenprojekte und erkläre,
     warum die einen erfolgreich waren und die anderen nicht."</i> Bis
     heute brauchte diese Frage drei Reiter und Handarbeit. Geben Sie
@@ -2009,17 +2086,23 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
        ganze Frage zu verstehen, und riet in Wahrheit ein Stichwort
        aus dem Satz: "beim", "Antrag", "Woran", "abgelehnt". Jede
        Reparatur schloss einen Fall und liess den naechsten offen. -->
-  <p class="hinweis" style="margin:2px 0 10px">Diese Fragen ließen sich
-    sonst nur beantworten, indem man hunderte Beschlüsse und Berichte
-    nebeneinanderlegt. Jede Antwort rechnet in Ihrem Browser, aus den
-    Belegen dieses Portals – kostenlos, ohne Anmeldung.</p>
-  <div id="do-vorschlaege" class="chips"></div>
+  </div>
+  <!-- Die alten Knöpfe bleiben unsichtbar: Die Übersicht und ältere
+       Verweise lösen eine Frage aus, indem sie ihren Knopf anklicken. -->
+  <div id="do-vorschlaege" class="chips" hidden></div>
   <input type="hidden" id="do-q">
-  <div id="do-ergebnis"></div>
+  </div>
+  <div id="bl-antwort" hidden>
+    <a href="#suche" class="bl-zurueck" id="bl-zurueck">← Alle Fragen</a>
+    <p class="bl-ober" id="bl-ober"></p>
+    <h2 class="bl-titel" id="bl-titel"></h2>
+    <div id="do-ergebnis"></div>
+    <div class="bl-menue" id="bl-menue"></div>
+  </div>
 
   <!-- Fuer alles, was nicht unter den fuenfzehn steht. Die Frage geht
        an denselben Endpunkt wie die Rueckmeldungen der Pruefseiten. -->
-  <details class="fragekasten">
+  <details class="fragekasten" id="bl-fragekasten">
     <summary>Ihre Frage steht nicht dabei?</summary>
     <p>Schreiben Sie sie hier hinein. Wir lesen jede Frage und
       antworten, so schnell wir können. Wenn sie sich aus den Daten
@@ -2036,13 +2119,13 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
     <p class="hinweis" id="fk-stand"></p>
   </details>
 
-  <div class="zweiteSuche">
-    <h3>Einzelne Vorhaben finden</h3>
-    <p class="hinweis">Die Frage oben rechnet über ein ganzes Thema. Hier
-      suchen Sie nach einzelnen Vorhaben und bekommen sie als Karte:
-      Begründung des Ausschusses, Hindernisse, Erfolgsfaktoren,
-      Konsortium, verlinkte Dokumente. Dazu Filter nach Förderbereich,
-      Status und Ergebnis.</p>
+  <!-- Seit Stufe 104 nur noch für die Links der Prüfbitten (#p=123).
+       Alle Vorhaben mit Filtern stehen in der Projektdatenbank. -->
+  <div class="zweiteSuche" id="bl-eintrag" hidden>
+    <h3>Ein einzelnes Vorhaben</h3>
+    <p class="hinweis">Hier steht der Eintrag, auf den Ihr Link zeigt. Alle
+      Vorhaben mit Filtern finden Sie in der
+      <a href="#projekte" data-reiter="t-projekte">Projektdatenbank</a>.</p>
     <div id="hinweis-auswertung"></div>
     <div class="werkzeuge">
       <input type="search" id="q" autocomplete="off"
@@ -2277,6 +2360,7 @@ document.addEventListener('click', ev => {
   const a = ev.target.closest('[data-reiter]');
   if (!a) return;
   ev.preventDefault();
+  if (history.replaceState) history.replaceState(null, '', '#' + a.dataset.reiter.slice(2));
   reiterNach(a.dataset.reiter);
   window.scrollTo({top: 0, behavior: 'smooth'});
 });
@@ -2305,7 +2389,8 @@ function reiterNach(ziel) {
    naechsten neuen Reiter vergessen wird. #p=123 bleibt dem einzelnen
    Eintrag vorbehalten und wird hier uebergangen. */
 function reiterAusAdresse() {
-  const name = (location.hash || '').replace(/^#/, '');
+  /* #suche/lotsen: der Reiter vor dem Schrägstrich, die Frage danach. */
+  const name = (location.hash || '').replace(/^#/, '').split('/')[0];
   if (!name || name.indexOf('=') >= 0) return;
   reiterNach('t-' + name);
 }
@@ -3455,16 +3540,11 @@ function antwortScheitern() {
       <div class="andere">
         <button class="chip" id="do-roh">die Frage wörtlich suchen</button>
       </div></div>
-    <div class="kacheln">
-      <div class="kachel"><div class="gross">${d.beendet.length}</div>
-        <div class="was">abgeschlossen und beschieden</div></div>
-      <div class="kachel"><div class="gross">${d.mit.length}</div>
-        <div class="was">mit Empfehlung, ${pz(d.quote)}</div></div>
-      <div class="kachel"><div class="gross">${d.ohne.length}</div>
-        <div class="was">ohne Empfehlung</div></div>
-      <div class="kachel"><div class="gross">${trennend.length}</div>
-        <div class="was">Hindernisse trennen die Gruppen</div></div>
-    </div>
+    ${blKurz([
+      [faZahl(d.beendet.length), 'Versorgungsvorhaben sind abgeschlossen und beschieden'],
+      [faZahl(d.mit.length), `davon erhielten eine Empfehlung, ${pz(d.quote)}`],
+      [faZahl(d.ohne.length), 'erhielten keine Empfehlung', ['Die Hindernisse im Vergleich', 'bl-a-tabelle']],
+      [faZahl(trennend.length), 'belegte Hindernisse unterscheiden die beiden Gruppen statistisch belegt', ['Die Hindernisse im Vergleich', 'bl-a-tabelle']]])}
     ${erste ? `<p><b>Was die beiden Gruppen unterscheidet.</b>
       ${trennend.length} Merkmale trennen sie, allen voran
       <b>${esc(erste.k)}</b>: bei ${erste.c} von ${d.ohne.length}
@@ -3476,6 +3556,7 @@ function antwortScheitern() {
       Gruppen. Ein negativer Abstand heißt, dass es bei den Vorhaben
       MIT Empfehlung häufiger belegt ist &ndash; daran scheitert
       niemand.</p>
+    <h4 id="bl-a-tabelle">Die Hindernisse im Vergleich</h4>
     ${grundTabelle(d)}
     <p class="hinweis"><b>Was diese Zahlen nicht sagen.</b> Sie zeigen,
       welche Hindernisse im Beschluss eines Vorhabens stehen, das keine
@@ -3816,26 +3897,19 @@ function antwortBilanz() {
   const kette = (UM.dauer && UM.dauer.ganz) ? UM.dauer.ganz.med : null;
 
   return `<div class="amzug">
-    <h3 style="margin-top:0">Was der Innovationsfonds gebracht hat</h3>
-    <p class="hinweis" style="margin:0 0 10px">Ihre Frage zielt auf den
-      Fonds als Ganzes, nicht auf ein Thema. Hier steht, was sich aus den
-      Daten dieses Portals dazu sagen lässt. Alle Zahlen sind
-      gerechnet.</p>
+    <p class="fa-frage">Was sich aus den Daten dieses Portals über den Fonds
+      als Ganzes sagen lässt. Alle Zahlen sind gerechnet.</p>
+    ${blKurz([
+      [zahl(P.length), 'Vorhaben hat der Innovationsfonds seit 2016 gefördert', ['Was entschieden wurde', 'bl-a-entschieden']],
+      [blEur(summe) + blGenau(summe), `sind in die ${zahl(P.length)} Vorhaben geflossen`, ['Was an Wissen entstanden ist', 'bl-a-wissen']],
+      [zahl(bew.length), `Endpunkte, also gemessene Zielgrößen, wurden in ${
+        zahl(E['Berichte zu Endpunkten ausgewertet'])} Berichten bewertet`, ['Einordnung der Redaktion', 'bl-a-einordnung']],
+      [zahl(sig.length), 'Endpunkte zeigen einen belegten Unterschied zur Vergleichsgruppe', ['Was man ihm vorhalten muss', 'bl-a-vorhalten']]])}
 
-    <div class="kacheln">
-      <div class="kachel"><div class="gross">${zahl(P.length)}</div>
-        <div class="was">geförderte Vorhaben seit 2016</div></div>
-      <div class="kachel"><div class="gross">${eur(summe)}</div>
-        <div class="was">Fördervolumen</div></div>
-      <div class="kachel"><div class="gross">${zahl(bew.length)}</div>
-        <div class="was">bewertete Endpunkte aus ${
-          zahl(E['Berichte zu Endpunkten ausgewertet'])} Berichten</div></div>
-      <div class="kachel"><div class="gross">${zahl(sig.length)}</div>
-        <div class="was">davon mit belegtem Unterschied</div></div>
-    </div>
-
-    <h4>Was entschieden wurde</h4>
+    <h4 id="bl-a-entschieden">Was entschieden wurde</h4>
     <div class="huelle" style="max-height:none"><table><tbody>
+      <tr><td>Alle geförderten Vorhaben seit 2016</td>
+        <td class="zahl">${zahl(P.length)}</td></tr>
       <tr><td>Versorgungsvorhaben, abgeschlossen und beschieden</td>
         <td class="zahl">${vfB.length}</td></tr>
       <tr><td>davon mit Empfehlung zur Überführung oder Erprobung</td>
@@ -3846,12 +3920,39 @@ function antwortBilanz() {
       <tr><td>davon mit Prüfbitte zur Überführung</td>
         <td class="zahl"><b>${llE.length} · ${pz(llE.length, llB.length)}</b>
         </td></tr>
+      <tr><td>noch laufend oder Abschlussbericht in Arbeit, noch ohne Beschluss</td>
+        <td class="zahl">${zahl(P.filter(p => p.st !== 'beendet').length)}</td></tr>
     </tbody></table></div>
     <p>Die Leitlinienvorhaben sind der eine Teil, bei dem der Weg in die
       Versorgung kurz ist: Eine Leitlinie erscheint im Register der AWMF
       und gilt. ${llE.length} von ${llB.length} abgeschlossenen
       Leitlinienvorhaben haben eine Prüfbitte erhalten.</p>
 
+    <h4 id="bl-a-wissen">Was an Wissen entstanden ist</h4>
+    <div class="huelle" style="max-height:none"><table><tbody>
+      <tr><td>Dokumente mit auswertbarem Text</td>
+        <td class="zahl">${zahl(E['Dokumente mit Textschicht'])}</td></tr>
+      <tr><td>Seiten darin</td>
+        <td class="zahl">${zahl(E['Seiten'])}</td></tr>
+      <tr><td>abgeschlossene Vorhaben inhaltlich ausgewertet<br>
+        <span class="hinweis">von ${zahl(D.beschieden)} mit Beschluss;
+        die übrigen ${zahl(P.length - D.beschieden)} Vorhaben laufen noch
+        oder erstellen ihren Abschlussbericht</span></td>
+        <td class="zahl">${zahl(E['abgeschlossene Vorhaben inhaltlich ausgewertet'])}</td></tr>
+      <tr><td>Endpunkte mit Befund, p-Wert und Seitenzahl</td>
+        <td class="zahl">${zahl(E['Endpunkte'])}</td></tr>
+      <tr><td>Hinderniszuordnungen, jede gegen ihr Zitat geprüft</td>
+        <td class="zahl">${zahl(E['Hinderniszuordnungen'])}</td></tr>
+    </tbody></table></div>
+    <p>Zusammengezählt hat das bisher niemand außerhalb dieses Portals.
+      Der Innovationsausschuss veröffentlicht jedes Stück einzeln, an
+      keiner amtlichen Stelle steht, was in der Summe herausgekommen
+      ist.</p>
+
+    <div class="bl-einordnung" id="bl-a-einordnung">
+    <p class="bl-ober">Einordnung der Redaktion</p>
+    <p class="hinweis">Einschätzung von Monitor Versorgungsforschung. Die
+      gerechneten Zahlen stehen oben.</p>
     <h4>Warum die Empfehlungsquote nicht das Maß ist</h4>
     <p>Die Transferempfehlung ist eine Entscheidung des
       Innovationsausschusses, kein Wirksamkeitsnachweis. Das lässt sich
@@ -3872,29 +3973,9 @@ function antwortBilanz() {
       ohne Unterschied bei 53 Prozent, bei denen, die sie verfehlt
       haben, ebenfalls bei 53 Prozent. Die Nullbefunde sind also kein
       Messfehler kleiner Studien.</p>
+    </div>
 
-    <h4>Was an Wissen entstanden ist</h4>
-    <div class="huelle" style="max-height:none"><table><tbody>
-      <tr><td>Dokumente mit auswertbarem Text</td>
-        <td class="zahl">${zahl(E['Dokumente mit Textschicht'])}</td></tr>
-      <tr><td>Seiten darin</td>
-        <td class="zahl">${zahl(E['Seiten'])}</td></tr>
-      <tr><td>abgeschlossene Vorhaben inhaltlich ausgewertet<br>
-        <span class="hinweis">von ${zahl(D.beschieden)} mit Beschluss;
-        die übrigen ${zahl(P.length - D.beschieden)} Vorhaben laufen noch
-        oder erstellen ihren Abschlussbericht</span></td>
-        <td class="zahl">${zahl(E['abgeschlossene Vorhaben inhaltlich ausgewertet'])}</td></tr>
-      <tr><td>Endpunkte mit Befund, p-Wert und Seitenzahl</td>
-        <td class="zahl">${zahl(E['Endpunkte'])}</td></tr>
-      <tr><td>Hinderniszuordnungen, jede gegen ihr Zitat geprüft</td>
-        <td class="zahl">${zahl(E['Hinderniszuordnungen'])}</td></tr>
-    </tbody></table></div>
-    <p>Zusammengezählt hat das bisher niemand. Der Innovationsausschuss
-      veröffentlicht jedes Stück einzeln; an keiner amtlichen Stelle
-      steht, was in der Summe herausgekommen ist. Genau diese Lücke
-      schließt dieses Portal.</p>
-
-    <h4>Was man ihm vorhalten muss</h4>
+    <h4 id="bl-a-vorhalten">Was man ihm vorhalten muss</h4>
     <p>Drei Dinge stehen den guten Zahlen gegenüber, und sie stehen hier,
       weil eine Bilanz ohne sie keine wäre.</p>
     <ul class="punkte">
@@ -3902,17 +3983,19 @@ function antwortBilanz() {
         zum Beschluss vergehen im Median ${kette} Monate, also
         ${(kette / 12).toLocaleString('de-DE',
           {maximumFractionDigits: 1})} Jahre.` : ''} Davon entfällt nur
-        ein Teil auf die Forschung selbst.</li>
+        ein Teil auf die Forschung selbst.
+        <a href="#transfer" data-reiter="t-transfer">Transfer der Ergebnisse →</a></li>
       <li><b>Der Transfer wird nicht verfolgt.</b> Von
         ${zahl((UM.antworten || []).reduce((a, r) => a + r.n, 0))}
         Nennungen von Adressaten in den Beschlüssen sind
         ${zahl(getan)} umgesetzt oder teilweise umgesetzt. Bei
         ${zahl((A['nicht erkennbar'] || 0) + (A['keine Rückmeldung'] || 0))}
-        bleibt offen, was geschehen ist.</li>
+        bleibt offen, was geschehen ist.
+        <a href="#transfer" data-reiter="t-transfer">Adressaten →</a></li>
       <li><b>Die Berichte sind ungleich gut.</b> Bei
         ${zahl(gegen.length)} Endpunkten fiel der belegte Unterschied
         gegen die Intervention aus. Das gehört zum Ergebnis und wird
-        selten erzählt.</li>
+        selten erzählt. <a href="#endpunkte" data-reiter="t-endpunkte">Endpunkte →</a></li>
     </ul>
 
     <p class="was"><b>Die Antwort in einem Satz.</b> Wer vom
@@ -3924,9 +4007,10 @@ function antwortBilanz() {
       ${zahl(E['Berichte zu Endpunkten ausgewertet'])} Berichten und
       damit eine Wissensgrundlage, die es in Deutschland sonst nicht
       gibt.</p>
-    <p class="hinweis">Die Zahlen dieser Seite stehen ausführlich in den
-      Reitern <b>Kennzahlen</b>, <b>Endpunkte</b> und
-      <b>Transfer</b>.</p></div>`;
+    <p class="hinweis">Ausführlich in den Auswertungen:
+      <a href="#zahlen" data-reiter="t-zahlen">Förderung in Zahlen</a> ·
+      <a href="#endpunkte" data-reiter="t-endpunkte">Endpunkte &amp; Messinstrumente</a> ·
+      <a href="#transfer" data-reiter="t-transfer">Transfer der Ergebnisse</a></p></div>`;
 }
 
 function antwortEinrichtungen(frage) {
@@ -3943,6 +4027,11 @@ function antwortEinrichtungen(frage) {
       Einrichtungen sind an den ${P.length} Vorhaben beteiligt, nach
       Zusammenführung der Schreibweisen. Hier die zwanzig mit den
       meisten Beteiligungen.</p>
+    ${blKurz([
+      [faZahl(NETZ.knoten.length), `Einrichtungen sind an den ${faZahl(P.length)} Vorhaben beteiligt`],
+      [faZahl(oben[0].projekte), `Vorhaben zählt die Einrichtung mit den meisten Beteiligungen, ${esc(oben[0].name)}`, ['Die zwanzig mit den meisten', 'bl-a-tabelle']],
+      [faZahl(typen[0][1]), `Einrichtungen gehören zur häufigsten Art: ${esc(typen[0][0] || 'ohne Angabe')}`, ['Nach Art der Einrichtung', 'bl-a-typ']]])}
+    <h4 id="bl-a-tabelle">Die zwanzig Einrichtungen mit den meisten Vorhaben</h4>
     <div class="huelle" style="max-height:none"><table><thead><tr>
       <th></th><th>Einrichtung</th><th>Art</th><th>Ort</th>
       <th class="zahl">Vorhaben</th><th class="zahl">davon Leitung</th>
@@ -3952,14 +4041,14 @@ function antwortEinrichtungen(frage) {
       <td class="zahl">${x.projekte}</td>
       <td class="zahl">${x.projekte_leitung || 0}</td></tr>`).join('')}
       </tbody></table></div>
-    <h4>Nach Art der Einrichtung</h4>
+    <h4 id="bl-a-typ">Nach Art der Einrichtung</h4>
     <div class="huelle" style="max-height:none"><table><tbody>${
       typen.map(([t, n]) => `<tr><td>${esc(t)}</td>
       <td class="zahl">${n}</td></tr>`).join('')}</tbody></table></div>
-    <p class="hinweis">Der Reiter <b>Partner</b> zeigt dieselben Daten
-      mit Suche und Filter, der Reiter <b>Netzwerk</b> zeigt, wer mit
-      wem zusammenarbeitet, und die <b>Landkarte</b> zeigt, wo sie
-      sitzen.</p></div>`;
+    <p class="hinweis">Dieselben Daten mit Suche und Filter:
+      <a href="#partner" data-reiter="t-partner">Partner →</a> · wer mit wem
+      zusammenarbeitet: <a href="#netz" data-reiter="t-netz">Netzwerk →</a> ·
+      wo sie sitzen: <a href="#karte" data-reiter="t-karte">Landkarte →</a></p></div>`;
 }
 
 function antwortLaender() {
@@ -3977,8 +4066,12 @@ function antwortLaender() {
   const zeilen = [...z.entries()].sort((a, b) => b[1].n - a[1].n);
   return `<div class="amzug">
     <h3 style="margin-top:0">Vorhaben nach Bundesland</h3>
-    <p class="hinweis" style="margin:0 0 10px">Gezählt ist das Land der
-      Konsortialführung.</p>
+    <p class="fa-frage">Gezählt ist das Land der Konsortialführung.</p>
+    ${blKurz([
+      [faZahl(zeilen.length), 'Bundesländer stellen mindestens eine Konsortialführung'],
+      [faZahl(zeilen[0][1].n), `Vorhaben werden aus ${esc(zeilen[0][0])} geführt, die meisten aus einem Land`, ['Alle Länder', 'bl-a-tabelle']],
+      [eur(zeilen[0][1].sum), `Fördervolumen entfallen auf ${esc(zeilen[0][0])}`, ['Alle Länder', 'bl-a-tabelle']]])}
+    <h4 id="bl-a-tabelle">Alle Länder</h4>
     <div class="huelle" style="max-height:none"><table><thead><tr>
       <th>Bundesland</th><th class="zahl">Vorhaben</th>
       <th class="zahl">Fördervolumen</th><th class="zahl">beschieden</th>
@@ -3989,7 +4082,7 @@ function antwortLaender() {
       <td class="zahl">${a.ue}${a.be
         ? ' · ' + Math.round(a.ue / a.be * 100) + ' %' : ''}</td>
       </tr>`).join('')}</tbody></table></div>
-    <p class="hinweis">Die <b>Landkarte</b> zeigt dasselbe räumlich.</p>
+    <p class="hinweis">Dasselbe räumlich: <a href="#karte" data-reiter="t-karte">Landkarte →</a></p>
     </div>`;
 }
 
@@ -4080,17 +4173,15 @@ function dossierZeichnen() {
     return;
   }
   const pz = x => Math.round(x * 100) + ' %';
-  const kopf = `<div class="kacheln">
-    <div class="kachel"><div class="gross">${d.treffer.length}</div>
-      <div class="was">Vorhaben zum Thema</div></div>
-    <div class="kachel"><div class="gross">${d.beendet.length}</div>
-      <div class="was">davon abgeschlossen und beschieden</div></div>
-    <div class="kachel"><div class="gross">${
-      d.quote == null ? '–' : pz(d.quote)}</div>
-      <div class="was">mit Empfehlung, im Bestand ${pz(d.bestand.q)}</div></div>
-    <div class="kachel"><div class="gross">${eur(d.summe)}</div>
-      <div class="was">Fördervolumen aller ${d.treffer.length}
-        Vorhaben</div></div></div>`;
+  const nT = faZahl(d.treffer.length);
+  const kopf = blKurz([
+    [nT, `Vorhaben gehören zum Thema „${esc(d.frage)}“`, [`Die ${nT} Vorhaben`, 'bl-a-vorhaben']],
+    [faZahl(d.beendet.length), 'davon sind abgeschlossen und beschieden', ['Wie sie ausgegangen sind', 'bl-a-ausgang']],
+    [d.quote == null ? '–' : pz(d.quote), d.quote == null
+      ? 'Noch ist keines dieser Vorhaben beschieden.'
+      : `davon erhielten eine Empfehlung (${d.mit.length} von ${d.beendet.length}). Über alle Themen: ${pz(d.bestand.q)}.`,
+     ['Wie sie ausgegangen sind', 'bl-a-ausgang']],
+    [blEur(d.summe) + blGenau(d.summe), `sind in die ${nT} Vorhaben geflossen`, [`Die ${nT} Vorhaben`, 'bl-a-vorhaben']]]);
 
   /* Der Kernsatz. Er wird nur gebildet, wenn beide Gruppen tragfaehig
      sind; sonst steht, warum nicht. */
@@ -4137,11 +4228,11 @@ function dossierZeichnen() {
   const grundTab = grundTabelle(d);
   const belege = trennend.length
     ? dossierBelege(d, trennend[0].k, 5) : [];
-  const belegHtml = belege.length ? `<h4>Wie das in den Beschlüssen klingt</h4><p class="hinweis">Je Vorhaben ein Beleg, aus den
+  const belegHtml = belege.length ? `<h4 id="bl-a-belege">Beispiele aus den Beschlüssen</h4><p class="hinweis">Je Vorhaben ein Beleg, aus den
     Vorhaben ohne Empfehlung, zur Kategorie
     „${esc(trennend[0].k)}“.</p>${belege.map(({p, h, i}) => `
     <blockquote>${ampel('hindernis_pruefung', p.id, i)} „${esc(h.zitat)}“<span class="seite">
-      <a href="#p=${p.id}">${esc(p.akr)}</a>${h.seite
+      <a href="/projekt/${p.sl}/">${esc(p.akr)}</a>${h.seite
         ? ', Beschlusstext S. ' + esc(h.seite) : ''}</span></blockquote>`
     ).join('')}` : '';
 
@@ -4152,41 +4243,83 @@ function dossierZeichnen() {
     const f = ohneStrich(norm(d.frage));
     return f.length >= 4 && (t.includes(f) || f.includes(t.split(' ')[0]));
   });
-  const synHtml = synPassend.length ? `<div class="fehlt" style="
-    border-left:4px solid var(--gold);background:var(--goldweich)">
+  const synHtml = synPassend.length ? `<div class="bl-synthese">
     <b>Zu diesem Thema gibt es eine Evidenzsynthese.</b> Sie zählt nicht,
     sie liest: <b>${[...new Set(synPassend.map(s => s.titel))]
       .map(esc).join('</b>, <b>')}</b>${synPassend.some(s => s.stufe === 2)
-      ? ', in zwei Fassungen: aus den Beschlusstexten des Ausschusses und '
-        + 'aus den Ergebnisberichten selbst, mit Fallzahlen, Effektmaßen '
-        + 'und Konfidenzintervallen je Vorhaben.'
+      ? ', aus den Beschlusstexten des Ausschusses und aus den '
+        + 'Ergebnisberichten selbst, mit Fallzahlen, Effektmaßen und '
+        + 'Konfidenzintervallen je Vorhaben.'
       : ', aus den Beschlusstexten des Ausschusses, mit Evidenztabelle, '
         + 'Evidenzlücken und einer Empfehlung für ein künftiges Vorhaben.'}
-    <a href="#" data-reiter="t-evidenz">Im Reiter Evidenzsynthese
-    ansehen</a></div>` : '';
+    <p style="margin:8px 0 0"><a href="#evidenz" data-reiter="t-evidenz">Kapitel 1 und 2 kostenlos lesen →</a>
+    <span class="hinweis">· ab Kapitel 3 kostenpflichtig €</span></p></div>` : '';
 
-  const messHtml = `<h4>Was gemessen wurde</h4><p>${d.ep.n
-    ? `Die Vorhaben zu diesem Thema haben <b>${d.ep.n} Endpunkte</b>
-       bewertet. Bei <b>${d.ep.ohne} davon, ${pz(d.ep.ohne / d.ep.n)},</b>
-       war kein Unterschied zur Vergleichsgruppe zu sehen.`
-    : 'Zu diesem Thema liegen keine ausgewerteten Endpunkte vor.'}
-    ${d.fzN ? ` Bei ${d.fzN} Vorhaben lässt sich die Fallzahl
-      vergleichen; im Median wurden <b>${Math.round(d.fzMed * 100)}
-      Prozent</b> der geplanten Zahl ausgewertet.` : ''}
-    ${d.wartMed != null ? ` Vom Projektende bis zum Beschluss vergingen
-      im Median <b>${d.wartMed} Monate</b>.` : ''}</p>`;
+  /* Was gemessen wurde: vier Kacheln, jede mit dem Weg in die
+     Auswertung, aus der sie stammt. */
+  const mk = (g, w, l, t) => `<div class="kachel"><div class="gross">${g}</div>
+    <div class="was">${w}</div><a class="bl-sprung" href="#${t.slice(2)}" data-reiter="${t}">${l} →</a></div>`;
+  const messHtml = `<h4 id="bl-a-gemessen">Was gemessen wurde</h4>
+    <p class="hinweis">Endpunkte sind die Zielgrößen, an denen eine Studie
+    die Wirkung misst, etwa Krankenhauseinweisungen, Lebensqualität oder
+    Sterblichkeit.</p>
+    ${d.ep.n || d.fzN || d.wartMed != null ? `<div class="kacheln bl-kurz">${
+      d.ep.n ? mk(faZahl(d.ep.n), 'bewertete Endpunkte', 'Endpunkte', 't-endpunkte')
+        + mk(pz(d.ep.ohne / d.ep.n), `ohne Unterschied zur Vergleichsgruppe (${faZahl(d.ep.ohne)})`, 'Endpunkte', 't-endpunkte') : ''}${
+      d.fzN ? mk(Math.round(d.fzMed * 100) + ' %', `der geplanten Fallzahl ausgewertet (Median, ${d.fzN} Vorhaben)`, 'Fallzahlen', 't-fallzahl') : ''}${
+      d.wartMed != null ? mk(d.wartMed + ' Monate', 'vom Projektende bis zum Beschluss (Median)', 'Transfer', 't-transfer') : ''}</div>` : ''}
+    ${d.ep.n ? '' : '<p>Zu diesem Thema liegen keine ausgewerteten Endpunkte vor.</p>'}`;
 
-  const liste = `<h4>Die Vorhaben</h4>
-    <div class="huelle" style="max-height:460px"><table><tbody>${
-    d.treffer.slice(0, 200).map(p => `<tr>
-      <td style="white-space:nowrap"><b><a href="#p=${p.id}">${
+  /* Die Vorhaben: die zehn zuletzt beschiedenen, alle übrigen in der
+     Projektdatenbank (Marianns Canvas 2). Vorher standen bis zu 200
+     Zeilen in einer Scrollbox. */
+  const neu = d.treffer.slice().sort((a, b) => (b.bd || '').localeCompare(a.bd || '')
+    || (a.akr || '').localeCompare(b.akr || '', 'de'));
+  const liste = `<h4 id="bl-a-vorhaben">Die ${nT} Vorhaben</h4>
+    <p class="hinweis">Zusammen ${eur(d.summe)} Fördervolumen. ${d.treffer.length > 10
+      ? `Die 10 zuletzt beschiedenen von ${nT}.` : ''}</p>
+    <div class="huelle" style="max-height:none"><table><tbody>${
+    neu.slice(0, 10).map(p => `<tr>
+      <td style="white-space:nowrap"><b><a href="/projekt/${p.sl}/">${
         esc(p.akr)}</a></b></td>
       <td>${esc(p.tit)}</td>
       <td style="white-space:nowrap">${marke(p)}</td>
       <td class="hinweis" style="white-space:nowrap">${
         p.bd ? datum(p.bd) : esc(p.st || '')}</td></tr>`).join('')}
-    </tbody></table></div>${d.treffer.length > 200
-      ? `<p class="hinweis">Die ersten 200 von ${d.treffer.length}.</p>` : ''}`;
+    </tbody></table></div>
+    <p><button type="button" class="gold" data-bl-pdb>Alle ${nT} in der Projektdatenbank anzeigen →</button></p>`;
+
+  /* So wurde gezählt: derselbe Kasten auf jedem Themen-Dossier, Beispiele
+     und Synonyme aus dem Thema. Er stand vorher als Kleingedrucktes am
+     Ende. */
+  const ringW = new Set(ringFuerFrage(d.frage));
+  const ringZeig = [...new Set((D.synonyme || []).flatMap(r => r.w || [])
+    .filter(w => ringW.has(ohneStrich(norm(w)))))].slice(0, 6);
+  const lotsen = ohneStrich(norm(d.frage)).startsWith('lotse');
+  const gezaehlt = `<div class="bl-gezaehlt" id="bl-a-gezaehlt">
+    <h4>So wurde gezählt und gerechnet</h4>
+    <p><b>Wer dazuzählt.</b> Alle Vorhaben, die „${esc(d.frage)}“${ringZeig.length
+      ? ` oder ein Synonym (${ringZeig.map(esc).join(', ')})` : ''} in Titel,
+      Beschreibung, Projektelementen, Konsortium oder Begründung führen,
+      auch als Nebensache.${lotsen ? ` So zählt etwa BGM-innovativ mit, weil
+      der GBA ihm das Projektelement „Care und Case Management / Lotsen“
+      zugeordnet hat.` : ''}${d.beendet.length >= 10 ? ` Ein einzelnes Vorhaben
+      am Rand verschiebt die Quote um etwa ${Math.max(1, Math.round(100 / d.beendet.length))}
+      Prozentpunkt${Math.round(100 / d.beendet.length) > 1 ? 'e' : ''}.` : ''}</p>
+    <p><b>Womit verglichen wird.</b> „Über alle Themen“ meint alle
+      ${faZahl(d.bestand.n)} abgeschlossenen Versorgungsvorhaben des Fonds,
+      davon ${faZahl(d.bestand.mit)} mit Empfehlung. Leitlinienvorhaben
+      zählen nicht mit, sie erhalten ausnahmslos eine Prüfbitte.
+      Unterschiede werden mit dem exakten Test nach Fisher geprüft,
+      zweiseitig.</p>
+    ${synPassend.length ? `<p><b>Unterschied zur Evidenzsynthese.</b> Eine
+      Synthese trifft Aussagen über die Gruppe und wählt deshalb enger
+      aus.${lotsen ? ` Zu Lotsen zählt dieses Dossier ${d.beendet.length}
+      abgeschlossene Vorhaben, die Synthese behandelt 36 davon.` : ''}</p>` : ''}
+    <p><b>Mehr zur Methodik:</b>
+      <a href="#vorwort" data-reiter="t-vorwort">So entstehen diese Daten →</a> ·
+      <a href="#zahlen" data-reiter="t-zahlen">Wie verlässlich die Hindernisse sind →</a></p>
+  </div>`;
 
   const gelesen = (doThema && doThema.erkannt) ? `
     <div class="rueckfrage">
@@ -4205,35 +4338,12 @@ function dossierZeichnen() {
       </div>`}
     </div>` : '';
   ziel.innerHTML = `<div class="amzug">
-    <h3 style="margin-top:0">Themen-Dossier: ${esc(d.frage)}</h3>
+    <p class="fa-frage">Themen-Dossier „${esc(d.frage)}“ · ${nT} von
+      ${faZahl(P.length)} Innovationsfonds-Vorhaben</p>
     ${gelesen}
-    ${kopf}${kern}${grundHtml}${grundTab}${belegHtml}${synHtml}${messHtml}${liste}
-    <p class="hinweis"><b>Wie diese Zahlen entstehen.</b> Die Kohorte
-    sind alle Vorhaben, die das Stichwort in Titel, Beschreibung,
-    Projektelementen, Konsortium oder der ausgewerteten Begründung
-    führen, dazu die Vorhaben, die es unter einem anderen Wort führen.
-    Gezählt wird damit <b>alles, was das Thema berührt</b>, auch wenn es
-    dort nur eine Nebensache ist. Ein Beispiel: Sucht man nach Lotsen,
-    erscheint auch <b>BGM-innovativ</b>, ein Vorhaben zum
-    arbeitsplatznahen Versorgungsmanagement. Es steht in der Kohorte,
-    weil der GBA ihm das Projektelement „Care und Case Management /
-    Lotsen" zugeordnet hat. Ein Lotsenprojekt ist es deswegen nicht.
-    Wie verlässlich die einzelnen Hinderniskategorien sind, steht im
-    Reiter <a href="#" data-reiter="t-zahlen">Kennzahlen</a> unter
-    „Wie verlässlich die Kategorien sind".
-    Fürs Zählen ist das richtig: Ein Vorhaben am Rand verschiebt eine
-    Prozentzahl um einen Punkt, und das sieht man. Die Evidenzsynthesen
-    im gleichnamigen Reiter brauchen dagegen eine <b>engere Auswahl</b>,
-    weil sie etwas <b>über die Gruppe behaupten</b>. Ein Satz wie „die
-    Lotsenprojekte scheitern an der Rekrutierung" wird falsch, sobald
-    Vorhaben mitgezählt werden, bei denen der Lotse eine Nebensache ist,
-    und daran ändert auch ein längerer Text nichts. Zum Thema Lotsen
-    zählt das Dossier ${lotsenBeendet()} abgeschlossene Vorhaben, die
-    Synthese behandelt 36 davon.
-    Leitlinienvorhaben bleiben draußen, weil sie ausnahmslos eine
-    Prüfbitte erhalten. Verglichen wird mit dem exakten Test nach Fisher,
-    zweiseitig. Gerechnet wird in Ihrem Browser; die Eingabe verlässt
-    Ihren Rechner nicht.</p></div>`;
+    ${kopf}${gezaehlt}
+    <h4 id="bl-a-ausgang">Wie die Vorhaben ausgegangen sind</h4>
+    ${kern}${grundHtml}${grundTab}${belegHtml}${synHtml}${messHtml}${liste}</div>`;
   doStand = d;
   const roher = document.getElementById('do-roh');
   if (roher) roher.onclick = () => {
@@ -4701,46 +4811,82 @@ function ampel(tabelle, ...schluessel) {
    "Woran", "abgelehnt", "bekommen" - jedes Mal ein Wort, das keine
    Sache benennt. Wer etwas anderes wissen will, schreibt es in den
    Kasten darunter. */
+/* Stufe 104 (30.10.2026): Jede Frage hat eine eigene Adresse und gehört
+   zu einem Bereich, nach Marianns Canvas 2. Je Eintrag:
+   [Frage, Stichwort oder Funktion, Adresse, Bereich, hervorgehobenes
+    Wort, Untertitel (nur breite Karten), Linktext (nur breite Karten)].
+   Die ersten beiden Stellen sind die alten, alles Weitere liest sie
+   über den Index. Die Adresse ist fest: Sie steht in Links, die schon
+   verschickt sein können. */
 const DO_VORSCHLAEGE = [
-  ['Was wurde aus den Lotsenprojekten?', 'Lotsen'],
-  ['Woran scheitern Telemedizin-Vorhaben?', 'Telemedizin'],
-  ['Lohnt sich noch ein Antrag zu Demenz?', 'Demenz'],
-  ['Halten Gesundheits-Apps, was sie versprechen?', 'App'],
-  ['Was bringt Entlassmanagement?', 'Entlassmanagement'],
-  ['Wie geht es Vorhaben im Pflegeheim?', 'Pflegeheim'],
-  ['Geht Arzneimitteltherapiesicherheit auf?',
-   'Arzneimitteltherapiesicherheit'],
-  ['Was wurde zu Depression gefördert?', 'Depression'],
-  ['Tragen Vorhaben mit Routinedaten?', 'Routinedaten'],
-  ['Wie steht es um sektorenübergreifende Versorgung?',
-   'sektorenübergreifend'],
-  ['Was wurde für Kinder und Jugendliche erprobt?', 'Kinder'],
-  ['Wirkt Palliativversorgung nachweisbar?', 'Palliativ'],
-  ['Warum scheitern Projekte beim Transfer in die Regelversorgung?',
-   antwortScheitern],
-  ['Wie lange dauert es bis zur Entscheidung?', faWartezeit],
-  ['Wie viel Geld steckt im Innovationsfonds?', faGeld],
-  ['Wie hat sich die Förderung entwickelt?', faJahre],
-  ['Wie groß sind die Konsortien?', faKonsortien],
-  ['Was wird in den Vorhaben eigentlich gemessen?', faGemessen],
-  ['Wie oft zeigt sich überhaupt ein Effekt?', faEffekte],
-  ['Wird die geplante Fallzahl erreicht?', faFallzahl],
-  ['Welche Probleme hat die Pandemie ausgelöst?', faPandemie],
-  ['Welche Themen haben die beste Bilanz?', faThemen],
-  ['Was wurde aus den empfohlenen Vorhaben?', faEmpfohlen],
-  ['Wer forscht am meisten?', () => antwortEinrichtungen('')],
-  ['Wo im Land wird geforscht?', antwortLaender],
-  ['Wie steht der Innovationsfonds insgesamt da?', antwortBilanz],
-  ['Worauf beruht das alles?', faGrundlage],
+  ['Wie steht der Innovationsfonds insgesamt da?', antwortBilanz,
+   'gesamtbilanz', 'fonds', 'insgesamt',
+   'Was in der Summe herausgekommen ist und was man ihm vorhalten muss', 'Zur Gesamtbilanz'],
+  ['Was wurde aus den Lotsenprojekten?', 'Lotsen', 'lotsen', 'formen', 'Lotsenprojekten'],
+  ['Woran scheitern Telemedizin-Vorhaben?', 'Telemedizin', 'telemedizin', 'formen', 'Telemedizin'],
+  ['Halten Gesundheits-Apps, was sie versprechen?', 'App', 'apps', 'formen', 'Gesundheits-Apps'],
+  ['Was bringt Entlassmanagement?', 'Entlassmanagement', 'entlassmanagement', 'formen', 'Entlassmanagement'],
+  ['Geht Arzneimitteltherapiesicherheit auf?', 'Arzneimitteltherapiesicherheit',
+   'arzneimitteltherapiesicherheit', 'formen', 'Arzneimitteltherapiesicherheit'],
+  ['Wie steht es um sektorenübergreifende Versorgung?', 'sektorenübergreifend',
+   'sektorenuebergreifend', 'formen', 'sektorenübergreifende Versorgung'],
+  ['Tragen Vorhaben mit Routinedaten?', 'Routinedaten', 'routinedaten', 'formen', 'Routinedaten'],
+  ['Lohnt sich noch ein Antrag zu Demenz?', 'Demenz', 'demenz', 'krank', 'Demenz'],
+  ['Wie geht es Vorhaben im Pflegeheim?', 'Pflegeheim', 'pflegeheim', 'krank', 'Pflegeheim'],
+  ['Was wurde zu Depression gefördert?', 'Depression', 'depression', 'krank', 'Depression'],
+  ['Was wurde für Kinder und Jugendliche erprobt?', 'Kinder', 'kinder', 'krank', 'Kinder und Jugendliche'],
+  ['Wirkt Palliativversorgung nachweisbar?', 'Palliativ', 'palliativ', 'krank', 'Palliativversorgung'],
+  ['Wie oft zeigt sich überhaupt ein Effekt?', faEffekte, 'effekte', 'wirkung', 'Effekt'],
+  ['Was wird in den Vorhaben eigentlich gemessen?', faGemessen, 'endpunkte', 'wirkung', 'gemessen'],
+  ['Wird die geplante Fallzahl erreicht?', faFallzahl, 'fallzahl', 'wirkung', 'Fallzahl'],
+  ['Welche Probleme hat die Pandemie ausgelöst?', faPandemie, 'pandemie', 'wirkung', 'Pandemie'],
+  ['Welche Themen haben die beste Bilanz?', faThemen, 'beste-bilanz', 'wirkung', 'beste Bilanz'],
+  ['Warum scheitern Projekte beim Transfer in die Regelversorgung?', antwortScheitern,
+   'transfer', 'wirkung', 'Transfer'],
+  ['Was wurde aus den empfohlenen Vorhaben?', faEmpfohlen, 'empfohlene', 'wirkung', 'empfohlenen Vorhaben'],
+  ['Wie viel Geld steckt im Innovationsfonds?', faGeld, 'geld', 'foerd', 'Geld'],
+  ['Wie hat sich die Förderung entwickelt?', faJahre, 'foerderjahre', 'foerd', 'Förderung entwickelt'],
+  ['Wie lange dauert es bis zur Entscheidung?', faWartezeit, 'wartezeit', 'foerd', 'Entscheidung'],
+  ['Wer forscht am meisten?', () => antwortEinrichtungen(''), 'einrichtungen', 'akteure', 'Wer forscht'],
+  ['Wie groß sind die Konsortien?', faKonsortien, 'konsortien', 'akteure', 'Konsortien'],
+  ['Wo im Land wird geforscht?', antwortLaender, 'bundeslaender', 'akteure', 'Wo im Land'],
+  ['Worauf beruhen die Antworten?', faGrundlage, 'quellen', 'quellen', 'beruhen',
+   'Welche Dokumente gelesen wurden, wie viele Vorhaben ausgewertet sind und was diese Grundlage nicht abdeckt.',
+   'Zu den Quellen'],
 ];
+const BL_BEREICHE = [['fonds', 'Der Fonds im Ganzen'], ['formen', 'Versorgungsformen'],
+  ['krank', 'Krankheitsbilder und Zielgruppen'], ['wirkung', 'Wirkung und Transfer'],
+  ['foerd', 'Förderung und Verfahren'], ['akteure', 'Akteure und Regionen'], ['quellen', 'Quellen']];
+function blFrageText(f) {
+  const t = esc(f[0]), h = f[4] ? esc(f[4]) : '';
+  return h && t.includes(h) ? t.replace(h, `<b>${h}</b>`) : t;
+}
+/* Die Fragen nach Bereichen: einmal als Startseite, einmal als Band am
+   Ende jeder Antwort, die gerade offene Frage markiert. */
+function blFragenHtml(aktiv) {
+  return BL_BEREICHE.map(([k, name]) => {
+    const fr = DO_VORSCHLAEGE.map((f, i) => [f, i]).filter(([f]) => f[3] === k);
+    if (!fr.length) return '';
+    return `<div class="bl-gruppe"><h4>${esc(name)}</h4><div class="bl-raster">${fr.map(([f, i]) => {
+      const hier = i === aktiv;
+      const cur = hier ? ' aria-current="page"' : '';
+      if (f[5]) return `<a class="bl-frage breit" href="#suche/${f[2]}" data-bl="${i}"${cur}>
+        <span class="t">${blFrageText(f)}</span><span class="s">${esc(f[5])}</span>
+        <span class="los">${hier ? 'diese Seite' : esc(f[6]) + ' →'}</span></a>`;
+      return `<a class="bl-frage" href="#suche/${f[2]}" data-bl="${i}"${cur}><span>${blFrageText(f)}</span>
+        <span class="pf">${hier ? 'diese Seite' : '→'}</span></a>`;
+    }).join('')}</div></div>`;
+  }).join('');
+}
+document.getElementById('bl-fragen').innerHTML = blFragenHtml(-1);
 document.getElementById('do-vorschlaege').innerHTML = DO_VORSCHLAEGE.map(
   ([frage], i) => `<button class="chip" data-i="${i}">${
     esc(frage)}</button>`).join('');
-document.querySelectorAll('#do-vorschlaege button').forEach(b => b.onclick = () => {
-  const [frage, was] = DO_VORSCHLAEGE[+b.dataset.i];
+
+/* Rechnet die Antwort auf Frage i in #do-ergebnis. */
+function blRechnen(i) {
+  const [, was] = DO_VORSCHLAEGE[i];
   const ziel = document.getElementById('do-ergebnis');
-  document.querySelectorAll('#do-vorschlaege button')
-    .forEach(x => x.classList.toggle('gewaehlt', x === b));
   if (typeof was === 'function') {
     /* Eine eigene Auswertung - sie rechnet selbst. */
     doThema = null;
@@ -4754,7 +4900,97 @@ document.querySelectorAll('#do-vorschlaege button').forEach(b => b.onclick = () 
     dossierZeichnen();
     doRoh = false;
   }
-  ziel.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+}
+const BL_TITEL = document.title;
+let blAktiv = -1;
+function blZeigen(modus) {
+  document.getElementById('bl-start').hidden = modus !== 'start';
+  document.getElementById('bl-antwort').hidden = modus !== 'antwort';
+  document.getElementById('bl-eintrag').hidden = modus !== 'eintrag';
+  document.getElementById('bl-fragekasten').hidden = modus === 'eintrag';
+  /* Die Antwort hat ihren eigenen Kopf mit der Frage als Titel. */
+  const k = document.getElementById('seitenkopf');
+  if (k) k.hidden = modus !== 'start';
+  if (modus !== 'antwort') document.title = BL_TITEL;
+}
+/* Welche Ansicht die Adresse verlangt: #p=123 den einzelnen Eintrag,
+   #suche/lotsen die Antwort, sonst die Startseite. */
+function bilanzAnsicht() {
+  const h = location.hash || '';
+  if (/[#&]p=/.test(h)) { blZeigen('eintrag'); return; }
+  const m = /^#suche\/([a-z0-9-]+)/.exec(h);
+  const i = m ? DO_VORSCHLAEGE.findIndex(f => f[2] === m[1]) : -1;
+  if (i < 0) { blAktiv = -1; blZeigen('start'); return; }
+  if (i !== blAktiv) {
+    blAktiv = i;
+    const f = DO_VORSCHLAEGE[i];
+    const b = BL_BEREICHE.find(x => x[0] === f[3]);
+    document.getElementById('bl-ober').textContent = 'Frage · ' + (b ? b[1] : '');
+    document.getElementById('bl-titel').textContent = f[0];
+    blRechnen(i);
+    document.getElementById('bl-menue').innerHTML = `<p class="bl-ober">Weiter in der Themen-Bilanz</p>
+      <h3>Weitere Fragen der Themen-Bilanz</h3>
+      <p class="hinweis"><a href="#" data-bl-fragen>Ihre Frage steht nicht dabei? Frage stellen →</a></p>
+      ${blFragenHtml(i)}`;
+  }
+  document.title = DO_VORSCHLAEGE[i][0] + ' – Themen-Bilanz';
+  blZeigen('antwort');
+}
+/* Ruft die Navigation nach jedem Reiterwechsel auf. */
+window.nachNav = ziel => { if (ziel === 't-suche') bilanzAnsicht(); };
+function bilanzOeffnen(i) {
+  const f = DO_VORSCHLAEGE[i];
+  if (!f) return;
+  if (location.hash !== '#suche/' + f[2]) history.pushState(null, '', '#suche/' + f[2]);
+  reiterNach('t-suche');
+  window.scrollTo({top: 0});
+}
+document.querySelectorAll('#do-vorschlaege button').forEach(b =>
+  b.onclick = () => bilanzOeffnen(+b.dataset.i));
+document.getElementById('t-suche').addEventListener('click', ev => {
+  const a = ev.target.closest('a[data-bl]');
+  if (a) { ev.preventDefault(); bilanzOeffnen(+a.dataset.bl); return; }
+  if (ev.target.closest('#bl-zurueck')) {
+    ev.preventDefault();
+    history.pushState(null, '', '#suche');
+    bilanzAnsicht(); window.scrollTo({top: 0}); return;
+  }
+  if (ev.target.closest('[data-bl-fragen]')) {
+    ev.preventDefault();
+    const k = document.getElementById('bl-fragekasten');
+    k.open = true; k.scrollIntoView({block: 'center', behavior: 'smooth'});
+    return;
+  }
+  /* ↓-Verweise der Kacheln: zum Abschnitt springen, ohne die Adresse
+     anzufassen, denn die nennt die Frage. */
+  const sp = ev.target.closest('[data-sprung]');
+  if (sp) {
+    ev.preventDefault();
+    const z = document.getElementById(sp.dataset.sprung);
+    if (z) { if (z.tagName === 'DETAILS') z.open = true; z.scrollIntoView({block: 'start', behavior: 'smooth'}); }
+    return;
+  }
+  /* Lange Tabellen: je 25 Zeilen nachladen. */
+  const mehr = ev.target.closest('[data-bl-mehr]');
+  if (mehr) {
+    const zeile = mehr.closest('.bl-mehrzeile');
+    const tab = zeile.previousElementSibling;
+    const rest = [...tab.querySelectorAll('tr.bl-spaet[hidden]')];
+    rest.slice(0, 25).forEach(t => { t.hidden = false; });
+    const alle = tab.querySelectorAll('tbody tr').length;
+    const offen = alle - tab.querySelectorAll('tr.bl-spaet[hidden]').length;
+    zeile.querySelector('span').textContent = `${faZahl(offen)} von ${faZahl(alle)} angezeigt`;
+    if (offen >= alle) mehr.remove();
+    return;
+  }
+  /* Aus einem Themen-Dossier in die Projektdatenbank: genau die
+     Vorhaben des Dossiers, nicht eine neue Wortsuche. */
+  if (ev.target.closest('[data-bl-pdb]') && doStand && window.pdbAuswahl) {
+    window.pdbAuswahl(doStand.treffer.map(p => p.id), doStand.frage);
+    history.pushState(null, '', '#projekte');
+    reiterNach('t-projekte');
+    window.scrollTo({top: 0});
+  }
 });
 
 /* ---------- Ideencheck ----------
@@ -6599,20 +6835,40 @@ const faMedian = a => {
 const faVF = () => P.filter(p => p.vf !== 'Medizinische Leitlinien');
 const faBeschieden = () => faVF().filter(p => p.st === 'beendet' && p.te);
 
-function faKopf(titel, frage, kacheln) {
-  return `<div class="amzug"><h3 style="margin-top:0">${esc(titel)}</h3>
-    <p class="fa-frage">${esc(frage)}</p>
-    <div class="kacheln">${kacheln.map(([gross, was]) =>
+/* Stufe 104 (30.10.2026): „Das Wichtigste in Kürze“ nach Marianns
+   Canvas 2. Jede Kachel ist ein ganzer Satz, und wo die Antwort einen
+   Abschnitt dazu hat, springt ein Verweis dorthin:
+   [Zahl, Satz, [Verweistext, Kennung des Abschnitts]]. */
+function blKurz(kacheln) {
+  return `<h3 class="bl-kurz-h">Das Wichtigste in Kürze</h3>
+    <div class="kacheln bl-kurz">${kacheln.map(([gross, was, sprung]) =>
       `<div class="kachel"><div class="gross">${gross}</div>
-       <div class="was">${was}</div></div>`).join('')}</div>`;
+       <div class="was">${was}</div>${sprung
+         ? `<a class="bl-sprung" href="#${sprung[1]}" data-sprung="${sprung[1]}">↓ ${esc(sprung[0])}</a>` : ''}</div>`).join('')}</div>`;
 }
-function faTabelle(kopf, zeilen) {
+const blGenau = x => `<small>genau ${Math.round(x || 0).toLocaleString('de-DE')} €</small>`;
+const blEur = x => x >= 1e9 ? (x / 1e9).toLocaleString('de-DE', {maximumFractionDigits: 2}) + ' Mrd. €'
+  : x >= 1e6 ? (x / 1e6).toLocaleString('de-DE', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + ' Mio. €' : eur(x);
+const vLink = p => `<b><a href="/projekt/${p.sl}/">${esc(p.akr)}</a></b>`;
+/* Die Einschätzung steht getrennt von den gerechneten Zahlen. */
+const blEinordnung = text => `<div class="bl-einordnung" id="bl-a-einordnung">
+  <p class="bl-ober">Einordnung der Redaktion</p><p style="margin:4px 0 0">${text}</p></div>`;
+
+function faKopf(titel, frage, kacheln) {
+  /* Der Titel steht seit Stufe 104 im Kopf der Antwortseite. */
+  return `<div class="amzug"><p class="fa-frage">${esc(frage)}</p>${blKurz(kacheln)}`;
+}
+/* opt.zeig: so viele Zeilen offen, der Rest kommt je 25 über einen Knopf. */
+function faTabelle(kopf, zeilen, opt) {
   if (!zeilen.length) return '';
+  const zeig = (opt && opt.zeig) || zeilen.length;
   return `<div class="huelle" style="max-height:none"><table><thead><tr>${
     kopf.map((k, i) => `<th${i ? ' class="zahl"' : ''}>${k}</th>`).join('')
-  }</tr></thead><tbody>${zeilen.map(z => `<tr>${
+  }</tr></thead><tbody>${zeilen.map((z, j) => `<tr${j >= zeig ? ' class="bl-spaet" hidden' : ''}>${
     z.map((x, i) => `<td${i ? ' class="zahl"' : ''}>${x}</td>`).join('')
-  }</tr>`).join('')}</tbody></table></div>`;
+  }</tr>`).join('')}</tbody></table></div>${zeilen.length > zeig
+    ? `<p class="bl-mehrzeile"><span>${faZahl(zeig)} von ${faZahl(zeilen.length)} angezeigt</span>
+       <button type="button" class="pdb-mehrb" data-bl-mehr>▾ 25 weitere anzeigen</button></p>` : ''}`;
 }
 /* Was eine Antwort NICHT sagt. Jede fertige Antwort traegt diesen
    Satz, weil eine Zahl ohne ihre Grenze eine halbe Auskunft ist. */
@@ -6629,56 +6885,90 @@ function faWartezeit() {
   }).filter(x => x && x.m >= 0);
   const med = faMedian(w.map(x => x.m));
   const lang = w.filter(x => x.m >= 24).length;
-  const spitze = w.slice().sort((a, b) => b.m - a.m).slice(0, 8);
+  const max = Math.max(...w.map(x => x.m));
+  const sortiert = w.slice().sort((a, b) => b.m - a.m);
+  /* Die Aufschlüsselung (Marianns Canvas 2, Tafel „Antwort“): dieselbe
+     Wartezeit nach Beschlussjahr, Förderbereich, Ergebnis und Größe. */
+  const ergebnis = p => UE_TE.includes(p.te) ? 'Empfehlung oder Erprobung'
+    : p.te === 'keine Empfehlung' ? 'keine Empfehlung' : 'Weitergabe der Erkenntnisse';
+  const groesse = p => !p.sum ? null : p.sum < 2e6 ? 'unter 2 Mio. €' : p.sum < 5e6 ? '2 bis 5 Mio. €' : 'ab 5 Mio. €';
+  const GR = [
+    ['Nach Beschlussjahr', p => (p.bd || '').slice(0, 4) || null, null],
+    ['Nach Förderbereich', p => p.ber || null, ['Neue Versorgungsformen', 'Versorgungsforschung']],
+    ['Nach Ergebnis', ergebnis, ['Empfehlung oder Erprobung', 'Weitergabe der Erkenntnisse', 'keine Empfehlung']],
+    ['Nach Fördersumme', groesse, ['unter 2 Mio. €', '2 bis 5 Mio. €', 'ab 5 Mio. €']],
+  ];
+  const aufschl = GR.map(([name, schl, ordnung]) => {
+    const m = new Map();
+    w.forEach(x => { const k = schl(x.p); if (k == null) return; if (!m.has(k)) m.set(k, []); m.get(k).push(x.m); });
+    const keys = ordnung ? ordnung.filter(k => m.has(k)) : [...m.keys()].sort();
+    return `<tr><th colspan="5" class="bl-ober" style="padding-top:12px">${esc(name)}</th></tr>` + keys.map(k => {
+      const a = m.get(k).slice().sort((x, y) => x - y);
+      const md = faMedian(a), lo = a[0], hi = a[a.length - 1];
+      return `<tr><td>${esc(k)}</td><td class="zahl">${faZahl(a.length)}</td><td class="zahl">${md} Mon.</td>
+        <td class="zahl">${lo}–${hi}</td><td class="bl-balkenzelle" aria-hidden="true">
+        <span class="bl-spanne" style="left:${lo / max * 100}%;width:${Math.max(1, (hi - lo) / max * 100)}%"></span>
+        <span class="bl-median" style="left:${md / max * 100}%"></span></td></tr>`;
+    }).join('');
+  }).join('');
   return faKopf('Wie lange dauert es bis zur Entscheidung?',
     'Vom Ende eines Vorhabens bis zum Beschluss des Innovationsausschusses.',
-    [[faZahl(med) + ' Monate', 'im Median'],
-     [faZahl(w.length), 'Versorgungsvorhaben mit Projektende und Beschlussdatum, ohne Leitlinienvorhaben'],
-     [faZahl(lang), 'warteten zwei Jahre oder länger'],
-     [faZahl(Math.max(...w.map(x => x.m))) + ' Monate', 'am längsten']])
-    + `<p>Die Hälfte aller Vorhaben wartet länger als ${med} Monate auf
-       die Entscheidung über ihre Zukunft. In dieser Zeit laufen
+    [[faZahl(med) + ' Monate', 'warteten Versorgungsvorhaben im Median vom Projektende bis zur Entscheidung', ['Einordnung der Redaktion', 'bl-a-einordnung']],
+     [faZahl(w.length), 'Versorgungsvorhaben, bei denen Projektende und Beschlussdatum bekannt sind', ['Aufgeschlüsselt', 'bl-a-aufschl']],
+     ['2 Jahre', `oder länger warteten ${faZahl(lang)} Vorhaben bis zur Entscheidung`, ['Die längsten Wartezeiten', 'bl-a-tabelle']],
+     [faZahl(max) + ' Monate', 'wartete ein Vorhaben am längsten bis zur Entscheidung', ['Die längsten Wartezeiten', 'bl-a-tabelle']]])
+    + blEinordnung(`Die Hälfte aller Vorhaben wartet länger als ${med} Monate
+       auf die Entscheidung über ihre Zukunft. In dieser Zeit laufen
        Verträge aus, Personal wechselt, und die Versorgungsform, über
-       die entschieden wird, besteht vielfach nicht mehr.</p>`
+       die entschieden wird, besteht vielfach nicht mehr.`)
+    + `<h4 id="bl-a-tabelle">Die längsten Wartezeiten</h4>`
     + faTabelle(['Vorhaben', 'Projektende', 'Beschluss', 'Monate'],
-        spitze.map(x => [`<b>${esc(x.p.akr)}</b>`, datum(x.p.bis),
-                         datum(x.p.bd), x.m]))
+        sortiert.map(x => [vLink(x.p), datum(x.p.bis), datum(x.p.bd), x.m]), {zeig: 10})
+    + `<h4 id="bl-a-aufschl">Die Wartezeit aufgeschlüsselt</h4>
+       <p class="hinweis">Monate vom Projektende bis zum Beschluss. Strich:
+       Median, Balken: Spanne (Skala 0 bis ${max} Monate).</p>
+       <div class="huelle" style="max-height:none"><table><thead><tr><th></th>
+       <th class="zahl">Vorhaben</th><th class="zahl">Median</th><th class="zahl">Spanne</th><th></th></tr></thead>
+       <tbody>${aufschl}</tbody></table></div>`
     + faGrenze(`Gezählt ist der Abstand zwischen dem im Portal
        hinterlegten Projektende und dem Datum des Beschlusses. Bei
        Vorhaben mit Verlängerung kann das tatsächliche Ende später
-       liegen. Der Reiter Kennzahlen schlüsselt die Wartezeit für alle
-       beschiedenen Vorhaben auf, einschließlich der Leitlinienvorhaben;
-       seine Zahlen weichen deshalb ab.`) + '</div>';
+       liegen. Die Auswertung <a href="#zahlen" data-reiter="t-zahlen">Förderung</a>
+       schlüsselt die Wartezeit für alle beschiedenen Vorhaben auf, auch
+       für die Leitlinienvorhaben. Ihre Zahlen weichen deshalb ab.`)
+    + `<p class="hinweis">Ausführlich: alle Stationen von der
+       Förderbekanntmachung bis zur Rückmeldung der Adressaten.
+       <a href="#transfer" data-reiter="t-transfer">Transfer der Ergebnisse →</a></p></div>`;
 }
 
 function faGeld() {
   const vf = faVF();
   const summe = vf.reduce((s, p) => s + (p.sum || 0), 0);
   const med = faMedian(vf.map(p => p.sum || 0).filter(x => x > 0));
-  const gross = vf.slice().sort((a, b) => (b.sum || 0) - (a.sum || 0))
-    .slice(0, 8);
+  const gross = vf.filter(p => p.sum).sort((a, b) => b.sum - a.sum);
   const be = faBeschieden();
   const mitS = be.filter(p => UE_TE.includes(p.te))
     .reduce((s, p) => s + (p.sum || 0), 0);
   const ohneS = be.filter(p => !UE_TE.includes(p.te))
     .reduce((s, p) => s + (p.sum || 0), 0);
   return faKopf('Wie viel Geld steckt im Innovationsfonds?',
-    'Fördervolumen aller Vorhaben, ohne die Leitlinienvorhaben.',
-    [[eur(summe), 'insgesamt'],
-     [eur(med), 'im Median je Vorhaben'],
-     [faZahl(vf.length), 'Vorhaben'],
-     [eur(ohneS), 'in Vorhaben ohne Empfehlung']])
-    + `<p>Von den ${eur(mitS + ohneS)}, über die bereits entschieden
+    'Fördervolumen aller Versorgungsvorhaben, ohne die Leitlinienvorhaben.',
+    [[blEur(summe) + blGenau(summe), `sind in die ${faZahl(vf.length)} Versorgungsvorhaben geflossen`, ['Die größten Vorhaben', 'bl-a-tabelle']],
+     [eur(med), 'erhält ein Vorhaben im Median', ['Die größten Vorhaben', 'bl-a-tabelle']],
+     [eur(mitS), 'gingen an beschiedene Vorhaben mit Empfehlung', ['Mit und ohne Empfehlung', 'bl-a-text']],
+     [eur(ohneS), 'gingen an beschiedene Vorhaben ohne Empfehlung', ['Mit und ohne Empfehlung', 'bl-a-text']]])
+    + `<h4 id="bl-a-text">Mit und ohne Empfehlung</h4>
+       <p>Von den ${eur(mitS + ohneS)}, über die bereits entschieden
        ist, entfallen <b>${eur(mitS)}</b> auf Vorhaben mit Empfehlung
-       und <b>${eur(ohneS)}</b> auf solche ohne. Das ist keine
-       verlorene Summe: Auch ein Vorhaben ohne Empfehlung hat
-       gemessen, was vorher niemand gemessen hatte.</p>`
+       und <b>${eur(ohneS)}</b> auf solche ohne.</p>`
+    + blEinordnung(`Das ist keine verlorene Summe: Auch ein Vorhaben ohne
+       Empfehlung hat gemessen, was vorher niemand gemessen hatte.`)
+    + `<h4 id="bl-a-tabelle">Die größten Vorhaben</h4>`
     + faTabelle(['Vorhaben', 'Titel', 'Fördersumme'],
-        gross.map(p => [`<b><a href="#p=${p.id}">${esc(p.akr)}</a></b>`,
-                        esc((p.tit || '').slice(0, 70)), eur(p.sum)]))
+        gross.map(p => [vLink(p), esc((p.tit || '').slice(0, 70)), eur(p.sum)]), {zeig: 10})
     + faGrenze(`Die Fördersumme ist die bewilligte, nicht die
        abgerufene. Wo ein Vorhaben vorzeitig endete, floss weniger.`)
-    + '</div>';
+    + `<p class="hinweis">Ausführlich: <a href="#zahlen" data-reiter="t-zahlen">Förderung in Zahlen →</a></p></div>`;
 }
 
 function faJahre() {
@@ -6690,18 +6980,18 @@ function faJahre() {
     j[jahr] = j[jahr] || {n: 0, s: 0};
     j[jahr].n++; j[jahr].s += (p.sum || 0);
   });
-  const zeilen = Object.keys(j).sort().map(x => [x, faZahl(j[x].n),
+  const jahre = Object.keys(j).sort();
+  const zeilen = jahre.map(x => [x, faZahl(j[x].n),
     eur(j[x].s), eur(Math.round(j[x].s / j[x].n))]);
-  const erste = Object.keys(j).sort()[0];
-  const letzte = Object.keys(j).sort().slice(-1)[0];
+  const stark = jahre.slice().sort((a, b) => j[b].n - j[a].n)[0];
   return faKopf('Wie hat sich die Förderung entwickelt?',
-    'Vorhaben nach dem Jahr ihres Beginns.',
-    [[erste + '–' + letzte, 'Startjahre'],
-     [faZahl(vf.length), 'Vorhaben insgesamt'],
-     [faZahl(Math.max(...Object.values(j).map(x => x.n))), 'im stärksten Jahr'],
-     [faZahl(Object.keys(j).length), 'Jahrgänge']])
-    + faTabelle(['Startjahr', 'Vorhaben', 'Fördervolumen', 'je Vorhaben'],
-                zeilen)
+    'Versorgungsvorhaben nach dem Jahr ihres Beginns.',
+    [[jahre[0] + '–' + jahre[jahre.length - 1], 'sind die Jahre, in denen die geförderten Vorhaben begannen', ['Alle Jahrgänge', 'bl-a-tabelle']],
+     [faZahl(vf.length), 'Versorgungsvorhaben sind es insgesamt, ohne Leitlinienvorhaben'],
+     [faZahl(j[stark].n), `Vorhaben begannen im stärksten Jahr, ${stark}`, ['Alle Jahrgänge', 'bl-a-tabelle']],
+     [eur(j[stark].s), `Fördervolumen hatten die Vorhaben, die ${stark} begannen`]])
+    + `<h4 id="bl-a-tabelle">Alle Jahrgänge</h4>`
+    + faTabelle(['Startjahr', 'Vorhaben', 'Fördervolumen', 'je Vorhaben'], zeilen)
     + faGrenze(`Gezählt ist das Jahr des Projektbeginns, nicht das der
        Bewilligung. Die letzten Jahrgänge sind unvollständig, weil
        noch nicht alle Vorhaben begonnen haben.`) + '</div>';
@@ -6711,21 +7001,21 @@ function faKonsortien() {
   const vf = faVF().filter(p => (p.pa || []).length);
   const g = vf.map(p => (p.pa || []).length);
   const med = faMedian(g);
-  const gross = vf.slice().sort((a, b) => (b.pa || []).length - (a.pa || []).length)
-    .slice(0, 8);
+  const gross = vf.slice().sort((a, b) => (b.pa || []).length - (a.pa || []).length);
   const allein = vf.filter(p => (p.pa || []).length === 1).length;
   return faKopf('Wie groß sind die Konsortien?',
-    'Zahl der beteiligten Einrichtungen je Vorhaben.',
-    [[faZahl(med), 'Partner im Median'],
-     [faZahl(Math.max(...g)), 'im größten Konsortium'],
-     [faZahl(allein), 'Vorhaben mit nur einer Einrichtung'],
-     [faZahl(vf.length), 'Vorhaben mit Partnerangabe']])
+    'Zahl der beteiligten Einrichtungen je Versorgungsvorhaben.',
+    [[faZahl(med), 'Einrichtungen gehören im Median zu einem Konsortium'],
+     [faZahl(Math.max(...g)), 'Einrichtungen zählt das größte Konsortium', ['Die größten Konsortien', 'bl-a-tabelle']],
+     [faZahl(allein), 'Vorhaben kommen mit einer einzigen Einrichtung aus'],
+     [faZahl(vf.length), 'Versorgungsvorhaben haben eine Partnerangabe']])
+    + `<h4 id="bl-a-tabelle">Die größten Konsortien</h4>`
     + faTabelle(['Vorhaben', 'Titel', 'Partner'],
-        gross.map(p => [`<b><a href="#p=${p.id}">${esc(p.akr)}</a></b>`,
-                        esc((p.tit || '').slice(0, 64)), (p.pa || []).length]))
+        gross.map(p => [vLink(p), esc((p.tit || '').slice(0, 64)), (p.pa || []).length]), {zeig: 10})
     + faGrenze(`Gezählt sind die Einrichtungen, die in der
        Projektdatenbank als Partner geführt werden. Wer nur eine
-       Leistung zuliefert, steht dort nicht immer.`) + '</div>';
+       Leistung zuliefert, steht dort nicht immer.`)
+    + `<p class="hinweis">Wer mit wem zusammenarbeitet: <a href="#netz" data-reiter="t-netz">Netzwerk →</a></p></div>`;
 }
 
 function faGemessen() {
@@ -6735,22 +7025,24 @@ function faGemessen() {
   const bew = EP.filter(e => e.g != null);
   return faKopf('Was wird in den Vorhaben eigentlich gemessen?',
     'Alle ausgewerteten Endpunkte, nach Familien geordnet.',
-    [[faZahl(EP.length), 'Endpunkte insgesamt'],
-     [faZahl(sort.length), 'Familien'],
-     [faZahl(new Set(EP.map(e => e.p)).size), 'Vorhaben mit Endpunkten'],
-     [faZahl(bew.length), 'mit bewertetem Ergebnis']])
+    [[faZahl(EP.length), 'Endpunkte, also Zielgrößen, sind in den Berichten ausgewertet'],
+     [faZahl(sort.length), 'Familien fassen gleichartige Endpunkte zusammen', ['Die Familien', 'bl-a-tabelle']],
+     [faZahl(new Set(EP.map(e => e.p)).size), 'Vorhaben haben ausgewertete Endpunkte'],
+     [faZahl(bew.length), 'Endpunkte haben ein bewertetes Ergebnis']])
     + `<p>Ein Bericht nennt seine Endpunkte in eigenen Worten.
        „Krankenhausaufenthalte insgesamt“, „Stationäre
        Behandlungstage“ und „Zahl der stationären Aufenthalte“ stehen
        so in drei Berichten und meinen dasselbe. Erst die Zuordnung zu
        einer Familie macht sichtbar, wie viele Vorhaben dieselbe Sache
        gemessen haben.</p>`
+    + `<h4 id="bl-a-tabelle">Die Familien</h4>`
     + faTabelle(['Familie', 'Endpunkte', 'Anteil'],
-        sort.slice(0, 15).map(([k, n]) => [esc(k), faZahl(n),
-          Math.round(n / EP.length * 100) + ' %']))
+        sort.map(([k, n]) => [esc(k), faZahl(n),
+          Math.round(n / EP.length * 100) + ' %']), {zeig: 10})
     + faGrenze(`Die Familie ist unsere Zuordnung, nicht die der
        Berichte. Das Messinstrument bleibt in der Endpunkt-Tabelle
-       einzeln stehen.`) + '</div>';
+       einzeln stehen.`)
+    + `<p class="hinweis">Ausführlich: <a href="#endpunkte" data-reiter="t-endpunkte">Endpunkte &amp; Messinstrumente →</a></p></div>`;
 }
 
 function faEffekte() {
@@ -6770,19 +7062,21 @@ function faEffekte() {
                       Math.round(v.s / v.n * 100) + ' %']);
   return faKopf('Wie oft zeigt sich überhaupt ein Effekt?',
     'Alle Endpunkte, deren Ergebnis im Bericht bewertet ist.',
-    [[faZahl(bew.length), 'bewertete Endpunkte'],
-     [faPz(sig.length / bew.length), 'statistisch signifikant'],
-     [faZahl(flach.length), 'ohne nachweisbaren Unterschied'],
-     [faZahl(gegen.length), 'signifikant in die unerwünschte Richtung']])
-    + `<p>Rund die Hälfte der gemessenen Endpunkte zeigt einen
-       statistisch signifikanten Unterschied. Das ist weder gut noch
-       schlecht: Ein Vorhaben, das etwas Neues erprobt, misst
-       absichtlich auch dort, wo es scheitern kann.</p>`
-    + faTabelle(['Familie', 'bewertet', 'davon signifikant', 'Anteil'],
-                zeilen.slice(0, 12))
+    [[faZahl(bew.length), 'Endpunkte sind in den Berichten mit einem Ergebnis bewertet'],
+     [faPz(sig.length / bew.length), `davon zeigen einen statistisch signifikanten Unterschied (${faZahl(sig.length)})`, ['Nach Familie', 'bl-a-tabelle']],
+     [faZahl(flach.length), 'Endpunkte zeigen keinen nachweisbaren Unterschied'],
+     [faZahl(gegen.length), 'Endpunkte zeigen einen signifikanten Unterschied in die unerwünschte Richtung']])
+    + `<p>${faPz(sig.length / bew.length)} der bewerteten Endpunkte zeigen
+       einen statistisch signifikanten Unterschied.</p>`
+    + blEinordnung(`Das ist weder gut noch schlecht: Ein Vorhaben, das etwas
+       Neues erprobt, misst absichtlich auch dort, wo es scheitern kann.`)
+    + `<h4 id="bl-a-tabelle">Nach Familie</h4><p class="hinweis">Familien mit
+       mindestens 40 bewerteten Endpunkten, nach Anteil signifikanter Befunde.</p>`
+    + faTabelle(['Familie', 'bewertet', 'davon signifikant', 'Anteil'], zeilen, {zeig: 10})
     + faGrenze(`Signifikant heißt: der Unterschied ist nicht durch
        Zufall erklärbar. Ob er für Patient:innen spürbar
-       ist, sagt die Zahl nicht.`) + '</div>';
+       ist, sagt die Zahl nicht.`)
+    + `<p class="hinweis">Ausführlich: <a href="#endpunkte" data-reiter="t-endpunkte">Endpunkte &amp; Messinstrumente →</a></p></div>`;
 }
 
 function faFallzahl() {
@@ -6790,29 +7084,29 @@ function faFallzahl() {
     .filter(x => x.q != null);
   const med = faMedian(q.map(x => x.q));
   const unter = q.filter(x => x.q < 0.8);
-  const weit = q.slice().sort((a, b) => a.q - b.q).slice(0, 8);
+  const weit = q.slice().sort((a, b) => a.q - b.q);
   const name = id => {
     const p = P.find(x => String(x.id) === String(id));
-    return p ? `<b><a href="#p=${p.id}">${esc(p.akr)}</a></b>` : id;
+    return p ? vLink(p) : id;
   };
   return faKopf('Wird die geplante Fallzahl erreicht?',
     'Geplante gegen tatsächlich ausgewertete Fallzahl.',
-    [[faPz(med), 'im Median erreicht'],
-     [faZahl(q.length), 'Vorhaben mit beiden Zahlen'],
-     [faZahl(unter.length), 'blieben unter 80 Prozent'],
-     [faZahl(q.filter(x => x.q >= 1).length), 'erreichten ihr Ziel']])
+    [[faPz(med), 'der geplanten Fallzahl wertet ein Vorhaben im Median aus'],
+     [faZahl(q.length), 'Vorhaben nennen geplante und ausgewertete Fallzahl'],
+     [faZahl(unter.length), 'Vorhaben blieben unter 80 Prozent ihrer Planung', ['Die größten Lücken', 'bl-a-tabelle']],
+     [faZahl(q.filter(x => x.q >= 1).length), 'Vorhaben erreichten ihr Ziel oder lagen darüber']])
     + `<p>Die Fallzahl entscheidet, ob ein Vorhaben seine Frage
        überhaupt beantworten kann: Sie wird vorab so berechnet, dass
        ein erwarteter Effekt sichtbar würde. Wer sie verfehlt, misst
        nicht weniger genau, sondern riskiert, einen vorhandenen Effekt
        nicht zu finden.</p>`
+    + `<h4 id="bl-a-tabelle">Die größten Lücken</h4>`
     + faTabelle(['Vorhaben', 'geplant', 'ausgewertet', 'erreicht'],
-        weit.map(x => [name(x.id), faZahl(x.f.g), faZahl(x.f.a),
-                       faPz(x.q)]))
+        weit.map(x => [name(x.id), faZahl(x.f.g), faZahl(x.f.a), faPz(x.q)]), {zeig: 10})
     + faGrenze(`Verglichen wird die Zahl, die der Bericht als geplant
        nennt, mit der ausgewerteten. Wo ein Vorhaben seine Planung
        begründet geändert hat, steht der Grund in seinem Eintrag.`)
-    + '</div>';
+    + `<p class="hinweis">Ausführlich: <a href="#fallzahl" data-reiter="t-fallzahl">Fallzahlen →</a></p></div>`;
 }
 
 function faPandemie() {
@@ -6823,20 +7117,19 @@ function faPandemie() {
   const beg = covid.filter(p => p.von && p.von < '2020-03').length;
   return faKopf('Welche Probleme hat die Pandemie ausgelöst?',
     'Vorhaben, deren Beschluss die Pandemie als Hindernis benennt.',
-    [[faZahl(covid.length), 'Vorhaben betroffen'],
-     [faPz(covid.length / be.length), 'aller beschiedenen Vorhaben'],
-     [faPz(mit.length / Math.max(1, covid.length)), 'davon mit Empfehlung'],
-     [faPz(alle.length / be.length), 'im Bestand mit Empfehlung']])
+    [[faZahl(covid.length), 'Vorhaben nennen die Pandemie im Beschluss als Hindernis', ['Die Vorhaben', 'bl-a-tabelle']],
+     [faPz(covid.length / be.length), 'aller beschiedenen Versorgungsvorhaben sind das'],
+     [faPz(mit.length / Math.max(1, covid.length)), 'von ihnen erhielten eine Empfehlung'],
+     [faPz(alle.length / be.length), 'beträgt die Empfehlungsquote über alle beschiedenen Vorhaben']])
     + `<p>Bei ${covid.length} von ${be.length} beschiedenen Vorhaben
-       nennt der Beschluss die Pandemie ausdrücklich als Hindernis;
+       nennt der Beschluss die Pandemie ausdrücklich als Hindernis.
        ${beg} von ihnen hatten vor März 2020 begonnen. Ihre
        Empfehlungsquote liegt bei
        ${faPz(mit.length / Math.max(1, covid.length))} gegenüber
        ${faPz(alle.length / be.length)} im Bestand.</p>`
+    + `<h4 id="bl-a-tabelle">Die Vorhaben</h4>`
     + faTabelle(['Vorhaben', 'Titel', 'Ergebnis'],
-        covid.slice(0, 12).map(p => [
-          `<b><a href="#p=${p.id}">${esc(p.akr)}</a></b>`,
-          esc((p.tit || '').slice(0, 60)), marke(p)]))
+        covid.map(p => [vLink(p), esc((p.tit || '').slice(0, 60)), marke(p)]), {zeig: 10})
     + faGrenze(`Gezählt sind nur Vorhaben, bei denen die Pandemie im
        Beschlusstext als Hindernis belegt ist. Wo sie ein Vorhaben
        behinderte, ohne dass der Beschluss es erwähnt, fehlt es hier.`)
@@ -6858,23 +7151,23 @@ function faThemen() {
   const zeig = x => [esc(x.k), faZahl(x.n), faZahl(x.m), faPz(x.q)];
   return faKopf('Welche Themen haben die beste Bilanz?',
     'Empfehlungsquote je Thema, verglichen mit dem Bestand.',
-    [[faPz(alleQ), 'Empfehlungsquote im Bestand'],
-     [faZahl(zeilen.length), 'Themen mit mindestens 8 Vorhaben'],
-     [faZahl(zeilen.filter(x => x.q > alleQ).length), 'darüber'],
-     [faZahl(zeilen.filter(x => x.q < alleQ).length), 'darunter']])
+    [[faPz(alleQ), 'aller beschiedenen Versorgungsvorhaben erhielten eine Empfehlung'],
+     [faZahl(zeilen.length), 'Themen haben mindestens acht beschiedene Vorhaben'],
+     [faZahl(zeilen.filter(x => x.q > alleQ).length), 'Themen liegen über dieser Quote', ['Die höchsten Quoten', 'bl-a-hoch']],
+     [faZahl(zeilen.filter(x => x.q < alleQ).length), 'Themen liegen darunter', ['Die niedrigsten Quoten', 'bl-a-tief']]])
     + `<p>Gezeigt sind die zehn Themen mit der höchsten und der
        niedrigsten Quote. Ein Thema mit acht Vorhaben trägt keine
-       starke Aussage; die Spalte „Vorhaben“ sagt, wie belastbar die
+       starke Aussage. Die Spalte „Vorhaben“ sagt, wie belastbar die
        Quote ist.</p>`
-    + `<h4>Die höchsten Quoten</h4>`
+    + `<h4 id="bl-a-hoch">Die höchsten Quoten</h4>`
     + faTabelle(['Thema', 'Vorhaben', 'mit Empfehlung', 'Quote'],
                 zeilen.slice(0, 10).map(zeig))
-    + `<h4>Die niedrigsten</h4>`
+    + `<h4 id="bl-a-tief">Die niedrigsten Quoten</h4>`
     + faTabelle(['Thema', 'Vorhaben', 'mit Empfehlung', 'Quote'],
                 zeilen.slice(-10).reverse().map(zeig))
     + faGrenze(`Ein Vorhaben zählt zu einem Thema, wenn es dessen Wort
-       führt; viele zählen zu mehreren. Die Quote sagt nichts darüber,
-       ob das Thema taugt — nur, wie die Vorhaben ausgingen, die es
+       führt. Viele zählen zu mehreren. Die Quote sagt nichts darüber,
+       ob das Thema taugt, nur, wie die Vorhaben ausgingen, die es
        bearbeitet haben.`) + '</div>';
 }
 
@@ -6884,27 +7177,29 @@ function faEmpfohlen() {
   const nach = mit.filter(p => (p.danach || []).length);
   const arten = {};
   mit.forEach(p => { arten[p.te] = (arten[p.te] || 0) + 1; });
+  const summe = mit.reduce((s, p) => s + (p.sum || 0), 0);
+  const neu = mit.slice().sort((a, b) => (b.bd || '').localeCompare(a.bd || ''));
   return faKopf('Was wurde aus den empfohlenen Vorhaben?',
     'Die Vorhaben, für die der Ausschuss eine Überführung empfohlen hat.',
-    [[faZahl(mit.length), 'mit Empfehlung'],
-     [faPz(mit.length / be.length), 'aller beschiedenen'],
-     [faZahl(nach.length), 'mit eigener Rückmeldung'],
-     [eur(mit.reduce((s, p) => s + (p.sum || 0), 0)), 'Fördervolumen']])
+    [[faZahl(mit.length), 'beschiedene Versorgungsvorhaben erhielten eine Empfehlung', ['Die Vorhaben', 'bl-a-tabelle']],
+     [faPz(mit.length / be.length), 'aller beschiedenen sind das'],
+     [faZahl(nach.length), 'von ihnen haben uns geantwortet, was danach geschah'],
+     [blEur(summe) + blGenau(summe), 'sind in die empfohlenen Vorhaben geflossen']])
     + `<p>Eine Empfehlung ist kein Beschluss über die Regelversorgung.
        Sie richtet sich an die Selbstverwaltung, die dann entscheidet.
-       Was danach geschah, wissen am besten die Vorhaben selbst –
-       darum fragen wir sie, und ${nach.length} haben geantwortet.</p>`
+       Was danach geschah, wissen am besten die Vorhaben selbst.
+       Darum fragen wir sie, und ${nach.length} haben geantwortet.</p>`
+    + `<h4>Art der Empfehlung</h4>`
     + faTabelle(['Art der Empfehlung', 'Vorhaben'],
         Object.entries(arten).sort((a, b) => b[1] - a[1])
           .map(([k, n]) => [esc(k), faZahl(n)]))
+    + `<h4 id="bl-a-tabelle">Die Vorhaben, zuletzt beschiedene zuerst</h4>`
     + faTabelle(['Vorhaben', 'Titel', 'Beschluss'],
-        mit.slice(0, 14).map(p => [
-          `<b><a href="#p=${p.id}">${esc(p.akr)}</a></b>`,
-          esc((p.tit || '').slice(0, 60)), p.bd ? datum(p.bd) : '']))
+        neu.map(p => [vLink(p), esc((p.tit || '').slice(0, 60)), p.bd ? datum(p.bd) : '']), {zeig: 10})
     + faGrenze(`Ob eine Versorgungsform heute erbracht wird, steht
        nicht in dieser Datenbank. Die Rückmeldungen der
-       Projektleitungen stehen im Eintrag des jeweiligen Vorhabens.`)
-    + '</div>';
+       Projektleitungen stehen auf der Seite des jeweiligen Vorhabens.`)
+    + `<p class="hinweis">Ausführlich: <a href="#transfer" data-reiter="t-transfer">Transfer der Ergebnisse →</a></p></div>`;
 }
 
 function faGrundlage() {
@@ -6912,23 +7207,24 @@ function faGrundlage() {
   (D.erhebung || []).forEach(g => (g.zeilen || []).forEach(
     x => { E[x.w] = x.n; }));
   const be = faBeschieden();
-  return faKopf('Worauf beruht das alles?',
+  return faKopf('Worauf beruhen die Antworten?',
     'Die Quellen dieses Portals und was daraus gelesen wurde.',
-    [[faZahl(E['Dokumente mit Textschicht']), 'PDF ausgelesen'],
-     [faZahl(E['Seiten']), 'Seiten'],
-     [faZahl(E['Zeichen']), 'Zeichen'],
-     [faZahl(be.length), 'Versorgungsvorhaben beschieden (ohne Leitlinien)']])
+    [[faZahl(E['Dokumente mit Textschicht']), 'Dokumente mit Textschicht sind ausgelesen'],
+     [faZahl(E['Seiten']), 'Seiten stehen darin'],
+     [faZahl(E['Zeichen']), 'Zeichen umfasst ihr Text'],
+     [faZahl(be.length), 'Versorgungsvorhaben sind beschieden, ohne Leitlinienvorhaben']])
     + `<p>Jede Aussage dieses Portals trägt ihren Beleg: das wörtliche
        Zitat und die Seite, auf der es steht. Was sich nicht belegen
        ließ, steht nicht da.</p>`
     + `<p>Gelesen werden der Beschluss des Innovationsausschusses, der
-       Ergebnisbericht des Vorhabens und – bei den Neuen
-       Versorgungsformen – der Evaluationsbericht des unabhängigen
-       Evaluators. Die Berichte stehen in den Einträgen im Wortlaut,
-       Kapitel für Kapitel.</p>`
+       Ergebnisbericht des Vorhabens und, bei den Neuen
+       Versorgungsformen, der Evaluationsbericht des unabhängigen
+       Evaluators. Die Berichte stehen auf den Seiten der Vorhaben im
+       Wortlaut, Kapitel für Kapitel.</p>`
     + faGrenze(`Das Portal wertet aus, was veröffentlicht ist. Wo ein
        Bericht fehlt oder eine Angabe nicht im Text steht, kann es sie
-       nicht kennen.`) + '</div>';
+       nicht kennen.`)
+    + `<p class="hinweis"><a href="#vorwort" data-reiter="t-vorwort">So entstehen diese Daten →</a></p></div>`;
 }
 
 /* ---------- Direktlink auf einen Eintrag ----------
@@ -10109,6 +10405,9 @@ partnerZeichnen();
 
 <style>
 /* Stufe 103: Projektdatenbank */
+.pdb-auswahl{display:inline-flex;gap:8px;align-items:center;margin:8px 0 0;padding:6px 8px 6px 12px;border-radius:999px;
+  background:var(--goldweich);border:1px solid var(--goldlinie);font-size:14px}
+.pdb-auswahl button{border:0;background:none;font:inherit;font-size:18px;line-height:1;cursor:pointer;color:var(--text);padding:0 4px}
 .pdb-suche input{width:100%;max-width:760px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--linie);
   border-radius:8px;background:var(--flaeche);color:var(--text)}
 .pdb-raster{display:grid;grid-template-columns:290px minmax(0,1fr);gap:20px;margin-top:14px}
@@ -10179,11 +10478,12 @@ partnerZeichnen();
     {k: 'jahr', name: 'Förderbeginn', i: 'Jahr, in dem das Vorhaben begann.', wert: p => (p.von || '').slice(0, 4) || 'ohne Angabe', absteigend: true},
     {k: 'summe', name: 'Fördersumme', i: 'Versorgungsforschung liegt meist unter 2 Mio. €, Neue Versorgungsformen meist darüber.', wert: p => stufe(p.sum), ordnung: STUFEN},
   ];
-  const Z = {q: '', f: {}, sort: 'neu', ansicht: 'kompakt', seite: 0};
+  /* ids: eine feste Auswahl aus der Themen-Bilanz (Stufe 104), sonst null. */
+  const Z = {q: '', f: {}, sort: 'neu', ansicht: 'kompakt', seite: 0, ids: null, idsName: ''};
   G.forEach(g => { Z.f[g.k] = new Set(); });
   const werteVon = (g, p) => { const w = g.wert(p); return Array.isArray(w) ? w : [w]; };
   const passt = (p, ohne) => G.every(g => g.k === ohne || !Z.f[g.k].size || werteVon(g, p).some(w => Z.f[g.k].has(w)));
-  const suche = p => !Z.q || Z.q.split(' ').every(t => (p._s || '').includes(t));
+  const suche = p => (!Z.ids || Z.ids.has(p.id)) && (!Z.q || Z.q.split(' ').every(t => (p._s || '').includes(t)));
   const offenMehr = new Set();
 
   function gruppenZeichnen() {
@@ -10235,8 +10535,14 @@ partnerZeichnen();
       (i === 0 || i === seiten - 1 || Math.abs(i - Z.seite) <= 2) ? `<button type="button" data-s="${i}"${i === Z.seite ? ' aria-current="page"' : ''}>${i + 1}</button>`
         : (Math.abs(i - Z.seite) === 3 ? '<span>…</span>' : '')).join('') : '';
   }
-  function alles() { gruppenZeichnen(); listeZeichnen(); }
-  function zuruecksetzen() { G.forEach(g => Z.f[g.k].clear()); Z.seite = 0; alles(); }
+  function auswahlZeichnen() {
+    const aw = document.getElementById('pdb-auswahl');
+    aw.hidden = !Z.ids;
+    aw.innerHTML = Z.ids ? `Aus der Themen-Bilanz: <b>${esc(Z.idsName)}</b>, ${Z.ids.size.toLocaleString('de-DE')} Vorhaben
+      <button type="button" id="pdb-auswahl-weg" aria-label="Auswahl aufheben" title="Auswahl aufheben">×</button>` : '';
+  }
+  function alles() { auswahlZeichnen(); gruppenZeichnen(); listeZeichnen(); }
+  function zuruecksetzen() { G.forEach(g => Z.f[g.k].clear()); Z.ids = null; Z.seite = 0; alles(); }
 
   const wurzel = document.getElementById('t-projekte');
   wurzel.addEventListener('change', ev => {
@@ -10251,6 +10557,7 @@ partnerZeichnen();
     const t = ev.target.closest('[data-th]'); if (t) { Z.f.th.add(t.dataset.th); Z.seite = 0; alles(); return; }
     const a = ev.target.closest('.pdb-ansicht [data-a]');
     if (a) { Z.ansicht = a.dataset.a; document.querySelectorAll('.pdb-ansicht [data-a]').forEach(x => x.setAttribute('aria-pressed', String(x === a))); listeZeichnen(); return; }
+    if (ev.target.closest('#pdb-auswahl-weg')) { Z.ids = null; Z.seite = 0; alles(); return; }
     if (ev.target.closest('#pdb-zurueck, #pdb-leer-zurueck')) zuruecksetzen();
   });
   document.getElementById('pdb-sort').onchange = ev => { Z.sort = ev.target.value; Z.seite = 0; listeZeichnen(); };
@@ -10268,7 +10575,13 @@ partnerZeichnen();
   /* Auf schmalen Bildschirmen beginnt die Filterspalte zugeklappt. */
   if (window.matchMedia('(max-width: 860px)').matches) document.getElementById('pdb-filterhuelle').open = false;
   /* Für die Übersicht: Suchbegriff übergeben. */
-  window.pdbSuchen = q => { const f = document.getElementById('pdb-q'); f.value = q; Z.q = norm(q).trim().replace(/\s+/g, ' '); Z.seite = 0; alles(); };
+  window.pdbSuchen = q => { const f = document.getElementById('pdb-q'); f.value = q; Z.q = norm(q).trim().replace(/\s+/g, ' '); Z.ids = null; Z.seite = 0; alles(); };
+  /* Für die Themen-Bilanz: genau die Vorhaben eines Dossiers. */
+  window.pdbAuswahl = (ids, name) => {
+    G.forEach(g => Z.f[g.k].clear());
+    document.getElementById('pdb-q').value = ''; Z.q = '';
+    Z.ids = new Set(ids); Z.idsName = name; Z.seite = 0; alles();
+  };
   alles();
 })();
 </script>
@@ -10390,7 +10703,7 @@ nav[role="tablist"]{display:none!important}
 <script>
 /* Stufe 100: Navigation. BEREICHE kommt aus if_navigation.py. */
 (function () {
-  const BEREICHE = [{"k": "uebersicht", "name": "Übersicht", "seiten": [{"t": "t-uebersicht", "name": "Übersicht", "lang": "Innovationsfonds-Radar", "satz": "Alle Vorhaben des Innovationsfonds, durchsuchbar und ausgewertet."}]}, {"k": "recherche", "name": "Recherche", "seiten": [{"t": "t-projekte", "name": "Projektdatenbank", "satz": "Alle Vorhaben einzeln, mit Filtern nach Förderbereich, Status, Beschluss, Studiendesign und mehr."}, {"t": "t-suche", "name": "Themen-Bilanz", "satz": "Gerechnete Antworten auf geprüfte Fragen, dazu die Suche nach einem Thema."}, {"t": "t-leitlinien", "name": "Leitlinienvorhaben", "versteckt": true, "satz": "Die geförderten Vorhaben, die medizinische Leitlinien entwickeln."}]}, {"k": "auswertungen", "name": "Auswertungen", "seiten": [{"t": "t-auswertungen", "name": "Überblick", "lang": "Alle Auswertungen", "satz": "Was die sieben Auswertungen zeigen und wo man anfängt."}, {"t": "t-zahlen", "name": "Förderung", "lang": "Förderung in Zahlen", "satz": "Fördersummen, Laufzeiten, Wartezeiten und Jahrgänge seit 2016."}, {"t": "t-netz", "mit": ["t-partner"], "name": "Einrichtungen & Netzwerk", "satz": "Beteiligte Einrichtungen, Konsortialführungen und Kooperationen."}, {"t": "t-karte", "name": "Landkarte", "satz": "Vorhaben und Einrichtungen nach Bundesland und Ort."}, {"t": "t-fallzahl", "name": "Fallzahlen", "satz": "Geplante und tatsächlich erreichte Teilnehmendenzahlen je Vorhaben."}, {"t": "t-endpunkte", "name": "Endpunkte", "lang": "Endpunkte & Messinstrumente", "satz": "Gemessene Zielgrößen, Messinstrumente und Ergebnisse."}, {"t": "t-transfer", "name": "Transfer", "lang": "Transfer der Ergebnisse", "satz": "Empfehlungen des Ausschusses und was aus ihnen wurde."}, {"href": "/versorgungskerne/lotsen/", "name": "Versorgungskerne", "satz": "Wie eine Versorgungsform aufgebaut ist, am Beispiel der 31 Lotsenprojekte."}]}, {"k": "antrag", "name": "Antrag & Bericht", "seiten": [{"t": "t-idee", "name": "Ideencheck", "satz": "Gibt es Ihre Idee schon? Abgleich mit ähnlichen geförderten Vorhaben."}, {"t": "t-berichte", "name": "Tipps für auswertbare Berichte", "satz": "Woran die Auswertung eines Ergebnisberichts hängen bleibt."}]}, {"k": "evidenz", "name": "Evidenzsynthesen", "euro": true, "seiten": [{"t": "t-evidenz", "name": "Synthesen nach Thema", "satz": "Stand der Forschung zu einem Versorgungsthema. Kapitel 1 und 2 frei, ab Kapitel 3 kostenpflichtig."}]}, {"k": "hintergrund", "name": "Hintergrund", "seiten": [{"t": "t-ueber", "name": "Über das Portal", "lang": "Über Innovationsfonds-Radar", "satz": "Warum es dieses Portal gibt, für wen, und was es kann und was nicht."}, {"t": "t-vorwort", "name": "Methodik & Verlässlichkeit", "satz": "Woher die Daten kommen, wie sie ausgelesen und geprüft wurden, wo ihre Grenzen liegen."}, {"t": "t-dossier", "name": "Einordnung der Redaktion", "satz": "Was die Redaktion aus den Zahlen schließt. Wertende Texte stehen nur hier."}, {"t": "t-glossar", "name": "Glossar", "satz": "Die Fachbegriffe des Innovationsfonds und dieses Portals, kurz erklärt."}]}];
+  const BEREICHE = [{"k": "uebersicht", "name": "Übersicht", "seiten": [{"t": "t-uebersicht", "name": "Übersicht", "lang": "Innovationsfonds-Radar", "satz": "Alle Vorhaben des Innovationsfonds, durchsuchbar und ausgewertet."}]}, {"k": "recherche", "name": "Recherche", "seiten": [{"t": "t-projekte", "name": "Projektdatenbank", "satz": "Alle Vorhaben einzeln, mit Filtern nach Förderbereich, Status, Beschluss, Studiendesign und mehr."}, {"t": "t-suche", "name": "Themen-Bilanz", "satz": "Fragen zu den Vorhaben des Innovationsfonds, beantwortet aus den Daten: zu Versorgungsformen, Krankheitsbildern, Wirkung, Förderung und Akteuren. Wie viele Vorhaben es gab, wie viele eine Empfehlung erhielten und was die erfolgreichen von den übrigen unterscheidet. Kostenlos, ohne Anmeldung."}, {"t": "t-leitlinien", "name": "Leitlinienvorhaben", "versteckt": true, "satz": "Die geförderten Vorhaben, die medizinische Leitlinien entwickeln."}]}, {"k": "auswertungen", "name": "Auswertungen", "seiten": [{"t": "t-auswertungen", "name": "Überblick", "lang": "Alle Auswertungen", "satz": "Was die sieben Auswertungen zeigen und wo man anfängt."}, {"t": "t-zahlen", "name": "Förderung", "lang": "Förderung in Zahlen", "satz": "Fördersummen, Laufzeiten, Wartezeiten und Jahrgänge seit 2016."}, {"t": "t-netz", "mit": ["t-partner"], "name": "Einrichtungen & Netzwerk", "satz": "Beteiligte Einrichtungen, Konsortialführungen und Kooperationen."}, {"t": "t-karte", "name": "Landkarte", "satz": "Vorhaben und Einrichtungen nach Bundesland und Ort."}, {"t": "t-fallzahl", "name": "Fallzahlen", "satz": "Geplante und tatsächlich erreichte Teilnehmendenzahlen je Vorhaben."}, {"t": "t-endpunkte", "name": "Endpunkte", "lang": "Endpunkte & Messinstrumente", "satz": "Gemessene Zielgrößen, Messinstrumente und Ergebnisse."}, {"t": "t-transfer", "name": "Transfer", "lang": "Transfer der Ergebnisse", "satz": "Empfehlungen des Ausschusses und was aus ihnen wurde."}, {"href": "/versorgungskerne/lotsen/", "name": "Versorgungskerne", "satz": "Wie eine Versorgungsform aufgebaut ist, am Beispiel der 31 Lotsenprojekte."}]}, {"k": "antrag", "name": "Antrag & Bericht", "seiten": [{"t": "t-idee", "name": "Ideencheck", "satz": "Gibt es Ihre Idee schon? Abgleich mit ähnlichen geförderten Vorhaben."}, {"t": "t-berichte", "name": "Tipps für auswertbare Berichte", "satz": "Woran die Auswertung eines Ergebnisberichts hängen bleibt."}]}, {"k": "evidenz", "name": "Evidenzsynthesen", "euro": true, "seiten": [{"t": "t-evidenz", "name": "Synthesen nach Thema", "satz": "Stand der Forschung zu einem Versorgungsthema. Kapitel 1 und 2 frei, ab Kapitel 3 kostenpflichtig."}]}, {"k": "hintergrund", "name": "Hintergrund", "seiten": [{"t": "t-ueber", "name": "Über das Portal", "lang": "Über Innovationsfonds-Radar", "satz": "Warum es dieses Portal gibt, für wen, und was es kann und was nicht."}, {"t": "t-vorwort", "name": "Methodik & Verlässlichkeit", "satz": "Woher die Daten kommen, wie sie ausgelesen und geprüft wurden, wo ihre Grenzen liegen."}, {"t": "t-dossier", "name": "Einordnung der Redaktion", "satz": "Was die Redaktion aus den Zahlen schließt. Wertende Texte stehen nur hier."}, {"t": "t-glossar", "name": "Glossar", "satz": "Die Fachbegriffe des Innovationsfonds und dieses Portals, kurz erklärt."}]}];
   const tsd = n => (n || 0).toLocaleString('de-DE');
   const SEITE = {};
   BEREICHE.forEach(b => b.seiten.forEach(s => { if (s.t) SEITE[s.t] = {b, s}; (s.mit || []).forEach(m => SEITE[m] = {b, s}); }));
@@ -10431,7 +10744,12 @@ nav[role="tablist"]{display:none!important}
     document.querySelectorAll('.bereiche.offen').forEach(x => x.classList.remove('offen'));
   }
   const alt = reiterZeigen;
-  reiterZeigen = function (knopf) { alt(knopf); navZeigen(knopf.dataset.ziel); };
+  reiterZeigen = function (knopf) {
+    alt(knopf); navZeigen(knopf.dataset.ziel);
+    /* Stufe 104: Die Themen-Bilanz wählt danach ihre Ansicht (Startseite,
+       Antwort, Eintrag) und blendet den Seitenkopf bei Antworten aus. */
+    if (window.nachNav) window.nachNav(knopf.dataset.ziel);
+  };
   document.querySelectorAll('.bereiche .bereich').forEach(x => x.onclick = () => {
     const b = BEREICHE.find(y => y.k === x.dataset.bereich);
     const erste = b.seiten.find(s => s.t);
@@ -10555,10 +10873,10 @@ nav[role="tablist"]{display:none!important}
 
   /* Startzustand: Adresse oder Übersicht. Ein #p=-Link hat seinen Reiter
      schon im Hauptskript geöffnet, vor dieser Navigation; sie zieht nach. */
-  const name = (location.hash || '').replace(/^#/, '');
+  const name = (location.hash || '').replace(/^#/, '').split('/')[0];
   if (name && name.indexOf('=') < 0 && document.getElementById('t-' + name)) reiterNach('t-' + name);
   else if (!/[#&]p=/.test(location.hash || '')) reiterNach('t-uebersicht');
-  else { const offen = [...document.querySelectorAll('main section')].find(x => !x.hidden); if (offen) navZeigen(offen.id); }
+  else { const offen = [...document.querySelectorAll('main section')].find(x => !x.hidden); if (offen) { navZeigen(offen.id); if (window.nachNav) window.nachNav(offen.id); } }
 })();
 </script>
 
