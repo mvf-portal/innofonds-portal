@@ -92,7 +92,7 @@ details.mehrw summary{cursor:pointer;color:var(--akzent,#0051A1);font-weight:600
 .box details summary{cursor:pointer;color:var(--ak);font-weight:700}
 .austausch{border-left:5px solid var(--gold)}
 @media (max-width:900px){.raster{grid-template-columns:1fr}.mitlaufend{position:static;max-height:none}.akr{font-size:30px}}
-</style></head><body data-pid="363">
+</style></head><body data-pid="363" data-akronym="Herz-Check">
 <style>nav.netz{max-width:none;margin:0;padding:0}.netz-aktion p{margin:0}footer.fuss.nf{max-width:1240px;margin:34px auto 0;padding:26px 16px 30px}</style>
 <style>
   .netz{ --nz-grund:#14202E; --nz-text:#D3DCE8; --nz-leise:#9FB0C4; --nz-gold:#BE9E53;
@@ -652,6 +652,128 @@ document.querySelectorAll('form.ifw-form').forEach(f => f.addEventListener('subm
     : '<p class="hinweis">Für dieses Vorhaben sind keine Stellen erfasst, an denen Beschluss und Berichte auseinandergehen.</p>';
 })();
 </script>
+
+<style>
+/* Stufe 117: Kontaktformular */
+dialog.kf{border:1px solid var(--linie,#d5deec);border-radius:12px;padding:0;max-width:560px;width:calc(100% - 24px);
+  background:var(--flaeche,#fff);color:var(--text,#1b2733);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+dialog.kf::backdrop{background:rgba(10,20,35,.45)}
+.kf form{padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.kf h2{margin:0;font-size:20px}
+.kf label{display:flex;flex-direction:column;gap:3px;font-size:13.5px;font-weight:600}
+.kf input,.kf select,.kf textarea{font:inherit;font-weight:400;font-size:15px;padding:8px 10px;border:1px solid var(--linie,#d5deec);
+  border-radius:8px;background:var(--bg,#fff);color:var(--text,#1b2733)}
+.kf textarea{min-height:130px;resize:vertical}
+.kf .kf-zwei{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kf .kf-ok{flex-direction:row;align-items:flex-start;gap:8px;font-weight:400}
+.kf .kf-ok input{margin-top:3px}
+.kf .kf-topf{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.kf .kf-knoepfe{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.kf .kf-senden{background:var(--akzent,#0051A1);color:#fff;border:0;border-radius:8px;padding:9px 18px;font:inherit;font-weight:700;cursor:pointer}
+.kf .kf-zu{background:none;border:0;font:inherit;color:var(--gedaempft,#5a6b82);cursor:pointer;text-decoration:underline}
+.kf .kf-stand{font-size:14px;margin:0}
+.kf .kf-stand.gut{color:#2e7d4f;font-weight:700}.kf .kf-stand.schlecht{color:#b3261e}
+.kf small{font-weight:400;color:var(--gedaempft,#5a6b82)}
+@media (max-width:520px){.kf .kf-zwei{grid-template-columns:1fr}}
+</style>
+
+<dialog class="kf" id="kf" aria-labelledby="kf-titel">
+  <form method="dialog" novalidate>
+    <h2 id="kf-titel">Nachricht an die Redaktion</h2>
+    <p class="kf-stand" style="color:var(--gedaempft,#5a6b82)">Monitor Versorgungsforschung liest jede Nachricht und meldet sich, so schnell es geht.</p>
+    <label>Anliegen
+      <select name="anliegen">
+        <option value="frage">Frage</option>
+        <option value="korrektur">Angabe korrigieren</option>
+        <option value="themenfrage">Frage für die Themen-Bilanz vorschlagen</option>
+        <option value="synthese">Evidenzsynthese anfragen</option>
+        <option value="rebriefing">Re-Briefing anfragen</option>
+        <option value="methodik">Rückmeldung zur Methodik</option>
+        <option value="kooperation">Kooperation oder Sponsoring</option>
+        <option value="sonstiges">Sonstiges</option>
+      </select></label>
+    <label>Worum es geht <small>(z. B. Akronym eines Vorhabens, optional)</small>
+      <input name="bezug" maxlength="200" autocomplete="off"></label>
+    <label>Ihre Nachricht
+      <textarea name="nachricht" maxlength="8000" required></textarea></label>
+    <div class="kf-zwei">
+      <label>Name <small>(optional)</small><input name="name" maxlength="200" autocomplete="name"></label>
+      <label>Einrichtung <small>(optional)</small><input name="einrichtung" maxlength="300" autocomplete="organization"></label>
+    </div>
+    <label>E-Mail-Adresse <small>– damit die Antwort Sie erreicht</small>
+      <input name="email" type="email" maxlength="200" autocomplete="email" required></label>
+    <label class="kf-topf" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+    <label class="kf-ok"><input type="checkbox" name="einverstanden"> <span>Ich bin einverstanden, dass meine Angaben
+      gespeichert und zur Bearbeitung meines Anliegens verwendet werden. Eine Zeile an info@m-vf.de genügt, und sie werden
+      gelöscht. <a href="https://knowledge-hubs.m-vf.de/datenschutz.html" target="_blank" rel="noopener">Datenschutzhinweise</a></span></label>
+    <p class="kf-stand" id="kf-stand" role="status" aria-live="polite"></p>
+    <div class="kf-knoepfe"><button type="button" class="kf-zu" value="zu">Abbrechen</button>
+      <button type="submit" class="kf-senden">Nachricht senden</button></div>
+  </form>
+</dialog>
+<script>
+(function () {
+  const ENDPUNKT = 'https://www.monitor-versorgungsforschung.de/kontakt/kontakt.php';
+  const d = document.getElementById('kf');
+  if (!d || typeof d.showModal !== 'function') return;   // alte Browser: der Mail-Link bleibt
+  const f = d.querySelector('form'), stand = document.getElementById('kf-stand');
+  let ziel = 'info@m-vf.de';
+  const anliegenAus = t => /re-?briefing/i.test(t) ? 'rebriefing' : /synthese/i.test(t) ? 'synthese'
+    : /angabe|korrig/i.test(t) ? 'korrektur' : /methodik/i.test(t) ? 'methodik'
+    : /themen-?bilanz/i.test(t) ? 'themenfrage' : /sponsor|kooperation/i.test(t) ? 'kooperation' : 'frage';
+  window.kontaktOeffnen = (o = {}) => {
+    f.reset(); stand.textContent = ''; stand.className = 'kf-stand';
+    f.anliegen.value = o.anliegen || 'frage';
+    f.bezug.value = o.bezug || '';
+    ziel = o.adresse || 'info@m-vf.de';
+    d.showModal();
+    (f.bezug.value ? f.nachricht : f.anliegen).focus();
+  };
+  document.addEventListener('click', ev => {
+    const a = ev.target.closest('a[href^="mailto:info@m-vf.de"], a[href^="mailto:redaktion@m-vf.de"], [data-kontakt]');
+    if (!a || a.hasAttribute('data-kein-formular')) return;
+    ev.preventDefault();
+    const href = a.getAttribute('href') || '';
+    let betreff = '';
+    try { betreff = decodeURIComponent((href.split('subject=')[1] || '').split('&')[0]); } catch (e) {}
+    const bezug = a.dataset.bezug || (document.body.dataset.akronym || '');
+    kontaktOeffnen({anliegen: a.dataset.kontakt || anliegenAus(betreff + ' ' + a.textContent),
+                    bezug, adresse: (href.match(/^mailto:([^?]+)/) || [])[1]});
+  });
+  d.querySelector('.kf-zu').onclick = () => d.close();
+  f.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const daten = {anliegen: f.anliegen.value, bezug: f.bezug.value.trim(), nachricht: f.nachricht.value.trim(),
+      name: f.name.value.trim(), einrichtung: f.einrichtung.value.trim(), email: f.email.value.trim(),
+      website: f.website.value, einverstanden: f.einverstanden.checked, seite: location.href.split('#')[0] + (location.hash || '')};
+    const fehler = daten.nachricht.length < 10 ? 'Bitte schreiben Sie ein paar Worte mehr.'
+      : !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(daten.email) ? 'Bitte prüfen Sie die E-Mail-Adresse.'
+      : !daten.einverstanden ? 'Bitte bestätigen Sie das Einverständnis.' : '';
+    if (fehler) { stand.textContent = fehler; stand.className = 'kf-stand schlecht'; return; }
+    const knopf = f.querySelector('.kf-senden'); knopf.disabled = true;
+    stand.textContent = 'Wird gesendet …'; stand.className = 'kf-stand';
+    try {
+      const r = await fetch(ENDPUNKT, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(daten)});
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.ok) {
+        stand.innerHTML = 'Angekommen. Vielen Dank! Eine Bestätigung ist an Ihre Adresse unterwegs.';
+        stand.className = 'kf-stand gut';
+        f.querySelectorAll('input,select,textarea').forEach(x => { x.disabled = true; });
+        knopf.hidden = true; d.querySelector('.kf-zu').textContent = 'Schließen';
+      } else {
+        const g = {'zu-oft': 'Heute kamen von diesem Rechner schon mehrere Nachrichten.', 'adresse': 'Die E-Mail-Adresse ist nicht gültig.',
+                   'zu-kurz': 'Die Nachricht ist zu kurz.', 'keine-einwilligung': 'Bitte bestätigen Sie das Einverständnis.'}[j.grund];
+        throw new Error(g || 'Das Senden hat nicht geklappt.');
+      }
+    } catch (e) {
+      stand.innerHTML = `${e.message || 'Das Senden hat nicht geklappt.'} Schreiben Sie uns gern direkt an
+        <a href="mailto:${ziel}" data-kein-formular>${ziel}</a>.`;
+      stand.className = 'kf-stand schlecht';
+    } finally { knopf.disabled = false; }
+  });
+})();
+</script>
+
 <!-- ZAEHLER-START --------------------------------------------------------
      Zaehlt den Aufruf auf dem eigenen Server von Monitor Versorgungsforschung.
      Kein Cookie, keine Kennung auf dem Geraet, keine fremde Firma. Wer Do Not
