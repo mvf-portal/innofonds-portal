@@ -801,6 +801,11 @@ table.ktab tr.unsicher td{opacity:.55}
 .bal::after{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;
   width:1px;background:var(--gedaempft)}
 .bal i{position:absolute;top:0;bottom:0;border-radius:5px}
+.syn-reiterleiste[hidden]{display:none!important}
+.syn-pfad{font-size:14px;color:var(--gedaempft);margin:0 0 8px}
+.syn-wechsel{display:inline-flex;gap:8px;align-items:center;font-size:14px;margin:0 0 12px;flex-wrap:wrap}
+.syn-wechsel select{font:inherit;padding:5px 8px;border:1px solid var(--linie);border-radius:8px;background:var(--flaeche);color:var(--text);max-width:100%}
+.syn-liste td{vertical-align:top}
 .syn-reiterleiste{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 4px;
   border-bottom:1px solid var(--linie);padding-bottom:0}
 .syn-reiter{background:var(--weich);color:var(--gedaempft);border:1px solid transparent;
@@ -4252,7 +4257,8 @@ function dossierZeichnen() {
         + 'Konfidenzintervallen je Vorhaben.'
       : ', aus den Beschlusstexten des Ausschusses, mit Evidenztabelle, '
         + 'Evidenzlücken und einer Empfehlung für ein künftiges Vorhaben.'}
-    <p style="margin:8px 0 0"><a href="#evidenz" data-reiter="t-evidenz">Kapitel 1 und 2 kostenlos lesen →</a>
+    <p style="margin:8px 0 0"><a href="#evidenz/${(window.SYN_SLUG || [])[(D.synthesen || []).indexOf(synPassend[0])] || ''}" data-syn="${
+      (window.SYN_SLUG || [])[(D.synthesen || []).indexOf(synPassend[0])] || ''}">Kapitel 1 und 2 kostenlos lesen →</a>
     <span class="hinweis">· ab Kapitel 3 kostenpflichtig €</span></p></div>` : '';
 
   /* Was gemessen wurde: vier Kacheln, jede mit dem Weg in die
@@ -4937,7 +4943,7 @@ function bilanzAnsicht() {
   blZeigen('antwort');
 }
 /* Ruft die Navigation nach jedem Reiterwechsel auf. */
-window.nachNav = ziel => { if (ziel === 't-suche') bilanzAnsicht(); };
+window.nachNav = ziel => { if (ziel === 't-suche') bilanzAnsicht(); else document.title = BL_TITEL; };
 function bilanzOeffnen(i) {
   const f = DO_VORSCHLAEGE[i];
   if (!f) return;
@@ -9800,7 +9806,7 @@ partnerZeichnen();
 
   const kopf = `<p class="hinweis"><b>Was hier steht, steht sonst nirgends.</b>
     Die Zahl der Vorhaben zu einem Thema und ihre Bilanz bekommen Sie
-    kostenlos auf der <a href="#" data-reiter="t-suche">Reiter Suche</a>.
+    kostenlos in der <a href="#suche" data-reiter="t-suche">Themen-Bilanz</a>.
     Eine Evidenzsynthese leistet etwas anderes: Sie fasst zusammen, was zu
     einem Versorgungsthema im Innovationsfonds bereits untersucht wurde: Population, Intervention,
     Design, Fallzahl, Endpunkt, Ergebnis, und daneben, was der
@@ -9809,12 +9815,12 @@ partnerZeichnen();
     Population und Endpunkt so stark, dass ein gemeinsamer Effektschätzer
     Scheingenauigkeit wäre.</p>
     <p class="hinweis"><b>Wie die Kohorte entsteht, und warum ihre Zahl
-    von der Startseite abweicht.</b> Eine Synthese behandelt eine
+    von der Themen-Bilanz abweicht.</b> Eine Synthese behandelt eine
     ausgewählte Menge von Vorhaben, bei denen die Sache den Kern
     ausmacht: Zur Kohorte „Lotsen und Case Management" gehören 36
     Vorhaben, bei denen eine personengebundene Koordinationsfunktion
     erprobt wurde, gleich ob sie Lotse, Scout, Coach oder Navigator
-    heißt. Das Themen-Dossier auf der Startseite zählt dagegen alles,
+    heißt. Das Themen-Dossier der Themen-Bilanz zählt dagegen alles,
     was das Thema berührt, und kommt zu ${lotsenBeendet()} abgeschlossenen Vorhaben.
     Die Auswahl hier ist die kleinere, und sie ist es aus zwei
     Gründen. Der erste wiegt schwerer: Eine Synthese behauptet etwas
@@ -9920,9 +9926,47 @@ ${BEGRIFFE}`;
       </details>`;
   }
 
-  ziel.innerHTML = kopf + bald + stufenuebersicht() +
-    `<div class="syn-reiterleiste" role="tablist">${reiter}</div>
-     <div id="syn-tafel"></div>`;
+  /* Stufe 107 (30.10.2026, Marianns Canvas 2, Tafeln „Evidenzsynthesen“
+     und „Evidenzsynthese-Kohorte“): eine Übersicht mit der Liste der
+     Kohorten und je Kohorte eine eigene Seite mit Adresse
+     (#evidenz/lotsen-und-case-management-stufe-2), Pfad und „Kohorte
+     wechseln“. Die Reiterleiste bleibt unsichtbar im Dokument. */
+  const synSlug = x => x.titel.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+    + (doppelt[x.titel] > 1 ? '-stufe-' + x.stufe : '');
+  window.SYN_SLUG = SYN.map(synSlug);
+  function kohortenListe() {
+    const nach = new Map();
+    SYN.forEach((x, i) => {
+      const e = nach.get(x.titel) || {titel: x.titel, kohorte: x.kohorte};
+      e['s' + x.stufe] = i;
+      nach.set(x.titel, e);
+    });
+    const lies = i => `<a href="#evidenz/${SYN_SLUG[i]}" data-syn="${SYN_SLUG[i]}">Kapitel 1–2 lesen →</a>`;
+    return `<div class="huelle" style="max-height:none"><table class="liste syn-liste"><thead><tr><th>Kohorte</th>
+      <th class="zahl">Vorhaben</th><th>Stufe 1 · aus den Beschlüssen</th><th>Stufe 2 · aus den Berichten</th></tr></thead><tbody>${
+      [...nach.values()].sort((a, b) => b.kohorte - a.kohorte).map(e => `<tr>
+        <td><b><a href="#evidenz/${SYN_SLUG[e.s1 != null ? e.s1 : e.s2]}" data-syn="${SYN_SLUG[e.s1 != null ? e.s1 : e.s2]}">${esc(e.titel)}</a></b></td>
+        <td class="zahl">${e.kohorte}</td>
+        <td>${e.s1 != null ? '<b class="ja">✓ liegt vor</b> · ' + lies(e.s1) : '–'}</td>
+        <td>${e.s2 != null ? '<b class="ja">✓ liegt vor</b> · ' + lies(e.s2)
+                           : '<span class="auftrag">◷ auf Bestellung</span>'}</td></tr>`).join('')}
+      </tbody></table></div>`;
+  }
+  ziel.innerHTML = `<div id="syn-start">${kopf}
+      <h3 id="syn-liste">Welche Synthesen vorliegen</h3>
+      <p class="hinweis">${new Set(SYN.map(x => x.titel)).size} Kohorten, nach Zahl der Vorhaben. Ein Klick öffnet
+        die Kohorte: Kapitel 1 und 2 sind frei lesbar.</p>
+      ${kohortenListe()}${bald}${stufenuebersicht()}</div>
+    <div id="syn-kohorte" hidden>
+      <p class="syn-pfad"><a href="#evidenz" data-syn="">Evidenzsynthesen</a> ›
+        <a href="#evidenz" data-syn="" data-syn-sprung="syn-liste">Welche Synthesen vorliegen</a> ›
+        <span id="syn-pfad-name"></span></p>
+      <label class="syn-wechsel">Kohorte wechseln
+        <select id="syn-wahl">${SYN.map((x, i) => `<option value="${i}">${esc(reiterName(x))} · ${x.kohorte} Vorhaben</option>`).join('')}</select></label>
+      <div class="syn-reiterleiste" role="tablist" hidden>${reiter}</div>
+      <div id="syn-tafel"></div>
+    </div>`;
 
   function zeigen(i) {
     const s = SYN[i];
@@ -9957,7 +10001,7 @@ ${BEGRIFFE}`;
         ${kopfblock('Umfang', Math.round(s.zeichen/1000)
             + ' Tsd. Zeichen · ' + s.gliederung.length + ' Kapitel')}
       </div>
-      <p class="was">Nach dem Maßstab von <b>Stufe ${s.stufe}</b>, siehe oben.</p>
+      <p class="was">Nach dem Maßstab von <b>Stufe ${s.stufe}</b>, erklärt in der <a href="#evidenz" data-syn="">Übersicht der Evidenzsynthesen</a>.</p>
       ${zu.length ? `<div class="bestellkopf${
           BESTELLUNG_RUHT ? ' ruht' : ''}">
         <span>Der kostenpflichtige Teil dieser Synthese kostet
@@ -10272,7 +10316,37 @@ ${BEGRIFFE}`;
     b.onclick = () => { zeigen(+b.dataset.i);
       document.getElementById('syn-tafel').scrollIntoView(
         {behavior:'smooth', block:'nearest'}); });
-  zeigen(0);
+  /* Welche Ansicht die Adresse verlangt: #evidenz die Übersicht,
+     #evidenz/<kohorte> die Kohorte. */
+  let synAktiv = -1;
+  function synAnsicht() {
+    const m = /^#evidenz\/([a-z0-9-]+)/.exec(location.hash || '');
+    const i = m ? SYN_SLUG.indexOf(m[1]) : -1;
+    document.getElementById('syn-start').hidden = i >= 0;
+    document.getElementById('syn-kohorte').hidden = i < 0;
+    if (i >= 0 && i !== synAktiv) {
+      zeigen(i); synAktiv = i;
+      document.getElementById('syn-wahl').value = String(i);
+      document.getElementById('syn-pfad-name').textContent = reiterName(SYN[i]);
+    }
+  }
+  function synOeffnen(slug, sprung) {
+    const z = '#evidenz' + (slug ? '/' + slug : '');
+    if (location.hash !== z) history.pushState(null, '', z);
+    reiterNach('t-evidenz');
+    const el = sprung && document.getElementById(sprung);
+    if (el) el.scrollIntoView({block: 'start'}); else window.scrollTo({top: 0});
+  }
+  document.addEventListener('click', ev => {
+    const a = ev.target.closest('a[data-syn]');
+    if (!a) return;
+    ev.preventDefault();
+    synOeffnen(a.dataset.syn, a.dataset.synSprung);
+  });
+  document.getElementById('syn-wahl').onchange = ev => synOeffnen(SYN_SLUG[+ev.target.value]);
+  const vorher = window.nachNav;
+  window.nachNav = z => { if (vorher) vorher(z); if (z === 't-evidenz') synAnsicht(); };
+  zeigen(0); synAktiv = 0;
 })();
 
 
