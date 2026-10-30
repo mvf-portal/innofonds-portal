@@ -102,6 +102,7 @@ nav button.gold.wartet[aria-selected="true"]{opacity:1;
   margin-left:5px;vertical-align:1px}
 #t-evidenz{border-color:var(--goldlinie)}
 main{max-width:1240px;margin:0 auto;padding:0 16px 40px}
+hr.selbst-trenner{border:0;border-top:1px solid var(--linie);margin:10px 0}
 /* Stufe 99: Kasten „Der Innovationsfonds“ und MVF-Beiträge im Vorwort. */
 .fondskasten{border:1px solid var(--linie);border-left:4px solid var(--goldlinie);
   border-radius:10px;padding:14px 18px;margin:26px 0 18px;background:var(--flaeche)}
@@ -5846,10 +5847,19 @@ function statusblock(p) {
     <h4>${hatAus && !p.danach.some(d => d.art === 'danach')
       ? 'Bester und schlechtester Ausgang – von der Projektleitung'
       : 'Aktuelle Statusrückmeldung des/der Projektverantwortlichen'}</h4>
-    ${p.danach.map(d => `<blockquote class="selbst">${
-      esc(d.text).replace(/\n+/g, '</p><p>').replace(/^/, '<p>')
-      .replace(/$/, '</p>')}<footer>${d.wann ? datum(d.wann) + ' · ' : ''}${
-      esc(d.wer || 'Projektleitung')}${
+    ${(() => {
+      /* Eine Karte je Person und Tag (30.10.2026). Die Reihenfolge der
+         Eintraege bleibt, gruppiert wird nur, was direkt zusammengehoert. */
+      const gruppen = [];
+      p.danach.forEach(d => {
+        const k = (d.wer || '') + '|' + (d.wann || '').slice(0, 10);
+        const g = gruppen.find(x => x.k === k);
+        if (g) g.liste.push(d); else gruppen.push({k, d, liste: [d]});
+      });
+      return gruppen; })().map(({d, liste}) => `<blockquote class="selbst">${
+      liste.map(x => esc(x.text).replace(/\n+/g, '</p><p>').replace(/^/, '<p>')
+      .replace(/$/, '</p>')).join('<hr class="selbst-trenner">')}<footer>${d.wann ? datum(d.wann) + ' · ' : ''}${
+      esc(d.wer || 'Projektleitung')}${liste.length > 1 ? ' · ' + liste.length + ' Einträge' : ''}${
       /* "Konsortialführung:" davor, weil die Einrichtung aus der
          Projektdatenbank stammt und zum VORHABEN gehört, nicht zur
          heutigen Anschrift: Prof. Neuerburg hat das dort genannte Haus
@@ -6282,6 +6292,11 @@ function dossierHtml(p) {
      Namen und Datum: Wer das liest, soll sehen, dass hier ein Mensch
      spricht und nicht unsere Auswertung. */
   teile.push(bereichblock(p));
+  /* Die Statusrueckmeldung ebenfalls oben, wie in der Projektkarte. Vorher
+     stand sie unter den drei Ebenen, mit der Begruendung, man muesse erst
+     wissen, worum es geht. Mariann (Canvas 2, 30.10.2026): Sie ist das
+     Neueste zum Vorhaben und ging dort unter. */
+  teile.push(statusblock(p));
   /* Direkt oben, noch vor dem Beschluss: Es sind Angaben zum Vorhaben
      selbst, und sie sind juenger als jedes Dokument. Zweite
      Einbaustelle - karteHtml ist die erste. */
@@ -6368,7 +6383,7 @@ const ERGKLAR = {
      und die einzige aus erster Hand - aber sie setzt voraus, dass man
      weiss, worum es ging. Darum unter den drei Ebenen. */
   teile.push(fortfBlock(p));
-  teile.push(statusblock(p));
+  /* statusblock steht seit 30.10.2026 oben (siehe Anfang der Funktion). */
   /* Warum es gelang - das engere Feld. Es steht getrennt, weil ein
      Ergebnis und sein Grund zwei verschiedene Auskuenfte sind, und es
      fehlt in den meisten Vorhaben: Die Beschluesse sagen, was
@@ -7078,6 +7093,9 @@ const FARBEN = {'Universität / Hochschule':'#1f6feb','Universitätsklinikum':'#
   'Öffentliche Verwaltung':'#455a64','Pflege / Wohlfahrt':'#00838f','Kammer':'#6d4c41',
   'Sonstige':'#90a4ae'};
 const farbe = t => FARBEN[t] || FARBEN['Sonstige'];
+/* Arten A-Z nach deutscher Sortierung, „Sonstige“ immer zuletzt (30.10.2026). */
+const typOrdnung = (a, b) => (a === 'Sonstige') - (b === 'Sonstige')
+  || a.localeCompare(b, 'de');
 /* Suchtext einer Einrichtung: Name, Ort UND alle erfassten Schreibweisen -
    sonst findet "TK" die Techniker Krankenkasse nicht. */
 /* Durchsuchbarer Text je Einrichtung. Er enthaelt den Namen zweimal:
@@ -7101,7 +7119,7 @@ const ktext = k => k._t || (k._t = (() => {
 const mitKurz = k => k.akr && !k.name.includes(k.akr)
   ? `${k.name} (${k.akr})` : k.name;
 const nurKurz = k => k.akr || (k.name.length > 26 ? k.name.slice(0,25)+'…' : k.name);
-const typen = [...new Set(K.map(k => k.typ))].sort();
+const typen = [...new Set(K.map(k => k.typ))].sort(typOrdnung);
 ['k-typ','o-typ'].forEach(id => { const el = document.getElementById(id);
   typen.forEach(t => el.insertAdjacentHTML('beforeend', `<option>${esc(t)}</option>`)); });
 document.getElementById('k-legende').innerHTML =
@@ -7649,7 +7667,7 @@ function legendeUndZeichnen() {
   // Legende passend zum Farbmodus
   const leg = document.getElementById('n-legende');
   if (farbmodus === 'typ') {
-    leg.innerHTML = [...new Set(sicht.map(k=>k.typ))].sort().map(t =>
+    leg.innerHTML = [...new Set(sicht.map(k=>k.typ))].sort(typOrdnung).map(t =>
       `<span><i class="punkt" style="background:${farbe(t)}"></i>${esc(t)}</span>`).join('');
   } else if (farbmodus === 'ergebnis') {
     const zahl = {};
