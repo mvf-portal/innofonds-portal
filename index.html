@@ -11114,6 +11114,157 @@ partnerZeichnen();
 
 
 <style>
+/* Stufe 106: Rahmen der Auswertungsseiten */
+.aw-kopf{margin:0 0 18px}
+.aw-inhalt{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin:12px 0 0;font-size:14px;
+  padding:10px 14px;border:1px solid var(--linie);border-radius:10px;background:var(--flaeche)}
+.aw-inhalt b{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gedaempft)}
+.aw-inhalt a{white-space:nowrap}
+.aw-fuss{margin:28px 0 6px;padding:14px 16px;border:1px solid var(--linie);border-radius:10px;background:var(--flaeche)}
+.aw-fuss h4{margin:0 0 4px}
+.aw-fuss p{margin:4px 0}
+</style>
+
+<script>
+(function () {
+  const z = n => (n == null ? '–' : Number(n).toLocaleString('de-DE'));
+  const E = {};
+  (D.erhebung || []).forEach(g => (g.zeilen || []).forEach(r => { E[r.w] = r.n; }));
+  const LLn = 'Medizinische Leitlinien';
+  const monate = (a, b) => {
+    const x = /^(\d{4})-(\d{2})/.exec(a || ''), y = /^(\d{4})-(\d{2})/.exec(b || '');
+    return x && y ? (+y[1] - +x[1]) * 12 + (+y[2] - +x[2]) : null;
+  };
+  const med = a => { const b = a.slice().sort((x, y) => x - y); return b.length ? b[Math.floor(b.length / 2)] : null; };
+
+  /* Je Seite: Kacheln [Zahl, Satz, [Verweistext, Muster der Überschrift]]. */
+  const KACHELN = {
+    't-zahlen': () => {
+      const summe = P.reduce((s, p) => s + (p.sum || 0), 0);
+      const lz = P.map(p => monate(p.von, p.bis)).filter(x => x != null && x > 0);
+      const be = P.filter(p => p.st === 'beendet');
+      const beS = be.reduce((s, p) => s + (p.sum || 0), 0);
+      const ue = be.filter(p => UE_TE.includes(p.te)).length;
+      return [
+        [z(P.length), 'Vorhaben hat der Innovationsfonds seit 2016 gefördert', ['Jahrgänge', /Jahrg/]],
+        [blEur(summe) + blGenau(summe), 'sind insgesamt in diese Vorhaben geflossen', ['Fördersummen', /^Fördersummen/]],
+        [z(med(lz)) + ' Monate', `lief ein Vorhaben im Median, die kürzesten ${z(Math.min(...lz))}, die längsten ${z(Math.max(...lz))} Monate`, ['Was ein Vorhaben an Zeit kostet', /Zeit kostet/]],
+        [blEur(beS / Math.max(1, ue)) + `<small>${eur(beS)} ÷ ${z(ue)}</small>`, `Fördergeld stehen rechnerisch hinter jeder Empfehlung oder Prüfbitte, über alle ${z(be.length)} abgeschlossenen Vorhaben`, ['Was die Fördersumme über den Ausgang sagt', /Fördersumme über/]],
+      ];
+    },
+    't-netz': () => {
+      const leit = new Set(); P.forEach(p => (p.lt || []).slice(0, 1).forEach(x => leit.add(x)));
+      return [
+        [z(NETZ.knoten.length), `Einrichtungen waren an den ${z(P.length)} geförderten Vorhaben beteiligt`, ['Die erfahrensten Partner', /erfahrensten/]],
+        [z(NETZ.kanten.length), 'Kooperationen: So oft arbeiteten zwei dieser Einrichtungen in einem Vorhaben zusammen'],
+        [z(E['Schreibweisen zusammengeführt']), 'Schreibweisen und Kürzel sind zu diesen Einrichtungen zusammengeführt'],
+        [z(NETZ.knoten.filter(k => (k.projekte_leitung || 0) > 0).length), 'Einrichtungen haben mindestens ein Vorhaben geleitet', ['Die häufigsten Konsortialführer', /Konsortialführer/]],
+      ];
+    },
+    't-karte': () => {
+      const m = new Map();
+      /* Nur echte Länder: nicht „bundesweit“, „länderübergreifend“ oder zwei Länder in einer Angabe. */
+      P.forEach(p => { if (p.bl && !/bundesweit|übergreifend|,/i.test(p.bl)) m.set(p.bl, (m.get(p.bl) || 0) + 1); });
+      const top = [...m.entries()].sort((a, b) => b[1] - a[1])[0] || ['–', 0];
+      const bw = P.filter(p => /bundesweit/i.test(p.bl || '')).length;
+      return [
+        [z(m.size), 'Bundesländer sind Sitz mindestens eines Vorhabens', ['Rangliste der Bundesländer', /Rangliste/]],
+        [z(top[1]), `Vorhaben liegen in ${esc(top[0])}, die meisten in einem Land`, ['Rangliste der Bundesländer', /Rangliste/]],
+        [z(bw), 'Vorhaben sind bundesweit angelegt und stehen in keinem Land'],
+      ];
+    },
+    't-fallzahl': () => {
+      const q = Object.values(FZ).map(f => f.q).filter(x => x != null);
+      const pz = x => Math.round(x * 100) + ' %';
+      return [
+        [pz(med(q)), 'der geplanten Fallzahl wertet ein Vorhaben im Median aus'],
+        [z(q.length), 'Vorhaben nennen geplante und ausgewertete Fallzahl in derselben Einheit'],
+        [z(q.filter(x => x < 0.8).length), 'Vorhaben blieben unter 80 Prozent ihrer Planung'],
+        [z(q.filter(x => x >= 1).length), 'Vorhaben erreichten ihr Ziel oder lagen darüber'],
+      ];
+    },
+    't-endpunkte': () => {
+      const bew = EP.filter(e => e.g != null), sig = bew.filter(e => e.g === 1);
+      return [
+        [z(EP.length), `Endpunkte, also gemessene Zielgrößen, aus ${z(new Set(EP.map(e => e.p)).size)} Vorhaben`, ['Woher die Endpunkte kommen', /Woher die Endpunkte/]],
+        [z(new Set(EP.map(e => e.f).filter(Boolean)).size), 'Familien fassen gleichartige Endpunkte zusammen', ['Die häufigsten Messinstrumente', /Messinstrumente/]],
+        [z(bew.length), 'Endpunkte haben ein im Bericht bewertetes Ergebnis'],
+        [Math.round(sig.length / Math.max(1, bew.length) * 100) + ' %', `davon zeigen einen statistisch signifikanten Unterschied (${z(sig.length)})`, ['Ist der Unterschied klinisch relevant?', /klinisch relevant/]],
+      ];
+    },
+    't-transfer': () => {
+      const A = {}; (UM.antworten || []).forEach(r => { A[r.s] = r.n; });
+      const alle = (UM.antworten || []).reduce((s, r) => s + r.n, 0);
+      return [
+        [z(alle), 'Nennungen von Adressaten stehen in den Beschlüssen', ['Was aus den Empfehlungen geworden ist', /Was aus den Empfehlungen/]],
+        [z((A['umgesetzt'] || 0) + (A['teilweise umgesetzt'] || 0)), 'davon sind umgesetzt oder teilweise umgesetzt', ['Was aus den Empfehlungen geworden ist', /Was aus den Empfehlungen/]],
+        [z(A['nicht erkennbar'] || 0), 'Nennungen: Hier ist nicht erkennbar, was geschehen ist'],
+        [z(E['Vorhaben mit Rückmeldung']), 'Vorhaben haben eine veröffentlichte Rückmeldung der Adressaten', ['Wo die Zeit vergeht', /Wo die Zeit/]],
+      ];
+    },
+  };
+  const ZAEHLT = {
+    't-zahlen': 'Förderung in Zahlen', 't-netz': 'Einrichtungen und Netzwerk', 't-karte': 'Landkarte',
+    't-fallzahl': 'Fallzahlen', 't-endpunkte': 'Endpunkte', 't-transfer': 'Transfer',
+  };
+  const ueberschriften = ids => ids.flatMap(id => {
+    const s = document.getElementById(id);
+    return s ? [...s.querySelectorAll('h3, h4')].filter(h => h.offsetParent && h.textContent.trim() && !h.closest('.aw-kopf, .aw-fuss, .bl-kurz, details:not([open])')) : [];
+  });
+  function rahmen(ziel) {
+    if (!KACHELN[ziel]) return;
+    const sec = document.getElementById(ziel);
+    const SE = SEITE_MIT[ziel] || [ziel];
+    let kopf = sec.querySelector(':scope > .aw-kopf');
+    if (!kopf) {
+      kopf = document.createElement('div'); kopf.className = 'aw-kopf';
+      try { kopf.innerHTML = blKurz(KACHELN[ziel]().map(([g, w, s]) => [g, w, s ? [s[0], 'aw-ziel-' + ziel + '-' + s[0].replace(/[^a-z]/gi, '')] : null]))
+        .replace(/<a class="bl-sprung" href="#(aw-ziel-[^"]+)" data-sprung="[^"]+">/g, '<a class="bl-sprung" href="#$1" data-aw-sprung="$1">'); }
+      catch (e) { kopf.innerHTML = ''; }
+      kopf.dataset.muster = JSON.stringify(KACHELN[ziel]().filter(k => k[2]).map(k => ['aw-ziel-' + ziel + '-' + k[2][0].replace(/[^a-z]/gi, ''), k[2][1].source]));
+      sec.insertBefore(kopf, sec.firstChild);
+      const letzte = document.getElementById(SE[SE.length - 1]);
+      const fuss = document.createElement('div'); fuss.className = 'aw-fuss';
+      fuss.innerHTML = `<h4>So entstehen diese Daten</h4>
+        <p>Quellen, Zählregeln und wie verlässlich die einzelnen Angaben sind, stehen gesammelt unter
+        Hintergrund › Methodik &amp; Verlässlichkeit.</p>
+        <p><a href="#vorwort/auswertungen" data-mt="auswertungen" data-mt-sprung="mt-aw-je">Was die Auswertung „${esc(ZAEHLT[ziel])}“ zählt →</a> ·
+        <a href="#vorwort/auswertungen" data-mt="auswertungen">Methodik der Auswertungen →</a></p>`;
+      letzte.appendChild(fuss);
+    }
+    /* Inhaltsverzeichnis: bei jedem Öffnen neu, die Seiten zeichnen nach. */
+    setTimeout(() => {
+      const hs = ueberschriften(SE);
+      hs.forEach((h, i) => { if (!h.id) h.id = 'aw-' + ziel.slice(2) + '-' + i; });
+      let inh = kopf.querySelector('.aw-inhalt');
+      if (!inh) { inh = document.createElement('p'); inh.className = 'aw-inhalt'; kopf.appendChild(inh); }
+      inh.hidden = hs.length < 2;
+      inh.innerHTML = '<b>Auf dieser Seite</b>' + hs.slice(0, 12).map(h =>
+        `<a href="#${h.id}" data-aw-sprung="${h.id}">${esc(h.textContent.trim().replace(/\s+/g, ' ').slice(0, 60))}</a>`).join('');
+    }, 400);
+  }
+  const SEITE_MIT = {'t-netz': ['t-netz', 't-partner']};
+  const vorher = window.nachNav;
+  window.nachNav = ziel => { if (vorher) vorher(ziel); try { rahmen(ziel); } catch (e) { /* Rahmen ist Beiwerk */ } };
+  document.addEventListener('click', ev => {
+    const a = ev.target.closest('[data-aw-sprung]');
+    if (!a) return;
+    ev.preventDefault();
+    let id = a.dataset.awSprung, el = document.getElementById(id);
+    if (!el && /^aw-ziel-/.test(id)) {
+      /* Kachelverweis: Überschrift über ihr Muster suchen. */
+      const kopf = a.closest('.aw-kopf');
+      const m = JSON.parse(kopf.dataset.muster || '[]').find(x => x[0] === id);
+      const sec = kopf.parentElement;
+      if (m) el = ueberschriften(SEITE_MIT[sec.id] || [sec.id]).find(h => new RegExp(m[1]).test(h.textContent));
+    }
+    if (el) { const d = el.closest('details'); if (d) d.open = true; el.scrollIntoView({block: 'start', behavior: 'smooth'}); }
+  });
+})();
+</script>
+
+
+<style>
 /* Stufe 100: Navigation nach Marianns Canvas 1. */
 :root{--sk-recherche:#0A3F7E;--sk-recherche2:#054A94;--sk-auswertung:#E8EFF8;--sk-antrag:#EEF1F5;
   --sk-evidenz:#F8F4EA;--sk-evidenzrand:#E3D6B5;--ul-grund:#F6F8FB;--pille:#E3ECF7;--pille-text:#00529F}
