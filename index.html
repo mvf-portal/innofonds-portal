@@ -2006,7 +2006,7 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
         Zahlen in feste Sätze. Ist die Grundlage zu klein, steht das
         dabei.</p></div>
     </div>
-    <p style="margin:12px 0 0"><a href="#vorwort" data-reiter="t-vorwort">So entstehen diese Daten →</a></p>
+    <p style="margin:12px 0 0"><a href="#vorwort/themen-bilanz" data-mt="themen-bilanz">Methodik der Themen-Bilanz →</a></p>
   <details class="stufenliste"><summary>Ausführlich: wie die Themen-Bilanz
     sucht und zählt</summary>
     <p>Jemand fragt: <i>„Zeige mir alle Lotsenprojekte und erkläre,
@@ -4318,7 +4318,7 @@ function dossierZeichnen() {
       abgeschlossene Vorhaben, die Synthese behandelt 36 davon.` : ''}</p>` : ''}
     <p><b>Mehr zur Methodik:</b>
       <a href="#vorwort" data-reiter="t-vorwort">So entstehen diese Daten →</a> ·
-      <a href="#zahlen" data-reiter="t-zahlen">Wie verlässlich die Hindernisse sind →</a></p>
+      <a href="#vorwort/projektdatenbank" data-mt="projektdatenbank" data-mt-sprung="mt-pdb-kategorien">Wie verlässlich die Hindernisse sind →</a></p>
   </div>`;
 
   const gelesen = (doThema && doThema.erkannt) ? `
@@ -10588,6 +10588,532 @@ partnerZeichnen();
 
 
 <style>
+/* Stufe 105: Methodik & Verlässlichkeit */
+.mt{display:grid;grid-template-columns:210px minmax(0,1fr);gap:28px;align-items:start}
+.mt > *{min-width:0}
+.mt-nav{display:block;position:sticky;top:12px;border:1px solid var(--linie);border-radius:10px;background:var(--flaeche);padding:10px 0;font-size:14px}
+.mt-nav p{margin:0;padding:4px 14px;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--gedaempft);font-weight:700}
+.mt-nav a{display:block;padding:5px 14px;color:var(--text);text-decoration:none}
+.mt-nav a.unter{padding-left:26px;font-size:13px;color:var(--gedaempft)}
+.mt-nav a[aria-current]{font-weight:700;color:var(--akzent);border-left:3px solid var(--akzent);padding-left:11px}
+.mt-nav a:hover{color:var(--akzent)}
+.mt-inhalt{max-width:80ch}
+.mt-inhalt h3{margin:30px 0 8px;font-size:21px}
+.mt-inhalt h3:first-child{margin-top:0}
+.mt-inhalt h4{margin:18px 0 4px}
+.mt-inhalt p{margin:8px 0}
+.mt-vorspann{font-size:16px}
+.mt-kasten{border:1px solid var(--linie);border-radius:10px;background:var(--flaeche);padding:12px 16px;margin:14px 0}
+.mt-schritt{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.mt-schritt div{border:1px solid var(--linie);border-radius:10px;padding:10px 12px;background:var(--flaeche)}
+.mt-schritt b{display:block;font-size:21px;color:var(--akzent);font-variant-numeric:tabular-nums}
+.mt-schritt span{font-size:13px;color:var(--gedaempft)}
+.mt-kz{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:10px 0;align-items:baseline}
+.mt-kz dt{white-space:nowrap;font-weight:700}
+.mt-kz dd{margin:0}
+.mt-bal{display:flex;height:22px;border-radius:6px;overflow:hidden;margin:10px 0 4px;font-size:12px;font-weight:700;color:#fff}
+.mt-bal span{display:flex;align-items:center;justify-content:center}
+.mt-angebote{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:10px 0}
+.mt-angebote a{display:block;border:1px solid var(--linie);border-radius:10px;padding:12px 14px;background:var(--flaeche);color:var(--text);text-decoration:none}
+.mt-angebote a b{display:block;color:var(--akzent)}
+.mt-angebote a:hover{border-color:var(--gold)}
+.mt-eigen{border-left:4px solid var(--gold);background:var(--goldweich);border-radius:10px;padding:12px 16px;margin:24px 0}
+.mt-euro{border:1px solid var(--goldlinie);background:var(--goldweich);border-radius:10px;padding:12px 16px;margin:16px 0}
+.mt-tab td.zahl,.mt-tab th.zahl{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mt-tab tr.gruppe td{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--gedaempft);font-weight:700;padding-top:14px}
+.mt-weiter{margin:22px 0 0;font-weight:700}
+@media (max-width:860px){
+  .mt{grid-template-columns:1fr;gap:12px}
+  .mt-nav{position:static;display:flex;flex-wrap:wrap!important;white-space:normal;overflow:visible;gap:6px;padding:8px 0;border:0;background:none}
+  .mt-nav p,.mt-nav a.unter{display:none}
+  .mt-nav a{border:1px solid var(--linie);border-radius:999px;padding:5px 12px;background:var(--flaeche)}
+  .mt-nav a[aria-current]{border:2px solid var(--akzent);padding:4px 11px}
+}
+</style>
+
+<script>
+(function () {
+  const z = n => (n == null ? '–' : Number(n).toLocaleString('de-DE'));
+  const pz = (a, b, st) => b ? (a / b * 100).toLocaleString('de-DE', {maximumFractionDigits: st || 0}) + ' %' : '–';
+  const kom = x => String(x).replace('.', ',');
+  const E = {}, EQ = {};
+  (D.erhebung || []).forEach(g => (g.zeilen || []).forEach(r => { E[r.w] = r.n; EQ[r.w] = r.q || ''; }));
+  const PR = D.pruefung || {};
+  const PB = D.pruefbestaende || [];
+  const AB = D.abgleich || {};
+  const BL = D.beleg || {};
+  const LL = P.filter(p => p.vf === 'Medizinische Leitlinien').length;
+  const R = (t, txt) => `<a href="#${t.slice(2)}" data-reiter="${t}">${txt}</a>`;
+  const M = (u, txt, sprung) => `<a href="#vorwort${u ? '/' + u : ''}" data-mt="${u}"${sprung ? ` data-mt-sprung="${sprung}"` : ''}>${txt}</a>`;
+  const kz = {};
+  [['belegt', 'gruen'], ['nachsehen', 'gelb'], ['bestritten', 'rot'], ['ungeprueft', 'grau'], ['hand', 'hand']].forEach(([k, f]) => {
+    kz[k] = `<span class="ampel ${f}"><i></i>${BELEGWORT[f]}</span>`; });
+  const eigen = `<div class="mt-eigen" id="mt-eigen"><b>In eigener Sache.</b> Das Portal ist in der
+    Beta-Phase, derzeit sprechen wir alle Projektverantwortlichen an. Es ist mit künstlicher und
+    menschlicher Intelligenz entstanden, nach bestem Wissen und mit vielen Querprüfungen. Trotzdem
+    können beide irren, und an einigen Stellen wird das passiert sein. Dafür entschuldigen wir uns
+    schon jetzt. Eine Bitte: Betrachten Sie dieses Portal als ehrlichen Versuch, mehr Transparenz zu
+    erzeugen als bisher. Wenn Sie eine falsche Zuordnung, Berechnung oder Auswertung finden,
+    schreiben Sie an <a href="mailto:info@m-vf.de">info@m-vf.de</a>. Auf jeder Projektseite führt
+    „Angabe korrigieren“ direkt dorthin.</div>`;
+  const zaehlLink = `<p class="hinweis"><b>Wie gezählt wird.</b> Quoten zählen Empfehlungen, nicht
+    vollzogene Überführungen, und nur entschiedene Vorhaben ohne Leitlinienvorhaben.
+    ${M('', 'Alle Zählregeln →', 'mt-zaehlen')}</p>`;
+
+  /* ---------- Übersicht ---------- */
+  const hb = PB.find(b => /Hindernis/.test(b.name)) || {};
+  const belegt = (PR.n || 0) - (PR.einer || 0), bestr = PR.einstimmig || 0, uneins = (PR.einer || 0) - bestr;
+  const BEST_LINK = {
+    'Förderprojekte': 't-projekte', 'davon Leitlinienvorhaben': 't-projekte',
+    'Beschlüsse des Innovationsausschusses': 't-projekte', 'Förderbekanntmachungen': 't-zahlen',
+    'Konsortialrollen': 't-partner', 'Einrichtungen': 't-partner',
+    'Berichte zu Endpunkten ausgewertet': 't-endpunkte', 'Endpunkte': 't-endpunkte', 'Endpunktfamilien': 't-endpunkte',
+    'Fallzahlen vergleichbar gemacht': 't-fallzahl', 'Hinderniszuordnungen': 't-zahlen',
+    'Rückmeldungsstücke': 't-transfer', 'Vorhaben mit Rückmeldung': 't-transfer',
+    'Rückmeldungen ausgewertet': 't-transfer', 'Nennungen von Adressaten': 't-transfer',
+  };
+  const bestand = `<div class="huelle" style="max-height:none"><table class="mt-tab"><thead><tr><th>Angabe</th><th class="zahl">Anzahl</th><th>Was dahintersteht</th></tr></thead><tbody>${
+    (D.erhebung || []).map(g => `<tr class="gruppe"><td colspan="3">${esc(g.g)}</td></tr>` + g.zeilen.map(r => `<tr>
+      <td>${BEST_LINK[r.w] ? R(BEST_LINK[r.w], esc(r.w) + ' →') : esc(r.w)}</td><td class="zahl">${z(r.n)}</td>
+      <td class="hinweis">${esc(r.q || '')}</td></tr>`).join('')).join('')}
+    <tr class="gruppe"><td colspan="3">Was geprüft wurde</td></tr>
+    <tr><td>Angaben mit Zitat und Seitenzahl</td><td class="zahl">${z(D.angaben)}</td>
+      <td class="hinweis">aus Beschlüssen und Berichten ausgelesen, davon ${z(D.geprueft)} einzeln geprüft</td></tr>
+  </tbody></table></div>
+  <p><button type="button" class="pdb-mehrb" id="mt-csv">Tabelle als CSV ↓</button></p>`;
+
+  const uebersicht = `
+    <p class="mt-vorspann">Hier steht, woher die Daten im Innovationsfonds-Radar kommen, wie sie mithilfe
+      von KI ausgelesen und geprüft wurden und was nicht geprüft ist. Das gilt für das ganze Portal. Was
+      nur die Projektdatenbank, die Themen-Bilanz, die Auswertungen oder den Ideencheck betrifft, steht
+      auf eigenen Unterseiten. Jede Angabe aus Beschlüssen und Berichten ist mit Zitat und Seitenzahl
+      belegt. Wenn eine Angabe für Ihre Entscheidung zählt, lesen Sie bitte im Originaldokument nach.</p>
+
+    <h3 id="mt-quellen">Quellen: Woher die Daten kommen</h3>
+    <p>Alles im Portal beruht auf zwei Quellen: den Daten und Dokumenten des GBA und den Rückmeldungen
+      der Projektverantwortlichen.</p>
+    <h4>Vom Gemeinsamen Bundesausschuss (GBA)</h4>
+    <p><b>Grunddaten.</b> Titel, Laufzeit, Fördersumme, Konsortium, Zielgruppe und Projektelemente der
+      Vorhaben übernehmen wir aus der <a href="https://innovationsfonds.g-ba.de/projekte/" target="_blank" rel="noopener">Projektdatenbank
+      des GBA ↗</a> und gleichen sie täglich ab.</p>
+    <p><b>Dokumente.</b> Zu jedem abgeschlossenen Vorhaben veröffentlicht der Innovationsausschuss einen
+      Beschluss mit Begründung. Dazu kommt der Ergebnisbericht des Konsortiums. Vorhaben der Neuen
+      Versorgungsformen legen außerdem einen Evaluationsbericht vor, den eine unabhängige Stelle schreibt.
+      Vorhaben der Versorgungsforschung berichten selbst.</p>
+    <h4>Von den Projektverantwortlichen</h4>
+    <p>Wir laden die Projektverantwortlichen ein, ihre Angaben zu prüfen und Neues zu ergänzen, etwa
+      Veröffentlichungen oder den Stand nach Projektende. Ihre Rückmeldungen stehen auf der Seite des
+      Vorhabens, gekennzeichnet mit Datum, und sind inhaltlich nicht von uns geprüft.</p>
+
+    <h3 id="mt-vorgehen">Vorgehen: Was wir mit den Quellen gemacht haben</h3>
+    <p>Die <b>Grunddaten</b> übernehmen wir unverändert. Die <b>Rückmeldungen</b> zeigen wir so, wie sie
+      eingetragen wurden. Die eigentliche Arbeit steckt in den <b>Dokumenten</b>, in drei Schritten:
+      gelesen, Angaben gewonnen und eingeordnet, geprüft.</p>
+    <h4>1. Gelesen</h4>
+    <div class="mt-schritt">
+      <div><b>${z(E['Dokumente mit Textschicht'])}</b><span>Beschlüsse und Berichte mit lesbarem Text, von
+        ${z(E['Dokumente verzeichnet'])} beim GBA verlinkten Dokumenten</span></div>
+      <div><b>${z(E['Seiten'])}</b><span>Seiten in diesen Dokumenten</span></div>
+      <div><b>${z(E['Zeichen'])}</b><span>Zeichen Text. Jedes Zitat im Portal ist eine Stelle daraus.</span></div>
+      <div><b>${z(E['abgeschlossene Vorhaben inhaltlich ausgewertet'])}</b><span>von ${z(P.length)} Vorhaben
+        inhaltlich ausgewertet</span></div>
+    </div>
+    <p><b>Was fehlt.</b> Die übrigen ${z(P.length - (E['abgeschlossene Vorhaben inhaltlich ausgewertet'] || 0))}
+      Vorhaben laufen noch oder schreiben ihren Abschlussbericht. Sie fehlen deshalb in allen Auswertungen
+      zu Ergebnissen und Hindernissen. ${E['davon Projektmaterial, nicht ausgelesen'] ? `Von den verlinkten
+      Dokumenten sind ${z(E['davon Projektmaterial, nicht ausgelesen'])} Projektmaterial wie Flyer,
+      Präsentationen oder Handbücher. Sie lesen wir nicht aus.` : ''} Auf welcher Grundlage eine Auswertung
+      steht, steht jeweils bei ihren Zahlen.</p>
+    <h4>2. Angaben gewonnen und eingeordnet</h4>
+    <p>Aus den Beschlüssen und Berichten hat ein Sprachmodell einzelne Angaben herausgelesen, etwa
+      Hindernisse, Endpunkte oder Fallzahlen, jede mit wörtlichem Zitat und Seitenzahl. Insgesamt sind es
+      ${z(D.angaben)} Angaben.</p>
+    <p><b>Einordnung der Redaktion.</b> Einige Angaben vergibt die Redaktion von Monitor
+      Versorgungsforschung (MVF) selbst, damit man Vorhaben vergleichen und filtern kann, zum Beispiel
+      die Schlagwörter oder die Endpunktfamilien. Die Zuordnung ist KI-gestützt und wird geprüft. Welche
+      Angaben das sind, steht auf den Unterseiten ${M('projektdatenbank', 'Projektdatenbank')} und
+      ${M('auswertungen', 'Auswertungen')}.</p>
+    <h4>3. Geprüft</h4>
+    <p>Die Angaben wurden einzeln nachgeprüft. Wie, steht im ${M('', 'nächsten Abschnitt', 'mt-pruefung')}.</p>
+    <h4>Der vollständige Bestand hinter diesem Portal</h4>
+    <p class="hinweis">Alle Zahlen, die dieses Portal erhoben hat, täglich neu gezählt. Ein Klick auf eine
+      Zeile führt zur Seite, auf der man die Daten sieht.</p>
+    ${bestand}
+
+    <h3 id="mt-pruefung">Wie geprüft wird und was die Kennzeichen bedeuten</h3>
+    <p><b>Was geprüft wird.</b> Zum Beispiel: Woran ist ein Vorhaben gescheitert, und welcher Satz im
+      Beschluss sagt das? Von den ${z(D.angaben)} Angaben sind ${z(D.geprueft)} einzeln nachgeprüft,
+      ${pz(D.geprueft, D.angaben)}, auf zwei Arten:</p>
+    <p><b>Aussagen</b>, etwa „Die Kontrollgruppe war nicht vergleichbar“: Ein Sprachmodell bekommt dreimal
+      getrennt dieselbe Frage, ob das Zitat die Angabe wirklich belegt. Kein Durchgang kennt das Ergebnis
+      der anderen und keiner den ganzen Beschluss, nur Angabe und Zitat. Sind sich alle drei einig, ist
+      das Ergebnis belastbar. Sind sie uneins, steht ${kz.nachsehen} dabei.</p>
+    <p><b>Zahlen</b> prüft kein Sprachmodell, sondern ein Suchprogramm: Es sieht nach, ob der Wert auf der
+      genannten Seite des Dokuments steht. Alle übrigen Angaben sind nicht einzeln geprüft.</p>
+    <h4>Was die Kennzeichen bedeuten</h4>
+    <dl class="mt-kz">
+      <dt>${kz.belegt}</dt><dd>Alle drei Prüfdurchgänge bestätigen den Beleg, oder die Zahl steht auf der angegebenen Seite.</dd>
+      <dt>${kz.nachsehen}</dt><dd>Die Durchgänge sind sich nicht einig, oder eine Zahl steht nicht auf der angegebenen Seite.</dd>
+      <dt>${kz.bestritten}</dt><dd>Alle drei Durchgänge sagen: Das Zitat trägt die Angabe nicht. Sie kann trotzdem stimmen, ist hier aber nicht belegt.</dd>
+      <dt>${kz.ungeprueft}</dt><dd>Nicht einzeln geprüft. Das gilt auch überall, wo kein Kennzeichen steht.</dd>
+      <dt>${kz.hand}</dt><dd>Die Herausgeber haben im Originaldokument nachgelesen und selbst entschieden. Diese Entscheidung geht allen Prüfdurchgängen vor.</dd>
+    </dl>
+    <p>Das Kennzeichen bewertet den <b>Beleg</b>, nicht die Aussage. Auch drei Durchgänge können sich
+      gemeinsam irren: Bei einem Vorhaben hielten alle drei eine Einordnung für falsch, der Ergebnisbericht
+      bestätigt sie aber auf Seite 83. ${kz.belegt} heißt also: In der Quelle steht ein passender Satz, und
+      er hielt der Prüfung stand.</p>
+
+    <h3 id="mt-zaehlen">Wie Zahlen und Quoten gezählt werden</h3>
+    <p>Diese Regeln gelten für alle Quoten im Portal. Eine Quote ist meist der Anteil der Vorhaben, die
+      eine Empfehlung bekommen haben.</p>
+    <p><b>Empfehlung heißt nicht Überführung.</b> Der Innovationsausschuss empfiehlt eine Überführung in
+      die Regelversorgung oder bittet um Prüfung und leitet das an die zuständigen Stellen weiter, etwa an
+      GBA-Gremien, die Selbstverwaltung oder Ministerien. Ob daraus eine Leistung der Regelversorgung wird,
+      entscheidet sich dort, oft Jahre später. Alle Quoten zählen Empfehlungen, nicht vollzogene
+      Überführungen.</p>
+    <p><b>Leitlinienvorhaben zählen nicht mit.</b> Die ${z(LL)} Leitlinienvorhaben laufen kurz und
+      erhalten ausnahmslos eine Prüfbitte. Sie würden jeden Vergleich verzerren und sind aus allen Quoten
+      herausgerechnet.</p>
+    <p><b>Nur entschiedene Vorhaben.</b> Quoten beziehen sich auf Vorhaben, über die der Ausschuss schon
+      entschieden hat. Junge Jahrgänge sind deshalb nicht vergleichbar: Zuerst werden die kurzen Vorhaben
+      beschieden, das hebt deren Quote.</p>
+    <p><b>Unterschied oder Zufall?</b> Wo die Themen-Bilanz und die Auswertungen zwei Gruppen vergleichen,
+      prüfen wir mit dem exakten Test nach Fisher (zweiseitig), ob der Unterschied mehr als Zufall ist. Der
+      p-Wert steht jeweils dabei. Die p-Werte bei den Endpunkten auf den Projektseiten stammen dagegen aus
+      den Ergebnisberichten. Bei zu kleiner Grundlage steht keine Quote: bei Bundesländern unter fünf
+      abgeschlossenen Vorhaben, bei Hinderniskategorien unter 20 geprüften Zuordnungen.</p>
+
+    <h3 id="mt-ungeprueft">Was nicht geprüft ist</h3>
+    <p><b>Zusammenfassende Texte.</b> Die Kurzfassung eines Beschlusses, die Begründung des Ausschusses in
+      eigenen Worten, die Einschätzung zur Übertragbarkeit fassen mehrere Stellen zusammen. Es gibt kein
+      einzelnes Zitat und keine einzelne Zahl, an der man sie prüfen könnte. Falsch sind sie deshalb nicht,
+      belegen können wir sie aber nicht.</p>
+    <p><b>Der Inhalt der Originaldokumente.</b> Geprüft wird, ob eine Angabe im Portal wiedergibt, was im
+      Beschluss oder Bericht steht. Ob das dort Gesagte selbst stimmt, etwa ob eine Studie richtig gerechnet
+      hat, prüft das Portal nicht.</p>
+    <p><b>Die Grunddaten vom GBA.</b> Auch sie können Fehler enthalten. Durch einen Fehler beim Einlesen
+      fehlten zeitweise 190 der ${z(P.length)} Vorhaben. Aufgefallen ist das durch eine Nachfrage, nicht
+      durch eine Prüfung.</p>
+    <p><b>Was die Fehlerquoten bedeuten.</b> Bei den Hindernissen halten alle drei Prüfdurchgänge
+      ${kom(hb.q != null ? hb.q : PR.q_einstimmig)} Prozent der Zuordnungen für nicht belegt. Für Zählungen
+      und Verteilungen ändert das wenig. Ob aber gerade die eine Angabe, die Sie lesen, dazugehört, sagt die
+      Quote nicht. Das zeigt nur das Kennzeichen daneben und ein Blick ins Zitat.</p>
+
+    <h3 id="mt-angebote">Methodik je Angebot</h3>
+    <div class="mt-angebote">
+      <a href="#vorwort/projektdatenbank" data-mt="projektdatenbank"><b>Projektdatenbank</b>Was auf einer Projektseite steht, warum wir auswählen und wie geprüft wurde</a>
+      <a href="#vorwort/themen-bilanz" data-mt="themen-bilanz"><b>Themen-Bilanz</b>Wie die Suche Wörter behandelt, wer zur Kohorte zählt und was sie nicht kann</a>
+      <a href="#vorwort/auswertungen" data-mt="auswertungen"><b>Auswertungen</b>Wie verlässlich die einzelnen Angaben sind, wie Zahlen geprüft wurden, was jede Auswertung zählt</a>
+      <a href="#vorwort/ideencheck" data-mt="ideencheck"><b>Ideencheck</b>Wie der Check vergleicht und was er nicht leistet</a>
+    </div>
+    ${eigen}`;
+
+  /* ---------- Projektdatenbank ---------- */
+  const katZeilen = (PR.zeilen || []).filter(r => r.n >= 20);
+  const bsp = katZeilen[0];
+  const projektdatenbank = `
+    <h3 id="mt-pdb-seite">Was auf einer Projektseite steht</h3>
+    <p>Jede Projektseite ist gleich aufgebaut. Die Hauptspalte stützt sich auf den Beschluss des
+      Innovationsausschusses und den Ergebnisbericht, bei Neuen Versorgungsformen zusätzlich auf den
+      Evaluationsbericht. Aussagen aus den Berichten sind mit wörtlichem Zitat und Seitenzahl belegt.</p>
+    <div class="huelle" style="max-height:none"><table class="mt-tab"><thead><tr><th>Angabe</th><th>kommt von</th><th>wo Sie sie sehen</th></tr></thead><tbody>
+      <tr><td>Grunddaten (Titel, Laufzeit, Fördersumme, Konsortium)</td><td>GBA</td><td>Steckbrief, Trefferliste, Filter</td></tr>
+      <tr><td>Einordnung: Themenschwerpunkt, Zielgruppen, Versorgungsbereich, Projektelemente</td><td>GBA, unverändert übernommen</td><td>„Einordnung laut GBA“, Filter</td></tr>
+      <tr><td>Beschluss und Berichte im Wortlaut</td><td>GBA (Originaldokumente)</td><td>Hauptspalte, Links zu den Originaldokumenten</td></tr>
+      <tr><td>Schlagwörter</td><td>Redaktion MVF, KI-gestützt, geprüft</td><td>„Schlagwörter laut MVF“, Filter</td></tr>
+      <tr><td>Hindernisse und positive Befunde mit Kategorie</td><td>Redaktion MVF, KI-gestützt aus dem Beschluss</td><td>Hauptspalte, Filter</td></tr>
+      <tr><td>Studiendesign in vier Gruppen</td><td>Redaktion MVF, aus den Ergebnisberichten</td><td>Filter „Studiendesign“</td></tr>
+      <tr><td>Ergänzungen und Statusrückmeldungen</td><td>Projektverantwortliche</td><td>Seite des Vorhabens, gekennzeichnet</td></tr>
+    </tbody></table></div>
+
+    <h3 id="mt-pdb-auswahl">Warum wir auswählen und einordnen</h3>
+    <p><b>Ganz zeigen lässt sich nur der Beschluss.</b> Er hat im Mittel ${z(BL.laenge_beschluss)} Zeichen.
+      Ein Ergebnisbericht hat im Mittel ${z(BL.laenge_ergebnis)} Zeichen, rund
+      ${z(Math.round((BL.laenge_ergebnis || 0) / Math.max(1, BL.laenge_beschluss || 1)))}-mal so viel, ein
+      Evaluationsbericht ${z(BL.laenge_evaluation)}. So viel Text kann niemand vollständig zeigen. Die
+      Berichte stehen deshalb Kapitel für Kapitel aufklappbar auf der Seite des Vorhabens.</p>
+    <p><b>Auswählen ist Werten.</b> Wer aus einem Bericht neunzig Aussagen herausgreift, entscheidet, was
+      wichtig ist, auch wenn jedes Zitat wörtlich stimmt. Deshalb steht neben jedem Zitat unsere Einordnung,
+      etwa die Kategorie eines Hindernisses, und das Zitat lässt sich immer aufklappen.</p>
+    <p><b>Einordnen macht zählbar.</b> Ein Zitat lässt sich nicht filtern. Um alle Vorhaben nach
+      Endpunktfamilien, Hindernissen oder Empfehlungen durchzuzählen, braucht es Kategorien.</p>
+
+    <h3 id="mt-pdb-pruefung">Wie geprüft wurde</h3>
+    <p>Das Portal beruht auf ${z(D.angaben)} Angaben, die KI-gestützt aus Beschlüssen, Ergebnisberichten
+      und Transferdokumenten gewonnen wurden. ${z(D.geprueft)} davon sind einzeln geprüft,
+      ${pz(D.geprueft, D.angaben, 1)}.</p>
+    <p><b>Was ein Hindernis ist.</b> Im Beschluss begründet der Innovationsausschuss, warum er ein Vorhaben
+      empfiehlt oder nicht. Nennt er dabei Schwächen, etwa eine zu kleine Fallzahl oder eine nicht
+      vergleichbare Kontrollgruppe, erfasst das Portal sie als Hindernis und ordnet ihm eine Kategorie zu.</p>
+    <p><b>Eine Frage je Angabe:</b> Zeigt dieser Satz wirklich das, was daraus gemacht wurde? Für die
+      ${z(PR.n)} Hinderniszuordnungen lief diese Prüfung in ${PR.laeufe === 3 ? 'drei' : z(PR.laeufe)}
+      Durchgängen unabhängig voneinander. Bei ${z(belegt)} waren sich alle einig, dass die Zuordnung stimmt,
+      bei ${z(bestr)}, dass sie nicht stimmt. Bei ${z(uneins)} waren sie uneins.</p>
+    <p><b>So verlässlich sind die Hindernisse.</b> Von 100 Hindernissen, die das Portal einem Vorhaben zuordnet, sind …</p>
+    <div class="mt-bal" role="img" aria-label="${Math.round(belegt / PR.n * 100)} belegt, ${Math.round(uneins / PR.n * 100)} nachsehen, ${Math.round(bestr / PR.n * 100)} bestritten">
+      <span style="width:${belegt / PR.n * 100}%;background:#2e7d4f">${Math.round(belegt / PR.n * 100)}</span>
+      <span style="width:${uneins / PR.n * 100}%;background:#b8860b">${Math.round(uneins / PR.n * 100)}</span>
+      <span style="width:${bestr / PR.n * 100}%;background:#b3261e">${Math.round(bestr / PR.n * 100)}</span></div>
+    <dl class="mt-kz">
+      <dt>${kz.belegt}</dt><dd>alle drei Prüfungen: Das Zitat belegt das Hindernis.</dd>
+      <dt>${kz.nachsehen}</dt><dd>die Prüfungen sind uneins.</dd>
+      <dt>${kz.bestritten}</dt><dd>alle drei Prüfungen: Das Zitat belegt das Hindernis nicht.</dd>
+    </dl>
+
+    <h3 id="mt-pdb-kategorien">Wie verlässlich die einzelnen Hinderniskategorien sind</h3>
+    <p>Nicht jede Kategorie ist gleich verlässlich. „Trägt nicht“ zählt die Zuordnungen, bei denen das
+      Zitat das Hindernis nicht belegt, „andere Kategorie“ die, bei denen es belegt ist, aber eher in eine
+      andere Kategorie gehört. „Beanstandet“ fasst beides zusammen, als Spanne: Der niedrige Wert zählt,
+      was die Mehrheit der Durchgänge beanstandet hat, der hohe alles, was mindestens einer beanstandet
+      hat. Der wahre Anteil liegt meist dazwischen.${bsp ? ` Beispiel: Von ${z(bsp.n)} Zuordnungen zur
+      Kategorie „${esc(bsp.k)}“ trägt bei ${z(bsp.tn)} das Zitat nicht, ${z(bsp.fk)} gehören eher in eine
+      andere Kategorie. Beanstandet sind damit ${bsp.q} bis ${bsp.qmax} Prozent.` : ''} Insgesamt
+      beanstandet sind ${kom(PR.quote)} Prozent der ${z(PR.n)} Zuordnungen. Kategorien mit weniger als 20
+      geprüften Zuordnungen fehlen, weil eine Quote dann vom Zufall abhängt.</p>
+    <div class="huelle" style="max-height:none"><table class="mt-tab"><thead><tr><th>Hinderniskategorie</th>
+      <th class="zahl">geprüft</th><th class="zahl">trägt nicht</th><th class="zahl">andere Kategorie</th>
+      <th class="zahl">beanstandet</th><th>gehört dann meist zu (Anzahl)</th></tr></thead><tbody>${
+      katZeilen.map(r => `<tr><td>${esc(r.k)}</td><td class="zahl">${z(r.n)}</td><td class="zahl">${z(r.tn)}</td>
+        <td class="zahl">${z(r.fk)}</td><td class="zahl">${r.q === r.qmax ? r.q : r.q + '–' + r.qmax} %</td>
+        <td>${r.nach ? esc(r.nach) + ' (' + r.nach_n + ')' : '–'}</td></tr>`).join('')}</tbody></table></div>
+    ${zaehlLink}
+    <p class="mt-weiter">${R('t-projekte', 'Zur Projektdatenbank →')}</p>
+    ${eigen}`;
+
+  /* ---------- Themen-Bilanz ---------- */
+  let lo = null;
+  try { lo = dossierRechnen('Lotsen'); } catch (e) { lo = null; }
+  const anteil = (document.getElementById('su-anteil') || {}).textContent || '';
+  const themen = `
+    <h3 id="mt-tb-was">Was die Themen-Bilanz ist</h3>
+    <p>Die Themen-Bilanz beantwortet Fragen zu den Vorhaben des Innovationsfonds, gerechnet aus den Daten
+      dieses Portals. Es gibt zwei Arten von Fragen.</p>
+    <p><b>Fragen zu einem Thema</b>, etwa: Was wurde aus den Lotsenprojekten? Dazu sucht die Themen-Bilanz
+      alle Vorhaben, die zu einem Stichwort passen, und wertet sie gemeinsam aus. Diese Gruppe heißt
+      Kohorte.${lo ? ` Zu „Lotsen“ gehören derzeit ${z(lo.treffer.length)} Vorhaben.` : ''} Die Antwort steht
+      in einem Themen-Dossier: wie viele Vorhaben zum Thema gehören und wie viel Geld sie bekommen haben, wie
+      oft sie eine Empfehlung bekommen haben, verglichen mit allen Vorhaben, welche Hindernisse bei Vorhaben
+      mit und ohne Empfehlung belegt sind, Zitate aus den Beschlüssen, was gemessen wurde und die Liste der
+      Vorhaben.</p>
+    <p><b>Fragen zum ganzen Fonds</b>, etwa: Wie lange dauert es bis zur Entscheidung? Sie betreffen alle
+      Vorhaben. Die Antwort steht als Kennzahl mit Tabelle, dazu eine gekennzeichnete Einordnung der
+      Redaktion und was die Zahlen nicht sagen.</p>
+
+    <h3 id="mt-tb-suche">Wie die Themen-Bilanz sucht</h3>
+    <p><b>Stichwort statt Frage.</b> Die Suche versteht keine ganzen Sätze. Sie zerlegt das Stichwort in
+      einzelne Wörter. Füllwörter, Wörter unter drei Buchstaben und die Reihenfolge spielen keine Rolle.
+      Umlaute, Bindestriche und Endungen stören nicht: <i>telemedizinisch</i> findet Telemedizin,
+      <i>charite</i> findet Charité.</p>
+    <p><b>Ein Wort sucht breit, zwei Wörter suchen genau.</b> Ein einzelnes Wort bringt seine Synonyme mit:
+      <i>Lotse</i> findet auch Case Managerin, Fallmanagement, Kümmerer und Brückenschwester. Bei zwei oder
+      mehr Wörtern müssen alle vorkommen, Synonyme zählen dann nicht mehr.</p>
+    <p><b>Wer zur Kohorte zählt.</b> Jedes Vorhaben, bei dem das Stichwort oder ein Synonym vorkommt, auch
+      als Nebensache. So zählt BGM-innovativ zu den Lotsen, weil der GBA ihm das Projektelement „Care und
+      Case Management / Lotsen“ zugeordnet hat.</p>
+    <p><b>Wo sie sucht.</b> Nicht im Wortlaut der Berichte, sondern in dem, was aus den Dokumenten
+      gewonnen wurde: Titel, Projektbeschreibung, Themenfeld, Zielgruppe, Versorgungsbereich,
+      Projektelemente, Konsortium, dazu Kurzfassung und Begründung des Beschlusses, Hindernisse und
+      Erfolgsfaktoren.${anteil ? ` Das sind ${esc(anteil)} Prozent des gesamten Textes.` : ''} Ein Wort, das
+      nur auf Seite 210 eines Berichts steht, findet sie nicht. Das ist gewollt: Eine Suche im ganzen
+      Wortlaut nach <i>Patient</i> lieferte fast jedes Vorhaben.</p>
+
+    <h3 id="mt-tb-rechnen">Wie die Themen-Bilanz rechnet</h3>
+    <p><b>Verglichen wird mit allen.</b> Jede Zahl der Kohorte steht neben derselben Zahl für alle
+      abgeschlossenen Versorgungsvorhaben, ohne Leitlinienvorhaben.</p>
+    <p><b>Empfehlungsquote.</b> Der Anteil der beschiedenen Vorhaben mit einer Empfehlung zur Überführung
+      oder Erprobung. Eine Empfehlung heißt noch nicht, dass das Vorhaben in die Regelversorgung übernommen
+      wurde.</p>
+    <p><b>Unterschied oder Zufall.</b> Ob die Kohorte wirklich anders abschneidet, prüft der exakte Test
+      nach Fisher. Sein p-Wert steht bei jedem Vergleich. Ist die Grundlage zu klein, sagt die Themen-Bilanz
+      das, statt einen zufälligen Unterschied auszuweisen.</p>
+    <p><b>Hindernisse.</b> Sie stammen aus den Beschlüssen und sind je dreimal gegen ihr Zitat geprüft
+      (${M('projektdatenbank', 'Wie verlässlich die Hindernisse sind', 'mt-pdb-kategorien')}).</p>
+    <p><b>Gerechnet, nicht geschrieben.</b> Alle Zahlen werden aus den Daten gerechnet und in feste Sätze
+      eingesetzt. Kein Sprachmodell schreibt hier Text. Wo eine Einordnung steht, hat sie die Redaktion
+      geschrieben und als solche gekennzeichnet.</p>
+    ${zaehlLink}
+
+    <h3 id="mt-tb-nicht">Was die Themen-Bilanz nicht kann</h3>
+    <p>Sie versteht keine frei formulierten Fragen. Die Kohorte entsteht über gleiche Wörter, nicht über
+      Bedeutung: Ein Vorhaben, das dasselbe mit anderen Worten beschreibt, kann fehlen.</p>
+    <p><b>Unterschied zur Evidenzsynthese.</b> Eine Evidenzsynthese trifft Aussagen über eine Gruppe von
+      Vorhaben und wählt deshalb enger aus.${lo ? ` Zu Lotsen zählt die Themen-Bilanz ${z(lo.beendet.length)}
+      abgeschlossene Vorhaben, die Synthese behandelt 36 davon.` : ''}</p>
+    <p><b>Was als Nächstes kommt.</b> In einer zweiten Stufe soll ein Sprachmodell die Auswertung als Text
+      schreiben, ganze Sätze verstehen und die Kohorte nach Bedeutung bilden. Die Zahlen werden weiter
+      gerechnet, das Modell formuliert nur. Diese Stufe nutzt vorerst nur die Redaktion, weil jede Abfrage
+      Rechenkosten verursacht.</p>
+    <p class="mt-weiter">${R('t-suche', 'Zur Themen-Bilanz →')}</p>
+    ${eigen}`;
+
+  /* ---------- Auswertungen ---------- */
+  const PB_LINK = {'Endpunktfamilien': 't-endpunkte', 'Versorgungsthemen': 't-projekte', 'Bewertungen der Endpunkte': 't-endpunkte',
+    'positive Befunde und Erfolgsfaktoren': 't-projekte', 'Hinderniskategorien': 't-zahlen', 'Einstufungen der Adressaten': 't-transfer'};
+  const PB_NAME = {'Versorgungsthemen': 'Schlagwörter'};
+  const ad = PB.find(b => /Adressat/.test(b.name));
+  const ef = PB.find(b => /Endpunktfamilien/.test(b.name));
+  const auswertungen = `
+    <h3 id="mt-aw-was">Was die Auswertungen sind</h3>
+    <p>Die Auswertungen zeigen den ganzen Innovationsfonds in Zahlen, die meisten über alle
+      ${z(P.length)} Vorhaben. Sie folgen dem Weg eines Projekts: wer gefördert wird und wo, wie viele
+      Teilnehmende erreicht werden, was gemessen wurde und was nach dem Beschluss geschieht. Anders als die
+      Themen-Bilanz beantworten sie keine Frage zu einem Thema, sondern zählen über alle Vorhaben.</p>
+
+    <h3 id="mt-aw-arten">Wie verlässlich die einzelnen Arten von Angaben sind</h3>
+    <p>Ein Sprachmodell hat die Angaben aus den Beschlüssen und Ergebnisberichten herausgelesen, jede mit
+      wörtlichem Zitat und Seitenzahl. Danach bekam ein Sprachmodell dreimal getrennt dieselbe Frage:
+      Belegt das Zitat die Angabe?</p>
+    <p><b>So lesen Sie die Tabelle.</b> „Alle drei beanstanden“ ist der Anteil, den alle drei Durchgänge
+      für falsch hielten, „mindestens einer“ der Anteil, den schon ein Durchgang für falsch hielt. Der wahre
+      Fehleranteil liegt meist dazwischen.${ef ? ` Beispiel Endpunktfamilien: Von ${z(ef.n)} Zuordnungen
+      hielten alle drei Durchgänge ${kom(ef.q)} Prozent für falsch, mindestens einer ${kom(ef.qmax)}
+      Prozent.` : ''}</p>
+    <div class="huelle" style="max-height:none"><table class="mt-tab"><thead><tr><th>Art der Angabe</th>
+      <th class="zahl">geprüft</th><th class="zahl">alle drei beanstanden</th><th class="zahl">mindestens einer</th></tr></thead><tbody>${
+      PB.map(b => `<tr><td>${PB_LINK[b.name] ? R(PB_LINK[b.name], esc(PB_NAME[b.name] || b.name) + ' →') : esc(b.name)}<br>
+        <span class="hinweis">${esc(b.was || '')}</span></td><td class="zahl">${z(b.n)}${b.offen ? `<br><span class="hinweis">+${z(b.offen)} nicht feststellbar</span>` : ''}</td>
+        <td class="zahl">${kom(b.q)} %</td><td class="zahl">${kom(b.qmax)} %</td></tr>`).join('')}</tbody></table></div>
+    ${ad ? `<p><b>Am unsichersten ist, was aus den Empfehlungen wurde.</b> Der Innovationsausschuss richtet
+      seine Empfehlungen an bestimmte Stellen, die Adressaten. Das Portal stuft für jede dieser Stellen ein,
+      was sie geantwortet oder getan hat. Bei diesen Einstufungen beanstanden alle drei Durchgänge
+      ${kom(ad.q)} Prozent, mehr als bei jeder anderen Art von Angabe. Das wiegt schwer, weil es um
+      namentlich genannte Einrichtungen geht. Wenn Sie eine solche Angabe verwenden, lesen Sie das Zitat.
+      Es steht in der Auswertung ${R('t-transfer', 'Transfer der Ergebnisse')} bei jeder Nennung.</p>` : ''}
+
+    <h3 id="mt-aw-zahlen">Wie Zahlen geprüft wurden</h3>
+    <p>Viele Angaben sind Zahlen aus den Ergebnisberichten, etwa Teilnehmendenzahlen, Effektgrößen,
+      Konfidenzintervalle oder p-Werte. Zu jeder Zahl ist notiert, auf welcher Seite des Berichts sie steht.
+      Diese Zahlen prüft kein Sprachmodell, sondern ein Suchprogramm. Es sieht für jede Zahl nach, ob sie auf
+      der angegebenen Seite wirklich vorkommt. So wurden ${z(AB.n)} Zahlen abgeglichen. Bei
+      ${kom(AB.quote)} Prozent der prüfbaren Zahlen stimmt es, sie sind ${kz.belegt}.</p>
+    <p>Die übrigen ${z(AB.nicht)} Zahlen sind mit ${kz.nachsehen} markiert. Das heißt nicht, dass sie falsch
+      sind. Oft steht die Zahl in einer Tabelle, deren Text sich beim Auslesen verschiebt. Wenn Sie eine
+      solche Zahl verwenden, sehen Sie im Bericht auf der angegebenen Seite nach.</p>
+
+    <h3 id="mt-aw-je">Was jede Auswertung zählt</h3>
+    <p><b>${R('t-zahlen', 'Förderung in Zahlen')}.</b> Alle Quoten zählen Empfehlungen, nicht vollzogene
+      Überführungen. Die Wartezeit ist der Abstand zwischen dem Projektende laut Portal und dem Beschluss,
+      bei verlängerten Vorhaben kann das Ende später liegen. Kennzahlen wie die Wartezeit veröffentlicht der
+      GBA nicht, sie entstehen erst aus der Verknüpfung von Laufzeit und Beschlussdatum.</p>
+    <p><b>${R('t-partner', 'Einrichtungen')} und ${R('t-netz', 'Netzwerk')}.</b> Verschiedene Schreibweisen
+      und Kürzel derselben Einrichtung sind zusammengeführt, ${z(E['Schreibweisen zusammengeführt'])}
+      Varianten zu ${z(E['Einrichtungen'])} Einrichtungen.</p>
+    <p><b>${R('t-karte', 'Landkarte')}.</b> Projekte und Fördervolumen zählen beim Bundesland des Projekts,
+      Leitungen am Sitz der führenden Einrichtung. Deshalb weichen beide Zahlen voneinander ab. Bundesweite
+      Vorhaben stehen gesondert. Eine Quote erscheint ab fünf abgeschlossenen Vorhaben.</p>
+    <p><b>${R('t-fallzahl', 'Fallzahlen')}.</b> Verglichen wird nur, wo geplante und ausgewertete Fallzahl
+      dieselbe Einheit haben und sich auf dasselbe Ganze beziehen, das ist bei
+      ${z(E['Fallzahlen vergleichbar gemacht'])} von ${z(E['Berichte zu Endpunkten ausgewertet'])} Berichten
+      der Fall. Als Grund einer Abweichung steht der, den der Bericht selbst nennt. „Laufzeit in der
+      Pandemie“ ist gerechnet: Es steht bei jedem Vorhaben, das zwischen März 2020 und April 2022 lief.</p>
+    <p><b>${R('t-endpunkte', 'Endpunkte')}.</b> Die Endpunktfamilien vergibt MVF, sie stehen in keinem
+      Bericht. Eine Familie ist die Sache, die gemessen wird, egal womit: EQ-5D-5L, SF-36 und WHOQOL-BREF
+      liegen alle in „Lebensqualität“. Das Einsortieren ist ein Urteil, deshalb steht in jeder Zeile die
+      Formulierung des Berichts mit Seitenzahl.</p>
+    <p><b>${R('t-transfer', 'Transfer')}.</b> Je Vorhaben zählt der weiteste Stand: Hat einer von mehreren
+      Adressaten umgesetzt, gilt das Vorhaben als umgesetzt. Jede Rückmeldung ist je Adressat eingestuft und
+      mit Zitat belegt.</p>
+    <p><b>Versorgungskerne.</b> Je Versorgungsform werden die Berichte nach dem Geschäftsmodell-Raster von
+      Prof. Dr. Martin Dietrich gelesen, zuerst die Lotsenprojekte. Gezählt ist, ob für ein Feld belegte
+      Angaben vorliegen, nicht, ob sie reichen. Ein Vorhaben, das etwas nicht nennt, kann es trotzdem gehabt
+      haben.</p>
+    ${zaehlLink}
+    <p class="mt-weiter">${R('t-auswertungen', 'Zu den Auswertungen →')}</p>
+    ${eigen}`;
+
+  /* ---------- Ideencheck ---------- */
+  const ideencheck = `
+    <h3 id="mt-ic-was">Was der Ideencheck ist</h3>
+    <p>Sie beschreiben Ihre Projektidee in ein paar Sätzen. Der Ideencheck sucht unter allen
+      ${z(P.length)} Vorhaben, die der Innovationsfonds gefördert hat, die ähnlichsten heraus und zeigt, wie
+      sie ausgegangen sind: ob sie eine Empfehlung bekommen haben, woran sie gescheitert sind und was sie
+      gemessen haben. So sehen Sie vor dem Antrag, ob es Ihre Idee schon gab.</p>
+    <p><b>Ohne KI.</b> Der Ideencheck vergleicht nur Wörter und rechnet in Ihrem Browser. Ein Sprachmodell
+      ist daran nicht beteiligt. Die Angaben zu den gefundenen Vorhaben hat ein Sprachmodell vorher aus den
+      Beschlüssen und Berichten ausgelesen, und sie wurden geprüft.</p>
+
+    <h3 id="mt-ic-wie">Wie er vergleicht</h3>
+    <p><b>Wörter, keine Bedeutung.</b> Der Ideencheck zählt, welche Wörter Ihrer Beschreibung in Titel,
+      Beschreibung, Themenfeld, Zielgruppe, Versorgungsbereich und Projektelementen der Vorhaben vorkommen.
+      Seltene Wörter zählen mehr als häufige. Ein Vorhaben, das dasselbe mit anderen Worten beschreibt,
+      etwa „Case Management“ statt „Lotse“, kann deshalb fehlen. Fachbegriffe Ihres Versorgungsfelds liefern
+      die besten Treffer. Ob ein Vorhaben wirklich vergleichbar ist, entscheiden Sie beim Lesen.</p>
+    <p><b>Keine Prognose.</b> Der Check sagt keine Förderwahrscheinlichkeit voraus, und das kann keine
+      Auswertung dieser Daten: Öffentlich sind nur die bewilligten Vorhaben, abgelehnte Anträge nicht.</p>
+    <p><b>Ihre Beschreibung bleibt bei Ihnen.</b> Der Abgleich rechnet in Ihrem Browser. Es gibt kein
+      Hochladen und kein Konto, auch nicht für eine Datei, die Sie hineinziehen. Anonym gezählt wird nur, zu
+      welchem Themenfeld eine Anfrage gehörte und welche drei Bausteine sie berührt hat, als Tagessumme ohne
+      Text, Adresse und Kennung.</p>
+
+    <div class="mt-euro" id="mt-ic-rebriefing"><p class="bl-ober">Kostenpflichtig</p>
+      <h4 style="margin:2px 0 6px">Für den ganzen Entwurf: das Re-Briefing</h4>
+      <p>Ob ein Antrag trägt, zeigt erst der ganze Text im Vergleich mit dem, was aus ähnlichen Vorhaben
+        geworden ist. Im Re-Briefing liest die Redaktion Ihren Entwurf gegen ${z(P.length)} Vorhaben,
+        ${z(E['Berichte zu Endpunkten ausgewertet'])} ausgewertete Berichte und ${z(E['Endpunkte'])}
+        Endpunkte. Jede Zahl ist gegen die Datenbank gerechnet, ein Sprachmodell formuliert nur den
+        verbindenden Text.</p>
+      <p style="margin:6px 0 0">${R('t-idee', 'Mehr zum Re-Briefing im Ideencheck →')}</p></div>
+    <p class="mt-weiter">${R('t-idee', 'Zum Ideencheck →')}</p>
+    ${eigen}`;
+
+  const SEITEN = {
+    '': {name: 'Übersicht', titel: 'Methodik & Verlässlichkeit', html: uebersicht,
+      anker: [['mt-quellen', 'Quellen'], ['mt-vorgehen', 'Vorgehen'], ['mt-pruefung', 'Wie geprüft wird'],
+              ['mt-zaehlen', 'Wie gezählt wird'], ['mt-ungeprueft', 'Was nicht geprüft ist'], ['mt-eigen', 'In eigener Sache']]},
+    'projektdatenbank': {name: 'Projektdatenbank', titel: 'Methodik: Projektdatenbank', html: projektdatenbank,
+      anker: [['mt-pdb-seite', 'Was auf einer Projektseite steht'], ['mt-pdb-auswahl', 'Warum wir auswählen'],
+              ['mt-pdb-pruefung', 'Wie geprüft wurde'], ['mt-pdb-kategorien', 'Je Hinderniskategorie']]},
+    'themen-bilanz': {name: 'Themen-Bilanz', titel: 'Methodik: Themen-Bilanz', html: themen,
+      anker: [['mt-tb-was', 'Was sie ist'], ['mt-tb-suche', 'Wie sie sucht'], ['mt-tb-rechnen', 'Wie sie rechnet'], ['mt-tb-nicht', 'Was sie nicht kann']]},
+    'auswertungen': {name: 'Auswertungen', titel: 'Methodik: Auswertungen', html: auswertungen,
+      anker: [['mt-aw-arten', 'Verlässlichkeit je Angabe'], ['mt-aw-zahlen', 'Wie Zahlen geprüft wurden'], ['mt-aw-je', 'Was jede Auswertung zählt']]},
+    'ideencheck': {name: 'Ideencheck', titel: 'Methodik: Ideencheck', html: ideencheck,
+      anker: [['mt-ic-was', 'Was er ist'], ['mt-ic-wie', 'Wie er vergleicht'], ['mt-ic-rebriefing', 'Re-Briefing']]},
+  };
+  let aktiv = null;
+  function zeichnen(u) {
+    const s = SEITEN[u] || SEITEN[''];
+    const nav = Object.entries(SEITEN).map(([k, x]) => `<a href="#vorwort${k ? '/' + k : ''}" data-mt="${k}"${k === u ? ' aria-current="page"' : ''}>${esc(x.name)}</a>${
+      k === u ? x.anker.map(([id, t]) => `<a class="unter" href="#${id}" data-mt="${k}" data-mt-sprung="${id}">${esc(t)}</a>`).join('') : ''}`).join('');
+    document.getElementById('vorwort').innerHTML = `<div class="mt"><nav class="mt-nav" aria-label="Methodik"><p>Methodik</p>${nav}</nav>
+      <div class="mt-inhalt">${s.html}</div></div>`;
+    aktiv = u;
+  }
+  /* Welche Seite die Adresse verlangt: #vorwort oder #vorwort/<seite>. */
+  function ansicht() {
+    const m = /^#vorwort\/([a-z-]+)/.exec(location.hash || '');
+    const u = m && SEITEN[m[1]] ? m[1] : '';
+    if (u !== aktiv) zeichnen(u);
+    const h2 = document.querySelector('#seitenkopf h2');
+    if (h2) h2.textContent = SEITEN[u].titel;
+  }
+  const vorher = window.nachNav;
+  window.nachNav = ziel => { if (vorher) vorher(ziel); if (ziel === 't-vorwort') ansicht(); };
+  document.addEventListener('click', ev => {
+    const a = ev.target.closest('a[data-mt]');
+    if (a) {
+      ev.preventDefault();
+      const u = a.dataset.mt, sp = a.dataset.mtSprung;
+      const ziel = '#vorwort' + (u ? '/' + u : '');
+      if (location.hash !== ziel) history.pushState(null, '', ziel);
+      reiterNach('t-vorwort');
+      const el = sp && document.getElementById(sp);
+      if (el) el.scrollIntoView({block: 'start', behavior: 'smooth'}); else window.scrollTo({top: 0});
+      return;
+    }
+    if (ev.target.closest('#mt-csv')) {
+      const zeilen = [];
+      (D.erhebung || []).forEach(g => g.zeilen.forEach(r => zeilen.push([g.g, r.w, r.n, r.q || ''])));
+      zeilen.push(['Was geprüft wurde', 'Angaben mit Zitat und Seitenzahl', D.angaben, 'davon ' + D.geprueft + ' einzeln geprüft']);
+      csvLaden(`innofonds-bestand-${heute()}.csv`, ['Gruppe', 'Angabe', 'Anzahl', 'Was dahintersteht'], zeilen);
+    }
+  });
+  zeichnen('');
+})();
+</script>
+
+
+<style>
 /* Stufe 100: Navigation nach Marianns Canvas 1. */
 :root{--sk-recherche:#0A3F7E;--sk-recherche2:#054A94;--sk-auswertung:#E8EFF8;--sk-antrag:#EEF1F5;
   --sk-evidenz:#F8F4EA;--sk-evidenzrand:#E3D6B5;--ul-grund:#F6F8FB;--pille:#E3ECF7;--pille-text:#00529F}
@@ -10703,7 +11229,7 @@ nav[role="tablist"]{display:none!important}
 <script>
 /* Stufe 100: Navigation. BEREICHE kommt aus if_navigation.py. */
 (function () {
-  const BEREICHE = [{"k": "uebersicht", "name": "Übersicht", "seiten": [{"t": "t-uebersicht", "name": "Übersicht", "lang": "Innovationsfonds-Radar", "satz": "Alle Vorhaben des Innovationsfonds, durchsuchbar und ausgewertet."}]}, {"k": "recherche", "name": "Recherche", "seiten": [{"t": "t-projekte", "name": "Projektdatenbank", "satz": "Alle Vorhaben einzeln, mit Filtern nach Förderbereich, Status, Beschluss, Studiendesign und mehr."}, {"t": "t-suche", "name": "Themen-Bilanz", "satz": "Fragen zu den Vorhaben des Innovationsfonds, beantwortet aus den Daten: zu Versorgungsformen, Krankheitsbildern, Wirkung, Förderung und Akteuren. Wie viele Vorhaben es gab, wie viele eine Empfehlung erhielten und was die erfolgreichen von den übrigen unterscheidet. Kostenlos, ohne Anmeldung."}, {"t": "t-leitlinien", "name": "Leitlinienvorhaben", "versteckt": true, "satz": "Die geförderten Vorhaben, die medizinische Leitlinien entwickeln."}]}, {"k": "auswertungen", "name": "Auswertungen", "seiten": [{"t": "t-auswertungen", "name": "Überblick", "lang": "Alle Auswertungen", "satz": "Was die sieben Auswertungen zeigen und wo man anfängt."}, {"t": "t-zahlen", "name": "Förderung", "lang": "Förderung in Zahlen", "satz": "Fördersummen, Laufzeiten, Wartezeiten und Jahrgänge seit 2016."}, {"t": "t-netz", "mit": ["t-partner"], "name": "Einrichtungen & Netzwerk", "satz": "Beteiligte Einrichtungen, Konsortialführungen und Kooperationen."}, {"t": "t-karte", "name": "Landkarte", "satz": "Vorhaben und Einrichtungen nach Bundesland und Ort."}, {"t": "t-fallzahl", "name": "Fallzahlen", "satz": "Geplante und tatsächlich erreichte Teilnehmendenzahlen je Vorhaben."}, {"t": "t-endpunkte", "name": "Endpunkte", "lang": "Endpunkte & Messinstrumente", "satz": "Gemessene Zielgrößen, Messinstrumente und Ergebnisse."}, {"t": "t-transfer", "name": "Transfer", "lang": "Transfer der Ergebnisse", "satz": "Empfehlungen des Ausschusses und was aus ihnen wurde."}, {"href": "/versorgungskerne/lotsen/", "name": "Versorgungskerne", "satz": "Wie eine Versorgungsform aufgebaut ist, am Beispiel der 31 Lotsenprojekte."}]}, {"k": "antrag", "name": "Antrag & Bericht", "seiten": [{"t": "t-idee", "name": "Ideencheck", "satz": "Gibt es Ihre Idee schon? Abgleich mit ähnlichen geförderten Vorhaben."}, {"t": "t-berichte", "name": "Tipps für auswertbare Berichte", "satz": "Woran die Auswertung eines Ergebnisberichts hängen bleibt."}]}, {"k": "evidenz", "name": "Evidenzsynthesen", "euro": true, "seiten": [{"t": "t-evidenz", "name": "Synthesen nach Thema", "satz": "Stand der Forschung zu einem Versorgungsthema. Kapitel 1 und 2 frei, ab Kapitel 3 kostenpflichtig."}]}, {"k": "hintergrund", "name": "Hintergrund", "seiten": [{"t": "t-ueber", "name": "Über das Portal", "lang": "Über Innovationsfonds-Radar", "satz": "Warum es dieses Portal gibt, für wen, und was es kann und was nicht."}, {"t": "t-vorwort", "name": "Methodik & Verlässlichkeit", "satz": "Woher die Daten kommen, wie sie ausgelesen und geprüft wurden, wo ihre Grenzen liegen."}, {"t": "t-dossier", "name": "Einordnung der Redaktion", "satz": "Was die Redaktion aus den Zahlen schließt. Wertende Texte stehen nur hier."}, {"t": "t-glossar", "name": "Glossar", "satz": "Die Fachbegriffe des Innovationsfonds und dieses Portals, kurz erklärt."}]}];
+  const BEREICHE = [{"k": "uebersicht", "name": "Übersicht", "seiten": [{"t": "t-uebersicht", "name": "Übersicht", "lang": "Innovationsfonds-Radar", "satz": "Alle Vorhaben des Innovationsfonds, durchsuchbar und ausgewertet."}]}, {"k": "recherche", "name": "Recherche", "seiten": [{"t": "t-projekte", "name": "Projektdatenbank", "satz": "Alle Vorhaben einzeln, mit Filtern nach Förderbereich, Status, Beschluss, Studiendesign und mehr."}, {"t": "t-suche", "name": "Themen-Bilanz", "satz": "Fragen zu den Vorhaben des Innovationsfonds, beantwortet aus den Daten: zu Versorgungsformen, Krankheitsbildern, Wirkung, Förderung und Akteuren. Wie viele Vorhaben es gab, wie viele eine Empfehlung erhielten und was die erfolgreichen von den übrigen unterscheidet. Kostenlos, ohne Anmeldung."}, {"t": "t-leitlinien", "name": "Leitlinienvorhaben", "versteckt": true, "satz": "Die geförderten Vorhaben, die medizinische Leitlinien entwickeln."}]}, {"k": "auswertungen", "name": "Auswertungen", "seiten": [{"t": "t-auswertungen", "name": "Überblick", "lang": "Alle Auswertungen", "satz": "Was die sieben Auswertungen zeigen und wo man anfängt."}, {"t": "t-zahlen", "name": "Förderung", "lang": "Förderung in Zahlen", "satz": "Fördersummen, Laufzeiten, Wartezeiten und Jahrgänge seit 2016."}, {"t": "t-netz", "mit": ["t-partner"], "name": "Einrichtungen & Netzwerk", "satz": "Beteiligte Einrichtungen, Konsortialführungen und Kooperationen."}, {"t": "t-karte", "name": "Landkarte", "satz": "Vorhaben und Einrichtungen nach Bundesland und Ort."}, {"t": "t-fallzahl", "name": "Fallzahlen", "satz": "Geplante und tatsächlich erreichte Teilnehmendenzahlen je Vorhaben."}, {"t": "t-endpunkte", "name": "Endpunkte", "lang": "Endpunkte & Messinstrumente", "satz": "Gemessene Zielgrößen, Messinstrumente und Ergebnisse."}, {"t": "t-transfer", "name": "Transfer", "lang": "Transfer der Ergebnisse", "satz": "Empfehlungen des Ausschusses und was aus ihnen wurde."}, {"href": "/versorgungskerne/lotsen/", "name": "Versorgungskerne", "satz": "Wie eine Versorgungsform aufgebaut ist, am Beispiel der 31 Lotsenprojekte."}]}, {"k": "antrag", "name": "Antrag & Bericht", "seiten": [{"t": "t-idee", "name": "Ideencheck", "satz": "Gibt es Ihre Idee schon? Abgleich mit ähnlichen geförderten Vorhaben."}, {"t": "t-berichte", "name": "Tipps für auswertbare Berichte", "satz": "Woran die Auswertung eines Ergebnisberichts hängen bleibt."}]}, {"k": "evidenz", "name": "Evidenzsynthesen", "euro": true, "seiten": [{"t": "t-evidenz", "name": "Synthesen nach Thema", "satz": "Stand der Forschung zu einem Versorgungsthema. Kapitel 1 und 2 frei, ab Kapitel 3 kostenpflichtig."}]}, {"k": "hintergrund", "name": "Hintergrund", "seiten": [{"t": "t-ueber", "name": "Über das Portal", "lang": "Über Innovationsfonds-Radar", "satz": "Warum es dieses Portal gibt, für wen, und was es kann und was nicht."}, {"t": "t-vorwort", "name": "Methodik & Verlässlichkeit", "satz": "Wie die Daten in diesem Portal entstanden sind und wie verlässlich sie sind."}, {"t": "t-dossier", "name": "Einordnung der Redaktion", "satz": "Was die Redaktion aus den Zahlen schließt. Wertende Texte stehen nur hier."}, {"t": "t-glossar", "name": "Glossar", "satz": "Die Fachbegriffe des Innovationsfonds und dieses Portals, kurz erklärt."}]}];
   const tsd = n => (n || 0).toLocaleString('de-DE');
   const SEITE = {};
   BEREICHE.forEach(b => b.seiten.forEach(s => { if (s.t) SEITE[s.t] = {b, s}; (s.mit || []).forEach(m => SEITE[m] = {b, s}); }));
