@@ -10600,8 +10600,8 @@ partnerZeichnen();
     {k: 'vb', name: 'Versorgungsbereich', offen: true, i: 'Wo die Versorgung stattfindet, laut GBA.', wert: p => p.vb || 'ohne Angabe'},
     {k: 'sd', name: 'Studiendesign', i: 'Aus der Designbeschreibung im Ergebnisbericht, in vier Gruppen; laufende Vorhaben haben noch keinen Bericht.', wert: p => p.sd || 'ohne Angabe',
      ordnung: ['Mit Kontrollgruppe, randomisiert', 'Mit Kontrollgruppe, nicht randomisiert', 'Ohne Kontrollgruppe', 'Keine Intervention erprobt', 'ohne Angabe']},
-    {k: 'th', name: 'Schlagwort', i: 'Schlagwörter laut MVF, KI-gestützt zugeordnet und dreifach geprüft. Laufende Vorhaben haben noch keine.', mehrfach: true,
-     wert: p => (p.x && p.x.themen && p.x.themen.length) ? p.x.themen : ['ohne Schlagwort']},
+    {k: 'th', name: 'Schlagwort', i: 'Schlagwörter laut MVF, KI-gestützt. Beschiedene Vorhaben: aus dem Beschluss, dreifach geprüft. Laufende Vorhaben: aus der Projektbeschreibung, Mehrheit aus drei Durchgängen.', mehrfach: true,
+     wert: p => (p.x && p.x.themen && p.x.themen.length) ? p.x.themen : ((p.thl && p.thl.length) ? p.thl : ['ohne Schlagwort'])},
     {k: 'bl', name: 'Bundesland', i: 'Sitz der Konsortialführung.', wert: p => p.bl || 'ohne Angabe'},
     {k: 'jahr', name: 'Förderbeginn', i: 'Jahr, in dem das Vorhaben begann.', wert: p => (p.von || '').slice(0, 4) || 'ohne Angabe', absteigend: true},
     {k: 'summe', name: 'Fördersumme', i: 'Versorgungsforschung liegt meist unter 2 Mio. €, Neue Versorgungsformen meist darüber.', wert: p => stufe(p.sum), ordnung: STUFEN},
@@ -10659,7 +10659,7 @@ partnerZeichnen();
         <div class="pdb-eck">${esc(p.vf === LL ? 'Leitlinienvorhaben' : p.ber)} · ${esc(p.st)}${p.von ? ' · ' + jahrmonat(p.von) + '–' + jahrmonat(p.bis) : ''}${p.sum ? ' · ' + eur(p.sum) : ''}${
           ausf ? (p.bl ? ' · ' + esc(p.bl) : '') + ((p.lt || []).length ? ' · Leitung: ' + esc(p.lt[0]) : '') : ''}</div>
         ${ausf && p.bes ? `<p class="pdb-text">${esc(p.bes)}</p>` : ''}
-        ${ausf && p.x && (p.x.themen || []).length ? `<div class="pdb-pillen">${p.x.themen.map(t => `<button type="button" data-th="${esc(t)}">${esc(t)}</button>`).join('')}</div>` : ''}
+        ${ausf && ((p.x && p.x.themen) || p.thl || []).length ? `<div class="pdb-pillen">${((p.x && p.x.themen) || p.thl).map(t => `<button type="button" data-th="${esc(t)}">${esc(t)}</button>`).join('')}</div>` : ''}
       </article>`).join('') : `<div class="pdb-leer">Keine Vorhaben passen zu dieser Auswahl. <button type="button" class="pdb-mehrb" id="pdb-leer-zurueck">Filter zurücksetzen</button></div>`;
     document.getElementById('pdb-seiten').innerHTML = seiten > 1 ? Array.from({length: seiten}, (_, i) =>
       (i === 0 || i === seiten - 1 || Math.abs(i - Z.seite) <= 2) ? `<button type="button" data-s="${i}"${i === Z.seite ? ' aria-current="page"' : ''}>${i + 1}</button>`
@@ -11264,6 +11264,16 @@ partnerZeichnen();
 .aw-fuss{margin:28px 0 6px;padding:14px 16px;border:1px solid var(--linie);border-radius:10px;background:var(--flaeche)}
 .aw-fuss h4{margin:0 0 4px}
 .aw-fuss p{margin:4px 0}
+/* Tipps als Karten, Ideencheck in zwei Spalten (Marianns Canvas 2, Tafeln „Tipps“, „Ideencheck“) */
+.tp-karte{border:1px solid var(--linie);border-radius:10px;background:var(--flaeche);padding:12px 16px;margin:12px 0}
+.tp-karte > h4:first-child{margin-top:0}
+.ic-raster{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px;align-items:start}
+.ic-seite{border:1px solid var(--linie);border-radius:10px;background:var(--flaeche);padding:12px 16px;font-size:14px}
+.ic-seite h4{margin:10px 0 4px}
+.ic-seite h4:first-child{margin-top:0}
+.ic-seite ul{margin:4px 0;padding-left:18px}
+.ic-seite .siegel{margin:8px 0}
+@media (max-width:860px){.ic-raster{grid-template-columns:1fr}}
 </style>
 
 <script>
@@ -11352,7 +11362,55 @@ partnerZeichnen();
     const s = document.getElementById(id);
     return s ? [...s.querySelectorAll('h3, h4')].filter(h => h.offsetParent && h.textContent.trim() && !h.closest('.aw-kopf, .aw-fuss, .bl-kurz, details:not([open])')) : [];
   });
+  /* Tipps: jede Beobachtung (h4 und was folgt) in eine Karte; Inhaltsverzeichnis wie oben. */
+  function tipps() {
+    const s = document.getElementById('t-berichte');
+    if (!s || s.dataset.karten) return;
+    s.dataset.karten = '1';
+    [...s.querySelectorAll('h4')].forEach(h => {
+      if (h.closest('.tp-karte, .aw-kopf, .aw-fuss')) return;
+      const k = document.createElement('div'); k.className = 'tp-karte';
+      h.parentNode.insertBefore(k, h);
+      let n = h;
+      while (n && !(n !== h && (n.tagName === 'H4' || n.tagName === 'H3'))) { const w = n.nextSibling; k.appendChild(n); n = w; }
+    });
+    const kopf = document.createElement('div'); kopf.className = 'aw-kopf';
+    const hs = [...s.querySelectorAll('.tp-karte > h4')];
+    hs.forEach((h, i) => { if (!h.id) h.id = 'tp-' + (i + 1); });
+    kopf.innerHTML = `<p class="aw-inhalt"><b>Auf dieser Seite</b>${hs.map(h => `<a href="#${h.id}" data-aw-sprung="${h.id}">${esc(h.textContent.trim().replace(/^\d+\s*·\s*/, '').slice(0, 55))}</a>`).join('')}</p>`;
+    const erste = s.querySelector('.tp-karte');
+    if (erste) erste.parentNode.insertBefore(kopf, erste);
+  }
+  /* Ideencheck: Eingabe links, rechts was der Check leistet und was nicht. */
+  function ideencheck() {
+    const s = document.getElementById('t-idee');
+    if (!s || s.dataset.raster) return;
+    s.dataset.raster = '1';
+    const feld = document.getElementById('id-text');
+    const werk = s.querySelector('.werkzeuge');
+    if (!feld || !werk) return;
+    const raster = document.createElement('div'); raster.className = 'ic-raster';
+    const links = document.createElement('div'), rechts = document.createElement('aside');
+    rechts.className = 'ic-seite';
+    s.insertBefore(raster, feld.previousElementSibling && feld.previousElementSibling.tagName === 'P' && !feld.previousElementSibling.classList.contains('siegel') ? feld.previousElementSibling : feld);
+    raster.append(links, rechts);
+    /* Alles von der Einleitung bis zu den Knöpfen wandert nach links. */
+    let n = raster.nextSibling;
+    while (n) { const w = n.nextSibling; links.appendChild(n); if (n === werk) break; n = w; }
+    const siegel = s.querySelector('.siegel');
+    rechts.innerHTML = `<h4>Was der Check leistet</h4><ul>
+      <li>Vergleich mit Titel, Beschreibung, Themenfeld, Zielgruppe und Projektelementen aller ${P.length.toLocaleString('de-DE')} Vorhaben</li>
+      <li>Zu jedem Baustein: wie oft er vorkam, wie viele Vorhaben beendet sind und wie viele eine Transferempfehlung erhielten</li>
+      <li>Woran es laut Ergebnisbericht gehakt hat, im Wortlaut</li></ul>
+      <h4>Was er nicht leistet</h4><ul>
+      <li>Er vergleicht Wörter, keine Bedeutungen. Fachbegriffe des Versorgungsfelds liefern die besten Treffer.</li>
+      <li>Er sagt keine Förderwahrscheinlichkeit voraus. Abgelehnte Anträge sind nicht öffentlich.</li></ul>
+      <p style="margin:8px 0 0"><a href="#vorwort/ideencheck" data-mt="ideencheck">Methodik des Ideenchecks →</a></p>`;
+    if (siegel) rechts.insertBefore(siegel, rechts.firstChild);
+  }
   function rahmen(ziel) {
+    if (ziel === 't-berichte') { tipps(); return; }
+    if (ziel === 't-idee') { ideencheck(); return; }
     if (!KACHELN[ziel]) return;
     const sec = document.getElementById(ziel);
     const SE = SEITE_MIT[ziel] || [ziel];
