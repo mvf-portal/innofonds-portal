@@ -618,4 +618,80 @@ document.querySelectorAll('form.ifw-form').forEach(f => f.addEventListener('subm
     : '<p class="hinweis">Für dieses Vorhaben sind keine Stellen erfasst, an denen Beschluss und Berichte auseinandergehen.</p>';
 })();
 </script>
+<!-- ZAEHLER-START --------------------------------------------------------
+     Zaehlt den Aufruf auf dem eigenen Server von Monitor Versorgungsforschung.
+     Kein Cookie, keine Kennung auf dem Geraet, keine fremde Firma. Wer Do Not
+     Track gesetzt hat, wird gar nicht erst gezaehlt. Schlaegt der Abruf fehl,
+     merkt die Seite es nicht - ein Bild, das nicht laedt, ist folgenlos.
+     Gegenstueck: /zaehler/z.php auf monitor-versorgungsforschung.de -->
+<script>
+(function () {
+  // Die Seite meldet Suchen ueber window.mvfZ. Die Funktion steht ab sofort
+  // immer bereit und tut im Zweifel nichts - sonst muesste jede Aufrufstelle
+  // pruefen, ob es sie ueberhaupt gibt, und eine vergessene Pruefung waere
+  // ein Skriptfehler mitten in der Suche.
+  window.mvfZ = function () {};
+  try {
+    if (navigator.doNotTrack === '1' || window.doNotTrack === '1'
+        || navigator.globalPrivacyControl === true) return;
+    // Automatische Umgebungen melden sich selbst: navigator.webdriver setzen
+    // Headless Chrome und Selenium von sich aus. Zuverlaessiger als jede
+    // Liste von Browserkennungen, weil es nicht geraten, sondern gemeldet wird.
+    if (navigator.webdriver) return;
+    if (!screen.width || !screen.height) return;   // kein echter Bildschirm
+    if (!/\.m-vf\.de$/.test(location.hostname)) return;   // lokal nicht zaehlen
+    var r = '';
+    try { r = document.referrer ? new URL(document.referrer).hostname : ''; }
+    catch (e) { r = ''; }
+    if (r === location.hostname) r = '';
+    // Bildschirmbreite nur in Stufen. Die genaue Aufloesung waere eines der
+    // staerksten Merkmale zum Wiedererkennen eines Browsers; fuer die Frage,
+    // fuer welche Breite zu gestalten ist, genuegt die Schublade.
+    var w = screen.width;
+    var stufe = w < 480 ? 'bis480' : w < 768 ? 'bis768' : w < 1024 ? 'bis1024'
+              : w < 1440 ? 'bis1440' : w < 1920 ? 'bis1920' : 'ueber1920';
+    var q = 'h=' + encodeURIComponent(location.hostname)
+          + '&p=' + encodeURIComponent(location.pathname)
+          + '&r=' + encodeURIComponent(r ? 'https://' + r + '/' : '')
+          + '&g=' + (Math.min(screen.width, screen.height) < 768 ? 'm' : 'd')
+          + '&b=' + stufe
+          + '&c=' + Date.now();
+    var ziel = 'https://www.monitor-versorgungsforschung.de/zaehler/z.php?';
+    new Image(1, 1).src = ziel + q;
+
+    // Ein Begriff wird nur mitgeschickt, wenn er wie ein Fachbegriff aussieht.
+    // Ziffern, Klammern, Anfuehrungszeichen, @ und mehr als drei Woerter
+    // deuten auf Freitext oder eine Kennung - so etwas verlaesst den Browser
+    // gar nicht erst. Was uebrig bleibt, prueft der Server noch einmal und
+    // wirft dort zusaetzlich alle Krankheitsbegriffe weg.
+    function sauber(v) {
+      if (typeof v !== 'string') return '';
+      var t = v.toLowerCase().replace(/\s+/g, ' ').trim();
+      if (t.length < 3 || t.length > 40) return '';
+      if (t.split(' ').length > 3) return '';
+      if (/[^a-zßà-öø-ÿ \-]/.test(t)) return '';
+      if (t.charAt(0) === '-') return '';
+      if (/(^| )(and|or|not)( |$)/.test(t)) return '';   // Formel, kein Begriff
+      return t;
+    }
+
+    // Eine abgesendete Suche zaehlen. Kein Seitenaufruf: z.php fuehrt beides
+    // getrennt. sendBeacon ueberlebt einen Seitenwechsel, ein Bild nicht -
+    // wer sucht und sofort auf eine Kachel klickt, wird sonst nicht gezaehlt.
+    window.mvfZ = function (art, begriff) {
+      try {
+        var f = 'h=' + encodeURIComponent(location.hostname)
+              + '&e=' + encodeURIComponent(art)
+              + '&c=' + Date.now();
+        var t = sauber(begriff);
+        if (t) f += '&t=' + encodeURIComponent(t);
+        if (navigator.sendBeacon) navigator.sendBeacon(ziel + f);
+        else new Image(1, 1).src = ziel + f;
+      } catch (e) { /* eine ungezaehlte Suche ist kein Grund, etwas kaputtzumachen */ }
+    };
+  } catch (e) { /* Zaehlung ist nie wichtiger als die Seite */ }
+})();
+</script>
+<!-- ZAEHLER-ENDE -->
+
 </body></html>
