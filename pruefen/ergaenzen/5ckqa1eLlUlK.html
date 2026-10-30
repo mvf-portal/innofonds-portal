@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>MELIUS ergänzen · Innovationsfonds-Radar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<style>
+:root{--bg:#F3F5F8;--fl:#fff;--li:#D8DFE9;--tx:#14202E;--gr:#4A5668;--ak:#00529F;--we:#E3ECF7;--gold:#BE9E55}
+@media (prefers-color-scheme:dark){:root{--bg:#11151b;--fl:#181f28;--li:#2a323e;--tx:#e6ebf2;--gr:#9aa5b3;--ak:#6ea8ff;--we:#1d2937;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 Lato,"Segoe UI",system-ui,sans-serif}
+a{color:var(--ak)}.wrap{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.kopf{background:linear-gradient(135deg,#0A3F7E,#054A94);color:#fff;padding-block:22px}
+.ober{margin:0;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.kopf h1{margin:4px 0;font-size:28px}.tit{margin:0;opacity:.9}
+main{padding-block:20px 40px}
+.info{background:var(--fl);border:1px solid var(--li);border-left:5px solid var(--gold);border-radius:10px;padding:12px 16px}
+.klein{font-size:14px;color:var(--gr)}
+fieldset{background:var(--fl);border:1px solid var(--li);border-radius:10px;margin:16px 0;padding:12px 16px}
+legend{font-weight:700;font-size:18px;padding:0 4px}
+label{display:block;margin:8px 0;font-weight:700;font-size:14px}
+label small{font-weight:400;color:var(--gr)}
+input,select,textarea{display:block;width:100%;font:inherit;font-weight:400;margin-top:3px;padding:7px 10px;border:1px solid var(--li);
+  border-radius:8px;background:var(--bg);color:var(--tx)}
+label.haken{display:flex;gap:8px;align-items:flex-start;font-weight:400;font-size:15px}
+label.haken input{width:auto;margin-top:5px}
+.zeile{border-top:1px solid var(--li);padding-top:6px;margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.zeile .ganz{grid-column:1/-1}
+.neu{font:inherit;font-size:14px;background:none;border:1px dashed var(--li);border-radius:8px;padding:6px 12px;color:var(--ak);cursor:pointer;margin-top:8px}
+.senden{font:inherit;font-weight:700;background:var(--ak);color:#fff;border:0;border-radius:8px;padding:10px 20px;cursor:pointer}
+@media (max-width:560px){.zeile{grid-template-columns:1fr}}
+</style></head><body>
+<header class="kopf"><div class="wrap"><p class="ober">Innovationsfonds-Radar · für die Projektverantwortlichen</p>
+<h1>MELIUS: Angaben ergänzen</h1><p class="tit">Verbesserung der Versorgungssituation für Allergiker*innen bei geänderten UMwELtbedingUngen im Rahmen des KlimawandelS</p></div></header>
+<main class="wrap">
+<div class="info"><p><b>Was hier geht:</b> Sie ergänzen, was seit dem Projekt hinzugekommen ist: Veröffentlichungen,
+Verträge und Fortführung, weitere Links. Ihre Angaben erscheinen auf der
+<a href="https://innofonds.m-vf.de/projekt/melius/" target="_blank" rel="noopener">Seite des Vorhabens</a> in einem eigenen Abschnitt,
+mit Ihrem Namen und Datum, gekennzeichnet als Angabe der Projektverantwortlichen.</p>
+<p><b>Was hier nicht geht:</b> Beschluss, Berichte und unsere Auswertung lassen sich nicht ändern. Halten Sie dort etwas
+für falsch, schreiben Sie an <a href="mailto:info@m-vf.de?subject=Korrektur%20MELIUS">info@m-vf.de</a>.</p>
+<p class="klein">Dieser Link ist persönlich. Bitte nicht weitergeben. <a href="https://knowledge-hubs.m-vf.de/datenschutz.html#austausch" target="_blank" rel="noopener">Datenschutz</a></p></div>
+
+<form id="f" novalidate>
+<fieldset><legend>Wer ergänzt?</legend>
+<label>Name <input id="a-name" required autocomplete="name"></label>
+<label>Rolle im Vorhaben <input id="a-rolle" placeholder="z. B. Projektleitung, Konsortialpartner"></label>
+<label>E-Mail <small>(nicht öffentlich, nur für Rückfragen)</small> <input id="a-mail" type="email" autocomplete="email"></label>
+</fieldset>
+
+<fieldset><legend>Veröffentlichungen aus dem Vorhaben</legend>
+<p class="klein">Am besten mit DOI: Titel, Zeitschrift und Jahr holen wir dann selbst aus Crossref.</p>
+<div id="pub"></div><button type="button" class="neu" data-neu="pub">+ weitere Veröffentlichung</button>
+</fieldset>
+
+<fieldset><legend>Verträge und Fortführung nach Projektende</legend>
+<div id="ver"></div><button type="button" class="neu" data-neu="ver">+ weiterer Eintrag</button>
+</fieldset>
+
+<fieldset><legend>Weitere Links</legend>
+<p class="klein">Projekt-Website, Materialien, Folgeprojekte.</p>
+<div id="lnk"></div><button type="button" class="neu" data-neu="lnk">+ weiterer Link</button>
+</fieldset>
+
+<fieldset><legend>Austausch mit anderen Projektteams</legend>
+<label class="haken"><input type="checkbox" id="v-ja"> Ich bin für den Austausch mit anderen Projektteams ansprechbar.</label>
+<div id="v-felder" hidden>
+<p class="klein">Auf der Seite des Vorhabens erscheinen dann Name, Rolle, Einrichtung und Themen. Ihre E-Mail-Adresse
+erscheint nicht: Wer Kontakt sucht, schreibt über ein Formular, und Monitor Versorgungsforschung leitet die Nachricht an
+Sie weiter. Erst wenn Sie antworten, sieht die andere Seite Ihre Adresse.</p>
+<label>Name <input id="v-name"></label>
+<label>Rolle <input id="v-rolle"></label>
+<label>Einrichtung <input id="v-einr"></label>
+<label>E-Mail für Weiterleitungen <small>(nicht öffentlich)</small> <input id="v-mail" type="email"></label>
+<label>Worüber Sie sich austauschen möchten <input id="v-themen" placeholder="z. B. Rekrutierung in Hausarztpraxen, Selektivverträge"></label>
+<label class="haken"><input type="checkbox" id="v-einw"> Ich willige ein, dass Name, Rolle, Einrichtung und Themen auf der
+Seite des Vorhabens veröffentlicht und Kontaktanfragen an meine Adresse weitergeleitet werden. Ich kann das jederzeit
+widerrufen: Häkchen oben entfernen und erneut senden, oder Mail an info@m-vf.de.</label>
+</div>
+</fieldset>
+
+<button type="submit" class="senden">Ergänzungen senden</button>
+<p id="stand" aria-live="polite"></p>
+</form>
+</main>
+<script>
+const KENNUNG = "5ckqa1eLlUlK", AKR = "MELIUS", ENDPUNKT = "https://www.monitor-versorgungsforschung.de/innofonds-korrektur/innofonds-korrektur.php";
+const VA = ["Selektivvertrag (§ 140a SGB V)", "Modellvorhaben", "Aufnahme in die Regelversorgung / Richtlinie", "DiGA-Verzeichnis", "Weiterführung aus eigenen Mitteln", "Landes- oder kommunale Förderung", "Folgeprojekt", "anderes"];
+
+const VORLAGE = {
+  pub: () => `<div class="zeile"><label>DOI <input data-f="doi" placeholder="10.1234/…"></label>
+    <label>Link <input data-f="link" placeholder="https://…"></label>
+    <label class="ganz">Literaturangabe, falls keine DOI <input data-f="angabe"></label></div>`,
+  ver: () => `<div class="zeile"><label>Art <select data-f="art"><option value=""></option>${VA.map(v => `<option>${v}</option>`).join('')}</select></label>
+    <label>seit <input data-f="seit" placeholder="Monat/Jahr"></label>
+    <label>Vertragspartner <input data-f="partner" placeholder="z. B. AOK Nordost"></label>
+    <label>Region <input data-f="region"></label>
+    <label class="ganz">Kurz beschrieben <input data-f="text"></label></div>`,
+  lnk: () => `<div class="zeile"><label>Adresse <input data-f="url" placeholder="https://…"></label>
+    <label>Was ist das? <input data-f="text" placeholder="z. B. Projekt-Website"></label></div>`,
+};
+const neu = id => document.getElementById(id).insertAdjacentHTML('beforeend', VORLAGE[id]());
+['pub', 'ver', 'lnk'].forEach(neu);
+document.querySelectorAll('[data-neu]').forEach(b => b.onclick = () => neu(b.dataset.neu));
+const vja = document.getElementById('v-ja');
+vja.onchange = () => { document.getElementById('v-felder').hidden = !vja.checked; };
+const wert = id => document.getElementById(id).value.trim();
+const zeilen = id => [...document.querySelectorAll('#' + id + ' .zeile')].map(z => {
+  const o = {}; z.querySelectorAll('[data-f]').forEach(f => { if (f.value.trim()) o[f.dataset.f] = f.value.trim(); });
+  return o; }).filter(o => Object.keys(o).length);
+document.getElementById('f').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const stand = document.getElementById('stand');
+  if (!wert('a-name')) { stand.textContent = 'Bitte Ihren Namen eintragen.'; return; }
+  if (vja.checked && !document.getElementById('v-einw').checked) {
+    stand.textContent = 'Für den Austausch brauchen wir Ihre Einwilligung (Häkchen unten).'; return; }
+  const d = {kennung: KENNUNG, art: 'ergaenzung', akronym: AKR,
+    absender: {name: wert('a-name'), rolle: wert('a-rolle'), email: wert('a-mail')},
+    publikationen: zeilen('pub'), vertraege: zeilen('ver'), links: zeilen('lnk'),
+    vernetzung: vja.checked ? {ja: true, name: wert('v-name'), rolle: wert('v-rolle'), einrichtung: wert('v-einr'),
+      email: wert('v-mail'), themen: wert('v-themen'), einwilligung: true} : {ja: false},
+    korrekturen: []};
+  stand.textContent = 'Wird gesendet …';
+  try {
+    const r = await fetch(ENDPUNKT, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(d)});
+    if (!r.ok) throw new Error(r.status);
+    stand.innerHTML = '<b>Angekommen, vielen Dank.</b> Ihre Ergänzungen erscheinen in der Regel am nächsten Tag auf der Seite des Vorhabens.';
+  } catch (e) {
+    stand.innerHTML = 'Das Senden hat nicht geklappt. Bitte schreiben Sie an <a href="mailto:info@m-vf.de">info@m-vf.de</a>.';
+  }
+});
+
+</script></body></html>
