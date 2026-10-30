@@ -10105,7 +10105,7 @@ nav[role="tablist"]{display:none!important}
 .seitenkopf.auswertungen{background:var(--sk-auswertung)}
 .seitenkopf.antrag{background:var(--sk-antrag)}
 .seitenkopf.evidenz{background:var(--sk-evidenz);border-color:var(--sk-evidenzrand)}
-.seitenkopf[hidden],.unterleiste[hidden]{display:none}
+.seitenkopf[hidden],.unterleiste[hidden],.betazeile[hidden],#kopfzeile[hidden]{display:none}
 /* Mega-Menü in der schwarzen Leiste */
 .ifw-karte{padding:20px 24px 0}
 .ifw-kopf{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 20px;
@@ -10198,6 +10198,12 @@ nav[role="tablist"]{display:none!important}
       x.setAttribute('aria-current', String(x.dataset.bereich === b.k)));
     unterZeigen(b, s.t);
     (s.mit || []).forEach(m => { const sec = document.getElementById(m); if (sec) sec.hidden = false; });
+    /* Kennzahlenzeile und Beta-Hinweis nur auf der Übersicht (Peter,
+       30.10.2026): auf jeder Seite davor kosteten sie auf dem Handy einen
+       halben Bildschirm. Die Beta-Marke am Namen bleibt überall. */
+    const ue = b.k === 'uebersicht';
+    const kz = document.getElementById('kopfzeile'); if (kz) kz.hidden = !ue;
+    const bz = document.querySelector('.betazeile'); if (bz) bz.hidden = !ue;
     if (b.k === 'uebersicht') { kopf.hidden = true; }
     else {
       kopf.hidden = false;
