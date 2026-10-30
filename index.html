@@ -10654,6 +10654,15 @@ partnerZeichnen();
     Z.seite = 0; alles();
   });
   wurzel.addEventListener('click', ev => {
+    /* Stufe 109: Klick auf eine Karte merkt die Trefferliste für „Nächster
+       Treffer“ auf der Projektseite (nur in diesem Tab). */
+    const zu = ev.target.closest('.pdb-karte h3 a');
+    if (zu) {
+      try {
+        sessionStorage.setItem('ifr-treffer', JSON.stringify({sl: treffer.map(p => p.sl), akr: treffer.map(p => p.akr),
+          was: Z.ids ? Z.idsName : (document.getElementById('pdb-q').value || ''), zurueck: location.pathname + location.hash}));
+      } catch (e) { /* ohne Speicher keine Trefferleiste */ }
+    }
     const v = ev.target.closest('[data-vgl]');
     if (v && window.vglUmschalten) { const an = vglUmschalten(v.dataset.vgl); v.setAttribute('aria-pressed', String(an)); v.textContent = an ? '✓ im Vergleich' : '+ vergleichen'; return; }
     const m = ev.target.closest('[data-mehr]'); if (m) { offenMehr.add(m.dataset.mehr); gruppenZeichnen(); return; }

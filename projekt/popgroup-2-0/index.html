@@ -68,6 +68,10 @@ details.mehr summary{cursor:pointer;color:var(--ak);font-weight:700;margin:8px 0
 .box ul{margin:0;padding-left:18px}
 .pillen{display:flex;flex-wrap:wrap;gap:5px;margin:0}
 .pillen span{background:var(--we);border-radius:999px;padding:2px 9px;font-size:13px}
+.trefferleiste{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between;align-items:center;padding-top:10px;padding-bottom:4px;font-size:14px}
+.trefferleiste a{font-weight:600}
+.synbox ul{margin:6px 0 0;padding-left:18px}
+details.mehrw summary{cursor:pointer;color:var(--akzent,#0051A1);font-weight:600;margin:6px 0}
 .mitlaufend{position:sticky;top:60px;max-height:calc(100vh - 80px);overflow-y:auto;display:flex;flex-direction:column;gap:12px}
 .verwandt{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
 .verwandt .stand{font-size:11px;padding:1px 8px}
@@ -609,6 +613,32 @@ document.querySelectorAll('form.ifw-form').forEach(f => f.addEventListener('subm
     f.reset();
   } catch (e) { st.innerHTML = 'Das Senden hat nicht geklappt. Bitte schreiben Sie an <a href="mailto:info@m-vf.de">info@m-vf.de</a>.'; }
 }));
+/* Stufe 109: Wer aus der Projektdatenbank kommt, findet oben den Weg zurück
+   zu seinen Treffern und zum nächsten. Die Trefferliste legt die Datenbank
+   beim Klick in den sessionStorage dieses Tabs. Fehlt sie, fehlt die Leiste. */
+(function () {
+  const esc = x => String(x == null ? '' : x).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+  let t = null;
+  try { t = JSON.parse(sessionStorage.getItem('ifr-treffer') || 'null'); } catch (e) { t = null; }
+  if (!t || !Array.isArray(t.sl)) return;
+  const hier = location.pathname.split('/').filter(Boolean)[1];
+  const i = t.sl.indexOf(hier);
+  if (i < 0) return;
+  const akr = (t.akr || [])[i + 1], vor = (t.akr || [])[i - 1];
+  const bar = document.createElement('nav');
+  bar.className = 'wrap trefferleiste'; bar.setAttribute('aria-label', 'Treffer');
+  bar.innerHTML = `<a href="${esc(t.zurueck || '/#projekte')}">← Zurück zu den Treffern${t.was ? ' für „' + esc(t.was) + '“' : ''}</a>
+    <span class="hinweis">Treffer ${i + 1} von ${t.sl.length}</span>
+    <span>${i > 0 ? `<a href="/projekt/${esc(t.sl[i - 1])}/">← ${esc(vor || 'vorheriger')}</a>` : ''}
+    ${i + 1 < t.sl.length ? `<a href="/projekt/${esc(t.sl[i + 1])}/">Nächster Treffer: ${esc(akr || '')} →</a>` : ''}</span>`;
+  const kopf = document.querySelector('header.pkopf');
+  if (kopf) kopf.parentNode.insertBefore(bar, kopf);
+  /* Direkt aus der Datenbank gekommen: zurückblättern, dann stehen Suche und
+     Filter noch so da, wie sie waren. */
+  bar.querySelector('a').addEventListener('click', ev => {
+    try { if (document.referrer && new URL(document.referrer).pathname === new URL(t.zurueck, location.href).pathname) { ev.preventDefault(); history.back(); } } catch (e) {}
+  });
+})();
 (async function () {
   const ziel = document.getElementById('berichte');
   if (!ziel) return;
@@ -625,7 +655,10 @@ document.querySelectorAll('form.ifw-form').forEach(f => f.addEventListener('subm
   const L = d.unstimmig || [];
   const h3 = u && u.closest('section').querySelector('h3');
   if (h3) h3.textContent = 'Wo Beschluss und Berichte auseinandergehen (' + L.length + ')';
-  if (u) u.innerHTML = L.length ? '<ul class="belege">' + L.map(t => `<li>${esc(typeof t === 'string' ? t : (t.text || JSON.stringify(t)))}</li>`).join('') + '</ul>'
+  const li = t => `<li>${esc(typeof t === 'string' ? t : (t.text || JSON.stringify(t)))}</li>`;
+  /* Die ersten drei offen, der Rest zum Aufklappen (Marianns Canvas 2, 30.10.2026). */
+  if (u) u.innerHTML = L.length ? '<ul class="belege">' + L.slice(0, 3).map(li).join('') + '</ul>'
+    + (L.length > 3 ? `<details class="mehrw"><summary>Weitere ${L.length - 3} anzeigen</summary><ul class="belege">${L.slice(3).map(li).join('')}</ul></details>` : '')
     : '<p class="hinweis">Für dieses Vorhaben sind keine Stellen erfasst, an denen Beschluss und Berichte auseinandergehen.</p>';
 })();
 </script>
