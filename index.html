@@ -13280,7 +13280,49 @@ window.WEGWEISER_ZAEHLEN = true;</script>
        pdb: geaendert.length ? korrigieren(roh).text : roh},
       {art: 'Hilfe', titel: 'Frage an die Redaktion stellen', zusatz: 'Ihre Frage wird vorausgefüllt, gesendet wird erst auf Ihren Klick', fragekasten: roh},
     ];
-    return {treffer: rest, immer, z, texte, gel: gelesenAls(geaendert)};
+    return {treffer: rest, immer: [...angebotWege(roh), ...immer], z, texte, gel: gelesenAls(geaendert)};
+  }
+  /* Was das Radar nicht hat, aber ein anderes MVF-Angebot: zugelassene DiGA,
+     Studienliteratur, laufende Ausschreibungen (Mariann, 10.11.2026). */
+  function angebotWege(roh) {
+    const n = norm(roh), w = [];
+    const extern = (titel, zusatz, url) => ({art: 'Hilfe', titel, zusatz, tun() { window.open(url, '_blank', 'noopener'); }});
+    if (/\bdiga\b|gesundheits ?apps?\b|digitale gesundheitsanwendung|zulassung/.test(n))
+      w.push(extern('Zulassungs-/DiGA-Radar', 'Weiteres MVF-Angebot: zugelassene DiGA und Arzneimittel im Detail', ANGEBOTE[1][1]));
+    if (/\bstudie|literatur|publikation|leitlinie|fachartikel/.test(n))
+      w.push(extern('Knowledge-Hubs', 'Weiteres MVF-Angebot: Studien und Fachliteratur nach Themen', ANGEBOTE[0][1]));
+    if (/ausschreibung|foerderaufruf|bekanntmachung|frist/.test(n))
+      w.push(extern('Ausschreibungsradar', 'Weiteres MVF-Angebot: laufende Förderaufrufe', ANGEBOTE[2][1]));
+    return w;
+  }
+
+  /* ---------- Zwei Themen in einer Frage ----------
+     Mariann am 10.11.2026: „ich suche was zu DiGA und Arzneimitteln"
+     wurde als ein Thema gelesen, DiGA kam nur am Rand vor. Getrennt wird
+     an „und", „sowie", „oder" und Kommas, nie an einem Ergänzungsstrich
+     („Kinder- und Jugendmedizin"). Ein Teil zählt nur, wenn das Portal zu
+     ihm allein etwas findet. */
+  function themenTeile(roh) {
+    const teile = roh.split(/(?<!-)\s+(?:und|sowie|oder|bzw\.?)\s+|\s*[,;]\s*/i)
+      .map(t => t.trim()).filter(Boolean);
+    if (teile.length < 2 || teile.length > 4) return null;
+    const out = [];
+    for (const t of teile) {
+      const kern = woerter(t).filter(w => !OHNE_THEMA.test(w));
+      if (!kern.length) return null;
+      const a = antwort(t);
+      /* Ein anderes MVF-Angebot zuerst: Bei DiGA ist der DiGA-Radar die Antwort. */
+      const wege = [...a.immer.filter(x => x.tun).slice(0, 1), ...(a.z.wege || []).slice(0, 1), ...a.treffer.slice(0, 2)];
+      if (!wege.length) return null;
+      /* Überschrift in der Schreibweise der Frage, ohne Füllwörter. */
+      const titel = t.split(/\s+/).filter(x => { const n = norm(x); return n.length > 2 && !STOPP.has(n) && !OHNE_THEMA.test(n); }).join(' ');
+      out.push({titel: titel || kern.join(' '), wege: wege.slice(0, 3)});
+    }
+    return out;
+  }
+  function themenBlock(teile) {
+    return `<p class="ww-hinweis">Ihre Frage hat ${teile.length} Themen: ${teile.map(t => `<span class="ww-erkannt">${esc(t.titel)}</span>`).join(' ')}</p>`
+      + teile.map(t => `<p class="ww-frage-kopf" style="margin-top:8px">${esc(t.titel)}</p>${liste(t.wege)}`).join('');
   }
   /* ---------- Claude (Probe, 09.11.2026) ----------
      Der Wegweiser sucht wie bisher im Browser. Die besten Fundstellen
@@ -13632,8 +13674,13 @@ window.WEGWEISER_ZAEHLEN = true;</script>
     /* Ort oder Einrichtung mit Thema („Demenz in Bayern"): die Wege dorthin
        oben, darunter wie gewohnt die Antwort zum Thema. */
     if (erk) ich(erkanntAls(erk) + liste(ortWege(erk)));
+    /* Mehrere Themen: je Thema seine Wege oben, die Antwort von Claude
+       darunter bezieht sich auf die ganze Frage. „Gelesen als" entfällt,
+       denn jedes Thema steht schon einzeln da. */
+    const teile = erk ? null : themenTeile(roh);
+    if (teile) ich(themenBlock(teile));
     const {treffer, immer, z, gel, texte} = antwort(roh);
-    if (gel) ich(gel);
+    if (gel && !teile) ich(gel);
     if (!KI_AUS) {
       /* Mit Claude: erst die Antwort, darunter die Fundstellen als weitere Wege. */
       const block = ich(`<p class="ww-hinweis">Weitere Wege im Portal:</p>${liste([...(z.wege || []), ...texte, ...treffer].slice(0, 5))}
