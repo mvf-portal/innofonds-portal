@@ -13234,6 +13234,23 @@ window.WEGWEISER_RUECKMELDUNG = false;</script>
     ['Ausschreibungsradar', 'https://wissen.m-vf.de/ausschreibungen.html'],
     ['CuratioHub', 'https://knowledge-hubs.m-vf.de/curatiohub.html'],
   ];
+  /* Thema zu Knowledge-Hub. Muster gegen den normalisierten Text (ä als ae). */
+  const HUBS = [
+    [/adipositas|uebergewicht/, 'Adipositas', 'https://adipositas.m-vf.de/'],
+    [/diabet/, 'Diabetes', 'https://diabetes.m-vf.de/'],
+    [/\bgender|geschlecht/, 'Geschlechtersensible Medizin', 'https://gender.m-vf.de/'],
+    [/gesundheitskompetenz|health literacy/, 'Gesundheitskompetenz', 'https://healthliteracy.m-vf.de/'],
+    [/impf|praevention/, 'Impfen & Prävention', 'https://impfen.m-vf.de/'],
+    [/kardio|\bherz|schlaganfall/, 'Kardiologie', 'https://kardio.m-vf.de/'],
+    [/\bki\b|kuenstliche intelligenz|\bdiga\b|digital|telemedizin/, 'Digitalisierung, KI & Gesundheit', 'https://ki.m-vf.de/'],
+    [/klima|hitze/, 'Hitze, Klima & Gesundheit', 'https://klima.m-vf.de/'],
+    [/demenz|geriatr|hochaltrig|\balter/, 'Gesundes Altern & Longevity', 'https://longevity.m-vf.de/'],
+    [/psych|depress|sucht|mental/, 'Psychische Gesundheit', 'https://mental.m-vf.de/'],
+    [/chronisch|\bncd\b|copd|asthma/, 'NCD/Chronische Krankheiten', 'https://ncd.m-vf.de/'],
+    [/krebs|onkolog|tumor/, 'Onkologie', 'https://onkologie.m-vf.de/'],
+    [/pflege/, 'Pflege & Langzeitversorgung', 'https://pflege.m-vf.de/'],
+    [/patientensicherheit|arzneimitteltherapiesicherheit|\bamts\b|behandlungsfehler/, 'Patientensicherheit', 'https://safety.m-vf.de/'],
+  ];
   function start() {
     feld.placeholder = 'Thema, Frage oder Akronym';
     ich(`<p class="ww-frage-kopf">Womit können wir helfen?</p>
@@ -13301,7 +13318,13 @@ window.WEGWEISER_RUECKMELDUNG = false;</script>
     const extern = (titel, zusatz, url) => ({art: 'Hilfe', titel, zusatz, tun() { window.open(url, '_blank', 'noopener'); }});
     if (/\bdiga\b|gesundheits ?apps?\b|digitale gesundheitsanwendung|zulassung/.test(n))
       w.push(extern('Zulassungs-/DiGA-Radar', 'Weiteres MVF-Angebot: zugelassene DiGA und Arzneimittel im Detail', ANGEBOTE[1][1]));
-    if (/\bstudie|literatur|publikation|leitlinie|fachartikel/.test(n))
+    /* Je Thema der passende Knowledge-Hub mit Studien und Fachliteratur.
+       Zuordnung ENTWURF vom 10.11.2026, zur Durchsicht durch Peter und
+       Mariann (assistent/MANUAL.md). Höchstens zwei Hubs je Frage. */
+    const hubs = HUBS.filter(([re]) => re.test(n)).slice(0, 2);
+    for (const [, name, url] of hubs)
+      w.push(extern('Knowledge-Hub ' + name, 'Weiteres MVF-Angebot: Studien und Fachliteratur zum Thema', url));
+    if (!hubs.length && /\bstudie|literatur|publikation|leitlinie|fachartikel/.test(n))
       w.push(extern('Knowledge-Hubs', 'Weiteres MVF-Angebot: Studien und Fachliteratur nach Themen', ANGEBOTE[0][1]));
     if (/ausschreibung|foerderaufruf|bekanntmachung|frist/.test(n))
       w.push(extern('Ausschreibungsradar', 'Weiteres MVF-Angebot: laufende Förderaufrufe', ANGEBOTE[2][1]));
