@@ -12947,7 +12947,9 @@ window.WEGWEISER_ZAEHLEN = true;</script>
 
   /* ---------- Gehen ---------- */
   function gehen(x) {
-    if (x.el) {
+    if (x.tun) {
+      x.tun();
+    } else if (x.el) {
       location.hash = '#' + x.tab;
       setTimeout(() => {
         const d = x.el.closest('details');
@@ -13076,6 +13078,9 @@ window.WEGWEISER_ZAEHLEN = true;</script>
   .ww-angebote a{display:inline-block;margin:0 5px 6px 0;font-size:12.5px;font-weight:600;text-decoration:none;
     color:var(--pille-text,#00529F);border:1px solid var(--linie,#dde2e8);border-radius:999px;padding:3px 10px;background:var(--flaeche,#fff)}
   .ww-angebote a:hover{border-color:var(--akzent,#1f6feb)}
+  .ww-erkannt{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 8px;margin:0 3px 3px 0;
+    background:var(--pille,#E3ECF7);color:var(--pille-text,#00529F)}
+  .ww-ki-weg{margin-top:8px;background:var(--goldweich,#fdf6e0);border-color:var(--goldlinie,#d9bb62)}
   @media (max-width:640px){.ww-tafel{right:0;bottom:0;width:100vw;max-width:100vw;height:100vh;border-radius:0}
     .ww-knopf{right:16px;bottom:16px}}`;
   const st = document.createElement('style');
@@ -13503,10 +13508,130 @@ window.WEGWEISER_ZAEHLEN = true;</script>
     return true;
   }
 
+  /* ---------- Orte und Einrichtungen ----------
+     Mariann am 10.11.2026: Auf „Projekte in Sachsen-Anhalt" und „Was hat
+     inav durchgeführt" antwortete Claude „keine Angaben", obwohl Landkarte,
+     Projektdatenbank und Netzwerk genau das zeigen. Die Fundstellen sind
+     Portaltexte, keine Datensätze. Darum erkennt der Browser Bundesländer
+     und Einrichtungen selbst und führt direkt in die Ansicht. */
+  const LAND_KURZ = {nrw: 'Nordrhein-Westfalen', bw: 'Baden-Württemberg', rlp: 'Rheinland-Pfalz',
+    mv: 'Mecklenburg-Vorpommern', 'meck pomm': 'Mecklenburg-Vorpommern', 'baden wuerttemberg': 'Baden-Württemberg'};
+  let LAENDER_NORM = null;
+  function laender() {
+    if (LAENDER_NORM) return LAENDER_NORM;
+    const namen = [...new Set(P.map(p => p.bl).filter(b => b && !/angabe|ausland|bundesweit/i.test(b)))];
+    LAENDER_NORM = namen.map(n => [norm(n), n]);
+    for (const [k, n] of Object.entries(LAND_KURZ)) if (namen.includes(n)) LAENDER_NORM.push([k, n]);
+    /* Längste zuerst: „Sachsen-Anhalt" vor „Sachsen". */
+    LAENDER_NORM.sort((a, b) => b[0].length - a[0].length);
+    return LAENDER_NORM;
+  }
+  /* Wörter, die neben einem Ort oder einer Einrichtung kein eigenes Thema sind. */
+  const OHNE_THEMA = /^(projekt\w*|vorhaben|gefoerdert\w*|foerder\w*|durchgefuehrt|gemacht|beteiligt|beteiligung|suche\w*|such|finde\w*|zeig\w*|alle|welche\w*|gibt|gab|laufen\w*|macht|hat|haben|sitz\w*|aus|was|wer|wie|viele|einrichtung\w*|institut\w*|partner\w*|konsorti\w*|bundesland|land|region\w*|innovationsfonds)$/;
+  let ORTE = null, ERSTE = null;
+  function einrichtungen() {
+    if (ERSTE) return ERSTE;
+    const knoten = typeof NETZ !== 'undefined' ? NETZ.knoten : [];
+    ORTE = new Set(knoten.map(k => norm(k.ort)).filter(Boolean));
+    /* Wie oft ein erstes Namenswort vorkommt: „Universitätsklinikum" ist
+       kein Name, „Charité" schon. */
+    ERSTE = new Map();
+    for (const k of knoten) {
+      const w = norm(k.name).split(' ')[0];
+      if (w) ERSTE.set(w, (ERSTE.get(w) || 0) + 1);
+    }
+    return ERSTE;
+  }
+  function erkennen(roh) {
+    if (typeof P === 'undefined') return null;
+    let q = ' ' + norm(roh) + ' ';
+    let land = null;
+    for (const [n, name] of laender()) {
+      if (q.includes(' ' + n + ' ')) { land = name; q = q.replace(' ' + n + ' ', ' '); break; }
+    }
+    const erste = einrichtungen();
+    const knoten = typeof NETZ !== 'undefined' ? NETZ.knoten : [];
+    const ws = q.trim().split(' ').filter(w => w.length > 2 && !STOPP.has(w));
+    const thema = w => RINGE.some(r => r.alle.some(x => woerter(x).includes(w)));
+    let orgs = [], wort = '';
+    for (const w of ws) {
+      if (ORTE.has(w) || OHNE_THEMA.test(w) || thema(w)) continue;
+      const nachKurz = knoten.filter(k => k.akr && norm(k.akr) === w);
+      /* Ein Namenswort, das auch in Projekttiteln steht, ist ein Thema:
+         „Demenz" ist kein Verweis auf den „Demenz Support Stuttgart". */
+      const inTiteln = P.filter(p => norm(p.tit).split(' ').includes(w)).length;
+      /* Mehr als 15 Einrichtungen mit demselben ersten Wort („Deutsche",
+         „Universitätsklinikum"): ein Gattungswort, kein Name. */
+      const nachName = inTiteln <= 1 && w.length >= 3 && (erste.get(w) || 0) <= 15
+        ? knoten.filter(k => norm(k.name).split(' ')[0] === w).sort((a, b) => b.projekte - a.projekte) : [];
+      /* „AOK": viele Einrichtungen, deren Kürzel so beginnt (AOK Nordost,
+         AOK-Bundesverband). Dann führt der Weg zur Liste im Netzwerk. */
+      const nachKurzTeil = !nachKurz.length && inTiteln <= 1
+        ? knoten.filter(k => k.akr && norm(k.akr).split(' ')[0] === w).sort((a, b) => b.projekte - a.projekte) : [];
+      const xs = [...new Set([...nachKurz, ...nachName, ...nachKurzTeil])];
+      if (xs.length) { orgs = xs; wort = w; q = q.replace(' ' + w + ' ', ' '); break; }
+    }
+    if (!land && !orgs.length) return null;
+    /* Bleibt außer dem Erkannten nichts übrig, ist die Frage damit beantwortet. */
+    const rest = woerter(q).filter(w => !OHNE_THEMA.test(w)).length;
+    return {land, orgs, wort, rest};
+  }
+  function ortWege(e) {
+    const wege = [];
+    if (e.land) {
+      const ids = P.filter(p => p.bl === e.land).map(p => p.id);
+      wege.push({art: 'Bereich', titel: 'Landkarte: ' + e.land, zusatz: 'Vorhaben und Einrichtungen auf der Karte',
+        tun() { location.hash = '#karte'; setTimeout(() => { if (typeof landZeigen === 'function') landZeigen(e.land);
+          const z = document.getElementById('k-land'); if (z) z.scrollIntoView({block: 'start'}); }, 400); }});
+      wege.push({art: 'Bereich', titel: 'Vorhaben in ' + e.land, zusatz: ids.length + ' Vorhaben, Sitz der Projektleitung, in der Projektdatenbank',
+        tun() { location.hash = '#projekte'; setTimeout(() => { if (window.pdbAuswahl) window.pdbAuswahl(ids, 'Projektleitung in ' + e.land);
+          const z = document.getElementById('pdb-q'); if (z) z.scrollIntoView({block: 'start'}); }, 200); }});
+    }
+    for (const k of e.orgs.slice(0, 3)) {
+      const name = k.akr && !k.name.includes(k.akr) ? `${k.name} (${k.akr})` : k.name;
+      const ids = P.filter(p => (p.pa || []).includes(k.name)).map(p => p.id);
+      wege.push({art: 'Bereich', titel: name + ' im Netzwerk', zusatz: 'Rollen, Konsortien und Partner',
+        tun() { location.hash = '#netz'; setTimeout(() => { const f = document.getElementById('n-q');
+          if (f) { f.value = k.name; f.dispatchEvent(new Event('input', {bubbles: true})); }
+          if (typeof knotenZeigen === 'function') knotenZeigen(k);
+          if (f) f.scrollIntoView({block: 'start'}); }, 400); }});
+      if (ids.length) wege.push({art: 'Bereich', titel: 'Vorhaben mit Beteiligung', zusatz: ids.length + ' Vorhaben in der Projektdatenbank',
+        tun() { location.hash = '#projekte'; setTimeout(() => { if (window.pdbAuswahl) window.pdbAuswahl(ids, 'Beteiligung ' + (k.akr || k.name));
+          const z = document.getElementById('pdb-q'); if (z) z.scrollIntoView({block: 'start'}); }, 200); }});
+    }
+    if (e.orgs.length > 3) wege.push({art: 'Bereich', titel: `Alle ${e.orgs.length} Treffer zu „${e.wort}“ im Netzwerk`, zusatz: 'Einrichtungen mit diesem Namen',
+      tun() { location.hash = '#netz'; setTimeout(() => { const f = document.getElementById('n-q');
+        if (f) { f.value = e.wort; f.dispatchEvent(new Event('input', {bubbles: true})); f.scrollIntoView({block: 'start'}); } }, 400); }});
+    return wege;
+  }
+  function erkanntAls(e) {
+    const t = [e.land ? 'Bundesland: ' + e.land : '', ...e.orgs.slice(0, 3).map(k => 'Einrichtung: ' + (k.akr || k.name))].filter(Boolean);
+    return `<p class="ww-hinweis">Erkannt als ${t.map(x => `<span class="ww-erkannt">${esc(x)}</span>`).join(' ')}</p>`;
+  }
+  function kiKnopf(roh, block) {
+    if (KI_AUS) return;
+    block.insertAdjacentHTML('beforeend', '<button type="button" class="ww-weg ww-ki-weg" data-ww-ki><span><span class="ww-t">Nicht das Richtige? Mit KI beantworten lassen</span>'
+      + '<span class="ww-z">Ihre Frage geht dafür an Claude (Anthropic)</span></span><span class="ww-pfeil" aria-hidden="true">›</span></button>');
+    const k = block.querySelector('[data-ww-ki]');
+    k.onclick = () => { k.remove(); kiAntwort(roh, block, 'nachfrage').then(ok => { if (!ok) block.insertAdjacentHTML('beforeend', '<p class="ww-hinweis">Claude ist gerade nicht erreichbar.</p>'); }); };
+  }
+
   function fragen_stellen(roh) {
     sie(roh);
     const f = faqTreffer(roh);
     if (f && faqZeigen(roh, f)) { zaehle(fragefeld(roh, f), 'fest', true); return; }
+    const erk = erkennen(roh);
+    if (erk && !erk.rest) {
+      /* Nur Ort oder Einrichtung: direkt in die Ansicht, Claude erst auf Wunsch. */
+      const block = ich(erkanntAls(erk) + liste(ortWege(erk)));
+      kiKnopf(roh, block);
+      block.insertAdjacentHTML('beforeend', zurueck);
+      zaehle('vorhaben', 'fundstellen', true);
+      return;
+    }
+    /* Ort oder Einrichtung mit Thema („Demenz in Bayern"): die Wege dorthin
+       oben, darunter wie gewohnt die Antwort zum Thema. */
+    if (erk) ich(erkanntAls(erk) + liste(ortWege(erk)));
     const {treffer, immer, z, gel, texte} = antwort(roh);
     if (gel) ich(gel);
     if (!KI_AUS) {
@@ -13548,8 +13673,53 @@ window.WEGWEISER_ZAEHLEN = true;</script>
     const roh = feld.value.trim();
     if (!roh) return;
     feld.value = '';
+    vorschauWeg();
     fragen_stellen(roh);
   };
+
+  /* ---------- Sofortsuche beim Tippen ----------
+     Mariann am 10.11.2026: zuerst im Portal suchen, dann die KI fragen.
+     Beim Tippen zeigt der Wegweiser, was das Portal selbst findet. Das
+     läuft ganz im Browser, nichts verlässt das Gerät und nichts wird
+     gezählt. Erst „Mit KI beantworten lassen" oder Absenden stellt die
+     Frage wie bisher. */
+  let vorschau = null, vorschauTakt = null;
+  function vorschauWeg() { clearTimeout(vorschauTakt); if (vorschau) { vorschau.remove(); vorschau = null; } }
+  function vorschauZeigen(roh) {
+    const wege = [];
+    const f = faqTreffer(roh);
+    if (f) wege.push({art: 'Hilfe', titel: f.fragen[0], zusatz: 'Feste Antwort aus dem Portal',
+      tun() { feld.value = ''; vorschauWeg(); fragen_stellen(roh); }});
+    const erk = erkennen(roh);
+    if (erk) wege.push(...ortWege(erk));
+    const {treffer, z, texte} = antwort(roh);
+    wege.push(...(z.wege || []), ...texte, ...treffer);
+    const d = document.createElement('div');
+    d.className = 'ww-ich ww-vorschau';
+    d.innerHTML = `<p class="ww-hinweis">Im Portal gefunden · Ihre Eingabe bleibt auf Ihrem Gerät</p>
+      ${erk ? erkanntAls(erk) : ''}
+      ${wege.length ? liste(wege.slice(0, 6)) : '<p class="ww-hinweis">Noch nichts Passendes im Portal.</p>'}
+      ${KI_AUS ? '' : `<button type="button" class="ww-weg ww-ki-weg" data-ww-vorschau-ki><span><span class="ww-t">Nicht das Richtige? Mit KI beantworten lassen</span>
+        <span class="ww-z">Ihre Frage geht dafür an Claude (Anthropic)</span></span><span class="ww-pfeil" aria-hidden="true">›</span></button>`}`;
+    const k = d.querySelector('[data-ww-vorschau-ki]');
+    /* Direkt an Claude, auch wenn es eine feste Antwort oder einen Ort gäbe:
+       Wer hier klickt, hat die Wege schon gesehen. */
+    if (k) k.onclick = () => {
+      feld.value = ''; vorschauWeg(); sie(roh);
+      const a = antwort(roh);
+      const block = ich(`<p class="ww-hinweis">Weitere Wege im Portal:</p>${liste([...(a.z.wege || []), ...a.texte, ...a.treffer].slice(0, 5))}${zurueck}`);
+      kiAntwort(roh, block).then(ok => { if (!ok) { block.remove(); lokal(roh, a); } });
+    };
+    if (vorschau) vorschau.replaceWith(d); else verlauf.appendChild(d);
+    vorschau = d;
+    d.scrollIntoView({block: 'nearest'});
+  }
+  feld.addEventListener('input', () => {
+    clearTimeout(vorschauTakt);
+    const roh = feld.value.trim();
+    if (roh.length < 3) { vorschauWeg(); return; }
+    vorschauTakt = setTimeout(() => { try { vorschauZeigen(roh); } catch (e) { vorschauWeg(); } }, 300);
+  });
 
   /* ---------- Hinweis an den Suchfeldern ----------
      Wer eine Frage stellt, schreibt sie in das große Suchfeld, nicht in
