@@ -13399,6 +13399,11 @@ window.WEGWEISER_ZAEHLEN = true;</script>
   const FAQ = ((window.WEGWEISER_FAQ || {}).eintraege) || [];
   function faqTreffer(roh) {
     const {text} = korrigieren(roh);
+    /* Wortgleich gestellte Fragen zuerst. „Was ist der Innovationsfonds?"
+       besteht nur aus Füllwörtern und dem Portalnamen, die Wortsuche sieht
+       darin nichts, und die Frage fand ihre feste Antwort nie (10.11.2026). */
+    const n = norm(text);
+    for (const e of FAQ) if (e.fragen.some(f => norm(f) === n)) return e;
     const {qws, alle} = erweitern(text);
     if (!qws.length) return null;
     let best = null, bestWert = 0;
