@@ -13019,7 +13019,7 @@ window.WEGWEISER_ZAEHLEN = true;</script>
   .ww-kachel{text-align:left;background:var(--flaeche,#fff);border:1px solid var(--linie,#dde2e8);border-radius:10px;
     padding:10px 11px;cursor:pointer;font:inherit;color:inherit}
   .ww-kachel b{display:block;font-size:14.5px;color:var(--pille-text,#00529F)}
-  .ww-kachel span{display:block;font-size:12.5px;color:var(--gedaempft,#5b6674);margin-top:2px}
+  .ww-kachel span span{display:block;font-size:12.5px;color:var(--gedaempft,#5b6674);margin-top:2px}
   .ww-kachel:hover{border-color:var(--akzent,#1f6feb)}
   .ww-liste{display:flex;flex-direction:column;gap:6px}
   .ww-weg{display:flex;gap:9px;align-items:flex-start;text-align:left;background:var(--flaeche,#fff);
@@ -13057,6 +13057,25 @@ window.WEGWEISER_ZAEHLEN = true;</script>
   .ww-weg .ww-art.Text{background:var(--goldweich,#fdf6e0);color:var(--gold,#8a6a10)}
   .ww-weg.ww-zitat .ww-t{font-weight:400;font-style:italic}
   .ww-markiert{background:var(--goldweich,#fdf6e0);outline:2px solid var(--goldlinie,#d9bb62);border-radius:4px}
+  /* Nach Marianns Vorschlägen vom 10.11.2026: KI sichtbar, Navigation ohne Sprechblasen. */
+  .ww-plakette{display:inline-block;vertical-align:2px;margin-left:7px;font-size:10.5px;font-weight:700;letter-spacing:.02em;
+    border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:1px 7px;background:rgba(255,255,255,.14)}
+  .ww-ki-etikett{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;margin:0 0 7px;
+    background:var(--goldweich,#fdf6e0);color:var(--gold,#8a6a10);border:1px solid var(--goldlinie,#d9bb62)}
+  .ww-frage-kopf{margin:0 0 9px;font-size:14px;font-weight:700}
+  .ww-karten{display:flex;flex-direction:column;gap:7px}
+  .ww-kachel{display:flex;align-items:center;gap:10px;width:100%}
+  .ww-kachel > span:first-child{flex:1}
+  .ww-kachel .ww-pfeil{flex:0 0 auto;margin:0;font-size:16px;color:var(--pille-text,#00529F)}
+  .ww-kachel.ww-vorn{background:var(--goldweich,#fdf6e0);border-color:var(--goldlinie,#d9bb62)}
+  .ww-weg .ww-pfeil{margin-left:auto;flex:0 0 auto;color:var(--pille-text,#00529F);font-size:14px}
+  .ww-bereichkopf{display:flex;align-items:center;gap:8px;margin:0 0 9px;font-weight:700;font-size:15px}
+  .ww-bereichkopf button{background:none;border:0;cursor:pointer;font:inherit;font-size:18px;line-height:1;padding:0 4px;color:var(--pille-text,#00529F)}
+  .ww-angebote{margin:12px 0 4px}
+  .ww-angebote p{margin:0 0 6px;font-size:12.5px;color:var(--gedaempft,#5b6674)}
+  .ww-angebote a{display:inline-block;margin:0 5px 6px 0;font-size:12.5px;font-weight:600;text-decoration:none;
+    color:var(--pille-text,#00529F);border:1px solid var(--linie,#dde2e8);border-radius:999px;padding:3px 10px;background:var(--flaeche,#fff)}
+  .ww-angebote a:hover{border-color:var(--akzent,#1f6feb)}
   @media (max-width:640px){.ww-tafel{right:0;bottom:0;width:100vw;max-width:100vw;height:100vh;border-radius:0}
     .ww-knopf{right:16px;bottom:16px}}`;
   const st = document.createElement('style');
@@ -13075,14 +13094,19 @@ window.WEGWEISER_ZAEHLEN = true;</script>
   tafel.id = 'ww-tafel';
   tafel.hidden = true;
   tafel.setAttribute('aria-label', 'Wegweiser');
-  tafel.innerHTML = `<div class="ww-kopf"><div><h2>Wegweiser</h2>
-      <p>Antworten nur aus diesem Portal, jede mit Beleg. Gespeichert wird nichts.</p></div>
+  /* Kopf und Fuß nach Marianns Vorschlag (10.11.2026): „KI" sichtbar
+     (KI-Verordnung Art. 50, seit 02.08.2026), und kein „Gespeichert wird
+     nichts" mehr, denn seit dem 10.11. gibt es Tagessummen der Zählung. */
+  tafel.innerHTML = `<div class="ww-kopf"><div><h2>Wegweiser<span class="ww-plakette">KI-Assistent</span></h2>
+      <p>Findet Antworten im Innovationsfonds-Radar, immer mit Quelle.</p></div>
       <button type="button" aria-label="Wegweiser schließen">×</button></div>
     <div class="ww-verlauf" aria-live="polite"></div>
-    <p class="ww-datenschutz">Fragen außerhalb der häufigen beantwortet Claude (Anthropic). Bitte keine Angaben zu Ihrer Person oder Gesundheit eingeben.
-      <a href="https://knowledge-hubs.m-vf.de/datenschutz.html#wegweiser" target="_blank" rel="noopener">Datenschutz</a></p>
-    <form class="ww-fuss"><input type="search" placeholder="Frage oder Stichwort, z. B. Demenz" aria-label="Frage oder Stichwort">
-      <button type="submit">Suchen</button></form>`;
+    <p class="ww-datenschutz">Freie Fragen beantwortet eine KI (Claude, Anthropic) aus Inhalten des Portals. Fehler sind möglich.
+      Wir speichern Ihre Frage nicht. Bitte keine persönlichen oder Gesundheitsdaten eingeben.
+      <a href="https://knowledge-hubs.m-vf.de/datenschutz.html#wegweiser" target="_blank" rel="noopener">Datenschutz</a> ·
+      <a href="#ueber" data-ww-ueber>So arbeitet das Portal</a></p>
+    <form class="ww-fuss"><input type="search" placeholder="Thema, Frage oder Akronym" aria-label="Thema, Frage oder Akronym">
+      <button type="submit">Fragen</button></form>`;
   document.body.append(knopf, tafel);
   const verlauf = tafel.querySelector('.ww-verlauf');
   const feld = tafel.querySelector('input');
@@ -13096,10 +13120,15 @@ window.WEGWEISER_ZAEHLEN = true;</script>
   /* Jede Antwort ist ein Block mit Text und Wegen. Die Wege hält eine
      Liste im Speicher, die Knöpfe tragen nur ihre Nummer. */
   const WEGE = [];
+  /* Nur Etiketten, die Leser:innen etwas sagen. „Frage", „Bereich",
+     „Text", „Hilfe" waren interne Sortierung (Mariann, 10.11.2026).
+     Jeder Weg öffnet eine Stelle im Portal, darum trägt jeder ein ↗. */
+  const ETIKETT = new Set(['Vorhaben', 'Evidenz', 'Begriff']);
   function weg(x) {
     const i = WEGE.push(x) - 1;
-    return `<button type="button" class="ww-weg${x.art === 'Text' ? ' ww-zitat' : ''}" data-ww="${i}"><span class="ww-art ${esc(x.art)}">${esc(x.art)}</span>
-      <span><span class="ww-t">${esc(x.titel)}</span>${x.zusatz ? `<span class="ww-z">${esc(x.zusatz)}</span>` : ''}</span></button>`;
+    const et = ETIKETT.has(x.art) ? `<span class="ww-art ${esc(x.art)}">${esc(x.art)}</span>` : '';
+    return `<button type="button" class="ww-weg${x.art === 'Text' ? ' ww-zitat' : ''}" data-ww="${i}">${et}
+      <span><span class="ww-t">${esc(x.titel)}</span>${x.zusatz ? `<span class="ww-z">${esc(x.zusatz)}</span>` : ''}</span><span class="ww-pfeil" aria-hidden="true">↗</span></button>`;
   }
   function ich(html) {
     const d = document.createElement('div');
@@ -13119,14 +13148,24 @@ window.WEGWEISER_ZAEHLEN = true;</script>
     const w = e.target.closest('[data-ww]');
     if (w) { e.preventDefault(); gehen(WEGE[+w.dataset.ww]); return; }
     const k = e.target.closest('[data-kachel]');
-    if (k) { sie(k.querySelector('b').textContent); KACHELN[k.dataset.kachel].los(); return; }
+    if (k) {
+      const x = KACHELN[k.dataset.kachel];
+      if (x.ziel) { gehen({ziel: x.ziel}); return; }
+      /* Kopfzeile mit Zurück-Pfeil statt Sprechblase: Ein Klick ist keine Frage. */
+      x.los();
+      verlauf.lastElementChild.insertAdjacentHTML('afterbegin',
+        `<div class="ww-bereichkopf"><button type="button" data-start aria-label="Zurück zur Auswahl">‹</button>${esc(x.t)}</div>`);
+      return;
+    }
     if (e.target.closest('[data-start]')) start();
   });
+  tafel.querySelector('[data-ww-ueber]').onclick = e => { e.preventDefault(); gehen({ziel: '#ueber'}); };
 
   const zurueck = '<button type="button" class="ww-zurueck" data-start>← Zur Auswahl</button>';
   const liste = xs => `<div class="ww-liste">${xs.map(weg).join('')}</div>`;
   const KACHELN = {
-    frage: {t: 'Eine Frage klären', z: '23 Fragen mit fertiger Antwort', los() {
+    idee: {t: 'Projektidee prüfen', z: 'Ideencheck: Was wurde dazu schon gefördert?', ziel: '#idee', vorn: true},
+    frage: {t: 'Häufige Fragen', z: '23 fertig ausgewertete Fragen', los() {
       const B = typeof BL_BEREICHE !== 'undefined' ? BL_BEREICHE : [];
       const F = fragen();
       ich('<p>Diese Fragen beantwortet die Themen-Bilanz schon, gerechnet aus allen Beschlüssen und Berichten.</p>'
@@ -13135,7 +13174,7 @@ window.WEGWEISER_ZAEHLEN = true;</script>
           return xs.length ? `<p class="ww-hinweis"><b>${esc(n)}</b></p>${liste(xs)}` : '';
         }).join('') + zurueck);
     }},
-    vorhaben: {t: 'Ein Vorhaben finden', z: 'nach Akronym, Thema oder Einrichtung', los() {
+    vorhaben: {t: 'Vorhaben finden', z: 'nach Akronym, Thema oder Einrichtung', los() {
       ich(`<p>Schreiben Sie unten ein Akronym, ein Thema oder eine Einrichtung, dann suche ich die passenden Vorhaben.</p>
         ${liste([{art: 'Bereich', titel: 'Projektdatenbank', zusatz: 'Alle 861 Vorhaben mit Filtern', ziel: '#projekte'},
                  {art: 'Bereich', titel: 'Landkarte', zusatz: 'Vorhaben nach Bundesland und Ort', ziel: '#karte'}])}${zurueck}`);
@@ -13146,7 +13185,7 @@ window.WEGWEISER_ZAEHLEN = true;</script>
       ich('<p>Für diese Themenfelder gibt es eine Evidenzsynthese über alle passenden Vorhaben.</p>'
         + liste(synthesen()) + zurueck);
     }},
-    antrag: {t: 'Einen Antrag vorbereiten', z: 'was es schon gibt, woran es hakte', los() {
+    antrag: {t: 'Antrag vorbereiten', z: 'Woran Vorhaben bisher scheiterten', los() {
       const F = fragen(), f = s => F.find(x => x.ziel === '#suche/' + s);
       ich('<p>Vor einem Antrag lohnt der Blick auf das, was schon gefördert wurde und woran Vorhaben gescheitert sind.</p>'
         + liste([{art: 'Bereich', titel: 'Ideencheck', zusatz: 'Ihre Projektidee gegen den Bestand prüfen', ziel: '#idee'},
@@ -13154,14 +13193,16 @@ window.WEGWEISER_ZAEHLEN = true;</script>
                  {art: 'Bereich', titel: 'Endpunkte', zusatz: 'Was die Vorhaben gemessen haben', ziel: '#endpunkte'}].filter(Boolean))
         + zurueck);
     }},
-    begriff: {t: 'Einen Begriff verstehen', z: 'Glossar mit 42 Begriffen', los() {
+    begriff: {t: 'Begriff verstehen', z: 'Glossar mit 42 Begriffen', los() {
       const bs = begriffe();
       ich(`<p>Schreiben Sie unten den Begriff, oder wählen Sie hier.</p>${liste(bs.slice(0, 12))}
         ${liste([{art: 'Bereich', titel: 'Ganzes Glossar', zusatz: bs.length + ' Begriffe', ziel: '#glossar'}])}${zurueck}`);
       feld.placeholder = 'Begriff, z. B. Endpunkt';
       feld.focus();
     }},
-    portal: {t: 'Wie das Portal arbeitet', z: 'Quellen, Prüfung, Grenzen', los() {
+    /* Ohne Kachel auf der Startseite (unten im Fuß „So arbeitet das Portal"),
+       bleibt aber für Verweise erreichbar. */
+    portal: {t: 'Wie das Portal arbeitet', z: 'Quellen, Prüfung, Grenzen', ohneKachel: true, los() {
       ich('<p>Alle Aussagen stammen aus den Beschlüssen des Innovationsausschusses und den Berichten der Vorhaben. '
         + 'Jede steht mit ihrem Zitat da. Die Projektleitungen konnten ihre Darstellung prüfen.</p>'
         + liste([{art: 'Bereich', titel: 'Über das Portal', zusatz: 'Quellen, Methode, wer dahintersteht', ziel: '#ueber'},
@@ -13169,11 +13210,21 @@ window.WEGWEISER_ZAEHLEN = true;</script>
                  {art: 'Bereich', titel: 'Kennzahlen', zusatz: 'Der Bestand in Zahlen', ziel: '#zahlen'}]) + zurueck);
     }},
   };
+  /* Weitere Angebote von MVF, als Knöpfe über das Radar hinaus. */
+  const ANGEBOTE = [
+    ['Knowledge-Hubs', 'https://knowledge-hubs.m-vf.de/'],
+    ['Zulassungs-/DiGA-Radar', 'https://wissen.m-vf.de/zulassungen.html'],
+    ['Ausschreibungsradar', 'https://wissen.m-vf.de/ausschreibungen.html'],
+    ['CuratioHub', 'https://knowledge-hubs.m-vf.de/curatiohub.html'],
+  ];
   function start() {
-    feld.placeholder = 'Frage oder Stichwort, z. B. Demenz';
-    ich(`<p>Was möchten Sie wissen? Wählen Sie, oder schreiben Sie unten Ihre Frage.</p>
-      <div class="ww-kacheln">${Object.entries(KACHELN).map(([k, x]) =>
-        `<button type="button" class="ww-kachel" data-kachel="${k}"><b>${esc(x.t)}</b><span>${esc(x.z)}</span></button>`).join('')}</div>`);
+    feld.placeholder = 'Thema, Frage oder Akronym';
+    ich(`<p class="ww-frage-kopf">Womit können wir helfen?</p>
+      <div class="ww-karten">${Object.entries(KACHELN).filter(([, x]) => !x.ohneKachel).map(([k, x]) =>
+        `<button type="button" class="ww-kachel${x.vorn ? ' ww-vorn' : ''}" data-kachel="${k}"><span><b>${esc(x.t)}</b><span>${esc(x.z)}</span></span>`
+        + `<span class="ww-pfeil" aria-hidden="true">${x.ziel ? '↗' : '›'}</span></button>`).join('')}</div>
+      <div class="ww-angebote"><p>Weitere Angebote von MVF:</p>${ANGEBOTE.map(([t, u]) =>
+        `<a href="${u}" target="_blank" rel="noopener">${esc(t)} ↗</a>`).join('')}</div>`);
   }
 
   /* Die Zahl, die die Themen-Bilanz selbst nennt („Themen-Dossier
@@ -13375,10 +13426,12 @@ window.WEGWEISER_ZAEHLEN = true;</script>
       const belege = [...new Set(d.belege || [])].map(n => st[n - 1]).filter(Boolean).map(s => s.weg);
       const div = document.createElement('div');
       div.className = 'ww-ki';
-      div.innerHTML = `<p>${verlinkt(d.antwort || '', st)}</p>
+      /* Etikett „KI-Antwort" an jeder Antwort von Claude (KI-Verordnung Art. 50).
+         Die Antwortzeit gehört nicht hierher, sie steht weiter in d.sekunden. */
+      div.innerHTML = `<span class="ww-ki-etikett">KI-Antwort · Fehler möglich</span>
+        <p>${verlinkt(d.antwort || '', st)}</p>
         ${belege.length ? `<p class="ww-hinweis">Belegt durch:</p>${liste(belege)}` : ''}
-        <p class="ww-hinweis ww-ki-fuss">Antwort von Claude (Anthropic), nur aus ${st.length} Stellen dieses Portals. Ihre Frage ging dafür an Anthropic${
-          d.sekunden ? ' · ' + String(d.sekunden).replace('.', ',') + ' s' : ''}</p>`;
+        <p class="ww-hinweis ww-ki-fuss">Zusammengefasst aus ${st.length} Stellen des Portals. Ihre Frage wurde dafür an Anthropic übermittelt.</p>`;
       warte.replaceWith(div);
       div.scrollIntoView({block: 'start', behavior: 'smooth'});
       zaehle(fragefeld(roh, faqTreffer(roh)), weg, d.gefunden);
@@ -13443,7 +13496,7 @@ window.WEGWEISER_ZAEHLEN = true;</script>
     const block = ich(`<div class="ww-ki ww-fest"><p>${esc(text)}</p>
       <p class="ww-hinweis ww-ki-fuss">Feste Antwort, wörtlich aus dem Portal (${esc(e.aus)})</p></div>
       ${liste(wege)}
-      ${KI_AUS ? '' : '<button type="button" class="ww-zurueck" data-ww-ki>Genauer nachfragen bei Claude →</button>'}
+      ${KI_AUS ? '' : '<button type="button" class="ww-zurueck" data-ww-ki>Mit KI genauer beantworten lassen →</button><p class="ww-hinweis">Ihre Frage geht dafür an Claude (Anthropic).</p>'}
       ${zurueck}`);
     const k = block.querySelector('[data-ww-ki]');
     if (k) k.onclick = () => { k.remove(); kiAntwort(roh, block, 'nachfrage').then(ok => { if (!ok) block.insertAdjacentHTML('beforeend', '<p class="ww-hinweis">Claude ist gerade nicht erreichbar.</p>'); }); };
