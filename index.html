@@ -12868,7 +12868,10 @@ window.WEGWEISER_ZAEHLEN = true;</script>
     const {text: roh, geaendert} = korrigieren(eingabe);
     const {qws, alle} = erweitern(roh);
     const will = absicht(qws);
-    if (!alle.length) return {qws, geaendert, treffer: []};
+    /* texte gehört auch hier dazu: Am 10.11.2026 brach „Was ist der
+       Innovationsfonds?" (nur Füllwörter und Portalname) mit „texte is not
+       iterable" ab, ohne jede Antwort. */
+    if (!alle.length) return {qws, geaendert, texte: [], treffer: []};
     const treffer = [];
     /* Fragen, deren Absicht die Eingabe trifft, auch ohne gemeinsames Wort. */
     fragen().forEach(x => {
