@@ -3,7 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Innovationsfonds-Radar</title>
+<title>Innovationsfonds-Radar · Alle Vorhaben des Innovationsfonds, durchsuchbar und ausgewertet</title>
+<!-- 11.11.2026 (Online-Check): Beschreibung, Canonical, Open Graph und schema.org für die Startseite.
+     Ohne Zahlen, die sich mit jedem Beschluss ändern. -->
+<meta name="description" content="Alle Beschlüsse und Ergebnisberichte des Innovationsfonds seit 2016 an einem Ort: Projektdatenbank, gerechnete Antworten auf geprüfte Fragen, sieben Auswertungen und Werkzeuge für Ihren Antrag. Jede Angabe mit Zitat und Seitenzahl. Ein Angebot von Monitor Versorgungsforschung.">
+<link rel="canonical" href="https://innofonds.m-vf.de/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Innovationsfonds-Radar">
+<meta property="og:title" content="Innovationsfonds-Radar: alle Vorhaben des Innovationsfonds, ausgewertet">
+<meta property="og:description" content="Projektdatenbank, Themen-Bilanz und Auswertungen aus allen Beschlüssen und Berichten seit 2016, jede Angabe mit Zitat und Seitenzahl.">
+<meta property="og:url" content="https://innofonds.m-vf.de/">
+<meta property="og:image" content="https://innofonds.m-vf.de/bild/og-radar.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","@id":"https://innofonds.m-vf.de/#website","url":"https://innofonds.m-vf.de/","name":"Innovationsfonds-Radar","inLanguage":"de",
+  "publisher":{"@type":"Organization","name":"Monitor Versorgungsforschung","url":"https://www.monitor-versorgungsforschung.de/"}},
+ {"@type":"Dataset","name":"Innovationsfonds-Radar: Vorhaben, Beschlüsse und Berichte des Innovationsfonds","url":"https://innofonds.m-vf.de/",
+  "description":"Ausgewertete Beschlüsse des Innovationsausschusses, Ergebnis- und Evaluationsberichte aller Vorhaben des Innovationsfonds seit 2016, jede Angabe mit Zitat und Seitenzahl.",
+  "inLanguage":"de","isAccessibleForFree":true,"temporalCoverage":"2016/..","spatialCoverage":{"@type":"Place","name":"Deutschland"},
+  "creator":{"@type":"Organization","name":"Monitor Versorgungsforschung","url":"https://www.monitor-versorgungsforschung.de/"}}]}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
 <!-- DARSTELLUNG-KOPF: Wahl aus dem Cookie, bevor gezeichnet wird (Schalter: darstellung.html) -->
 <script>(function(){var m=document.cookie.match(/(?:^|;\s*)mvf-theme=(light|dark)/);if(m)document.documentElement.setAttribute('data-theme',m[1]);})();</script>
@@ -10734,8 +10754,8 @@ partnerZeichnen();
 .pdb-gruppe>summary::-webkit-details-marker{display:none}
 .pdb-gruppe>summary::after{content:"▾";font-size:12px}
 .pdb-gruppe[open]>summary::after{content:"▴"}
-.pdb-i{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;border:1px solid var(--linie);
-  font-size:10px;text-transform:none;letter-spacing:0;margin-left:6px;cursor:help}
+.pdb-i{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;border:1px solid var(--linie);
+  font-size:12px;text-transform:none;letter-spacing:0;margin-left:6px;cursor:help}
 .pdb-gruppe label{display:flex;align-items:flex-start;gap:7px;font-size:14px;padding:2px 0;cursor:pointer}
 .pdb-gruppe label input{margin-top:4px}
 .pdb-gruppe label span{flex:1}
@@ -12307,6 +12327,9 @@ dialog.kf::backdrop{background:rgba(10,20,35,.45)}
 
 
 <style>
+/* 11.11.2026 (Online-Check): unsichtbarer Text für Bildschirmleser, Sprungziele ohne eigene Fläche. */
+.sr-nur{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.sprungziel{display:block;height:0;scroll-margin-top:70px}
 /* Stufe 100: Navigation nach Marianns Canvas 1. */
 :root{--sk-recherche:#0A3F7E;--sk-recherche2:#054A94;--sk-auswertung:#E8EFF8;--sk-antrag:#EEF1F5;
   --sk-evidenz:#F8F4EA;--sk-evidenzrand:#E3D6B5;--ul-grund:#F6F8FB;--pille:#E3ECF7;--pille-text:#00529F}
@@ -12624,6 +12647,58 @@ nav[role="tablist"]{display:none!important}
   if (name && name.indexOf('=') < 0 && document.getElementById('t-' + name)) reiterNach('t-' + name);
   else if (!/[#&]p=/.test(location.hash || '')) reiterNach('t-uebersicht');
   else { const offen = [...document.querySelectorAll('main section')].find(x => !x.hidden); if (offen) { navZeigen(offen.id); if (window.nachNav) window.nachNav(offen.id); } }
+
+  /* 11.11.2026 (Online-Check, WAVE): Zugänglichkeit nachziehen, ohne die Seiten einzeln anzufassen.
+     1. Links „#p=123“ führen auf die echte Projektseite /projekt/<slug>/ (154 Stück auf der Startseite).
+        Eingehende alte Links mit #p= wertet das Hauptskript weiter aus.
+     2. Seitenlinks wie „#transfer“ oder „#suche/lotsen“ bekommen ein Sprungziel am Anfang ihrer Seite.
+        Die Navigation über die Adresse bleibt, Prüfwerkzeuge sehen keine toten Links mehr.
+     3. Eingabefelder ohne Beschriftung bekommen ein aria-label, leere Tabellenköpfe einen unsichtbaren Text,
+        die leere Überschrift der Themen-Bilanz wird ausgeblendet, solange sie leer ist. */
+  const SL = new Map((typeof P !== 'undefined' ? P : []).map(p => [String(p.id), p.sl]));
+  const FELD = {'p-q': 'Vorhaben durchsuchen', 'p-bl': 'Bundesland', 'p-vb': 'Versorgungsbereich', 'll-q': 'Leitlinienvorhaben durchsuchen',
+    'll-tf': 'Themenfeld', 'k-q': 'Einrichtung auf der Karte suchen', 'k-typ': 'Einrichtungsart', 'k-flaeche': 'Färbung der Bundesländer',
+    'k-min': 'Mindestzahl der Projekte', 'n-q': 'Einrichtung im Netzwerk suchen', 'n-aufl': 'Auflösung der Grafik', 'n2-aufl': 'Auflösung der Grafik',
+    'o-q': 'Einrichtung suchen', 'o-typ': 'Einrichtungsart', 'ep-q': 'Endpunkte durchsuchen', 'ep-art': 'Art des Endpunkts',
+    'ep-erg': 'Ergebnis', 'fz-q': 'Fallzahlen durchsuchen', 'fz-ber': 'Förderbereich', 'fz-lage': 'Erreichte Fallzahl',
+    'fz-grund': 'Grund der Abweichung', 'q': 'Suche', 'id-text': 'Beschreibung Ihrer Projektidee', 'id-datei': 'Datei mit Ihrer Projektidee',
+    'id-ber': 'Förderbereich', 'ff-filter': 'Auswahl'};
+  function zugaenglich() {
+    document.querySelectorAll('a[href^="#p="]').forEach(a => {
+      const sl = SL.get(a.getAttribute('href').slice(3));
+      if (sl) a.setAttribute('href', '/projekt/' + sl + '/');
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      const h = decodeURIComponent(a.getAttribute('href').slice(1));
+      if (!h || h.includes('=') || document.getElementById(h)) return;
+      const sec = document.getElementById('t-' + h.split('/')[0]);
+      if (!sec) return;
+      const z = document.createElement('span');
+      z.id = h; z.className = 'sprungziel'; z.setAttribute('aria-hidden', 'true');
+      sec.prepend(z);
+    });
+    document.querySelectorAll('input:not([type=hidden]):not([type=checkbox]):not([type=radio]), select, textarea').forEach(f => {
+      if ((f.labels && f.labels.length) || f.getAttribute('aria-label') || f.getAttribute('aria-labelledby')) return;
+      const t = FELD[f.id] || f.getAttribute('placeholder') || f.getAttribute('title');
+      if (t) f.setAttribute('aria-label', t.replace(/\s+/g, ' ').trim());
+    });
+    document.querySelectorAll('th').forEach(th => {
+      if (th.textContent.trim() || th.querySelector('.sr-nur')) return;
+      const s = document.createElement('span'); s.className = 'sr-nur';
+      s.textContent = th.closest('thead') ? 'Merkmal' : 'Zeile';
+      th.appendChild(s);
+    });
+  }
+  const blt = document.getElementById('bl-titel');
+  if (blt) { const pr = () => { blt.hidden = !blt.textContent.trim(); }; pr();
+    new MutationObserver(pr).observe(blt, {childList: true, characterData: true, subtree: true}); }
+  zugaenglich();
+  const vorherZ = window.nachNav;
+  window.nachNav = ziel => { if (vorherZ) vorherZ(ziel); setTimeout(zugaenglich, 800); };
+  /* Inhalte, die erst beim Klicken entstehen (Themen-Bilanz, Netzwerk), ziehen nach. */
+  let zWarte;
+  new MutationObserver(() => { clearTimeout(zWarte); zWarte = setTimeout(zugaenglich, 400); })
+    .observe(document.querySelector('main') || document.body, {childList: true, subtree: true});
 })();
 </script>
 
@@ -13173,7 +13248,7 @@ window.WEGWEISER_RUECKMELDUNG = true;</script>
   .ww-weg.ww-zitat .ww-t{font-weight:400;font-style:italic}
   .ww-markiert{background:var(--goldweich,#fdf6e0);outline:2px solid var(--goldlinie,#d9bb62);border-radius:4px}
   /* Nach Marianns Vorschlägen vom 10.11.2026: KI sichtbar, Navigation ohne Sprechblasen. */
-  .ww-plakette{display:inline-block;vertical-align:2px;margin-left:7px;font-size:10.5px;font-weight:700;letter-spacing:.02em;
+  .ww-plakette{display:inline-block;vertical-align:2px;margin-left:7px;font-size:12px;font-weight:700;letter-spacing:.02em;
     border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:1px 7px;background:rgba(255,255,255,.14)}
   .ww-ki-etikett{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;margin:0 0 7px;
     background:var(--goldweich,#fdf6e0);color:var(--gold,#8a6a10);border:1px solid var(--goldlinie,#d9bb62)}
