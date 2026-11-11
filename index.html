@@ -9070,7 +9070,7 @@ partnerZeichnen();
     h += `<h3>Was ein Vorhaben an Zeit kostet</h3>
       <div class="kacheln">
         <div class="kachel"><div class="gross">${mon(Z.laufzeit_median)}</div>
-          <div class="was">Laufzeit im Median, von ${Z.laufzeit_spanne[0]}
+          <div class="was">Laufzeit der abgeschlossenen Vorhaben im Median, von ${Z.laufzeit_spanne[0]}
             bis ${Z.laufzeit_spanne[1]} Monaten</div></div>
         <div class="kachel"><div class="gross">${mon(Z.warten_median)}</div>
           <div class="was">vom Projektende bis zum Beschluss des
@@ -11495,14 +11495,20 @@ partnerZeichnen();
   const KACHELN = {
     't-zahlen': () => {
       const summe = P.reduce((s, p) => s + (p.sum || 0), 0);
-      const lz = P.map(p => monate(p.von, p.bis)).filter(x => x != null && x > 0);
       const be = P.filter(p => p.st === 'beendet');
+      /* 11.11.2026 (Tafelabgleich): vorher über alle 861 Vorhaben samt laufender (geplantes Ende), 41 Monate,
+         während der Abschnitt darunter die beendeten zählt, 43 Monate. Jetzt dieselbe Grundlage wie der Abschnitt. */
+      const lz = be.map(p => monate(p.von, p.bis)).filter(x => x != null && x > 0);
       const beS = be.reduce((s, p) => s + (p.sum || 0), 0);
       const ue = be.filter(p => UE_TE.includes(p.te)).length;
       return [
         [z(P.length), 'Vorhaben hat der Innovationsfonds seit 2016 gefördert', ['Jahrgänge', /Jahrg/]],
         [blEur(summe) + blGenau(summe), 'sind insgesamt in diese Vorhaben geflossen', ['Fördersummen', /^Fördersummen/]],
-        [z(med(lz)) + ' Monate', `lief ein Vorhaben im Median, die kürzesten ${z(Math.min(...lz))}, die längsten ${z(Math.max(...lz))} Monate`, ['Was ein Vorhaben an Zeit kostet', /Zeit kostet/]],
+        /* Wenn vorhanden, genau die Zahl des Abschnitts (KZ.zeitrechnung aus if_kennzahlen, dauer_monate). Die eigene
+           Rechnung aus von/bis lag um einen Monat daneben (42 gegen 43). */
+        ((typeof KZ !== 'undefined' && KZ && KZ.zeitrechnung && KZ.zeitrechnung.laufzeit_median)
+          ? [z(Math.round(KZ.zeitrechnung.laufzeit_median)) + ' Monate', `lief ein abgeschlossenes Vorhaben im Median, die kürzesten ${z(KZ.zeitrechnung.laufzeit_spanne[0])}, die längsten ${z(KZ.zeitrechnung.laufzeit_spanne[1])} Monate`, ['Was ein Vorhaben an Zeit kostet', /Zeit kostet/]]
+          : [z(med(lz)) + ' Monate', `lief ein abgeschlossenes Vorhaben im Median, die kürzesten ${z(Math.min(...lz))}, die längsten ${z(Math.max(...lz))} Monate`, ['Was ein Vorhaben an Zeit kostet', /Zeit kostet/]]),
         [blEur(beS / Math.max(1, ue)) + `<small>${eur(beS)} ÷ ${z(ue)}</small>`, `Fördergeld stehen rechnerisch hinter jeder Empfehlung oder Prüfbitte, über alle ${z(be.length)} abgeschlossenen Vorhaben`, ['Was die Fördersumme über den Ausgang sagt', /Fördersumme über/]],
       ];
     },
