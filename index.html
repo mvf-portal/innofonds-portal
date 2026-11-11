@@ -10749,6 +10749,9 @@ partnerZeichnen();
      ordnung: ['Mit Kontrollgruppe, randomisiert', 'Mit Kontrollgruppe, nicht randomisiert', 'Ohne Kontrollgruppe', 'Keine Intervention erprobt', 'ohne Angabe']},
     {k: 'th', name: 'Schlagwort', i: 'Schlagwörter laut MVF, KI-gestützt. Beschiedene Vorhaben: aus dem Beschluss, dreifach geprüft. Laufende Vorhaben: aus der Projektbeschreibung, Mehrheit aus drei Durchgängen.', mehrfach: true,
      wert: p => (p.x && p.x.themen && p.x.themen.length) ? p.x.themen : ((p.thl && p.thl.length) ? p.thl : ['ohne Schlagwort'])},
+    /* 11.11.2026, Marianns Canvas 2: Filter nach Hindernis. Nur Hindernisse, deren Zuordnung im Beschluss belegt ist (p.hk). */
+    {k: 'hk', name: 'Hindernis', i: 'Hindernisse, die der Beschluss des Innovationsausschusses belegt. Jede Zuordnung ist gegen ihr Zitat geprüft. Vorhaben ohne Beschluss sind noch nicht ausgewertet.', mehrfach: true,
+     wert: p => (p.hk && p.hk.length) ? p.hk : (p.x ? ['ohne belegtes Hindernis'] : ['ohne Beschluss, noch nicht ausgewertet'])},
     {k: 'bl', name: 'Bundesland', i: 'Sitz der Konsortialführung.', wert: p => p.bl || 'ohne Angabe'},
     {k: 'jahr', name: 'Förderbeginn', i: 'Jahr, in dem das Vorhaben begann.', wert: p => (p.von || '').slice(0, 4) || 'ohne Angabe', absteigend: true},
     {k: 'summe', name: 'Fördersumme', i: 'Versorgungsforschung liegt meist unter 2 Mio. €, Neue Versorgungsformen meist darüber.', wert: p => stufe(p.sum), ordnung: STUFEN},
@@ -10856,9 +10859,9 @@ partnerZeichnen();
   });
   document.getElementById('pdb-csv').onclick = () => csvLaden(`innofonds-projekte-${heute()}.csv`,
     ['Akronym', 'Titel', 'Art', 'Förderbereich', 'Status', 'Beschluss', 'Beschlussdatum', 'Beginn', 'Ende', 'Fördersumme', 'Bundesland',
-     'Versorgungsbereich', 'Studiendesign', 'Schlagwörter', 'Seite'],
+     'Versorgungsbereich', 'Studiendesign', 'Schlagwörter', 'Belegte Hindernisse', 'Seite'],
     treffer.map(p => [p.akr, p.tit, p.vf === LL ? 'Leitlinienvorhaben' : 'Versorgungsvorhaben', p.ber, p.st, beschluss(p), p.bd || '',
-      p.von || '', p.bis || '', p.sum || '', p.bl || '', p.vb || '', p.sd || '', ((p.x && p.x.themen) || []).join('; '),
+      p.von || '', p.bis || '', p.sum || '', p.bl || '', p.vb || '', p.sd || '', ((p.x && p.x.themen) || []).join('; '), (p.hk || []).join('; '),
       'https://innofonds.m-vf.de/projekt/' + p.sl + '/']));
   /* Auf schmalen Bildschirmen beginnt die Filterspalte zugeklappt. */
   if (window.matchMedia('(max-width: 860px)').matches) document.getElementById('pdb-filterhuelle').open = false;
@@ -10870,6 +10873,35 @@ partnerZeichnen();
     document.getElementById('pdb-q').value = ''; Z.q = '';
     Z.ids = new Set(ids); Z.idsName = name; Z.seite = 0; alles();
   };
+  /* 11.11.2026: Filter aus der Adresse, z. B. /#projekte/th=Demenz oder /#projekte/hk=Fallzahl%20bei%20der%20Rekrutierung.
+     So können die Projektseiten Schlagwörter und Hindernisse als Links in die Datenbank setzen. */
+  function ausAdresse() {
+    const m = location.hash.match(/^#projekte\/(.+)$/);
+    if (!m) return;
+    const q = new URLSearchParams(m[1]);
+    let neu = false;
+    G.forEach(g => { if (q.has(g.k)) { Z.f[g.k] = new Set(q.getAll(g.k)); neu = true; } });
+    if (!neu) return;
+    G.forEach(g => { if (!q.has(g.k)) Z.f[g.k].clear(); });
+    document.getElementById('pdb-q').value = ''; Z.q = ''; Z.ids = null; Z.seite = 0; alles();
+  }
+  window.addEventListener('hashchange', ausAdresse);
+  ausAdresse();
+  /* 11.11.2026: Einrichtung aus der Adresse, /#netz/<Name>. Die Projektseiten verlinken so jede Einrichtung
+     des Konsortiums ins Netzwerk (Marianns Canvas 2). Gleicher Weg wie der Wegweiser: Suchfeld füllen, Knoten zeigen. */
+  function netzAusAdresse() {
+    const m = location.hash.match(/^#netz\/(.+)$/);
+    if (!m) return;
+    const name = decodeURIComponent(m[1]);
+    setTimeout(() => {
+      const f = document.getElementById('n-q');
+      if (!f) return;
+      f.value = name; f.dispatchEvent(new Event('input', {bubbles: true}));
+      f.scrollIntoView({block: 'start'});
+    }, 600);
+  }
+  window.addEventListener('hashchange', netzAusAdresse);
+  netzAusAdresse();
   alles();
 })();
 </script>
@@ -13663,7 +13695,20 @@ window.WEGWEISER_RUECKMELDUNG = true;</script>
     const ws = q.trim().split(' ').filter(w => w.length > 2 && !STOPP.has(w));
     const thema = w => RINGE.some(r => r.alle.some(x => woerter(x).includes(w)));
     let orgs = [], wort = '';
-    for (const w of ws) {
+    /* 11.11.2026: Krankenkassen vorab. „AOK" steht in Projekttiteln und fiel
+       deshalb als Thema durch, „TK" hat nur zwei Buchstaben. Für diese Namen
+       gilt eine feste Liste, gesucht wird am Anfang von Name oder Kürzel. */
+    const KASSEN = {tk: ['techniker krankenkasse', 'tk'], aok: ['aok'], dak: ['dak'], barmer: ['barmer'],
+      ikk: ['ikk'], bkk: ['bkk'], hkk: ['hkk'], kkh: ['kkh'], knappschaft: ['knappschaft', 'drv knappschaft']};
+    const beginnt = (s, v) => s === v || s.startsWith(v + ' ');
+    for (const w of q.trim().split(' ')) {
+      const vor = KASSEN[w];
+      if (!vor) continue;
+      const xs = knoten.filter(k => vor.some(v => beginnt(norm(k.name), v) || (k.akr && beginnt(norm(k.akr), v))))
+        .sort((a, b) => b.projekte - a.projekte);
+      if (xs.length) { orgs = xs; wort = w; q = q.replace(' ' + w + ' ', ' '); break; }
+    }
+    for (const w of (orgs.length ? [] : ws)) {
       if (ORTE.has(w) || OHNE_THEMA.test(w) || thema(w)) continue;
       const nachKurz = knoten.filter(k => k.akr && norm(k.akr) === w);
       /* Ein Namenswort, das auch in Projekttiteln steht, ist ein Thema:
