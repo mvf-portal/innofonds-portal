@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kontakt · Knowledge-Hubs und Innovationsfonds-Radar</title>
+<meta name="description" content="Hinweise, Korrekturen oder Fragen an die Redaktion von Monitor Versorgungsforschung, für alle Knowledge-Hubs, das Innovationsfonds-Radar und alle weiteren Angebote.">
+<link rel="canonical" href="https://innofonds.m-vf.de/kontakt/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<style>body{margin:0;background:#F3F5F8;color:#14202E;font:15px/1.55 Lato,"Segoe UI",system-ui,sans-serif}
+.wrap{box-sizing:border-box}</style>
+<!-- ZAEHLER-START --------------------------------------------------------
+     Zaehlt den Aufruf auf dem eigenen Server von Monitor Versorgungsforschung.
+     Kein Cookie, keine Kennung auf dem Geraet, keine fremde Firma. Wer Do Not
+     Track gesetzt hat, wird gar nicht erst gezaehlt. Schlaegt der Abruf fehl,
+     merkt die Seite es nicht - ein Bild, das nicht laedt, ist folgenlos.
+     Gegenstueck: /zaehler/z.php auf monitor-versorgungsforschung.de -->
+<script>
+(function () {
+  // Die Seite meldet Suchen ueber window.mvfZ. Die Funktion steht ab sofort
+  // immer bereit und tut im Zweifel nichts - sonst muesste jede Aufrufstelle
+  // pruefen, ob es sie ueberhaupt gibt, und eine vergessene Pruefung waere
+  // ein Skriptfehler mitten in der Suche.
+  window.mvfZ = function () {};
+  try {
+    if (navigator.doNotTrack === '1' || window.doNotTrack === '1'
+        || navigator.globalPrivacyControl === true) return;
+    // Automatische Umgebungen melden sich selbst: navigator.webdriver setzen
+    // Headless Chrome und Selenium von sich aus. Zuverlaessiger als jede
+    // Liste von Browserkennungen, weil es nicht geraten, sondern gemeldet wird.
+    if (navigator.webdriver) return;
+    if (!screen.width || !screen.height) return;   // kein echter Bildschirm
+    if (!/\.m-vf\.de$/.test(location.hostname)) return;   // lokal nicht zaehlen
+    var r = '';
+    try { r = document.referrer ? new URL(document.referrer).hostname : ''; }
+    catch (e) { r = ''; }
+    if (r === location.hostname) r = '';
+    // Bildschirmbreite nur in Stufen. Die genaue Aufloesung waere eines der
+    // staerksten Merkmale zum Wiedererkennen eines Browsers; fuer die Frage,
+    // fuer welche Breite zu gestalten ist, genuegt die Schublade.
+    var w = screen.width;
+    var stufe = w < 480 ? 'bis480' : w < 768 ? 'bis768' : w < 1024 ? 'bis1024'
+              : w < 1440 ? 'bis1440' : w < 1920 ? 'bis1920' : 'ueber1920';
+    var q = 'h=' + encodeURIComponent(location.hostname)
+          + '&p=' + encodeURIComponent(location.pathname)
+          + '&r=' + encodeURIComponent(r ? 'https://' + r + '/' : '')
+          + '&g=' + (Math.min(screen.width, screen.height) < 768 ? 'm' : 'd')
+          + '&b=' + stufe
+          + '&c=' + Date.now();
+    var ziel = 'https://www.monitor-versorgungsforschung.de/zaehler/z.php?';
+    new Image(1, 1).src = ziel + q;
+
+    // Ein Begriff wird nur mitgeschickt, wenn er wie ein Fachbegriff aussieht.
+    // Ziffern, Klammern, Anfuehrungszeichen, @ und mehr als drei Woerter
+    // deuten auf Freitext oder eine Kennung - so etwas verlaesst den Browser
+    // gar nicht erst. Was uebrig bleibt, prueft der Server noch einmal und
+    // wirft dort zusaetzlich alle Krankheitsbegriffe weg.
+    function sauber(v) {
+      if (typeof v !== 'string') return '';
+      var t = v.toLowerCase().replace(/\s+/g, ' ').trim();
+      if (t.length < 3 || t.length > 40) return '';
+      if (t.split(' ').length > 3) return '';
+      if (/[^a-zßà-öø-ÿ \-]/.test(t)) return '';
+      if (t.charAt(0) === '-') return '';
+      if (/(^| )(and|or|not)( |$)/.test(t)) return '';   // Formel, kein Begriff
+      return t;
+    }
+
+    // Eine abgesendete Suche zaehlen. Kein Seitenaufruf: z.php fuehrt beides
+    // getrennt. sendBeacon ueberlebt einen Seitenwechsel, ein Bild nicht -
+    // wer sucht und sofort auf eine Kachel klickt, wird sonst nicht gezaehlt.
+    window.mvfZ = function (art, begriff) {
+      try {
+        var f = 'h=' + encodeURIComponent(location.hostname)
+              + '&e=' + encodeURIComponent(art)
+              + '&c=' + Date.now();
+        var t = sauber(begriff);
+        if (t) f += '&t=' + encodeURIComponent(t);
+        if (navigator.sendBeacon) navigator.sendBeacon(ziel + f);
+        else new Image(1, 1).src = ziel + f;
+      } catch (e) { /* eine ungezaehlte Suche ist kein Grund, etwas kaputtzumachen */ }
+    };
+  } catch (e) { /* Zaehlung ist nie wichtiger als die Seite */ }
+})();
+</script>
+<!-- ZAEHLER-ENDE -->
+
+<style>
+/* Kontaktseite nach Marianns Tafel „Kontakt“ (Canvas 1, Seite-Kontakt.dc.html) */
+.kf-seite{max-width:820px;margin:0 auto;padding:34px 16px 10px;font-family:Lato,system-ui,sans-serif;color:#14202E}
+.kf-seite .kf-zurueck{display:inline-block;margin:0 0 14px;color:#00529F;font-weight:700;text-decoration:none}
+.kf-seite .kf-zurueck:hover{text-decoration:underline}
+.kf-seite .kf-zurueck[hidden]{display:none}
+.kf-karte{background:#fff;border:1.5px solid #D8DFE9;border-radius:12px;box-shadow:0 6px 24px rgba(10,30,60,.06)}
+.kf form{padding:26px 28px;display:flex;flex-direction:column;gap:16px;font-size:14px}
+.kf .kf-ober{font-size:14px;font-weight:700;color:#3A4658}
+.kf h1{font-size:30px;line-height:1.2;margin:-6px 0 0}
+.kf .kf-einleitung{margin:0;font-size:15px;line-height:1.6;color:#3A4658}
+.kf label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700}
+.kf input,.kf select,.kf textarea{font:inherit;font-weight:400;font-size:15px;padding:10px 12px;border:1px solid #B8C4D4;
+  border-radius:8px;background:#fff;color:#14202E}
+.kf select:focus,.kf input:focus,.kf textarea:focus{outline:none;border:1.5px solid #00529F}
+.kf textarea{min-height:160px;resize:vertical}
+.kf .kf-zwei{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+/* Lange Einträge in der Auswahl sprengen sonst am Handy die Breite (gemessen 434 px bei 323 px Fenster). */
+.kf .kf-zwei > *{min-width:0}.kf select{width:100%;max-width:100%;min-width:0}
+.kf .kf-ok{flex-direction:row;align-items:flex-start;gap:8px;font-weight:400}
+.kf .kf-ok input{margin-top:3px}
+.kf .kf-topf{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.kf .kf-knoepfe{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;border-top:1px solid #EEF1F5;padding-top:16px}
+.kf .kf-mail{color:#5A6577}
+.kf .kf-senden{background:#00529F;color:#fff;border:0;border-radius:8px;padding:12px 24px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.kf .kf-senden[disabled]{opacity:.6;cursor:default}
+.kf .kf-stand{font-size:15px;margin:0}
+.kf .kf-stand.gut{color:#2e7d4f;font-weight:700}.kf .kf-stand.schlecht{color:#b3261e}
+.kf small{font-weight:400;color:#5A6577}
+@media (max-width:560px){.kf .kf-zwei{grid-template-columns:1fr}.kf form{padding:20px 16px}.kf h1{font-size:25px}}
+</style>
+
+</head><body>
+<style>nav.netz{max-width:none;margin:0;padding:0}.netz-aktion p{margin:0}footer.fuss.nf{max-width:1240px;margin:34px auto 0;padding:26px 16px 30px}</style>
+<style>
+  .netz{ --nz-grund:#14202E; --nz-text:#D3DCE8; --nz-leise:#9FB0C4; --nz-gold:#BE9E53;
+         --nz-petrol:#0E6E71; --nz-blau:var(--brand,#0051A1);
+         --nz-karte:var(--card,#FFFFFF); --nz-ink:var(--ink,#111); --nz-soft:var(--ink-soft,#444A50);
+         --nz-linie:var(--line,#D0D8E4); --nz-tint:var(--brand-tint,#E1EAF6);
+         position:sticky; top:0; z-index:60; background:var(--nz-grund); color:var(--nz-text);
+         font-size:13px; line-height:1.3; transition:transform .22s ease; }
+  /* Schwarze und weisse Leiste verschwinden beim Herunterscrollen gemeinsam
+     und kommen beim Hochscrollen gemeinsam wieder (Rueckmeldung Mariann
+     Stegmaier, 09.10.2026: vorher kam nur die weisse zurueck). */
+  .netz.weg{ transform:translateY(-100%); }
+  @media (prefers-reduced-motion:reduce){ .netz{ transition:none; } }
+  /* Breite: einheitlich, auch auf Seiten, deren eigenes .wrap schmaler ist
+     (Newsletter, Ausschreibungsradar, Ueber den Hub: 820 px). */
+  .netz .wrap, .ortsleiste .wrap{ max-width:1180px; margin-left:auto; margin-right:auto;
+         padding-left:22px; padding-right:22px; box-sizing:border-box; }
+  @media (max-width:560px){ .netz .wrap, .ortsleiste .wrap{ padding-left:16px; padding-right:16px; } }
+  /* Unter 400 px zaehlt jeder Pixel - das sind die schmalsten Telefone, die
+     noch im Umlauf sind (iPhone SE der ersten Reihe: 320 px). */
+  @media (max-width:400px){ .netz .wrap, .ortsleiste .wrap{ padding-left:10px; padding-right:10px; } }
+  :root[data-theme="dark"] .netz{ --nz-petrol:#4FC2C4; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .netz{ --nz-petrol:#4FC2C4; } }
+  .netz *{ box-sizing:border-box; }
+  /* Breite und Seitenrand kommen von .wrap der jeweiligen Seite - Hubs und
+     Uebersicht setzen den Rand verschieden, die Leiste soll buendig mit dem
+     Inhalt darunter stehen. */
+  /* flex-wrap ist die Notbremse gegen seitliches Verschieben der ganzen Seite.
+     Gemessen am 12.11.2026 auf diabetes.m-vf.de bei 323 px Fensterbreite: Die
+     Leiste war 357 px breit (Wortmarke 167 + Knopf 116 + Darstellungsschalter
+     34 + Rand 32 + Abstaende 8), die Seite liess sich um 24 px zur Seite
+     schieben. Solange alles nebeneinander passt, aendert wrap nichts; passt es
+     nicht, rutscht der Darstellungsschalter in eine zweite Zeile, statt dass
+     die ganze Seite wandert. Bewusst kein display:none unter 400 px: Der
+     Schalter ist der einzige Weg zu Hell und Dunkel, im Handy-Menue steht er
+     nicht. */
+  .netz-innen{ display:flex; flex-wrap:wrap; align-items:center; gap:4px; min-height:44px; }
+  .netz a, .netz button{ font:inherit; color:inherit; }
+  .netz a:focus-visible, .netz button:focus-visible{ outline:2px solid var(--nz-gold); outline-offset:2px; border-radius:4px; }
+  .netz-marke{ display:flex; align-items:center; gap:9px; text-decoration:none; padding:8px 14px 8px 0;
+               margin-right:6px; border-right:1px solid #2E3D52; font-weight:700; letter-spacing:.02em; font-size:12.5px; color:#FFF; white-space:nowrap; }
+  .netz-marke img{ width:20px; height:20px; display:block; }
+  .netz-marke b{ color:var(--nz-gold); font-weight:700; }
+  .netz-knopf, .netz-link{ background:none; border:0; cursor:pointer; padding:13px 11px; text-decoration:none;
+               white-space:nowrap; font-weight:700; color:var(--nz-text); }
+  .netz-knopf:hover, .netz-link:hover{ color:#FFF; }
+  .netz-knopf[aria-expanded="true"]{ background:var(--nz-karte); color:var(--nz-ink); border-radius:6px 6px 0 0; }
+  .netz-knopf .pfeil{ display:inline-block; margin-left:5px; font-size:10px; transition:transform .15s; }
+  .netz-knopf[aria-expanded="true"] .pfeil{ transform:rotate(180deg); }
+  .netz-rechts{ margin-left:auto; display:flex; align-items:center; gap:14px; }
+  .netz-sprache{ display:flex; border:1px solid #3A4A60; border-radius:5px; overflow:hidden; font-size:11.5px; font-weight:700; }
+  .netz-sprache a, .netz-sprache span{ padding:3px 8px; text-decoration:none; }
+  .netz-sprache [aria-current]{ background:var(--nz-blau); color:#FFF; }
+  :root[data-theme="dark"] .netz-sprache [aria-current]{ background:#2C5C93; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .netz-sprache [aria-current]{ background:#2C5C93; } }
+  .netz-mvf{ color:var(--nz-leise); text-decoration:none; white-space:nowrap; font-size:12px; }
+  .netz-mvf b{ color:var(--nz-text); }
+  .netz-mvf:hover b{ color:#FFF; text-decoration:underline; }
+
+  /* Mega-Menue: eine Ebene, drei Gruppen. Oeffnet per Klick, nie per Hover. */
+  .netz-mega{ position:absolute; left:0; right:0; top:100%; }
+  .netz-mega[hidden]{ display:none; }
+  .netz-mega-karte{ background:var(--nz-karte); color:var(--nz-ink);
+               border:1px solid var(--nz-linie); border-radius:0 0 12px 12px;
+               box-shadow:0 22px 50px -18px rgba(10,20,40,.45); padding:22px 26px 0; }
+  .netz-spalten{ display:grid; grid-template-columns:1.25fr 1fr 1.15fr; gap:30px; }
+  .netz-gruppe h3{ margin:0 0 9px; font-size:11px; letter-spacing:.11em; text-transform:uppercase; color:var(--nz-soft); font-weight:700; }
+  .netz-gruppe ul{ list-style:none; margin:0; padding:0; }
+  .netz-gruppe li a{ display:flex; align-items:center; gap:9px; padding:5px 8px; margin:0 -8px; border-radius:6px;
+               text-decoration:none; color:var(--nz-ink); font-size:14px; line-height:1.3; }
+  .netz-gruppe li a::before{ content:""; flex:0 0 7px; height:7px; border-radius:50%; background:var(--nz-blau); opacity:.55; }
+  .netz-gruppe.krank li a::before{ background:var(--nz-petrol); }
+  .netz-gruppe li a:hover{ background:var(--nz-tint); }
+  .netz-gruppe li a[aria-current]{ background:var(--nz-tint); color:var(--nz-blau); font-weight:700; }
+  .netz-gruppe li a[aria-current]::before{ opacity:1; }
+  .netz-gruppe.krank li a[aria-current]{ color:var(--nz-petrol); }
+  .netz-angebote li a{ align-items:flex-start; padding:7px 8px; }
+  .netz-angebote li a::before{ display:none; }
+  .netz-angebote svg{ flex:0 0 22px; width:22px; height:22px; color:#8A6E28; margin-top:1px; }
+  :root[data-theme="dark"] .netz-angebote svg{ color:var(--nz-gold); }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .netz-angebote svg{ color:var(--nz-gold); } }
+  .netz-angebote b{ display:block; font-size:14px; }
+  .netz-angebote small{ display:block; font-size:12.5px; color:var(--nz-soft); margin-top:2px; }
+  .netz-fuss{ display:flex; justify-content:space-between; gap:16px; margin-top:16px; padding:13px 0 15px;
+               border-top:1px solid var(--nz-linie); font-size:13.5px; font-weight:700; }
+  .netz-fuss a{ color:var(--nz-blau); text-decoration:none; }
+  .netz-fuss a:hover{ text-decoration:underline; }
+
+  /* Die weisse Leiste des Hubs (bzw. die Sprunglinks der Uebersicht).
+     Klebt oben, verschwindet beim Herunterscrollen und kommt beim
+     Hochscrollen wieder. */
+  .ortsleiste{ position:sticky; top:var(--netz-h,44px); z-index:50; background:var(--card,#fff);
+               border-bottom:1px solid var(--line,#D0D8E4); transition:transform .22s ease; }
+  .ortsleiste.weg{ transform:translateY(calc(-102% - var(--netz-h,44px))); }
+  @media (prefers-reduced-motion:reduce){ .ortsleiste{ transition:none; } }
+  .ortsleiste-innen{ display:flex; align-items:center; gap:6px; min-height:58px; }
+  .ort-name{ display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink,#111); margin-right:18px; min-width:0; }
+  .ort-name img{ width:34px; height:34px; flex:0 0 34px; display:block; }
+  /* Sperrung von .12em auf .03em, weil „Knowledge-Hub" seit dem 12.11.2026
+     gemischt gesetzt ist - eine fuer Versalien gemachte Sperrung zerreisst
+     gemischten Satz. */
+  .ort-name small{ display:block; font-size:10.5px; letter-spacing:.03em; font-weight:700; color:var(--ink-soft,#444A50); }
+  .ort-name b{ display:block; font-size:14.5px; color:var(--brand,#0051A1); line-height:1.2; }
+  .ort-links{ display:flex; gap:2px; }
+  .ort-links a{ padding:18px 11px 17px; font-size:13.5px; font-weight:700; color:var(--ink-soft,#444A50);
+               text-decoration:none; border-bottom:2px solid transparent; white-space:nowrap; }
+  .ort-links a:hover, .ort-links a[aria-current]{ color:var(--brand,#0051A1); border-bottom-color:var(--brand,#0051A1); }
+  .ort-nl{ margin-left:auto; background:var(--action,#BE9E53); color:var(--on-action,#2A2207); font-weight:700;
+               font-size:13.5px; padding:9px 16px; border-radius:7px; text-decoration:none; white-space:nowrap; }
+  .ort-nl:hover{ background:var(--action-deep,#A5873F); }
+  .ort-menue{ display:none; margin-left:8px; align-items:center; gap:7px; background:none; cursor:pointer;
+               border:1px solid var(--line,#D0D8E4); border-radius:7px; padding:8px 12px;
+               font:inherit; font-size:13.5px; font-weight:700; color:var(--ink,#111); }
+  .ort-menue svg{ width:18px; height:18px; }
+  .netz a:focus-visible, .ortsleiste a:focus-visible, .ort-menue:focus-visible{ outline:2px solid var(--brand,#0051A1); outline-offset:2px; }
+
+  /* Smartphone-Menue: alles untereinander, nichts weiter aufzuklappen. */
+  .netz-handy{ --nz-petrol:#0E6E71; --nz-blau:var(--brand,#0051A1); --nz-ink:var(--ink,#111); --nz-soft:var(--ink-soft,#444A50);
+               --nz-tint:var(--brand-tint,#E1EAF6); --nz-gold:#BE9E53; }
+  :root[data-theme="dark"] .netz-handy{ --nz-petrol:#4FC2C4; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .netz-handy{ --nz-petrol:#4FC2C4; } }
+  /* Grund aus der Seitenfarbe: Mit festem Weiss stand im Dunkelmodus helle
+     Schrift auf weissem Grund (Rueckmeldung 09.10.2026). */
+  .netz-handy{ position:fixed; inset:0; z-index:90; background:var(--card,#fff); color:var(--ink,#111);
+               overflow-y:auto; padding:0 0 30px; }
+  .netz-handy[hidden]{ display:none; }
+  .netz-handy-kopf{ position:sticky; top:0; display:flex; justify-content:space-between; align-items:center;
+               padding:12px 18px; background:var(--card,#fff); border-bottom:1px solid var(--line,#D0D8E4); font-weight:700; }
+  .netz-handy-kopf button{ font:inherit; font-size:14px; font-weight:700; background:none; border:1px solid var(--line,#D0D8E4);
+               border-radius:7px; padding:7px 12px; cursor:pointer; color:inherit; }
+  .netz-handy section{ padding:14px 18px 6px; border-bottom:1px solid var(--line-soft,#E3EAF3); }
+  .netz-handy h3{ margin:0 0 6px; font-size:11px; letter-spacing:.11em; text-transform:uppercase; color:var(--ink-soft,#444A50); }
+  .netz-handy .netz-gruppe h3{ margin-top:10px; font-size:10.5px; }
+  .netz-handy ul{ list-style:none; margin:0; padding:0; }
+  .netz-handy li a, .netz-handy .handy-zeile{ display:flex; justify-content:space-between; align-items:center;
+               padding:10px 0; min-height:44px; text-decoration:none; color:var(--ink,#111); font-size:15px; }
+  /* Die Hubliste ist aus dem Mega-Menue geklont; dort stehen Punkt und Name
+     linksbuendig nebeneinander, nicht auf Abstand wie die Zeilen oben. */
+  .netz-handy .netz-gruppe li a{ margin:0; padding:9px 6px; justify-content:flex-start; gap:10px; min-height:42px; }
+  .netz-handy .netz-angebote li a{ align-items:flex-start; }
+  .netz-handy .netz-gruppe li a[aria-current]::after{ content:"✓"; margin-left:auto; color:var(--brand,#0051A1); }
+  .netz-handy .netz-sprache span[aria-current]{ background:var(--brand,#0051A1); color:#FFF; }
+  .netz-handy .netz-sprache a{ color:var(--ink,#111); }
+  .netz-handy .handy-nl{ display:block; text-align:center; margin:16px 18px; background:var(--action,#BE9E53);
+               color:var(--on-action,#2A2207); font-weight:700; padding:13px; border-radius:8px; text-decoration:none; }
+  .netz-handy .handy-unten{ display:flex; flex-wrap:wrap; gap:14px 22px; align-items:center; padding:16px 18px; font-size:13.5px; }
+  .netz-handy .handy-unten a{ color:var(--ink-soft,#444A50); }
+  .netz-handy .netz-sprache{ border-color:var(--line,#D0D8E4); }
+
+  /* Rechtsseiten: keine Sprunglinks, die Leiste traegt nur den Menueknopf
+     fuer schmale Bildschirme (startseite_neu.sprungleiste, links=False). */
+  .ortsleiste.nur-handy{ display:none; }
+  @media (max-width:980px){ .netz-mvf .lang{ display:none; } }
+  @media (max-width:860px){
+    .netz-rechts, .netz-link{ display:none; }
+    .netz-spalten{ grid-template-columns:1fr 1fr; }
+    .netz-angebote{ grid-column:1 / -1; }
+    .ort-links, .ort-nl{ display:none; }
+    .ort-menue{ display:inline-flex; margin-left:auto; }
+    .ortsleiste.nur-handy{ display:block; }
+    .ortsleiste-innen{ min-height:56px; }
+  }
+  @media (max-width:560px){
+    .netz-mega-karte{ border-radius:0 0 10px 10px; padding:16px 16px 0; max-height:calc(100vh - 60px); overflow-y:auto; }
+    .netz-spalten{ grid-template-columns:1fr; gap:14px; }
+    .netz-marke{ border-right:0; padding-right:4px; letter-spacing:.06em; }
+    .ort-name b{ font-size:13.5px; }
+  }
+  /* Aktionsleiste: befristet, auf allen Seiten der Reihe (seit 09.10.2026,
+     vorher nur auf der Uebersicht). Schliessen gilt fuer diesen Aufruf -
+     bewusst nichts im Speicher des Browsers (keine Tracking-Cookies versprochen). */
+  .netz-aktion{ background:#F6EEDB; color:#111; border-bottom:1px solid #E3D3A8; font-size:13.5px; line-height:1.35; }
+  :root[data-theme="dark"] .netz-aktion{ background:#2A2414; color:#E9EEF6; border-bottom-color:#4A3E1E; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .netz-aktion{ background:#2A2414; color:#E9EEF6; border-bottom-color:#4A3E1E; } }
+  .netz-aktion .wrap{ display:flex; align-items:center; gap:14px; min-height:38px; max-width:1180px; margin:0 auto; padding:0 22px; box-sizing:border-box; }
+  .netz-aktion p{ margin:0; flex:1; max-width:none; }
+  .netz-aktion a{ color:inherit; font-weight:700; text-decoration:none; white-space:nowrap; }
+  .netz-aktion a:hover{ text-decoration:underline; }
+  .netz-aktion button{ background:none; border:0; font:inherit; font-size:18px; line-height:1; padding:6px 8px; cursor:pointer; color:inherit; border-radius:5px; }
+  @media (max-width:560px){ .netz-aktion .wrap{ padding:0 16px; font-size:13px; } }
+  @media print{ .netz, .ortsleiste, .netz-handy, .netz-aktion{ display:none !important; } }
+</style>
+
+<nav class="netz" aria-label="Alle Knowledge-Hubs" data-hier="innofonds.m-vf.de">
+  <div class="netz-innen wrap">
+    <a class="netz-marke" href="https://knowledge-hubs.m-vf.de/" title="Zur Übersicht aller Knowledge-Hubs">
+      <img src="https://knowledge-hubs.m-vf.de/logo/hub-icon.svg" alt="" width="20" height="20">
+      <!-- Gemischte Schreibweise seit 12.11.2026 auf Anweisung des
+           Herausgebers: Beim Innovationsfonds-Radar sind alle Versalien
+           abgeschafft worden, die Leiste zieht mit. Die Sperrung faellt dabei
+           von .09em auf .02em - sie war fuer Grossbuchstaben gesetzt und
+           zerreisst gemischten Satz. Nebenwirkung, gemessen: Die Wortmarke
+           wird auf dem Telefon von 167 auf 139 Pixel schmaler. -->
+      <span>Knowledge<b>-Hubs</b></span>
+    </a>
+    <button class="netz-knopf" type="button" id="netzKnopf" aria-expanded="false" aria-controls="netzMega">Alle Angebote<span class="pfeil" aria-hidden="true">▼</span></button>
+    <a class="netz-link" href="https://knowledge-hubs.m-vf.de/ueber-die-hubs.html">Über die Hubs</a>
+    
+    <!-- DARSTELLUNG-START ====================================================
+         Schalter „Darstellung" (hell / dunkel / wie mein Geraet), links neben
+         DE/EN. Entwurf Mariann Stegmaier, Canvas 2 (28.10.2026); gebaut von der
+         Innofonds-Sitzung (innovationsfonds/darstellung.html), seit 30.10.2026
+         hier in der gemeinsamen Leiste und damit auf allen Seiten der Reihe.
+
+         Vertrag: Cookie „mvf-theme" = light | dark, bei „Wie mein Geraet"
+         geloescht (Max-Age=0); Domain=.m-vf.de, Path=/, ein Jahr, SameSite=Lax,
+         Secure nur unter https. Kein localStorage - der gaelte nur je Subdomain.
+         Wirkung ueber <html data-theme>. Der Datenschutztext dazu steht in
+         recht_neu.py, Abschnitt 2, #darstellung - wer hier etwas am Cookie
+         aendert, aendert ihn dort mit.
+
+         Englisch: startseite_neu.NETZ_EN uebersetzt die Texte fuer /en/. -->
+    <style>
+      .dsw{ position:relative; margin-left:auto; display:flex; align-items:center; }
+      .dsw ~ .netz-rechts{ margin-left:14px; }  /* ~ statt +: dazwischen steht das <script> */
+      .dsw-knopf{ width:34px; height:27px; border:1px solid #3A4A60; border-radius:6px; background:transparent;
+                  display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0; }
+      .dsw-knopf:hover, .dsw-knopf[aria-expanded="true"]{ background:#22324A; }
+      .dsw-knopf svg{ width:16px; height:16px; display:block; }
+      .dsw .mond{ display:none; }
+      :root[data-theme="dark"] .dsw .sonne{ display:none; }
+      :root[data-theme="dark"] .dsw .mond{ display:block; }
+      @media (prefers-color-scheme:dark){
+        :root:not([data-theme="light"]) .dsw .sonne{ display:none; }
+        :root:not([data-theme="light"]) .dsw .mond{ display:block; }
+      }
+      .dsw-menue{ position:absolute; top:36px; right:0; z-index:95; width:230px; background:#FFF; color:#14202E;
+                  border:1px solid #D8DFE9; border-radius:10px; box-shadow:0 14px 32px rgba(20,32,46,.28);
+                  padding:6px; display:flex; flex-direction:column; font-size:14px; font-weight:500; letter-spacing:0; }
+      .dsw-menue[hidden]{ display:none; }
+      .dsw-titel{ font-size:11px; font-weight:700; letter-spacing:.12em; color:#5A6577; padding:6px 10px 4px; }
+      .dsw-menue button{ display:flex; align-items:center; gap:10px; padding:8px 10px; border:0; border-radius:6px;
+                  background:transparent; color:#14202E; font:inherit; text-align:left; cursor:pointer; }
+      .dsw-menue button:hover{ background:#EEF1F5; }
+      .dsw-menue button[aria-checked="true"]{ background:#E3ECF7; }
+      .dsw-menue button span{ flex:1 1 auto; }
+      .dsw-menue button i{ font-style:normal; color:#00529F; font-weight:700; visibility:hidden; }
+      .dsw-menue button[aria-checked="true"] i{ visibility:visible; }
+      .dsw-menue svg{ width:16px; height:16px; flex:none; }
+      .dsw-fuss{ font-size:12px; line-height:1.4; color:#5A6577; padding:6px 10px 4px; border-top:1px solid #EEF1F5; margin-top:4px; }
+      @media print{ .dsw{ display:none !important; } }
+    </style>
+    <div class="dsw">
+      <button class="dsw-knopf" type="button" id="dswKnopf" aria-haspopup="menu" aria-expanded="false" aria-controls="dswMenue"
+              title="Darstellung" aria-label="Darstellung: hell, dunkel oder wie Ihr Gerät">
+        <svg class="sonne" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="#F2B84B" stroke-width="2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="#F2B84B" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="mond" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="#C9D6F2" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="dsw-menue" id="dswMenue" role="menu" aria-label="Darstellung" hidden>
+        <span class="dsw-titel">DARSTELLUNG</span>
+        <button type="button" role="menuitemradio" data-wahl="hell" aria-checked="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="#B7791F" stroke-width="2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="#B7791F" stroke-width="2" stroke-linecap="round"/></svg><span>Hell</span><i>✓</i></button>
+        <button type="button" role="menuitemradio" data-wahl="dunkel" aria-checked="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="#3A4658" stroke-width="2" stroke-linejoin="round"/></svg><span>Dunkel</span><i>✓</i></button>
+        <button type="button" role="menuitemradio" data-wahl="geraet" aria-checked="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2" fill="none" stroke="#3A4658" stroke-width="1.8"/><path d="M8 20h8M12 16v4" stroke="#3A4658" stroke-width="1.8" stroke-linecap="round"/></svg><span>Wie mein Gerät</span><i>✓</i></button>
+        <span class="dsw-fuss">Voreinstellung: wie Ihr Gerät. Die Wahl gilt für alle Angebote.</span>
+      </div>
+    </div>
+    <script>
+    (function () {
+      var knopf = document.getElementById("dswKnopf"), menue = document.getElementById("dswMenue");
+      if (!knopf || !menue) return;
+      function lesen() {
+        var m = document.cookie.match(/(?:^|;\s*)mvf-theme=(light|dark)/);
+        return m ? (m[1] === "light" ? "hell" : "dunkel") : "geraet";
+      }
+      function schreiben(w) {
+        var d = /(^|\.)m-vf\.de$/.test(location.hostname) ? "; Domain=.m-vf.de" : "";
+        var sicher = location.protocol === "https:" ? "; Secure" : "";
+        document.cookie = "mvf-theme=" + (w === "geraet" ? "; Max-Age=0" : (w === "hell" ? "light" : "dark") + "; Max-Age=31536000")
+          + "; Path=/; SameSite=Lax" + d + sicher;
+      }
+      function anwenden(w) {
+        var h = document.documentElement;
+        if (w === "hell") h.setAttribute("data-theme", "light");
+        else if (w === "dunkel") h.setAttribute("data-theme", "dark");
+        else h.removeAttribute("data-theme");
+        menue.querySelectorAll("[data-wahl]").forEach(function (b) {
+          b.setAttribute("aria-checked", b.getAttribute("data-wahl") === w ? "true" : "false");
+        });
+      }
+      function zu() { menue.hidden = true; knopf.setAttribute("aria-expanded", "false"); }
+      anwenden(lesen());
+      knopf.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var auf = menue.hidden;
+        menue.hidden = !auf;
+        knopf.setAttribute("aria-expanded", auf ? "true" : "false");
+        if (auf) { var b = menue.querySelector('[aria-checked="true"]'); if (b) b.focus(); }
+      });
+      menue.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-wahl]");
+        if (!b) return;
+        var w = b.getAttribute("data-wahl");
+        schreiben(w); anwenden(w); zu(); knopf.focus();
+      });
+      document.addEventListener("click", function (e) { if (!menue.hidden && !e.target.closest(".dsw")) zu(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !menue.hidden) { zu(); knopf.focus(); } });
+    })();
+    </script>
+    <!-- DARSTELLUNG-ENDE -->
+    <div class="netz-rechts">
+      <div class="netz-sprache" role="group" aria-label="Sprache">
+        <span aria-current="true" lang="de" title="Deutsch" aria-label="Deutsch">DE</span>
+        <a href="https://knowledge-hubs.m-vf.de/en/" lang="en" hreflang="en" aria-label="English" title="English overview of all hubs">EN</a>
+      </div>
+      <a class="netz-mvf" href="https://www.monitor-versorgungsforschung.de/?utm_source=innofonds&amp;utm_medium=referral&amp;utm_campaign=netzleiste" target="_blank" rel="noopener"><span class="lang">ein Angebot von </span><b>Monitor Versorgungsforschung</b> ↗</a>
+    </div>
+  </div>
+
+  
+  <div class="netz-mega" id="netzMega" hidden>
+    <div class="wrap"><div class="netz-mega-karte">
+      <div class="netz-spalten">
+        <div class="netz-gruppe">
+          <h3>Versorgungsthemen · 11</h3>
+          <ul>
+            <li><a data-domain="wissen.m-vf.de" href="https://wissen.m-vf.de/">Versorgungsforschung</a></li>
+            <li><a data-domain="ki.m-vf.de" href="https://ki.m-vf.de/">Digitalisierung, KI &amp; Gesundheit</a></li>
+            <li><a data-domain="gender.m-vf.de" href="https://gender.m-vf.de/">Geschlechtersensible Medizin</a></li>
+            <li><a data-domain="longevity.m-vf.de" href="https://longevity.m-vf.de/">Gesundes Altern &amp; Longevity</a></li>
+            <li><a data-domain="healthliteracy.m-vf.de" href="https://healthliteracy.m-vf.de/">Gesundheitskompetenz</a></li>
+            <li><a data-domain="klima.m-vf.de" href="https://klima.m-vf.de/">Hitze, Klima &amp; Gesundheit</a></li>
+            <li><a data-domain="impfen.m-vf.de" href="https://impfen.m-vf.de/">Impfen &amp; Prävention</a></li>
+            <li><a data-domain="ncd.m-vf.de" href="https://ncd.m-vf.de/">NCD/Chronische Krankheiten</a></li>
+            <li><a data-domain="safety.m-vf.de" href="https://safety.m-vf.de/">Patientensicherheit</a></li>
+            <li><a data-domain="pflege.m-vf.de" href="https://pflege.m-vf.de/">Pflege &amp; Langzeitversorgung</a></li>
+            <li><a data-domain="mental.m-vf.de" href="https://mental.m-vf.de/">Psychische Gesundheit</a></li>
+          </ul>
+        </div>
+        <div class="netz-gruppe krank">
+          <h3>Krankheitsgebiete · 4</h3>
+          <ul>
+            <li><a data-domain="adipositas.m-vf.de" href="https://adipositas.m-vf.de/">Adipositas</a></li>
+            <li><a data-domain="diabetes.m-vf.de" href="https://diabetes.m-vf.de/">Diabetes</a></li>
+            <li><a data-domain="kardio.m-vf.de" href="https://kardio.m-vf.de/">Kardiologie</a></li>
+            <li><a data-domain="onkologie.m-vf.de" href="https://onkologie.m-vf.de/">Onkologie</a></li>
+          </ul>
+        </div>
+        <div class="netz-gruppe netz-angebote">
+          <h3>Weitere Angebote</h3>
+          <ul>
+            <li><a href="https://innofonds.m-vf.de/" aria-current="page">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18"/></svg>
+              <span><b>Innovationsfonds-Radar</b><small>Projekte und Beschlüsse des GBA-Innovationsfonds</small></span></a></li>
+            <li><a href="https://wissen.m-vf.de/ausschreibungen.html">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><path d="M12 12l6-6"/></svg>
+              <span><b>Ausschreibungsradar</b><small>Offene Förderausschreibungen, zweimal pro Woche aktualisiert</small></span></a></li>
+            <li><a href="https://knowledge-hubs.m-vf.de/curatiohub.html">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12.5" rx="2"/><path d="M9 7.5V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5v2"/><path d="M3 13h18"/></svg>
+              <span><b>CuratioHub</b><small>Jobs in Versorgungsforschung, Public Health und Medizin</small></span></a></li>
+            <li><a href="https://wissen.m-vf.de/zulassungen.html">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="8.6" width="18.8" height="6.8" rx="3.4"/><path d="M12 8.6v6.8"/></svg>
+              <span><b>Zulassungs-/DiGA-Radar</b><small>Zugelassen, empfohlen, beantragt: EMA, FDA und die DiGA des BfArM</small></span></a></li>
+            <li><a href="https://einreichung.m-vf.de/">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6M9.5 13.5 12 11l2.5 2.5"/></svg>
+              <span><b>Manuskript einreichen</b><small>Für Monitor Versorgungsforschung, mit doppelt verdecktem Peer Review</small></span></a></li>
+            <li><a href="https://www.monitor-versorgungsforschung.de/education/mvf-jahreskongresse/">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="2.5"/><path d="M8 13a4 4 0 0 1 8 0"/><path d="M4 15h16l-1.5 6h-13z"/></svg>
+              <span><b>MVF-Fachkongress</b><small>Einmal im Jahr in Berlin</small></span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="netz-fuss">
+        <a href="https://knowledge-hubs.m-vf.de/#newsletter" data-netz-nl>Newsletter der Hubs ›</a>
+        <a href="https://knowledge-hubs.m-vf.de/#themen">Zur Übersicht aller Hubs →</a>
+      </div>
+    </div></div>
+  </div>
+</nav>
+<script>
+// Laeuft erst, wenn das Dokument steht: Die weisse Leiste und das
+// Smartphone-Menue folgen erst NACH diesem Baustein.
+(function (los) {
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', los);
+  else los();
+})(function () {
+  var netz = document.querySelector('.netz');
+  if (!netz) return;
+  var hier = netz.getAttribute('data-hier');
+  var knopf = document.getElementById('netzKnopf');
+  var mega = document.getElementById('netzMega');
+
+  // „Hier bin ich": der eigene Hub im Menue.
+  Array.prototype.forEach.call(netz.querySelectorAll('a[data-domain]'), function (a) {
+    if (a.getAttribute('data-domain') === hier) a.setAttribute('aria-current', 'page');
+  });
+
+  var aktion = document.getElementById('netzAktion');
+  if (aktion) {
+    if (new Date() > new Date(aktion.getAttribute('data-ende'))) aktion.remove();
+    else aktion.querySelector('button').addEventListener('click', function () { aktion.remove(); });
+  }
+
+  // Die eigene Seite in der weissen Leiste markieren (Newsletter, Themen &
+  // Quellen ...). Sprunglinks innerhalb der Seite bleiben unmarkiert.
+  Array.prototype.forEach.call(document.querySelectorAll('.ort-links a, .ort-nl'), function (a) {
+    if (!a.hash && a.pathname === location.pathname && a.host === location.host
+        && !/\/$/.test(a.pathname)) a.setAttribute('aria-current', 'page');
+  });
+
+  function zu(fokus) {
+    mega.hidden = true; knopf.setAttribute('aria-expanded', 'false');
+    if (fokus) knopf.focus();
+  }
+  knopf.addEventListener('click', function () {
+    var auf = knopf.getAttribute('aria-expanded') === 'true';
+    if (auf) { zu(false); return; }
+    mega.hidden = false; knopf.setAttribute('aria-expanded', 'true');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !mega.hidden) zu(true);
+  });
+  document.addEventListener('click', function (e) {
+    if (!mega.hidden && !netz.contains(e.target)) zu(false);
+  });
+  // Ein Link im Menue schliesst es - sonst bliebe es bei einem Sprung
+  // innerhalb derselben Seite (Zur Uebersicht -> #themen) offen stehen.
+  mega.addEventListener('click', function (e) { if (e.target.closest('a')) zu(false); });
+
+  // Beide Leisten: weg beim Herunterscrollen, zurueck beim Hochscrollen.
+  // --netz-h haelt die weisse Leiste unter der schwarzen; --ort-h sagt der
+  // Sprungleiste der Hubs, wie viel Kopf gerade oben klebt.
+  var ort = document.querySelector('.ortsleiste');
+  var wurzel = document.documentElement;
+  var zuletzt = window.scrollY;
+  var setze = function (weg) {
+    var nh = netz.offsetHeight, oh = ort ? ort.offsetHeight : 0;
+    wurzel.style.setProperty('--netz-h', nh + 'px');
+    wurzel.style.setProperty('--ort-h', weg ? '0px' : (nh + oh) + 'px');
+    netz.classList.toggle('weg', weg);
+    if (ort) ort.classList.toggle('weg', weg);
+    if (weg && !mega.hidden) zu(false);
+  };
+  setze(false);
+  window.addEventListener('resize', function () { setze(netz.classList.contains('weg')); });
+  window.addEventListener('scroll', function () {
+    var y = window.scrollY;
+    if (Math.abs(y - zuletzt) < 6) return;
+    setze(y > zuletzt && y > 240);
+    zuletzt = y;
+  }, { passive: true });
+
+  // Smartphone: „Menue" oeffnet eine Seite mit allem. Die Hubliste wird aus
+  // dem Mega-Menue uebernommen, damit sie nur an einer Stelle steht.
+  var menueKnopf = document.getElementById('ortMenue');
+  var handy = document.getElementById('netzHandy');
+  if (menueKnopf && handy) {
+    var platz = handy.querySelector('[data-netz-hubs]');
+    if (platz) Array.prototype.forEach.call(mega.querySelectorAll('.netz-gruppe'), function (g) {
+      platz.appendChild(g.cloneNode(true));
+    });
+    var schliessen = handy.querySelector('[data-netz-zu]');
+    var oeffne = function () { handy.hidden = false; menueKnopf.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; schliessen.focus(); };
+    var schliesse = function () { handy.hidden = true; menueKnopf.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; menueKnopf.focus(); };
+    menueKnopf.addEventListener('click', oeffne);
+    schliessen.addEventListener('click', schliesse);
+    handy.addEventListener('click', function (e) { if (e.target.closest('a')) schliesse(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !handy.hidden) schliesse(); });
+  }
+});
+</script>
+
+<main class="kf-seite">
+  <a class="kf-zurueck" id="kf-zurueck" href="#" hidden>← Zurück zur vorigen Seite</a>
+
+<div class="kf kf-karte">
+  <form id="kf-form" novalidate>
+    <span class="kf-ober">Kontakt</span>
+    <h1 id="kf-titel">Hinweise, Korrekturen oder Fragen an die Redaktion</h1>
+    <p class="kf-einleitung">Für alle Knowledge-Hubs, das Innovationsfonds-Radar, Ausschreibungsradar, CuratioHub und alle
+      weiteren Angebote von Monitor Versorgungsforschung. Die Angebote sind alle neu und wachsen mit Ihren Hinweisen: fehlende
+      Quellen, defekte Links, falsche Angaben oder Wünsche. Denn eine Recherchehilfe ist nur so gut wie die Praxis, aus der
+      heraus sie mitgestaltet wird. Wir antworten, so schnell wir können.</p>
+    <div class="kf-zwei">
+      <label>Worum geht es?
+        <select name="anliegen">
+          <option value="korrektur" data-schluessel="korrektur">Korrektur einer Angabe</option>
+          <option value="rueckmeldung" data-schluessel="korrektur">Rückmeldung zu meinem Vorhaben</option>
+          <option value="frage" data-schluessel="frage" selected>Frage zu den Inhalten</option>
+          <option value="themenfrage" data-schluessel="themenfrage">Frage für die Themen-Bilanz vorschlagen</option>
+          <option value="glossar" data-schluessel="methodik">Begriff fürs Glossar vorschlagen oder Erklärung unklar</option>
+          <option value="quelle" data-schluessel="sonstiges">Fehlende Quelle oder Datenbank</option>
+          <option value="ausschreibung" data-schluessel="sonstiges">Ausschreibung melden</option>
+          <option value="technik" data-schluessel="sonstiges">Defekter Link oder technisches Problem</option>
+          <option value="rebriefing" data-schluessel="rebriefing">Re-Briefing anfragen</option>
+          <option value="synthese" data-schluessel="synthese">Evidenzsynthese anfragen</option>
+          <option value="newsletter" data-schluessel="sonstiges">Newsletter</option>
+          <option value="kooperation" data-schluessel="kooperation">Presse oder Kooperation</option>
+          <option value="lob" data-schluessel="sonstiges">Lob, Kritik oder Wünsche</option>
+          <option value="sonstiges" data-schluessel="sonstiges">Sonstiges</option>
+        </select></label>
+      <label>Welches Angebot?
+        <select name="angebot"><option value="">Bitte wählen</option><optgroup label="Recherche und Werkzeuge"><option>Innovationsfonds-Radar</option><option>Ausschreibungsradar</option><option>CuratioHub</option><option>Zulassungs-/DiGA-Radar</option><option>Thesis Hub</option><option>Versorgungsstudien-Landkarte</option><option>Manuskript einreichen</option><option>Newsletter der Hubs</option><option>Zeitschrift Monitor Versorgungsforschung</option></optgroup><optgroup label="Knowledge-Hubs"><option>Alle Knowledge-Hubs, allgemein</option><option>Versorgungsforschung</option><option>Digitalisierung, KI &amp; Gesundheit</option><option>Geschlechtersensible Medizin</option><option>Gesundes Altern &amp; Longevity</option><option>Gesundheitskompetenz</option><option>Hitze, Klima &amp; Gesundheit</option><option>Impfen &amp; Prävention</option><option>NCD/Chronische Krankheiten</option><option>Patientensicherheit</option><option>Pflege &amp; Langzeitversorgung</option><option>Psychische Gesundheit</option><option>Adipositas</option><option>Diabetes</option><option>Kardiologie</option><option>Onkologie</option></optgroup><optgroup label="Anderes"><option>Sonstiges</option></optgroup></select></label>
+    </div>
+    <label>Betroffenes Vorhaben oder betroffene Seite <small>wird ausgefüllt, wenn Sie von einer Seite kommen, und lässt sich ändern</small>
+      <input name="bezug" maxlength="200" autocomplete="off"></label>
+    <label>Ihr Anliegen
+      <textarea name="nachricht" maxlength="8000" rows="7" required placeholder="Was stimmt nicht, und wie wäre es richtig? Eine Quelle hilft uns beim Prüfen."></textarea></label>
+    <div class="kf-zwei">
+      <label>Name <small>optional</small><input name="name" maxlength="200" autocomplete="name"></label>
+      <label>E-Mail-Adresse <small>nur für die Antwort</small>
+        <input name="email" type="email" maxlength="200" autocomplete="email" required placeholder="name@einrichtung.de"></label>
+    </div>
+    <input type="hidden" name="einrichtung" value="">
+    <label class="kf-topf" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+    <label class="kf-ok"><input type="checkbox" name="einverstanden"> <span>Ich bin einverstanden, dass meine Angaben
+      gespeichert und zur Bearbeitung meines Anliegens verwendet werden. Eine Zeile an info@m-vf.de genügt, und sie werden
+      gelöscht. <a href="https://knowledge-hubs.m-vf.de/datenschutz.html" target="_blank" rel="noopener">Datenschutzhinweise</a></span></label>
+    <p class="kf-stand" id="kf-stand" role="status" aria-live="polite"></p>
+    <div class="kf-knoepfe"><span class="kf-mail">Lieber per E-Mail? <a href="mailto:info@m-vf.de">info@m-vf.de</a></span>
+      <button type="submit" class="kf-senden">Nachricht senden</button></div>
+  </form>
+</div>
+<script>
+(function () {
+  const ENDPUNKT = 'https://www.monitor-versorgungsforschung.de/kontakt/kontakt.php';
+  const HERKUNFT = [["Innovationsfonds-Radar", "innofonds.m-vf.de"], ["Ausschreibungsradar", "wissen.m-vf.de/ausschreibungen"], ["CuratioHub", "knowledge-hubs.m-vf.de/curatiohub"], ["Zulassungs-/DiGA-Radar", "wissen.m-vf.de/zulassungen"], ["Thesis Hub", "mvf-portal.github.io/thesis-hub"], ["Versorgungsstudien-Landkarte", "studien.m-vf.de"], ["Manuskript einreichen", "einreichung.m-vf.de"], ["Newsletter der Hubs", "knowledge-hubs.m-vf.de/#newsletter"], ["Zeitschrift Monitor Versorgungsforschung", "monitor-versorgungsforschung.de"], ["Versorgungsforschung", "wissen.m-vf.de"], ["Digitalisierung, KI & Gesundheit", "ki.m-vf.de"], ["Geschlechtersensible Medizin", "gender.m-vf.de"], ["Gesundes Altern & Longevity", "longevity.m-vf.de"], ["Gesundheitskompetenz", "healthliteracy.m-vf.de"], ["Hitze, Klima & Gesundheit", "klima.m-vf.de"], ["Impfen & Prävention", "impfen.m-vf.de"], ["NCD/Chronische Krankheiten", "ncd.m-vf.de"], ["Patientensicherheit", "safety.m-vf.de"], ["Pflege & Langzeitversorgung", "pflege.m-vf.de"], ["Psychische Gesundheit", "mental.m-vf.de"], ["Adipositas", "adipositas.m-vf.de"], ["Diabetes", "diabetes.m-vf.de"], ["Kardiologie", "kardio.m-vf.de"], ["Onkologie", "onkologie.m-vf.de"]];
+  const f = document.getElementById('kf-form'), stand = document.getElementById('kf-stand');
+  const p = new URLSearchParams(location.search);
+  const waehle = (sel, wert) => { if (!wert) return false;
+    const o = [...sel.options].find(x => x.value === wert || x.textContent.trim().toLowerCase() === String(wert).trim().toLowerCase());
+    if (o) { sel.value = o.value || o.textContent; return true; } return false; };
+  waehle(f.anliegen, p.get('anliegen'));
+  /* Angebot: aus der Adresse, sonst aus der Herkunftsseite (längster passender Eintrag gewinnt). */
+  if (!waehle(f.angebot, p.get('angebot'))) {
+    const her = (p.get('von') || document.referrer || '').replace(/^https?:\/\/(www\.)?/, '');
+    const t = HERKUNFT.filter(([n, a]) => her.startsWith(a)).sort((x, y) => y[1].length - x[1].length)[0];
+    if (t) waehle(f.angebot, t[0]);
+  }
+  if (p.get('bezug')) f.bezug.value = p.get('bezug').slice(0, 200);
+  else if (p.get('von')) f.bezug.value = p.get('von').replace(/^https?:\/\//, '').slice(0, 200);
+  /* Rücksprung: nur auf eigene Angebote (m-vf.de, monitor-versorgungsforschung.de, mvf-portal.github.io). */
+  const von = p.get('von') || document.referrer || '';
+  const z = document.getElementById('kf-zurueck');
+  if (z && /^https:\/\/([a-z0-9-]+\.)*(m-vf\.de|monitor-versorgungsforschung\.de|mvf-portal\.github\.io)(\/|$)/.test(von)
+      && !/\/kontakt\/?(\?|$)/.test(von)) { z.href = von; z.hidden = false; }
+  f.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const opt = f.anliegen.selectedOptions[0];
+    const angebot = f.angebot.value || 'nicht gewählt';
+    const kopfzeile = `[Anliegen: ${opt.textContent.trim()} · Angebot: ${angebot}]\n\n`;
+    const daten = {anliegen: opt.dataset.schluessel || 'sonstiges', bezug: f.bezug.value.trim(),
+      nachricht: kopfzeile + f.nachricht.value.trim(),
+      name: f.name.value.trim(), einrichtung: f.einrichtung.value.trim(), email: f.email.value.trim(),
+      website: f.website.value, einverstanden: f.einverstanden.checked, seite: von || location.href};
+    const fehler = f.nachricht.value.trim().length < 10 ? 'Bitte schreiben Sie ein paar Worte mehr.'
+      : !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(daten.email) ? 'Bitte prüfen Sie die E-Mail-Adresse.'
+      : !daten.einverstanden ? 'Bitte bestätigen Sie das Einverständnis.' : '';
+    if (fehler) { stand.textContent = fehler; stand.className = 'kf-stand schlecht'; return; }
+    const knopf = f.querySelector('.kf-senden'); knopf.disabled = true;
+    stand.textContent = 'Wird gesendet …'; stand.className = 'kf-stand';
+    try {
+      const r = await fetch(ENDPUNKT, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(daten)});
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.ok) {
+        stand.textContent = 'Angekommen. Vielen Dank! Wir antworten Ihnen an die angegebene Adresse.';
+        stand.className = 'kf-stand gut';
+        f.querySelectorAll('input,select,textarea').forEach(x => { x.disabled = true; });
+        knopf.hidden = true;
+      } else {
+        const g = {'zu-oft': 'Heute kamen von diesem Rechner schon mehrere Nachrichten.', 'adresse': 'Die E-Mail-Adresse ist nicht gültig.',
+                   'zu-kurz': 'Die Nachricht ist zu kurz.', 'keine-einwilligung': 'Bitte bestätigen Sie das Einverständnis.'}[j.grund];
+        throw new Error(g || 'Das Senden hat nicht geklappt.');
+      }
+    } catch (e) {
+      stand.innerHTML = '';
+      stand.append((e.message || 'Das Senden hat nicht geklappt.') + ' Schreiben Sie uns gern direkt an ');
+      const a = document.createElement('a'); a.href = 'mailto:info@m-vf.de'; a.textContent = 'info@m-vf.de';
+      stand.append(a, '.'); stand.className = 'kf-stand schlecht';
+      knopf.disabled = false;
+    }
+  });
+})();
+</script>
+
+</main>
+<style>
+  /* Volle Breite auch dann, wenn der Fuss in einem schmalen Container steht
+     (Innofonds): die Flaeche reicht per Schatten bis an den Rand. */
+  footer.nf{ background:#14202E; color:#C3CFDD; box-shadow:0 0 0 100vmax #14202E; clip-path:inset(0 -100vmax);
+             border-top:0; margin-top:44px; font-size:14px; }
+  footer.nf > .wrap, footer.nf{ padding-top:26px; padding-bottom:30px; }
+  /* Breite wie die Leiste oben, auch wo die Seite selbst schmaler ist (820 px). */
+  footer.nf > .wrap{ max-width:1180px; margin-left:auto; margin-right:auto; padding-left:22px; padding-right:22px; box-sizing:border-box; }
+  footer.nf p, footer.nf .attrib, footer.nf .stand{ color:#C3CFDD; }
+  footer.nf a{ color:#9CC6F4; }
+  footer.nf strong, footer.nf b{ color:#FFFFFF; }
+  footer.nf details{ background:#1B2A3C; border:1px solid #2E3D52; border-radius:6px; margin-top:8px; }
+  footer.nf summary{ color:#E3EAF3; cursor:pointer; padding:10px 13px; font-weight:700; }
+  footer.nf .legal-body{ color:#C3CFDD; padding:6px 14px 12px; font-size:12.5px; line-height:1.55; }
+  footer.nf .legal-body h4{ color:#FFFFFF; }
+  .nf-kopf{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px 24px; margin-bottom:6px; }
+  .nf-absender{ display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; text-decoration:none !important; }
+  .nf-absender span{ font-size:12px; letter-spacing:.06em; color:#9FB0C4; }
+  .nf-absender img{ width:150px; height:auto; display:block; }
+  .nf-absender small{ color:#9FB0C4; font-size:13px; }
+  /* margin/padding/max-width zuruecksetzen: Innofonds stylt jedes <nav> pauschal. */
+  .nf-links{ display:flex; flex-wrap:wrap; gap:8px 20px; font-weight:700; margin:0; padding:0; max-width:none; }
+  footer.nf .nf-links a{ color:#E3EAF3; text-decoration:none; }
+  footer.nf .nf-links a:hover{ text-decoration:underline; }
+  footer.nf .nf-links .nf-mail{ font-weight:400; color:#C3CFDD; }
+  footer.nf .nf-links .nf-mail a{ color:#9CC6F4; font-weight:700; }
+</style>
+<footer class="nf"><div class="wrap"><div class="nf-kopf">
+  <a class="nf-absender" href="https://www.monitor-versorgungsforschung.de/?utm_source=innofonds&amp;utm_medium=referral&amp;utm_campaign=fuss" target="_blank" rel="noopener">
+    <span>Ein Angebot von</span>
+    <img src="https://knowledge-hubs.m-vf.de/logo/mvf-logo-negativ.png" width="1236" height="327" alt="Monitor Versorgungsforschung">
+    <small>· eRelation AG – Content in Health</small>
+  </a>
+  <nav class="nf-links" aria-label="Rechtliches">
+    <a href="https://knowledge-hubs.m-vf.de/impressum.html">Impressum</a>
+    <a href="https://knowledge-hubs.m-vf.de/datenschutz.html">Datenschutz</a>
+    <a href="https://innofonds.m-vf.de/kontakt/" data-kein-formular>Kontaktformular</a>
+    <span class="nf-mail">E-Mail senden: <a href="mailto:info@m-vf.de" data-kein-formular>info@m-vf.de</a></span>
+  </nav>
+</div></div></footer>
+</body></html>

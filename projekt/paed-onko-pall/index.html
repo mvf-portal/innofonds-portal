@@ -137,17 +137,29 @@ details.mehrw summary{cursor:pointer;color:var(--akzent,#0051A1);font-weight:600
   .netz .wrap, .ortsleiste .wrap{ max-width:1180px; margin-left:auto; margin-right:auto;
          padding-left:22px; padding-right:22px; box-sizing:border-box; }
   @media (max-width:560px){ .netz .wrap, .ortsleiste .wrap{ padding-left:16px; padding-right:16px; } }
+  /* Unter 400 px zaehlt jeder Pixel - das sind die schmalsten Telefone, die
+     noch im Umlauf sind (iPhone SE der ersten Reihe: 320 px). */
+  @media (max-width:400px){ .netz .wrap, .ortsleiste .wrap{ padding-left:10px; padding-right:10px; } }
   :root[data-theme="dark"] .netz{ --nz-petrol:#4FC2C4; }
   @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .netz{ --nz-petrol:#4FC2C4; } }
   .netz *{ box-sizing:border-box; }
   /* Breite und Seitenrand kommen von .wrap der jeweiligen Seite - Hubs und
      Uebersicht setzen den Rand verschieden, die Leiste soll buendig mit dem
      Inhalt darunter stehen. */
-  .netz-innen{ display:flex; align-items:center; gap:4px; min-height:44px; }
+  /* flex-wrap ist die Notbremse gegen seitliches Verschieben der ganzen Seite.
+     Gemessen am 12.11.2026 auf diabetes.m-vf.de bei 323 px Fensterbreite: Die
+     Leiste war 357 px breit (Wortmarke 167 + Knopf 116 + Darstellungsschalter
+     34 + Rand 32 + Abstaende 8), die Seite liess sich um 24 px zur Seite
+     schieben. Solange alles nebeneinander passt, aendert wrap nichts; passt es
+     nicht, rutscht der Darstellungsschalter in eine zweite Zeile, statt dass
+     die ganze Seite wandert. Bewusst kein display:none unter 400 px: Der
+     Schalter ist der einzige Weg zu Hell und Dunkel, im Handy-Menue steht er
+     nicht. */
+  .netz-innen{ display:flex; flex-wrap:wrap; align-items:center; gap:4px; min-height:44px; }
   .netz a, .netz button{ font:inherit; color:inherit; }
   .netz a:focus-visible, .netz button:focus-visible{ outline:2px solid var(--nz-gold); outline-offset:2px; border-radius:4px; }
   .netz-marke{ display:flex; align-items:center; gap:9px; text-decoration:none; padding:8px 14px 8px 0;
-               margin-right:6px; border-right:1px solid #2E3D52; font-weight:700; letter-spacing:.09em; font-size:12.5px; color:#FFF; white-space:nowrap; }
+               margin-right:6px; border-right:1px solid #2E3D52; font-weight:700; letter-spacing:.02em; font-size:12.5px; color:#FFF; white-space:nowrap; }
   .netz-marke img{ width:20px; height:20px; display:block; }
   .netz-marke b{ color:var(--nz-gold); font-weight:700; }
   .netz-knopf, .netz-link{ background:none; border:0; cursor:pointer; padding:13px 11px; text-decoration:none;
@@ -205,7 +217,10 @@ details.mehrw summary{cursor:pointer;color:var(--akzent,#0051A1);font-weight:600
   .ortsleiste-innen{ display:flex; align-items:center; gap:6px; min-height:58px; }
   .ort-name{ display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink,#111); margin-right:18px; min-width:0; }
   .ort-name img{ width:34px; height:34px; flex:0 0 34px; display:block; }
-  .ort-name small{ display:block; font-size:10.5px; letter-spacing:.12em; font-weight:700; color:var(--ink-soft,#444A50); }
+  /* Sperrung von .12em auf .03em, weil „Knowledge-Hub" seit dem 12.11.2026
+     gemischt gesetzt ist - eine fuer Versalien gemachte Sperrung zerreisst
+     gemischten Satz. */
+  .ort-name small{ display:block; font-size:10.5px; letter-spacing:.03em; font-weight:700; color:var(--ink-soft,#444A50); }
   .ort-name b{ display:block; font-size:14.5px; color:var(--brand,#0051A1); line-height:1.2; }
   .ort-links{ display:flex; gap:2px; }
   .ort-links a{ padding:18px 11px 17px; font-size:13.5px; font-weight:700; color:var(--ink-soft,#444A50);
@@ -291,7 +306,13 @@ details.mehrw summary{cursor:pointer;color:var(--akzent,#0051A1);font-weight:600
   <div class="netz-innen wrap">
     <a class="netz-marke" href="https://knowledge-hubs.m-vf.de/" title="Zur Übersicht aller Knowledge-Hubs">
       <img src="https://knowledge-hubs.m-vf.de/logo/hub-icon.svg" alt="" width="20" height="20">
-      <span>KNOWLEDGE<b>-HUBS</b></span>
+      <!-- Gemischte Schreibweise seit 12.11.2026 auf Anweisung des
+           Herausgebers: Beim Innovationsfonds-Radar sind alle Versalien
+           abgeschafft worden, die Leiste zieht mit. Die Sperrung faellt dabei
+           von .09em auf .02em - sie war fuer Grossbuchstaben gesetzt und
+           zerreisst gemischten Satz. Nebenwirkung, gemessen: Die Wortmarke
+           wird auf dem Telefon von 167 auf 139 Pixel schmaler. -->
+      <span>Knowledge<b>-Hubs</b></span>
     </a>
     <button class="netz-knopf" type="button" id="netzKnopf" aria-expanded="false" aria-controls="netzMega">Alle Angebote<span class="pfeil" aria-hidden="true">▼</span></button>
     <a class="netz-link" href="https://knowledge-hubs.m-vf.de/ueber-die-hubs.html">Über die Hubs</a>
@@ -610,7 +631,8 @@ Eltern/Patientenbroschüre der Kinderkrebsstiftung zur Leitlinie (in Vorbereitun
   <nav class="nf-links" aria-label="Rechtliches">
     <a href="https://knowledge-hubs.m-vf.de/impressum.html">Impressum</a>
     <a href="https://knowledge-hubs.m-vf.de/datenschutz.html">Datenschutz</a>
-    <span class="nf-mail">Kontakt: <a href="mailto:info@m-vf.de">info@m-vf.de</a></span>
+    <a href="https://innofonds.m-vf.de/kontakt/" data-kein-formular>Kontaktformular</a>
+    <span class="nf-mail">E-Mail senden: <a href="mailto:info@m-vf.de" data-kein-formular>info@m-vf.de</a></span>
   </nav>
 </div></div></footer>
 <script>
@@ -706,178 +728,28 @@ document.querySelectorAll('form.ifw-form').forEach(f => f.addEventListener('subm
 })();
 </script>
 
-<style>
-/* Stufe 117: Kontaktformular */
-dialog.kf{border:1px solid var(--linie,#d5deec);border-radius:12px;padding:0;max-width:560px;width:calc(100% - 24px);
-  background:var(--flaeche,#fff);color:var(--text,#1b2733);box-shadow:0 20px 60px rgba(0,0,0,.25)}
-dialog.kf::backdrop{background:rgba(10,20,35,.45)}
-.kf form{padding:18px 20px;display:flex;flex-direction:column;gap:10px}
-.kf h2{margin:0;font-size:20px}
-.kf label{display:flex;flex-direction:column;gap:3px;font-size:13.5px;font-weight:600}
-.kf input,.kf select,.kf textarea{font:inherit;font-weight:400;font-size:15px;padding:8px 10px;border:1px solid var(--linie,#d5deec);
-  border-radius:8px;background:var(--bg,#fff);color:var(--text,#1b2733)}
-.kf textarea{min-height:130px;resize:vertical}
-.kf .kf-zwei{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.kf .kf-ok{flex-direction:row;align-items:flex-start;gap:8px;font-weight:400}
-.kf .kf-ok input{margin-top:3px}
-.kf .kf-topf{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.kf .kf-knoepfe{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
-.kf .kf-senden{background:var(--akzent,#0051A1);color:#fff;border:0;border-radius:8px;padding:9px 18px;font:inherit;font-weight:700;cursor:pointer}
-.kf .kf-zu{background:none;border:0;font:inherit;color:var(--gedaempft,#5a6b82);cursor:pointer;text-decoration:underline}
-.kf .kf-stand{font-size:14px;margin:0}
-.kf .kf-stand.gut{color:#2e7d4f;font-weight:700}.kf .kf-stand.schlecht{color:#b3261e}
-.kf small{font-weight:400;color:var(--gedaempft,#5a6b82)}
-/* 12.11.2026: Maße und Farben aus Marianns Tafel „Kontakt“ */
-dialog.kf{max-width:820px;border:1.5px solid #D8DFE9;font-family:Lato,system-ui,sans-serif}
-.kf form{padding:26px 28px;gap:16px;font-size:14px}
-.kf .kf-ober{font-size:12px;font-weight:700;letter-spacing:.12em;color:#3A4658}
-.kf h2{font-size:28px;line-height:1.2;margin:-6px 0 0}
-.kf .kf-einleitung{margin:0;font-size:15px;line-height:1.6;color:#3A4658}
-.kf label{font-size:14px;gap:6px}
-.kf input,.kf select,.kf textarea{padding:10px 12px;border:1px solid #B8C4D4}
-.kf select:focus,.kf input:focus,.kf textarea:focus{outline:none;border:1.5px solid #00529F}
-.kf .kf-hub{padding:10px 12px;border:1.5px dashed #C9D8EC;border-radius:8px;background:#F6F8FB}
-.kf .kf-hub[hidden]{display:none}
-.kf .kf-knoepfe{border-top:1px solid #EEF1F5;padding-top:16px}
-.kf .kf-mail{color:#5A6577}
-.kf .kf-senden{background:#00529F;padding:12px 24px;font-size:15px;margin-left:12px}
-@media (max-width:520px){.kf .kf-zwei{grid-template-columns:1fr}}
-</style>
-
-<!-- 12.11.2026: Aufbau und Wortlaut nach Marianns Tafel „Kontakt“ (Canvas 1, Seite-Kontakt.dc.html), Peter: „nimm das
-     Kontaktformular von Mariann und baue es ein“. Der Server kennt acht Anliegen (kontakt.php, ANLIEGEN). Marianns
-     vierzehn Anliegen werden darauf abgebildet (data-schluessel), ihr genauer Wortlaut und der Bereich stehen zusätzlich
-     in der ersten Zeile der Nachricht. So geht nichts verloren, ohne dass der Server geändert werden muss. -->
-<dialog class="kf" id="kf" aria-labelledby="kf-titel">
-  <form method="dialog" novalidate>
-    <span class="kf-ober">KONTAKT</span>
-    <h2 id="kf-titel">Hinweise, Korrekturen oder Fragen an die Redaktion</h2>
-    <p class="kf-einleitung">Für alle Knowledge-Hubs, das Innovationsfonds-Radar, Ausschreibungsradar und CuratioHub. Die Angebote
-      sind alle neu und wachsen mit Ihren Hinweisen: fehlende Quellen, defekte Links, falsche Angaben oder Wünsche. Denn eine
-      Recherchehilfe ist nur so gut wie die Praxis, aus der heraus sie mitgestaltet wird. Wir antworten, so schnell wir können.</p>
-    <div class="kf-zwei">
-      <label>Worum geht es?
-        <select name="anliegen">
-          <option value="korrektur" data-schluessel="korrektur">Korrektur einer Angabe</option>
-          <option value="rueckmeldung" data-schluessel="korrektur">Rückmeldung zu meinem Vorhaben</option>
-          <option value="frage" data-schluessel="frage">Frage zu den Inhalten</option>
-          <option value="themenfrage" data-schluessel="themenfrage">Frage für die Themen-Bilanz vorschlagen</option>
-          <option value="glossar" data-schluessel="methodik">Begriff fürs Glossar vorschlagen oder Erklärung unklar</option>
-          <option value="quelle" data-schluessel="sonstiges">Fehlende Quelle oder Datenbank</option>
-          <option value="ausschreibung" data-schluessel="sonstiges">Ausschreibung melden</option>
-          <option value="technik" data-schluessel="sonstiges">Defekter Link oder technisches Problem</option>
-          <option value="rebriefing" data-schluessel="rebriefing">Re-Briefing anfragen</option>
-          <option value="synthese" data-schluessel="synthese">Evidenzsynthese anfragen</option>
-          <option value="newsletter" data-schluessel="sonstiges">Newsletter</option>
-          <option value="kooperation" data-schluessel="kooperation">Presse oder Kooperation</option>
-          <option value="lob" data-schluessel="sonstiges">Lob, Kritik oder Wünsche</option>
-          <option value="sonstiges" data-schluessel="sonstiges">Sonstiges</option>
-        </select></label>
-      <label>Welcher Bereich?
-        <select name="bereich">
-          <option>Innovationsfonds-Radar</option>
-          <option>Knowledge-Hubs</option>
-          <option>Ausschreibungsradar</option>
-          <option>CuratioHub</option>
-          <option>Sonstiges</option>
-        </select></label>
-    </div>
-    <label class="kf-hub" hidden>Welcher Knowledge-Hub?
-      <select name="hub">
-        <option>Alle Hubs / allgemein</option><option>Versorgungsforschung</option><option>Digitalisierung, KI &amp; Gesundheit</option>
-        <option>Geschlechtersensible Medizin</option><option>Gesundes Altern &amp; Longevity</option><option>Gesundheitskompetenz</option>
-        <option>Hitze, Klima &amp; Gesundheit</option><option>Impfen &amp; Prävention</option><option>NCD/Chronische Krankheiten</option>
-        <option>Patientensicherheit</option><option>Pflege &amp; Langzeitversorgung</option><option>Psychische Gesundheit</option>
-        <option>Adipositas</option><option>Diabetes</option><option>Kardiologie</option><option>Onkologie</option>
-      </select></label>
-    <label>Betroffenes Vorhaben oder betroffene Seite <small>wird automatisch ausgefüllt, wenn Sie von einer Seite kommen, und lässt sich ändern</small>
-      <input name="bezug" maxlength="200" autocomplete="off"></label>
-    <label>Ihr Anliegen
-      <textarea name="nachricht" maxlength="8000" rows="6" required placeholder="Was stimmt nicht, und wie wäre es richtig? Eine Quelle hilft uns beim Prüfen."></textarea></label>
-    <div class="kf-zwei">
-      <label>Name <small>optional</small><input name="name" maxlength="200" autocomplete="name"></label>
-      <label>E-Mail-Adresse <small>nur für die Antwort</small>
-        <input name="email" type="email" maxlength="200" autocomplete="email" required placeholder="name@einrichtung.de"></label>
-    </div>
-    <input type="hidden" name="einrichtung" value="">
-    <label class="kf-topf" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
-    <label class="kf-ok"><input type="checkbox" name="einverstanden"> <span>Ich bin einverstanden, dass meine Angaben
-      gespeichert und zur Bearbeitung meines Anliegens verwendet werden. Eine Zeile an info@m-vf.de genügt, und sie werden
-      gelöscht. <a href="https://knowledge-hubs.m-vf.de/datenschutz.html" target="_blank" rel="noopener">Datenschutzhinweise</a></span></label>
-    <p class="kf-stand" id="kf-stand" role="status" aria-live="polite"></p>
-    <div class="kf-knoepfe"><span class="kf-mail">Lieber per E-Mail? <a href="mailto:info@m-vf.de" data-kein-formular>info@m-vf.de</a></span>
-      <span><button type="button" class="kf-zu" value="zu">Abbrechen</button>
-      <button type="submit" class="kf-senden">Nachricht senden</button></span></div>
-  </form>
-</dialog>
 <script>
+/* Kontakt führt seit 12.11.2026 auf die Seite /kontakt/ statt in einen Dialog (Peter: „nicht als Popup“). */
 (function () {
-  const ENDPUNKT = 'https://www.monitor-versorgungsforschung.de/kontakt/kontakt.php';
-  const d = document.getElementById('kf');
-  if (!d || typeof d.showModal !== 'function') return;   // alte Browser: der Mail-Link bleibt
-  const f = d.querySelector('form'), stand = document.getElementById('kf-stand');
-  let ziel = 'info@m-vf.de';
+  const SEITE = 'https://innofonds.m-vf.de/kontakt/';
   const anliegenAus = t => /re-?briefing/i.test(t) ? 'rebriefing' : /synthese/i.test(t) ? 'synthese'
     : /angabe|korrig/i.test(t) ? 'korrektur' : /methodik/i.test(t) ? 'frage'
     : /themen-?bilanz/i.test(t) ? 'themenfrage' : /sponsor|kooperation/i.test(t) ? 'kooperation' : 'frage';
-  const hubFeld = d.querySelector('.kf-hub');
-  f.bereich.addEventListener('change', () => { hubFeld.hidden = f.bereich.value !== 'Knowledge-Hubs'; });
   window.kontaktOeffnen = (o = {}) => {
-    f.reset(); stand.textContent = ''; stand.className = 'kf-stand'; hubFeld.hidden = true;
-    f.anliegen.value = o.anliegen || 'frage';
-    /* Marianns Vorgabe: Vorhaben oder Seite vorausgefüllt, wenn man von einer Seite kommt. */
     const akr = document.body.dataset.akronym;
-    f.bezug.value = o.bezug ? (akr && o.bezug === akr ? akr + ' · ' + location.host + location.pathname : o.bezug)
-      : (location.hash && location.hash.length > 1 ? location.host + location.pathname + location.hash : '');
-    ziel = o.adresse || 'info@m-vf.de';
-    d.showModal();
-    (f.bezug.value ? f.nachricht : f.anliegen).focus();
+    const q = new URLSearchParams({anliegen: o.anliegen || 'frage', angebot: 'Innovationsfonds-Radar', von: location.href});
+    const bezug = o.bezug || akr || '';
+    if (bezug) q.set('bezug', bezug);
+    location.href = SEITE + '?' + q.toString();
   };
   document.addEventListener('click', ev => {
     const a = ev.target.closest('a[href^="mailto:info@m-vf.de"], a[href^="mailto:redaktion@m-vf.de"], [data-kontakt]');
-    if (!a || a.hasAttribute('data-kein-formular')) return;
+    if (!a || a.hasAttribute('data-kein-formular') || ev.ctrlKey || ev.metaKey || ev.shiftKey) return;
     ev.preventDefault();
     const href = a.getAttribute('href') || '';
     let betreff = '';
     try { betreff = decodeURIComponent((href.split('subject=')[1] || '').split('&')[0]); } catch (e) {}
-    const bezug = a.dataset.bezug || (document.body.dataset.akronym || '');
-    kontaktOeffnen({anliegen: a.dataset.kontakt || anliegenAus(betreff + ' ' + a.textContent),
-                    bezug, adresse: (href.match(/^mailto:([^?]+)/) || [])[1]});
-  });
-  d.querySelector('.kf-zu').onclick = () => d.close();
-  f.addEventListener('submit', async ev => {
-    ev.preventDefault();
-    const opt = f.anliegen.selectedOptions[0];
-    const bereich = f.bereich.value + (f.bereich.value === 'Knowledge-Hubs' ? ' › ' + f.hub.value : '');
-    const kopfzeile = `[Anliegen: ${opt.textContent.trim()} · Bereich: ${bereich}]\n\n`;
-    const daten = {anliegen: opt.dataset.schluessel || 'sonstiges', bezug: f.bezug.value.trim(),
-      nachricht: kopfzeile + f.nachricht.value.trim(),
-      name: f.name.value.trim(), einrichtung: f.einrichtung.value.trim(), email: f.email.value.trim(),
-      website: f.website.value, einverstanden: f.einverstanden.checked, seite: location.href.split('#')[0] + (location.hash || '')};
-    const fehler = f.nachricht.value.trim().length < 10 ? 'Bitte schreiben Sie ein paar Worte mehr.'
-      : !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(daten.email) ? 'Bitte prüfen Sie die E-Mail-Adresse.'
-      : !daten.einverstanden ? 'Bitte bestätigen Sie das Einverständnis.' : '';
-    if (fehler) { stand.textContent = fehler; stand.className = 'kf-stand schlecht'; return; }
-    const knopf = f.querySelector('.kf-senden'); knopf.disabled = true;
-    stand.textContent = 'Wird gesendet …'; stand.className = 'kf-stand';
-    try {
-      const r = await fetch(ENDPUNKT, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(daten)});
-      const j = await r.json().catch(() => ({}));
-      if (r.ok && j.ok) {
-        stand.innerHTML = 'Angekommen. Vielen Dank! Wir antworten Ihnen an die angegebene Adresse.';
-        stand.className = 'kf-stand gut';
-        f.querySelectorAll('input,select,textarea').forEach(x => { x.disabled = true; });
-        knopf.hidden = true; d.querySelector('.kf-zu').textContent = 'Schließen';
-      } else {
-        const g = {'zu-oft': 'Heute kamen von diesem Rechner schon mehrere Nachrichten.', 'adresse': 'Die E-Mail-Adresse ist nicht gültig.',
-                   'zu-kurz': 'Die Nachricht ist zu kurz.', 'keine-einwilligung': 'Bitte bestätigen Sie das Einverständnis.'}[j.grund];
-        throw new Error(g || 'Das Senden hat nicht geklappt.');
-      }
-    } catch (e) {
-      stand.innerHTML = `${e.message || 'Das Senden hat nicht geklappt.'} Schreiben Sie uns gern direkt an
-        <a href="mailto:${ziel}" data-kein-formular>${ziel}</a>.`;
-      stand.className = 'kf-stand schlecht';
-    } finally { knopf.disabled = false; }
+    kontaktOeffnen({anliegen: a.dataset.kontakt || anliegenAus(betreff + ' ' + a.textContent), bezug: a.dataset.bezug || ''});
   });
 })();
 </script>
