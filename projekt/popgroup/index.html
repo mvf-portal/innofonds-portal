@@ -709,41 +709,87 @@ dialog.kf::backdrop{background:rgba(10,20,35,.45)}
 .kf .kf-stand{font-size:14px;margin:0}
 .kf .kf-stand.gut{color:#2e7d4f;font-weight:700}.kf .kf-stand.schlecht{color:#b3261e}
 .kf small{font-weight:400;color:var(--gedaempft,#5a6b82)}
+/* 12.11.2026: Maße und Farben aus Marianns Tafel „Kontakt“ */
+dialog.kf{max-width:820px;border:1.5px solid #D8DFE9;font-family:Lato,system-ui,sans-serif}
+.kf form{padding:26px 28px;gap:16px;font-size:14px}
+.kf .kf-ober{font-size:12px;font-weight:700;letter-spacing:.12em;color:#3A4658}
+.kf h2{font-size:28px;line-height:1.2;margin:-6px 0 0}
+.kf .kf-einleitung{margin:0;font-size:15px;line-height:1.6;color:#3A4658}
+.kf label{font-size:14px;gap:6px}
+.kf input,.kf select,.kf textarea{padding:10px 12px;border:1px solid #B8C4D4}
+.kf select:focus,.kf input:focus,.kf textarea:focus{outline:none;border:1.5px solid #00529F}
+.kf .kf-hub{padding:10px 12px;border:1.5px dashed #C9D8EC;border-radius:8px;background:#F6F8FB}
+.kf .kf-hub[hidden]{display:none}
+.kf .kf-knoepfe{border-top:1px solid #EEF1F5;padding-top:16px}
+.kf .kf-mail{color:#5A6577}
+.kf .kf-senden{background:#00529F;padding:12px 24px;font-size:15px;margin-left:12px}
 @media (max-width:520px){.kf .kf-zwei{grid-template-columns:1fr}}
 </style>
 
+<!-- 12.11.2026: Aufbau und Wortlaut nach Marianns Tafel „Kontakt“ (Canvas 1, Seite-Kontakt.dc.html), Peter: „nimm das
+     Kontaktformular von Mariann und baue es ein“. Der Server kennt acht Anliegen (kontakt.php, ANLIEGEN). Marianns
+     vierzehn Anliegen werden darauf abgebildet (data-schluessel), ihr genauer Wortlaut und der Bereich stehen zusätzlich
+     in der ersten Zeile der Nachricht. So geht nichts verloren, ohne dass der Server geändert werden muss. -->
 <dialog class="kf" id="kf" aria-labelledby="kf-titel">
   <form method="dialog" novalidate>
-    <h2 id="kf-titel">Nachricht an die Redaktion</h2>
-    <p class="kf-stand" style="color:var(--gedaempft,#5a6b82)">Monitor Versorgungsforschung liest jede Nachricht und meldet sich, so schnell es geht.</p>
-    <label>Anliegen
-      <select name="anliegen">
-        <option value="frage">Frage</option>
-        <option value="korrektur">Angabe korrigieren</option>
-        <option value="themenfrage">Frage für die Themen-Bilanz vorschlagen</option>
-        <option value="synthese">Evidenzsynthese anfragen</option>
-        <option value="rebriefing">Re-Briefing anfragen</option>
-        <option value="methodik">Rückmeldung zur Methodik</option>
-        <option value="kooperation">Kooperation oder Sponsoring</option>
-        <option value="sonstiges">Sonstiges</option>
-      </select></label>
-    <label>Worum es geht <small>(z. B. Akronym eines Vorhabens, optional)</small>
-      <input name="bezug" maxlength="200" autocomplete="off"></label>
-    <label>Ihre Nachricht
-      <textarea name="nachricht" maxlength="8000" required></textarea></label>
+    <span class="kf-ober">KONTAKT</span>
+    <h2 id="kf-titel">Hinweise, Korrekturen oder Fragen an die Redaktion</h2>
+    <p class="kf-einleitung">Für alle Knowledge-Hubs, das Innovationsfonds-Radar, Ausschreibungsradar und CuratioHub. Die Angebote
+      sind alle neu und wachsen mit Ihren Hinweisen: fehlende Quellen, defekte Links, falsche Angaben oder Wünsche. Denn eine
+      Recherchehilfe ist nur so gut wie die Praxis, aus der heraus sie mitgestaltet wird. Wir antworten, so schnell wir können.</p>
     <div class="kf-zwei">
-      <label>Name <small>(optional)</small><input name="name" maxlength="200" autocomplete="name"></label>
-      <label>Einrichtung <small>(optional)</small><input name="einrichtung" maxlength="300" autocomplete="organization"></label>
+      <label>Worum geht es?
+        <select name="anliegen">
+          <option value="korrektur" data-schluessel="korrektur">Korrektur einer Angabe</option>
+          <option value="rueckmeldung" data-schluessel="korrektur">Rückmeldung zu meinem Vorhaben</option>
+          <option value="frage" data-schluessel="frage">Frage zu den Inhalten</option>
+          <option value="themenfrage" data-schluessel="themenfrage">Frage für die Themen-Bilanz vorschlagen</option>
+          <option value="glossar" data-schluessel="methodik">Begriff fürs Glossar vorschlagen oder Erklärung unklar</option>
+          <option value="quelle" data-schluessel="sonstiges">Fehlende Quelle oder Datenbank</option>
+          <option value="ausschreibung" data-schluessel="sonstiges">Ausschreibung melden</option>
+          <option value="technik" data-schluessel="sonstiges">Defekter Link oder technisches Problem</option>
+          <option value="rebriefing" data-schluessel="rebriefing">Re-Briefing anfragen</option>
+          <option value="synthese" data-schluessel="synthese">Evidenzsynthese anfragen</option>
+          <option value="newsletter" data-schluessel="sonstiges">Newsletter</option>
+          <option value="kooperation" data-schluessel="kooperation">Presse oder Kooperation</option>
+          <option value="lob" data-schluessel="sonstiges">Lob, Kritik oder Wünsche</option>
+          <option value="sonstiges" data-schluessel="sonstiges">Sonstiges</option>
+        </select></label>
+      <label>Welcher Bereich?
+        <select name="bereich">
+          <option>Innovationsfonds-Radar</option>
+          <option>Knowledge-Hubs</option>
+          <option>Ausschreibungsradar</option>
+          <option>CuratioHub</option>
+          <option>Sonstiges</option>
+        </select></label>
     </div>
-    <label>E-Mail-Adresse <small>– damit die Antwort Sie erreicht</small>
-      <input name="email" type="email" maxlength="200" autocomplete="email" required></label>
+    <label class="kf-hub" hidden>Welcher Knowledge-Hub?
+      <select name="hub">
+        <option>Alle Hubs / allgemein</option><option>Versorgungsforschung</option><option>Digitalisierung, KI &amp; Gesundheit</option>
+        <option>Geschlechtersensible Medizin</option><option>Gesundes Altern &amp; Longevity</option><option>Gesundheitskompetenz</option>
+        <option>Hitze, Klima &amp; Gesundheit</option><option>Impfen &amp; Prävention</option><option>NCD/Chronische Krankheiten</option>
+        <option>Patientensicherheit</option><option>Pflege &amp; Langzeitversorgung</option><option>Psychische Gesundheit</option>
+        <option>Adipositas</option><option>Diabetes</option><option>Kardiologie</option><option>Onkologie</option>
+      </select></label>
+    <label>Betroffenes Vorhaben oder betroffene Seite <small>wird automatisch ausgefüllt, wenn Sie von einer Seite kommen, und lässt sich ändern</small>
+      <input name="bezug" maxlength="200" autocomplete="off"></label>
+    <label>Ihr Anliegen
+      <textarea name="nachricht" maxlength="8000" rows="6" required placeholder="Was stimmt nicht, und wie wäre es richtig? Eine Quelle hilft uns beim Prüfen."></textarea></label>
+    <div class="kf-zwei">
+      <label>Name <small>optional</small><input name="name" maxlength="200" autocomplete="name"></label>
+      <label>E-Mail-Adresse <small>nur für die Antwort</small>
+        <input name="email" type="email" maxlength="200" autocomplete="email" required placeholder="name@einrichtung.de"></label>
+    </div>
+    <input type="hidden" name="einrichtung" value="">
     <label class="kf-topf" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
     <label class="kf-ok"><input type="checkbox" name="einverstanden"> <span>Ich bin einverstanden, dass meine Angaben
       gespeichert und zur Bearbeitung meines Anliegens verwendet werden. Eine Zeile an info@m-vf.de genügt, und sie werden
       gelöscht. <a href="https://knowledge-hubs.m-vf.de/datenschutz.html" target="_blank" rel="noopener">Datenschutzhinweise</a></span></label>
     <p class="kf-stand" id="kf-stand" role="status" aria-live="polite"></p>
-    <div class="kf-knoepfe"><button type="button" class="kf-zu" value="zu">Abbrechen</button>
-      <button type="submit" class="kf-senden">Nachricht senden</button></div>
+    <div class="kf-knoepfe"><span class="kf-mail">Lieber per E-Mail? <a href="mailto:info@m-vf.de" data-kein-formular>info@m-vf.de</a></span>
+      <span><button type="button" class="kf-zu" value="zu">Abbrechen</button>
+      <button type="submit" class="kf-senden">Nachricht senden</button></span></div>
   </form>
 </dialog>
 <script>
@@ -754,12 +800,17 @@ dialog.kf::backdrop{background:rgba(10,20,35,.45)}
   const f = d.querySelector('form'), stand = document.getElementById('kf-stand');
   let ziel = 'info@m-vf.de';
   const anliegenAus = t => /re-?briefing/i.test(t) ? 'rebriefing' : /synthese/i.test(t) ? 'synthese'
-    : /angabe|korrig/i.test(t) ? 'korrektur' : /methodik/i.test(t) ? 'methodik'
+    : /angabe|korrig/i.test(t) ? 'korrektur' : /methodik/i.test(t) ? 'frage'
     : /themen-?bilanz/i.test(t) ? 'themenfrage' : /sponsor|kooperation/i.test(t) ? 'kooperation' : 'frage';
+  const hubFeld = d.querySelector('.kf-hub');
+  f.bereich.addEventListener('change', () => { hubFeld.hidden = f.bereich.value !== 'Knowledge-Hubs'; });
   window.kontaktOeffnen = (o = {}) => {
-    f.reset(); stand.textContent = ''; stand.className = 'kf-stand';
+    f.reset(); stand.textContent = ''; stand.className = 'kf-stand'; hubFeld.hidden = true;
     f.anliegen.value = o.anliegen || 'frage';
-    f.bezug.value = o.bezug || '';
+    /* Marianns Vorgabe: Vorhaben oder Seite vorausgefüllt, wenn man von einer Seite kommt. */
+    const akr = document.body.dataset.akronym;
+    f.bezug.value = o.bezug ? (akr && o.bezug === akr ? akr + ' · ' + location.host + location.pathname : o.bezug)
+      : (location.hash && location.hash.length > 1 ? location.host + location.pathname + location.hash : '');
     ziel = o.adresse || 'info@m-vf.de';
     d.showModal();
     (f.bezug.value ? f.nachricht : f.anliegen).focus();
@@ -778,10 +829,14 @@ dialog.kf::backdrop{background:rgba(10,20,35,.45)}
   d.querySelector('.kf-zu').onclick = () => d.close();
   f.addEventListener('submit', async ev => {
     ev.preventDefault();
-    const daten = {anliegen: f.anliegen.value, bezug: f.bezug.value.trim(), nachricht: f.nachricht.value.trim(),
+    const opt = f.anliegen.selectedOptions[0];
+    const bereich = f.bereich.value + (f.bereich.value === 'Knowledge-Hubs' ? ' › ' + f.hub.value : '');
+    const kopfzeile = `[Anliegen: ${opt.textContent.trim()} · Bereich: ${bereich}]\n\n`;
+    const daten = {anliegen: opt.dataset.schluessel || 'sonstiges', bezug: f.bezug.value.trim(),
+      nachricht: kopfzeile + f.nachricht.value.trim(),
       name: f.name.value.trim(), einrichtung: f.einrichtung.value.trim(), email: f.email.value.trim(),
       website: f.website.value, einverstanden: f.einverstanden.checked, seite: location.href.split('#')[0] + (location.hash || '')};
-    const fehler = daten.nachricht.length < 10 ? 'Bitte schreiben Sie ein paar Worte mehr.'
+    const fehler = f.nachricht.value.trim().length < 10 ? 'Bitte schreiben Sie ein paar Worte mehr.'
       : !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(daten.email) ? 'Bitte prüfen Sie die E-Mail-Adresse.'
       : !daten.einverstanden ? 'Bitte bestätigen Sie das Einverständnis.' : '';
     if (fehler) { stand.textContent = fehler; stand.className = 'kf-stand schlecht'; return; }

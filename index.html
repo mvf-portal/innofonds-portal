@@ -1742,6 +1742,13 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
     </div>
   </div>
 </div>
+<!-- 12.11.2026, Marianns PDF (Projektdatenbank): Kasten „So entstehen diese Daten“ am Ende, wie auf den Auswertungen. -->
+<div class="aw-fuss">
+  <h4>So entstehen diese Daten</h4>
+  <p>Woher jede Angabe einer Projektseite kommt, wie Hindernisse zugeordnet und gegen ihr Zitat geprüft werden und wie
+    verlässlich die einzelnen Angaben sind, steht unter Hintergrund › Methodik &amp; Verlässlichkeit.</p>
+  <p><a href="#vorwort/projektdatenbank" data-mt="projektdatenbank">Wie die Angaben in der Projektdatenbank entstehen →</a></p>
+</div>
 
   <!-- Stufe 103: die alte Tabelle, unsichtbar. Das Hauptskript greift beim
        Laden auf p-q, p-bl, p-vb, p-filter und p-tab zu. -->
@@ -2262,19 +2269,18 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
 
   <!-- Fuer alles, was nicht unter den fuenfzehn steht. Die Frage geht
        an denselben Endpunkt wie die Rueckmeldungen der Pruefseiten. -->
-  <details class="fragekasten" id="bl-fragekasten">
+  <!-- 12.11.2026, Marianns PDF (Themen-Bilanz): kein eigenes Formular mehr, sondern ein Knopf ins gemeinsame
+       Kontaktformular mit vorausgewähltem Anliegen. Das alte Formular bleibt unsichtbar im Dokument, weil das
+       Hauptskript beim Laden auf fk-senden zugreift. -->
+  <div class="fragekasten-neu" id="bl-fragekasten-neu">
+    <p><b>Ihre Frage steht nicht dabei?</b> Wenn sie sich aus den Daten dieses Portals beantworten lässt, nehmen wir sie
+      als feste Auswertung auf. Dann steht die Antwort künftig für alle da.</p>
+    <button type="button" class="gold" data-kontakt="themenfrage">Frage über das Kontaktformular senden →</button>
+  </div>
+  <details class="fragekasten" id="bl-fragekasten" hidden>
     <summary>Ihre Frage steht nicht dabei?</summary>
-    <p>Schreiben Sie sie hier hinein. Wir lesen jede Frage und
-      antworten, so schnell wir können. Wenn sie sich aus den Daten
-      dieses Portals beantworten lässt, nehmen wir sie als feste
-      Auswertung auf – dann steht die Antwort künftig für alle da.</p>
-    <label>Ihre Frage
-      <textarea id="fk-text" rows="4"
-        placeholder="Zum Beispiel: Wie viele Vorhaben zur Pflege hatten eine Kontrollgruppe?"></textarea></label>
-    <label>Ihre E-Mail-Adresse <span class="hinweis">– nur dafür, dass
-      die Antwort Sie erreicht</span>
-      <input type="email" id="fk-mail" autocomplete="email"
-             placeholder="name@einrichtung.de"></label>
+    <textarea id="fk-text" rows="4"></textarea>
+    <input type="email" id="fk-mail" autocomplete="email">
     <button id="fk-senden" class="gold">Frage absenden</button>
     <p class="hinweis" id="fk-stand"></p>
   </details>
@@ -3037,8 +3043,14 @@ function endpunkteZeichnen() {
     [fam.length, 'Endpunktfamilien'],
     [mitP ? Math.round(erreicht / mitP * 100) + ' %' : 'ohne Angabe',
      `Projekte mit erreichtem Hauptziel (${erreicht} von ${mitP})`],
-  ].map(([z, w]) => `<div class="kachel"><div class="gross">${z}</div>
+  ].map(([z, w]) => `<div class="kachel"><div class="gross">${typeof z === 'number' ? z.toLocaleString('de-DE') : z}</div>
       <div class="was">${w}</div></div>`).join('');
+  /* 12.11.2026, Marianns PDF: Ohne Filter stand hier dasselbe wie oben in „Das Wichtigste in Kürze“.
+     Die Reihe erscheint jetzt nur, wenn ein Filter gesetzt ist, und sagt dann, dass sie die Auswahl zählt. */
+  const epGefiltertAktiv = ['ep-q', 'ep-art', 'ep-erg'].some(id => (document.getElementById(id) || {}).value);
+  const epZ = document.getElementById('ep-zahlen');
+  epZ.hidden = !epGefiltertAktiv;
+  if (epGefiltertAktiv) epZ.insertAdjacentHTML('afterbegin', '<p class="auswahl-kopf">In Ihrer Auswahl</p>');
 
   const tb = document.querySelector('#ep-tab tbody');
   tb.innerHTML = fam.map(z => `<tr data-f="${esc(z.f)}"
@@ -3279,6 +3291,12 @@ function fzZeichnen() {
     k(q.filter(x => x >= .8 && x < 1).length, 'kommen auf 80 bis 99 Prozent'),
     k(q.filter(x => x < .8).length, 'bleiben unter 80 Prozent'),
   ].join('');
+  /* 12.11.2026, Marianns PDF: ohne Filter doppelt zu „Das Wichtigste in Kürze“. Nur bei gesetztem Filter zeigen. */
+  const fzAktiv = ['fz-q', 'fz-ber', 'fz-lage', 'fz-grund'].some(id => (document.getElementById(id) || {}).value)
+    || !!(document.getElementById('fz-pandemie') || {}).checked;
+  const fzZ = document.getElementById('fz-zahlen');
+  fzZ.hidden = !fzAktiv;
+  if (fzAktiv) fzZ.insertAdjacentHTML('afterbegin', '<p class="auswahl-kopf">In Ihrer Auswahl</p>');
   document.getElementById('fz-verteilung').innerHTML = fzVerteilung(liste);
 
   const tb = document.querySelector('#fz-tab tbody');
@@ -5116,8 +5134,10 @@ document.getElementById('t-suche').addEventListener('click', ev => {
   }
   if (ev.target.closest('[data-bl-fragen]')) {
     ev.preventDefault();
+    /* 12.11.2026: ins gemeinsame Kontaktformular, Anliegen vorausgewählt. */
+    if (window.kontaktOeffnen) { kontaktOeffnen({anliegen: 'themenfrage'}); return; }
     const k = document.getElementById('bl-fragekasten');
-    k.open = true; k.scrollIntoView({block: 'center', behavior: 'smooth'});
+    k.hidden = false; k.open = true; k.scrollIntoView({block: 'center', behavior: 'smooth'});
     return;
   }
   /* ↓-Verweise der Kacheln: zum Abschnitt springen, ohne die Adresse
@@ -9156,14 +9176,10 @@ partnerZeichnen();
         schneller</b>: 15 Monate bis zur Transferempfehlung, 17 bis zur
         Absage oder zur bloßen Weitergabe der Erkenntnisse.</p>
         </details>` : '')}
-      <p class="hinweis"><b>Empfehlung ist nicht Überführung.</b> Der
-        Innovationsausschuss spricht eine Überführungsempfehlung oder eine
-        Prüfbitte aus und leitet sie an die zuständigen Stellen weiter:
-        an GBA-Gremien, Selbstverwaltung, Ministerien. Ob daraus eine Leistung
-        der Regelversorgung wird, entscheidet sich dort, oft Jahre später
-        und nicht immer zugunsten des Vorhabens. Alle Quoten in diesem
-        Portal zählen <b>Empfehlungen</b>, nicht vollzogene
-        Überführungen.</p>
+      <!-- 12.11.2026, Marianns PDF (Förderung in Zahlen): auf einen Satz gekürzt, die Erklärung steht in der Methodik. -->
+      <p class="hinweis"><b>Empfehlung ist nicht Überführung:</b> Alle Quoten zählen
+        Empfehlungen des Innovationsausschusses, nicht vollzogene Überführungen in die
+        Regelversorgung. <a href="#vorwort" data-mt="" data-mt-sprung="mt-zaehlen">Wie gezählt wird →</a></p>
       <p class="hinweis">Diese vier Zahlen veröffentlicht der GBA nicht.
         Sie entstehen erst aus der Verknüpfung von Laufzeit und
         Beschlussdatum. Wer heute eine Antragsskizze schreibt, weiß damit,
@@ -12215,41 +12231,87 @@ dialog.kf::backdrop{background:rgba(10,20,35,.45)}
 .kf .kf-stand{font-size:14px;margin:0}
 .kf .kf-stand.gut{color:#2e7d4f;font-weight:700}.kf .kf-stand.schlecht{color:#b3261e}
 .kf small{font-weight:400;color:var(--gedaempft,#5a6b82)}
+/* 12.11.2026: Maße und Farben aus Marianns Tafel „Kontakt“ */
+dialog.kf{max-width:820px;border:1.5px solid #D8DFE9;font-family:Lato,system-ui,sans-serif}
+.kf form{padding:26px 28px;gap:16px;font-size:14px}
+.kf .kf-ober{font-size:12px;font-weight:700;letter-spacing:.12em;color:#3A4658}
+.kf h2{font-size:28px;line-height:1.2;margin:-6px 0 0}
+.kf .kf-einleitung{margin:0;font-size:15px;line-height:1.6;color:#3A4658}
+.kf label{font-size:14px;gap:6px}
+.kf input,.kf select,.kf textarea{padding:10px 12px;border:1px solid #B8C4D4}
+.kf select:focus,.kf input:focus,.kf textarea:focus{outline:none;border:1.5px solid #00529F}
+.kf .kf-hub{padding:10px 12px;border:1.5px dashed #C9D8EC;border-radius:8px;background:#F6F8FB}
+.kf .kf-hub[hidden]{display:none}
+.kf .kf-knoepfe{border-top:1px solid #EEF1F5;padding-top:16px}
+.kf .kf-mail{color:#5A6577}
+.kf .kf-senden{background:#00529F;padding:12px 24px;font-size:15px;margin-left:12px}
 @media (max-width:520px){.kf .kf-zwei{grid-template-columns:1fr}}
 </style>
 
+<!-- 12.11.2026: Aufbau und Wortlaut nach Marianns Tafel „Kontakt“ (Canvas 1, Seite-Kontakt.dc.html), Peter: „nimm das
+     Kontaktformular von Mariann und baue es ein“. Der Server kennt acht Anliegen (kontakt.php, ANLIEGEN). Marianns
+     vierzehn Anliegen werden darauf abgebildet (data-schluessel), ihr genauer Wortlaut und der Bereich stehen zusätzlich
+     in der ersten Zeile der Nachricht. So geht nichts verloren, ohne dass der Server geändert werden muss. -->
 <dialog class="kf" id="kf" aria-labelledby="kf-titel">
   <form method="dialog" novalidate>
-    <h2 id="kf-titel">Nachricht an die Redaktion</h2>
-    <p class="kf-stand" style="color:var(--gedaempft,#5a6b82)">Monitor Versorgungsforschung liest jede Nachricht und meldet sich, so schnell es geht.</p>
-    <label>Anliegen
-      <select name="anliegen">
-        <option value="frage">Frage</option>
-        <option value="korrektur">Angabe korrigieren</option>
-        <option value="themenfrage">Frage für die Themen-Bilanz vorschlagen</option>
-        <option value="synthese">Evidenzsynthese anfragen</option>
-        <option value="rebriefing">Re-Briefing anfragen</option>
-        <option value="methodik">Rückmeldung zur Methodik</option>
-        <option value="kooperation">Kooperation oder Sponsoring</option>
-        <option value="sonstiges">Sonstiges</option>
-      </select></label>
-    <label>Worum es geht <small>(z. B. Akronym eines Vorhabens, optional)</small>
-      <input name="bezug" maxlength="200" autocomplete="off"></label>
-    <label>Ihre Nachricht
-      <textarea name="nachricht" maxlength="8000" required></textarea></label>
+    <span class="kf-ober">KONTAKT</span>
+    <h2 id="kf-titel">Hinweise, Korrekturen oder Fragen an die Redaktion</h2>
+    <p class="kf-einleitung">Für alle Knowledge-Hubs, das Innovationsfonds-Radar, Ausschreibungsradar und CuratioHub. Die Angebote
+      sind alle neu und wachsen mit Ihren Hinweisen: fehlende Quellen, defekte Links, falsche Angaben oder Wünsche. Denn eine
+      Recherchehilfe ist nur so gut wie die Praxis, aus der heraus sie mitgestaltet wird. Wir antworten, so schnell wir können.</p>
     <div class="kf-zwei">
-      <label>Name <small>(optional)</small><input name="name" maxlength="200" autocomplete="name"></label>
-      <label>Einrichtung <small>(optional)</small><input name="einrichtung" maxlength="300" autocomplete="organization"></label>
+      <label>Worum geht es?
+        <select name="anliegen">
+          <option value="korrektur" data-schluessel="korrektur">Korrektur einer Angabe</option>
+          <option value="rueckmeldung" data-schluessel="korrektur">Rückmeldung zu meinem Vorhaben</option>
+          <option value="frage" data-schluessel="frage">Frage zu den Inhalten</option>
+          <option value="themenfrage" data-schluessel="themenfrage">Frage für die Themen-Bilanz vorschlagen</option>
+          <option value="glossar" data-schluessel="methodik">Begriff fürs Glossar vorschlagen oder Erklärung unklar</option>
+          <option value="quelle" data-schluessel="sonstiges">Fehlende Quelle oder Datenbank</option>
+          <option value="ausschreibung" data-schluessel="sonstiges">Ausschreibung melden</option>
+          <option value="technik" data-schluessel="sonstiges">Defekter Link oder technisches Problem</option>
+          <option value="rebriefing" data-schluessel="rebriefing">Re-Briefing anfragen</option>
+          <option value="synthese" data-schluessel="synthese">Evidenzsynthese anfragen</option>
+          <option value="newsletter" data-schluessel="sonstiges">Newsletter</option>
+          <option value="kooperation" data-schluessel="kooperation">Presse oder Kooperation</option>
+          <option value="lob" data-schluessel="sonstiges">Lob, Kritik oder Wünsche</option>
+          <option value="sonstiges" data-schluessel="sonstiges">Sonstiges</option>
+        </select></label>
+      <label>Welcher Bereich?
+        <select name="bereich">
+          <option>Innovationsfonds-Radar</option>
+          <option>Knowledge-Hubs</option>
+          <option>Ausschreibungsradar</option>
+          <option>CuratioHub</option>
+          <option>Sonstiges</option>
+        </select></label>
     </div>
-    <label>E-Mail-Adresse <small>– damit die Antwort Sie erreicht</small>
-      <input name="email" type="email" maxlength="200" autocomplete="email" required></label>
+    <label class="kf-hub" hidden>Welcher Knowledge-Hub?
+      <select name="hub">
+        <option>Alle Hubs / allgemein</option><option>Versorgungsforschung</option><option>Digitalisierung, KI &amp; Gesundheit</option>
+        <option>Geschlechtersensible Medizin</option><option>Gesundes Altern &amp; Longevity</option><option>Gesundheitskompetenz</option>
+        <option>Hitze, Klima &amp; Gesundheit</option><option>Impfen &amp; Prävention</option><option>NCD/Chronische Krankheiten</option>
+        <option>Patientensicherheit</option><option>Pflege &amp; Langzeitversorgung</option><option>Psychische Gesundheit</option>
+        <option>Adipositas</option><option>Diabetes</option><option>Kardiologie</option><option>Onkologie</option>
+      </select></label>
+    <label>Betroffenes Vorhaben oder betroffene Seite <small>wird automatisch ausgefüllt, wenn Sie von einer Seite kommen, und lässt sich ändern</small>
+      <input name="bezug" maxlength="200" autocomplete="off"></label>
+    <label>Ihr Anliegen
+      <textarea name="nachricht" maxlength="8000" rows="6" required placeholder="Was stimmt nicht, und wie wäre es richtig? Eine Quelle hilft uns beim Prüfen."></textarea></label>
+    <div class="kf-zwei">
+      <label>Name <small>optional</small><input name="name" maxlength="200" autocomplete="name"></label>
+      <label>E-Mail-Adresse <small>nur für die Antwort</small>
+        <input name="email" type="email" maxlength="200" autocomplete="email" required placeholder="name@einrichtung.de"></label>
+    </div>
+    <input type="hidden" name="einrichtung" value="">
     <label class="kf-topf" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
     <label class="kf-ok"><input type="checkbox" name="einverstanden"> <span>Ich bin einverstanden, dass meine Angaben
       gespeichert und zur Bearbeitung meines Anliegens verwendet werden. Eine Zeile an info@m-vf.de genügt, und sie werden
       gelöscht. <a href="https://knowledge-hubs.m-vf.de/datenschutz.html" target="_blank" rel="noopener">Datenschutzhinweise</a></span></label>
     <p class="kf-stand" id="kf-stand" role="status" aria-live="polite"></p>
-    <div class="kf-knoepfe"><button type="button" class="kf-zu" value="zu">Abbrechen</button>
-      <button type="submit" class="kf-senden">Nachricht senden</button></div>
+    <div class="kf-knoepfe"><span class="kf-mail">Lieber per E-Mail? <a href="mailto:info@m-vf.de" data-kein-formular>info@m-vf.de</a></span>
+      <span><button type="button" class="kf-zu" value="zu">Abbrechen</button>
+      <button type="submit" class="kf-senden">Nachricht senden</button></span></div>
   </form>
 </dialog>
 <script>
@@ -12260,12 +12322,17 @@ dialog.kf::backdrop{background:rgba(10,20,35,.45)}
   const f = d.querySelector('form'), stand = document.getElementById('kf-stand');
   let ziel = 'info@m-vf.de';
   const anliegenAus = t => /re-?briefing/i.test(t) ? 'rebriefing' : /synthese/i.test(t) ? 'synthese'
-    : /angabe|korrig/i.test(t) ? 'korrektur' : /methodik/i.test(t) ? 'methodik'
+    : /angabe|korrig/i.test(t) ? 'korrektur' : /methodik/i.test(t) ? 'frage'
     : /themen-?bilanz/i.test(t) ? 'themenfrage' : /sponsor|kooperation/i.test(t) ? 'kooperation' : 'frage';
+  const hubFeld = d.querySelector('.kf-hub');
+  f.bereich.addEventListener('change', () => { hubFeld.hidden = f.bereich.value !== 'Knowledge-Hubs'; });
   window.kontaktOeffnen = (o = {}) => {
-    f.reset(); stand.textContent = ''; stand.className = 'kf-stand';
+    f.reset(); stand.textContent = ''; stand.className = 'kf-stand'; hubFeld.hidden = true;
     f.anliegen.value = o.anliegen || 'frage';
-    f.bezug.value = o.bezug || '';
+    /* Marianns Vorgabe: Vorhaben oder Seite vorausgefüllt, wenn man von einer Seite kommt. */
+    const akr = document.body.dataset.akronym;
+    f.bezug.value = o.bezug ? (akr && o.bezug === akr ? akr + ' · ' + location.host + location.pathname : o.bezug)
+      : (location.hash && location.hash.length > 1 ? location.host + location.pathname + location.hash : '');
     ziel = o.adresse || 'info@m-vf.de';
     d.showModal();
     (f.bezug.value ? f.nachricht : f.anliegen).focus();
@@ -12284,10 +12351,14 @@ dialog.kf::backdrop{background:rgba(10,20,35,.45)}
   d.querySelector('.kf-zu').onclick = () => d.close();
   f.addEventListener('submit', async ev => {
     ev.preventDefault();
-    const daten = {anliegen: f.anliegen.value, bezug: f.bezug.value.trim(), nachricht: f.nachricht.value.trim(),
+    const opt = f.anliegen.selectedOptions[0];
+    const bereich = f.bereich.value + (f.bereich.value === 'Knowledge-Hubs' ? ' › ' + f.hub.value : '');
+    const kopfzeile = `[Anliegen: ${opt.textContent.trim()} · Bereich: ${bereich}]\n\n`;
+    const daten = {anliegen: opt.dataset.schluessel || 'sonstiges', bezug: f.bezug.value.trim(),
+      nachricht: kopfzeile + f.nachricht.value.trim(),
       name: f.name.value.trim(), einrichtung: f.einrichtung.value.trim(), email: f.email.value.trim(),
       website: f.website.value, einverstanden: f.einverstanden.checked, seite: location.href.split('#')[0] + (location.hash || '')};
-    const fehler = daten.nachricht.length < 10 ? 'Bitte schreiben Sie ein paar Worte mehr.'
+    const fehler = f.nachricht.value.trim().length < 10 ? 'Bitte schreiben Sie ein paar Worte mehr.'
       : !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(daten.email) ? 'Bitte prüfen Sie die E-Mail-Adresse.'
       : !daten.einverstanden ? 'Bitte bestätigen Sie das Einverständnis.' : '';
     if (fehler) { stand.textContent = fehler; stand.className = 'kf-stand schlecht'; return; }
@@ -12447,6 +12518,49 @@ nav[role="tablist"]{display:none!important}
   .seitenkopf h2,.ue-held h2{font-size:24px}
   .ifw-spalten{grid-template-columns:1fr 1fr}
 }
+/* ===== 12.11.2026: Marianns Gestaltung, PDF „Was noch fehlt“ Teil 2, Stufe A (Peter: „Ja, A1 bis A12“).
+   Steht am Ende, damit es die älteren Regeln im Portal überschreibt. Werte aus ihrer Tafel. ===== */
+:root{--mf-rand:#D8DFE9;--mf-zahl:#00529F;--mf-satz:#3A4658;--mf-hellblau:#E8EFF8;--mf-hellblau-rand:#C9D8EC}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--mf-rand:#2a323e;--mf-zahl:#9CC3F5;--mf-satz:#b8c2cf;--mf-hellblau:#1A2636;--mf-hellblau-rand:#2b3d55}}
+:root[data-theme="dark"]{--mf-rand:#2a323e;--mf-zahl:#9CC3F5;--mf-satz:#b8c2cf;--mf-hellblau:#1A2636;--mf-hellblau-rand:#2b3d55}
+/* A1 Logo: blaues Quadrat, weißes Symbol (Teil 2, 10) */
+.angebot-symbol,:root[data-theme="dark"] .angebot-symbol{background:#00529F;color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .angebot-symbol{background:#1F3550;color:#9CC3F5}}
+:root[data-theme="dark"] .angebot-symbol{background:#1F3550;color:#9CC3F5}
+/* A2 Schrift: Fließtext 16, kleine Texte 14, Hinweise 13, Abschnittsüberschriften 22 px fett (Teil 2, 5) */
+main section.tafel{font-size:16px}
+main section.tafel > h3,main .bl-kurz-h,main .aw-kopf h3,main .bl-h,#bl-antwort h3{font-size:22px;font-weight:700;line-height:1.3}
+main .hinweis{font-size:13px}
+/* A3 Kacheln: weiß, Rand 1,5 px, Ecken 10 px, Zahl 30 px fett blau, ganzer Satz 14 px (Teil 2, 6) */
+main .kachel{background:var(--flaeche);border:1.5px solid var(--mf-rand);border-radius:10px;padding:18px 20px}
+main .kachel .gross,main .kachel .zahl{font-size:30px;font-weight:700;color:var(--mf-zahl);line-height:1.15}
+main .kachel .was{font-size:14px;color:var(--mf-satz);line-height:1.45}
+/* A4 Unterreiter: hellgraue Leiste über die volle Breite, ohne Rahmen, aktiver Eintrag hellblau (Teil 2, 3) */
+.unterleiste{border:0;border-radius:0;margin:0;padding:6px 0;box-shadow:0 0 0 100vmax var(--ul-grund);clip-path:inset(0 -100vmax)}
+.unterleiste a{border-radius:6px}
+/* A5 Farben mit Bedeutung: Beige nur für Evidenzsynthesen. Wertendes hellblau mit Sprechblase (Teil 2, 12) */
+.amzug{background:var(--mf-hellblau);border-left-color:var(--akzent)}
+.bl-einordnung{background:var(--mf-hellblau);border:1px solid var(--mf-hellblau-rand);border-left:1px solid var(--mf-hellblau-rand);
+  padding:18px 20px 18px 58px;position:relative}
+.bl-einordnung::before{content:"";position:absolute;left:18px;top:18px;width:26px;height:26px;
+  background:no-repeat center/26px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 5h16v11H9l-5 4z' fill='%23fff' stroke='%2300529F' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E")}
+/* A11 Knopf „Alle … in der Projektdatenbank anzeigen“ wie die übrigen Knöpfe statt Systemknopf */
+button.gold{font:inherit;font-size:15px;font-weight:700;padding:11px 20px;border:0;border-radius:8px;background:#BE9E55;color:#14202E;cursor:pointer}
+button.gold:hover{background:#ad8d45}
+/* A7/A8 Zweite Kachelreihe nur bei gesetztem Filter, mit eigener Überschrift */
+.kacheln[hidden]{display:none!important}
+.kacheln .auswahl-kopf{grid-column:1/-1;margin:0;font-size:14px;font-weight:700;color:var(--mf-satz)}
+/* A9 Hinweis „Neu · Versorgungskerne“ mit Symbol */
+.vk-marke::before{content:"";display:inline-block;width:18px;height:18px;margin-right:6px;vertical-align:-4px;
+  background:no-repeat center/18px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z' fill='none' stroke='%2300529F' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E")}
+/* Themen-Bilanz: „Ihre Frage steht nicht dabei?“ als Hinweis mit Knopf ins Kontaktformular */
+.fragekasten-neu{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin:22px 0;
+  background:var(--mf-hellblau);border:1px solid var(--mf-hellblau-rand);border-radius:10px;padding:16px 20px}
+.fragekasten-neu p{margin:0;flex:1 1 420px;font-size:15px}
+/* Das alte Fragenformular bleibt nur fürs Hauptskript im Dokument. Ein Skript setzt hidden zurück, darum per Stil. */
+#bl-fragekasten{display:none!important}
+/* A12 Einleitung der Themen-Bilanz in normaler Größe */
+#t-suche .bl-h + .hinweis{font-size:16px;color:var(--text);max-width:760px}
 </style>
 
 <script>
