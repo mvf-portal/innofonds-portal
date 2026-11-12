@@ -12559,6 +12559,28 @@ button.gold:hover{background:#ad8d45}
 .fragekasten-neu p{margin:0;flex:1 1 420px;font-size:15px}
 /* Das alte Fragenformular bleibt nur fürs Hauptskript im Dokument. Ein Skript setzt hidden zurück, darum per Stil. */
 #bl-fragekasten{display:none!important}
+/* ===== B13 (12.11.2026, Peter „stufe b machen, beginne mit B13“): Bänder statt Kästen (PDF Teil 2, Punkte 1 und 2).
+   Seitenkopf als farbiges Band über die volle Breite, Inhalt direkt auf hellgrauem Grund, nur Abschnitte als weiße
+   Kästen. Volle Breite über box-shadow + clip-path, damit kein seitliches Scrollen entsteht. ===== */
+:root{--mf-grund:#F3F5F8;--mf-band-recherche:#0A3F7E;--mf-band-grau:#EEF1F5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--mf-grund:var(--bg);--mf-band-recherche:#0E2C52;--mf-band-grau:#1C222B}}
+:root[data-theme="dark"]{--mf-grund:var(--bg);--mf-band-recherche:#0E2C52;--mf-band-grau:#1C222B}
+body{background:var(--mf-grund)}
+main section.tafel{background:transparent;border:0;border-radius:0;padding:4px 0 0;box-shadow:none}
+.seitenkopf{--band:var(--mf-band-grau);background:var(--band);border:0;border-radius:0;margin:0 0 22px;padding:28px 0 26px;
+  box-shadow:0 0 0 100vmax var(--band);clip-path:inset(0 -100vmax)}
+.seitenkopf.recherche{--band:var(--mf-band-recherche);background:var(--band)}
+.seitenkopf.auswertungen{--band:var(--sk-auswertung)}
+.seitenkopf.antrag{--band:var(--sk-antrag)}
+.seitenkopf.evidenz{--band:var(--sk-evidenz)}
+.seitenkopf h2{font-size:32px;font-weight:700}
+.seitenkopf p.satz{font-size:17px}
+/* Weiße Kästen nur noch für einzelne Abschnitte: Tabellen, Netzwerk, Karte, Kästen der Auswertungen */
+main .huelle{background:var(--flaeche);border-radius:10px}
+main #netz,main #netz2,main #karte,main .leaflet-container{background:var(--flaeche)}
+main .aw-inhalt{background:var(--flaeche);border:1px solid var(--linie);border-radius:10px;padding:10px 14px}
+/* Marianns PDF: „leere gelbe Pille unter dem Suchfeld entfernen“. Das Feld trägt hidden, sein Stil setzte display aber über. */
+.pdb-auswahl[hidden]{display:none!important}
 /* A12 Einleitung der Themen-Bilanz in normaler Größe */
 #t-suche .bl-h + .hinweis{font-size:16px;color:var(--text);max-width:760px}
 </style>
