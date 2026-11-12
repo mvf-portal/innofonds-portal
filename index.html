@@ -205,6 +205,15 @@ main p{max-width:760px}
 .werkzeuge label.nf{display:flex;flex-direction:column;gap:2px;font-size:12px;font-weight:700;color:var(--grau)}
 #t-netz .werkzeuge #n-q{flex-basis:100%}
 #t-netz .werkzeuge #n-neu{align-self:flex-end}
+.werkzeuge label.nf input[type=search]{min-width:220px}
+.werkzeuge .schalter{align-self:flex-end;padding-bottom:6px}
+#fz-csv{align-self:flex-end}
+/* B16: Karte links, beschriftete Filter rechts daneben (Marianns Tafel Landkarte) */
+.karte-raster{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:16px;align-items:start;margin-bottom:12px}
+.karte-raster .aw-pngkopf{grid-column:1/-1}   /* der PNG-Knopf wird davor eingesetzt und gehört über beide Spalten */
+.karte-raster .karte-filter{flex-direction:column;align-items:stretch;margin:0;background:var(--flaeche);border:1px solid var(--linie);border-radius:10px;padding:14px}
+.karte-raster .karte-filter label.nf,.karte-raster .karte-filter select,.karte-raster .karte-filter input{width:100%;min-width:0}
+@media (max-width:860px){.karte-raster{grid-template-columns:1fr}}
 .knopf{background:var(--weich);color:var(--text);border:1px solid var(--linie);
   border-radius:8px;padding:7px 13px;font-size:13.5px;cursor:pointer;
   font-family:inherit}
@@ -1709,8 +1718,26 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
 <section class="tafel" id="t-projekte" hidden>
   
 <div class="pdb">
+  <!-- 12.11.2026, B19 (Marianns Tafel Projektdatenbank): Suche und Beispielsuchen im blauen Band, zwei Hinweise darunter. -->
   <div class="pdb-suche" role="search">
-    <input type="search" id="pdb-q" placeholder="Vorhaben finden: Thema, Akronym, Einrichtung …" aria-label="In den Vorhaben suchen">
+    <div class="pdb-suchzeile">
+      <input type="search" id="pdb-q" placeholder="Vorhaben suchen: Thema, Akronym, Einrichtung …" aria-label="In den Vorhaben suchen">
+      <button type="button" class="pdb-suchknopf" id="pdb-suchknopf">Suchen</button>
+    </div>
+    <div class="pdb-beispiele"><span>Zum Beispiel:</span>
+      <button type="button" data-bsp="Lotsen Schlaganfall">Lotsen Schlaganfall</button>
+      <button type="button" data-bsp="sektorenübergreifende Versorgung Pflege">sektorenübergreifende Versorgung Pflege</button>
+      <button type="button" data-bsp="Telemedizin ländlicher Raum">Telemedizin ländlicher Raum</button>
+      <button type="button" data-bsp="Entlassmanagement Krankenhaus">Entlassmanagement Krankenhaus</button>
+      <button type="button" data-bsp="Demenz Angehörige">Demenz Angehörige</button>
+      <button type="button" data-bsp="Arzneimitteltherapiesicherheit">Arzneimitteltherapiesicherheit</button>
+      <button type="button" data-bsp="psychische Erkrankungen Kinder">psychische Erkrankungen Kinder</button>
+    </div>
+  </div>
+  <div class="pdb-hinweise">
+    <p><b>Sie finden:</b> <span id="pdb-alle-zahl">alle</span> Vorhaben, die abgeschlossenen je mit Beschluss und Begründung
+      des Ausschusses, Hindernissen, Erfolgsfaktoren, Konsortium und Originaldokumenten.</p>
+    <p><b>So suchen Sie genau:</b> ein bis drei Suchbegriffe statt eines ganzen Satzes, z. B. „Demenz Angehörige“.</p>
   </div>
   <p class="pdb-auswahl" id="pdb-auswahl" hidden></p>
   <div class="pdb-vglleiste" id="pdb-vglleiste" hidden></div>
@@ -1928,20 +1955,23 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
 </section>
 
 <section class="tafel" id="t-karte" hidden>
-  <div class="werkzeuge">
-    <input type="search" id="k-q" placeholder="Einrichtung oder Ort …">
-    <select id="k-typ"><option value="">alle Typen</option></select>
-    <select id="k-flaeche">
-      <option value="">Bundesländer nicht einfärben</option>
+  <!-- 12.11.2026, B16 (Marianns PDF): Filter beschriftet, rechts neben der Karte. -->
+  <div class="karte-raster">
+  <div id="karte"></div>
+  <div class="werkzeuge karte-filter">
+    <label class="nf"><span>Suche</span><input type="search" id="k-q" placeholder="Einrichtung oder Ort …"></label>
+    <label class="nf"><span>Art der Einrichtung</span><select id="k-typ"><option value="">alle Typen</option></select></label>
+    <label class="nf"><span>Bundesländer einfärben</span><select id="k-flaeche">
+      <option value="">nicht einfärben</option>
       <option value="projekte" selected>nach Projekten</option>
       <option value="summe">nach Fördervolumen</option>
       <option value="quote">nach Empfehlungsquote</option>
-    </select>
-    <select id="k-min"><option value="1">ab 1 Projekt</option>
-      <option value="2">ab 2</option><option value="5">ab 5</option>
-      <option value="10">ab 10</option></select>
+    </select></label>
+    <label class="nf"><span>Einrichtungen</span><select id="k-min"><option value="1">ab 1 Projekt</option>
+      <option value="2">ab 2 Projekten</option><option value="5">ab 5 Projekten</option>
+      <option value="10">ab 10 Projekten</option></select></label>
   </div>
-  <div id="karte"></div>
+  </div>
   <div class="legende" id="k-flaechenlegende"></div>
   <div class="legende" id="k-legende"></div>
   <div id="k-knoten"></div>
@@ -2074,16 +2104,17 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
   <div class="kacheln" id="fz-zahlen"></div>
   <div id="fz-verteilung"></div>
   <div class="werkzeuge">
-    <input type="search" id="fz-q" placeholder="Projekt oder Einrichtung suchen …">
-    <select id="fz-ber"><option value="">beide Förderbereiche</option></select>
-    <select id="fz-lage">
+    <!-- 12.11.2026, B16 (Marianns PDF): Filter beschriftet. -->
+    <label class="nf"><span>Suche</span><input type="search" id="fz-q" placeholder="Projekt oder Einrichtung suchen …"></label>
+    <label class="nf"><span>Förderbereich</span><select id="fz-ber"><option value="">beide Förderbereiche</option></select></label>
+    <label class="nf"><span>Erreichte Fallzahl</span><select id="fz-lage">
       <option value="">alle Projekte</option>
       <option value="ok">Ziel erreicht</option>
       <option value="knapp">80 bis 99 Prozent</option>
       <option value="kurz">unter 80 Prozent</option>
       <option value="ohne">ohne vergleichbare Zahlen</option>
-    </select>
-    <select id="fz-grund"><option value="">jeder Grund</option></select>
+    </select></label>
+    <label class="nf"><span>Grund der Abweichung</span><select id="fz-grund"><option value="">jeder Grund</option></select></label>
     <label class="schalter"><input type="checkbox" id="fz-pandemie">
       nur Laufzeit in der Pandemie</label>
     <button type="button" id="fz-csv" class="knopf">Tabelle als CSV ↓</button>
@@ -2260,9 +2291,12 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
   <input type="hidden" id="do-q">
   </div>
   <div id="bl-antwort" hidden>
+    <!-- 12.11.2026, B17 (Marianns PDF): Kopf der Antwort als dunkelblaues Band mit „← Alle Fragen“, Bereich und Frage. -->
+    <div class="bl-band">
     <a href="#suche" class="bl-zurueck" id="bl-zurueck">← Alle Fragen</a>
     <p class="bl-ober" id="bl-ober"></p>
     <h2 class="bl-titel" id="bl-titel"></h2>
+    </div>
     <div id="do-ergebnis"></div>
     <div class="bl-menue" id="bl-menue"></div>
   </div>
@@ -9008,6 +9042,17 @@ document.getElementById('n2-bild').onclick = () => {
   };
   let kSicht = 'erfolg';
 
+  /* 12.11.2026, B21 (Marianns PDF, Netzwerk): je Kachel ein erklärender Satz zum auffälligsten Merkmal der Gruppe,
+     mit Zahl, Quote, Grundquote und ob der Unterschied vom Zufall zu unterscheiden ist. Keine Wertung darüber hinaus. */
+  function kSatz(ms, v, basis) {
+    const mitQ = ms.filter(m => v.quote(m) != null && m.n >= 5);
+    if (!mitQ.length) return '';
+    const m = mitQ.sort((a, b) => Math.abs(v.quote(b) - basis) - Math.abs(v.quote(a) - basis))[0];
+    const name = m.merkmal.replace(/^Leitung: /, 'Leitung durch ');
+    return `<p class="ksatz">${v.treffer(m)} von ${m.n} Projekten mit dem Merkmal „${esc(name)}“ endeten ${v.was}
+      (${pz(v.quote(m))}, Grundquote ${pz(basis)}). ${v.sicher(m)
+        ? 'Dieser Unterschied ist statistisch belegt.' : 'Das ist vom Zufall nicht zu unterscheiden.'}</p>`;
+  }
   function zeichne() {
     const v = SICHT[kSicht];
     const basis = v.basis;
@@ -9047,7 +9092,7 @@ document.getElementById('n2-bild').onclick = () => {
           <td class="zahl gedaempft">${v.ohneQ(m) != null
               ? 'ohne: ' + v.ohneT(m) + '/' + m.ohne_n + ' = '
                 + pz(v.ohneQ(m)) : ''}</td></tr>`).join('') +
-        `</tbody></table>`;
+        `</tbody></table>` + kSatz(KON.merkmale.filter(m => m.gruppe === g), v, basis);
     }
 
     h += `<p class="legendezeile">
@@ -10940,6 +10985,12 @@ partnerZeichnen();
       'https://innofonds.m-vf.de/projekt/' + p.sl + '/']));
   /* Auf schmalen Bildschirmen beginnt die Filterspalte zugeklappt. */
   if (window.matchMedia('(max-width: 860px)').matches) document.getElementById('pdb-filterhuelle').open = false;
+  /* B19: Beispielsuchen und Knopf „Suchen“ im blauen Band. */
+  const zz = document.getElementById('pdb-alle-zahl'); if (zz) zz.textContent = P.length.toLocaleString('de-DE');
+  document.querySelectorAll('.pdb-beispiele [data-bsp]').forEach(b => b.onclick = () => window.pdbSuchen(b.dataset.bsp));
+  const sk = document.getElementById('pdb-suchknopf');
+  if (sk) sk.onclick = () => { window.pdbSuchen(document.getElementById('pdb-q').value);
+    document.querySelector('.pdb-raster').scrollIntoView({block: 'start', behavior: 'smooth'}); };
   /* Für die Übersicht: Suchbegriff übergeben. */
   window.pdbSuchen = q => { const f = document.getElementById('pdb-q'); f.value = q; Z.q = norm(q).trim().replace(/\s+/g, ' '); Z.ids = null; Z.seite = 0; alles(); };
   /* Für die Themen-Bilanz: genau die Vorhaben eines Dossiers. */
@@ -11723,8 +11774,10 @@ partnerZeichnen();
     hs.forEach(h => {
       const k = document.createElement('div'); k.className = 'kz-kachel';
       const t = h.nextElementSibling;
+      const satz = t && t.nextElementSibling && t.nextElementSibling.matches('p.ksatz') ? t.nextElementSibling : null;
       k.appendChild(h);
       if (t && t.tagName === 'TABLE') k.appendChild(t);
+      if (satz) k.appendChild(satz);   /* B21: der Satz gehört in seine Kachel */
       raster.appendChild(k);
     });
     const leg = v.querySelector(':scope > p.legendezeile');
@@ -11940,8 +11993,13 @@ partnerZeichnen();
     setTimeout(() => {
       const hs = ueberschriften(SE);
       hs.forEach((h, i) => { if (!h.id) h.id = 'aw-' + ziel.slice(2) + '-' + i; });
-      let inh = kopf.querySelector('.aw-inhalt');
-      if (!inh) { inh = document.createElement('p'); inh.className = 'aw-inhalt'; kopf.appendChild(inh); }
+      /* 12.11.2026, B14 (Marianns PDF Teil 2, Punkt 4): „Auf dieser Seite“ als weiße Leiste direkt unter dem
+         Seitenkopf, die beim Scrollen oben stehen bleibt. Dafür sitzt sie als erstes Kind der Seite (section), nicht
+         im Kopfblock: Ein stehendes Element haftet nur innerhalb seines Elternteils. */
+      let inh = sec.querySelector(':scope > .aw-inhalt') || kopf.querySelector('.aw-inhalt');
+      if (!inh) { inh = document.createElement('p'); inh.className = 'aw-inhalt'; }
+      inh.classList.add('aw-leiste');
+      if (inh.parentElement !== sec || sec.firstElementChild !== inh) sec.insertBefore(inh, sec.firstChild);
       inh.hidden = hs.length < 2;
       inh.innerHTML = '<b>Auf dieser Seite</b>' + hs.slice(0, 12).map(h =>
         `<a href="#${h.id}" data-aw-sprung="${h.id}">${esc(h.textContent.trim().replace(/\s+/g, ' ').slice(0, 60))}</a>`).join('');
@@ -12589,6 +12647,47 @@ main section.tafel{background:transparent;border:0;border-radius:0;padding:4px 0
 main .huelle{background:var(--flaeche);border-radius:10px}
 main #netz,main #netz2,main #karte,main .leaflet-container{background:var(--flaeche)}
 main .aw-inhalt{background:var(--flaeche);border:1px solid var(--linie);border-radius:10px;padding:10px 14px}
+/* B14: „Auf dieser Seite“ als weiße Leiste über die volle Breite, bleibt beim Scrollen oben stehen */
+main .aw-inhalt.aw-leiste{position:sticky;top:0;z-index:20;margin:-22px 0 18px;border:0;border-radius:0;padding:10px 0;
+  box-shadow:0 0 0 100vmax var(--flaeche),0 1px 0 100vmax var(--linie);clip-path:inset(0 -100vmax -1px)}
+main .aw-inhalt.aw-leiste[hidden]{display:none}
+/* B19: Suche der Projektdatenbank im blauen Band (Band wird höher, die Suche rückt hinein) */
+body:has(#t-projekte:not([hidden])) .seitenkopf.recherche{padding-bottom:196px}
+#t-projekte .pdb-suche{position:relative;z-index:2;margin:-206px 0 0;padding:0 0 18px;display:flex;flex-direction:column;gap:12px}
+#t-projekte .pdb-suchzeile{display:flex;gap:12px;flex-wrap:wrap}
+#t-projekte .pdb-suchzeile input{flex:1 1 460px;font:inherit;font-size:16px;padding:13px 16px;border:1px solid #B8C4D4;border-radius:8px;background:#fff;color:#14202E;max-width:none}
+.pdb-suchknopf{font:inherit;font-size:15px;font-weight:700;padding:13px 26px;border:0;border-radius:8px;background:#BE9E55;color:#14202E;cursor:pointer}
+.pdb-beispiele{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px;color:#DCE7F5}
+.pdb-beispiele button{font:inherit;font-size:14px;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:5px 12px;cursor:pointer}
+.pdb-beispiele button:hover{background:rgba(255,255,255,.22)}
+.pdb-hinweise{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin:22px 0 18px;font-size:14px;color:var(--mf-satz)}
+.pdb-hinweise p{margin:0}
+@media (max-width:860px){.pdb-hinweise{grid-template-columns:1fr}body:has(#t-projekte:not([hidden])) .seitenkopf.recherche{padding-bottom:230px}#t-projekte .pdb-suche{margin-top:-250px}}
+/* B17: Antwortseite der Themen-Bilanz. Eigenes dunkelblaues Band statt des allgemeinen Seitenkopfs,
+   „Weitere Fragen der Themen-Bilanz“ als graublaues Band über die volle Breite vor dem Fuß. */
+body:has(#t-suche:not([hidden]) #bl-antwort:not([hidden])) #seitenkopf{display:none}
+.bl-band{background:var(--mf-band-recherche);color:#fff;padding:28px 0 30px;margin:0 0 22px;
+  box-shadow:0 0 0 100vmax var(--mf-band-recherche);clip-path:inset(0 -100vmax)}
+.bl-band .bl-zurueck{color:#DCE7F5;font-size:14px}
+.bl-band .bl-ober{color:#DCE7F5;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:6px 0 4px}
+.bl-band .bl-titel{color:#fff;font-size:32px;line-height:1.2;margin:0}
+#bl-antwort .bl-menue{margin:40px 0 0;padding:28px 0 34px;border-top:0;background:#E9EEF6;box-shadow:0 0 0 100vmax #E9EEF6;clip-path:inset(0 -100vmax -40px)}
+:root[data-theme="dark"] #bl-antwort .bl-menue{background:#1A2636;box-shadow:0 0 0 100vmax #1A2636}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #bl-antwort .bl-menue{background:#1A2636;box-shadow:0 0 0 100vmax #1A2636}}
+/* B21: erklärender Satz in jeder Konsortien-Kachel */
+.ksatz{margin:10px 0 0;font-size:14px;line-height:1.45;color:var(--mf-satz);border-top:1px solid var(--linie);padding-top:8px}
+/* B22: Projektvergleich. „Hinzufügen“ als Knopf, Text 14 bis 16 px, Kopfzeile bleibt stehen, Unterschiede hellblau
+   (Beige nur für Evidenzsynthesen). Auf breiten Bildschirmen ohne eigenen Scrollrahmen, damit die Kopfzeile haftet. */
+#vg-dazu{font:inherit;font-size:15px;font-weight:700;padding:9px 18px;border:0;border-radius:8px;background:#00529F;color:#fff;cursor:pointer}
+.vg-feld{font-size:14px}
+table.vgv th,table.vgv td{font-size:15px}
+table.vgv thead th:first-child,table.vgv tbody th{font-size:14px}
+table.vgv .tit{font-size:14px}
+table.vgv thead th{position:sticky;top:0;z-index:3;background:var(--flaeche);box-shadow:0 1px 0 var(--linie)}
+table.vgv tr.anders td,table.vgv tr.anders th{background:var(--mf-hellblau)}
+table.vgv tr.anders th small{color:var(--akzent)}
+.pdb-vglleiste{background:var(--mf-hellblau);border-color:var(--mf-hellblau-rand)}
+@media (min-width:1100px){#vg-tafel .huelle{overflow:visible}}
 /* B15: keine Tabelle mit eigenem Scrollbalken (die Breite darf weiter seitlich scrollen) */
 main .huelle{max-height:none!important}
 #o-mehr{display:none!important}

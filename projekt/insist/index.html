@@ -92,6 +92,13 @@ details.mehr summary{cursor:pointer;color:var(--ak);font-weight:700;margin:8px 0
 .box li a.ins-netz:hover{border-bottom-style:solid}
 .trefferleiste{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between;align-items:center;padding-top:10px;padding-bottom:4px;font-size:14px}
 .trefferleiste a{font-weight:600}
+.weitere-treffer{margin-top:28px;margin-bottom:28px}
+.weitere-treffer h2{font-size:22px;margin:0 0 12px}
+.wt-raster{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.wt-karte{display:flex;flex-direction:column;gap:4px;background:var(--fl);border:1.5px solid var(--li);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--tx)}
+.wt-karte b{color:var(--ak);font-size:16px}
+.wt-karte span{font-size:13px;color:var(--gr)}
+.wt-karte:hover{border-color:var(--ak)}
 .synbox ul{margin:6px 0 0;padding-left:18px}
 details.mehrw summary{cursor:pointer;color:var(--akzent,#0051A1);font-weight:600;margin:6px 0}
 .mitlaufend{position:sticky;top:60px;max-height:calc(100vh - 80px);overflow-y:auto;display:flex;flex-direction:column;gap:12px}
@@ -670,6 +677,21 @@ document.querySelectorAll('form.ifw-form').forEach(f => f.addEventListener('subm
     ${i + 1 < t.sl.length ? `<a href="/projekt/${esc(t.sl[i + 1])}/">Nächster Treffer: ${esc(akr || '')} →</a>` : ''}</span>`;
   const kopf = document.querySelector('header.pkopf');
   if (kopf) kopf.parentNode.insertBefore(bar, kopf);
+  /* 12.11.2026, B24 (Marianns PDF, Projektseiten): am Ende „Weitere Treffer“ aus derselben Suche, die nächsten bis zu
+     sechs Vorhaben der Trefferliste (ohne das aktuelle), damit man ohne Zurück weiterlesen kann. */
+  const weitere = [];
+  for (let j = i + 1; j < t.sl.length && weitere.length < 6; j++) weitere.push(j);
+  for (let j = i - 1; j >= 0 && weitere.length < 6; j--) weitere.push(j);
+  if (weitere.length) {
+    const block = document.createElement('section');
+    block.className = 'wrap weitere-treffer'; block.setAttribute('aria-label', 'Weitere Treffer');
+    block.innerHTML = `<h2>Weitere Treffer${t.was ? ' für „' + esc(t.was) + '“' : ''}</h2>
+      <div class="wt-raster">${weitere.map(j => `<a class="wt-karte" href="/projekt/${esc(t.sl[j])}/"><b>${esc((t.akr || [])[j] || t.sl[j])}</b>
+        <span>Treffer ${j + 1} von ${t.sl.length}</span></a>`).join('')}</div>
+      <p><a href="${esc(t.zurueck || '/#projekte')}">Alle ${t.sl.length} Treffer in der Projektdatenbank →</a></p>`;
+    const haupt = document.querySelector('main');
+    if (haupt) haupt.after(block);
+  }
   /* Direkt aus der Datenbank gekommen: zurückblättern, dann stehen Suche und
      Filter noch so da, wie sie waren. */
   bar.querySelector('a').addEventListener('click', ev => {
