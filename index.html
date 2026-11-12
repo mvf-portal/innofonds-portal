@@ -3102,7 +3102,11 @@ function endpunkteZeichnen() {
   const werkzeug = document.getElementById('ep-werkzeug');
   werkzeug.innerHTML = epFam ? ''
     : epPrimaerBlock(liste) + epHerkunft(liste) + epInstrumente(liste)
-      + epRelevanzBlock(liste) + epFallzahlBlock();
+      + epRelevanzBlock(liste)
+      /* 12.11.2026, B20 (Marianns PDF): „Erreichen die Projekte ihre Fallzahl?“ gehört auf die Seite Fallzahlen und
+         steht dort schon. Hier nur noch ein Verweis. */
+      + `<p class="hinweis" style="margin-top:22px">Ob die Projekte ihre geplante Fallzahl erreichen, steht unter
+         <a href="#fallzahl" data-reiter="t-fallzahl">Fallzahlen →</a></p>`;
   werkzeug.querySelectorAll('tr.ep-instrument').forEach(tr => tr.onclick = () => {
     document.getElementById('ep-q').value = tr.dataset.i;
     endpunkteZeichnen();
@@ -3126,14 +3130,15 @@ function endpunkteAnstossen() {
   });
   const knopf = document.getElementById('ep-csv');
   if (knopf) knopf.onclick = epCsv;
+  /* 12.11.2026, B20 (Marianns PDF): Die Erklärung, was eine Familie ist und wer sie vergibt, ist Methodik und steht
+     dort. Hier ein Satz und der Link. Der alte Text bleibt unten unsichtbar stehen (ep-kopf-alt), falls er
+     in die Methodik übernommen werden soll. */
   document.getElementById('ep-kopf').innerHTML =
-    `<p>Ein Ergebnisbericht nennt seine Endpunkte in eigenen Worten. Deshalb
-     sieht man den Berichten nicht an, wie viele Projekte dasselbe messen.
-     Hier sind ${EP.length} Endpunkte aus
-     ${new Set(EP.map(e => e.p)).size} ausgewerteten Berichten einzeln erfasst
-     und ${epFamilien(EP).length} Familien zugeordnet, jeweils mit
-     Messinstrument, Effektgröße, Konfidenzintervall, p-Wert und Seitenzahl.</p>
-     <p><b>Eine Familie ist die Sache, die gemessen wird, unabhängig
+    `<p>${EP.length.toLocaleString('de-DE')} Endpunkte aus ${new Set(EP.map(e => e.p)).size.toLocaleString('de-DE')}
+     ausgewerteten Berichten, einzeln erfasst und ${epFamilien(EP).length} Familien zugeordnet, jeweils mit Messinstrument,
+     Effektgröße, Konfidenzintervall, p-Wert und Seitenzahl. Die Familien vergibt MVF, sie stehen in keinem Bericht.
+     <a href="#vorwort/auswertungen" data-mt="auswertungen" data-mt-sprung="mt-aw-je">Wie Endpunkte und Familien gezählt werden →</a></p>
+     <div id="ep-kopf-alt" hidden><p><b>Eine Familie ist die Sache, die gemessen wird, unabhängig
      davon, womit.</b> „Krankenhausaufenthalte insgesamt", „Stationäre
      Behandlungstage" und „Zahl der stationären Aufenthalte" stehen so in
      drei verschiedenen Berichten, meinen dieselbe Sache und liegen deshalb
@@ -3149,7 +3154,7 @@ function endpunkteAnstossen() {
      Arzneimittelsicherheit über Krankenhausaufnahmen misst, könnte in beide
      Familien. Deshalb steht in jeder Zeile die Formulierung des Berichts
      daneben, und die Seitenzahl führt an die Stelle, an der sie steht.
-     Prüfen Sie im Zweifel dort nach, nicht hier.</p>`;
+     Prüfen Sie im Zweifel dort nach, nicht hier.</p></div>`;
   endpunkteZeichnen();
 }
 
@@ -7496,7 +7501,9 @@ let pSort = 'akr', pAb = false;
    Tabelle stumm bei 500 (30.10.2026). Die Grenze gilt bis zur naechsten
    Suche oder Sortierung. */
 const ZEILEN_START = 500, ZEILEN_MEHR = 250;
-let pGrenze = ZEILEN_START, oGrenze = ZEILEN_START;
+/* 12.11.2026 (B15): Die Einrichtungstabelle zeichnet alle Zeilen, das schrittweise Zeigen (10, dann je 25)
+   übernimmt der Seitenwechsler im Navigationsskript (seitenweise). */
+let pGrenze = ZEILEN_START, oGrenze = Infinity;
 function mehrKnoepfe(id, gezeigt, gesamt, weiter, alle) {
   const el = document.getElementById(id);
   if (gezeigt >= gesamt) { el.hidden = true; el.innerHTML = ''; return; }
@@ -7940,14 +7947,10 @@ function ranglisteZeichnen() {
     + '<td class="zahl"><b>' + (ges.beendet
         ? Math.round(ges.ue/ges.beendet*100) + ' %' : '–') + '</b></td></tr>'
     + '</tbody></table></div>'
-    + '<p class="hinweis">Ohne die <b>' + bw.projekte
-    + ' bundesweiten Vorhaben</b> (' + eur(bw.summe) + '): sie haben keine '
-    + 'regionale Zuordnung und stünden in jeder Rangliste vorn, ohne dass '
-    + 'das etwas über eine Region aussagt. Projekte und Fördervolumen zählen '
-    + 'am Bundesland des Projekts, <b>Leitungen am Sitz der führenden '
-    + 'Einrichtung</b>. Deshalb weicht beides voneinander ab. Die Quote '
-    + 'wird erst ab fünf abgeschlossenen Projekten ausgewiesen. '
-    + 'Spaltenkopf anklicken zum Sortieren.</p>';
+    /* 12.11.2026, B20 (Marianns PDF, Landkarte): Hinweis gekürzt, die Zählweise steht in der Methodik. */
+    + '<p class="hinweis">Ohne die ' + bw.projekte + ' bundesweiten Vorhaben (' + eur(bw.summe) + '). '
+    + 'Spaltenkopf anklicken zum Sortieren. '
+    + '<a href="#vorwort/auswertungen" data-mt="auswertungen" data-mt-sprung="mt-aw-je">Wie gezählt wird →</a></p>';
   sortZeigen('bl-tab', blSort, blAb);
   document.querySelectorAll('#bl-tab tr.waehlbar').forEach(tr =>
     tr.onclick = () => landZeigen(tr.dataset.bl));
@@ -9117,7 +9120,7 @@ function bestenlisten(grund, was_gefiltert) {
 
 document.querySelectorAll('#o-tab th').forEach(th => th.onclick = () => {
   if (oSort===th.dataset.f) oAb=!oAb; else { oSort=th.dataset.f; oAb=false; }
-  oGrenze = ZEILEN_START; partnerZeichnen(); });
+  oGrenze = Infinity; partnerZeichnen(); });
 ['o-q','o-typ'].forEach(id =>
   document.getElementById(id).addEventListener('input', partnerZeichnen));
 partnerZeichnen();
@@ -9571,7 +9574,14 @@ partnerZeichnen();
   /* Alles Gezaehlte an einer Stelle. Wer eine Auswertung nachrechnen
      will, muss wissen, auf welchem Bestand sie beruht, und zwar bevor
      er die Auswertung liest. */
-  if (D.erhebung && D.erhebung.length) {
+  /* 12.11.2026, B20 (Marianns PDF, Förderung in Zahlen): „Alles, was erhoben wurde“ und „Wie verlässlich die
+     Kategorien sind“ stehen vollständig in Methodik & Verlässlichkeit. Hier nur noch ein Satz mit Link. Die beiden
+     Blöcke bleiben im Code, abgeschaltet über METHODIK_HIER. */
+  const METHODIK_HIER = false;
+  if (!METHODIK_HIER) h += `<p class="hinweis" style="margin-top:22px">Auf welchem Bestand diese Zahlen beruhen und
+    wie verlässlich die Kategorien sind, steht unter <a href="#vorwort" data-mt="" data-mt-sprung="mt-quellen">Methodik
+    &amp; Verlässlichkeit →</a></p>`;
+  if (METHODIK_HIER && D.erhebung && D.erhebung.length) {
     h += `<h3>Alles, was erhoben wurde</h3>
       <p class="hinweis">Der vollständige Bestand hinter diesem Portal.
       Jede Auswertung in den anderen Reitern beruht auf einer Teilmenge
@@ -9585,7 +9595,7 @@ partnerZeichnen();
   /* Die Landkarte der Verlaesslichkeit. Sie gehoert zu den Kennzahlen
      und nicht in eine Fussnote: Wer eine Auswertung liest, muss wissen,
      wie belastbar die Kategorie ist, auf der sie beruht. */
-  if (D.pruefung && D.pruefung.zeilen && D.pruefung.zeilen.length) {
+  if (METHODIK_HIER && D.pruefung && D.pruefung.zeilen && D.pruefung.zeilen.length) {
     const p = D.pruefung;
     h += `<h3>Wie verlässlich die Kategorien sind</h3>
       <p class="hinweis">Jede der ${p.n.toLocaleString('de-DE')}
@@ -10649,7 +10659,7 @@ function bestenlisten(grund, was_gefiltert) {
 
 document.querySelectorAll('#o-tab th').forEach(th => th.onclick = () => {
   if (oSort===th.dataset.f) oAb=!oAb; else { oSort=th.dataset.f; oAb=false; }
-  oGrenze = ZEILEN_START; partnerZeichnen(); });
+  oGrenze = Infinity; partnerZeichnen(); });
 ['o-q','o-typ'].forEach(id =>
   document.getElementById(id).addEventListener('input', partnerZeichnen));
 partnerZeichnen();
@@ -10690,7 +10700,7 @@ function bestenlisten(grund, was_gefiltert) {
 
 document.querySelectorAll('#o-tab th').forEach(th => th.onclick = () => {
   if (oSort===th.dataset.f) oAb=!oAb; else { oSort=th.dataset.f; oAb=false; }
-  oGrenze = ZEILEN_START; partnerZeichnen(); });
+  oGrenze = Infinity; partnerZeichnen(); });
 ['o-q','o-typ'].forEach(id =>
   document.getElementById(id).addEventListener('input', partnerZeichnen));
 partnerZeichnen();
@@ -12579,6 +12589,12 @@ main section.tafel{background:transparent;border:0;border-radius:0;padding:4px 0
 main .huelle{background:var(--flaeche);border-radius:10px}
 main #netz,main #netz2,main #karte,main .leaflet-container{background:var(--flaeche)}
 main .aw-inhalt{background:var(--flaeche);border:1px solid var(--linie);border-radius:10px;padding:10px 14px}
+/* B15: keine Tabelle mit eigenem Scrollbalken (die Breite darf weiter seitlich scrollen) */
+main .huelle{max-height:none!important}
+#o-mehr{display:none!important}
+.sw-leiste{margin:8px 0 18px;font-size:14px;color:var(--gedaempft)}
+.sw-knopf{font:inherit;font-size:14px;font-weight:700;color:var(--akzent);background:none;border:0;padding:0;cursor:pointer}
+.sw-leiste[hidden]{display:none}
 /* Marianns PDF: „leere gelbe Pille unter dem Suchfeld entfernen“. Das Feld trägt hidden, sein Stil setzte display aber über. */
 .pdb-auswahl[hidden]{display:none!important}
 /* A12 Einleitung der Themen-Bilanz in normaler Größe */
@@ -12819,6 +12835,35 @@ main .aw-inhalt{background:var(--flaeche);border:1px solid var(--linie);border-r
   if (blt) { const pr = () => { blt.hidden = !blt.textContent.trim(); }; pr();
     new MutationObserver(pr).observe(blt, {childList: true, characterData: true, subtree: true}); }
   zugaenglich();
+  /* 12.11.2026, B15 (Marianns PDF Teil 2, Punkt 8): lange Tabellen schrittweise statt endlos oder im Scrollkasten.
+     10 Zeilen offen, darunter „10 von 415 angezeigt · ▾ 25 weitere anzeigen · ↑ Zum Tabellenanfang“. Bis 30 Zeilen
+     ganz offen. Zeichnet die Seite die Tabelle neu (Filter, Sortierung), beginnt es wieder bei 10. */
+  function seitenweise(tab) {
+    if (!tab || tab.dataset.sw) return;
+    const tb = tab.tBodies[0]; if (!tb) return;
+    tab.dataset.sw = '1';
+    const leiste = document.createElement('p'); leiste.className = 'sw-leiste';
+    (tab.closest('.huelle') || tab).after(leiste);
+    let n = 10;
+    const zeilen = () => [...tb.rows].filter(r => !r.classList.contains('summe'));
+    const zeichne = () => {
+      const z = zeilen(), alle = z.length, offen = alle <= 30 ? alle : Math.min(n, alle);
+      z.forEach((r, i) => { r.hidden = i >= offen; });
+      if (alle <= 30 || offen >= alle && n <= 10) { leiste.hidden = true; leiste.innerHTML = ''; return; }
+      leiste.hidden = false;
+      leiste.innerHTML = `${offen.toLocaleString('de-DE')} von ${alle.toLocaleString('de-DE')} angezeigt`
+        + (offen < alle ? ` · <button type="button" class="sw-knopf" data-sw="mehr">▾ ${Math.min(25, alle - offen)} weitere anzeigen</button>` : '')
+        + ` · <button type="button" class="sw-knopf" data-sw="anfang">↑ Zum Tabellenanfang</button>`;
+    };
+    leiste.addEventListener('click', ev => {
+      const b = ev.target.closest('[data-sw]'); if (!b) return;
+      if (b.dataset.sw === 'mehr') { n += 25; zeichne(); }
+      else (tab.closest('.huelle') || tab).scrollIntoView({block: 'start', behavior: 'smooth'});
+    });
+    new MutationObserver(() => { n = 10; zeichne(); }).observe(tb, {childList: true});
+    zeichne();
+  }
+  ['fz-tab', 'o-tab'].forEach(id => seitenweise(document.getElementById(id)));
   const vorherZ = window.nachNav;
   window.nachNav = ziel => { if (vorherZ) vorherZ(ziel); setTimeout(zugaenglich, 800); };
   /* Inhalte, die erst beim Klicken entstehen (Themen-Bilanz, Netzwerk), ziehen nach. */
