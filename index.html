@@ -1078,7 +1078,375 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
 @media (max-width:640px){.syn-toc{columns:1}}
 @media (max-width:640px){h1{font-size:18px}.tafel{border-radius:12px}}
 </style>
-</head>
+<!--NAV-STIL-KOPF-->
+<style>
+/* 11.11.2026 (Online-Check): unsichtbarer Text für Bildschirmleser, Sprungziele ohne eigene Fläche. */
+.sr-nur{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.sprungziel{display:block;height:0;scroll-margin-top:70px}
+/* Stufe 100: Navigation nach Marianns Canvas 1. */
+:root{--sk-recherche:#0A3F7E;--sk-recherche2:#054A94;--sk-auswertung:#E8EFF8;--sk-antrag:#EEF1F5;
+  --sk-evidenz:#F8F4EA;--sk-evidenzrand:#E3D6B5;--ul-grund:#F6F8FB;--pille:#E3ECF7;--pille-text:#00529F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sk-recherche:#0E2C52;--sk-recherche2:#14396A;
+  --sk-auswertung:#1A2636;--sk-antrag:#1C222B;--sk-evidenz:#2A2415;--sk-evidenzrand:#5A4A22;--ul-grund:#141B24;
+  --pille:#1F3550;--pille-text:#9CC3F5}}
+:root[data-theme="dark"]{--sk-recherche:#0E2C52;--sk-recherche2:#14396A;--sk-auswertung:#1A2636;--sk-antrag:#1C222B;
+  --sk-evidenz:#2A2415;--sk-evidenzrand:#5A4A22;--ul-grund:#141B24;--pille:#1F3550;--pille-text:#9CC3F5}
+nav[role="tablist"]{display:none!important}
+.kopfreihe{display:flex;flex-wrap:wrap;align-items:center;gap:10px 30px}
+.kopfreihe>*{min-width:0;max-width:100%}
+.kopfzeile-oben>div{min-width:0}
+.angebot-text{min-width:0}
+.angebot h1{overflow-wrap:anywhere}
+.bereiche{display:flex;flex-wrap:wrap;align-self:stretch;gap:2px}
+.bereiche .bereich{background:none;border:0;border-bottom:3px solid transparent;padding:12px 10px 9px;
+  font:inherit;font-size:15px;font-weight:700;color:var(--gedaempft);cursor:pointer}
+.bereiche .bereich:hover{color:var(--text)}
+.bereiche .bereich[aria-current="true"]{color:var(--text);border-bottom-color:var(--akzent)}
+.bereiche .euro{color:var(--gold);font-weight:900}
+.bereich-handy{display:none}
+.unterleiste{display:flex;flex-wrap:wrap;gap:4px;align-items:center;background:var(--ul-grund);
+  border:1px solid var(--linie);border-radius:10px;padding:6px 8px;margin:6px 0 0}
+.unterleiste a{display:inline-block;padding:5px 8px;border-radius:999px;font-size:14px;color:var(--text);
+  text-decoration:none;white-space:nowrap}
+.unterleiste a:hover{background:var(--weich)}
+.unterleiste a[aria-current="page"]{background:var(--pille);color:var(--pille-text);font-weight:700}
+.unterleiste a.raus::after{content:" ↗";font-size:12px}
+.bereiche button:focus-visible,.unterleiste a:focus-visible{outline:2px solid var(--akzent);outline-offset:2px}
+.seitenkopf{border-radius:12px;padding:20px 22px;margin:14px 0 14px;border:1px solid var(--linie);background:var(--flaeche)}
+.seitenkopf .ober{margin:0;font-size:14px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--gedaempft)}
+.seitenkopf h2{margin:4px 0 6px;font-size:32px;line-height:1.2;text-wrap:balance}
+.seitenkopf p.satz{margin:0;font-size:17px;color:var(--gedaempft);max-width:760px}
+.seitenkopf.recherche{background:linear-gradient(135deg,var(--sk-recherche),var(--sk-recherche2));border-color:transparent}
+.seitenkopf.recherche h2,.seitenkopf.recherche .ober,.seitenkopf.recherche p.satz{color:#fff}
+.seitenkopf.auswertungen{background:var(--sk-auswertung)}
+.seitenkopf.antrag{background:var(--sk-antrag)}
+.seitenkopf.evidenz{background:var(--sk-evidenz);border-color:var(--sk-evidenzrand)}
+.seitenkopf[hidden],.unterleiste[hidden],.betazeile[hidden],#kopfzeile[hidden]{display:none}
+/* Mega-Menü in der schwarzen Leiste */
+.ifw-karte{padding:20px 24px 0}
+.ifw-kopf{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 20px;
+  border-bottom:1px solid var(--nz-linie);padding-bottom:12px;margin-bottom:14px}
+.ifw-kopf b{font-size:20px;display:block}
+.ifw-kopf span{font-size:14px;color:var(--nz-soft)}
+.ifw-start{font-weight:700;color:var(--nz-blau);text-decoration:none}
+.ifw-spalten{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.ifw-spalte h3{margin:0 0 8px;font-size:12px;letter-spacing:0;text-transform:none;color:var(--nz-soft)}
+.ifw-spalte ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.ifw-spalte a{display:block;text-decoration:none;color:var(--nz-ink);padding:6px 8px;margin:0 -8px;border-radius:6px}
+.ifw-spalte a:hover{background:var(--nz-tint)}
+.ifw-spalte b{display:block;font-size:15px}
+.ifw-spalte small{display:block;font-size:13px;color:var(--nz-soft);line-height:1.35}
+.ifw-euro{background:#F8F4EA;border-radius:10px;padding:8px 10px;margin:-8px -10px}
+:root[data-theme="dark"] .ifw-euro{background:#2A2415}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ifw-euro{background:#2A2415}}
+.ifw-fuss{border-top:1px solid var(--nz-linie);margin-top:16px;padding:12px 0 16px;font-size:14px}
+.ifw-fuss a{color:var(--nz-blau)}
+/* Übersicht */
+.ue-held h2{font-size:32px;line-height:1.2;margin:4px 0 8px;text-wrap:balance}
+.ue-held p{font-size:17px;color:var(--gedaempft);max-width:760px;margin:0 0 14px}
+.ue-suche{display:flex;gap:8px;flex-wrap:wrap;max-width:760px}
+.ue-suche input{flex:1 1 260px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--linie);
+  border-radius:8px;background:var(--flaeche);color:var(--text)}
+.ue-suche button{font:inherit;font-weight:700;background:#BE9E55;color:#14202E;border:0;border-radius:8px;padding:10px 18px;cursor:pointer}
+.ue-fragen{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.ue-fragen button{font:inherit;font-size:14px;border:1px solid var(--linie);background:var(--flaeche);color:var(--text);
+  border-radius:999px;padding:5px 12px;cursor:pointer}
+.ue-erstmal{margin:16px 0 0;font-size:14px}
+.ue-bereich{margin:26px 0 0}
+.ue-bereich h3{font-size:12px;letter-spacing:0;text-transform:none;color:var(--gedaempft);margin:0 0 8px}
+.ue-kacheln{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.ue-kachel{display:block;text-decoration:none;color:var(--text);background:var(--flaeche);border:1px solid var(--linie);
+  border-radius:10px;padding:12px 14px}
+.ue-kachel:hover{border-color:var(--akzent)}
+.ue-kachel b{display:block;font-size:16px;margin-bottom:2px}
+.ue-kachel span{font-size:14px;color:var(--gedaempft)}
+.ue-kachel.euro{background:var(--sk-evidenz);border-color:var(--sk-evidenzrand)}
+.ue-zahlen{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:8px 0 0}
+.ue-zahl{background:var(--flaeche);border:1px solid var(--linie);border-radius:10px;padding:12px 14px}
+.ue-zahl b{display:block;font-size:28px;color:var(--akzent);font-variant-numeric:tabular-nums}
+.ue-zahl span{font-size:14px;color:var(--gedaempft)}
+.ue-meinung{margin:26px 0 0;background:var(--weich);border-radius:10px;padding:14px 16px;max-width:760px}
+/* Glossar */
+.gl-suche{font:inherit;font-size:15px;padding:8px 12px;border:1px solid var(--linie);border-radius:8px;
+  width:100%;max-width:420px;background:var(--flaeche);color:var(--text);margin:0 0 14px}
+.glossar{margin:0;display:flex;flex-direction:column;gap:12px;max-width:760px}
+.gl-eintrag dt{font-weight:700}
+.gl-eintrag dd{margin:2px 0 0}
+.gl-az{display:flex;flex-wrap:wrap;gap:4px;margin:12px 0 16px;position:sticky;top:0;background:var(--grund,#fff);padding:6px 0;z-index:2}
+.gl-az a{min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--linie);border-radius:6px;text-decoration:none;font-weight:700;color:var(--akzent)}
+.gl-az a:hover{background:var(--weich)}
+.gl-gruppe{display:flex;flex-direction:column;gap:12px;scroll-margin-top:60px}
+.gl-gruppe[hidden]{display:none}
+.gl-buchstabe{margin:10px 0 0;font-size:22px;color:var(--akzent);border-bottom:1px solid var(--linie);padding-bottom:4px}
+.gl-mehr{white-space:nowrap;font-weight:700}
+.ue-inhalt{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;background:var(--flaeche);border:1px solid var(--linie);
+  border-radius:10px;padding:10px 14px;margin:0 0 18px;font-size:14px}
+.ue-finden{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:8px 0 18px}
+.ue-finden a{display:flex;flex-direction:column;gap:4px;border:1px solid var(--linie);border-radius:10px;padding:12px 14px;
+  background:var(--flaeche);color:var(--text);text-decoration:none}
+.ue-finden a:hover{border-color:var(--akzent)}
+.ue-finden a span{font-size:14px;color:var(--gedaempft)}
+.ue-finden a i{font-style:normal;font-weight:700;color:var(--akzent);margin-top:auto}
+.ue-finden a.euro{background:var(--sk-evidenz,#F8F4EA)}
+#t-ueber h3{scroll-margin-top:60px}
+.tafel.lese h3{font-size:22px;margin:22px 0 8px}
+@media (max-width:860px){ #ifwKnopf{display:none} }
+.handymenue{display:none}
+@media (max-width:760px){
+  .handymenue:not([hidden]){display:flex;flex-direction:column;flex-basis:100%;width:100%;box-sizing:border-box;background:var(--flaeche);border:1px solid var(--linie);border-radius:10px;
+    margin:6px 0;overflow:hidden}
+  .handymenue a,.handymenue summary{display:block;padding:11px 14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--linie);
+    font-weight:700;cursor:pointer}
+  .handymenue details a{font-weight:400;padding-left:28px;background:var(--bg)}
+  .handymenue a[aria-current]{color:var(--akzent);font-weight:700;box-shadow:inset 4px 0 0 var(--akzent)}
+  .unterleiste{display:none!important}
+  .bereich-handy{order:-1}
+  .bereiche .bereich{display:none}
+  .bereich-handy{display:inline-block;font:inherit;font-weight:700;border:1px solid var(--linie);background:var(--flaeche);
+    color:var(--text);border-radius:8px;padding:7px 12px;cursor:pointer;margin:6px 0}
+  .bereiche.offen{flex-direction:column;align-items:stretch}
+  .bereiche.offen .bereich{display:block;text-align:left;border-bottom:1px solid var(--linie)}
+  .unterleiste{flex-wrap:nowrap;overflow-x:auto}
+  .seitenkopf h2,.ue-held h2{font-size:24px}
+  .ifw-spalten{grid-template-columns:1fr 1fr}
+}
+/* ===== 12.11.2026: Marianns Gestaltung, PDF „Was noch fehlt“ Teil 2, Stufe A (Peter: „Ja, A1 bis A12“).
+   Steht am Ende, damit es die älteren Regeln im Portal überschreibt. Werte aus ihrer Tafel. ===== */
+:root{--mf-rand:#D8DFE9;--mf-zahl:#00529F;--mf-satz:#3A4658;--mf-hellblau:#E8EFF8;--mf-hellblau-rand:#C9D8EC}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--mf-rand:#2a323e;--mf-zahl:#9CC3F5;--mf-satz:#b8c2cf;--mf-hellblau:#1A2636;--mf-hellblau-rand:#2b3d55}}
+:root[data-theme="dark"]{--mf-rand:#2a323e;--mf-zahl:#9CC3F5;--mf-satz:#b8c2cf;--mf-hellblau:#1A2636;--mf-hellblau-rand:#2b3d55}
+/* A1 Logo: blaues Quadrat, weißes Symbol (Teil 2, 10) */
+.angebot-symbol,:root[data-theme="dark"] .angebot-symbol{background:#00529F;color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .angebot-symbol{background:#1F3550;color:#9CC3F5}}
+:root[data-theme="dark"] .angebot-symbol{background:#1F3550;color:#9CC3F5}
+/* A2 Schrift: Fließtext 16, kleine Texte 14, Hinweise 13, Abschnittsüberschriften 22 px fett (Teil 2, 5) */
+main section.tafel{font-size:16px}
+main section.tafel > h3,main .bl-kurz-h,main .aw-kopf h3,main .bl-h,#bl-antwort h3{font-size:22px;font-weight:700;line-height:1.3}
+main .hinweis{font-size:13px}
+/* A3 Kacheln: weiß, Rand 1,5 px, Ecken 10 px, Zahl 30 px fett blau, ganzer Satz 14 px (Teil 2, 6) */
+main .kachel{background:var(--flaeche);border:1.5px solid var(--mf-rand);border-radius:10px;padding:18px 20px}
+main .kachel .gross,main .kachel .zahl{font-size:30px;font-weight:700;color:var(--mf-zahl);line-height:1.15}
+main .kachel .was{font-size:14px;color:var(--mf-satz);line-height:1.45}
+/* A4 Unterreiter: hellgraue Leiste über die volle Breite, ohne Rahmen, aktiver Eintrag hellblau (Teil 2, 3) */
+.unterleiste{border:0;border-radius:0;margin:0;padding:6px 0;box-shadow:0 0 0 100vmax var(--ul-grund);clip-path:inset(0 -100vmax)}
+.unterleiste a{border-radius:6px}
+/* A5 Farben mit Bedeutung: Beige nur für Evidenzsynthesen. Wertendes hellblau mit Sprechblase (Teil 2, 12) */
+.amzug{background:var(--mf-hellblau);border-left-color:var(--akzent)}
+.bl-einordnung{background:var(--mf-hellblau);border:1px solid var(--mf-hellblau-rand);border-left:1px solid var(--mf-hellblau-rand);
+  padding:18px 20px 18px 58px;position:relative}
+.bl-einordnung::before{content:"";position:absolute;left:18px;top:18px;width:26px;height:26px;
+  background:no-repeat center/26px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 5h16v11H9l-5 4z' fill='%23fff' stroke='%2300529F' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E")}
+/* A11 Knopf „Alle … in der Projektdatenbank anzeigen“ wie die übrigen Knöpfe statt Systemknopf */
+button.gold{font:inherit;font-size:15px;font-weight:700;padding:11px 20px;border:0;border-radius:8px;background:#BE9E55;color:#14202E;cursor:pointer}
+button.gold:hover{background:#ad8d45}
+/* A7/A8 Zweite Kachelreihe nur bei gesetztem Filter, mit eigener Überschrift */
+.kacheln[hidden]{display:none!important}
+.kacheln .auswahl-kopf{grid-column:1/-1;margin:0;font-size:14px;font-weight:700;color:var(--mf-satz)}
+/* A9 Hinweis „Neu · Versorgungskerne“ mit Symbol */
+.vk-marke::before{content:"";display:inline-block;width:18px;height:18px;margin-right:6px;vertical-align:-4px;
+  background:no-repeat center/18px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z' fill='none' stroke='%2300529F' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E")}
+/* Themen-Bilanz: „Ihre Frage steht nicht dabei?“ als Hinweis mit Knopf ins Kontaktformular */
+.fragekasten-neu{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin:22px 0;
+  background:var(--mf-hellblau);border:1px solid var(--mf-hellblau-rand);border-radius:10px;padding:16px 20px}
+.fragekasten-neu p{margin:0;flex:1 1 420px;font-size:15px}
+/* Das alte Fragenformular bleibt nur fürs Hauptskript im Dokument. Ein Skript setzt hidden zurück, darum per Stil. */
+#bl-fragekasten{display:none!important}
+/* ===== B13 (12.11.2026, Peter „stufe b machen, beginne mit B13“): Bänder statt Kästen (PDF Teil 2, Punkte 1 und 2).
+   Seitenkopf als farbiges Band über die volle Breite, Inhalt direkt auf hellgrauem Grund, nur Abschnitte als weiße
+   Kästen. Volle Breite über box-shadow + clip-path, damit kein seitliches Scrollen entsteht. ===== */
+:root{--mf-grund:#F3F5F8;--mf-band-recherche:#0A3F7E;--mf-band-grau:#EEF1F5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--mf-grund:var(--bg);--mf-band-recherche:#0E2C52;--mf-band-grau:#1C222B}}
+:root[data-theme="dark"]{--mf-grund:var(--bg);--mf-band-recherche:#0E2C52;--mf-band-grau:#1C222B}
+body{background:var(--mf-grund)}
+main section.tafel{background:transparent;border:0;border-radius:0;padding:4px 0 0;box-shadow:none}
+.seitenkopf{--band:var(--mf-band-grau);background:var(--band);border:0;border-radius:0;margin:0 0 22px;padding:28px 0 26px;
+  box-shadow:0 0 0 100vmax var(--band);clip-path:inset(0 -100vmax)}
+.seitenkopf.recherche{--band:var(--mf-band-recherche);background:var(--band)}
+.seitenkopf.auswertungen{--band:var(--sk-auswertung)}
+.seitenkopf.antrag{--band:var(--sk-antrag)}
+.seitenkopf.evidenz{--band:var(--sk-evidenz)}
+.seitenkopf h2{font-size:32px;font-weight:700}
+.seitenkopf p.satz{font-size:17px}
+/* Weiße Kästen nur noch für einzelne Abschnitte: Tabellen, Netzwerk, Karte, Kästen der Auswertungen */
+main .huelle{background:var(--flaeche);border-radius:10px}
+main #netz,main #netz2,main #karte,main .leaflet-container{background:var(--flaeche)}
+main .aw-inhalt{background:var(--flaeche);border:1px solid var(--linie);border-radius:10px;padding:10px 14px}
+/* B14: „Auf dieser Seite“ als weiße Leiste über die volle Breite, bleibt beim Scrollen oben stehen */
+main .aw-inhalt.aw-leiste{position:sticky;top:0;z-index:20;margin:-22px 0 18px;border:0;border-radius:0;padding:10px 0;
+  box-shadow:0 0 0 100vmax var(--flaeche),0 1px 0 100vmax var(--linie);clip-path:inset(0 -100vmax -1px)}
+main .aw-inhalt.aw-leiste[hidden]{display:none}
+/* B19: Suche der Projektdatenbank im blauen Band (Band wird höher, die Suche rückt hinein) */
+body:has(#t-projekte:not([hidden])) .seitenkopf.recherche{padding-bottom:196px}
+#t-projekte .pdb-suche{position:relative;z-index:2;margin:-206px 0 0;padding:0 0 18px;display:flex;flex-direction:column;gap:12px}
+#t-projekte .pdb-suchzeile{display:flex;gap:12px;flex-wrap:wrap}
+#t-projekte .pdb-suchzeile input{flex:1 1 460px;font:inherit;font-size:16px;padding:13px 16px;border:1px solid #B8C4D4;border-radius:8px;background:#fff;color:#14202E;max-width:none}
+.pdb-suchknopf{font:inherit;font-size:15px;font-weight:700;padding:13px 26px;border:0;border-radius:8px;background:#BE9E55;color:#14202E;cursor:pointer}
+.pdb-beispiele{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px;color:#DCE7F5}
+.pdb-beispiele button{font:inherit;font-size:14px;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:5px 12px;cursor:pointer}
+.pdb-beispiele button:hover{background:rgba(255,255,255,.22)}
+.pdb-hinweise{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin:22px 0 18px;font-size:14px;color:var(--mf-satz)}
+.pdb-hinweise p{margin:0}
+@media (max-width:860px){.pdb-hinweise{grid-template-columns:1fr}body:has(#t-projekte:not([hidden])) .seitenkopf.recherche{padding-bottom:230px}#t-projekte .pdb-suche{margin-top:-250px}}
+/* B17: Antwortseite der Themen-Bilanz. Eigenes dunkelblaues Band statt des allgemeinen Seitenkopfs,
+   „Weitere Fragen der Themen-Bilanz“ als graublaues Band über die volle Breite vor dem Fuß. */
+body:has(#t-suche:not([hidden]) #bl-antwort:not([hidden])) #seitenkopf{display:none}
+.bl-band{background:var(--mf-band-recherche);color:#fff;padding:28px 0 30px;margin:0 0 22px;
+  box-shadow:0 0 0 100vmax var(--mf-band-recherche);clip-path:inset(0 -100vmax)}
+.bl-band .bl-zurueck{color:#DCE7F5;font-size:14px}
+.bl-band .bl-ober{color:#DCE7F5;font-size:12px;font-weight:700;letter-spacing:0;text-transform:none;margin:6px 0 4px}
+.bl-band .bl-titel{color:#fff;font-size:32px;line-height:1.2;margin:0}
+#bl-antwort .bl-menue{margin:40px 0 0;padding:28px 0 34px;border-top:0;background:#E9EEF6;box-shadow:0 0 0 100vmax #E9EEF6;clip-path:inset(0 -100vmax -40px)}
+:root[data-theme="dark"] #bl-antwort .bl-menue{background:#1A2636;box-shadow:0 0 0 100vmax #1A2636}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #bl-antwort .bl-menue{background:#1A2636;box-shadow:0 0 0 100vmax #1A2636}}
+/* B21: erklärender Satz in jeder Konsortien-Kachel */
+.ksatz{margin:10px 0 0;font-size:14px;line-height:1.45;color:var(--mf-satz);border-top:1px solid var(--linie);padding-top:8px}
+/* B22: Projektvergleich. „Hinzufügen“ als Knopf, Text 14 bis 16 px, Kopfzeile bleibt stehen, Unterschiede hellblau
+   (Beige nur für Evidenzsynthesen). Auf breiten Bildschirmen ohne eigenen Scrollrahmen, damit die Kopfzeile haftet. */
+#vg-dazu{font:inherit;font-size:15px;font-weight:700;padding:9px 18px;border:0;border-radius:8px;background:#00529F;color:#fff;cursor:pointer}
+.vg-feld{font-size:14px}
+table.vgv th,table.vgv td{font-size:15px}
+table.vgv thead th:first-child,table.vgv tbody th{font-size:14px}
+table.vgv .tit{font-size:14px}
+table.vgv thead th{position:sticky;top:0;z-index:3;background:var(--flaeche);box-shadow:0 1px 0 var(--linie)}
+table.vgv tr.anders td,table.vgv tr.anders th{background:var(--mf-hellblau)}
+table.vgv tr.anders th small{color:var(--akzent)}
+.pdb-vglleiste{background:var(--mf-hellblau);border-color:var(--mf-hellblau-rand)}
+@media (min-width:1100px){#vg-tafel .huelle{overflow:visible}}
+/* B15: keine Tabelle mit eigenem Scrollbalken (die Breite darf weiter seitlich scrollen) */
+main .huelle{max-height:none!important}
+#o-mehr{display:none!important}
+.sw-leiste{margin:8px 0 18px;font-size:14px;color:var(--gedaempft)}
+.sw-knopf{font:inherit;font-size:14px;font-weight:700;color:var(--akzent);background:none;border:0;padding:0;cursor:pointer}
+.sw-leiste[hidden]{display:none}
+/* Marianns PDF: „leere gelbe Pille unter dem Suchfeld entfernen“. Das Feld trägt hidden, sein Stil setzte display aber über. */
+.pdb-auswahl[hidden]{display:none!important}
+/* A12 Einleitung der Themen-Bilanz in normaler Größe */
+#t-suche .bl-h + .hinweis{font-size:16px;color:var(--text);max-width:760px}
+</style>
+<!--/NAV-STIL-KOPF--><!--STARTSEITE-F-STIL--><style>/* Testfassungen der Startseite, 11.11.2026. Nur in den Testkopien, nie im Portal. */
+/* ---- F: Marianns Gestaltung (Tafel Portal-Start, PDF „Was noch fehlt“ Teil 2) ---- */
+html[data-variante="f"] body{background:#F3F5F8}
+html[data-variante="f"] #t-uebersicht.tafel{background:transparent;border:0;padding:0;box-shadow:none}
+html[data-variante="f"] .betazeile,html[data-variante="f"] #kopfzeile{display:none!important}
+html[data-variante="f"] .angebot-symbol{background:#00529F!important;color:#fff!important;border-color:#00529F!important}
+.mf-band{margin:0 calc(50% - 50vw);background:linear-gradient(200deg,#054A94 0%,#0A3F7E 55%);background-color:#0A3F7E;color:#fff}
+.mf-band-innen{max-width:1240px;margin:0 auto;padding:40px 24px 96px;display:flex;flex-direction:column;gap:12px;box-sizing:border-box}
+.mf-ober{font-size:14px;font-weight:700;letter-spacing:0}
+.mf-ober.blau{color:#00529F;font-size:11px}
+.mf-band h2{margin:0;font-size:40px;line-height:1.15;font-weight:700;max-width:960px;color:#fff}
+.mf-band p{margin:0;font-size:18px;line-height:1.55;color:#DCE7F5;max-width:860px}
+.mf-suchkarte{position:relative;background:#fff;border-radius:12px;box-shadow:0 8px 28px rgba(20,32,46,.10);padding:24px 28px;margin-top:-64px;display:flex;flex-direction:column;gap:14px}
+.mf-label{font-size:14px;font-weight:700;letter-spacing:0;color:#3A4658}
+.mf-form{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0;position:relative}
+/* Vorschlagsliste beim Tippen (12.11.2026) */
+.mf-vorschlaege{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:30;max-height:min(70vh,560px);overflow:auto;
+  background:#fff;border:1px solid #C9D3DF;border-radius:10px;box-shadow:0 12px 32px rgba(10,30,60,.18);padding:6px 0;text-align:left}
+.mf-vorschlaege[hidden]{display:none}
+.mf-v-gruppe{font-size:13px;font-weight:700;color:#5A6577;padding:10px 16px 4px}
+.mf-v-e{display:flex;flex-direction:column;gap:1px;padding:8px 16px;cursor:pointer;color:#14202E}
+.mf-v-e b{font-weight:700;font-size:15px;color:#0A3F7E}
+.mf-v-e span{font-size:13.5px;color:#3A4658;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mf-v-e:hover,.mf-v-e.an{background:#EAF1FA}
+.mf-v-mehr{border-top:1px solid #E3E8EF;margin-top:4px}
+.mf-v-leer{padding:8px 16px;font-size:13.5px;color:#5A6577}
+.mf-form input{flex:1 1 460px;font:inherit;font-size:16px;padding:13px 16px;border:1px solid #B8C4D4;border-radius:8px;color:#14202E}
+.mf-form button{font:inherit;font-size:15px;font-weight:700;padding:13px 26px;border:0;border-radius:8px;background:#BE9E55;color:#14202E;cursor:pointer}
+.mf-hinweis{font-size:14px;color:#4A5568}
+.mf-hinweis a,.mf-hubs a{color:#00529F;text-decoration:none}
+.mf-hubs{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:#F3F5F8;border-radius:8px;padding:10px 14px;font-size:14px}
+.mf-klein{font-size:12px;color:#5A6577}
+.mf-suchkarte .mf-klein{border-top:1px solid #E3E8EF;padding-top:12px}
+.mf-erstmal{margin-top:40px;background:#E8EFF8;border:1px solid #C9D8EC;border-radius:10px;padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px}
+.mf-erstmal[hidden]{display:none}
+.mf-erstmal-titel{display:flex;align-items:center;gap:12px;flex:1 1 260px;font-size:16px}
+.mf-rahmenknopf{border:1.5px solid #00529F;border-radius:6px;padding:8px 14px;font-size:14px;font-weight:700;background:#fff;color:#00529F;text-decoration:none}
+.mf-zu{background:transparent;border:0;color:#00529F;font-size:20px;width:44px;height:44px;cursor:pointer}
+.mf-abschnitt{margin-top:40px;display:flex;flex-direction:column;gap:16px}
+.mf-abschnitt h2,.mf-alles h2{margin:0;font-size:26px;color:#14202E}
+.mf-kopfzeile{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px}
+.mf-unterzeile{margin:-6px 0 16px;font-size:16px;line-height:1.5;color:#3A4658;max-width:60em}
+.mf-textknopf{font:inherit;font-size:14px;font-weight:700;color:#00529F;background:none;border:0;padding:0;cursor:pointer}
+.mf-drei{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.mf-karte{background:#fff;border:1px solid #D3DBE7;border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:6px;color:#14202E;text-decoration:none}
+a.mf-karte:hover{border-color:#00529F}
+.mf-karte strong{font-size:16px;margin-top:4px}
+.mf-karte span{font-size:14px;line-height:1.45;color:#3A4658}
+.mf-karte.gold{background:#F8F4EA;border-color:#E6D9B8}
+.mf-gross{border-width:1.5px;border-color:#D8DFE9}
+.mf-gross strong{font-size:19px}
+.mf-gross ul{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.mf-gross a{color:#00529F;font-weight:700;text-decoration:none}
+.mf-kachel{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;font:inherit;cursor:pointer;background:#fff;
+  border:1.5px solid #D8DFE9;border-radius:10px;padding:18px 20px;color:#14202E;min-height:170px}
+.mf-kachel:hover{border-color:#00529F}
+.mf-kachel .mf-frage{font-size:15px;font-weight:700}
+.mf-kachel b{font-size:30px;font-weight:700;color:#00529F;line-height:1.15;margin-top:4px}
+.mf-kachel .mf-satz{font-size:14px;color:#3A4658;line-height:1.45}
+.mf-kachel i{font-style:normal;font-size:14px;font-weight:700;color:#00529F;margin-top:auto;padding-top:8px}
+.mf-alles{margin-top:40px;background:#E9EEF6;border-radius:14px;padding:28px 28px 30px;display:flex;flex-direction:column;gap:26px}
+.mf-zeile{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:start;border-top:1px solid #D3DBE7;padding-top:20px}
+.mf-links{display:flex;flex-direction:column;gap:6px;padding-top:4px}
+.mf-links h3{margin:0;font-size:15px;font-weight:700;letter-spacing:0;color:#3A4658}
+.mf-links span{font-size:13px;line-height:1.45;color:#4A5568}
+.mf-links .mf-euro{align-self:flex-start;font-size:11px;font-weight:700;color:#5C4515;background:#F1E6CC;border-radius:4px;padding:2px 7px}
+.mf-raster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.mf-einordnung{margin:40px 0 16px;background:#E8EFF8;border:1px solid #C9D8EC;border-radius:10px;padding:22px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;color:#14202E;text-decoration:none}
+.mf-einordnung svg{flex:none;align-self:flex-start;margin-top:2px}
+.mf-einordnung-text{display:flex;flex-direction:column;gap:6px;flex:1 1 520px}
+.mf-einordnung-text strong{font-size:19px}
+.mf-einordnung-text span:last-child{font-size:15px;color:#3A4658}
+.mf-weiter{font-size:14px;color:#00529F}
+@media (max-width:860px){.mf-drei,.mf-raster{grid-template-columns:1fr}.mf-zeile{grid-template-columns:1fr}.mf-band h2{font-size:30px}}
+.st-testleiste{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;
+  background:#2C2C2A;color:#fff;font:600 14px Lato,sans-serif;padding:8px 12px}
+.st-testleiste a{color:#fff;border:1px solid #888780;border-radius:999px;padding:3px 12px;text-decoration:none}
+.st-testleiste a[aria-current]{background:#fff;color:#2C2C2A}
+.st-ober{margin:0;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--gedaempft)}
+.st-ico{width:26px;height:26px;color:var(--akzent);flex:none}
+.st-h{font-size:26px;margin:30px 0 6px}
+.st-bereich{margin:18px 0 6px}
+.st-bereich h4{margin:0;font-size:18px}
+.st-bsatz{margin:2px 0 10px;color:var(--gedaempft)}
+.st-kacheln{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.st-kachel{display:flex;flex-direction:column;gap:6px;background:var(--flaeche);border:1px solid var(--linie);border-radius:12px;
+  padding:14px 16px;color:var(--text);text-decoration:none;min-height:120px}
+.st-kachel:hover{border-color:var(--akzent)}
+.st-kachel span{font-size:14px;color:var(--gedaempft)}
+.st-bereich.euro .st-kachel{background:var(--sk-evidenz,#F8F4EA);border-color:var(--sk-evidenzrand,#E6DCC3)}
+.st-fuss{margin:10px 0 0;color:var(--gedaempft);font-size:14px}
+.st-meinung{display:flex;flex-direction:column;gap:6px;margin:22px 0;background:#E8EFF8;border-radius:12px;padding:18px 20px;
+  color:var(--text);text-decoration:none}
+.st-meinung b{font-size:20px;line-height:1.3}
+.st-meinung i{font-style:normal;font-weight:700;color:var(--akzent)}
+.st-schmal h2{max-width:24ch}
+.st-anliegen{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:22px 0}
+.st-karte{background:var(--flaeche);border:1px solid var(--linie);border-radius:14px;padding:20px 22px}
+.st-karte h3{margin:10px 0 4px;font-size:20px}
+.st-karte p{margin:0 0 10px;color:var(--gedaempft)}
+.st-karte ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.st-karte li a{font-weight:700}
+.st-band{margin:8px 0 18px}
+.st-alle{border:1px solid var(--linie);border-radius:12px;padding:10px 16px;background:var(--flaeche)}
+.st-alle summary{cursor:pointer;font-weight:700}
+.st-zeile{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 0;font-size:14px}
+.st-zeile b{min-width:150px}
+.st-antworten{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:22px 0 8px}
+.st-antwort{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;font:inherit;cursor:pointer;
+  background:var(--flaeche);border:1px solid var(--linie);border-radius:12px;padding:16px 18px;color:var(--text);min-height:150px}
+.st-antwort:hover{border-color:var(--akzent)}
+.st-antwort .st-f{font-weight:700;font-size:15px}
+.st-antwort b{font-size:30px;color:var(--akzent);line-height:1.1}
+.st-antwort .st-a{font-size:14px;color:var(--gedaempft)}
+.st-antwort i{font-style:normal;font-weight:700;color:var(--akzent);margin-top:auto;font-size:14px}
+.st-sechs .st-antworten{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:860px){.st-sechs .st-antworten{grid-template-columns:1fr}}
+.st-antwort.st-leer{background:#E8EFF8;border-color:transparent}
+.st-alle-fragen{font:inherit;font-weight:700;color:var(--akzent);background:none;border:0;padding:0;cursor:pointer}
+.st-leiste{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:22px 0}
+.st-leiste a{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-top:3px solid var(--akzent);background:var(--flaeche);
+  color:var(--text);text-decoration:none;border-radius:0 0 10px 10px}
+.st-leiste a span{font-size:13px;color:var(--gedaempft)}
+</style><!--/STARTSEITE-F-STIL--></head>
 <body>
 <style>nav.netz{max-width:none;margin:0;padding:0}.netz-aktion p{margin:0}footer.fuss.nf{max-width:1240px;margin:34px auto 0;padding:26px 16px 30px}</style>
 <style>
@@ -1233,6 +1601,14 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
      fuer schmale Bildschirme (startseite_neu.sprungleiste, links=False). */
   .ortsleiste.nur-handy{ display:none; }
   @media (max-width:980px){ .netz-mvf .lang{ display:none; } }
+  /* Seit dem 12.11.2026 traegt die Leiste zwei Eintraege mehr („Ueber uns",
+     „Kontakt") und den Radar. Gemessen auf einem 1024er Bildschirm: Die Teile
+     ergaben zusammen 1.032 px bei 1.009 px Platz, die Leiste wurde zweizeilig.
+     Als Erstes weicht deshalb der Absender rechts - er steht auf jeder Seite
+     noch einmal im Fuss, geht also nirgends verloren. DE/EN bleibt stehen:
+     Zwischen 860 und 1.120 px gaebe es sonst gar keinen Sprachwechsel, denn
+     im Handy-Menue erscheint er erst unter 860. */
+  @media (max-width:1120px){ .netz-mvf{ display:none; } }
   @media (max-width:860px){
     .netz-rechts, .netz-link{ display:none; }
     .netz-spalten{ grid-template-columns:1fr 1fr; }
@@ -1276,8 +1652,30 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
       <span>Knowledge<b>-Hubs</b></span>
     </a>
     <button class="netz-knopf" type="button" id="netzKnopf" aria-expanded="false" aria-controls="netzMega">Alle Angebote<span class="pfeil" aria-hidden="true">▼</span></button>
-    <a class="netz-link" href="https://knowledge-hubs.m-vf.de/ueber-die-hubs.html">Über die Hubs</a>
+    <!-- „Ueber die Hubs" stand bis zum 12.11.2026 hier und ist in das Menue
+         „Alle Angebote" gewandert, Gruppe „Weitere Angebote" - Platz fuer
+         „Ueber uns" und „Kontakt", die laut Marianns Liste „Was noch fehlt"
+         (Teil 2, Punkt 9) in die Leiste jedes Angebots gehoeren.
+         ⚠ Der Bau des Innovationsfonds-Radars suchte seine Einfuegestelle
+         mit einem assert auf „Ueber die Hubs". Die Innofonds-Sitzung ist am
+         12.11.2026 vorgewarnt worden, bevor dieser Eintrag ging. Wer hier
+         wieder etwas herausnimmt, sagt dort vorher Bescheid. -->
+    <!-- Eigener Eintrag fuer das Innovationsfonds-Radar, auf Anweisung des
+         Herausgebers vom 12.11.2026. Es steht zwar schon unter „Alle
+         Angebote" an erster Stelle der Gruppe „Weitere Angebote" - sichtbar
+         genug war es dort nicht. Auf innofonds.m-vf.de entsteht die Leiste
+         aus einer eigenen Quelle (innovationsfonds/), die an dieser Stelle
+         die Navigation jener Seite traegt; dort ist also nichts abzufangen,
+         diese Datei erreicht sie gar nicht.
+         Unter 860 px verschwindet er mit .netz-link in das Handy-Menue, wo er
+         unter „Weitere Angebote" ohnehin steht - deshalb kostet er auf dem
+         Telefon keine Breite. -->
     <button class="netz-knopf" type="button" id="ifwKnopf" aria-expanded="false" aria-controls="ifwMega">Innovationsfonds-Radar<span class="pfeil" aria-hidden="true">▼</span></button>
+    <a class="netz-link" href="https://knowledge-hubs.m-vf.de/ueber-uns.html">Über uns</a>
+    <!-- Die Kontaktseite liegt bei der Innofonds-Sitzung und gilt ALLEN
+         Angeboten der Reihe, nicht nur dem Radar. Ohne Parameter erkennt sie
+         den Hub an der Herkunftsadresse, ein schlichter Link genuegt. -->
+    <a class="netz-link" href="https://innofonds.m-vf.de/kontakt/">Kontakt</a>
     <!-- DARSTELLUNG-START ====================================================
          Schalter „Darstellung" (hell / dunkel / wie mein Geraet), links neben
          DE/EN. Entwurf Mariann Stegmaier, Canvas 2 (28.10.2026); gebaut von der
@@ -1446,6 +1844,11 @@ table.preistafel tr.nach:first-of-type td{padding-top:7px}
             <li><a href="https://www.monitor-versorgungsforschung.de/education/mvf-jahreskongresse/">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="2.5"/><path d="M8 13a4 4 0 0 1 8 0"/><path d="M4 15h16l-1.5 6h-13z"/></svg>
               <span><b>MVF-Fachkongress</b><small>Einmal im Jahr in Berlin</small></span></a></li>
+            <!-- Am 12.11.2026 aus der Leiste hierher gewandert, damit dort
+                 „Ueber uns" und „Kontakt" Platz haben. -->
+            <li><a href="https://knowledge-hubs.m-vf.de/ueber-die-hubs.html">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8.5v.01"/></svg>
+              <span><b>Über die Hubs</b><small>Wie die Hubs entstehen, woher die Studien kommen</small></span></a></li>
           </ul>
         </div>
       </div>
@@ -1615,7 +2018,63 @@ Projektverantwortlichen geprüft.">Beta</span></h1></div>
 </nav>
 <main>
 
-<section class="tafel" id="t-uebersicht"><div id="uebersicht-inhalt"></div></section>
+<section class="tafel" id="t-uebersicht"><div id="uebersicht-inhalt"><!--VORGERENDERT--><script>(function(){var h=(location.hash||'').replace(/^#/,'').split('/')[0];if(h&&h!=='uebersicht')document.getElementById('t-uebersicht').hidden=true;})();</script>
+      <section class="mf-band"><div class="mf-band-innen">
+        <span class="mf-ober"><abbr class="gl" tabindex="0" title="Förderprogramm der gesetzlichen Krankenversicherung seit 2016 für neue Versorgungsformen, Versorgungsforschung und medizinische Leitlinien." data-gl="Innovationsfonds">Innovationsfonds</abbr>-Radar</span>
+        <h2>Was wurde aus 861 Vorhaben des Innovationsfonds?</h2>
+        <p>Alle Beschlüsse und <abbr class="gl" tabindex="0" title="Der Abschlussbericht, den das Konsortium eines Vorhabens beim GBA einreicht. Die Hälfte der Berichte ist länger als rund 440.000 Zeichen." data-gl="Ergebnisbericht">Ergebnisberichte</abbr> des Innovationsfonds seit 2016 an einem Ort, durchsuchbar und ausgewertet.
+          Was aus Beschlüssen und Berichten stammt, ist mit Zitat und Seitenzahl belegt.</p>
+      </div></section>
+      <section class="mf-suchkarte" aria-label="Suche">
+        <label for="ue-q" class="mf-label">In 861 Innovationsfonds-Vorhaben suchen</label>
+        <form class="mf-form" id="ue-suche" role="search">
+          <input id="ue-q" type="search" placeholder="Akronym, Titel, Einrichtung oder Stichwort, z. B. DIPS, Schlaganfall, Charité" autocomplete="off" aria-controls="mf-vorschlaege" aria-autocomplete="list" aria-expanded="false">
+          <button type="submit">Vorhaben finden</button><div class="mf-vorschlaege" id="mf-vorschlaege" hidden="" role="listbox" aria-label="Vorschläge"></div></form>
+        <span class="mf-hinweis">Die Suche führt in die <a href="#projekte" data-reiter="t-projekte"><b>Projektdatenbank</b></a>, mit Filtern nach Förderbereich, Status und Ergebnis.</span>
+        <div class="mf-hubs"><span>Sie suchen Studien und Fachliteratur? Die finden Sie in den Knowledge-Hubs.</span>
+          <a href="https://knowledge-hubs.m-vf.de/"><b>Zu den 15 Hubs →</b></a></div>
+        <span class="mf-klein">Kostenlos, ohne Anmeldung.</span>
+      </section>
+      <aside class="mf-erstmal" id="mf-erstmal">
+        <span class="mf-erstmal-titel"><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="6" fill="#00529F"></rect><circle cx="14" cy="14" r="7" fill="none" stroke="#FFFFFF" stroke-width="1.6"></circle><path d="M14 13v4.5M14 10.3v.2" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"></path></svg>
+          <strong>Zum ersten Mal hier?</strong></span>
+        <a class="mf-rahmenknopf" href="#ueber" data-reiter="t-ueber">Über das Innovationsfonds-Radar →</a>
+        <a class="mf-rahmenknopf" href="#vorwort" data-reiter="t-vorwort">Methodik &amp; Verlässlichkeit der Daten →</a>
+        <button type="button" class="mf-zu" aria-label="Hinweis schließen" onclick="this.parentElement.hidden=true">×</button>
+      </aside>
+      <section class="mf-abschnitt" aria-labelledby="mf-anliegen"><h2 id="mf-anliegen">Was haben Sie vor?</h2>
+        <div class="mf-drei">
+          <div class="mf-karte mf-gross"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Ich plane einen Antrag</strong><span>Gab es meine Idee schon, wie ging es aus, woran hakte es?</span>
+            <ul><li><a href="#idee" data-reiter="t-idee">Ideencheck: Gibt es meine Idee schon →</a></li><li><a href="#suche" data-reiter="t-suche">Themen-Bilanz: Wie lief es bei ähnlichen Themen →</a></li><li><a href="#berichte" data-reiter="t-berichte">Tipps für auswertbare Berichte →</a></li></ul></div>
+          <div class="mf-karte mf-gross"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 4a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM15.5 15.5L21 21M7.8 10.6l1.9 1.9 3.6-3.6" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Ich suche Vorhaben oder Partner</strong><span>Einzelne Vorhaben, wer sie gemacht hat und mit wem.</span>
+            <ul><li><a href="#projekte" data-reiter="t-projekte">Projektdatenbank mit Filtern →</a></li><li><a href="#netz" data-reiter="t-netz">Netzwerk der 1.054 Einrichtungen →</a></li><li><a href="#karte" data-reiter="t-karte">Landkarte nach Bundesland →</a></li></ul></div>
+          <div class="mf-karte mf-gross"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M7 16v-5M12 16V6M17 16v-8" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Ich will wissen, was der Fonds bewirkt</strong><span>Was herauskam, was in die Versorgung ging und warum.</span>
+            <ul><li><a href="#suche" class="st-gesamt">Gesamtbilanz des Fonds →</a></li><li><a href="#transfer" data-reiter="t-transfer">Transfer der Ergebnisse →</a></li><li><a href="#auswertungen" data-reiter="t-auswertungen">Alle sieben Auswertungen →</a></li></ul></div>
+        </div></section>
+      <section class="mf-abschnitt" aria-labelledby="mf-erfahren">
+        <div class="mf-kopfzeile"><h2 id="mf-erfahren">Was Sie hier erfahren</h2><button type="button" class="mf-textknopf" data-frage="">Alle Fragen der Themen-Bilanz →</button></div>
+        <p class="mf-unterzeile">Um diese und ähnliche Fragen beantworten zu können, haben wir alle Beschlüsse und Ergebnisberichte des Innovationsfonds ausgelesen und ausgewertet: über 200.000 Seiten aus mehr als 1.200 PDFs.</p>
+        <div class="mf-drei">
+          <button type="button" class="mf-kachel" data-frage="Wie viel Geld steckt im Innovationsfonds?"><span class="mf-frage">Wie viel Geld steckt im Innovationsfonds?</span><b>2,06 Mrd. €</b><span class="mf-satz">für 861 Vorhaben seit 2016</span><i>Ganze Antwort →</i></button>
+          <button type="button" class="mf-kachel" data-frage="Was wurde aus den empfohlenen Vorhaben?"><span class="mf-frage">Was wurde aus den empfohlenen Vorhaben?</span><b>21 %</b><span class="mf-satz">der 415 abgeschlossenen Versorgungsvorhaben erhielten eine Empfehlung</span><i>Ganze Antwort →</i></button>
+          <button type="button" class="mf-kachel" data-frage="Wie lange dauert es bis zur Entscheidung?"><span class="mf-frage">Wie lange dauert es bis zur Entscheidung?</span><b>17 Monate</b><span class="mf-satz">vom Projektende bis zum Beschluss, im Median</span><i>Ganze Antwort →</i></button>
+          <button type="button" class="mf-kachel" data-frage="Wer forscht am meisten?"><span class="mf-frage">Wer forscht am meisten?</span><b>1.054</b><span class="mf-satz">Einrichtungen in Konsortien, mit Rolle und Partnern</span><i>Ganze Antwort →</i></button>
+          <button type="button" class="mf-kachel mf-ohnezahl" data-frage="Was wurde aus den Lotsenprojekten?"><span class="mf-frage">Was wurde aus den Lotsenprojekten?</span><span class="mf-satz">Zahl der Vorhaben, Fördervolumen, Ausgang und die Zitate aus den Beschlüssen</span><i>Antwort ansehen →</i></button>
+          <button type="button" class="mf-kachel mf-ohnezahl" data-frage="Welche Themen haben die beste Bilanz?"><span class="mf-frage">Welche Themen haben die beste Bilanz?</span><span class="mf-satz">Empfehlungsquote je Thema, verglichen mit allen Vorhaben</span><i>Antwort ansehen →</i></button>
+        </div>
+        <span class="mf-klein">Täglich aus den Beschlüssen und Berichten neu gerechnet · Quelle: innovationsfonds.g-ba.de</span></section>
+      <section class="mf-alles" aria-labelledby="mf-alles"><h2 id="mf-alles">Alles, was das Innovationsfonds-Radar bietet</h2>
+        <div class="mf-zeile"><div class="mf-links"><h3>Recherche</h3><span>Einzelne Vorhaben finden und vergleichen, ganze Themen bilanzieren</span></div>
+          <div class="mf-raster"><a class="mf-karte" href="#projekte" data-reiter="t-projekte"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6c0-1.7 3.1-3 7-3s7 1.3 7 3-3.1 3-7 3-7-1.3-7-3zM5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Projektdatenbank</strong><span>Alle 861 Vorhaben einzeln, mit Beschluss, Hindernissen, Konsortium und Originaldokumenten</span></a><a class="mf-karte" href="#vergleich" data-reiter="t-vergleich"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6v14H4zM14 5h6v14h-6zM10 9h4M10 15h4" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Projektvergleich</strong><span>Bis zu sechs Vorhaben nebeneinander: Ausgang, Design, Fallzahl, Hindernisse und Bausteine</span></a><a class="mf-karte" href="#suche" data-reiter="t-suche"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M7 16v-5M12 16V6M17 16v-8" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Themen-Bilanz</strong><span>Gerechnete Antworten auf geprüfte Fragen zu Themen, Wirkung und Förderung</span></a></div></div><div class="mf-zeile"><div class="mf-links"><h3>Auswertungen</h3><span>Der ganze Fonds in Zahlen, vom Förderbeginn bis zum Transfer</span></div>
+          <div class="mf-raster"><a class="mf-karte" href="#zahlen" data-reiter="t-zahlen"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 7a6 6 0 1 0 0 10M5 10h8M5 14h8" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Förderung in Zahlen</strong><span>Fördersummen, Laufzeiten und Jahrgänge seit 2016</span></a><a class="mf-karte" href="#netz" data-reiter="t-netz"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10.2a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6zM4.5 3.7a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM19.5 3.2a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM3.8 16.9a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM19.8 17.6a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM5.7 6.2l4.9 4.7M18.3 5.6l-4.8 5.1M5.1 17.4l5.4-4.3M18.5 18l-5-4.6" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Einrichtungen &amp; Netzwerk</strong><span>Beteiligte Einrichtungen, Konsortialführungen und Kooperationen</span></a><a class="mf-karte" href="#karte" data-reiter="t-karte"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-6-6-11a6 6 0 0 1 12 0c0 5-6 11-6 11zM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Landkarte</strong><span>Vorhaben nach Bundesland und Region</span></a><a class="mf-karte" href="#fallzahl" data-reiter="t-fallzahl"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20c0-3 2.5-5 5-5s5 2 5 5M16 11a2.5 2.5 0 1 0 0-5M15 15c3 0 6 2 6 5" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Fallzahlen</strong><span>Geplante und tatsächlich erreichte Teilnehmendenzahlen je Vorhaben</span></a><a class="mf-karte" href="#endpunkte" data-reiter="t-endpunkte"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 16.5L16.5 3.5l4 4-13 13zM7 13l2 2M9.5 10.5l1.5 1.5M12 8l2 2M14.5 5.5l1.5 1.5" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Endpunkte &amp; Messinstrumente</strong><span>Gemessene Zielgrößen, Messinstrumente und Ergebnisse der Studien</span></a><a class="mf-karte" href="#transfer" data-reiter="t-transfer"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Transfer der Ergebnisse</strong><span>Empfehlungen des Innovationsausschusses und was aus ihnen wurde</span></a><a class="mf-karte" href="/versorgungskerne/lotsen/"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Versorgungskerne</strong><span>Wie einzelne Versorgungsformen aufgebaut sind, zuerst 31 Lotsenprojekte</span></a></div></div><div class="mf-zeile"><div class="mf-links"><h3>Antrag &amp; Bericht</h3><span>Für Teams, die einen Antrag oder Bericht schreiben</span></div>
+          <div class="mf-raster"><a class="mf-karte" href="#idee" data-reiter="t-idee"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Ideencheck</strong><span>Abgleich Ihrer Projektidee mit ähnlichen Vorhaben und deren Ausgang, vertraulich im Browser</span></a><a class="mf-karte" href="#berichte" data-reiter="t-berichte"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7zM10 14l2 2 4-4" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Tipps für auswertbare Berichte</strong><span>Hinweise für lesbare Ergebnisberichte, gewonnen aus allen ausgewerteten Berichten</span></a></div></div><div class="mf-zeile"><div class="mf-links"><h3>Evidenzsynthesen</h3><span class="mf-euro">€ teilweise kostenpflichtig</span><span>Aufbereitet von der Redaktion. Kapitel 1 und 2 jeder Synthese sind frei lesbar, der Rest und das <abbr class="gl" tabindex="0" title="Ein kostenpflichtiger Bericht zu Ihrem Antragsentwurf, der auf Wunsch erstellt wird: Er vergleicht den von Ihnen bei uns vertraulich eingereichten (aber nicht gespeicherten) Entwurf mit ähnlichen geförderten Vorhaben, in sieben Kapiteln von der Abgrenzung bis zur Fördersumme." data-gl="Re-Briefing">Re-Briefing</abbr> kosten.</span></div>
+          <div class="mf-raster"><a class="mf-karte gold" href="#evidenz" data-reiter="t-evidenz"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5" fill="none" stroke="#7A5F22" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Synthesen nach Thema</strong><span>Stand der Forschung zu einem Versorgungsthema. Kapitel 1 und 2 frei lesbar, ab Kapitel 3 kostenpflichtig</span></a><a class="mf-karte gold" href="#idee" data-reiter="t-idee"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4" fill="none" stroke="#7A5F22" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Re-Briefing für Ihren Antrag</strong><span>Abgleich Ihres Antragsentwurfs mit vergleichbaren Vorhaben</span></a></div></div><div class="mf-zeile"><div class="mf-links"><h3>Hintergrund</h3><span>Was dieses Portal ist, wie die Daten entstehen und was die Fachbegriffe bedeuten</span></div>
+          <div class="mf-raster"><a class="mf-karte" href="#ueber" data-reiter="t-ueber"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 11v6M12 7.6v.4" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Über das Innovationsfonds-Radar</strong><span>Was dieses Portal bietet, für wen es gedacht ist und wer dahintersteht</span></a><a class="mf-karte" href="#vorwort" data-reiter="t-vorwort"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 4a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM15.5 15.5L21 21M7.8 10.6l1.9 1.9 3.6-3.6" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Methodik &amp; Verlässlichkeit</strong><span>Entstehung der Daten, Prüfverfahren und Quellen</span></a><a class="mf-karte" href="#glossar" data-reiter="t-glossar"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h10M9 8h6" fill="none" stroke="#00529F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Glossar</strong><span>Fachbegriffe aus dem Innovationsfonds und diesem Portal kurz erklärt</span></a></div></div>
+      </section>
+      <a class="mf-einordnung" href="#dossier" data-reiter="t-dossier"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="#FFFFFF" stroke="#00529F" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+        <span class="mf-einordnung-text"><span class="mf-ober blau">Einordnung der Redaktion</span>
+          <strong>Was die Redaktion aus den Zahlen schließt</strong>
+          <span>Ein Kommentar von Monitor Versorgungsforschung, getrennt von den Daten</span></span><b class="mf-weiter">Weiterlesen →</b></a><!--/VORGERENDERT--></div></section>
 <section class="tafel" id="t-auswertungen" hidden><div id="auswertungen-inhalt"></div></section>
 <section class="tafel lese" id="t-ueber" hidden>
   <!-- 11.11.2026 nach Marianns Tafel: Auf dieser Seite, Was Sie hier finden, Keine Suche im Wortlaut.
@@ -10812,8 +11271,16 @@ partnerZeichnen();
   <nav class="nf-links" aria-label="Rechtliches">
     <a href="https://knowledge-hubs.m-vf.de/impressum.html">Impressum</a>
     <a href="https://knowledge-hubs.m-vf.de/datenschutz.html">Datenschutz</a>
-    <a href="https://innofonds.m-vf.de/kontakt/" data-kein-formular>Kontaktformular</a>
-    <span class="nf-mail">E-Mail senden: <a href="mailto:info@m-vf.de" data-kein-formular>info@m-vf.de</a></span>
+    <!-- Zwei Wege statt einem, auf Anweisung des Herausgebers vom 12.11.2026:
+         „Kontakt und email bitte trennen in Kontaktformular / eMail-senden".
+         Das Formular liegt bei der Innofonds-Sitzung unter
+         innofonds.m-vf.de/kontakt/ und ist fuer ALLE Angebote der Reihe
+         gedacht, nicht nur fuer das Radar; es erkennt den Hub an der
+         Herkunftsadresse, ein schlichter Link genuegt also.
+         Die Adresse bleibt daneben SICHTBAR stehen - siehe oben: Ein blosser
+         mailto-Link tut nichts, wenn kein Mailprogramm eingerichtet ist. -->
+    <a href="https://innofonds.m-vf.de/kontakt/">Kontaktformular</a>
+    <span class="nf-mail">E-Mail senden: <a href="mailto:info@m-vf.de">info@m-vf.de</a></span>
   </nav>
 </div>
   </div>
@@ -14222,130 +14689,7 @@ window.WEGWEISER_RUECKMELDUNG = true;</script>
 })();
 
 </script>
-<!--STARTSEITE-F--><style>/* Testfassungen der Startseite, 11.11.2026. Nur in den Testkopien, nie im Portal. */
-/* ---- F: Marianns Gestaltung (Tafel Portal-Start, PDF „Was noch fehlt“ Teil 2) ---- */
-html[data-variante="f"] body{background:#F3F5F8}
-html[data-variante="f"] #t-uebersicht.tafel{background:transparent;border:0;padding:0;box-shadow:none}
-html[data-variante="f"] .betazeile,html[data-variante="f"] #kopfzeile{display:none!important}
-html[data-variante="f"] .angebot-symbol{background:#00529F!important;color:#fff!important;border-color:#00529F!important}
-.mf-band{margin:0 calc(50% - 50vw);background:linear-gradient(200deg,#054A94 0%,#0A3F7E 55%);background-color:#0A3F7E;color:#fff}
-.mf-band-innen{max-width:1240px;margin:0 auto;padding:40px 24px 96px;display:flex;flex-direction:column;gap:12px;box-sizing:border-box}
-.mf-ober{font-size:14px;font-weight:700;letter-spacing:0}
-.mf-ober.blau{color:#00529F;font-size:11px}
-.mf-band h2{margin:0;font-size:40px;line-height:1.15;font-weight:700;max-width:960px;color:#fff}
-.mf-band p{margin:0;font-size:18px;line-height:1.55;color:#DCE7F5;max-width:860px}
-.mf-suchkarte{position:relative;background:#fff;border-radius:12px;box-shadow:0 8px 28px rgba(20,32,46,.10);padding:24px 28px;margin-top:-64px;display:flex;flex-direction:column;gap:14px}
-.mf-label{font-size:14px;font-weight:700;letter-spacing:0;color:#3A4658}
-.mf-form{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0;position:relative}
-/* Vorschlagsliste beim Tippen (12.11.2026) */
-.mf-vorschlaege{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:30;max-height:min(70vh,560px);overflow:auto;
-  background:#fff;border:1px solid #C9D3DF;border-radius:10px;box-shadow:0 12px 32px rgba(10,30,60,.18);padding:6px 0;text-align:left}
-.mf-vorschlaege[hidden]{display:none}
-.mf-v-gruppe{font-size:13px;font-weight:700;color:#5A6577;padding:10px 16px 4px}
-.mf-v-e{display:flex;flex-direction:column;gap:1px;padding:8px 16px;cursor:pointer;color:#14202E}
-.mf-v-e b{font-weight:700;font-size:15px;color:#0A3F7E}
-.mf-v-e span{font-size:13.5px;color:#3A4658;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mf-v-e:hover,.mf-v-e.an{background:#EAF1FA}
-.mf-v-mehr{border-top:1px solid #E3E8EF;margin-top:4px}
-.mf-v-leer{padding:8px 16px;font-size:13.5px;color:#5A6577}
-.mf-form input{flex:1 1 460px;font:inherit;font-size:16px;padding:13px 16px;border:1px solid #B8C4D4;border-radius:8px;color:#14202E}
-.mf-form button{font:inherit;font-size:15px;font-weight:700;padding:13px 26px;border:0;border-radius:8px;background:#BE9E55;color:#14202E;cursor:pointer}
-.mf-hinweis{font-size:14px;color:#4A5568}
-.mf-hinweis a,.mf-hubs a{color:#00529F;text-decoration:none}
-.mf-hubs{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:#F3F5F8;border-radius:8px;padding:10px 14px;font-size:14px}
-.mf-klein{font-size:12px;color:#5A6577}
-.mf-suchkarte .mf-klein{border-top:1px solid #E3E8EF;padding-top:12px}
-.mf-erstmal{margin-top:40px;background:#E8EFF8;border:1px solid #C9D8EC;border-radius:10px;padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px}
-.mf-erstmal[hidden]{display:none}
-.mf-erstmal-titel{display:flex;align-items:center;gap:12px;flex:1 1 260px;font-size:16px}
-.mf-rahmenknopf{border:1.5px solid #00529F;border-radius:6px;padding:8px 14px;font-size:14px;font-weight:700;background:#fff;color:#00529F;text-decoration:none}
-.mf-zu{background:transparent;border:0;color:#00529F;font-size:20px;width:44px;height:44px;cursor:pointer}
-.mf-abschnitt{margin-top:40px;display:flex;flex-direction:column;gap:16px}
-.mf-abschnitt h2,.mf-alles h2{margin:0;font-size:26px;color:#14202E}
-.mf-kopfzeile{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px}
-.mf-unterzeile{margin:-6px 0 16px;font-size:16px;line-height:1.5;color:#3A4658;max-width:60em}
-.mf-textknopf{font:inherit;font-size:14px;font-weight:700;color:#00529F;background:none;border:0;padding:0;cursor:pointer}
-.mf-drei{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.mf-karte{background:#fff;border:1px solid #D3DBE7;border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:6px;color:#14202E;text-decoration:none}
-a.mf-karte:hover{border-color:#00529F}
-.mf-karte strong{font-size:16px;margin-top:4px}
-.mf-karte span{font-size:14px;line-height:1.45;color:#3A4658}
-.mf-karte.gold{background:#F8F4EA;border-color:#E6D9B8}
-.mf-gross{border-width:1.5px;border-color:#D8DFE9}
-.mf-gross strong{font-size:19px}
-.mf-gross ul{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:15px}
-.mf-gross a{color:#00529F;font-weight:700;text-decoration:none}
-.mf-kachel{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;font:inherit;cursor:pointer;background:#fff;
-  border:1.5px solid #D8DFE9;border-radius:10px;padding:18px 20px;color:#14202E;min-height:170px}
-.mf-kachel:hover{border-color:#00529F}
-.mf-kachel .mf-frage{font-size:15px;font-weight:700}
-.mf-kachel b{font-size:30px;font-weight:700;color:#00529F;line-height:1.15;margin-top:4px}
-.mf-kachel .mf-satz{font-size:14px;color:#3A4658;line-height:1.45}
-.mf-kachel i{font-style:normal;font-size:14px;font-weight:700;color:#00529F;margin-top:auto;padding-top:8px}
-.mf-alles{margin-top:40px;background:#E9EEF6;border-radius:14px;padding:28px 28px 30px;display:flex;flex-direction:column;gap:26px}
-.mf-zeile{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:start;border-top:1px solid #D3DBE7;padding-top:20px}
-.mf-links{display:flex;flex-direction:column;gap:6px;padding-top:4px}
-.mf-links h3{margin:0;font-size:15px;font-weight:700;letter-spacing:0;color:#3A4658}
-.mf-links span{font-size:13px;line-height:1.45;color:#4A5568}
-.mf-links .mf-euro{align-self:flex-start;font-size:11px;font-weight:700;color:#5C4515;background:#F1E6CC;border-radius:4px;padding:2px 7px}
-.mf-raster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.mf-einordnung{margin:40px 0 16px;background:#E8EFF8;border:1px solid #C9D8EC;border-radius:10px;padding:22px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;color:#14202E;text-decoration:none}
-.mf-einordnung svg{flex:none;align-self:flex-start;margin-top:2px}
-.mf-einordnung-text{display:flex;flex-direction:column;gap:6px;flex:1 1 520px}
-.mf-einordnung-text strong{font-size:19px}
-.mf-einordnung-text span:last-child{font-size:15px;color:#3A4658}
-.mf-weiter{font-size:14px;color:#00529F}
-@media (max-width:860px){.mf-drei,.mf-raster{grid-template-columns:1fr}.mf-zeile{grid-template-columns:1fr}.mf-band h2{font-size:30px}}
-.st-testleiste{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;
-  background:#2C2C2A;color:#fff;font:600 14px Lato,sans-serif;padding:8px 12px}
-.st-testleiste a{color:#fff;border:1px solid #888780;border-radius:999px;padding:3px 12px;text-decoration:none}
-.st-testleiste a[aria-current]{background:#fff;color:#2C2C2A}
-.st-ober{margin:0;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--gedaempft)}
-.st-ico{width:26px;height:26px;color:var(--akzent);flex:none}
-.st-h{font-size:26px;margin:30px 0 6px}
-.st-bereich{margin:18px 0 6px}
-.st-bereich h4{margin:0;font-size:18px}
-.st-bsatz{margin:2px 0 10px;color:var(--gedaempft)}
-.st-kacheln{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
-.st-kachel{display:flex;flex-direction:column;gap:6px;background:var(--flaeche);border:1px solid var(--linie);border-radius:12px;
-  padding:14px 16px;color:var(--text);text-decoration:none;min-height:120px}
-.st-kachel:hover{border-color:var(--akzent)}
-.st-kachel span{font-size:14px;color:var(--gedaempft)}
-.st-bereich.euro .st-kachel{background:var(--sk-evidenz,#F8F4EA);border-color:var(--sk-evidenzrand,#E6DCC3)}
-.st-fuss{margin:10px 0 0;color:var(--gedaempft);font-size:14px}
-.st-meinung{display:flex;flex-direction:column;gap:6px;margin:22px 0;background:#E8EFF8;border-radius:12px;padding:18px 20px;
-  color:var(--text);text-decoration:none}
-.st-meinung b{font-size:20px;line-height:1.3}
-.st-meinung i{font-style:normal;font-weight:700;color:var(--akzent)}
-.st-schmal h2{max-width:24ch}
-.st-anliegen{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:22px 0}
-.st-karte{background:var(--flaeche);border:1px solid var(--linie);border-radius:14px;padding:20px 22px}
-.st-karte h3{margin:10px 0 4px;font-size:20px}
-.st-karte p{margin:0 0 10px;color:var(--gedaempft)}
-.st-karte ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.st-karte li a{font-weight:700}
-.st-band{margin:8px 0 18px}
-.st-alle{border:1px solid var(--linie);border-radius:12px;padding:10px 16px;background:var(--flaeche)}
-.st-alle summary{cursor:pointer;font-weight:700}
-.st-zeile{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 0;font-size:14px}
-.st-zeile b{min-width:150px}
-.st-antworten{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:22px 0 8px}
-.st-antwort{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;font:inherit;cursor:pointer;
-  background:var(--flaeche);border:1px solid var(--linie);border-radius:12px;padding:16px 18px;color:var(--text);min-height:150px}
-.st-antwort:hover{border-color:var(--akzent)}
-.st-antwort .st-f{font-weight:700;font-size:15px}
-.st-antwort b{font-size:30px;color:var(--akzent);line-height:1.1}
-.st-antwort .st-a{font-size:14px;color:var(--gedaempft)}
-.st-antwort i{font-style:normal;font-weight:700;color:var(--akzent);margin-top:auto;font-size:14px}
-.st-sechs .st-antworten{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:860px){.st-sechs .st-antworten{grid-template-columns:1fr}}
-.st-antwort.st-leer{background:#E8EFF8;border-color:transparent}
-.st-alle-fragen{font:inherit;font-weight:700;color:var(--akzent);background:none;border:0;padding:0;cursor:pointer}
-.st-leiste{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:22px 0}
-.st-leiste a{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-top:3px solid var(--akzent);background:var(--flaeche);
-  color:var(--text);text-decoration:none;border-radius:0 0 10px 10px}
-.st-leiste a span{font-size:13px;color:var(--gedaempft)}
-</style><script>const ST_BEREICHE = [{"k": "uebersicht", "name": "Übersicht", "seiten": [{"t": "t-uebersicht", "name": "Übersicht", "lang": "Innovationsfonds-Radar", "satz": "Alle Vorhaben des Innovationsfonds, durchsuchbar und ausgewertet."}]}, {"k": "recherche", "name": "Recherche", "seiten": [{"t": "t-projekte", "name": "Projektdatenbank", "satz": "Alle Vorhaben einzeln, mit Filtern nach Förderbereich, Status, Beschluss, Studiendesign und mehr."}, {"t": "t-suche", "name": "Themen-Bilanz", "satz": "Fragen zu den Vorhaben des Innovationsfonds, beantwortet aus den Daten: zu Versorgungsformen, Krankheitsbildern, Wirkung, Förderung und Akteuren. Wie viele Vorhaben es gab, wie viele eine Empfehlung erhielten und was die erfolgreichen von den übrigen unterscheidet. Kostenlos, ohne Anmeldung."}, {"t": "t-vergleich", "name": "Projektvergleich", "satz": "Bis zu sechs Vorhaben nebeneinander, Merkmal für Merkmal."}, {"t": "t-leitlinien", "name": "Leitlinienvorhaben", "versteckt": true, "satz": "Die geförderten Vorhaben, die medizinische Leitlinien entwickeln."}]}, {"k": "auswertungen", "name": "Auswertungen", "seiten": [{"t": "t-auswertungen", "name": "Überblick", "lang": "Alle Auswertungen", "satz": "Was die sieben Auswertungen zeigen und wo man anfängt."}, {"t": "t-zahlen", "name": "Förderung", "lang": "Förderung in Zahlen", "satz": "Fördersummen, Laufzeiten, Wartezeiten und Jahrgänge seit 2016."}, {"t": "t-netz", "mit": ["t-partner"], "name": "Einrichtungen & Netzwerk", "satz": "Beteiligte Einrichtungen, Konsortialführungen und Kooperationen."}, {"t": "t-karte", "name": "Landkarte", "satz": "Vorhaben und Einrichtungen nach Bundesland und Ort."}, {"t": "t-fallzahl", "name": "Fallzahlen", "satz": "Geplante und tatsächlich erreichte Teilnehmendenzahlen je Vorhaben."}, {"t": "t-endpunkte", "name": "Endpunkte", "lang": "Endpunkte & Messinstrumente", "satz": "Gemessene Zielgrößen, Messinstrumente und Ergebnisse."}, {"t": "t-transfer", "name": "Transfer", "lang": "Transfer der Ergebnisse", "satz": "Empfehlungen des Ausschusses und was aus ihnen wurde."}, {"href": "/versorgungskerne/lotsen/", "name": "Versorgungskerne", "satz": "Wie eine Versorgungsform aufgebaut ist, am Beispiel der 31 Lotsenprojekte."}]}, {"k": "antrag", "name": "Antrag & Bericht", "seiten": [{"t": "t-idee", "name": "Ideencheck", "satz": "Gibt es Ihre Idee schon? Abgleich mit ähnlichen geförderten Vorhaben."}, {"t": "t-berichte", "name": "Tipps für auswertbare Berichte", "satz": "Woran die Auswertung eines Ergebnisberichts hängen bleibt."}]}, {"k": "evidenz", "name": "Evidenzsynthesen", "euro": true, "seiten": [{"t": "t-evidenz", "name": "Synthesen nach Thema", "satz": "Stand der Forschung zu einem Versorgungsthema. Kapitel 1 und 2 frei, ab Kapitel 3 kostenpflichtig."}]}, {"k": "hintergrund", "name": "Hintergrund", "seiten": [{"t": "t-ueber", "name": "Über das Portal", "lang": "Über Innovationsfonds-Radar", "satz": "Warum es dieses Portal gibt, für wen, und was es kann und was nicht."}, {"t": "t-vorwort", "name": "Methodik & Verlässlichkeit", "satz": "Wie die Daten in diesem Portal entstanden sind und wie verlässlich sie sind."}, {"t": "t-dossier", "name": "Einordnung der Redaktion", "satz": "Was die Redaktion aus den Zahlen schließt. Wertende Texte stehen nur hier."}, {"t": "t-glossar", "name": "Glossar", "satz": "Die Fachbegriffe des Innovationsfonds und dieses Portals, kurz erklärt."}]}];
+<!--STARTSEITE-F--><script>const ST_BEREICHE = [{"k": "uebersicht", "name": "Übersicht", "seiten": [{"t": "t-uebersicht", "name": "Übersicht", "lang": "Innovationsfonds-Radar", "satz": "Alle Vorhaben des Innovationsfonds, durchsuchbar und ausgewertet."}]}, {"k": "recherche", "name": "Recherche", "seiten": [{"t": "t-projekte", "name": "Projektdatenbank", "satz": "Alle Vorhaben einzeln, mit Filtern nach Förderbereich, Status, Beschluss, Studiendesign und mehr."}, {"t": "t-suche", "name": "Themen-Bilanz", "satz": "Fragen zu den Vorhaben des Innovationsfonds, beantwortet aus den Daten: zu Versorgungsformen, Krankheitsbildern, Wirkung, Förderung und Akteuren. Wie viele Vorhaben es gab, wie viele eine Empfehlung erhielten und was die erfolgreichen von den übrigen unterscheidet. Kostenlos, ohne Anmeldung."}, {"t": "t-vergleich", "name": "Projektvergleich", "satz": "Bis zu sechs Vorhaben nebeneinander, Merkmal für Merkmal."}, {"t": "t-leitlinien", "name": "Leitlinienvorhaben", "versteckt": true, "satz": "Die geförderten Vorhaben, die medizinische Leitlinien entwickeln."}]}, {"k": "auswertungen", "name": "Auswertungen", "seiten": [{"t": "t-auswertungen", "name": "Überblick", "lang": "Alle Auswertungen", "satz": "Was die sieben Auswertungen zeigen und wo man anfängt."}, {"t": "t-zahlen", "name": "Förderung", "lang": "Förderung in Zahlen", "satz": "Fördersummen, Laufzeiten, Wartezeiten und Jahrgänge seit 2016."}, {"t": "t-netz", "mit": ["t-partner"], "name": "Einrichtungen & Netzwerk", "satz": "Beteiligte Einrichtungen, Konsortialführungen und Kooperationen."}, {"t": "t-karte", "name": "Landkarte", "satz": "Vorhaben und Einrichtungen nach Bundesland und Ort."}, {"t": "t-fallzahl", "name": "Fallzahlen", "satz": "Geplante und tatsächlich erreichte Teilnehmendenzahlen je Vorhaben."}, {"t": "t-endpunkte", "name": "Endpunkte", "lang": "Endpunkte & Messinstrumente", "satz": "Gemessene Zielgrößen, Messinstrumente und Ergebnisse."}, {"t": "t-transfer", "name": "Transfer", "lang": "Transfer der Ergebnisse", "satz": "Empfehlungen des Ausschusses und was aus ihnen wurde."}, {"href": "/versorgungskerne/lotsen/", "name": "Versorgungskerne", "satz": "Wie eine Versorgungsform aufgebaut ist, am Beispiel der 31 Lotsenprojekte."}]}, {"k": "antrag", "name": "Antrag & Bericht", "seiten": [{"t": "t-idee", "name": "Ideencheck", "satz": "Gibt es Ihre Idee schon? Abgleich mit ähnlichen geförderten Vorhaben."}, {"t": "t-berichte", "name": "Tipps für auswertbare Berichte", "satz": "Woran die Auswertung eines Ergebnisberichts hängen bleibt."}]}, {"k": "evidenz", "name": "Evidenzsynthesen", "euro": true, "seiten": [{"t": "t-evidenz", "name": "Synthesen nach Thema", "satz": "Stand der Forschung zu einem Versorgungsthema. Kapitel 1 und 2 frei, ab Kapitel 3 kostenpflichtig."}]}, {"k": "hintergrund", "name": "Hintergrund", "seiten": [{"t": "t-ueber", "name": "Über das Portal", "lang": "Über Innovationsfonds-Radar", "satz": "Warum es dieses Portal gibt, für wen, und was es kann und was nicht."}, {"t": "t-vorwort", "name": "Methodik & Verlässlichkeit", "satz": "Wie die Daten in diesem Portal entstanden sind und wie verlässlich sie sind."}, {"t": "t-dossier", "name": "Einordnung der Redaktion", "satz": "Was die Redaktion aus den Zahlen schließt. Wertende Texte stehen nur hier."}, {"t": "t-glossar", "name": "Glossar", "satz": "Die Fachbegriffe des Innovationsfonds und dieses Portals, kurz erklärt."}]}];
 /* Drei Testfassungen der Startseite des Innovationsfonds-Radars (11.11.2026).
    NICHT LIVE. bauen.py hängt dieses Skript an eine Kopie von innofonds-portal/index.html.
    Es ersetzt nur den Inhalt von #uebersicht-inhalt. Alle Zahlen kommen aus den Portaldaten (P, KZ, NETZ). */
@@ -14680,7 +15024,14 @@ a.mf-karte:hover{border-color:#00529F}
   }
 
   const ziel = document.getElementById('uebersicht-inhalt');
+  /* Seit 12.11.2026 steht die Startseite schon vorgerendert im HTML (if_portal.startseite_vorrendern). Wer dort
+     bereits ins Suchfeld getippt hat, verliert beim Neuzeichnen weder Text noch Cursor. */
+  const alt = document.getElementById('ue-q');
+  const altWert = alt ? alt.value : '', altFokus = alt && document.activeElement === alt;
   ziel.innerHTML = html;
+  const neuFeld = document.getElementById('ue-q');
+  if (neuFeld && altWert) neuFeld.value = altWert;
+  if (neuFeld && altFokus) neuFeld.focus();
   /* Dieselben Handgriffe wie auf der echten Startseite. */
   document.getElementById('ue-suche').addEventListener('submit', ev => {
     ev.preventDefault();
