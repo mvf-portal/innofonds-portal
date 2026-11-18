@@ -1,0 +1,879 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kann der Innovationsfonds auch Gesundheit? &middot; Innovationsfonds-Radar</title>
+<style>
+:root {
+  color-scheme: light;
+  --surface-1: #fcfcfb; --plane: #f9f9f7;
+  --text-primary: #0b0b0b; --text-secondary: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --baseline: #c3c2b7; --rand: rgba(11,11,11,0.10);
+  --series-1: #2a78d6; --series-5: #e87ba4; --series-7: #6250d6;
+  --ton-last: #2a78d6; --ton-wiss: #1baf7a; --ton-foerd: #eb6834;
+  --luecke: #d03b3b; --trifft: #c3c2b7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface-1: #1a1a19; --plane: #0d0d0d;
+    --text-primary: #f0efec; --text-secondary: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --baseline: #383835; --rand: rgba(255,255,255,0.10);
+    --series-1: #3987e5; --series-5: #d55181; --series-7: #9085e9;
+    --ton-last: #3987e5; --ton-wiss: #199e70; --ton-foerd: #d95926;
+    --luecke: #e66767; --trifft: #383835;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-1: #1a1a19; --plane: #0d0d0d;
+  --text-primary: #f0efec; --text-secondary: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --baseline: #383835; --rand: rgba(255,255,255,0.10);
+  --series-1: #3987e5; --series-5: #d55181; --series-7: #9085e9;
+  --ton-last: #3987e5; --ton-wiss: #199e70; --ton-foerd: #d95926;
+  --luecke: #e66767; --trifft: #383835;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--plane); color: var(--text-primary);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 48px 16px 96px; }
+h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; }
+h2 { font-size: 21px; margin: 0 0 4px; }
+h3 { font-size: 16px; margin: 26px 0 8px; }
+.vor { color: var(--text-secondary); margin: 0 0 40px; max-width: 72ch; }
+section {
+  background: var(--surface-1); border: 1px solid var(--rand);
+  border-radius: 10px; padding: 24px; margin: 0 0 24px;
+}
+.hin { color: var(--text-secondary); margin: 2px 0 18px; max-width: 80ch; }
+.fuss { color: var(--muted); font-size: 13px; margin: 18px 0 0; }
+.lab { font-size: 13px; fill: var(--text-primary); }
+.lab2 { font-size: 13px; fill: var(--text-primary); }
+.wert { font-size: 12px; fill: var(--text-secondary);
+        font-variant-numeric: tabular-nums; }
+.achse { font-size: 12px; fill: var(--muted); }
+.kopf { font-size: 11.5px; fill: var(--text-secondary); }
+.einheit { font-size: 10px; fill: var(--muted); }
+.untertitel { font-size: 13px; fill: var(--text-secondary); }
+.zahl-in { font-size: 11.5px; text-anchor: middle;
+           font-variant-numeric: tabular-nums; }
+.zahl-in.dunkel { fill: #ffffff; }
+.zahl-in.hell { fill: var(--text-primary); }
+.zeichen { font-size: 13px; text-anchor: middle; fill: var(--muted); }
+.marke { font-size: 12.5px; font-weight: 600; text-anchor: middle;
+         fill: var(--luecke); }
+.zelle rect, .bal rect { transition: opacity .12s; }
+.zelle:hover rect { stroke: var(--text-primary); stroke-width: 2; }
+.zelle:focus, .bal:focus { outline: 2px solid var(--text-primary);
+                           outline-offset: 1px; }
+.bal:hover rect { opacity: .72; }
+.leg { display: flex; gap: 20px; flex-wrap: wrap; margin: 0 0 16px;
+       font-size: 13px; color: var(--text-secondary); }
+.leg span { display: inline-flex; align-items: center; gap: 7px; }
+.leg i { width: 14px; height: 14px; border-radius: 3px;
+         display: inline-block; flex: none; }
+.arten { display: grid; gap: 10px; grid-template-columns: 1fr;
+         margin: 0 0 4px; }
+@media (min-width: 720px) { .arten { grid-template-columns: repeat(3,1fr); } }
+.art { display: grid; grid-template-columns: 30px 1fr; gap: 12px;
+       padding: 13px 14px; border: 1px solid var(--rand); border-radius: 8px;
+       align-items: start; }
+.art.ist-luecke { border-color: var(--luecke); }
+.art b { display: block; font-size: 14px; }
+.art p { margin: 3px 0 0; font-size: 13px; color: var(--text-secondary); }
+.probe { width: 30px; height: 26px; border-radius: 4px; }
+.probe.luecke { border: 2.5px solid var(--luecke);
+                background: color-mix(in srgb, var(--luecke) 10%, transparent); }
+.probe.trifft { border: 1.5px solid var(--baseline); }
+.probe.misst { background: repeating-linear-gradient(45deg,
+  var(--grid) 0 3px, transparent 3px 7px); }
+ol.luecken { list-style: none; margin: 10px 0 0; padding: 0;
+             display: grid; gap: 10px; }
+ol.luecken li { display: grid; grid-template-columns: 30px 1fr; gap: 14px;
+                align-items: start; padding: 13px 15px;
+                border: 1px solid var(--rand); border-left: 3px solid var(--luecke);
+                border-radius: 8px; }
+ol.luecken .nr { display: inline-flex; width: 24px; height: 24px;
+                 align-items: center; justify-content: center;
+                 border: 2px solid var(--luecke); border-radius: 50%;
+                 color: var(--luecke); font-size: 13px; font-weight: 600; }
+ol.luecken p { margin: 3px 0 0; color: var(--text-secondary);
+               font-size: 14px; }
+.zahl { font-size: 46px; font-weight: 600; line-height: 1.05;
+        letter-spacing: -0.5px; margin: 26px 0 0; }
+.zahl small { display: block; font-size: 15px; font-weight: 400;
+              color: var(--text-secondary); letter-spacing: 0;
+              margin-top: 6px; max-width: 78ch; }
+.stufen { display: grid; gap: 12px; margin: 8px 0 0; }
+.stufe { display: grid; grid-template-columns: 34px 1fr; gap: 14px;
+         align-items: start; padding: 14px 16px; border-radius: 8px;
+         border: 1px solid var(--rand); }
+.stufe.fehlt { border-style: dashed; border-color: var(--luecke); }
+.stufe .nr { font-weight: 600; color: var(--text-secondary);
+             font-variant-numeric: tabular-nums; }
+.stufe p { margin: 3px 0 0; color: var(--text-secondary); font-size: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+caption { text-align: left; color: var(--text-secondary); padding: 0 0 10px; }
+th, td { text-align: right; padding: 7px 10px;
+         border-bottom: 1px solid var(--grid); }
+th[scope=row] { text-align: left; font-weight: 400; }
+thead th { color: var(--text-secondary); font-weight: 500; }
+td { font-variant-numeric: tabular-nums; }
+.lesehilfe { margin: 22px 0 6px; padding: 16px 18px;
+  border: 1px solid var(--rand); border-radius: 8px; }
+.lesehilfe h3 { margin: 0 0 10px; font-size: 15px; }
+.lesehilfe dl { margin: 0; display: grid; gap: 9px;
+  grid-template-columns: 1fr; }
+@media (min-width: 720px) {
+  .lesehilfe dl { grid-template-columns: 190px 1fr; column-gap: 18px; }
+}
+.lesehilfe dt { font-weight: 600; font-size: 13.5px; }
+.lesehilfe dd { margin: 0; font-size: 13.5px; color: var(--text-secondary); }
+table.gegen { max-width: 760px; margin: 10px 0 6px; }
+table.gegen th[scope=row] { width: 45%; color: var(--text-secondary); }
+table.gegen td { text-align: left; }
+summary { cursor: pointer; color: var(--text-secondary); font-size: 14px; }
+@media (max-width: 760px) { h1 { font-size: 24px; }
+  main { padding: 28px 16px 64px; } }
+</style>
+<style>
+  body { background: var(--surface-1); color: var(--text-primary);
+         font: 15px/1.55 -apple-system, "Segoe UI", system-ui, sans-serif;
+         margin: 0; padding: 26px 16px 64px; }
+  .innen { max-width: 940px; margin: 0 auto; }
+  h1 { font-size: 27px; line-height: 1.2; margin: 0 0 6px; }
+  h2 { font-size: 19px; margin: 42px 0 8px; }
+  .stand { color: var(--muted); font-size: 13px; margin: 0 0 22px; }
+  p, li { max-width: 68ch; }
+  .rollen { overflow-x: auto; margin: 18px -16px; padding: 0 16px; }
+  svg { display: block; }
+  text { font: 12px -apple-system, "Segoe UI", system-ui, sans-serif; }
+  .kopf { fill: var(--text-secondary); font-size: 11.5px; }
+  .kopf.rand { fill: var(--muted); font-style: italic; }
+  .zeile { fill: var(--text-primary); text-anchor: end; font-size: 12.5px; }
+  .zeile.rand { fill: var(--muted); font-style: italic; }
+  .achsnote { fill: var(--muted); font-size: 10.5px; }
+  .lastbalken { fill: var(--ton-last); fill-opacity: 0.30; }
+  .zelle { fill: var(--plane); stroke: var(--grid); stroke-width: 1; }
+  .zelle.leer { fill: none; stroke: var(--rand); stroke-dasharray: 2 3; }
+  .zelle.ausserhalb { fill: none; stroke: var(--rand); }
+  .zahl { fill: var(--text-primary); text-anchor: middle; font-size: 12px; }
+  .zahl.hell { fill: #ffffff; }
+  .legende { display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+             margin: 10px 0 0; font-size: 13px;
+             color: var(--text-secondary); }
+  .legende span { display: flex; align-items: center; gap: 7px; }
+  .kachel { width: 22px; height: 15px; border-radius: 3px;
+            border: 1px solid var(--grid); display: inline-block; }
+  .kachel.leerk { background: none; border: 1px dashed var(--baseline); }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px;
+          margin-top: 10px; }
+  caption { text-align: left; color: var(--muted); font-size: 13px;
+            padding-bottom: 8px; }
+  th, td { border-bottom: 1px solid var(--grid); padding: 6px 8px;
+           text-align: left; vertical-align: top; }
+  th { color: var(--text-secondary); font-weight: 600; }
+  td.r, th.r { text-align: right; white-space: nowrap; }
+  tr.randzeile td { color: var(--text-secondary); }
+  .merk { border-left: 3px solid var(--ton-foerd); padding: 2px 0 2px 14px;
+          margin: 22px 0; }
+  .warn { border-left: 3px solid var(--luecke); padding: 2px 0 2px 14px;
+          margin: 22px 0; }
+  .quelle { color: var(--muted); font-size: 12.5px; margin-top: 42px;
+            border-top: 1px solid var(--grid); padding-top: 14px;
+            max-width: 80ch; }
+</style>
+<style>
+.zurueck{margin:0 0 18px;font-size:14px}
+.zurueck a{color:var(--text-secondary);text-decoration:none}
+.zurueck a:hover{text-decoration:underline}
+.antwort{color:var(--text-secondary);font-size:18px;line-height:1.5;
+  max-width:72ch;margin:0 0 22px}
+.einordnung{background:var(--surface-1);border:1px solid var(--rand);
+  border-left:4px solid var(--luecke);border-radius:10px;padding:18px 20px;
+  margin:0 0 34px}
+.einordnung p{margin:0;max-width:76ch}
+</style>
+</head><body><div class="innen">
+<p class="zurueck"><a href="https://innofonds.m-vf.de/">← Innovationsfonds-Radar</a></p>
+<h1>Kann der Innovationsfonds auch Gesundheit?</h1>
+<p class="antwort">Die Karte beantwortet das nicht, und genau das ist der
+Befund: Es fehlt die Gr&ouml;&szlig;e, an der man es messen k&ouml;nnte.
+Der Innovationsfonds f&ouml;rdert gegen Versorgungsprobleme, nicht gegen
+Gesundheitsziele.</p>
+<div class="einordnung">
+<p><b>Die Karte ist keine Vollerhebung.</b> Von den 861 gef&ouml;rderten
+Vorhaben liegen 470 auf mindestens einer der beiden Achsen, aber nur
+<b>104 auf beiden zugleich</b>, und nur diese f&uuml;llen eine echte Zelle.
+391 Vorhaben liegen auf keiner von beiden. Was die Karte zeigt, ist
+deshalb weniger ein Bild des Fonds als eine L&uuml;cke in dem, was sich
+&uuml;ber ihn sagen l&auml;sst.</p>
+</div>
+
+<h1>Die Zielkarte</h1>
+<p class="stand">Zehn nationale Gesundheitsziele gegen die siebzehn gr&ouml;&szlig;ten Krankheitslasten, besetzt mit den 861 Vorhaben des Innovationsfonds. Gerechnet am 2026-11-18.</p>
+<p>Die Karte pr&uuml;ft zwei Vermutungen: L&auml;sst sich die Mehrzahl der Vorhaben in ein Feld aus Ziel und Krankheit einordnen, und bilden sich dabei Haufen und Leerr&auml;ume? Beides trifft zu, das Zweite deutlicher als das Erste, und die Haufen stehen nicht dort, wo man sie erwartet.</p>
+<div class="rollen">
+<svg viewBox="0 0 838 522" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Besetzung der Matrix aus zehn Gesundheitszielen und siebzehn Krankheitsfeldern. Die Zahlen stehen vollstaendig in der Tabelle unter der Karte.">
+<g transform="translate(220.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Koronare Herzkrankheit</text></g>
+<rect class="lastbalken" x="208.0" y="112.0" width="18" height="54.0" rx="2"><title>Koronare Herzkrankheit: 1.918.193 DALY</title></rect>
+<g transform="translate(254.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Rückenschmerz</text></g>
+<rect class="lastbalken" x="242.0" y="125.6" width="18" height="40.4" rx="2"><title>Schmerzen im unteren Rücken: 1.434.132 DALY</title></rect>
+<g transform="translate(288.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Lungenkrebs</text></g>
+<rect class="lastbalken" x="276.0" y="138.2" width="18" height="27.8" rx="2"><title>Trachea-, Bronchial- und Lungenkrebs: 989.188 DALY</title></rect>
+<g transform="translate(322.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Kopfschmerz</text></g>
+<rect class="lastbalken" x="310.0" y="142.0" width="18" height="24.0" rx="2"><title>Kopfschmerzerkrankungen: 853.028 DALY</title></rect>
+<g transform="translate(356.0,106) rotate(-62)"><text class="kopf" x="0" y="0">COPD</text></g>
+<rect class="lastbalken" x="344.0" y="142.6" width="18" height="23.4" rx="2"><title>Chronische obstruktive Lungenerkrankung: 829.714 DALY</title></rect>
+<g transform="translate(390.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Diabetes mellitus</text></g>
+<rect class="lastbalken" x="378.0" y="143.6" width="18" height="22.4" rx="2"><title>Diabetes mellitus: 794.940 DALY</title></rect>
+<g transform="translate(424.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Schlaganfall</text></g>
+<rect class="lastbalken" x="412.0" y="145.3" width="18" height="20.7" rx="2"><title>Schlaganfall: 735.883 DALY</title></rect>
+<g transform="translate(458.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Demenz</text></g>
+<rect class="lastbalken" x="446.0" y="148.4" width="18" height="17.6" rx="2"><title>Alzheimer- und andere Demenzerkrankungen: 623.514 DALY</title></rect>
+<g transform="translate(492.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Darmkrebs</text></g>
+<rect class="lastbalken" x="480.0" y="151.3" width="18" height="14.7" rx="2"><title>Kolon- und Rektumkrebs: 523.155 DALY</title></rect>
+<g transform="translate(526.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Angststörungen</text></g>
+<rect class="lastbalken" x="514.0" y="151.9" width="18" height="14.1" rx="2"><title>Angststörungen: 500.130 DALY</title></rect>
+<g transform="translate(560.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Nackenschmerz</text></g>
+<rect class="lastbalken" x="548.0" y="152.7" width="18" height="13.3" rx="2"><title>Nackenschmerz: 473.413 DALY</title></rect>
+<g transform="translate(594.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Brustkrebs</text></g>
+<rect class="lastbalken" x="582.0" y="152.7" width="18" height="13.3" rx="2"><title>Brustkrebs: 473.366 DALY</title></rect>
+<g transform="translate(628.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Depressive Störungen</text></g>
+<rect class="lastbalken" x="616.0" y="152.8" width="18" height="13.2" rx="2"><title>Depressive Störungen: 469.767 DALY</title></rect>
+<g transform="translate(662.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Alkoholstörungen</text></g>
+<rect class="lastbalken" x="650.0" y="154.0" width="18" height="12.0" rx="2"><title>Alkoholbezogene Störungen: 427.545 DALY</title></rect>
+<g transform="translate(696.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Hypertensive Herzkr.</text></g>
+<rect class="lastbalken" x="684.0" y="157.9" width="18" height="8.1" rx="2"><title>Hypertensive Herzkrankheit: 286.381 DALY</title></rect>
+<g transform="translate(730.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Prostatakrebs</text></g>
+<rect class="lastbalken" x="718.0" y="158.5" width="18" height="7.5" rx="2"><title>Prostatakrebs: 265.264 DALY</title></rect>
+<g transform="translate(764.0,106) rotate(-62)"><text class="kopf" x="0" y="0">Atemwegsinfektionen</text></g>
+<rect class="lastbalken" x="752.0" y="159.7" width="18" height="6.3" rx="2"><title>Untere Atemwegsinfektionen: 224.306 DALY</title></rect>
+<g transform="translate(798.0,106) rotate(-62)"><text class="kopf rand" x="0" y="0">kein Feld</text></g>
+<text class="achsnote" x="4" y="134">Krankheitslast,</text>
+<text class="achsnote" x="4" y="148">DALY 2017</text>
+<text class="zeile" x="190" y="185.0">Gesund aelter werden</text>
+<rect class="zelle" x="201.5" y="167.5" width="31" height="27" rx="3"/>
+<rect x="201.5" y="167.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesund aelter werden, Feld Koronare Herzkrankheit: 1 Vorhaben, 5,3 Mio. Euro</title></rect>
+<text class="zahl" x="217.0" y="185.0">1</text>
+<rect class="zelle leer" x="235.5" y="167.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="269.5" y="167.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="303.5" y="167.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="337.5" y="167.5" width="31" height="27" rx="3"/>
+<rect x="337.5" y="167.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesund aelter werden, Feld COPD: 1 Vorhaben, 1,7 Mio. Euro</title></rect>
+<text class="zahl" x="353.0" y="185.0">1</text>
+<rect class="zelle" x="371.5" y="167.5" width="31" height="27" rx="3"/>
+<rect x="371.5" y="167.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesund aelter werden, Feld Diabetes mellitus: 1 Vorhaben, 0,2 Mio. Euro</title></rect>
+<text class="zahl" x="387.0" y="185.0">1</text>
+<rect class="zelle" x="405.5" y="167.5" width="31" height="27" rx="3"/>
+<rect x="405.5" y="167.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesund aelter werden, Feld Schlaganfall: 1 Vorhaben, 2,4 Mio. Euro</title></rect>
+<text class="zahl" x="421.0" y="185.0">1</text>
+<rect class="zelle" x="439.5" y="167.5" width="31" height="27" rx="3"/>
+<rect x="439.5" y="167.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.70"><title>Gesund aelter werden, Feld Demenz: 18 Vorhaben, 60,7 Mio. Euro</title></rect>
+<text class="zahl hell" x="455.0" y="185.0">18</text>
+<rect class="zelle" x="473.5" y="167.5" width="31" height="27" rx="3"/>
+<rect x="473.5" y="167.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesund aelter werden, Feld Darmkrebs: 1 Vorhaben, 0,7 Mio. Euro</title></rect>
+<text class="zahl" x="489.0" y="185.0">1</text>
+<rect class="zelle leer" x="507.5" y="167.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="541.5" y="167.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="575.5" y="167.5" width="31" height="27" rx="3"/>
+<rect x="575.5" y="167.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesund aelter werden, Feld Brustkrebs: 1 Vorhaben, 0,7 Mio. Euro</title></rect>
+<text class="zahl" x="591.0" y="185.0">1</text>
+<rect class="zelle" x="609.5" y="167.5" width="31" height="27" rx="3"/>
+<rect x="609.5" y="167.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Gesund aelter werden, Feld Depressive Störungen: 3 Vorhaben, 7,6 Mio. Euro</title></rect>
+<text class="zahl" x="625.0" y="185.0">3</text>
+<rect class="zelle leer" x="643.5" y="167.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="677.5" y="167.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="711.5" y="167.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="745.5" y="167.5" width="31" height="27" rx="3"/>
+<rect x="745.5" y="167.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Gesund aelter werden, Feld Atemwegsinfektionen: 3 Vorhaben, 7,8 Mio. Euro</title></rect>
+<text class="zahl" x="761.0" y="185.0">3</text>
+<rect class="zelle ausserhalb" x="779.5" y="167.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="167.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.90"><title>Gesund aelter werden, Feld keines der siebzehn: 94 Vorhaben, 316,5 Mio. Euro</title></rect>
+<text class="zahl hell" x="795.0" y="185.0">94</text>
+<text class="zeile" x="190" y="215.0">Patientensicherheit</text>
+<rect class="zelle" x="201.5" y="197.5" width="31" height="27" rx="3"/>
+<rect x="201.5" y="197.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Patientensicherheit, Feld Koronare Herzkrankheit: 1 Vorhaben, 1,3 Mio. Euro</title></rect>
+<text class="zahl" x="217.0" y="215.0">1</text>
+<rect class="zelle leer" x="235.5" y="197.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="269.5" y="197.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="303.5" y="197.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="337.5" y="197.5" width="31" height="27" rx="3"/>
+<rect x="337.5" y="197.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Patientensicherheit, Feld COPD: 2 Vorhaben, 1,3 Mio. Euro</title></rect>
+<text class="zahl" x="353.0" y="215.0">2</text>
+<rect class="zelle" x="371.5" y="197.5" width="31" height="27" rx="3"/>
+<rect x="371.5" y="197.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Patientensicherheit, Feld Diabetes mellitus: 1 Vorhaben, 0,6 Mio. Euro</title></rect>
+<text class="zahl" x="387.0" y="215.0">1</text>
+<rect class="zelle" x="405.5" y="197.5" width="31" height="27" rx="3"/>
+<rect x="405.5" y="197.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Patientensicherheit, Feld Schlaganfall: 2 Vorhaben, 2,0 Mio. Euro</title></rect>
+<text class="zahl" x="421.0" y="215.0">2</text>
+<rect class="zelle" x="439.5" y="197.5" width="31" height="27" rx="3"/>
+<rect x="439.5" y="197.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Patientensicherheit, Feld Demenz: 6 Vorhaben, 21,8 Mio. Euro</title></rect>
+<text class="zahl" x="455.0" y="215.0">6</text>
+<rect class="zelle leer" x="473.5" y="197.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="507.5" y="197.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="541.5" y="197.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="575.5" y="197.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="609.5" y="197.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="643.5" y="197.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="677.5" y="197.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="711.5" y="197.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="745.5" y="197.5" width="31" height="27" rx="3"/>
+<rect x="745.5" y="197.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Patientensicherheit, Feld Atemwegsinfektionen: 3 Vorhaben, 14,7 Mio. Euro</title></rect>
+<text class="zahl" x="761.0" y="215.0">3</text>
+<rect class="zelle ausserhalb" x="779.5" y="197.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="197.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.90"><title>Patientensicherheit, Feld keines der siebzehn: 106 Vorhaben, 204,5 Mio. Euro</title></rect>
+<text class="zahl hell" x="795.0" y="215.0">106</text>
+<text class="zeile" x="190" y="245.0">Gesundheitskompetenz</text>
+<rect class="zelle" x="201.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="201.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Gesundheitskompetenz, Feld Koronare Herzkrankheit: 5 Vorhaben, 16,1 Mio. Euro</title></rect>
+<text class="zahl" x="217.0" y="245.0">5</text>
+<rect class="zelle" x="235.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="235.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesundheitskompetenz, Feld Rückenschmerz: 2 Vorhaben, 3,3 Mio. Euro</title></rect>
+<text class="zahl" x="251.0" y="245.0">2</text>
+<rect class="zelle leer" x="269.5" y="227.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="303.5" y="227.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="337.5" y="227.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="371.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="371.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Gesundheitskompetenz, Feld Diabetes mellitus: 4 Vorhaben, 18,4 Mio. Euro</title></rect>
+<text class="zahl" x="387.0" y="245.0">4</text>
+<rect class="zelle" x="405.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="405.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesundheitskompetenz, Feld Schlaganfall: 1 Vorhaben, 0,3 Mio. Euro</title></rect>
+<text class="zahl" x="421.0" y="245.0">1</text>
+<rect class="zelle" x="439.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="439.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesundheitskompetenz, Feld Demenz: 1 Vorhaben, 1,3 Mio. Euro</title></rect>
+<text class="zahl" x="455.0" y="245.0">1</text>
+<rect class="zelle" x="473.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="473.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesundheitskompetenz, Feld Darmkrebs: 1 Vorhaben, 0,5 Mio. Euro</title></rect>
+<text class="zahl" x="489.0" y="245.0">1</text>
+<rect class="zelle" x="507.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="507.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesundheitskompetenz, Feld Angststörungen: 2 Vorhaben, 7,2 Mio. Euro</title></rect>
+<text class="zahl" x="523.0" y="245.0">2</text>
+<rect class="zelle leer" x="541.5" y="227.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="575.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="575.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Gesundheitskompetenz, Feld Brustkrebs: 5 Vorhaben, 5,6 Mio. Euro</title></rect>
+<text class="zahl" x="591.0" y="245.0">5</text>
+<rect class="zelle" x="609.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="609.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Gesundheitskompetenz, Feld Depressive Störungen: 3 Vorhaben, 9,9 Mio. Euro</title></rect>
+<text class="zahl" x="625.0" y="245.0">3</text>
+<rect class="zelle leer" x="643.5" y="227.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="677.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="677.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesundheitskompetenz, Feld Hypertensive Herzkr.: 1 Vorhaben, 1,4 Mio. Euro</title></rect>
+<text class="zahl" x="693.0" y="245.0">1</text>
+<rect class="zelle" x="711.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="711.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesundheitskompetenz, Feld Prostatakrebs: 2 Vorhaben, 1,4 Mio. Euro</title></rect>
+<text class="zahl" x="727.0" y="245.0">2</text>
+<rect class="zelle" x="745.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="745.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Gesundheitskompetenz, Feld Atemwegsinfektionen: 3 Vorhaben, 20,6 Mio. Euro</title></rect>
+<text class="zahl" x="761.0" y="245.0">3</text>
+<rect class="zelle ausserhalb" x="779.5" y="227.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="227.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.90"><title>Gesundheitskompetenz, Feld keines der siebzehn: 69 Vorhaben, 144,7 Mio. Euro</title></rect>
+<text class="zahl hell" x="795.0" y="245.0">69</text>
+<text class="zeile" x="190" y="275.0">Depressive Erkrankungen</text>
+<rect class="zelle leer" x="201.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="235.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="269.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="303.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="337.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="371.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="405.5" y="257.5" width="31" height="27" rx="3"/>
+<rect x="405.5" y="257.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Depressive Erkrankungen, Feld Schlaganfall: 1 Vorhaben, 13,0 Mio. Euro</title></rect>
+<text class="zahl" x="421.0" y="275.0">1</text>
+<rect class="zelle" x="439.5" y="257.5" width="31" height="27" rx="3"/>
+<rect x="439.5" y="257.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Depressive Erkrankungen, Feld Demenz: 1 Vorhaben, 3,0 Mio. Euro</title></rect>
+<text class="zahl" x="455.0" y="275.0">1</text>
+<rect class="zelle leer" x="473.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="507.5" y="257.5" width="31" height="27" rx="3"/>
+<rect x="507.5" y="257.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.70"><title>Depressive Erkrankungen, Feld Angststörungen: 11 Vorhaben, 39,0 Mio. Euro</title></rect>
+<text class="zahl hell" x="523.0" y="275.0">11</text>
+<rect class="zelle leer" x="541.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="575.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="609.5" y="257.5" width="31" height="27" rx="3"/>
+<rect x="609.5" y="257.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.90"><title>Depressive Erkrankungen, Feld Depressive Störungen: 32 Vorhaben, 100,5 Mio. Euro</title></rect>
+<text class="zahl hell" x="625.0" y="275.0">32</text>
+<rect class="zelle leer" x="643.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="677.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="711.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="745.5" y="257.5" width="31" height="27" rx="3"/>
+<rect class="zelle ausserhalb" x="779.5" y="257.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="257.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.16"><title>Depressive Erkrankungen, Feld keines der siebzehn: 1 Vorhaben, 0,9 Mio. Euro</title></rect>
+<text class="zahl" x="795.0" y="275.0">1</text>
+<text class="zeile" x="190" y="305.0">Gesund aufwachsen</text>
+<rect class="zelle leer" x="201.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="235.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="269.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="303.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="337.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="371.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="405.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="439.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="473.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="507.5" y="287.5" width="31" height="27" rx="3"/>
+<rect x="507.5" y="287.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesund aufwachsen, Feld Angststörungen: 2 Vorhaben, 7,2 Mio. Euro</title></rect>
+<text class="zahl" x="523.0" y="305.0">2</text>
+<rect class="zelle leer" x="541.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="575.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="609.5" y="287.5" width="31" height="27" rx="3"/>
+<rect x="609.5" y="287.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesund aufwachsen, Feld Depressive Störungen: 1 Vorhaben, 5,8 Mio. Euro</title></rect>
+<text class="zahl" x="625.0" y="305.0">1</text>
+<rect class="zelle" x="643.5" y="287.5" width="31" height="27" rx="3"/>
+<rect x="643.5" y="287.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesund aufwachsen, Feld Alkoholstörungen: 2 Vorhaben, 1,5 Mio. Euro</title></rect>
+<text class="zahl" x="659.0" y="305.0">2</text>
+<rect class="zelle leer" x="677.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="711.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="745.5" y="287.5" width="31" height="27" rx="3"/>
+<rect class="zelle ausserhalb" x="779.5" y="287.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="287.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.90"><title>Gesund aufwachsen, Feld keines der siebzehn: 25 Vorhaben, 67,0 Mio. Euro</title></rect>
+<text class="zahl hell" x="795.0" y="305.0">25</text>
+<text class="zeile" x="190" y="335.0">Gesundheit rund um die Gebu</text>
+<rect class="zelle leer" x="201.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="235.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="269.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="303.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="337.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="371.5" y="317.5" width="31" height="27" rx="3"/>
+<rect x="371.5" y="317.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesundheit rund um die Geburt, Feld Diabetes mellitus: 1 Vorhaben, 2,4 Mio. Euro</title></rect>
+<text class="zahl" x="387.0" y="335.0">1</text>
+<rect class="zelle leer" x="405.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="439.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="473.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="507.5" y="317.5" width="31" height="27" rx="3"/>
+<rect x="507.5" y="317.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Gesundheit rund um die Geburt, Feld Angststörungen: 2 Vorhaben, 3,7 Mio. Euro</title></rect>
+<text class="zahl" x="523.0" y="335.0">2</text>
+<rect class="zelle leer" x="541.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="575.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="609.5" y="317.5" width="31" height="27" rx="3"/>
+<rect x="609.5" y="317.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Gesundheit rund um die Geburt, Feld Depressive Störungen: 4 Vorhaben, 9,5 Mio. Euro</title></rect>
+<text class="zahl" x="625.0" y="335.0">4</text>
+<rect class="zelle leer" x="643.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="677.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="711.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="745.5" y="317.5" width="31" height="27" rx="3"/>
+<rect class="zelle ausserhalb" x="779.5" y="317.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="317.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.90"><title>Gesundheit rund um die Geburt, Feld keines der siebzehn: 29 Vorhaben, 55,1 Mio. Euro</title></rect>
+<text class="zahl hell" x="795.0" y="335.0">29</text>
+<text class="zeile" x="190" y="365.0">Diabetes mellitus Typ 2</text>
+<rect class="zelle" x="201.5" y="347.5" width="31" height="27" rx="3"/>
+<rect x="201.5" y="347.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Diabetes mellitus Typ 2, Feld Koronare Herzkrankheit: 2 Vorhaben, 13,2 Mio. Euro</title></rect>
+<text class="zahl" x="217.0" y="365.0">2</text>
+<rect class="zelle leer" x="235.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="269.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="303.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="337.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="371.5" y="347.5" width="31" height="27" rx="3"/>
+<rect x="371.5" y="347.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Diabetes mellitus Typ 2, Feld Diabetes mellitus: 10 Vorhaben, 37,2 Mio. Euro</title></rect>
+<text class="zahl" x="387.0" y="365.0">10</text>
+<rect class="zelle" x="405.5" y="347.5" width="31" height="27" rx="3"/>
+<rect x="405.5" y="347.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Diabetes mellitus Typ 2, Feld Schlaganfall: 1 Vorhaben, 3,3 Mio. Euro</title></rect>
+<text class="zahl" x="421.0" y="365.0">1</text>
+<rect class="zelle leer" x="439.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="473.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="507.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="541.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="575.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="609.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="643.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="677.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="711.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="745.5" y="347.5" width="31" height="27" rx="3"/>
+<rect class="zelle ausserhalb" x="779.5" y="347.5" width="31" height="27" rx="3"/>
+<text class="zeile" x="190" y="395.0">Brustkrebs</text>
+<rect class="zelle leer" x="201.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="235.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="269.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="303.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="337.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="371.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="405.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="439.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="473.5" y="377.5" width="31" height="27" rx="3"/>
+<rect x="473.5" y="377.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Brustkrebs, Feld Darmkrebs: 2 Vorhaben, 1,1 Mio. Euro</title></rect>
+<text class="zahl" x="489.0" y="395.0">2</text>
+<rect class="zelle leer" x="507.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="541.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="575.5" y="377.5" width="31" height="27" rx="3"/>
+<rect x="575.5" y="377.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.70"><title>Brustkrebs, Feld Brustkrebs: 14 Vorhaben, 28,5 Mio. Euro</title></rect>
+<text class="zahl hell" x="591.0" y="395.0">14</text>
+<rect class="zelle leer" x="609.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="643.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="677.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="711.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="745.5" y="377.5" width="31" height="27" rx="3"/>
+<rect class="zelle ausserhalb" x="779.5" y="377.5" width="31" height="27" rx="3"/>
+<text class="zeile" x="190" y="425.0">Alkoholkonsum reduzieren</text>
+<rect class="zelle leer" x="201.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="235.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="269.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="303.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="337.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="371.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="405.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="439.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="473.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="507.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="541.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="575.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="609.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="643.5" y="407.5" width="31" height="27" rx="3"/>
+<rect x="643.5" y="407.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Alkoholkonsum reduzieren, Feld Alkoholstörungen: 8 Vorhaben, 13,0 Mio. Euro</title></rect>
+<text class="zahl" x="659.0" y="425.0">8</text>
+<rect class="zelle leer" x="677.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="711.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="745.5" y="407.5" width="31" height="27" rx="3"/>
+<rect class="zelle ausserhalb" x="779.5" y="407.5" width="31" height="27" rx="3"/>
+<text class="zeile" x="190" y="455.0">Tabakkonsum reduzieren</text>
+<rect class="zelle leer" x="201.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="235.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="269.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="303.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="337.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="371.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="405.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="439.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="473.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="507.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="541.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="575.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="609.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="643.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="677.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="711.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="745.5" y="437.5" width="31" height="27" rx="3"/>
+<rect class="zelle ausserhalb" x="779.5" y="437.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="437.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.16"><title>Tabakkonsum reduzieren, Feld keines der siebzehn: 2 Vorhaben, 5,0 Mio. Euro</title></rect>
+<text class="zahl" x="795.0" y="455.0">2</text>
+<text class="zeile rand" x="190" y="485.0">kein Gesundheitsziel</text>
+<rect class="zelle ausserhalb" x="201.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="201.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.70"><title>kein Gesundheitsziel, Feld Koronare Herzkrankheit: 19 Vorhaben, 47,7 Mio. Euro</title></rect>
+<text class="zahl hell" x="217.0" y="485.0">19</text>
+<rect class="zelle ausserhalb" x="235.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="235.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.50"><title>kein Gesundheitsziel, Feld Rückenschmerz: 8 Vorhaben, 18,2 Mio. Euro</title></rect>
+<text class="zahl" x="251.0" y="485.0">8</text>
+<rect class="zelle ausserhalb" x="269.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="269.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.32"><title>kein Gesundheitsziel, Feld Lungenkrebs: 4 Vorhaben, 15,3 Mio. Euro</title></rect>
+<text class="zahl" x="285.0" y="485.0">4</text>
+<rect class="zelle ausserhalb" x="303.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="303.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.32"><title>kein Gesundheitsziel, Feld Kopfschmerz: 4 Vorhaben, 11,5 Mio. Euro</title></rect>
+<text class="zahl" x="319.0" y="485.0">4</text>
+<rect class="zelle ausserhalb" x="337.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="337.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.32"><title>kein Gesundheitsziel, Feld COPD: 4 Vorhaben, 11,4 Mio. Euro</title></rect>
+<text class="zahl" x="353.0" y="485.0">4</text>
+<rect class="zelle ausserhalb" x="371.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="371.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.16"><title>kein Gesundheitsziel, Feld Diabetes mellitus: 2 Vorhaben, 6,1 Mio. Euro</title></rect>
+<text class="zahl" x="387.0" y="485.0">2</text>
+<rect class="zelle ausserhalb" x="405.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="405.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.90"><title>kein Gesundheitsziel, Feld Schlaganfall: 26 Vorhaben, 61,8 Mio. Euro</title></rect>
+<text class="zahl hell" x="421.0" y="485.0">26</text>
+<rect class="zelle ausserhalb" x="439.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="439.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.32"><title>kein Gesundheitsziel, Feld Demenz: 3 Vorhaben, 3,7 Mio. Euro</title></rect>
+<text class="zahl" x="455.0" y="485.0">3</text>
+<rect class="zelle ausserhalb" x="473.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="473.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.32"><title>kein Gesundheitsziel, Feld Darmkrebs: 5 Vorhaben, 14,3 Mio. Euro</title></rect>
+<text class="zahl" x="489.0" y="485.0">5</text>
+<rect class="zelle ausserhalb" x="507.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="507.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.16"><title>kein Gesundheitsziel, Feld Angststörungen: 2 Vorhaben, 1,4 Mio. Euro</title></rect>
+<text class="zahl" x="523.0" y="485.0">2</text>
+<rect class="zelle ausserhalb" x="541.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="541.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.16"><title>kein Gesundheitsziel, Feld Nackenschmerz: 1 Vorhaben, 0,2 Mio. Euro</title></rect>
+<text class="zahl" x="557.0" y="485.0">1</text>
+<rect class="zelle ausserhalb" x="575.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="575.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.16"><title>kein Gesundheitsziel, Feld Brustkrebs: 1 Vorhaben, 1,6 Mio. Euro</title></rect>
+<text class="zahl" x="591.0" y="485.0">1</text>
+<rect class="zelle ausserhalb" x="609.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="609.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.16"><title>kein Gesundheitsziel, Feld Depressive Störungen: 2 Vorhaben, 1,4 Mio. Euro</title></rect>
+<text class="zahl" x="625.0" y="485.0">2</text>
+<rect class="zelle ausserhalb" x="643.5" y="467.5" width="31" height="27" rx="3"/>
+<rect class="zelle ausserhalb" x="677.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="677.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.32"><title>kein Gesundheitsziel, Feld Hypertensive Herzkr.: 3 Vorhaben, 9,0 Mio. Euro</title></rect>
+<text class="zahl" x="693.0" y="485.0">3</text>
+<rect class="zelle ausserhalb" x="711.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="711.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.32"><title>kein Gesundheitsziel, Feld Prostatakrebs: 3 Vorhaben, 7,9 Mio. Euro</title></rect>
+<text class="zahl" x="727.0" y="485.0">3</text>
+<rect class="zelle ausserhalb" x="745.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="745.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.16"><title>kein Gesundheitsziel, Feld Atemwegsinfektionen: 2 Vorhaben, 1,2 Mio. Euro</title></rect>
+<text class="zahl" x="761.0" y="485.0">2</text>
+<rect class="zelle ausserhalb" x="779.5" y="467.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="467.5" width="31" height="27" rx="3" fill="var(--ton-last)" fill-opacity="0.90"><title>kein Gesundheitsziel, Feld keines der siebzehn: 391 Vorhaben, 857,8 Mio. Euro</title></rect>
+<text class="zahl hell" x="795.0" y="485.0">391</text>
+</svg>
+</div>
+<div class="legende"><span><i class="kachel" style="background:var(--ton-foerd);opacity:.16"></i>1 bis 2 Vorhaben</span><span><i class="kachel" style="background:var(--ton-foerd);opacity:.50"></i>6 bis 10</span><span><i class="kachel" style="background:var(--ton-foerd);opacity:.90"></i>21 und mehr</span><span><i class="kachel leerk"></i>leer</span><span><i class="kachel" style="background:var(--ton-last);opacity:.30"></i>Krankheitslast je Spalte</span></div>
+<h2>Die Leerr&auml;ume</h2>
+<p>Von den 170 Zellen der eigentlichen Matrix sind <b>127 leer</b>, das sind 74,7 Prozent. Weitere 17 tragen genau ein Vorhaben. Besetzt sind 43 Zellen oder 25,3 Prozent, und ein Viertel der Fl&auml;che tr&auml;gt damit alles, was sich &uuml;berhaupt zuordnen l&auml;sst.</p>
+<p>Die drei gr&ouml;&szlig;ten Spalten sind dabei fast leer. Koronare Herzkrankheit, Schmerzen im unteren R&uuml;cken und Lungenkrebs tragen zusammen die h&ouml;chste Last der Liste, und in den Zielzeilen stehen dort 9, 2 und 0 Vorhaben. Was dort gef&ouml;rdert wurde, liegt fast vollst&auml;ndig in der untersten Zeile, also ohne jedes nationale Gesundheitsziel.</p>
+<h2>Die Haufen</h2>
+<p>Die sechs dichtesten Zellen:</p><ul>
+<li><b>32 Vorhaben</b>, 100,5 Mio. Euro: Depressive Erkrankungen, Feld Depressive Störungen</li>
+<li><b>18 Vorhaben</b>, 60,7 Mio. Euro: Gesund aelter werden, Feld Demenz</li>
+<li><b>14 Vorhaben</b>, 28,5 Mio. Euro: Brustkrebs, Feld Brustkrebs</li>
+<li><b>11 Vorhaben</b>, 39,0 Mio. Euro: Depressive Erkrankungen, Feld Angststörungen</li>
+<li><b>10 Vorhaben</b>, 37,2 Mio. Euro: Diabetes mellitus Typ 2, Feld Diabetes mellitus</li>
+<li><b>8 Vorhaben</b>, 13,0 Mio. Euro: Alkoholkonsum reduzieren, Feld Alkoholstörungen</li>
+</ul>
+<p class="merk">Vier der sechs liegen auf einer Diagonale, auf der das Ziel und das Feld dasselbe benennen: Depression gegen depressive St&ouml;rungen, Brustkrebs gegen Brustkrebs, Diabetes gegen Diabetes, Alkohol gegen alkoholbezogene St&ouml;rungen. <b>Wo ein Gesundheitsziel eine Krankheit beim Namen nennt, entsteht ein Haufen. Wo es allgemein formuliert ist, zerf&auml;llt die Zeile in die Randspalte.</b></p>
+<p>Die drei gr&ouml;&szlig;ten Ziele zeigen das von der anderen Seite. <i>Gesund &auml;lter werden</i>, <i>Patientensicherheit</i> und <i>Gesundheitskompetenz</i> tragen zusammen 269 Vorhaben, die keinem der siebzehn Felder zuzuordnen sind. Sie sind so weit gefasst, dass fast jedes Vorhaben hineinpasst und keines an eine Krankheit gebunden wird. Ein Ziel, das keine Krankheit nennt, erzeugt keine pr&uuml;fbare Zelle.</p>
+<h2>Was sich einordnen l&auml;sst</h2>
+<p>Auf mindestens einer der beiden Sachachsen liegen <b>470 der 861 Vorhaben</b>, also 54,6 Prozent. Die Mehrzahl also, wie vermutet. Auf <b>beiden</b> Achsen zugleich liegen aber nur 104 Vorhaben oder 12,1 Prozent, und nur diese f&uuml;llen eine echte Zelle der Matrix. Die &uuml;brigen 391 Vorhaben liegen auf keiner der beiden Achsen.</p>
+<p>Das ist die Einschr&auml;nkung, die im Entwurf schon stand: Vorhaben zu reinen Struktur- und Prozessfragen lassen sich nicht einordnen, weil sie keine Krankheit adressieren. Sie sind nicht der Rest, sie sind die Mehrheit.</p>
+<h2>Die dritte Achse: die angenommene Wirkung</h2>
+<p>Als Tiefe sieht der Entwurf die angenommene Wirkung vor. Sie liegt kodiert vor, in vier Stufen, und ist f&uuml;r fast jedes Vorhaben bestimmt. Hier steht sie gegen die Krankheitsfelder, in derselben Spaltenordnung wie oben.</p>
+<div class="rollen"><svg viewBox="0 0 838 158" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Angenommene Wirkung je Krankheitsfeld, in vier Stufen">
+<text class="zeile" x="190" y="33.0">3 mengenreduzierend</text>
+<rect class="zelle" x="201.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="201.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.70"><title>Koronare Herzkrankheit, mengenreduzierend: 12 Vorhaben</title></rect>
+<text class="zahl hell" x="217.0" y="33.0">12</text>
+<rect class="zelle" x="235.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="235.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Rückenschmerz, mengenreduzierend: 6 Vorhaben</title></rect>
+<text class="zahl" x="251.0" y="33.0">6</text>
+<rect class="zelle" x="269.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="269.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Lungenkrebs, mengenreduzierend: 1 Vorhaben</title></rect>
+<text class="zahl" x="285.0" y="33.0">1</text>
+<rect class="zelle" x="303.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="303.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Kopfschmerz, mengenreduzierend: 3 Vorhaben</title></rect>
+<text class="zahl" x="319.0" y="33.0">3</text>
+<rect class="zelle" x="337.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="337.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>COPD, mengenreduzierend: 5 Vorhaben</title></rect>
+<text class="zahl" x="353.0" y="33.0">5</text>
+<rect class="zelle" x="371.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="371.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Diabetes mellitus, mengenreduzierend: 7 Vorhaben</title></rect>
+<text class="zahl" x="387.0" y="33.0">7</text>
+<rect class="zelle" x="405.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="405.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.70"><title>Schlaganfall, mengenreduzierend: 14 Vorhaben</title></rect>
+<text class="zahl hell" x="421.0" y="33.0">14</text>
+<rect class="zelle" x="439.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="439.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Demenz, mengenreduzierend: 10 Vorhaben</title></rect>
+<text class="zahl" x="455.0" y="33.0">10</text>
+<rect class="zelle" x="473.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="473.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Darmkrebs, mengenreduzierend: 3 Vorhaben</title></rect>
+<text class="zahl" x="489.0" y="33.0">3</text>
+<rect class="zelle" x="507.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="507.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Angststörungen, mengenreduzierend: 3 Vorhaben</title></rect>
+<text class="zahl" x="523.0" y="33.0">3</text>
+<rect class="zelle" x="541.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="541.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Nackenschmerz, mengenreduzierend: 1 Vorhaben</title></rect>
+<text class="zahl" x="557.0" y="33.0">1</text>
+<rect class="zelle" x="575.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="575.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Brustkrebs, mengenreduzierend: 4 Vorhaben</title></rect>
+<text class="zahl" x="591.0" y="33.0">4</text>
+<rect class="zelle" x="609.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="609.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Depressive Störungen, mengenreduzierend: 10 Vorhaben</title></rect>
+<text class="zahl" x="625.0" y="33.0">10</text>
+<rect class="zelle" x="643.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="643.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Alkoholstörungen, mengenreduzierend: 5 Vorhaben</title></rect>
+<text class="zahl" x="659.0" y="33.0">5</text>
+<rect class="zelle" x="677.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="677.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Hypertensive Herzkr., mengenreduzierend: 2 Vorhaben</title></rect>
+<text class="zahl" x="693.0" y="33.0">2</text>
+<rect class="zelle" x="711.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="711.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Prostatakrebs, mengenreduzierend: 2 Vorhaben</title></rect>
+<text class="zahl" x="727.0" y="33.0">2</text>
+<rect class="zelle" x="745.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="745.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Atemwegsinfektionen, mengenreduzierend: 9 Vorhaben</title></rect>
+<text class="zahl" x="761.0" y="33.0">9</text>
+<rect class="zelle ausserhalb" x="779.5" y="15.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="15.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.90"><title>keines der siebzehn Felder, mengenreduzierend: 329 Vorhaben</title></rect>
+<text class="zahl hell" x="795.0" y="33.0">329</text>
+<text class="zeile" x="190" y="63.0">2 sektorenverschiebend</text>
+<rect class="zelle" x="201.5" y="45.5" width="31" height="27" rx="3"/>
+<rect x="201.5" y="45.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Koronare Herzkrankheit, sektorenverschiebend: 1 Vorhaben</title></rect>
+<text class="zahl" x="217.0" y="63.0">1</text>
+<rect class="zelle" x="235.5" y="45.5" width="31" height="27" rx="3"/>
+<rect x="235.5" y="45.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Rückenschmerz, sektorenverschiebend: 1 Vorhaben</title></rect>
+<text class="zahl" x="251.0" y="63.0">1</text>
+<rect class="zelle leer" x="269.5" y="45.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="303.5" y="45.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="337.5" y="45.5" width="31" height="27" rx="3"/>
+<rect x="337.5" y="45.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>COPD, sektorenverschiebend: 1 Vorhaben</title></rect>
+<text class="zahl" x="353.0" y="63.0">1</text>
+<rect class="zelle leer" x="371.5" y="45.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="405.5" y="45.5" width="31" height="27" rx="3"/>
+<rect x="405.5" y="45.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Schlaganfall, sektorenverschiebend: 1 Vorhaben</title></rect>
+<text class="zahl" x="421.0" y="63.0">1</text>
+<rect class="zelle" x="439.5" y="45.5" width="31" height="27" rx="3"/>
+<rect x="439.5" y="45.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Demenz, sektorenverschiebend: 4 Vorhaben</title></rect>
+<text class="zahl" x="455.0" y="63.0">4</text>
+<rect class="zelle leer" x="473.5" y="45.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="507.5" y="45.5" width="31" height="27" rx="3"/>
+<rect x="507.5" y="45.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Angststörungen, sektorenverschiebend: 1 Vorhaben</title></rect>
+<text class="zahl" x="523.0" y="63.0">1</text>
+<rect class="zelle leer" x="541.5" y="45.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="575.5" y="45.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="609.5" y="45.5" width="31" height="27" rx="3"/>
+<rect x="609.5" y="45.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Depressive Störungen, sektorenverschiebend: 4 Vorhaben</title></rect>
+<text class="zahl" x="625.0" y="63.0">4</text>
+<rect class="zelle leer" x="643.5" y="45.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="677.5" y="45.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="711.5" y="45.5" width="31" height="27" rx="3"/>
+<rect x="711.5" y="45.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Prostatakrebs, sektorenverschiebend: 1 Vorhaben</title></rect>
+<text class="zahl" x="727.0" y="63.0">1</text>
+<rect class="zelle leer" x="745.5" y="45.5" width="31" height="27" rx="3"/>
+<rect class="zelle ausserhalb" x="779.5" y="45.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="45.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.90"><title>keines der siebzehn Felder, sektorenverschiebend: 56 Vorhaben</title></rect>
+<text class="zahl hell" x="795.0" y="63.0">56</text>
+<text class="zeile" x="190" y="93.0">1 umschichtend</text>
+<rect class="zelle" x="201.5" y="75.5" width="31" height="27" rx="3"/>
+<rect x="201.5" y="75.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Koronare Herzkrankheit, umschichtend: 2 Vorhaben</title></rect>
+<text class="zahl" x="217.0" y="93.0">2</text>
+<rect class="zelle leer" x="235.5" y="75.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="269.5" y="75.5" width="31" height="27" rx="3"/>
+<rect x="269.5" y="75.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Lungenkrebs, umschichtend: 1 Vorhaben</title></rect>
+<text class="zahl" x="285.0" y="93.0">1</text>
+<rect class="zelle leer" x="303.5" y="75.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="337.5" y="75.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="371.5" y="75.5" width="31" height="27" rx="3"/>
+<rect x="371.5" y="75.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Diabetes mellitus, umschichtend: 1 Vorhaben</title></rect>
+<text class="zahl" x="387.0" y="93.0">1</text>
+<rect class="zelle" x="405.5" y="75.5" width="31" height="27" rx="3"/>
+<rect x="405.5" y="75.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Schlaganfall, umschichtend: 4 Vorhaben</title></rect>
+<text class="zahl" x="421.0" y="93.0">4</text>
+<rect class="zelle" x="439.5" y="75.5" width="31" height="27" rx="3"/>
+<rect x="439.5" y="75.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Demenz, umschichtend: 3 Vorhaben</title></rect>
+<text class="zahl" x="455.0" y="93.0">3</text>
+<rect class="zelle leer" x="473.5" y="75.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="507.5" y="75.5" width="31" height="27" rx="3"/>
+<rect x="507.5" y="75.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Angststörungen, umschichtend: 1 Vorhaben</title></rect>
+<text class="zahl" x="523.0" y="93.0">1</text>
+<rect class="zelle leer" x="541.5" y="75.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="575.5" y="75.5" width="31" height="27" rx="3"/>
+<rect x="575.5" y="75.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Brustkrebs, umschichtend: 1 Vorhaben</title></rect>
+<text class="zahl" x="591.0" y="93.0">1</text>
+<rect class="zelle" x="609.5" y="75.5" width="31" height="27" rx="3"/>
+<rect x="609.5" y="75.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Depressive Störungen, umschichtend: 2 Vorhaben</title></rect>
+<text class="zahl" x="625.0" y="93.0">2</text>
+<rect class="zelle leer" x="643.5" y="75.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="677.5" y="75.5" width="31" height="27" rx="3"/>
+<rect x="677.5" y="75.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Hypertensive Herzkr., umschichtend: 1 Vorhaben</title></rect>
+<text class="zahl" x="693.0" y="93.0">1</text>
+<rect class="zelle leer" x="711.5" y="75.5" width="31" height="27" rx="3"/>
+<rect class="zelle leer" x="745.5" y="75.5" width="31" height="27" rx="3"/>
+<rect class="zelle ausserhalb" x="779.5" y="75.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="75.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.70"><title>keines der siebzehn Felder, umschichtend: 19 Vorhaben</title></rect>
+<text class="zahl hell" x="795.0" y="93.0">19</text>
+<text class="zeile" x="190" y="123.0">0 ergänzend</text>
+<rect class="zelle" x="201.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="201.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.70"><title>Koronare Herzkrankheit, ergänzend: 11 Vorhaben</title></rect>
+<text class="zahl hell" x="217.0" y="123.0">11</text>
+<rect class="zelle" x="235.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="235.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Rückenschmerz, ergänzend: 3 Vorhaben</title></rect>
+<text class="zahl" x="251.0" y="123.0">3</text>
+<rect class="zelle" x="269.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="269.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Lungenkrebs, ergänzend: 2 Vorhaben</title></rect>
+<text class="zahl" x="285.0" y="123.0">2</text>
+<rect class="zelle" x="303.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="303.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Kopfschmerz, ergänzend: 1 Vorhaben</title></rect>
+<text class="zahl" x="319.0" y="123.0">1</text>
+<rect class="zelle" x="337.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="337.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>COPD, ergänzend: 1 Vorhaben</title></rect>
+<text class="zahl" x="353.0" y="123.0">1</text>
+<rect class="zelle" x="371.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="371.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Diabetes mellitus, ergänzend: 6 Vorhaben</title></rect>
+<text class="zahl" x="387.0" y="123.0">6</text>
+<rect class="zelle" x="405.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="405.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.70"><title>Schlaganfall, ergänzend: 13 Vorhaben</title></rect>
+<text class="zahl hell" x="421.0" y="123.0">13</text>
+<rect class="zelle" x="439.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="439.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Demenz, ergänzend: 6 Vorhaben</title></rect>
+<text class="zahl" x="455.0" y="123.0">6</text>
+<rect class="zelle" x="473.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="473.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Darmkrebs, ergänzend: 4 Vorhaben</title></rect>
+<text class="zahl" x="489.0" y="123.0">4</text>
+<rect class="zelle" x="507.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="507.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Angststörungen, ergänzend: 9 Vorhaben</title></rect>
+<text class="zahl" x="523.0" y="123.0">9</text>
+<rect class="zelle leer" x="541.5" y="105.5" width="31" height="27" rx="3"/>
+<rect class="zelle" x="575.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="575.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.50"><title>Brustkrebs, ergänzend: 10 Vorhaben</title></rect>
+<text class="zahl" x="591.0" y="123.0">10</text>
+<rect class="zelle" x="609.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="609.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.70"><title>Depressive Störungen, ergänzend: 18 Vorhaben</title></rect>
+<text class="zahl hell" x="625.0" y="123.0">18</text>
+<rect class="zelle" x="643.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="643.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.32"><title>Alkoholstörungen, ergänzend: 3 Vorhaben</title></rect>
+<text class="zahl" x="659.0" y="123.0">3</text>
+<rect class="zelle" x="677.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="677.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Hypertensive Herzkr., ergänzend: 1 Vorhaben</title></rect>
+<text class="zahl" x="693.0" y="123.0">1</text>
+<rect class="zelle" x="711.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="711.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.16"><title>Prostatakrebs, ergänzend: 2 Vorhaben</title></rect>
+<text class="zahl" x="727.0" y="123.0">2</text>
+<rect class="zelle leer" x="745.5" y="105.5" width="31" height="27" rx="3"/>
+<rect class="zelle ausserhalb" x="779.5" y="105.5" width="31" height="27" rx="3"/>
+<rect x="779.5" y="105.5" width="31" height="27" rx="3" fill="var(--ton-foerd)" fill-opacity="0.90"><title>keines der siebzehn Felder, ergänzend: 273 Vorhaben</title></rect>
+<text class="zahl hell" x="795.0" y="123.0">273</text>
+</svg></div>
+<p>Diese Achse ist die einzige der drei, die durchgehend besetzt ist. Sie ist aus den Projektbeschreibungen abgeleitet und nicht aus einer Zielvorgabe, und genau darin liegt ihr Wert und ihre Grenze: Sie sagt, was ein Vorhaben bewirken soll, wenn es gelingt. Sie sagt nicht, dass es gelingt.</p>
+<h2>Ein Schluss, der nicht tr&auml;gt</h2>
+<p>Aus den Haufen liegt ein Schluss nahe: Felder, die ein Gesundheitsziel beim Namen nennt, bek&auml;men mehr Geld. Gemessen in Euro je verlorenem gesundem Lebensjahr sieht es zun&auml;chst auch so aus.</p>
+<p class="warn">Der Schluss h&auml;lt der Pr&uuml;fung nicht stand. Die vier genannten Felder stehen in der Rangliste auf Platz 1, 6, 7, 11 von 17, und die Pl&auml;tze zwei bis vier belegen Felder, die kein Ziel nennt. Der Abstand, der zun&auml;chst deutlich wirkt, h&auml;ngt fast vollst&auml;ndig an einem einzigen Feld: L&auml;sst man die depressiven St&ouml;rungen weg, bleibt kaum etwas davon &uuml;brig. Bei vier Feldern ist das ohnehin keine Basis. <b>Die Nennung erkl&auml;rt die Verteilung des Geldes nicht.</b> Sie erkl&auml;rt nur, wo eine Zelle &uuml;berhaupt besetzbar ist.</p>
+<h2>Jede besetzte Zelle</h2>
+<table><caption>Jede besetzte Zelle, mit dem amtlichen Wortlaut des Gesundheitsziels</caption><thead><tr><th>Gesundheitsziel</th><th>Krankheitsfeld</th><th class="r">Vorhaben</th><th class="r">Mio. Euro</th></tr></thead><tbody>
+<tr><td>Gesund aelter werden</td><td>Koronare Herzkrankheit</td><td class="r">1</td><td class="r">5,3</td></tr>
+<tr><td>Gesund aelter werden</td><td>Chronische obstruktive Lungenerkrankung</td><td class="r">1</td><td class="r">1,7</td></tr>
+<tr><td>Gesund aelter werden</td><td>Diabetes mellitus</td><td class="r">1</td><td class="r">0,2</td></tr>
+<tr><td>Gesund aelter werden</td><td>Schlaganfall</td><td class="r">1</td><td class="r">2,4</td></tr>
+<tr><td>Gesund aelter werden</td><td>Alzheimer- und andere Demenzerkrankungen</td><td class="r">18</td><td class="r">60,7</td></tr>
+<tr><td>Gesund aelter werden</td><td>Kolon- und Rektumkrebs</td><td class="r">1</td><td class="r">0,7</td></tr>
+<tr><td>Gesund aelter werden</td><td>Brustkrebs</td><td class="r">1</td><td class="r">0,7</td></tr>
+<tr><td>Gesund aelter werden</td><td>Depressive Störungen</td><td class="r">3</td><td class="r">7,6</td></tr>
+<tr><td>Gesund aelter werden</td><td>Untere Atemwegsinfektionen</td><td class="r">3</td><td class="r">7,8</td></tr>
+<tr class="randzeile"><td>Gesund aelter werden</td><td>keines der siebzehn Felder</td><td class="r">94</td><td class="r">316,5</td></tr>
+<tr><td>Patientensicherheit</td><td>Koronare Herzkrankheit</td><td class="r">1</td><td class="r">1,3</td></tr>
+<tr><td>Patientensicherheit</td><td>Chronische obstruktive Lungenerkrankung</td><td class="r">2</td><td class="r">1,3</td></tr>
+<tr><td>Patientensicherheit</td><td>Diabetes mellitus</td><td class="r">1</td><td class="r">0,6</td></tr>
+<tr><td>Patientensicherheit</td><td>Schlaganfall</td><td class="r">2</td><td class="r">2,0</td></tr>
+<tr><td>Patientensicherheit</td><td>Alzheimer- und andere Demenzerkrankungen</td><td class="r">6</td><td class="r">21,8</td></tr>
+<tr><td>Patientensicherheit</td><td>Untere Atemwegsinfektionen</td><td class="r">3</td><td class="r">14,7</td></tr>
+<tr class="randzeile"><td>Patientensicherheit</td><td>keines der siebzehn Felder</td><td class="r">106</td><td class="r">204,5</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Koronare Herzkrankheit</td><td class="r">5</td><td class="r">16,1</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Schmerzen im unteren Rücken</td><td class="r">2</td><td class="r">3,3</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Diabetes mellitus</td><td class="r">4</td><td class="r">18,4</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Schlaganfall</td><td class="r">1</td><td class="r">0,3</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Alzheimer- und andere Demenzerkrankungen</td><td class="r">1</td><td class="r">1,3</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Kolon- und Rektumkrebs</td><td class="r">1</td><td class="r">0,5</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Angststörungen</td><td class="r">2</td><td class="r">7,2</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Brustkrebs</td><td class="r">5</td><td class="r">5,6</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Depressive Störungen</td><td class="r">3</td><td class="r">9,9</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Hypertensive Herzkrankheit</td><td class="r">1</td><td class="r">1,4</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Prostatakrebs</td><td class="r">2</td><td class="r">1,4</td></tr>
+<tr><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>Untere Atemwegsinfektionen</td><td class="r">3</td><td class="r">20,6</td></tr>
+<tr class="randzeile"><td>Gesundheitliche Kompetenz erhoehen, Patient(inn)ensouveraenitaet staerken</td><td>keines der siebzehn Felder</td><td class="r">69</td><td class="r">144,7</td></tr>
+<tr><td>Depressive Erkrankungen: verhindern, frueh erkennen, nachhaltig behandeln</td><td>Schlaganfall</td><td class="r">1</td><td class="r">13,0</td></tr>
+<tr><td>Depressive Erkrankungen: verhindern, frueh erkennen, nachhaltig behandeln</td><td>Alzheimer- und andere Demenzerkrankungen</td><td class="r">1</td><td class="r">3,0</td></tr>
+<tr><td>Depressive Erkrankungen: verhindern, frueh erkennen, nachhaltig behandeln</td><td>Angststörungen</td><td class="r">11</td><td class="r">39,0</td></tr>
+<tr><td>Depressive Erkrankungen: verhindern, frueh erkennen, nachhaltig behandeln</td><td>Depressive Störungen</td><td class="r">32</td><td class="r">100,5</td></tr>
+<tr class="randzeile"><td>Depressive Erkrankungen: verhindern, frueh erkennen, nachhaltig behandeln</td><td>keines der siebzehn Felder</td><td class="r">1</td><td class="r">0,9</td></tr>
+<tr><td>Gesund aufwachsen: Lebenskompetenz, Bewegung, Ernaehrung</td><td>Angststörungen</td><td class="r">2</td><td class="r">7,2</td></tr>
+<tr><td>Gesund aufwachsen: Lebenskompetenz, Bewegung, Ernaehrung</td><td>Depressive Störungen</td><td class="r">1</td><td class="r">5,8</td></tr>
+<tr><td>Gesund aufwachsen: Lebenskompetenz, Bewegung, Ernaehrung</td><td>Alkoholbezogene Störungen</td><td class="r">2</td><td class="r">1,5</td></tr>
+<tr class="randzeile"><td>Gesund aufwachsen: Lebenskompetenz, Bewegung, Ernaehrung</td><td>keines der siebzehn Felder</td><td class="r">25</td><td class="r">67,0</td></tr>
+<tr><td>Gesundheit rund um die Geburt</td><td>Diabetes mellitus</td><td class="r">1</td><td class="r">2,4</td></tr>
+<tr><td>Gesundheit rund um die Geburt</td><td>Angststörungen</td><td class="r">2</td><td class="r">3,7</td></tr>
+<tr><td>Gesundheit rund um die Geburt</td><td>Depressive Störungen</td><td class="r">4</td><td class="r">9,5</td></tr>
+<tr class="randzeile"><td>Gesundheit rund um die Geburt</td><td>keines der siebzehn Felder</td><td class="r">29</td><td class="r">55,1</td></tr>
+<tr><td>Diabetes mellitus Typ 2: Erkrankungsrisiko senken, Erkrankte frueh erkennen und behandeln</td><td>Koronare Herzkrankheit</td><td class="r">2</td><td class="r">13,2</td></tr>
+<tr><td>Diabetes mellitus Typ 2: Erkrankungsrisiko senken, Erkrankte frueh erkennen und behandeln</td><td>Diabetes mellitus</td><td class="r">10</td><td class="r">37,2</td></tr>
+<tr><td>Diabetes mellitus Typ 2: Erkrankungsrisiko senken, Erkrankte frueh erkennen und behandeln</td><td>Schlaganfall</td><td class="r">1</td><td class="r">3,3</td></tr>
+<tr><td>Brustkrebs: Mortalitaet vermindern, Lebensqualitaet erhoehen</td><td>Kolon- und Rektumkrebs</td><td class="r">2</td><td class="r">1,1</td></tr>
+<tr><td>Brustkrebs: Mortalitaet vermindern, Lebensqualitaet erhoehen</td><td>Brustkrebs</td><td class="r">14</td><td class="r">28,5</td></tr>
+<tr><td>Alkoholkonsum reduzieren</td><td>Alkoholbezogene Störungen</td><td class="r">8</td><td class="r">13,0</td></tr>
+<tr class="randzeile"><td>Tabakkonsum reduzieren</td><td>keines der siebzehn Felder</td><td class="r">2</td><td class="r">5,0</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Koronare Herzkrankheit</td><td class="r">19</td><td class="r">47,7</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Schmerzen im unteren Rücken</td><td class="r">8</td><td class="r">18,2</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Trachea-, Bronchial- und Lungenkrebs</td><td class="r">4</td><td class="r">15,3</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Kopfschmerzerkrankungen</td><td class="r">4</td><td class="r">11,5</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Chronische obstruktive Lungenerkrankung</td><td class="r">4</td><td class="r">11,4</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Diabetes mellitus</td><td class="r">2</td><td class="r">6,1</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Schlaganfall</td><td class="r">26</td><td class="r">61,8</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Alzheimer- und andere Demenzerkrankungen</td><td class="r">3</td><td class="r">3,7</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Kolon- und Rektumkrebs</td><td class="r">5</td><td class="r">14,3</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Angststörungen</td><td class="r">2</td><td class="r">1,4</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Nackenschmerz</td><td class="r">1</td><td class="r">0,2</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Brustkrebs</td><td class="r">1</td><td class="r">1,6</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Depressive Störungen</td><td class="r">2</td><td class="r">1,4</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Hypertensive Herzkrankheit</td><td class="r">3</td><td class="r">9,0</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Prostatakrebs</td><td class="r">3</td><td class="r">7,9</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>Untere Atemwegsinfektionen</td><td class="r">2</td><td class="r">1,2</td></tr>
+<tr class="randzeile"><td>kein nationales Gesundheitsziel</td><td>keines der siebzehn Felder</td><td class="r">391</td><td class="r">857,8</td></tr>
+</tbody></table>
+<p class="quelle">Kodierung der Vorhaben: Sprachmodell, drei unabh&auml;ngige Durchg&auml;nge, Mehrheitsregel, Stand 18.11.2026. Bei den Vorhaben, denen mindestens ein Durchgang etwas zuordnete, waren sich alle drei beim Gesundheitsziel in 80,0 Prozent der F&auml;lle einig, beim Krankheitsfeld in 85,4 Prozent. Ein Vorhaben ohne Beschreibungstext erh&auml;lt keine Kodierung, weil ohne Wortlaut keine Zuordnung vergeben wird, und bleibt in der Randspalte, bis der G-BA einen Text nachliefert. Die Suchmuster, mit denen Vorhaben den Zielen zugeordnet werden, sind unsere Kodierung und nicht Teil der Quelle. Krankheitslast: Robert Koch-Institut, Ergebnisdatensatz BURDEN 2020, Version 2025-03-11, Berichtsjahr 2017, DOI 10.5281/zenodo.14750006, Lizenz CC BY 4.0, abgerufen am 18.11.2026. F&ouml;rdersummen: Innovationsausschuss, eigene Datenbank. Gesundheitsziele: Kooperationsverbund gesundheitsziele.de, getragen von der GVG, Titelliste abgerufen am 18.11.2026, zehn Ziele, qualitativ formuliert, ohne daraus abgeleitete messbare Versorgungsziele. Die beiden Verkehrsfelder der RKI-Liste sind ausgenommen, weil sie durch Gesundheitsversorgung nicht steuerbar sind. Ein Vorhaben kann mehrere Ziele und mehrere Felder tragen und z&auml;hlt dann in jede betroffene Zelle, die Zeilen- und Spaltensummen sind deshalb nicht die Vorhabenzahl. Eine F&ouml;rdersumme misst Aufmerksamkeit, nicht Wirkung.</p>
+</div></body></html>
