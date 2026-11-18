@@ -146,12 +146,25 @@ summary { cursor: pointer; color: var(--text-secondary); font-size: 14px; }
   .stand { color: var(--muted); font-size: 13px; margin: 0 0 22px; }
   p, li { max-width: 68ch; }
   .buehne { background: var(--plane); border: 1px solid var(--grid);
-            border-radius: 10px; margin: 20px 0 0; touch-action: none; }
+            border-radius: 10px; margin: 20px 0 0; }
   /* Ohne das markiert jedes Ziehen die Beschriftungen, statt zu drehen.
      Peter Stegmaier hatte am 18.11.2026 eine Wolke voll blau markierter
      Namen vor sich. */
-  svg#raum { display: block; width: 100%; height: auto; cursor: grab;
+  svg#raum { display: block; width: 100%; height: auto; margin: 0 auto;
+             cursor: grab; touch-action: none;
              user-select: none; -webkit-user-select: none; }
+  /* Peter Stegmaier am 18.11.2026 vom iPad: „an den unteren Schalter kommt
+     man gar nicht hin."  touch-action: none stand auf der ganzen Bühne,
+     also schluckten auch die Knopfleisten jede Wischbewegung, und bei
+     1180x790 ist die Bühne 947 px hoch.  Jetzt hört nur die Grafik selbst
+     auf zu scrollen, und auf flachen Fenstern wird sie so gedeckelt, dass
+     immer eine Fläche zum Weiterscrollen übrig bleibt.  Gedeckelt wird
+     über die Breite, nicht über die Höhe: svgPunkt() rechnet Klicks über
+     das Rechteck des Elements um und läge daneben, sobald die Grafik
+     darin schwebt. */
+  @media (max-height: 820px) and (pointer: coarse) {
+    svg#raum { max-width: min(100%, calc(56vh * 1000 / 660)); }
+  }
   svg#raum.zieht { cursor: grabbing; }
   .kante { stroke: var(--grid); stroke-width: 1; fill: none; }
   .kante.boden { stroke: var(--baseline); }
@@ -266,6 +279,14 @@ body{font:15px/1.55 Lato,'Segoe UI',system-ui,sans-serif;background:#F3F5F8;
   border-left:4px solid var(--luecke);border-radius:10px;padding:18px 20px;
   margin:0 0 30px}
 .einordnung p{margin:0;max-width:78ch}
+/* Gemessen am 18.11.2026 bei 390 px: eine Tabelle der Zielkarte war
+   553 px breit, und damit rutschte die ganze Seite seitlich weg, jeder
+   Absatz mit.  Auf schmalen Schirmen rollt jetzt die Tabelle fuer sich,
+   nicht die Seite. */
+@media (max-width:760px){
+  .lk-inhalt table{display:block;width:max-content;max-width:100%;
+    overflow-x:auto}
+}
 </style>
 </head><body>
 <style>nav.netz{max-width:none;margin:0;padding:0}.netz-aktion p{margin:0}footer.fuss.nf{max-width:1240px;margin:34px auto 0;padding:26px 16px 30px}</style>
